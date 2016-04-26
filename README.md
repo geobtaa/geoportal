@@ -1,5 +1,6 @@
-# Installing rbenv
-# Main rbenv system
+### Installing rbenv
+#### Main rbenv system
+```
 git clone https://github.com/rbenv/rbenv.git /swadm/usr/local/rbenv
 
 # Ruby-build subsystem
@@ -16,19 +17,24 @@ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 # Install ruby, set it as default
 rbenv install 2.3.0
 rbenv global 2.3.0
+```
 
+### Setup the rails application (from scratch)
+```
 # Install Rails core
 gem install rails
 
 # Create new Rails project and bootstrap geoblacklight
 cd /swadm/usr/local
 rails new geoblacklight
+```
 
-# That may not succeed outright because it tries to run generators depending on
-# a JS runtime that hasn't been loaded. 
+That may not succeed outright because it tries to run generators depending on
+a JS runtime that hasn't been loaded. 
+
 Edit geoblacklight/Gemfile to uncomment therubyracer
 
-Add to Gemfile
+#### Add to Gemfile
 
 ```ruby
 gem 'geoblacklight'
@@ -95,7 +101,7 @@ $ bundle exec rake geoblacklight:solr:seed
 ### View the site
 Restart Apache to make sure the rails application is up, and visit https://lib-geoblacklightdev.oit.umn.edu
 
-# NOTE ABOUT devise
+### NOTE ABOUT devise
 Instructions say to pass the --devise flag to setup devise in the application. 
 It's used for authentication, but I am omitting it until we know what we we'll use.
 
