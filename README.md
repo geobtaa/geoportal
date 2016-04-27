@@ -106,3 +106,54 @@ Instructions say to pass the --devise flag to setup devise in the application.
 It's used for authentication, but I am omitting it until we know what we we'll use.
 
 For now, the thing is wide open.
+
+
+## Passenger install procedure
+Passenger is installed as a Ruby gem, which builds an Apache module.
+
+```shell
+# 1. Install the gem for the specific Ruby version in rbenv (--no-rdoc, --no-ri skip installing docs)
+$ RBENV_VERSION=2.3.0 gem install passenger --no-rdoc --no-ri
+
+# 2. Build the apache module (select only Ruby)
+$ passenger-install-apache2-module
+```
+
+### Enable Passenger in Apache config:
+
+#### Basic setup
+```
+#####
+# /swadm/etc/httpd/conf.d/00-passenger.conf
+# In its own file to control load order and make it easier to find when ruby versions change...
+#####
+
+LoadModule passenger_module /swadm/usr/local/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/passenger-5.0.27/buildout/apache2/mod_passenger.so
+<IfModule mod_passenger.c>
+  PassengerRoot /swadm/usr/local/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/passenger-5.0.27
+  PassengerDefaultRuby /swadm/usr/local/rbenv/versions/2.3.0/bin/ruby
+</IfModule>
+```
+
+#### VirtualHost config
+```
+######
+# /swadm/etc/httpd/conf.d/geoblacklightdev.conf
+######
+
+# Document root must point to public directory
+DocumentRoot /swadm/usr/local/geoblacklightdev/public
+
+<Directory "/swadm/usr/local/geoblacklightdev">
+    # Locate application, passenger will autodetect Rails
+    PassengerAppRoot "/swadm/usr/local/geoblacklightdev"
+
+    # Path we'll expose to the web
+    PassengerBaseURI /
+    
+    # Make sure it's in development mode (default is production)
+    PassengerAppEnv "development"
+
+    # .. rest of normal Apache conf stuff..
+</Directory>
+```
