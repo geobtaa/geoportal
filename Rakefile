@@ -8,7 +8,7 @@ SolrWrapper.default_instance_options = {
     cloud: false,
     port: '8983',
     version: '5.5.0',
-    instance_dir: 'solr',
+    instance_dir: '/swadm/usr/local/solr',
     download_dir: 'tmp'
 }
 require 'solr_wrapper/rake_task'
