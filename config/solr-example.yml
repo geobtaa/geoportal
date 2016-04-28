@@ -1,0 +1,14 @@
+# config/solr.yml
+# Modify default Solr daemon settings here
+
+# Port to start Solr
+#port: '8983',
+
+# Specify version
+#version: '5.5.0',
+
+# Location of Solr 
+#instance_dir: '/swadm/usr/local/solr',
+
+# Location of temporary downloads from `rake solr:clean`
+#download_dir: 'tmp'
