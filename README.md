@@ -58,29 +58,28 @@ Some tweaks were needed to get the geoblacklight solr config in the right place.
 Add to Rakefile config for solr
 
 ```ruby
-SolrWrapper.default_instance_options = {
-    verbose: false,
-    cloud: false,
-    port: '8983',
-    version: '5.5.0',
-    instance_dir: 'solr',
-    download_dir: 'tmp'
-}
+# Rakefile
 require 'solr_wrapper/rake_task'
 ```
 
-```shell
-$ rake solr:clean
-$ mkdir jetty
+#### Override Solr Defaults
+By default, Solr will attempt to install in `/swadm/usr/local/solr`. This path 
+can be overridden (especially for local development) along with other options in 
+`config/solr.yml`.  See [config/solr-example.yml](`config/solr-example.yml) for 
+available settings and their defaults.
 
-# Symlink helps the `rake geoblacklight:configure_solr` task find solr
-# Won't be necessary if solr is already setup
-$ cd jetty && ln -s ../solr/server/solr solr
+For local development, assuming no `/swadm` tree is available, set 
+`instance_dir` to a path where you can run Solr as a user on your workstation:
+
+```yaml
+instance_dir: /home/you/solr
 ```
 
-
-#### Now it should be possible to start solr
+#### Start Solr
+Now it should be possible to start solr in the default or configured location
 ```shell
+# Download if not already done
+$ rake solr:clean
 $ rake solr:start
 ```
 
