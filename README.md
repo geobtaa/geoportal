@@ -53,9 +53,10 @@ rails generate geoblacklight:install
 ```
 
 
-#### Geoblacklight guided install directions end up with Solr 4.x running in jetty
-Some tweaks were needed to get the geoblacklight solr config in the right place.
-Add to Rakefile config for solr
+#### Divert from Geoblacklight guided install
+As of April 2016, Geoblacklight's guided install winds up with Solr 4.x under 
+
+Added to Rakefile config for solr
 
 ```ruby
 # Rakefile
@@ -75,7 +76,8 @@ For local development, assuming no `/swadm` tree is available, set
 instance_dir: /home/you/solr
 ```
 
-#### Start Solr
+
+#### Download Solr
 Now it should be possible to start solr in the default or configured location
 ```shell
 # Download if not already done
@@ -84,6 +86,14 @@ $ rake solr:start
 ```
 
 Visit https://lib-geoblacklightdev.oit.umn.edu:8983 to verify Solr is running
+
+#### Install Blacklight Solr core config
+The [Geoblacklight schema](https://github.com/geoblacklight/geoblacklight-schema) project
+provided initial Solr core & schema configs for Geoblacklight. Locally, those 
+live in our own repository at 
+https://github.umn.edu/Libraries/geoblacklight-solr-config. Follow its README to 
+load the repository and symlink it into Solr as a core. Then restart Solr and 
+the `blacklightcore` core should now be listed in the Solr admin screen.
 
 ### Load test records into Solr
 Geoblacklight has sample records, but its seeding rake task won't find them. They can be copied into the project
