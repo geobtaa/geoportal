@@ -18,3 +18,7 @@
 /tmp
 jettywrapper.log
 *.log
+
+# Ignore everything in solr/ except the README
+solr/*
+!solr/README-geoblacklight-solr-development.txt
