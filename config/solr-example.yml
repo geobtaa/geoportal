@@ -8,7 +8,12 @@
 #version: '5.5.0'
 
 # Location of Solr 
+#
+# Swadm path:
 #instance_dir: '/swadm/usr/local/solr'
+#
+# Or within the project for local development
+#instance_dir: 'solr'
 
 # Location of temporary downloads from `rake solr:clean`
 #download_dir: 'tmp'
