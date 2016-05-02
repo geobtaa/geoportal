@@ -1,5 +1,5 @@
 ### Installing rbenv
-[Jump to local development setup](#local-development-quickstart)
+[Jump to local development setup](README.md#local-development-quickstart)
 
 #### Main rbenv system
 ```
