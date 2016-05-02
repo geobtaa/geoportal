@@ -9,10 +9,10 @@
 
 # Location of Solr 
 #
-# Swadm path:
+# DEFAULT: Swadm path:
 #instance_dir: '/swadm/usr/local/solr'
 #
-# Or within the project for local development
+# Set within the project for local development
 #instance_dir: 'solr'
 
 # Location of temporary downloads from `rake solr:clean`
