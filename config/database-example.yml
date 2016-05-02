@@ -9,14 +9,20 @@ default: &default
   pool: 5
   timeout: 5000
 
-development:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  hostname: hostname
-  database: dbname
-  username: dbuser
-  password: dbpass
+# Local development with sqlite
+#development:
+#  adapter: sqlite3
+#  database: db/development.sqlite3
+
+# MySQL setup (hosted server development)
+#development:
+#  adapter: mysql2
+#  encoding: utf8
+#  reconnect: false
+#  hostname: hostname
+#  database: dbname
+#  username: dbuser
+#  password: dbpass
 
 
 # Warning: The database defined as "test" will be erased and
