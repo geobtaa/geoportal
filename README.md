@@ -170,6 +170,20 @@ DocumentRoot /swadm/usr/local/geoblacklightdev/public
 </Directory>
 ```
 
+
+### Start Solr at boot
+Solr can be started by its Rake task (with all necessary rbenv environment 
+variables) by calling the `rbenv-start-solr.sh` script. That will also run from 
+`@reboot` in crontab.
+
+```shell
+# Swadm's crontab:
+@reboot /swadm/usr/local/geoblacklight/current/rbenv-start-solr.sh
+```
+
+Using the Ruby `solr_wrapper` and the Rake task is not totally necessary. It may 
+work just as well to use `/swadm/usr/local/solr/bin/solr start`.
+
 ## Local Development Quickstart
 Geoblacklight should be fairly easy to run using conventional local Rails 
 development procedures (localhost:3000, sqlite3)
