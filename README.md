@@ -1,4 +1,6 @@
 ### Installing rbenv
+[Jump to local development setup](#local-development-quickstart)
+
 #### Main rbenv system
 ```
 git clone https://github.com/rbenv/rbenv.git /swadm/usr/local/rbenv
