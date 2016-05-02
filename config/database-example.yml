@@ -11,7 +11,7 @@ default: &default
 
 # Local development with sqlite
 #development:
-#  adapter: sqlite3
+#  <<: *default
 #  database: db/development.sqlite3
 
 # MySQL setup (hosted server development)
