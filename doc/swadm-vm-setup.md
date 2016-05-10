@@ -20,7 +20,7 @@ alias: geonetdev.lib.umn.edu
 134.84.231.41  
 RHEL 6 64-bit / 2 CPU / 4 GB RAM
 
-Network Summary: Public IP space, https://geonetdev.lib.umn.edu is world accessible, Apache + mod_proxy make Tomcat port 8080 available as /geonetwork/ via SSL only.  OIT's enterprise MySQL development server mysql-dev1.oit.umn.edu accepts traffic via port 3306 from this VM.
+Network Summary: Public IP space, https://geonetdev.lib.umn.edu is limited to the UMN VPN range, Apache + mod_proxy make Tomcat port 8080 available as /geonetwork/ via SSL only.  OIT's enterprise MySQL development server mysql-dev1.oit.umn.edu accepts traffic via port 3306 from this VM.
 
 Zabbix Monitoring: Lib\_Maps group.  Template\_Libraries\_Apache, Template\_Libraries\_Linux, Template\_Libraries\_Tomcat (port 8080 listening), Template\_OIT\_Ping\_Only.
 <br><br>
