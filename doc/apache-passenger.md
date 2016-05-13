@@ -41,6 +41,7 @@ Likewise, if a newer Ruby version is installed, rbenv Ruby paths will need to be
 updated from `2.3.0`.
 
 ## VirtualHost config
+
 ```
 ######
 # /swadm/etc/httpd/conf.d/geoblacklight{dev}.conf
@@ -89,3 +90,8 @@ updated from `2.3.0`.
 </VirtualHost>
 ```
 
+- The VirtualHost must be setup as a Ruby on Rails application for Passenger.
+- `mod_roxy` is used to send `/solr` to a local-IP limited Jetty service on port 
+  8983 for any external interaction with the Solr service.
+- Solr's interface (admin, query, data) is protected from outside use by the 
+  proxy and HTTP Basic Auth.
