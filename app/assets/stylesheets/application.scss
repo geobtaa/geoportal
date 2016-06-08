@@ -13,3 +13,45 @@
  *= require_tree .
  *= require_self
  */
+
+// CIC colors:
+// Green-gray:  #a2b6ba;
+// Maroonish:   #6B0054
+
+body {
+  background:#f8f8f8;
+}
+
+div#cic-header-navbar {
+  background-color:#FFF;
+}
+
+div#header-navbar {
+  background-color:#6B0054;
+  a {
+    color:#FFF !important;
+    border-top:1px solid #6B0054;
+  }
+  a:hover{ color: #000 !important;}
+
+  .navbar-brand {
+    background:none;
+    overflow:visible;
+    text-indent:0;
+    font-family:"Times New Roman";
+  }
+  .navbar-brand:hover {
+    color: #FFF !important;
+  }
+}
+
+footer {
+  background-color:#ebebeb;
+  padding-top:4rem;
+  padding-bottom:2rem;
+  margin-top:4rem;
+
+  a {
+    color: #333;
+  }
+}
