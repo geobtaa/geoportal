@@ -1,4 +1,16 @@
-<div id="header-navbar" class="navbar navbar-inverse navbar-static-top" role="navigation">
+<div id="cic-header-navbar" class="navbar navbar-static-top" role="navigation">
+  <section>
+    <div class="container">
+      <div class="navbar-header">
+        <%= link_to image_tag('cic-logo.png', {height: '30px', width: '100px', alt: 'CIC', style:'margin-top:5px'}), root_path %>
+      </div>
+      <div class="">
+      </div>
+    </div>
+  <section>
+</div>
+
+<div id="header-navbar" class="navbar navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#user-util-collapse">
@@ -7,7 +19,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <%= link_to image_tag('cic-logo.png', {height: '50px', width: '133px', alt: 'CIC'}), root_path %>
+      <%=link_to "Geospatial Discovery Portal", root_path, class: "navbar-brand" %>
     </div>
 
     <div class="collapse navbar-collapse" id="user-util-collapse">
