@@ -58,3 +58,5 @@ gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'm
 gem 'rsolr', '~> 1.0.6'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
+
+gem 'haml'

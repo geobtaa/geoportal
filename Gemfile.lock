@@ -115,6 +115,8 @@ GEM
     geoblacklight-icons (0.2.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    haml (4.0.7)
+      tilt
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -242,6 +244,7 @@ DEPENDENCIES
   devise
   devise-guests (~> 0.3)
   geoblacklight
+  haml
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
