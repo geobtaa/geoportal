@@ -60,3 +60,6 @@ gem 'devise'
 gem 'devise-guests', '~> 0.3'
 
 gem 'haml'
+
+# Static Pages
+gem 'high_voltage', '~> 3.0.0'
