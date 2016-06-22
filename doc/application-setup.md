@@ -39,7 +39,7 @@ rails generate geoblacklight:install
 
 
 #### Divert from Geoblacklight guided install
-As of April 2016, Geoblacklight's guided install winds up with Solr 4.x under 
+As of April 2016, Geoblacklight's guided install winds up with Solr 4.x. We've added the `solr_wrapper` gem used by newer Blacklight versions and it facilitates installation of Solr 5.x and simple controls for development.
 
 Added to Rakefile config for solr
 
