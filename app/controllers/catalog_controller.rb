@@ -123,7 +123,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'dct_spatial_sm', label: 'Place(s)', itemprop: 'spatial', link_to_search: true
     config.add_show_field 'dc_subject_sm', label: 'Subject(s)', itemprop: 'keywords', link_to_search: true
     config.add_show_field 'dct_temporal_sm', label: 'Year', itemprop: 'temporal'
-    config.add_show_field 'dct_provenance_s', label: 'Held by', link_to_search: true
+    config.add_show_field 'dct_provenance_s', label: 'Contributed by', link_to_search: true
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
