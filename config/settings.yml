@@ -41,5 +41,5 @@ WMS_PARAMS:
   :REQUEST: 'GetFeatureInfo'
   :STYLES: ''
   :SRS: 'EPSG:4326'
-  :EXCEPTIONS: 'application/json'
+  #:EXCEPTIONS: 'application/json'
   :INFO_FORMAT: 'text/html'
