@@ -35,15 +35,20 @@
 
   <%= render partial: 'shared/ajax_modal' %>
 
-  <div id="main-container" class="<%= container_classes %>">
-    <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
+  <% if current_page?(root_url) && has_search_parameters? == false %>
+    <%# if there are no input/search related params, display the "home" partial -%>
+    <%= render 'home' %>
+  <% else %>
+    <div id="main-container" class="<%= container_classes %>">
+      <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
 
-    <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
+      <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
 
-    <div class="row">
-      <%= yield %>
+      <div class="row">
+        <%= yield %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <footer>
     <%= render :partial => 'shared/footer' %>

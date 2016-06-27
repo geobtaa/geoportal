@@ -26,14 +26,16 @@ div#cic-header-navbar {
   background-color:#FFF;
 }
 
-div#header-navbar {
+div#application-header {
   background-color:#6B0054;
+
   a {
     color:#FFF !important;
     border-top:1px solid #6B0054;
   }
   a:hover{ color: #000 !important;}
 
+  #header-navbar { margin-bottom:0; }
   .navbar-brand {
     background:none;
     overflow:visible;
@@ -42,6 +44,10 @@ div#header-navbar {
   }
   .navbar-brand:hover {
     color: #FFF !important;
+  }
+
+  span.icon-bar {
+    background-color:#FFF;
   }
 }
 
@@ -54,4 +60,9 @@ footer {
   a {
     color: #333;
   }
+}
+
+#marketing {
+  padding:4rem 0;
+  background:#e7e7e7 url('/assets/aerial_photo.jpg') repeat;
 }
