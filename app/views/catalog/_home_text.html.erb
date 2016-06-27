@@ -1,49 +1,60 @@
-<div class='jumbotron'>
-  <div class='home-search-area'>
-    <%= content_tag :h2, t('geoblacklight.home.headline') %>
-    <%= content_tag :h3, t('geoblacklight.home.search_heading') %>
-    <div class='col-md-6 col-md-offset-3'>
-      <%= render_search_form_no_navbar %>
+<section id="search-bar" style="background-color:rgba(0,0,0,0.8); padding:2rem 0rem;">
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <%= render_search_form_no_navbar %>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class='container'>
-  <div class='row'>
-    <div class='col-md-6'>
-      <%= content_tag :h3, t('geoblacklight.home.category_heading'), class: 'text-center' %>
-      <div class='category-block'>
-        <div class='category-icon'>
-          <span class='glyphicon glyphicon-home'></span>
+<section id="marketing">
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <div class='row'>
+          <div class='col-sm-12 col-md-6'>
+            <h2 style='padding:1rem; display:inline-block; background-color:rgba(107,0,84,0.9);color:#FFF;'>Find Maps and Data</h2>
+            <div style='padding:1rem; display:inline-block; background-color:rgba(255,255,255,0.9);'>
+              <p>NAME is a geoportal that provides discoverability and facilitates access to geospatial resources. The resources in the portal are selected and curated by librarians and geospatial specialists at nine research institutions in the <a href="http://www.cic.net/home">CIC</a>.</p>
+              <p>The resources include GIS datasets, web services, and digitized historical maps. <a href="/about">Learn more</a> about the research institutions involved and the sources of the geospatial records.</p>
+            </div>
+          </div>
+
+          <div class='col-sm-12 col-md-6'>
+            <img class='img-responsive' src='http://placehold.it/1000x400' />
+          </div>
         </div>
-        <h4>School</h4>
-        <%= render_facet_tags [:dct_provenance_s] %>
       </div>
-      <div class='category-block'>
-        <div class='category-icon'>
-          <span class='glyphicon glyphicon-download'></span>
-        </div>
-        <h4>Data type</h4>
-        <%= render_facet_tags [:layer_geom_type_s] %>
-      </div>
-      <div class='category-block'>
-        <div class='category-icon'>
-          <span class='glyphicon glyphicon-globe'></span>
-        </div>
-        <h4>Placename</h4>
-        <%= render_facet_tags [:dct_spatial_sm] %>
-      </div>
-      <div class='category-block'>
-        <div class='category-icon'>
-          <span class='glyphicon glyphicon-tags'></span>
-        </div>
-        <h4>Subject</h4>
-        <%= render_facet_tags [:dc_subject_sm] %>
-      </div>
-    </div>
-    <div class='col-md-6 text-center'>
-      <%= content_tag :h3, t('geoblacklight.home.map_heading') %>
-      <%= content_tag :div, '', id: 'map', data: { map: 'home', 'catalog-path'=> catalog_index_path , 'map-bbox' => params[:bbox], basemap: geoblacklight_basemap } %>
     </div>
   </div>
-</div>
+</section>
+
+<section>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-12'>
+
+        <div class='row'>
+          <div class='col-sm-12 col-md-4'>
+            <h4>Institution</h4>
+            <%= render_facet_tags [:dct_provenance_s] %>
+          </div>
+
+          <div class='col-sm-12 col-md-4'>
+            <h4>Author/Publisher</h4>
+            <%= render_facet_tags [:dc_publisher_s] %>
+          </div>
+
+          <div class='col-sm-12 col-md-4'>
+            <h4>Subject</h4>
+            <%= render_facet_tags [:dc_subject_sm] %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= content_tag :section, '', id: 'map', data: { map: 'home', 'catalog-path'=> catalog_index_path , 'map-bbox' => params[:bbox], basemap: geoblacklight_basemap } %>

@@ -1,37 +1,48 @@
-<div id="cic-header-navbar" class="navbar navbar-static-top" role="navigation">
-  <section>
-    <div class="container">
-      <div class="navbar-header">
-        <%= link_to image_tag('cic-logo.png', {height: '30px', width: '100px', alt: 'CIC', style:'margin-top:5px'}), root_path %>
+<header>
+  <div id="cic-header" style="background-color:#FFF;">
+    <div class='container'>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <div id="cic-header-navbar" class="navbar navbar-static-top" role="navigation" style="margin-bottom:0;">
+            <div class="navbar-header">
+              <%= link_to image_tag('cic-logo.png', {height: '30px', width: '100px', alt: 'CIC', style:'margin-top:5px'}), root_path %>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="">
-      </div>
-    </div>
-  <section>
-</div>
-
-<div id="header-navbar" class="navbar navbar-static-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#user-util-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-      <%=link_to "Geospatial Discovery Portal", root_path, class: "navbar-brand" %>
-    </div>
-
-    <div class="collapse navbar-collapse" id="user-util-collapse">
-      <%= render :partial=>'/user_util_links' %>
     </div>
   </div>
-</div>
 
-<% if controller_name == 'catalog' && has_search_parameters? %>
-  <div id="search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
-    <div class="container">
-      <%= render_search_bar  %>
+
+  <div id='application-header'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <div id="header-navbar" class="navbar navbar-static-top" role="navigation">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#user-util-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+              <%=link_to "Geospatial Discovery Portal", root_path, class: "navbar-brand" %>
+            </div>
+
+            <div class="collapse navbar-collapse" id="user-util-collapse">
+              <%= render :partial=>'/user_util_links' %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <% if controller_name == 'catalog' && has_search_parameters? %>
+      <div id="search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+          <%= render_search_bar  %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</header>
