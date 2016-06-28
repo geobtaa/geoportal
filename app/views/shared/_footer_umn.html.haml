@@ -1,0 +1,42 @@
+%div.container
+  %div.row
+    %div#footer-lib.col-xs-12
+      %div.row
+
+        %div.col-sm-10
+          %div.row
+            %div.col-sm-3
+              %h3
+                = link_to 'About', about_path
+              %ul.list-unstyled
+                %li
+                  %a{href:'#'} Policies and Terms of Use
+                %li
+                  %a{href:'#'} Contact Us
+
+            %div.col-sm-3
+              %h3
+                %a{href:'https://www.lib.umn.edu/about/contact'} Policies
+              %ul.list-unstyled
+                %li
+                  %a{href:'#'} Privacy Statement
+                %li
+                  %a{href:'#'} Acceptable Use of IT Resources
+
+            %div.col-sm-3
+              %h3
+                %a{href:'https://www.libraries.umn.edu'} U of M Libraries
+              %ul.list-unstyled
+                %li
+                  %a{href:'https://www.lib.umn.edu/about/collections'} Homepage
+                %li
+                  %a{href:'#'} Contact
+
+        %div.col-xs-12.col-sm-2
+          %a{href:'https://library.umn.edu'}
+            =image_tag('ulib-box_@2X.png', {id:'university-libraries', alt: 'University Libraries', title: 'University Libraries', height: '80', width:'80'})
+
+    %div.row
+      %div.col-sm-12
+        %small
+          &copy; 2016 Regents of the University of Minnesota. All rights reserved. The University of Minnesota is an equal opportunity educator and employer.
