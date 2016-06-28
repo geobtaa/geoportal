@@ -30,25 +30,25 @@
   </div>
 </section>
 
-<section>
+<section id="home-metadata">
   <div class='container'>
     <div class='row'>
       <div class='col-sm-12'>
 
         <div class='row'>
           <div class='col-sm-12 col-md-4'>
-            <h4>Institution</h4>
-            <%= render_facet_tags [:dct_provenance_s] %>
+            <h4 class='sr-only'>Institution</h4>
+            <%= render_facet_partials [:dct_provenance_s], {class:'active'} %>
           </div>
 
           <div class='col-sm-12 col-md-4'>
-            <h4>Author/Publisher</h4>
-            <%= render_facet_tags [:dc_publisher_s] %>
+            <h4 class='sr-only'>Author/Publisher</h4>
+            <%= render_facet_partials [:dc_publisher_s] %>
           </div>
 
           <div class='col-sm-12 col-md-4'>
-            <h4>Subject</h4>
-            <%= render_facet_tags [:dc_subject_sm] %>
+            <h4 class='sr-only'>Subject</h4>
+            <%= render_facet_partials [:dc_subject_sm] %>
           </div>
 
         </div>
