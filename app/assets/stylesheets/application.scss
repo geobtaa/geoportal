@@ -55,10 +55,21 @@ section#home-metadata {
   margin-top:4rem;
 }
 
+section#map {
+  height:600px;
+}
+
+section#footer-app{
+  background-color: #6B0054;
+  a {
+    color:#FFF;
+  }
+}
+
 footer {
-  background-color:#ebebeb;
+  background-color:#ccc;
   padding-top:4rem;
-  padding-bottom:2rem;
+  padding-bottom:4rem;
 
   a {
     color: #333;
