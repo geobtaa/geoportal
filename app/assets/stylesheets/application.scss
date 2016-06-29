@@ -40,7 +40,6 @@ div#application-header {
     background:none;
     overflow:visible;
     text-indent:0;
-    font-family:"Times New Roman";
   }
   .navbar-brand:hover {
     color: #FFF !important;
@@ -49,6 +48,11 @@ div#application-header {
   span.icon-bar {
     background-color:#FFF;
   }
+}
+
+div#main-container {
+  margin-top:2rem;
+  margin-bottom:4rem;
 }
 
 section#home-metadata {
@@ -60,6 +64,7 @@ section#map {
 }
 
 section#footer-app{
+  padding-bottom:1rem;
   background-color: #6B0054;
   a {
     color:#FFF;
@@ -76,7 +81,33 @@ footer {
   }
 }
 
+#university-libraries {
+  border:4px solid #FFF;
+}
+
 #marketing {
   padding:4rem 0;
   background:#e7e7e7 url('/assets/aerial_photo.jpg') repeat;
+}
+
+
+.list-horizontal {
+  padding-left:0;
+}
+
+.list-horizontal li {
+  display:inline-block;
+}
+.list-horizontal li:before {
+  content: '\00a0\2022\00a0\00a0';
+  color:#FFF;
+  font-size:11px;
+}
+
+.list-horizontal li:first-child {
+  width:auto;
+}
+
+.list-horizontal li:first-child:before {
+  content: none;
 }
