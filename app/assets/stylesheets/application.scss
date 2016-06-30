@@ -1,39 +1,33 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import "blacklight.css.scss";
+@import "geoblacklight.css.scss";
 
-// CIC colors:
-// Green-gray:  #a2b6ba;
-// Maroonish:   #6B0054
+// Big Ten Academic Alliance colors:
+$white:#FFFFFF; // 100%
+$gray: #CCCCCC; // 80%
+$black:#000000; // 0%
+
+$btaa-blue: #0088ce;
 
 body {
-  background:#f8f8f8;
+  background-color:lighten($gray, 14%);
 }
 
-div#cic-header-navbar {
-  background-color:#FFF;
+header {
+  background-color: $white;
+}
+
+div#btaa-header-navbar {
+  background-color:$white;
 }
 
 div#application-header {
-  background-color:#6B0054;
+  background-color:$btaa-blue;
 
   a {
-    color:#FFF !important;
-    border-top:1px solid #6B0054;
+    color:$white !important;
+    border-top:1px solid $btaa-blue;
   }
-  a:hover{ color: #000 !important;}
+  a:hover{ color: $black !important;}
 
   #header-navbar { margin-bottom:0; }
   .navbar-brand {
@@ -42,11 +36,11 @@ div#application-header {
     text-indent:0;
   }
   .navbar-brand:hover {
-    color: #FFF !important;
+    color: $white !important;
   }
 
   span.icon-bar {
-    background-color:#FFF;
+    background-color:$white;
   }
 }
 
@@ -64,33 +58,50 @@ section#map {
 }
 
 section#footer-app{
+  color:$white;
   padding-bottom:1rem;
-  background-color: #6B0054;
+  background-color: $btaa-blue;
   a {
-    color:#FFF;
+    color:$white;
   }
 }
 
 footer {
-  background-color:#ccc;
+  background-color:$gray;
   padding-top:4rem;
   padding-bottom:4rem;
 
   a {
-    color: #333;
+    color: $black;
   }
 }
 
 #university-libraries {
-  border:4px solid #FFF;
+  border:4px solid $white;
 }
 
-#marketing {
-  padding:4rem 0;
-  background:#e7e7e7 url('/assets/aerial_photo.jpg') repeat;
+section#marketing {
+  div#search-bar {
+    background-color:rgba($black,0.8);
+    padding:2rem 2rem;
+    margin-bottom:2rem;
+  }
+
+  padding:0;
+  background:lighten($gray, 12%) url('/assets/aerial_photo.jpg') repeat;
+
+  #action-line {
+    padding:1rem;
+    display:inline-block;
+    background-color:rgba($btaa-blue,0.9);
+    color:$white;
+  }
+  img {
+    padding-bottom:2rem;
+  }
 }
 
-
+// Lists - Horizontal w/ Bullets
 .list-horizontal {
   padding-left:0;
 }
@@ -100,8 +111,7 @@ footer {
 }
 .list-horizontal li:before {
   content: '\00a0\2022\00a0\00a0';
-  color:#FFF;
-  font-size:11px;
+  color:$white;
 }
 
 .list-horizontal li:first-child {
