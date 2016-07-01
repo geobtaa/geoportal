@@ -101,6 +101,17 @@ section#marketing {
   }
 }
 
+// Overwriting BL/GBL to restore Grid
+#facets {
+  .top-panel-heading {
+    padding-left:0;
+  }
+}
+#facet-panel-collapse {
+  padding-left:0;
+  padding-right:0;
+}
+
 #search-navbar {
   .navbar-form {
     margin-left:-15px;
