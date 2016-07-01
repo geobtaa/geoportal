@@ -1,9 +1,9 @@
-<header>
+<header aria-label='Primary'>
   <div id="btaa-header">
     <div class='container'>
       <div class='row'>
         <div class='col-sm-12'>
-          <div id="cic-header-navbar" class="navbar navbar-static-top" role="navigation" style="margin-bottom:0;">
+          <div id="cic-header-navbar" class="navbar navbar-static-top" style="margin-bottom:0;">
             <div class="navbar-header">
               <%= link_to image_tag('btaa-logo.jpg', {width: '100px', alt: 'Big Ten Academic Alliance', style:'margin-top:5px'}), root_path %>
             </div>
@@ -38,7 +38,7 @@
     </div>
   </div>
   <% if controller_name == 'catalog' && has_search_parameters? %>
-    <div id="search-navbar" role="navigation">
+    <div id="search-navbar">
       <div class="container">
         <div class='row'>
           <div class='col-xs-12 col-sm-9'>

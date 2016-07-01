@@ -39,7 +39,7 @@
     <%# if there are no input/search related params, display the "home" partial -%>
     <%= render 'home' %>
   <% else %>
-    <div id="main-container" class="<%= container_classes %>">
+    <div role="main" id="main-container" class="<%= container_classes %>" >
       <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
 
       <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
@@ -50,11 +50,11 @@
     </div>
   <% end %>
 
-  <section id="footer-app">
+  <section id="footer-app" aria-label='Application Footer'>
     <%= render :partial => 'shared/footer_app' %>
   </section>
 
-  <footer>
+  <footer aria-label='University of Minnesota'>
     <%= render :partial => 'shared/footer_umn' %>
   </footer>
   </body>

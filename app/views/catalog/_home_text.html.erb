@@ -1,4 +1,4 @@
-<section id="marketing">
+<section id="home-search" aria-label='search'>
   <div id="search-bar">
     <div class='container'>
       <div class='row'>
@@ -22,7 +22,7 @@
           </div>
 
           <div class='col-sm-12 col-md-6'>
-            <img class='img-responsive' src='http://placehold.it/1000x500' />
+            <img class='img-responsive' src='http://placehold.it/1000x500' alt="Image Placeholder" />
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
   </div>
 </section>
 
-<section id="home-metadata">
+<section id="home-metadata" role="main">
   <div class='container'>
     <div class='row'>
       <div class='col-sm-12'>
@@ -57,4 +57,4 @@
   </div>
 </section>
 
-<%= content_tag :section, '', id: 'map', data: { map: 'home', 'catalog-path'=> catalog_index_path , 'map-bbox' => params[:bbox], basemap: geoblacklight_basemap } %>
+<%= content_tag :section, '', aria: {label: 'map-search'}, id: 'map', data: { map: 'home', 'catalog-path'=> catalog_index_path , 'map-bbox' => params[:bbox], basemap: geoblacklight_basemap } %>
