@@ -36,13 +36,16 @@
         </div>
       </div>
     </div>
-
-    <% if controller_name == 'catalog' && has_search_parameters? %>
-      <div id="search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-          <%= render_search_bar  %>
+  </div>
+  <% if controller_name == 'catalog' && has_search_parameters? %>
+    <div id="search-navbar" role="navigation">
+      <div class="container">
+        <div class='row'>
+          <div class='col-xs-12'>
+            <%= render_search_bar  %>
+          </div>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </header>
