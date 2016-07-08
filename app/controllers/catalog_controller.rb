@@ -72,10 +72,11 @@ class CatalogController < ApplicationController
     #    :years_25 => { :label => 'within 25 Years', :fq => "pub_date:[#{Time.now.year - 25 } TO *]" }
     # }
 
-    config.add_facet_field 'dct_provenance_s', label: 'Institution', limit: 8, partial: "icon_facet"
+    config.add_facet_field 'dct_provenance_s', label: 'Institution', limit: 8, partial: "icon_facet", collapse: false
+    config.add_facet_field 'dc_publisher_s', :label => 'Publisher', :limit => 8, collapse: false
+    config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8, collapse: false
+
     config.add_facet_field 'dc_creator_sm', :label => 'Author', :limit => 8
-    config.add_facet_field 'dc_publisher_s', :label => 'Publisher', :limit => 8
-    config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8
     config.add_facet_field 'dct_spatial_sm', :label => 'Place', :limit => 8
     config.add_facet_field 'dct_isPartOf_sm', :label => 'Collection', :limit => 8
 

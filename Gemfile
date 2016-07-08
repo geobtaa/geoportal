@@ -53,8 +53,14 @@ group :development do
 end
 
 gem 'geoblacklight'
+gem 'geoblacklight-icons', '~> 0.3'
 gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'master'
 
 gem 'rsolr', '~> 1.0.6'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
+
+gem 'haml'
+
+# Static Pages
+gem 'high_voltage', '~> 3.0.0'
