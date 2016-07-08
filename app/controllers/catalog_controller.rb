@@ -73,7 +73,7 @@ class CatalogController < ApplicationController
     # }
 
     config.add_facet_field 'dct_provenance_s', label: 'Institution', limit: 8, partial: "icon_facet", collapse: false
-    config.add_facet_field 'dc_publisher_s', :label => 'Publisher', :limit => 8, collapse: false
+    config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8, collapse: false
     config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8, collapse: false
 
     config.add_facet_field 'dc_creator_sm', :label => 'Author', :limit => 8
