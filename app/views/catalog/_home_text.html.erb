@@ -1,0 +1,63 @@
+<section id="home-search" aria-label='search'>
+  <div id="search-bar">
+    <div class='container'>
+      <div class='row'>
+        <div class='col-sm-9'>
+          <%= render_search_form_no_navbar %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <div class='row'>
+          <div class='col-sm-12 col-md-6'>
+            <h2 id='project-tagline'>Find Maps and Data</h2>
+            <div id='project-text'>
+              <p>NAME is a geoportal that provides discoverability and facilitates access to geospatial resources. The resources in the portal are selected and curated by librarians and geospatial specialists at nine research institutions in the <a href="http://www.cic.net/home">CIC</a>.</p>
+              <p>The resources include GIS datasets, web services, and digitized historical maps. <a href="/about">Learn more</a> about the research institutions involved and the sources of the geospatial records.</p>
+            </div>
+          </div>
+
+          <div class='col-sm-12 col-md-6'>
+            <img class='img-responsive' src='http://placehold.it/1000x500' alt="Image Placeholder" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="home-metadata" role="main">
+  <h1 class='sr-only'>Big Ten Academic Alliance Geospatial Discovery Portal</h1>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <h2 class='sr-only'>Project Data</h2>
+        <h3 class='sr-only'>Metadata Examples</h3>
+
+        <div class='row'>
+          <div class='col-sm-12 col-md-4'>
+            <h4 class='sr-only'>Institution</h4>
+            <%= render_facet_partials [:dct_provenance_s], {class:'active'} %>
+          </div>
+
+          <div class='col-sm-12 col-md-4'>
+            <h4 class='sr-only'>Author/Publisher</h4>
+            <%= render_facet_partials [:dc_publisher_s] %>
+          </div>
+
+          <div class='col-sm-12 col-md-4'>
+            <h4 class='sr-only'>Subject</h4>
+            <%= render_facet_partials [:dc_subject_sm] %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= content_tag :section, '', aria: {label: 'map-search'}, id: 'map', data: { map: 'home', 'catalog-path'=> catalog_index_path , 'map-bbox' => params[:bbox], basemap: geoblacklight_basemap } %>
