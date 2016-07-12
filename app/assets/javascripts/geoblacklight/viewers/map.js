@@ -7,7 +7,6 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     * Initial bounds of map
     * @type {L.LatLngBounds}
     */
-
     bbox: [[-20, -179], [64, 134]],
     opacity: 0.75
   },
