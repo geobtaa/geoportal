@@ -12,7 +12,8 @@ set :passenger_restart_with_touch, true
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/swadm/usr/local/#{fetch(:application)}"
 
-set :rbenv_ruby, "2.3.0"
+set :rbenv_path, "/swadm/usr/local/rbenv"
+set :rbenv_ruby, "2.3.1"
 
 # Default value for :scm is :git
 # set :scm, :git
