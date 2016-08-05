@@ -8,6 +8,13 @@ GIT
       ruby-progressbar
       rubyzip
 
+GIT
+  remote: https://github.com/geoblacklight/geoblacklight-icons.git
+  revision: 6fddf78156bd761a4ebcc2ab3749eda65bc74a41
+  branch: master
+  specs:
+    geoblacklight-icons (0.3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -113,7 +120,6 @@ GEM
       geoblacklight-icons (>= 0.2)
       leaflet-rails (~> 0.7.3)
       rails_config (~> 0.4.2)
-    geoblacklight-icons (0.3.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -248,7 +254,7 @@ DEPENDENCIES
   devise
   devise-guests (~> 0.3)
   geoblacklight
-  geoblacklight-icons (~> 0.3)
+  geoblacklight-icons!
   haml
   high_voltage (~> 3.0.0)
   jbuilder (~> 2.0)
@@ -267,4 +273,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.12.5
