@@ -7,7 +7,7 @@ set :repo_url, 'git@github.umn.edu:Libraries/geoblacklight.git'
 set :passenger_restart_with_touch, true
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/swadm/usr/local/#{fetch(:application)}"
@@ -60,7 +60,7 @@ namespace :deploy do
     on roles(:app, :web, :db) do
       # Goal is to make the release swadm owned, and also all precompiled assets swadm owned,group, & group writable
       # Sprockets monkeys with permissions causing the group sticky bit not to apply when precompiling assets.
-      # 
+      #
       # This method means non-swadm users can deploy without their SSH keys known to swadm, so we don't have to allow
       # map library staff to put their keys in swadm's .ssh/authorized_keys.
       #
@@ -71,7 +71,7 @@ namespace :deploy do
       # 3. Set group write on precompiled assets, but only those owned by the user who deployed (because of sprockets)
       # Must be done as the owning user, cannot sudo this.
       execute "find #{shared_path}/tmp/cache/assets/sprockets -user #{fetch(:user)} -exec chmod -R g+rw {} \\;"
-      # Finally, give swadm ownership of everything now that 
+      # Finally, give swadm ownership of everything now that
       execute "sudo chown -R -h swadm #{release_path}"
       execute "sudo chown -R -h swadm #{shared_path}/tmp/cache"
     end
