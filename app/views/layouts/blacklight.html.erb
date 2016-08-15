@@ -21,6 +21,7 @@
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "analytics" %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
 
@@ -39,7 +40,7 @@
     <%# if there are no input/search related params, display the "home" partial -%>
     <%= render 'home' %>
   <% else %>
-    <div role="main" id="main-container" class="<%= container_classes %>" >
+    <div role="main" id="main-container" class="<%= container_classes %>" data-analytics-id="<%= Rails.configuration.google_analytics %>">
       <h1 class='sr-only'>Big Ten Academic Alliance Geospatial Discovery Portal</h1>
       <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
 
