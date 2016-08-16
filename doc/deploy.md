@@ -16,3 +16,25 @@ target to GitHub should be seamless, requiring only:
 $ bundle install
 $ bundle exec cap [development|production] deploy
 ```
+
+Capistrano will prompt you to select a release tag for deployment. The default 
+choice is the last listed tag (which should be the latest version according to 
+semantic versioning schemes). Enter a tag to continue deployment.
+
+```
+Please enter release tag or branch:
+ 1.0.0
+ 1.0.1
+  (1.0.1):
+```
+
+Note: Instead of a tag, you may specify a Git _branch_ such as `master` or 
+`develop`.
+
+This prompt can be circumvented by providing the `GEOBLACKLIGHT_RELEASE` 
+environment variable:
+
+```shell
+$ GEOBLACKLIGHT_RELEASE=1.0.1 bundle exec cap development deploy
+```
+
