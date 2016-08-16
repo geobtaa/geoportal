@@ -7,7 +7,10 @@ set :repo_url, 'git@github.umn.edu:Libraries/geoblacklight.git'
 set :passenger_restart_with_touch, true
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+# Prompt to choose a tag (or name a branch), default to last listed tag
+# unless an environment variable was passed on the command line as in:
+# $ GEOBLACKLIGHT_RELEASE=1.0.0 bundle exec cap development deploy
+set :branch, (ENV['GEOBLACKLIGHT_RELEASE'] || ask("release tag or branch:\n #{`git tag`}", `git tag |tail -n1`.chomp))
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/swadm/usr/local/#{fetch(:application)}"
