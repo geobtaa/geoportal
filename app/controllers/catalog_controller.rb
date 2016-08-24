@@ -213,6 +213,11 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial :exports, partial: 'exports', if: proc { |_context, _config, options| options[:document] }
     config.add_show_tools_partial :downloads, partial: 'downloads', if: proc { |_context, _config, options| options[:document] }
 
+    # Remove show tools
+    config.show.document_actions.delete(:citation)
+    config.show.document_actions.delete(:sms)
+
+
     # Configure basemap provider for GeoBlacklight maps (uses https only basemap
     # providers with open licenses)
     # Valid basemaps include:
