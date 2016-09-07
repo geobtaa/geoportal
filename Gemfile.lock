@@ -253,7 +253,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   devise-guests (~> 0.3)
-  geoblacklight
+  geoblacklight (~> 0.12.0)
   geoblacklight-icons!
   haml
   high_voltage (~> 3.0.0)
