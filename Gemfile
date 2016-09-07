@@ -52,7 +52,7 @@ group :development do
   gem 'capistrano-passenger'
 end
 
-gem 'geoblacklight'
+gem 'geoblacklight', '~> 0.12.0'
 #gem 'geoblacklight-icons', '~> 0.3'
 gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', branch: 'master'
 gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'master'
