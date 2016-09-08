@@ -23,3 +23,5 @@ jettywrapper.log
 # Ignore everything in solr/ except the README
 solr/*
 !solr/README-geoblacklight-solr-development.txt
+
+.DS_Store
