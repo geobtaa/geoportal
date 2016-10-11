@@ -28,6 +28,7 @@ class CatalogController < ApplicationController
     # config.index.record_display_type = 'format'
 
     config.index.title_field = 'dc_title_s'
+    config.index.document_presenter_class = Geoblacklight::DocumentPresenter
 
     # solr field configuration for document/show views
 
