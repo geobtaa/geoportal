@@ -53,8 +53,8 @@ group :development do
 end
 
 gem 'geoblacklight', '~> 1.0'
-#gem 'geoblacklight-icons', '~> 0.3'
-gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', branch: 'master'
+gem 'geoblacklight-icons', '~> 1.0'
+#gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', branch: 'master'
 gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'master'
 
 gem 'rsolr', '~> 1.0.6'
