@@ -16,8 +16,8 @@ module Blacklight
       #add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
       #add_show_tools_partial(:citation)
       add_show_tools_partial(:exports)
-      add_show_tools_partial(:downloads)
-      add_show_tools_partial(:metadata)
+      #add_show_tools_partial(:downloads)
+      #add_show_tools_partial(:metadata)
       add_show_tools_partial(:web_services)
       #add_show_tools_partial(:librarian_view, if: :render_librarian_view_control?)
 
