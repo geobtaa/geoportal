@@ -228,6 +228,11 @@ class CatalogController < ApplicationController
     config.basemap_provider = 'positron'
   end
 
-
+  # Bug Fix? -- Web services action cannot find 'document' without
+  # this action listed here in my catalog_controller.rb  Guessing the GBL
+  # ControllerOverride isn't working?
+  def web_services
+    @response, @document = fetch params[:id]
+  end
 
 end
