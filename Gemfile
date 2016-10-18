@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '~> 5.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 gem 'mysql2'
@@ -52,9 +52,9 @@ group :development do
   gem 'capistrano-passenger'
 end
 
-gem 'geoblacklight', '~> 0.12.0'
-#gem 'geoblacklight-icons', '~> 0.3'
-gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', branch: 'master'
+gem 'geoblacklight', '~> 1.0'
+gem 'geoblacklight-icons', '~> 1.0'
+#gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', branch: 'master'
 gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'master'
 
 gem 'rsolr', '~> 1.0.6'

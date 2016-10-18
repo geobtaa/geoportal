@@ -45,8 +45,8 @@
           </div>
 
           <div class='col-sm-12 col-md-4'>
-            <h4 class='sr-only'>Author/Publisher</h4>
-            <%= render_facet_partials [:dc_publisher_sm] %>
+            <h4 class='sr-only'>Collection</h4>
+            <%= render_facet_partials [:dct_isPartOf_sm] %>
           </div>
 
           <div class='col-sm-12 col-md-4'>
@@ -60,4 +60,4 @@
   </div>
 </section>
 
-<%= content_tag :section, '', aria: {label: 'map-search'}, id: 'map', data: { map: 'home', 'catalog-path'=> catalog_index_path , 'map-bbox' => params[:bbox], basemap: geoblacklight_basemap } %>
+<%= content_tag :section, '', aria: {label: 'map-search'}, id: 'map', data: { map: 'home', 'catalog-path'=> search_catalog_path , 'map-bbox' => params[:bbox], basemap: geoblacklight_basemap } %>

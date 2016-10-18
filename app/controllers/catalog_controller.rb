@@ -28,6 +28,7 @@ class CatalogController < ApplicationController
     # config.index.record_display_type = 'format'
 
     config.index.title_field = 'dc_title_s'
+    config.index.document_presenter_class = Geoblacklight::DocumentPresenter
 
     # solr field configuration for document/show views
 
@@ -73,12 +74,12 @@ class CatalogController < ApplicationController
     # }
 
     config.add_facet_field 'dct_provenance_s', label: 'Institution', limit: 8, collapse: false
-    config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8, collapse: false
+    config.add_facet_field 'dct_isPartOf_sm', :label => 'Collection', limit: 8, collapse: false
     config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8, collapse: false
 
     config.add_facet_field 'dc_creator_sm', :label => 'Author', :limit => 8
     config.add_facet_field 'dct_spatial_sm', :label => 'Place', :limit => 8
-    config.add_facet_field 'dct_isPartOf_sm', :label => 'Collection', :limit => 8
+    config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8
 
     config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
 
@@ -227,6 +228,11 @@ class CatalogController < ApplicationController
     config.basemap_provider = 'positron'
   end
 
-
+  # Bug Fix? -- Web services action cannot find 'document' without
+  # this action listed here in my catalog_controller.rb  Guessing the GBL
+  # ControllerOverride isn't working?
+  def web_services
+    @response, @document = fetch params[:id]
+  end
 
 end
