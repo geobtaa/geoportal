@@ -28,6 +28,7 @@ class CatalogController < ApplicationController
     # config.index.record_display_type = 'format'
 
     config.index.title_field = 'dc_title_s'
+    config.index.document_presenter_class = Geoblacklight::DocumentPresenter
 
     # solr field configuration for document/show views
 
@@ -227,6 +228,11 @@ class CatalogController < ApplicationController
     config.basemap_provider = 'positron'
   end
 
-
+  # Bug Fix? -- Web services action cannot find 'document' without
+  # this action listed here in my catalog_controller.rb  Guessing the GBL
+  # ControllerOverride isn't working?
+  def web_services
+    @response, @document = fetch params[:id]
+  end
 
 end
