@@ -83,4 +83,4 @@ namespace :deploy do
   end
 end
 
-before 'deploy:symlink:release', 'deploy:set_group_writable'
+after 'deploy:updated', 'deploy:set_group_writable'
