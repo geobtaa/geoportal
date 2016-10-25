@@ -10,7 +10,9 @@ set :passenger_restart_with_touch, true
 # Prompt to choose a tag (or name a branch), default to last listed tag
 # unless an environment variable was passed on the command line as in:
 # $ GEOBLACKLIGHT_RELEASE=1.0.0 bundle exec cap development deploy
-set :branch, (ENV['GEOBLACKLIGHT_RELEASE'] || ask("release tag or branch:\n #{`git tag`}", `git tag |tail -n1`.chomp))
+unless ARGV.include?('deploy:rollback')
+  set :branch, (ENV['GEOBLACKLIGHT_RELEASE'] || ask("release tag or branch:\n #{`git tag`}", `git tag |tail -n1`.chomp))
+end
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/swadm/usr/local/#{fetch(:application)}"
