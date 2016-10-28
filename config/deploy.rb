@@ -70,25 +70,27 @@ namespace :deploy do
     end
   end
 
-  desc 'Set group-writable permissions on release dir'
+  desc 'Set group-writable permissions on release dir for non-swadm user'
   task :set_group_writable do
-    on roles(:app, :web, :db) do
-      # Goal is to make the release swadm owned, and also all precompiled assets swadm owned,group, & group writable
-      # Sprockets monkeys with permissions causing the group sticky bit not to apply when precompiling assets.
-      #
-      # This method means non-swadm users can deploy without their SSH keys known to swadm, so we don't have to allow
-      # map library staff to put their keys in swadm's .ssh/authorized_keys.
-      #
-      # 1. Set swadm group on the release
-      execute "chgrp -R swadm #{release_path}"
-      # 2. Make the release group writable
-      execute "chmod -R g+rw #{release_path}"
-      # 3. Set group write on precompiled assets, but only those owned by the user who deployed (because of sprockets)
-      # Must be done as the owning user, cannot sudo this.
-      execute "find #{shared_path}/tmp/cache/assets/sprockets -user #{fetch(:user)} -exec chmod -R g+rw {} \\;"
-      # Finally, give swadm ownership of everything now that
-      execute "sudo chown -R -h swadm #{release_path}"
-      execute "sudo chown -R -h swadm #{shared_path}/tmp/cache"
+    unless fetch(:deploy_user) == 'swadm'
+      on roles(:app, :web, :db) do
+        # Goal is to make the release swadm owned, and also all precompiled assets swadm owned,group, & group writable
+        # Sprockets monkeys with permissions causing the group sticky bit not to apply when precompiling assets.
+        #
+        # This method means non-swadm users can deploy without their SSH keys known to swadm, so we don't have to allow
+        # map library staff to put their keys in swadm's .ssh/authorized_keys.
+        #
+        # 1. Set swadm group on the release
+        execute "chgrp -R swadm #{release_path}"
+        # 2. Make the release group writable
+        execute "chmod -R g+rw #{release_path}"
+        # 3. Set group write on precompiled assets, but only those owned by the user who deployed (because of sprockets)
+        # Must be done as the owning user, cannot sudo this.
+        execute "find #{shared_path}/tmp/cache/assets/sprockets -user #{fetch(:deploy_user)} -exec chmod -R g+rw {} \\;"
+        # Finally, give swadm ownership of everything now that
+        execute "sudo chown -R -h swadm #{release_path}"
+        execute "sudo chown -R -h swadm #{shared_path}/tmp/cache"
+      end
     end
   end
 end
