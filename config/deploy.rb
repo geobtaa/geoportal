@@ -14,6 +14,8 @@ unless ARGV.include?('deploy:rollback')
   set :branch, (ENV['GEOBLACKLIGHT_RELEASE'] || ask("release tag or branch:\n #{`git tag`}", `git tag |tail -n1`.chomp))
 end
 
+set :deploy_user, 'swadm'
+
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/swadm/usr/local/#{fetch(:application)}"
 
@@ -48,9 +50,8 @@ set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache')
 
-set :user, ENV['USER']
 # tmp directory is user-specific
-set :tmp_dir, "/tmp/#{fetch(:user)}"
+set :tmp_dir, "/tmp/#{fetch(:deploy_user)}"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
