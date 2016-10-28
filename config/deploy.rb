@@ -14,6 +14,8 @@ unless ARGV.include?('deploy:rollback')
   set :branch, (ENV['GEOBLACKLIGHT_RELEASE'] || ask("release tag or branch:\n #{`git tag`}", `git tag |tail -n1`.chomp))
 end
 
+set :deploy_user, 'swadm'
+
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/swadm/usr/local/#{fetch(:application)}"
 
@@ -48,9 +50,8 @@ set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache')
 
-set :user, ENV['USER']
 # tmp directory is user-specific
-set :tmp_dir, "/tmp/#{fetch(:user)}"
+set :tmp_dir, "/tmp/#{fetch(:deploy_user)}"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -69,25 +70,27 @@ namespace :deploy do
     end
   end
 
-  desc 'Set group-writable permissions on release dir'
+  desc 'Set group-writable permissions on release dir for non-swadm user'
   task :set_group_writable do
-    on roles(:app, :web, :db) do
-      # Goal is to make the release swadm owned, and also all precompiled assets swadm owned,group, & group writable
-      # Sprockets monkeys with permissions causing the group sticky bit not to apply when precompiling assets.
-      #
-      # This method means non-swadm users can deploy without their SSH keys known to swadm, so we don't have to allow
-      # map library staff to put their keys in swadm's .ssh/authorized_keys.
-      #
-      # 1. Set swadm group on the release
-      execute "chgrp -R swadm #{release_path}"
-      # 2. Make the release group writable
-      execute "chmod -R g+rw #{release_path}"
-      # 3. Set group write on precompiled assets, but only those owned by the user who deployed (because of sprockets)
-      # Must be done as the owning user, cannot sudo this.
-      execute "find #{shared_path}/tmp/cache/assets/sprockets -user #{fetch(:user)} -exec chmod -R g+rw {} \\;"
-      # Finally, give swadm ownership of everything now that
-      execute "sudo chown -R -h swadm #{release_path}"
-      execute "sudo chown -R -h swadm #{shared_path}/tmp/cache"
+    unless fetch(:deploy_user) == 'swadm'
+      on roles(:app, :web, :db) do
+        # Goal is to make the release swadm owned, and also all precompiled assets swadm owned,group, & group writable
+        # Sprockets monkeys with permissions causing the group sticky bit not to apply when precompiling assets.
+        #
+        # This method means non-swadm users can deploy without their SSH keys known to swadm, so we don't have to allow
+        # map library staff to put their keys in swadm's .ssh/authorized_keys.
+        #
+        # 1. Set swadm group on the release
+        execute "chgrp -R swadm #{release_path}"
+        # 2. Make the release group writable
+        execute "chmod -R g+rw #{release_path}"
+        # 3. Set group write on precompiled assets, but only those owned by the user who deployed (because of sprockets)
+        # Must be done as the owning user, cannot sudo this.
+        execute "find #{shared_path}/tmp/cache/assets/sprockets -user #{fetch(:deploy_user)} -exec chmod -R g+rw {} \\;"
+        # Finally, give swadm ownership of everything now that
+        execute "sudo chown -R -h swadm #{release_path}"
+        execute "sudo chown -R -h swadm #{shared_path}/tmp/cache"
+      end
     end
   end
 end
