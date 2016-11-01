@@ -65,7 +65,7 @@ namespace :deploy do
     on roles(:app) do
       # Here we can do anything such as:
       within release_path do
-        execute :rake, 'sitemap:refresh'
+        execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:stage)}"
       end
     end
   end
