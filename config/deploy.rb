@@ -10,13 +10,26 @@ set :passenger_restart_with_touch, true
 # Prompt to choose a tag (or name a branch), default to last listed tag
 # unless an environment variable was passed on the command line as in:
 # $ GEOBLACKLIGHT_RELEASE=1.0.0 bundle exec cap development deploy
-set :branch, (ENV['GEOBLACKLIGHT_RELEASE'] || ask("release tag or branch:\n #{`git tag`}", `git tag |tail -n1`.chomp))
+unless ARGV.include?('deploy:rollback')
+  set :branch, (ENV['GEOBLACKLIGHT_RELEASE'] || ask("release tag or branch:\n #{`git tag`}", `git tag |tail -n1`.chomp))
+end
+
+set :deploy_user, 'swadm'
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/swadm/usr/local/#{fetch(:application)}"
 
 set :rbenv_path, "/swadm/usr/local/rbenv"
-set :rbenv_ruby, "2.3.1"
+# Set by `rbenv local <version>`
+set :rbenv_ruby, File.read('.ruby-version').strip
+
+# Forces crontab surrounding comments to include deploy target
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}"}
+
+# To get the rbenv custom path into Whenever, it has to be passed as a command line arg
+# so that means overriding the CLI variables it receives. This avoids having to hard-code
+# the path to anyenv & rbenv
+set :whenever_variables, ->{ "'environment=#{fetch :whenever_environment}&rbenv_path=#{fetch :rbenv_path}&rbenv_ruby=#{fetch(:rbenv_ruby)}'" }
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -37,9 +50,8 @@ set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache')
 
-set :user, ENV['USER']
 # tmp directory is user-specific
-set :tmp_dir, "/tmp/#{fetch(:user)}"
+set :tmp_dir, "/tmp/#{fetch(:deploy_user)}"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -58,27 +70,29 @@ namespace :deploy do
     end
   end
 
-  desc 'Set group-writable permissions on release dir'
+  desc 'Set group-writable permissions on release dir for non-swadm user'
   task :set_group_writable do
-    on roles(:app, :web, :db) do
-      # Goal is to make the release swadm owned, and also all precompiled assets swadm owned,group, & group writable
-      # Sprockets monkeys with permissions causing the group sticky bit not to apply when precompiling assets.
-      #
-      # This method means non-swadm users can deploy without their SSH keys known to swadm, so we don't have to allow
-      # map library staff to put their keys in swadm's .ssh/authorized_keys.
-      #
-      # 1. Set swadm group on the release
-      execute "chgrp -R swadm #{release_path}"
-      # 2. Make the release group writable
-      execute "chmod -R g+rw #{release_path}"
-      # 3. Set group write on precompiled assets, but only those owned by the user who deployed (because of sprockets)
-      # Must be done as the owning user, cannot sudo this.
-      execute "find #{shared_path}/tmp/cache/assets/sprockets -user #{fetch(:user)} -exec chmod -R g+rw {} \\;"
-      # Finally, give swadm ownership of everything now that
-      execute "sudo chown -R -h swadm #{release_path}"
-      execute "sudo chown -R -h swadm #{shared_path}/tmp/cache"
+    unless fetch(:deploy_user) == 'swadm'
+      on roles(:app, :web, :db) do
+        # Goal is to make the release swadm owned, and also all precompiled assets swadm owned,group, & group writable
+        # Sprockets monkeys with permissions causing the group sticky bit not to apply when precompiling assets.
+        #
+        # This method means non-swadm users can deploy without their SSH keys known to swadm, so we don't have to allow
+        # map library staff to put their keys in swadm's .ssh/authorized_keys.
+        #
+        # 1. Set swadm group on the release
+        execute "chgrp -R swadm #{release_path}"
+        # 2. Make the release group writable
+        execute "chmod -R g+rw #{release_path}"
+        # 3. Set group write on precompiled assets, but only those owned by the user who deployed (because of sprockets)
+        # Must be done as the owning user, cannot sudo this.
+        execute "find #{shared_path}/tmp/cache/assets/sprockets -user #{fetch(:deploy_user)} -exec chmod -R g+rw {} \\;"
+        # Finally, give swadm ownership of everything now that
+        execute "sudo chown -R -h swadm #{release_path}"
+        execute "sudo chown -R -h swadm #{shared_path}/tmp/cache"
+      end
     end
   end
 end
 
-before 'deploy:symlink:release', 'deploy:set_group_writable'
+after 'deploy:updated', 'deploy:set_group_writable'
