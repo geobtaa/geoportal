@@ -50,7 +50,7 @@ Rails.application.configure do
   #Rails.application.config.middleware.use ExceptionNotification::Rack,
   #  :email => {
   #    :email_prefix => "[Geoblacklight Error] ",
-  #    :sender_address => %{"Geoblacklight" <no-reply@geo.btaa.org>},
+  #    :sender_address => %{"Geoblacklight" <swadm@lib-geoblacklightdev.oit.umn.edu>},
   #    :exception_recipients => %w{libwebdev+alert@umn.edu}
   #  }
 end

@@ -89,7 +89,8 @@ Rails.application.configure do
   Rails.application.config.middleware.use ExceptionNotification::Rack,
     :email => {
       :email_prefix => "[Geoblacklight Error] ",
-      :sender_address => %{"Geoblacklight" <no-reply@geo.btaa.org>},
+      # Google Groups won't accept messages unless the sender host resolves!
+      :sender_address => %{"Geoblacklight" <swadm@lib-geoblacklight.oit.umn.edu>},
       :exception_recipients => %w{libwebdev+alert@umn.edu}
     }
 end
