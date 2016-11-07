@@ -84,4 +84,12 @@ Rails.application.configure do
 
   # Google Analytics - Prod
   config.google_analytics = 'UA-82483267-1'
+
+  # Exception email notification
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :email_prefix => "[Geoblacklight Error] ",
+      :sender_address => %{"Geoblacklight" <no-reply@geo.btaa.org>},
+      :exception_recipients => %w{libwebdev+alert@umn.edu}
+    }
 end
