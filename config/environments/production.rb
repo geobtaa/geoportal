@@ -84,4 +84,13 @@ Rails.application.configure do
 
   # Google Analytics - Prod
   config.google_analytics = 'UA-82483267-1'
+
+  # Exception email notification
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :email_prefix => "[Geoblacklight Error] ",
+      # Google Groups won't accept messages unless the sender host resolves!
+      :sender_address => %{"Geoblacklight" <swadm@#{`hostname`.strip}>},
+      :exception_recipients => %w{libwebdev+alert@umn.edu}
+    }
 end
