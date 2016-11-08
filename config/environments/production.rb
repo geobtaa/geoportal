@@ -90,7 +90,7 @@ Rails.application.configure do
     :email => {
       :email_prefix => "[Geoblacklight Error] ",
       # Google Groups won't accept messages unless the sender host resolves!
-      :sender_address => %{"Geoblacklight" <swadm@lib-geoblacklight.oit.umn.edu>},
+      :sender_address => %{"Geoblacklight" <swadm@#{`hostname`.strip}>},
       :exception_recipients => %w{libwebdev+alert@umn.edu}
     }
 end
