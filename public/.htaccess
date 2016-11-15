@@ -19,7 +19,7 @@
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE application/atom+xml application/x-javascript application/javascript text/javascript text/x-js application/json application/rss+xml application/vnd.ms-fontobject application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/svg+xml image/x-icon text/css text/html text/plain text/richtext text/x-component text/xml text/xsd text/xsl image/x-icon application/x-font-woff font/opentype font/truetype font/eot
 
-  <FilesMatch "\.(ttf|otf|woff|eot|svg|svgz)$" >
+  <FilesMatch "\.(ttf|otf|woff|woff2|eot|svg|svgz)$" >
     SetOutputFilter DEFLATE
   </FilesMatch>
 </IfModule>
