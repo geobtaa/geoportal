@@ -235,4 +235,23 @@ class CatalogController < ApplicationController
     @response, @document = fetch params[:id]
   end
 
+  # Bug Fix -- @facet can sometimes be nil
+  # displays values and pagination links for a single facet field
+  def facet
+    @facet = blacklight_config.facet_fields[params[:id]]
+
+    return not_found if @facet.nil?
+
+    @response = get_facet_field_response(@facet.key, params)
+    @display_facet = @response.aggregations[@facet.key]
+    @pagination = facet_paginator(@facet, @display_facet)
+    respond_to do |format|
+      # Draw the facet selector for users who have javascript disabled:
+      format.html
+      format.json
+      # Draw the partial for the "more" facet modal window:
+      format.js { render :layout => false }
+    end
+  end
+
 end
