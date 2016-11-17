@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get 'help' => 'high_voltage/pages#show', id: 'help'
   get 'robots.:format' => 'robots#robots'
 
+  # Error Pages for exception handling - EWL
+  match '/404' => 'errors#not_found', via: :all
+  match '/500' => 'errors#internal_server_error', via: :all
+
   devise_for :users
 
   resources :suggest, only: :index, defaults: { format: 'json' }
