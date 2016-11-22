@@ -1,46 +1,46 @@
-<footer class="site-footer">
-
-  <div class="wrapper">
-
-    <h2 class="footer-heading">{{ site.title | escape }}</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>
-            {% if site.author %}
-              {{ site.author | escape }}
-            {% else %}
-              {{ site.title | escape }}
-            {% endif %}
-            </li>
-            {% if site.email %}
-            <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-            {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            {% include icon-github.html username=site.github_username %}
-          </li>
-          {% endif %}
-
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description | escape }}</p>
+<section id="footer-app" aria-label="Application Footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12" id="footer-lib">
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="row">
+              <div class="col-sm-12">
+                <h3>Big Ten Academic Alliance Geoportal</h3>
+                <ul class="list-horizontal" style="margin-left:0;">
+                  <li>
+                    <a href="/about">About Us</a>
+                  </li>
+                  <li>
+                    <a href="https://docs.google.com/a/umn.edu/forms/d/e/1FAIpQLSf6OHrj6YIcn8yNe6sWgQJ_iJfElDZgozUCSdATzePwLqul5Q/viewform">Contact Project Team</a>
+                  </li>
+                  <li>
+                    <a href="http://www.btaa.org/homepage">Big Ten Academic Alliance Homepage</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
+</section>
 
+<footer aria-label="University of Minnesota">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12" id="footer-lib">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12">
+            <div class="pull-left">
+              <p>
+                <a href="./about#hosting">Hosted by the University of Minnesota Libraries</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
