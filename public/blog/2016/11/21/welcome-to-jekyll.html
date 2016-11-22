@@ -11,7 +11,6 @@
 
   <link rel="stylesheet" href="/blog/assets/main.css">
   <link rel="stylesheet" href="/assets/application.self-65a2f05fc5d279dbb5bb1a326d3f3ae0520e8f2781bbc8cb9899491645749d14.css?body=1">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link rel="canonical" href="http://geo.btaa.org/blog/2016/11/21/welcome-to-jekyll.html">
   <link rel="alternate" type="application/rss+xml" title="Blog - Big Ten Academic Alliance - Geoportal" href="/blog/feed.xml">
 
@@ -21,50 +20,82 @@
 
   <body>
 
-    <header class="site-header" role="banner">
-
-  <div class="wrapper">
-
-    <a class="site-title" href="/blog/">Blog - Big Ten Academic Alliance - Geoportal</a>
-
-    <nav class="site-nav">
-      <span class="menu-icon">
-        <svg viewBox="0 0 18 15" width="18px" height="15px">
-          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-        </svg>
-      </span>
-
-      <div class="trigger">
-        
-          
-        
-          
-        
-          
-        
-          
-        
+    <header aria-label="Primary">
+  <div id="btaa-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="cic-header-navbar" class="navbar navbar-static-top">
+            <div class="navbar-header">
+              <a href="/"><img height="100px" alt="Big Ten Academic Alliance" style="margin-top:5px" src="/assets/btaa-logo-e622d081b6b06b467cc6fdf105f8bd4d127734fc25ace50d8178cde95df26d67.jpg"></a>
+            </div>
+          </div>
+        </div>
       </div>
-    </nav>
-
+    </div>
   </div>
 
+
+  <div id="application-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="header-navbar" class="navbar navbar-static-top" role="navigation">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#user-util-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+              <a class="navbar-brand" style="font-weight:bold; font-size:36px" href="/">Geoportal</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="user-util-collapse">
+              <div class="navbar-right">
+  <ul class="nav navbar-nav">
+
+      <li><a id="bookmarks_nav" href="/bookmarks">
+  Bookmarks
+(<span data-role="bookmark-counter">0</span>)
+</a></li>
+
+      <li><a href="/search_history">History</a>
+</li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/help">Help</a></li>
+  </ul>
+
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="/users/sign_in">Login</a>
+      </li>
+      </ul>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
 
 
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <main id="main-container" class="page-content container" aria-label="Content">
+      <div class="row">
+        <div class="col-sm-12">
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
+  <div class="post-header">
     <h1 class="post-title" itemprop="name headline">Welcome to Jekyll!</h1>
     <p class="post-meta"><time datetime="2016-11-21T09:11:09-06:00" itemprop="datePublished">Nov 21, 2016</time></p>
-  </header>
+  </div>
 
   <div class="post-content" itemprop="articleBody">
-    <p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+    <div class="row">
+      <div class="col-sm-8">
+        <p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
 
 <p>To add new posts, simply add a file in the <code class="highlighter-rouge">_posts</code> directory that follows the convention <code class="highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
 
@@ -79,53 +110,62 @@
 <p>Check out the <a href="http://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
 
 
+      </div>
+    </div>
   </div>
 
   
 </article>
 
+        </div>
       </div>
     </main>
 
-    <footer>
-      I'm a new footer!
-    </footer>
-    <footer class="site-footer">
-
-  <div class="wrapper">
-
-    <h2 class="footer-heading">Blog - Big Ten Academic Alliance - Geoportal</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>
-            
-              Blog - Big Ten Academic Alliance - Geoportal
-            
-            </li>
-            
-            <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
-            
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          
-
-          
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>News and updates from the development team of the BTAA Geoportal
-</p>
+    <section id="footer-app" aria-label="Application Footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12" id="footer-lib">
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="row">
+              <div class="col-sm-12">
+                <h3>Big Ten Academic Alliance Geoportal</h3>
+                <ul class="list-horizontal" style="margin-left:0;">
+                  <li>
+                    <a href="/about">About Us</a>
+                  </li>
+                  <li>
+                    <a href="https://docs.google.com/a/umn.edu/forms/d/e/1FAIpQLSf6OHrj6YIcn8yNe6sWgQJ_iJfElDZgozUCSdATzePwLqul5Q/viewform">Contact Project Team</a>
+                  </li>
+                  <li>
+                    <a href="http://www.btaa.org/homepage">Big Ten Academic Alliance Homepage</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
+</section>
 
+<footer aria-label="University of Minnesota">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12" id="footer-lib">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12">
+            <div class="pull-left">
+              <p>
+                <a href="./about#hosting">Hosted by the University of Minnesota Libraries</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
 

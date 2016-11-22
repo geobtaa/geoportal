@@ -7,8 +7,12 @@ layout: default
     <h1 class="post-title">{{ page.title | escape }}</h1>
   </header>
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+  <main id="main-container" class="container" aria-label="Content">
+    <div class="row">
+      <div class="col-sm-12">
+        {{ content }}
+      </div>
+    </div>
+  </main>
 
 </article>
