@@ -28,3 +28,4 @@ solr/*
 !solr/README-geoblacklight-solr-development.txt
 
 .DS_Store
+.sass-cache
