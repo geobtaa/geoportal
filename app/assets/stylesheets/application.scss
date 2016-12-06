@@ -104,6 +104,11 @@ section#home-search {
     display:inline-block;
     background-color:rgba(255,255,255,0.9);
     margin-bottom:2rem;
+
+    .project-action {
+      border-top:1px solid #CCC;
+      padding-top:1rem;
+    }
   }
 
   img {
