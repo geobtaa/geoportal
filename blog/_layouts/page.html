@@ -9,8 +9,11 @@ layout: default
 
   <main id="main-container" class="container" aria-label="Content">
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-8">
         {{ content }}
+      </div>
+      <div class="col-sm-3 col-sm-offset-1" id="nav-menu">
+        {% include navigation.html %}
       </div>
     </div>
   </main>
