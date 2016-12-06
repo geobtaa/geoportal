@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Announcing the Big Ten Academic Alliance Geoportal"
-date:   2016-12-06
+date:   2016-11-15
 ---
 
 The [Big Ten Academic Alliance Geospatial Data Project](https://z.umn.edu/btaagdp) (formerly CIC Geospatial Data Discovery Project) has launched the Big Ten Academic Alliance Geoportal, built with [GeoBlacklight](http://geoblacklight.org/). This project is collectively managed by a task force of librarians and geospatial specialists at ten research institutions from across the [Big Ten Academic Alliance](http://www.btaa.org/). These institutions have collaboratively aggregated and edited thousands of metadata records from multiple GIS data clearinghouses, FTP sites, and library catalogs.
