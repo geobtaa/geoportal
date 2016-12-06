@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Announcing the Big Ten Academic Alliance Geoportal</title>
+  <meta name="description" content="The Big Ten Academic Alliance Geospatial Data Project (formerly CIC Geospatial Data Discovery Project) has launched the Big Ten Academic Alliance Geoportal, ...">
+
+  <link rel="stylesheet" href="/blog/assets/main.css">
+  <link rel="stylesheet" href="/blog/assets/geoportal.css">
+  <link rel="canonical" href="http://geo.btaa.org/blog/2016/12/06/announcing-the-btaa-geoportal.html">
+  <link rel="alternate" type="application/rss+xml" title="Blog - Big Ten Academic Alliance - Geoportal" href="/blog/feed.xml">
+
+  
+</head>
+
+
+  <body>
+
+    <header aria-label="Primary">
+  <div id="btaa-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="cic-header-navbar" class="navbar navbar-static-top">
+            <div class="navbar-header">
+              <a href="/"><img height="100px" alt="Big Ten Academic Alliance" style="margin-top:5px" src="/assets/btaa-logo-e622d081b6b06b467cc6fdf105f8bd4d127734fc25ace50d8178cde95df26d67.jpg"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="application-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="header-navbar" class="navbar navbar-static-top" role="navigation">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#user-util-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+              <a class="navbar-brand" style="font-weight:bold; font-size:36px" href="/">Geoportal</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="user-util-collapse">
+              <div class="navbar-right">
+  <ul class="nav navbar-nav">
+
+      <li><a id="bookmarks_nav" href="/bookmarks">
+  Bookmarks
+(<span data-role="bookmark-counter">0</span>)
+</a></li>
+
+      <li><a href="/search_history">History</a>
+</li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/help">Help</a></li>
+  </ul>
+
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="/users/sign_in">Login</a>
+      </li>
+      </ul>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+    <main id="main-container" class="page-content container" aria-label="Content">
+      <div class="row">
+        <div class="col-sm-12">
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="post-header">
+        <h1 class="post-title" itemprop="name headline">Announcing the Big Ten Academic Alliance Geoportal</h1>
+        <p class="post-meta"><time datetime="2016-12-06T00:00:00-06:00" itemprop="datePublished">Dec 6, 2016</time></p>
+      </div>
+
+      <div class="post-content" itemprop="articleBody">
+        <p>The <a href="https://z.umn.edu/btaagdp">Big Ten Academic Alliance Geospatial Data Project</a> (formerly CIC Geospatial Data Discovery Project) has launched the Big Ten Academic Alliance Geoportal, built with <a href="http://geoblacklight.org/">GeoBlacklight</a>. This project is collectively managed by a task force of librarians and geospatial specialists at ten research institutions from across the <a href="http://www.btaa.org/">Big Ten Academic Alliance</a>. These institutions have collaboratively aggregated and edited thousands of metadata records from multiple GIS data clearinghouses, FTP sites, and library catalogs.</p>
+
+<h2 id="background">Background</h2>
+<p>The Big Ten Academic Alliance Geospatial Data Project began in 2015 to provide discoverability, facilitate access, and connect scholars across the Big Ten Academic Alliance to geospatial data resources. The project’s current outputs include a public geoportal, a harvestable collection of well over 3000 geospatial records in a uniform metadata standard, and workflow documentation.</p>
+
+<h2 id="the-geoblacklight-choice">The GeoBlacklight Choice</h2>
+<p>A few months after the project began, the task force met in Minneapolis for a Project Summit. One of the key decisions made at the Summit was the selection of GeoBlacklight for the geoportal platform. Some of the key features of the application that appealed to the task force were the intuitive faceting options, the durability of URL addresses, and the responsive, mobile friendly interface.  Another contributing factor was the accessibility of the <a href="https://github.com/geoblacklight/geoblacklight-schema">GeoBlacklight metadata schema</a>, which represents a library-centric approach to geospatial metadata with a focus on discoverability.</p>
+
+<h2 id="workflow">Workflow</h2>
+<p>A significant challenge to this project has been combining metadata records from multiple sources. Because of the wide variations between metadata standards and levels of completeness, it has not been possible to blindly ingest and publish the records.  Our strategy to address this has resulted in the following five-step metadata workflow:</p>
+
+<p><strong>1. Submit Records:</strong> Task force members identify and collect metadata records in the form of individual files, harvestable links, or downloadable datasets.</p>
+
+<p><strong>2. Metadata Transition:</strong> The Project Metadata Coordinator cleans, transforms, and adds template information to the records.</p>
+
+<p><strong>3. Edit Records:</strong> Records are uploaded to an online editor: GeoNetwork for GIS datasets or Omeka for digitized maps. Task force members and the Project Metadata Coordinator can then work together to edit the records manually or with a spreadsheet update process.</p>
+
+<p><a href="http://geonetwork-opensource.org/">GeoNetwork</a>: This application is used for editing metadata for GIS datasets in the ISO 19115 standard. Records are exported from GeoNetwork using Catalog Service for the Web operations as ISO 19139 XML and GeoBlacklight JSON files.</p>
+
+<p><a href="http://omeka.org/">Omeka</a>: This application is used for editing metadata records for digitized maps in the Dublin Core/ Geoblacklight standard.  An essential part of this tool’s usefulness is New York University’s <a href="https://github.com/sgbalogh/omeka_GeoBlacklightMetadata-JSON">GeoBlacklight Metadata</a> plugin to edit and export the records into the GeoBlacklight standard.</p>
+
+<p><strong>4. Publish Records:</strong> The approved records are published to both <a href="https://github.com/OpenGeoMetadata">OpenGeoMetadata</a> and to <a href="http://lucene.apache.org/solr/">Solr</a>, the back indexing engine for the geoportal.</p>
+
+<p><strong>5. Maintenance:</strong> The final step of the workflow involves periodic spot checks and database comparisons with the source web portals to keep the records current and error-free.</p>
+
+<h2 id="collaborations">Collaborations</h2>
+
+<p>The core of this project is collaboration between many different groups.</p>
+
+<p>There are over 20 task force members from 10 different universities working together to plan the project and build a collection of metadata records. In addition to these activities, many members have also worked together over the past year to deliver joint conference presentations, create posters, and publish papers about the project.</p>
+
+<p>In many regions, the process of curating public geospatial records has served to strengthen the lines of communication between university library staff and local geospatial repositories.  The task force members have been able to find out more about how GIS clearinghouses operate and offer their own knowledge about best practices in metadata management.</p>
+
+<p>The project is heavily supported by the dedicated resources provided by the University of Minnesota Libraries Web Development department. The project’s GeoNetwork and GeoBlacklight applications are hosted at the University of Minnesota. The Web Development team has also been able to contribute their advanced skills in managing and customizing these open source technologies.</p>
+
+<p>Finally, the project has benefited from many developments made across the growing geospatial community in recent years. In particular, it is indebted to the contributors of <a href="http://opengeoportal.org/">OpenGeoportal</a>,  GeoBlacklight, and OpenGeoMetadata.</p>
+
+      </div>
+
+      
+
+      <!-- POST NAVIGATION -->
+      <div class="postNav clearfix">
+        
+        
+          <a class="pull-right next" href="/blog/2016/12/06/what-can-i-find-in-the-btaa-geoportal.html"><span>What Can I Find in the Big Ten Academic Alliance Geoportal?&nbsp;&raquo;</span>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div>
+      </div>
+    </main>
+
+    <section id="footer-app" aria-label="Application Footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12" id="footer-lib">
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="row">
+              <div class="col-sm-12">
+                <h3>Big Ten Academic Alliance Geoportal</h3>
+                <ul class="list-horizontal" style="margin-left:0;">
+                  <li>
+                    <a href="/about">About Us</a>
+                  </li>
+                  <li>
+                    <a href="https://docs.google.com/a/umn.edu/forms/d/e/1FAIpQLSf6OHrj6YIcn8yNe6sWgQJ_iJfElDZgozUCSdATzePwLqul5Q/viewform">Contact Project Team</a>
+                  </li>
+                  <li>
+                    <a href="http://www.btaa.org/homepage">Big Ten Academic Alliance Homepage</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer aria-label="University of Minnesota">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12" id="footer-lib">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12">
+            <div class="pull-left">
+              <p>
+                <a href="./about#hosting">Hosted by the University of Minnesota Libraries</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-82483267-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </body>
+
+</html>
