@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "What Can I Find in the Big Ten Academic Alliance Geoportal?"
-date:   2016-12-06
+date:   2016-12-01
 ---
 
 The Big Ten Academic Alliance Geoportal provides links to public GIS datasets, web services, and digitized historical maps from multiple data clearinghouses and library catalogs. The geographical area represented is primarily the Upper Midwest and Mid-Atlantic regions of the United States. As of December 1, 2016, the geoportal contains 3700 records that have been aggregated from over [30 different collections](https://geo.btaa.org/about).
