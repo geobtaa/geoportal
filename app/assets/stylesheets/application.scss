@@ -104,6 +104,11 @@ section#home-search {
     display:inline-block;
     background-color:rgba(255,255,255,0.9);
     margin-bottom:2rem;
+
+    .project-action {
+      border-top:1px solid #CCC;
+      padding-top:1rem;
+    }
   }
 
   img {
@@ -150,4 +155,35 @@ section#home-search {
 
 .list-horizontal li:first-child:before {
   content: none;
+}
+
+// Static page navigation
+.nav.nav-sidebar {
+  margin-left:0;
+}
+
+.nav.nav-sidebar>li{
+  margin-bottom: 0.5em;
+}
+
+.nav.nav-sidebar>li>a{
+  border-left:4px solid #eeeeee;
+  background-color:#eeeeee;
+}
+
+.nav.nav-sidebar>li>a.active {
+  border-left:4px solid #7a0019;
+  background-color:#dddddd;
+  font-weight: bold;
+}
+
+.nav.nav-sidebar>li>a:hover{
+  color:inherit;
+  border-left:4px solid $btaa-blue;
+  background-color:#dddddd;
+  font-weight: bold;
+}
+
+.nav.nav-sidebar>li>a.active {
+  border-left:4px solid $btaa-blue;
 }
