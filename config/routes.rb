@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   match '/404' => 'errors#not_found', via: :all
   match '/500' => 'errors#internal_server_error', via: :all
 
+  get '/blog', :to => redirect('/blog/index.html')
+
   devise_for :users
 
   resources :suggest, only: :index, defaults: { format: 'json' }
