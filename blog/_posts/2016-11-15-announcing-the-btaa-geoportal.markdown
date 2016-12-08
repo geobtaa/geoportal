@@ -11,6 +11,7 @@ The Big Ten Academic Alliance Geospatial Data Project began in 2015 to provide d
 
 ![outcomes](/blog/assets/img/ccc0eb70-bd52-11e6-93bb-051315098c67.png)
 
+
 ## The GeoBlacklight Choice
 A few months after the project began, the task force met in Minneapolis for a Project Summit. One of the key decisions made at the Summit was the selection of GeoBlacklight for the geoportal platform. Some of the key features of the application that appealed to the task force were the intuitive faceting options, the durability of URL addresses, and the responsive, mobile friendly interface.  Another contributing factor was the accessibility of the [GeoBlacklight metadata schema](https://github.com/geoblacklight/geoblacklight-schema), which represents a library-centric approach to geospatial metadata with a focus on discoverability.
 
