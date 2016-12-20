@@ -93,6 +93,7 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     chronic (0.10.2)
+    cliver (0.3.2)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -237,6 +238,10 @@ GEM
     orm_adapter (0.5.0)
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
+    poltergeist (1.11.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -369,6 +374,7 @@ DEPENDENCIES
   jquery-rails
   minitest-rails-capybara
   mysql2
+  poltergeist
   rails (~> 5.0)
   rsolr (~> 1.0.6)
   sass-rails (~> 5.0)
