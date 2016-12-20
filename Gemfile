@@ -79,4 +79,5 @@ gem 'exception_notification', '~>4.2.0'
 
 group :test do
   gem 'minitest-rails-capybara'
+  gem 'poltergeist'
 end
