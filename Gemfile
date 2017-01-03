@@ -36,6 +36,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  # Guard
+  gem 'guard' # NOTE: this is necessary in newer versions
+  gem 'guard-minitest'
+  gem 'terminal-notifier-guard'
 end
 
 group :development do
@@ -71,3 +76,8 @@ gem 'jekyll-feed'
 gem 'whenever', '~> 0.9.0', require: false
 gem 'sitemap_generator', '~> 5.2.0'
 gem 'exception_notification', '~>4.2.0'
+
+group :test do
+  gem 'minitest-rails-capybara'
+  gem 'poltergeist'
+end
