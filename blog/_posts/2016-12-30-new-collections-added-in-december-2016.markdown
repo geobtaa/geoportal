@@ -1,3 +1,9 @@
+---
+layout: post
+title:  "New collections added in December 2016"
+date:   2016-12-30
+---
+
 # New collections added in December 2016
 
 Approximately 350 records were added to the Big Ten Academic Alliance Geoportal during December of 2016, bringing the total to over 4,000.
