@@ -86,6 +86,8 @@ updated from `2.3.1`.
 			# In addition to htpasswd, must be on VPN to control Solr
 			Order deny,allow
 			Allow from .vpn.umn.edu
+      Allow from 127.0.0.1
+      Allow from ::1
 			Deny from all
 	</Location>
 
