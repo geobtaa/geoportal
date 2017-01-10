@@ -83,8 +83,10 @@ updated from `2.3.1`.
 			AuthUserFile "/swadm/etc/htpasswd-geoblacklight-solr"
 			Require user solradmin
 
-			Order allow,deny
-			Allow from all
+			# In addition to htpasswd, must be on VPN to control Solr
+			Order deny,allow
+			Allow from .vpn.umn.edu
+			Deny from all
 	</Location>
 
 </VirtualHost>
