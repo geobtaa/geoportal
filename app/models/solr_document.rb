@@ -22,9 +22,30 @@ class SolrDocument
 
   # @TODO: flush out proper DC record
   self.field_semantics.merge!(
-    :title => "dc_title_s",
-    :author => "dc_creator_sm",
-    :format => "dc_format_s"
-  )
+    :creator => "dc_creator_sm",
+    :description => "dc_description_s",
+    :format => "dc_format_s",
+    :identifier => "dc_identifier_s",
+    :language => "dc_language_s",
 
+    # @TODO: multiple publisher fields
+    #:publisher => "dc_publisher_s",
+    :publisher => "dc_publisher_sm",
+    :relation => "dc_relation_sm",
+    :rights => "dc_rights_s",
+    :source => "dc_source_sm",
+    :subject => "dc_subject_sm",
+    :title => "dc_title_s",
+    :type => "dc_type_s",
+
+    # @TODO: multiple relation fields
+    #:relation => "dct_isPartOf_sm",
+
+    :coverage => "dct_spatial_sm",
+    :date => "dct_temporal_sm",
+
+    # @TODO: contributor or provenance?
+    # @TODO: provenance isn't supported out of the box by BL
+    :contributor => "dct_provenance_s"
+  )
 end
