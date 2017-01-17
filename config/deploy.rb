@@ -2,7 +2,8 @@
 lock '3.4.1'
 
 set :application, 'geoblacklight'
-set :repo_url, 'git@github.umn.edu:Libraries/geoblacklight.git'
+#set :repo_url, 'git@github.umn.edu:Libraries/geoblacklight.git'
+set :repo_url, 'git@github.com:BTAA-Geospatial-Data-Project/geoportal.git'
 
 set :passenger_restart_with_touch, true
 
