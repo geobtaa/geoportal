@@ -12,7 +12,8 @@ set :passenger_restart_with_touch, true
 # unless an environment variable was passed on the command line as in:
 # $ GEOBLACKLIGHT_RELEASE=1.0.0 bundle exec cap development deploy
 unless ARGV.include?('deploy:rollback')
-  set :branch, (ENV['GEOBLACKLIGHT_RELEASE'] || ask("release tag or branch:\n #{`git tag`}", `git tag |tail -n1`.chomp))
+  avail_tags = `git tag --sort=version:refname`
+  set :branch, (ENV['GEOBLACKLIGHT_RELEASE'] || ask("release tag or branch:\n #{avail_tags}", avail_tags.chomp.split("\n").last))
 end
 
 set :deploy_user, 'swadm'
