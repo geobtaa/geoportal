@@ -141,7 +141,7 @@ GEM
       geoblacklight-icons (>= 0.2)
       leaflet-rails (~> 0.7.3)
       rails (>= 4.2.0, < 6)
-    geoblacklight-icons (1.0.0)
+    geoblacklight-icons (1.1.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     guard (2.14.0)
@@ -363,7 +363,7 @@ DEPENDENCIES
   devise-guests (~> 0.3)
   exception_notification (~> 4.2.0)
   geoblacklight (~> 1.0)
-  geoblacklight-icons (~> 1.0)
+  geoblacklight-icons (~> 1.1.0)
   guard
   guard-minitest
   haml
