@@ -62,6 +62,14 @@ set :tmp_dir, "/tmp/#{fetch(:deploy_user)}"
 set :keep_releases, 5
 
 namespace :deploy do
+  #beforIe :symlink do
+    desc 'Place templated files'
+    task :templates do
+      on roles(:app) do
+        template 'logrotate.conf', "#{fetch(:release_path)}/config/logrotate.conf"
+      end
+    end
+  #end
 
   after :restart, :clear_cache do
     on roles(:app) do
@@ -97,4 +105,5 @@ namespace :deploy do
   end
 end
 
+after 'deploy:symlink:shared', 'deploy:templates'
 after 'deploy:updated', 'deploy:set_group_writable'

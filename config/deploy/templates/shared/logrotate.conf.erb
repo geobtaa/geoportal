@@ -1,0 +1,10 @@
+# Logrotate configuration, call with logrotate -c /path/to/logrotate.conf
+<%= shared_path %>/log/*.log {
+  weekly
+  dateext
+  missingok
+  rotate 104
+  compress
+  notifempty
+  copytruncate
+}
