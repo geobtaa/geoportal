@@ -5,7 +5,7 @@ set :job_template, "bash -l -c 'export PATH=:rbenv_path/bin::rbenv_path/shims:$P
 job_type :sitemap_refresh, 'cd :path && bundle exec rake sitemap:refresh'
 job_type :user_cleanup, 'cd :path && bundle exec rake devise_guests:delete_old_guest_users[2]'
 job_type :search_cleanup, 'cd :path && bundle exec rake blacklight:delete_old_searches[7]'
-job_type :logrotate, '/usr/sbin/logrotate -c :path/config/logrotate.conf > /dev/null'
+job_type :logrotate, '/usr/sbin/logrotate -s :path/tmp/logrotate.state :path/config/logrotate.conf > /dev/null'
 
 every :day, at: '12:30am', roles: [:app] do
   sitemap_refresh nil
