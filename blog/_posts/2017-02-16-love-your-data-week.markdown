@@ -1,3 +1,9 @@
+---
+layout: post
+title:  "Love Your Data Week"
+date:   2017-02-16
+---
+
 # Love Your Data Week
 
 ![lyd](https://cloud.githubusercontent.com/assets/2367677/22998176/34770d70-f39b-11e6-8bcb-96e82d7deb65.jpeg)
