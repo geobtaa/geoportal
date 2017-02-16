@@ -4,8 +4,6 @@ title:  "Love Your Data Week"
 date:   2017-02-16
 ---
 
-# Love Your Data Week
-
 ![lyd](https://cloud.githubusercontent.com/assets/2367677/22998176/34770d70-f39b-11e6-8bcb-96e82d7deb65.jpeg)
 It is [Love Your Data Week](https://loveyourdata.wordpress.com/) and a key part of doing geospatial work is “[Finding the Right Data](https://loveyourdata.wordpress.com/lydw-2017/thursday-2017/)”!  The Big Ten Academic Alliance Geoportal strives to make relevant data easy to discover and fit into your workflow.  While the data displayed in our portal comes from a variety of sources, it is often possible to access or download the data through our site. You can see what options are available in the tools box at the right side of the data info page. Three of the most common data formats are JPEG/TIFFs, Web Services, and Shapefiles.   
 
