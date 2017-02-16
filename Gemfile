@@ -52,6 +52,7 @@ group :development do
 
   gem 'capistrano', '3.4.1'
   gem 'capistrano-rails'
+  gem 'capistrano-template'
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
   gem 'capistrano-passenger'
