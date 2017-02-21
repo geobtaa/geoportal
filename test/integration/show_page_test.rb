@@ -4,11 +4,11 @@ class ShowPageTest < Capybara::Rails::TestCase
 
   def setup
     # Remote testing the show page features
-    Capybara.app_host = 'https://geo.btaa.org'
+    Capybara.app_host = 'https://geodev.btaa.org'
   end
 
   def test_purdue_shapefile_show
-    visit "/catalog/Purdue-urn-24bde658-53ff-41a7-9c62-15c5204a497c"
+    visit "/catalog/24bde658-53ff-41a7-9c62-15c5204a497c"
     assert page.has_content?("Bedrock Geology: Indiana, 2010")
 
     # Type
@@ -36,7 +36,7 @@ class ShowPageTest < Capybara::Rails::TestCase
   end
 
   def test_wisconsin_geodatabase_show
-    visit "/catalog/Wisconsin-urn-656ed665-63fc-45d9-96ab-465a07488f91"
+    visit "/catalog/656ed665-63fc-45d9-96ab-465a07488f91"
     assert page.has_content?("Hydrography (1:24,000), Wisconsin 2015")
 
     # Type
@@ -56,7 +56,7 @@ class ShowPageTest < Capybara::Rails::TestCase
   end
 
   def test_minnesota_shapefile_show
-    visit "/catalog/Minnesota-urn-480d1dc0-5fdd-42e2-b21c-7488d2496f7f"
+    visit "/catalog/480d1dc0-5fdd-42e2-b21c-7488d2496f7f"
     assert page.has_content?("Polling Places: Carver County, Minnesota, 2014")
 
     # Type
@@ -84,7 +84,7 @@ class ShowPageTest < Capybara::Rails::TestCase
   end
 
   def test_minnesota_tiff_show
-    visit "/catalog/minnesota-129514e1-a6d2-404e-8d44-077adee866e2"
+    visit "/catalog/7e1d9ddf-5cc6-413d-824c-0e1e43e33c8c"
     assert page.has_content?("Burritt's sectional and township map of Minnesota")
 
     # Type
@@ -112,7 +112,7 @@ class ShowPageTest < Capybara::Rails::TestCase
   end
 
   def test_iowa_map_show
-    visit "/catalog/iowa-urn-f1b57f24-d474-4493-90e1-d3c25f39b65b"
+    visit "/catalog/f1b57f24-d474-4493-90e1-d3c25f39b65b"
     assert page.has_content?("An Illustrated Historical Atlas of Des Moines County, Iowa, 1873")
 
     # Type

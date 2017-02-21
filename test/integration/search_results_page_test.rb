@@ -3,7 +3,9 @@ require "test_helper"
 class SearchResultsPageTest < Capybara::Rails::TestCase
 
   def setup
-    visit "/?q=water"
+    # Remote testing the show page features
+    Capybara.app_host = 'https://geodev.btaa.org'
+    visit '/?q=water'
   end
 
   def test_search
