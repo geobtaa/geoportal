@@ -3,7 +3,9 @@ require "test_helper"
 class HomePageTest < Capybara::Rails::TestCase
 
   def setup
-    visit root_path
+    # Remote testing the show page features
+    Capybara.app_host = 'https://geodev.btaa.org'
+    visit '/'
   end
 
   def test_homepage_dom
