@@ -138,4 +138,30 @@ class ShowPageTest < Capybara::Rails::TestCase
     # Provenance
     assert page.has_content?("Iowa")
   end
+
+  def test_relations_parent_record
+    visit "/catalog/88cc9b19-3294-4da9-9edd-775c81fb1c59"
+    assert page.has_content?("Wabash Topo (Parent Record): Indiana, 1929")
+
+    # Data Relations
+    assert page.has_content?("Data Relations")
+    assert page.has_content?("Derived Datasets")
+  end
+
+  def test_relations_child_record
+    visit "/catalog/02999877-0ee9-4cc0-b67f-f2f48107f517"
+    assert page.has_content?("Wabash Topo (14): Indiana, 1929")
+
+    # Data Relations
+    assert page.has_content?("Data Relations")
+    assert page.has_content?("Source Datasets")
+  end
+
+  def test_relations_none
+    visit "/catalog/1a09f168-4c06-42e1-b91c-f3d4d03ad829"
+    assert page.has_content?("10 Ft Contours: Carver County, Minnesota, 2014")
+
+    # Data Relations
+    assert page.has_no_content?("Data Relations")
+  end
 end
