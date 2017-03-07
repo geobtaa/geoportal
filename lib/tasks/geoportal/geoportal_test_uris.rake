@@ -146,14 +146,18 @@ namespace :geoportal do
 
     # Read response json from Solr
     # @TODO: Blacklight/Solr connection, query
-    json = JSON.parse(File.open('urls.json','r').read)
+    # For now, just run a query like this...
+    # https://geo.btaa.org/solr/blacklightcore/select?q=*%3A*&wt=json&indent=true&fl=uuid,dct_references_s,dct_provenance_s,dc_title_s&rows=10000
+    #
+    # Just make sure the rows param is big enough to capture all the records.
+    json = JSON.parse(File.open(Rails.root.join('tmp', 'uris', 'uris.json'),'r').read)
 
     # Count of documents processed
     count = 0
 
     # Write results to CSV file
     # @TODO: Where should this report land? Date stamp it.
-    CSV.open("results.csv", "w+") do |csv|
+    CSV.open(Rails.root.join('tmp', 'uris', 'results.csv'), "w+") do |csv|
       json['response']['docs'].each_slice(1000) do |slice|
         slice.each do |doc|
           sleep(1)
