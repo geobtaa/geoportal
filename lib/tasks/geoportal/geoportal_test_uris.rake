@@ -61,8 +61,7 @@ namespace :geoportal do
       http.use_ssl = true if uri.scheme == "https"
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       http.start do
-        path = (uri.path.empty?) ? '/' : uri.path
-        http.request_get(path) do |response|
+        http.request_get(uri.request_uri) do |response|
           case response
           when Net::HTTPSuccess then
             if redirected
@@ -178,6 +177,7 @@ namespace :geoportal do
 
     # End
     t2 = Time.now
-    puts t2 - t1
+    seconds_to_run = t2 - t1
+    puts "\n\nCOMPLETED: #{Time.at(seconds_to_run).utc.strftime("%H:%M:%S")}\n\n"
   end
 end
