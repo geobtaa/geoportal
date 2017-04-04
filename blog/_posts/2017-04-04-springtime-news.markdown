@@ -11,7 +11,7 @@ During March 2017, 802 scanned maps from the University of Michigan Clark Librar
 [A new pocket plan of the cities of London & Westminster with the borough of Southwark, comprehending the new buildings and other alterations to the year 1790.](https://geo.btaa.org/catalog/befb25e9-1e60-451a-9b25-901cb51e04b3)
 
 ## Wisconsin orthophotos
-Wisconsin contributed new state records, including annual orthophotos National Agriculture Imagery Program sets from the past decade and two sets from the Wisconsin Regional Orthoimagery Consortium
+Wisconsin contributed new state records, including annual orthophotos National Agriculture Imagery Program sets from the past decade and two sets from the Wisconsin Regional Orthoimagery Consortium.
 
 ![dane](https://cloud.githubusercontent.com/assets/2367677/24633875/65a06210-1890-11e7-870e-c03edafbf638.jpg)
 
