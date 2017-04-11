@@ -81,8 +81,8 @@ class CatalogController < ApplicationController
     config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8
     config.add_facet_field 'dc_format_s', :label => 'Format', :limit => 8
     config.add_facet_field 'dct_provenance_s', label: 'Institution', limit: 8
-    config.add_facet_field 'dct_isPartOf_sm', :label => 'Collection', limit: 8
     config.add_facet_field 'dc_rights_s', label: 'Access', limit: 8, partial: "icon_facet"
+    config.add_facet_field 'dct_isPartOf_sm', :label => 'Collection', limit: 8
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
