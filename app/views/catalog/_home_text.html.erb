@@ -43,13 +43,13 @@
 
         <div class='row'>
           <div class='col-sm-12 col-md-4'>
-            <h4 class='sr-only'>Institution</h4>
-            <%= render_facet_partials [:dct_provenance_s], {class:'active'} %>
+            <h4 class='sr-only'>Place</h4>
+            <%= render_facet_partials [:dct_spatial_sm], {class:'active'} %>
           </div>
 
           <div class='col-sm-12 col-md-4'>
-            <h4 class='sr-only'>Collection</h4>
-            <%= render_facet_partials [:dct_isPartOf_sm] %>
+            <h4 class='sr-only'>Data Type</h4>
+            <%= render_facet_partials [:layer_geom_type_s] %>
           </div>
 
           <div class='col-sm-12 col-md-4'>
