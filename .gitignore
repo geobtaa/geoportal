@@ -28,6 +28,8 @@ public/blog/feed.xml
 solr/*
 !solr/README-geoblacklight-solr-development.txt
 
+vendor/*
+
 .DS_Store
 .sass-cache
 doc/
