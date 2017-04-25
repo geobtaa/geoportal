@@ -16,10 +16,15 @@
 // Required by Blacklight
 //= require blacklight/blacklight
 
+// Required by GeoBlacklight
+//= require geoblacklight/geoblacklight
+//= require geoblacklight/modules/local-override-results.js
+//= require geoblacklight/viewers/viewer
+
 //= require_tree .
 
-
-//= require geoblacklight/viewers/viewer
+// Remove these files below
+//= stub geoblacklight/modules/results.js
 
 GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
 
