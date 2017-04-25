@@ -62,4 +62,13 @@ class HomePageTest < Capybara::Rails::TestCase
 
     assert page.has_content?("Search Results")
   end
+
+  def test_blank_search
+    within("section#home-search") do
+      fill_in("q", with: '')
+      click_button 'Search'
+    end
+
+    assert page.has_content?("Search Results")
+  end
 end
