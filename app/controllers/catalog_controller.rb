@@ -13,6 +13,8 @@ class CatalogController < ApplicationController
       'q.alt' => '*:*'
     }
 
+    config.default_per_page = 20 # Works!
+
     ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SolrHelper#solr_doc_params) or
     ## parameters included in the Blacklight-jetty document requestHandler.
     #
