@@ -1,13 +1,17 @@
 ---
 layout: post
-title:  "New Records from the City of Chicago plus Minor Interface Changes"
+title:  "New Records from the cities of Chicago, IL and Bloomington IN, plus Minor Interface Changes"
 date:   2017-05-02
 ---
 
-## New records from Chicago, Illinois
-
+## New records
+### Chicago, Illinois
 109 geospatial records were recently added to the geoportal from the [City of Chicago's Open Data Portal](https://data.cityofchicago.org/), notably dozens of records about[ public schools in the city.](https://geo.btaa.org/?f%5Bdct_isPartOf_sm%5D%5B%5D=City+of+Chicago+Data+Portal&per_page=100&q=schools&search_field=all_fields)
 ![chicagopublicschools](https://cloud.githubusercontent.com/assets/2367677/25535967/8a268ce6-2bfe-11e7-8084-aa313497831f.png)
+
+### Bloomington, Indiana
+17 GIS records were added from the [City of Bloomington Data Portal](https://data.bloomington.in.gov/organization/city-of-bloomington). These records have web services that are hosted with GeoServer, and feature nicely styled layers.
+![bloomington](https://cloud.githubusercontent.com/assets/2367677/25642186/d90b404c-2f5d-11e7-90a1-654efcc27e42.png)
 
 ## Minor Interface Changes
 ### Browse all records
