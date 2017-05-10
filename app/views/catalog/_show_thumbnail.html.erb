@@ -14,8 +14,12 @@
 
   <div class="panel-body">
     <%= thumbnail_tag(@document) %>
-    <p>
-      <%= link_to("View zoomable image", view_image_solr_document_path(@document))%>
-    </p>
+
+    <%- if @document.zoomable_image? %>
+      <p>
+        <br/>
+        <%= link_to("View zoomable image", view_image_solr_document_path(@document))%>
+      </p>
+    <%- end %>
   </div>
 </div>

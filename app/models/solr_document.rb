@@ -56,4 +56,8 @@ class SolrDocument
   def thumbnail_image?
     self._source["dct_references_s"].include?('http://schema.org/thumbnailUrl')
   end
+
+  def zoomable_image?
+    self._source["dct_references_s"].include?('http://iiif.io/api/image')
+  end
 end
