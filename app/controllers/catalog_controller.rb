@@ -213,6 +213,9 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial :exports, partial: 'exports', if: proc { |_context, _config, options| options[:document] }
     config.add_show_tools_partial :downloads, partial: 'downloads', if: proc { |_context, _config, options| options[:document] }
 
+    # Custom action
+    # config.show.document_actions << :view_image
+
     # Remove show tools
     config.show.document_actions.delete(:citation)
     config.show.document_actions.delete(:sms)
@@ -231,6 +234,10 @@ class CatalogController < ApplicationController
   # this action listed here in my catalog_controller.rb  Guessing the GBL
   # ControllerOverride isn't working?
   def web_services
+    @response, @document = fetch params[:id]
+  end
+
+  def view_image
     @response, @document = fetch params[:id]
   end
 
