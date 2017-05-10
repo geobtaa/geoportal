@@ -1,10 +1,5 @@
 <%= render :partial => 'show_tools' %>
 
-<ul>
-  <li>Zoomable: <%= @document.zoomable_image? %></li>
-  <li>Thumbnail: <%= @document.thumbnail_image? %></li>
-</ul>
-
 <% if @document.thumbnail_image? %>
   <%= render :partial => 'show_thumbnail' %>
 <% end %>

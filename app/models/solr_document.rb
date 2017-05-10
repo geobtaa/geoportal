@@ -53,6 +53,10 @@ class SolrDocument
     JSON.parse(self._source["dct_references_s"])['http://schema.org/thumbnailUrl']
   end
 
+  def thumbnail_link
+    JSON.parse(self._source["dct_references_s"])['http://schema.org/url']
+  end
+
   def thumbnail_image?
     self._source["dct_references_s"].include?('http://schema.org/thumbnailUrl')
   end
