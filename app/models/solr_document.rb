@@ -48,4 +48,12 @@ class SolrDocument
     # @TODO: provenance isn't supported out of the box by BL
     :contributor => "dct_provenance_s"
   )
+
+  def thumbnail_image
+    JSON.parse(self._source["dct_references_s"])['http://schema.org/thumbnailUrl']
+  end
+
+  def thumbnail_image?
+    self._source["dct_references_s"].include?('http://schema.org/thumbnailUrl')
+  end
 end
