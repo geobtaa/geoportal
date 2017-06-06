@@ -451,6 +451,8 @@ pre {
   .highlight .il {
     color: #099; }
 
+.post-content h2 {
+  padding-top: 2rem; }
 .post-content img {
   display: block;
   max-width: 100%;
