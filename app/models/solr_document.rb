@@ -49,19 +49,4 @@ class SolrDocument
     :contributor => "dct_provenance_s"
   )
 
-  def thumbnail_image
-    JSON.parse(self._source["dct_references_s"])['http://schema.org/thumbnailUrl']
-  end
-
-  def thumbnail_link
-    JSON.parse(self._source["dct_references_s"])['http://schema.org/url']
-  end
-
-  def thumbnail_image?
-    self._source["dct_references_s"].include?('http://schema.org/thumbnailUrl')
-  end
-
-  def zoomable_image?
-    self._source["dct_references_s"].include?('http://iiif.io/api/image')
-  end
 end

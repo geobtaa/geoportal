@@ -9,17 +9,12 @@
 -%>
 <div class="panel panel-default show-thumbnail">
   <div class="panel-heading">
-    Thumbnail
+    Preview Image
   </div>
 
   <div class="panel-body">
-    <%= thumbnail_tag(@document) %>
-
-    <%- if @document.zoomable_image? %>
-      <p>
-        <br/>
-        <%= link_to("View zoomable image", view_image_solr_document_path(@document))%>
-      </p>
-    <%- end %>
+    <% if presenter(@document).thumbnail.exists? && tn = presenter(@document).thumbnail.thumbnail_tag({:class => "img-responsive"}) %>
+      <%= tn %>
+    <% end %>
   </div>
 </div>
