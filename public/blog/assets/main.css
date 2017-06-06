@@ -450,3 +450,8 @@ pre {
     color: #008080; }
   .highlight .il {
     color: #099; }
+
+.post-content img {
+  display: block;
+  max-width: 100%;
+  height: auto; }
