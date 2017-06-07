@@ -87,7 +87,7 @@ class CatalogController < ApplicationController
       :bka => { :label => 'No date', :fq => "solr_year_i:[9999 TO 9999]"}
     }, collapse: false
 
-    config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8
+    config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8, collapse: false
     config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
     config.add_facet_field 'dc_creator_sm', :label => 'Author', :limit => 8
     config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8
