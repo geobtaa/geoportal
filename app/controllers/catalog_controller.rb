@@ -31,7 +31,6 @@ class CatalogController < ApplicationController
     config.index.title_field = 'dc_title_s'
     config.index.document_presenter_class = Geoblacklight::DocumentPresenter
     config.show.document_presenter_class = Geoblacklight::ShowPresenter
-    config.index.thumbnail_field = 'dct_references_s'
 
     # solr field configuration for document/show views
 

@@ -30,6 +30,7 @@ module Blacklight
     # @return [String]
     # rubocop:disable Lint/AssignmentInCondition
     def thumbnail_tag image_options = {}, url_options = {}
+      puts "\n\n\n#{thumbnail_value(image_options).inspect}\n\n\n"
       return unless value = thumbnail_value(image_options)
       if url_options == false || url_options[:suppress_link]
         value
@@ -48,10 +49,7 @@ module Blacklight
       if thumbnail_method
         view_context.send(thumbnail_method, document, image_options)
       elsif thumbnail_field
-        # ORIGINAL
-        # url = document.first(thumbnail_field)
-        # CUSTOM - retrieve value from references hash
-        url = JSON.parse(document.first(thumbnail_field))['http://schema.org/thumbnailUrl']
+        url = document.first(thumbnail_field)
         view_context.image_tag url, image_options if url.present?
       end
     end

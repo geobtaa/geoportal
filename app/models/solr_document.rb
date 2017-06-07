@@ -48,5 +48,4 @@ class SolrDocument
     # @TODO: provenance isn't supported out of the box by BL
     :contributor => "dct_provenance_s"
   )
-
 end

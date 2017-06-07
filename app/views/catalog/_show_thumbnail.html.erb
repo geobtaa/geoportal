@@ -13,8 +13,6 @@
   </div>
 
   <div class="panel-body">
-    <% if presenter(@document).thumbnail.exists? && tn = presenter(@document).thumbnail.thumbnail_tag({:class => "img-responsive"}) %>
-      <%= tn %>
-    <% end %>
+    <%= image_tag(presenter(@document).thumbnail_url, {:class => "img-responsive"}) %>
   </div>
 </div>

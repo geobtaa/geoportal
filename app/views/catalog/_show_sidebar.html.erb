@@ -1,8 +1,10 @@
 <%= render :partial => 'show_tools' %>
 
-<% if presenter(@document).thumbnail.exists? %>
+<% unless presenter(@document).thumbnail_url.blank? %>
   <%= render :partial => 'show_thumbnail' %>
 <% end %>
+
+<% console %>
 
 <% unless @document.more_like_this.empty? %>
   <div class="panel panel-default">
