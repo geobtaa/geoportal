@@ -69,6 +69,9 @@ class CatalogController < ApplicationController
 
     # config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
 
+    config.add_facet_field 'dct_spatial_sm', :label => 'Place', :limit => 8, collapse: false
+    config.add_facet_field 'layer_geom_type_s', label: 'Data type', limit: 8, partial: "icon_facet", collapse: false
+
     config.add_facet_field 'time_period', :label => 'Time Period', :query => {
       :bk10 => { :label => '1500s', :fq => "solr_year_i:[1500 TO 1599]" },
       :bk9 => { :label => '1600s', :fq => "solr_year_i:[1600 TO 1699]" },
@@ -80,12 +83,11 @@ class CatalogController < ApplicationController
       :bk3 => { :label => '2000-2004', :fq => "solr_year_i:[2000 TO 2004]" },
       :bk2 => { :label => '2005-2009', :fq => "solr_year_i:[2005 TO 2009]" },
       :bk1 => { :label => '2010-2014', :fq => "solr_year_i:[2010 TO 2014]" },
-      :bk0 => { :label => '2015-present', :fq => "solr_year_i:[#{Time.parse('2015-01-01').year} TO *]" },
-    }
+      :bk0 => { :label => '2015-present', :fq => "solr_year_i:[2015 TO #{Time.now.year}]"},
+      :bka => { :label => 'No date', :fq => "solr_year_i:[9999 TO 9999]"}
+    }, collapse: false
 
-    config.add_facet_field 'dct_spatial_sm', :label => 'Place', :limit => 8, collapse: false
-    config.add_facet_field 'layer_geom_type_s', label: 'Data type', limit: 8, partial: "icon_facet", collapse: false
-    config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8, collapse: false
+    config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8
     config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
     config.add_facet_field 'dc_creator_sm', :label => 'Author', :limit => 8
     config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8
