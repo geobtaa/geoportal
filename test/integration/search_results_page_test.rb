@@ -20,11 +20,13 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
   def test_facets
     visit '/?q=water'
     assert page.has_selector?("#facets")
+    assert page.assert_selector('div.facet_limit', :count => 11)
     assert page.has_content?("Institution")
     assert page.has_content?("Subject")
     assert page.has_content?("Author")
     assert page.has_content?("Place")
     assert page.has_content?("Year")
+    assert page.has_content?("Time Period")
     assert page.has_content?("Access")
     assert page.has_content?("Data type")
     assert page.has_content?("Format")
