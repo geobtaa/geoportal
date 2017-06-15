@@ -73,18 +73,17 @@ class CatalogController < ApplicationController
     config.add_facet_field 'layer_geom_type_s', label: 'Data type', limit: 8, partial: "icon_facet", collapse: false
 
     config.add_facet_field 'time_period', :label => 'Time Period', :query => {
-      :bk10 => { :label => '1500s', :fq => "solr_year_i:[1500 TO 1599]" },
-      :bk9 => { :label => '1600s', :fq => "solr_year_i:[1600 TO 1699]" },
-      :bk8 => { :label => '1700s', :fq => "solr_year_i:[1700 TO 1799]" },
-      :bk7 => { :label => '1800-1849', :fq => "solr_year_i:[1800 TO 1849]" },
-      :bk6 => { :label => '1850-1899', :fq => "solr_year_i:[1850 TO 1899]" },
-      :bk5 => { :label => '1900-1949', :fq => "solr_year_i:[1900 TO 1949]" },
-      :bk4 => { :label => '1950-1999', :fq => "solr_year_i:[1950 TO 1999]" },
-      :bk3 => { :label => '2000-2004', :fq => "solr_year_i:[2000 TO 2004]" },
-      :bk2 => { :label => '2005-2009', :fq => "solr_year_i:[2005 TO 2009]" },
-      :bk1 => { :label => '2010-2014', :fq => "solr_year_i:[2010 TO 2014]" },
-      :bk0 => { :label => '2015-present', :fq => "solr_year_i:[2015 TO #{Time.now.year}]"},
-      :bka => { :label => 'No date', :fq => "solr_year_i:[9999 TO 9999]"}
+      '1500s' => { :label => '1500s', :fq => "solr_year_i:[1500 TO 1599]" },
+      '1600s' => { :label => '1600s', :fq => "solr_year_i:[1600 TO 1699]" },
+      '1700s' => { :label => '1700s', :fq => "solr_year_i:[1700 TO 1799]" },
+      '1800-1849' => { :label => '1800-1849', :fq => "solr_year_i:[1800 TO 1849]" },
+      '1850-1899' => { :label => '1850-1899', :fq => "solr_year_i:[1850 TO 1899]" },
+      '1900-1949' => { :label => '1900-1949', :fq => "solr_year_i:[1900 TO 1949]" },
+      '1950-1999' => { :label => '1950-1999', :fq => "solr_year_i:[1950 TO 1999]" },
+      '2000-2004' => { :label => '2000-2004', :fq => "solr_year_i:[2000 TO 2004]" },
+      '2005-2009' => { :label => '2005-2009', :fq => "solr_year_i:[2005 TO 2009]" },
+      '2010-2014' => { :label => '2010-2014', :fq => "solr_year_i:[2010 TO 2014]" },
+      '2015-present' => { :label => '2015-present', :fq => "solr_year_i:[2015 TO #{Time.now.year}]"}
     }, collapse: false
 
     config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8, collapse: false
