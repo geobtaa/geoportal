@@ -11,8 +11,8 @@ class HomePageTest < Capybara::Rails::TestCase
   def test_homepage_dom
     assert page.has_content?("Geoportal")
     assert page.has_selector?("header")
-      assert page.has_selector?("header #btaa-header")
-      assert page.has_selector?("header #application-header")
+    assert page.has_selector?("header #btaa-header")
+    assert page.has_selector?("header #application-header")
     assert page.has_selector?("section#home-search")
     assert page.has_selector?("section#home-metadata")
     assert page.has_selector?("section#map")

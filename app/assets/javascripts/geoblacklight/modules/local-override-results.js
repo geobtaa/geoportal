@@ -13,9 +13,6 @@ Blacklight.onLoad(function() {
     opts = { baseUrl: data.catalogPath },
     geoblacklight, bbox;
 
-    // Cannot extend an array. See line #35
-    // var bbox = [[-180, -90], [180, 90]];
-
     var lngRe = '(-?[0-9]{1,2}(\\.[0-9]+)?)';
     var latRe = '(-?[0-9]{1,3}(\\.[0-9]+)?)';
 
@@ -34,6 +31,10 @@ Blacklight.onLoad(function() {
           } else {
             bbox.extend(L.bboxToBounds(currentBbox));
           }
+        } else {
+          // Unparseable bbox, use default value.
+          // [[-180, -90], [180, 90]];
+          bbox = L.bboxToBounds("-180 -90 180 90");
         }
       });
     }
