@@ -17,7 +17,7 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     if (this.data.mapBbox) {
       this.options.bbox = L.bboxToBounds(this.data.mapBbox);
     }
-    this.map = L.map(this.element, {scrollWheelZoom:false, noWrap: true}).fitBounds(this.options.bbox);
+    this.map = L.map(this.element, {fullscreenControl: true, scrollWheelZoom:false, noWrap: true}).fitBounds(this.options.bbox);
     this.map.addLayer(this.selectBasemap());
     this.map.addLayer(this.overlay);
     if (this.data.map !== 'index') {
