@@ -1,2 +1,9 @@
 @import 'geoblacklight/application';
 @import 'geoblacklight-icons-rails';
+@import 'leaflet.fullscreen/Control.FullScreen';
+
+#content {
+  #map {
+    height: 504px; // 36px base
+  }
+}
