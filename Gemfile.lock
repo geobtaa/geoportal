@@ -50,6 +50,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
+    archive-zip (0.7.0)
+      io-like (~> 0.3.0)
     arel (7.1.4)
     autoprefixer-rails (6.7.7.2)
       execjs
@@ -94,8 +96,15 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-selenium (0.0.6)
+      capybara
+      selenium-webdriver
+    childprocess (0.7.0)
+      ffi (~> 1.0, >= 1.0.11)
+    chromedriver-helper (1.1.0)
+      archive-zip (~> 0.7.0)
+      nokogiri (~> 1.6)
     chronic (0.10.2)
-    cliver (0.3.2)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -163,6 +172,7 @@ GEM
       tilt
     high_voltage (3.0.0)
     i18n (0.8.1)
+    io-like (0.3.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -249,10 +259,6 @@ GEM
     orm_adapter (0.5.0)
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
-    poltergeist (1.11.0)
-      capybara (~> 2.1)
-      cliver (~> 0.3.1)
-      websocket-driver (>= 0.2.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -309,6 +315,9 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    selenium-webdriver (3.4.3)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
     shellany (0.0.1)
     sitemap_generator (5.2.0)
       builder (~> 3.0)
@@ -370,6 +379,8 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rbenv
   capistrano-template
+  capybara-selenium
+  chromedriver-helper
   coffee-rails (~> 4.1.0)
   devise
   devise-guests (~> 0.3)
@@ -386,7 +397,6 @@ DEPENDENCIES
   jquery-rails
   minitest-rails-capybara
   mysql2
-  poltergeist
   rails (~> 5.0)
   rsolr (~> 1.0.6)
   sass-rails (~> 5.0)
