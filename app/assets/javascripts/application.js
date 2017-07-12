@@ -18,14 +18,10 @@
 
 // Required by GeoBlacklight
 //= require geoblacklight/geoblacklight
-//= require geoblacklight/modules/local-override-results.js
 //= require geoblacklight/viewers/viewer
 //= require Leaflet/leaflet.fullscreen/Control.FullScreen.js
 
 //= require_tree .
-
-// Remove these files below
-//= stub geoblacklight/modules/results.js
 
 // @CUSTOMIZED
 // - disabled scroll wheel zoom
