@@ -58,7 +58,7 @@ group :development do
   gem 'capistrano-passenger'
 end
 
-gem 'geoblacklight', '~> 1.4.0'
+gem 'geoblacklight', '~> 1.5.0'
 gem 'geoblacklight-icons', '~> 1.1.0'
 #gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', branch: 'master'
 gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'master'
@@ -80,5 +80,7 @@ gem 'exception_notification', '~>4.2.0'
 
 group :test do
   gem 'minitest-rails-capybara'
-  gem 'poltergeist'
+  # gem 'poltergeist'
+  gem 'chromedriver-helper'
+  gem 'capybara-selenium'
 end
