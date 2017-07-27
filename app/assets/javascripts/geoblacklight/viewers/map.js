@@ -23,6 +23,8 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     if (this.data.map !== 'index') {
       this.addBoundsOverlay(this.options.bbox);
     }
+
+    this.resultClusters();
   },
 
   /**
@@ -64,5 +66,21 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     } else {
       return _this.basemap.mapquest;
     }
+  },
+
+  resultClusters: function() {
+    console.log("CLUSTERING");
+
+    // Add markercluster
+    var markers = this.map.markerClusterGroup();
+
+    $('.document [data-bbox]').each(function() {
+      // Add markers
+      var centroid = L.bboxToBounds(currentBbox).getCenter();
+      console.log("Centroid: " + centroid);
+      var marker = L.marker(centroid, { title: "title" });
+      // marker.bindPopup(title);
+      markers.addLayer(marker);
+    });
   }
 });
