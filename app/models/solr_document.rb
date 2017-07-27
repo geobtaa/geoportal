@@ -2,6 +2,8 @@
 class SolrDocument
 
   include Blacklight::Solr::Document
+  include BlacklightHeatmaps::GeometrySolrDocument
+
   include Geoblacklight::SolrDocument
 
   # self.unique_key = 'id'

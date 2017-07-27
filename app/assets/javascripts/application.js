@@ -20,6 +20,7 @@
 //= require geoblacklight/geoblacklight
 //= require geoblacklight/viewers/viewer
 //= require Leaflet/leaflet.fullscreen/Control.FullScreen.js
+//= require blacklight_heatmaps.js
 
 //= require_tree .
 

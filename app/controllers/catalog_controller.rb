@@ -6,6 +6,20 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
 
   configure_blacklight do |config|
+    # BlacklightHeatmaps configuration values
+    config.geometry_field = :solr_geom
+    config.heatmap_distErrPct = 0.15 # Default Solr value
+
+    # Basemaps configured include: 'positron', 'darkMatter', 'OpenStreetMap.HOT'
+    config.basemap_provider = 'positron'
+
+    config.show.partials.insert(1, :show_leaflet_map)
+
+    config.view.heatmaps.partials = []
+
+    #Heatmap color ramp. For best results, use http://colorbrewer2.org or http://tristen.ca/hcl-picker/#/hlc/5/1
+    config.view.heatmaps.color_ramp = ['#ffffcc', '#a1dab4', '#41b6c4', '#2c7fb8', '#253494']
+
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
       :start => 0,
@@ -29,6 +43,7 @@ class CatalogController < ApplicationController
     # config.index.show_link = 'title_display'
     # config.index.record_display_type = 'format'
 
+    config.index.identifier_field = 'uuid'
     config.index.title_field = 'dc_title_s'
     config.index.document_presenter_class = Geoblacklight::DocumentPresenter
 

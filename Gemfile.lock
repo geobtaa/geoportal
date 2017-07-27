@@ -68,6 +68,11 @@ GEM
       rails (>= 4.2, < 6)
       rsolr (>= 1.0.6, < 3)
       twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
+    blacklight_heatmaps (0.4.0)
+      blacklight (~> 6.0)
+      leaflet-rails
+      leaflet-sidebar-rails (~> 0.1.9)
+      rails (>= 4.2.6, < 6)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -214,6 +219,7 @@ GEM
     kaminari-core (1.0.1)
     kramdown (1.14.0)
     leaflet-rails (0.7.7)
+    leaflet-sidebar-rails (0.1.9)
     libv8 (3.16.14.19)
     liquid (4.0.0)
     listen (3.0.8)
@@ -376,6 +382,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  blacklight_heatmaps
   byebug
   capistrano (= 3.4.1)
   capistrano-bundler
