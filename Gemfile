@@ -58,7 +58,7 @@ group :development do
   gem 'capistrano-passenger'
 end
 
-gem 'geoblacklight', '~> 1.5.0'
+gem 'geoblacklight', git: 'https://github.com/geoblacklight/geoblacklight.git', branch: 'leaflet-upgrade'
 gem 'geoblacklight-icons', '~> 1.1.0'
 gem 'blacklight_heatmaps'
 #gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', branch: 'master'
