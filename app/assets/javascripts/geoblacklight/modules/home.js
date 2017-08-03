@@ -34,7 +34,7 @@ Blacklight.onLoad(function() {
     // Oboe - steam results
     // Select example: http://localhost:8983/solr/geoportal/select?fl=uuid_sdv,dc_title_sdv,centroid_sdv&indent=on&q=*:*&wt=json
     // Export example: http://localhost:8983/solr/geoportal/export?fl=uuid_sdv,dc_title_sdv,centroid_sdv&indent=on&q=*:*&wt=json&sort=dc_title_sdv%20asc
-    oboe('http://localhost:8983/solr/geoportal/export?fl=uuid_sdv,dc_title_sdv,centroid_sdv&indent=on&q=*:*&wt=json&sort=dc_title_sdv%20asc')
+    oboe('http://localhost:8983/solr/geoportal/export?fl=uuid_sdv,dc_title_sdv,centroid_sdv&indent=on&q=*:*&wt=json&sort=dc_title_sdv%20asc&rows=10000')
       .node('response.docs.*', function( doc ){
 
           if(typeof doc.centroid_sdv != 'undefined'){
