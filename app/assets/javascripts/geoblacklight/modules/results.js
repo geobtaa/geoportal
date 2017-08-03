@@ -39,6 +39,7 @@ Blacklight.onLoad(function() {
       });
     }
 
+
     if (!historySupported) {
       $.extend(opts, {
         dynamic: false,
@@ -50,6 +51,36 @@ Blacklight.onLoad(function() {
 
     // instantiate new map
     geoblacklight = new GeoBlacklight.Viewer.Map(this, { bbox: bbox });
+
+// add clusters to map
+var cluster = new L.MarkerClusterGroup();
+
+    // Fetch data
+    $.ajax({
+        url: 'http://localhost:8983/solr/geoportal/select',
+        cache: true,
+        dataType: 'JSONP',
+        data: {
+          q: '*:*',
+          rows: 10000,
+          fl: 'uuid,centroid_sdv',
+          wt: 'json'
+        },
+        jsonp: 'json.wrf',
+        success: function(data) {
+          console.log(data.response.docs);
+          $.each(data.response.docs, function(i, val) {
+            if(typeof val.centroid_sdv != 'undefined'){
+              // console.log(val.centroid_sdv.split(","));
+              var latlng = val.centroid_sdv.split(",")
+              var marker = L.marker(new L.LatLng(latlng[0],latlng[1]), { title: "title" });
+              cluster.addLayer(marker);
+            }
+          });
+        }
+    });
+
+    geoblacklight.map.addLayer(cluster);
 
     // set hover listeners on map
     $('#content')
@@ -63,20 +94,6 @@ Blacklight.onLoad(function() {
 
     // add geosearch control to map
     geoblacklight.map.addControl(L.control.geosearch(opts));
-
-    // add clusters to map
-    var cluster = new L.MarkerClusterGroup();
-    $('.document [data-bbox]').each(function() {
-      var currentBbox = $(this).data().bbox;
-      // Add markers
-      var centroid = L.bboxToBounds(currentBbox).getCenter();
-      console.log("Centroid: " + centroid);
-      var marker = L.marker(centroid, { title: "title" });
-      // marker.bindPopup(title);
-      cluster.addLayer(marker);
-    });
-
-    geoblacklight.map.addLayer(cluster);
   });
 
   function updatePage(url) {
