@@ -63,5 +63,6 @@
   </div>
 </section>
 
-<div id="progress"><div id="progress-bar"></div></div>
-<%= content_tag :section, '', aria: {label: 'map-search'}, id: 'map', data: { map: 'home', 'catalog-path'=> search_catalog_path , 'map-bbox' => params[:bbox], basemap: geoblacklight_basemap } %>
+<section id='map' aria-label='map-search' data-map='home' data-catalog-path="<%=search_catalog_path%>" data-map-bbox="<%=params[:bbox]%>" data-basemap="<%=geoblacklight_basemap%>">
+  <div id="progress"><div id="progress-bar"></div></div>
+</section

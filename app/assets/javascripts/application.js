@@ -21,6 +21,7 @@
 //= require geoblacklight/viewers/viewer
 //= require Leaflet/leaflet.fullscreen/Control.FullScreen.js
 //= require Leaflet/leaflet.markercluster.js
+//= require oboe/oboe-browser.js
 
 //= require_tree .
 

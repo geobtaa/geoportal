@@ -14,12 +14,11 @@
 }
 
 #progress {
-    display: none;
     position: absolute;
     z-index: 1000;
     left: 400px;
     top: 300px;
-    width: 200px;
+    width: 60%;
     height: 20px;
     margin-top: -20px;
     margin-left: -100px;
