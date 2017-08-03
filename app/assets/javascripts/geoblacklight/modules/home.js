@@ -13,23 +13,7 @@ Blacklight.onLoad(function() {
       staticButton: '<a class="btn btn-primary">Search here</a>'
     }));
 
-    var progress = document.getElementById('progress');
-    var progressBar = document.getElementById('progress-bar');
-
-    function updateProgressBar(processed, total, elapsed, layersArray) {
-      if (elapsed > 1000) {
-        // if it takes more than a second to load, display the progress bar:
-        progress.style.display = 'block';
-        progressBar.style.width = Math.round(processed/total*100) + '%';
-      }
-
-      if (processed === total) {
-        // all markers processed - hide the progress bar:
-        progress.style.display = 'none';
-      }
-    }
-
-		var cluster = new L.markerClusterGroup({ chunkedLoading: true, chunkProgress: updateProgressBar });
+    var pruneCluster = new PruneClusterForLeaflet();
 
     // Oboe - steam results
     // Select example: http://localhost:8983/solr/geoportal/select?fl=uuid_sdv,dc_title_sdv,centroid_sdv&indent=on&q=*:*&wt=json
@@ -40,17 +24,19 @@ Blacklight.onLoad(function() {
           if(typeof doc.centroid_sdv != 'undefined'){
             var latlng = doc.centroid_sdv.split(",")
 
+            // console.log("Add: marker" + latlng[0] + "," + latlng[1])
             // Create marker - adds title attribute
-            var marker = L.marker(new L.LatLng(latlng[0],latlng[1]), { title: doc.dc_title_sdv });
+            var marker = new PruneCluster.Marker(latlng[0],latlng[1], {popup: "<a href='/catalog/" + doc.uuid_sdv + "'>" + doc.dc_title_sdv + "</a>"});
             // Add popup and link to item
-            marker.bindPopup("<a href='/catalog/" + doc.uuid_sdv + "'>" + doc.dc_title_sdv + "</a>");
-            cluster.addLayer(marker);
+            // marker.data.popup("<a href='/catalog/" + doc.uuid_sdv + "'>" + doc.dc_title_sdv + "</a>");
+            pruneCluster.RegisterMarker(marker);
           }
-
+        }
+      )
+      .done(function(){
+        geoblacklight.map.addLayer(pruneCluster);
+      })
       // no need to handle update or exit set here since
       // downloading is purely additive
-    });
-
-    geoblacklight.map.addLayer(cluster);
   });
 });
