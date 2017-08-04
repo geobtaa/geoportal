@@ -1,5 +1,5 @@
 Blacklight.onLoad(function() {
-  $('[data-map="homepage"]').each(function(i, element) {
+  $('[data-map="home"]').each(function(i, element) {
 
     var geoblacklight = new GeoBlacklight.Viewer.Map(this),
         data = $(this).data();
