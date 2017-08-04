@@ -20,7 +20,8 @@ namespace :geoportal do
 
           docs << entry
         end
-      rescue
+      rescue Exception => e
+        puts "Caught #{e}"
         puts "BBox or centroid no good - #{doc['uuid']}"
       end
     end
