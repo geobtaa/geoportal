@@ -2,7 +2,7 @@ require 'rsolr'
 
 namespace :geoportal do
   desc 'Test URIs stored in Solr index'
-  task generate_map_centroids_json: :environment do
+  task generate_centroids_json: :environment do
     # Connect to solr
     solr = RSolr.connect :url => 'http://localhost:8983/solr/geoportal'
 
@@ -14,9 +14,9 @@ namespace :geoportal do
       begin
         if !doc['centroid_sdv'].empty?
           entry = {}
-          entry['uuid_sdv'] = doc['uuid_sdv']
-          entry['dc_title_sdv'] = doc['dc_title_sdv']
-          entry['centroid_sdv'] = doc['centroid_sdv']
+          entry['uuid'] = doc['uuid']
+          entry['dc_title_s'] = doc['dc_title_s']
+          entry['centroid_s'] = doc['centroid_s']
 
           docs << entry
         end
