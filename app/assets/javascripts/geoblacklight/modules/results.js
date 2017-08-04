@@ -52,35 +52,21 @@ Blacklight.onLoad(function() {
     // instantiate new map
     geoblacklight = new GeoBlacklight.Viewer.Map(this, { bbox: bbox });
 
-// add clusters to map
-var cluster = new L.MarkerClusterGroup();
+    var pruneCluster = new PruneClusterForLeaflet();
 
-    // Fetch data
-    $.ajax({
-        url: 'http://localhost:8983/solr/geoportal/select',
-        cache: true,
-        dataType: 'JSONP',
-        data: {
-          q: '*:*',
-          rows: 10000,
-          fl: 'uuid,centroid_sdv',
-          wt: 'json'
-        },
-        jsonp: 'json.wrf',
-        success: function(data) {
-          console.log(data.response.docs);
-          $.each(data.response.docs, function(i, val) {
-            if(typeof val.centroid_sdv != 'undefined'){
-              // console.log(val.centroid_sdv.split(","));
-              var latlng = val.centroid_sdv.split(",")
-              var marker = L.marker(new L.LatLng(latlng[0],latlng[1]), { title: "title" });
-              cluster.addLayer(marker);
-            }
-          });
+    // Oboe - Re-query Solr for JSON results
+    oboe(window.location.href + '&format=json&per_page=1000&rows=10000')
+      .node('response.docs.*', function( doc ){
+          if(typeof doc.centroid_sdv != 'undefined'){
+            var latlng = doc.centroid_sdv.split(",")
+            var marker = new PruneCluster.Marker(latlng[0],latlng[1], {popup: "<a href='/catalog/" + doc.uuid_sdv + "'>" + doc.dc_title_sdv + "</a>"});
+            pruneCluster.RegisterMarker(marker);
+          }
         }
-    });
-
-    geoblacklight.map.addLayer(cluster);
+      )
+      .done(function(){
+        geoblacklight.map.addLayer(pruneCluster);
+      })
 
     // set hover listeners on map
     $('#content')
