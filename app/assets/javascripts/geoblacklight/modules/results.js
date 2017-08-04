@@ -57,9 +57,9 @@ Blacklight.onLoad(function() {
     // Oboe - Re-query Solr for JSON results
     oboe(window.location.href + '&format=json&per_page=1000&rows=10000')
       .node('response.docs.*', function( doc ){
-          if(typeof doc.centroid_sdv != 'undefined'){
-            var latlng = doc.centroid_sdv.split(",")
-            var marker = new PruneCluster.Marker(latlng[0],latlng[1], {popup: "<a href='/catalog/" + doc.uuid_sdv + "'>" + doc.dc_title_sdv + "</a>"});
+          if(typeof doc.centroid_s != 'undefined'){
+            var latlng = doc.centroid_s.split(",")
+            var marker = new PruneCluster.Marker(latlng[0],latlng[1], {popup: "<a href='/catalog/" + doc.uuid + "'>" + doc.dc_title_s + "</a>"});
             pruneCluster.RegisterMarker(marker);
           }
         }
