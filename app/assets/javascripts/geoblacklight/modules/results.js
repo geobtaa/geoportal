@@ -8,7 +8,7 @@ Blacklight.onLoad(function() {
     });
   }
 
-  $('[data-map="index"]').each(function() {
+  $('[data-map="results"]').each(function() {
     var data = $(this).data(),
     opts = { baseUrl: data.catalogPath },
     geoblacklight, bbox;
