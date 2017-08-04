@@ -16,9 +16,9 @@ Blacklight.onLoad(function() {
     var pruneCluster = new PruneClusterForLeaflet();
 
     // Oboe - SAX steam JSON results from Solr /export
-    oboe('http://localhost:8983/solr/geoportal/export?fl=uuid_sdv,dc_title_sdv,centroid_sdv&indent=on&q=*:*&wt=json&sort=dc_title_sdv%20asc&rows=10000')
-      .node('response.docs.*', function( doc ){
-
+    // oboe('http://localhost:8983/solr/geoportal/export?fl=uuid_sdv,dc_title_sdv,centroid_sdv&indent=on&q=*:*&wt=json&sort=dc_title_sdv%20asc&rows=10000')
+    oboe('/centroids.json')
+      .node('*', function( doc ){
           if(typeof doc.centroid_sdv != 'undefined'){
             var latlng = doc.centroid_sdv.split(",")
             var marker = new PruneCluster.Marker(latlng[0],latlng[1], {popup: "<a href='/catalog/" + doc.uuid_sdv + "'>" + doc.dc_title_sdv + "</a>"});

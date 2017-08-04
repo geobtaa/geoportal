@@ -34,3 +34,5 @@ vendor/*
 .sass-cache
 doc/
 doc/
+
+public/centroids.json
