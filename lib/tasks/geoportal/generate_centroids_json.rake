@@ -4,7 +4,7 @@ namespace :geoportal do
   desc 'Test URIs stored in Solr index'
   task generate_centroids_json: :environment do
     # Connect to solr
-    solr = RSolr.connect :url => 'http://localhost:8983/solr/geoportal'
+    solr = RSolr.connect :url => CONFIG.url
 
     # Search request
     response = solr.get 'select', :params => {:q => '*:*', :rows => '10000'}
