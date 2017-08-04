@@ -12,7 +12,7 @@ namespace :geoportal do
     docs = []
     response["response"]["docs"].each_with_index do |doc, index|
       begin
-        if !doc['centroid_sdv'].empty?
+        if !doc['centroid_s'].empty?
           entry = {}
           entry['uuid'] = doc['uuid']
           entry['dc_title_s'] = doc['dc_title_s']
