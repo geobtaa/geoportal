@@ -76,6 +76,8 @@ namespace :deploy do
       # Here we can do anything such as:
       within release_path do
         execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:stage)}"
+        execute :rake, 'geoportal:generate_centroids_solr', "RAILS_ENV=#{fetch(:stage)}"
+        execute :rake, 'geoportal:generate_centroids_json', "RAILS_ENV=#{fetch(:stage)}"
       end
     end
   end
