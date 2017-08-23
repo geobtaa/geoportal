@@ -21,4 +21,4 @@ The geoportal is built with Geoblacklight, a multi-institutional open-source col
 
 #### Release Version
 
-Version 1.5.2
+Version 1.5.3
