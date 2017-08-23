@@ -47,7 +47,7 @@ set :whenever_variables, ->{ "'environment=#{fetch :whenever_environment}&rbenv_
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/solr.yml', 'config/secrets.yml')
+set :linked_files, fetch(:linked_files, []).push('config/blacklight.yml', 'config/database.yml', 'config/solr.yml', 'config/secrets.yml')
 
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache')
@@ -76,6 +76,8 @@ namespace :deploy do
       # Here we can do anything such as:
       within release_path do
         execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:stage)}"
+        execute :rake, 'geoportal:generate_centroids_solr', "RAILS_ENV=#{fetch(:stage)}"
+        execute :rake, 'geoportal:generate_centroids_json', "RAILS_ENV=#{fetch(:stage)}"
       end
     end
   end

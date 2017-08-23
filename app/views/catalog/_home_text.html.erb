@@ -16,7 +16,7 @@
           <div class='col-sm-12 col-md-6'>
             <h2 id='project-tagline'>Find Maps and Data</h2>
             <div id='project-text'>
-              <p>The Big Ten Academic Alliance Geoportal provides discoverability and facilitates access to geospatial resources. The resources in the portal are selected and curated by librarians and geospatial specialists at ten research institutions in the <a href="http://www.btaa.org/homepage">Big Ten Academic Alliance</a>.</p>
+              <p>The Big Ten Academic Alliance Geoportal provides discoverability and facilitates access to geospatial resources. The resources in the portal are selected and curated by librarians and geospatial specialists at twelve research institutions in the <a href="http://www.btaa.org/homepage">Big Ten Academic Alliance</a>.</p>
               <p>The resources include GIS datasets, web services, and digitized historical maps. <a href="/about">Learn more</a> about the research institutions involved and the sources of the geospatial records.</p>
               <p class="project-action">
                 <a class="btn-primary btn-sm" href="/blog"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Follow Our Blog</a> &nbsp;
@@ -63,4 +63,6 @@
   </div>
 </section>
 
-<%= content_tag :section, '', aria: {label: 'map-search'}, id: 'map', data: { map: 'home', 'catalog-path'=> search_catalog_path , 'map-bbox' => params[:bbox], basemap: geoblacklight_basemap } %>
+<section id='map' aria-label='map-search' data-map='home' data-catalog-path="<%=search_catalog_path%>" data-map-bbox="<%=params[:bbox]%>" data-basemap="<%=geoblacklight_basemap%>">
+  <div id="progress"><div id="progress-bar"></div></div>
+</section>

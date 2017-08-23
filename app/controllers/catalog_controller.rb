@@ -234,6 +234,7 @@ class CatalogController < ApplicationController
     # 'positron' http://cartodb.com/basemaps/
     # 'darkMatter' http://cartodb.com/basemaps/
     config.basemap_provider = 'positron'
+    config.max_per_page = 10000
   end
 
   # Bug Fix? -- Web services action cannot find 'document' without
