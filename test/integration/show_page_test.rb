@@ -56,22 +56,22 @@ class ShowPageTest < Capybara::Rails::TestCase
   end
 
   def test_minnesota_shapefile_show
-    visit "/catalog/480d1dc0-5fdd-42e2-b21c-7488d2496f7f"
-    assert page.has_content?("Polling Places: Carver County, Minnesota, 2014")
+    visit "/catalog/5a60ef842b9e4da5a55c0dec30c4ad8d_1"
+    assert page.has_content?("Polling Places: Carver County, Minnesota")
 
     # Type
     click_link 'Web services'
 
     # WMS Web Service
-    assert page.has_no_content?("Web Mapping Service (WMS)")
-    assert page.has_no_selector?("#wms_webservice")
+    # assert page.has_no_content?("Web Mapping Service (WMS)")
+    # assert page.has_no_selector?("#wms_webservice")
 
     # Esri Web Service
     assert page.has_content?("ArcGIS Dynamic Map Layer")
     assert page.has_selector?("#dynamic_map_layer_webservice")
 
     # ISO Metadata
-    assert page.has_link?("Metadata")
+    assert page.has_no_link?("Metadata")
 
     # IIIF Image
     assert page.has_no_content?("iiif")
