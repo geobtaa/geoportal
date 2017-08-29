@@ -115,10 +115,12 @@ class CatalogController < ApplicationController
     # config.add_index_field 'dc_title_t', :label => 'Display Name:'
     # config.add_index_field 'dct_provenance_s', :label => 'Institution:'
     # config.add_index_field 'dc_rights_s', :label => 'Access:'
-    # # config.add_index_field 'Area', :label => 'Area:'
+    # config.add_index_field 'Area', :label => 'Area:'
     # config.add_index_field 'dc_subject_sm', :label => 'Keywords:'
-
-
+    config.add_index_field Settings.FIELDS.YEAR
+    config.add_index_field Settings.FIELDS.CREATOR
+    config.add_index_field Settings.FIELDS.DESCRIPTION, helper_method: :snippit
+    config.add_index_field Settings.FIELDS.PUBLISHER
 
     # solr fields to be displayed in the show (single result) view
     #  The ordering of the field names is the order of the display
