@@ -96,3 +96,10 @@ FileETag None
   ExpiresByType image/svg+xml                         "access plus 1 month"
 
 </IfModule>
+
+# ------------------------------------------------------------------------------
+# | Maintenance Mode                                                           |
+# ------------------------------------------------------------------------------
+# Return 503 error if the maintenance page exists.
+RewriteCond /swadm/usr/local/geoblacklight/current/public/maintenance.html -f
+RewriteRule !^maintenance.html - [L,R=503]

@@ -12,6 +12,7 @@ require 'capistrano/capistrano_plugin_template'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 require 'capistrano/passenger'
+require 'capistrano/maintenance'
 
 # Whenever gem autocreates crontab
 require 'whenever/capistrano'
