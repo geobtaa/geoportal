@@ -12,6 +12,11 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
     assert page.has_content?("Search Results")
   end
 
+  def test_map_clustering
+    visit '/?q=water'
+    assert page.has_selector?("div.prunecluster.leaflet-marker-icon")
+  end
+
   def test_empty_search
     visit '/?search_field=all_fields&q='
     assert page.assert_selector('div.document', :count => 20)
