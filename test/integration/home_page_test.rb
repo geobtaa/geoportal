@@ -71,4 +71,16 @@ class HomePageTest < Capybara::Rails::TestCase
 
     assert page.has_content?("Search Results")
   end
+
+  def test_map_clustering
+    assert page.has_selector?("div.prunecluster.leaflet-marker-icon")
+  end
+
+  def test_autocomplete
+    within("section#home-search") do
+      fill_in("q", with: 'minn')
+    end
+
+    assert page.has_content?("minneapolis, minnesota, united states")
+  end
 end

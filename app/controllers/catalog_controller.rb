@@ -237,6 +237,10 @@ class CatalogController < ApplicationController
     # 'darkMatter' http://cartodb.com/basemaps/
     config.basemap_provider = 'positron'
     config.max_per_page = 10000
+
+    # Configuration for autocomplete suggestor
+    config.autocomplete_enabled = true
+    config.autocomplete_path = 'suggest'
   end
 
   # Bug Fix? -- Web services action cannot find 'document' without
