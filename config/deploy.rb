@@ -7,6 +7,7 @@ set :repo_url, 'git@github.com:BTAA-Geospatial-Data-Project/geoportal.git'
 
 set :passenger_restart_with_touch, true
 
+set :maintenance_dirname, -> { "#{current_path}/dist" }
 set :maintenance_template_path, File.expand_path("../../public/maintenance.html.erb", __FILE__)
 
 # Default branch is :master
@@ -52,7 +53,7 @@ set :pty, true
 set :linked_files, fetch(:linked_files, []).push('config/blacklight.yml', 'config/database.yml', 'config/solr.yml', 'config/secrets.yml')
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'public/system')
 
 # tmp directory is user-specific
 set :tmp_dir, "/tmp/#{fetch(:deploy_user)}"
