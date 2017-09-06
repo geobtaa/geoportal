@@ -100,6 +100,10 @@ FileETag None
 # ------------------------------------------------------------------------------
 # | Maintenance Mode                                                           |
 # ------------------------------------------------------------------------------
+RewriteEngine on
+RewriteRule ^error maintenance.html [L]
+ErrorDocument 503 maintenance.html
+
 # Return 503 error if the maintenance page exists.
-RewriteCond /swadm/usr/local/geoblacklight/current/public/maintenance.html -f
+RewriteCond /swadm/usr/local/geoblacklight/shared/public/system/maintenance.html -f
 RewriteRule !^maintenance.html - [L,R=503]
