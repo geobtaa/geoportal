@@ -1,6 +1,6 @@
 # Use this file to easily define all of your cron jobs.
 # Learn more: http://github.com/javan/whenever
-set :job_template, "bash -l -c 'export PATH=:rbenv_path/bin::rbenv_path/shims:$PATH; eval \"$(rbenv init -)\"; RBENV_VERSION=:rbenv_ruby BUNDLE_GEMFILE=:path/Gemfile :job RAILS_ENV=:environment'"
+set :job_template, "bash -l -c 'BUNDLE_GEMFILE=:path/Gemfile :job RAILS_ENV=:environment'"
 
 job_type :sitemap_refresh, 'cd :path && bundle exec rake sitemap:refresh'
 job_type :user_cleanup, 'cd :path && bundle exec rake devise_guests:delete_old_guest_users[2]'

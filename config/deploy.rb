@@ -21,17 +21,10 @@ set :deploy_user, 'swadm'
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/swadm/usr/local/#{fetch(:application)}"
 
-set :rbenv_path, "/swadm/usr/local/rbenv"
-# Set by `rbenv local <version>`
-set :rbenv_ruby, File.read('.ruby-version').strip
-
 # Forces crontab surrounding comments to include deploy target
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}"}
 
-# To get the rbenv custom path into Whenever, it has to be passed as a command line arg
-# so that means overriding the CLI variables it receives. This avoids having to hard-code
-# the path to anyenv & rbenv
-set :whenever_variables, ->{ "'environment=#{fetch :whenever_environment}&rbenv_path=#{fetch :rbenv_path}&rbenv_ruby=#{fetch(:rbenv_ruby)}'" }
+set :whenever_variables, ->{ "'environment=#{fetch :whenever_environment}}'" }
 
 # Default value for :scm is :git
 # set :scm, :git
