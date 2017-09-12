@@ -96,3 +96,13 @@ FileETag None
   ExpiresByType image/svg+xml                         "access plus 1 month"
 
 </IfModule>
+
+# ------------------------------------------------------------------------------
+# | Maintenance Mode                                                           |
+# ------------------------------------------------------------------------------
+RewriteEngine on
+ErrorDocument 503 /system/maintenance.html
+
+# Return 503 error if the maintenance page exists.
+RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
+RewriteRule !^system/maintenance.html - [L,R=503]
