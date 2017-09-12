@@ -7,9 +7,6 @@ set :repo_url, 'git@github.com:BTAA-Geospatial-Data-Project/geoportal.git'
 
 set :passenger_restart_with_touch, true
 
-set :maintenance_dirname, -> { "#{current_path}/dist" }
-set :maintenance_template_path, File.expand_path("../../public/maintenance.html.erb", __FILE__)
-
 # Default branch is :master
 # Prompt to choose a tag (or name a branch), default to last listed tag
 # unless an environment variable was passed on the command line as in:
@@ -73,7 +70,8 @@ namespace :deploy do
       # Here we can do anything such as:
       within release_path do
         execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:stage)}"
-        execute :rake, 'geoportal:generate_centroids_solr', "RAILS_ENV=#{fetch(:stage)}"
+        # No need to generate centroids - EWL
+        # execute :rake, 'geoportal:generate_centroids_solr', "RAILS_ENV=#{fetch(:stage)}"
         execute :rake, 'geoportal:generate_centroids_json', "RAILS_ENV=#{fetch(:stage)}"
       end
     end
