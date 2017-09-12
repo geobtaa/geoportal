@@ -7,9 +7,6 @@ set :repo_url, 'git@github.com:BTAA-Geospatial-Data-Project/geoportal.git'
 
 set :passenger_restart_with_touch, true
 
-set :maintenance_dirname, -> { "#{current_path}/dist" }
-set :maintenance_template_path, File.expand_path("../../public/maintenance.html.erb", __FILE__)
-
 # Default branch is :master
 # Prompt to choose a tag (or name a branch), default to last listed tag
 # unless an environment variable was passed on the command line as in:
