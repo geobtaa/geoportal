@@ -40,3 +40,6 @@ production:
   database: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_NAME'] %>
   username: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_USER'] %>
   password: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_PASSWORD'] %>
+
+vagrant:
+  <<: *production
