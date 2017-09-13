@@ -9,6 +9,11 @@ Bundler.require(*Rails.groups)
 
 module Geoblacklight
   class Application < Rails::Application
+    require 'thumbnail'
+    require 'thumbnail/persist_thumbnail'
+    require 'thumbnail/wms_thumbnail'
+    require 'thumbnail/iiif_thumbnail'
+
     config.to_prepare do
       # Load application's model / class decorators
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|

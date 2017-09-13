@@ -1,0 +1,270 @@
+// Big Ten Academic Alliance colors:
+$white:#FFFFFF; // 100%
+$gray: #CCCCCC; // 80%
+$black:#000000; // 0%
+
+$btaa-blue: #0088ce;
+
+body {
+  background-color:lighten($gray, 18%);
+}
+
+header {
+  background-color: $white;
+}
+
+div#cic-header-navbar {
+  background-color:$white;
+  margin-bottom:0;
+}
+
+div#application-header {
+  background-color:$btaa-blue;
+
+  a {
+    color:$white !important;
+    border-top:1px solid $btaa-blue;
+  }
+  a:hover{ color: $black !important;}
+
+  #header-navbar { margin-bottom:0; }
+  .navbar-brand {
+    background:none;
+    overflow:visible;
+    text-indent:0;
+  }
+  .navbar-brand:hover {
+    color: $white !important;
+  }
+
+  span.icon-bar {
+    background-color:$white;
+  }
+}
+
+div#main-container {
+  margin-top:2rem;
+  margin-bottom:4rem;
+}
+
+section#home-metadata {
+  margin-top:4rem;
+}
+
+section#map {
+  height:600px;
+}
+
+section#footer-app{
+  color:$white;
+  padding-bottom:1rem;
+  background-color: $btaa-blue;
+  a {
+    color:$white;
+  }
+}
+
+footer {
+  background-color:$gray;
+  padding-top:2rem;
+  padding-bottom:2rem;
+
+  a {
+    color: $black;
+  }
+}
+
+#university-libraries {
+  border:4px solid $white;
+}
+
+section#home-search {
+  div#search-bar {
+    background-color:rgba($black,0.8);
+    padding:2rem 2rem;
+    margin-bottom:2rem;
+  }
+
+  padding:0;
+  background:lighten($gray, 12%) asset_url('aerial_photo.jpg') repeat;
+
+  #project-tagline {
+    margin-top:0;
+    padding:1rem;
+    display:inline-block;
+    background-color:rgba($btaa-blue,0.9);
+    color:$white;
+  }
+
+  #project-text {
+    padding:1rem;
+    display:inline-block;
+    background-color:rgba(255,255,255,0.9);
+    margin-bottom:2rem;
+
+    .project-action {
+      border-top:1px solid #CCC;
+      padding-top:1rem;
+    }
+  }
+
+  img {
+    padding-bottom:2rem;
+  }
+}
+
+// Overwriting BL/GBL styles
+// Keep search form and results facets within the grid
+
+.navbar-toggle, .facets-toggle {
+  margin-right:0px;
+}
+
+#facet-panel-collapse {
+  padding-left:0;
+  padding-right:0;
+}
+
+#search-navbar {
+  background-color:lighten($gray, 10%);
+  border-bottom: 1px solid $gray;
+  .navbar-form {
+    margin-left:-15px;
+  }
+}
+
+// Lists - Horizontal w/ Bullets
+.list-horizontal {
+  padding-left:0;
+}
+
+.list-horizontal li {
+  display:inline-block;
+}
+.list-horizontal li:before {
+  content: '\00a0\2022\00a0\00a0';
+  color:$white;
+}
+
+.list-horizontal li:first-child {
+  width:auto;
+}
+
+.list-horizontal li:first-child:before {
+  content: none;
+}
+
+// Static page navigation
+.nav.nav-sidebar {
+  margin-left:0;
+}
+
+.nav.nav-sidebar>li{
+  margin-bottom: 0.5em;
+}
+
+.nav.nav-sidebar>li>a{
+  border-left:4px solid #eeeeee;
+  background-color:#eeeeee;
+}
+
+.nav.nav-sidebar>li>a.active {
+  border-left:4px solid #7a0019;
+  background-color:#dddddd;
+  font-weight: bold;
+}
+
+.nav.nav-sidebar>li>a:hover{
+  color:inherit;
+  border-left:4px solid $btaa-blue;
+  background-color:#dddddd;
+  font-weight: bold;
+}
+
+.nav.nav-sidebar>li>a.active {
+  border-left:4px solid $btaa-blue;
+}
+
+#content {
+  #map {
+    height: 504px; // 36px base
+  }
+}
+
+
+
+.leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {
+	-webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;
+	-moz-transition: -moz-transform 0.3s ease-out, opacity 0.3s ease-in;
+	-o-transition: -o-transform 0.3s ease-out, opacity 0.3s ease-in;
+	transition: transform 0.3s ease-out, opacity 0.3s ease-in;
+}
+
+.leaflet-cluster-spider-leg {
+	/* stroke-dashoffset (duration and function) should match with leaflet-marker-icon transform in order to track it exactly */
+	-webkit-transition: -webkit-stroke-dashoffset 0.3s ease-out, -webkit-stroke-opacity 0.3s ease-in;
+	-moz-transition: -moz-stroke-dashoffset 0.3s ease-out, -moz-stroke-opacity 0.3s ease-in;
+	-o-transition: -o-stroke-dashoffset 0.3s ease-out, -o-stroke-opacity 0.3s ease-in;
+	transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
+}
+
+.marker-cluster-small {
+	background-color: rgba(181, 226, 140, 0.6);
+	}
+.marker-cluster-small div {
+	background-color: rgba(110, 204, 57, 0.6);
+	}
+
+.marker-cluster-medium {
+	background-color: rgba(241, 211, 87, 0.6);
+	}
+.marker-cluster-medium div {
+	background-color: rgba(240, 194, 12, 0.6);
+	}
+
+.marker-cluster-large {
+	background-color: rgba(253, 156, 115, 0.6);
+	}
+.marker-cluster-large div {
+	background-color: rgba(241, 128, 23, 0.6);
+	}
+
+	/* IE 6-8 fallback colors */
+.leaflet-oldie .marker-cluster-small {
+	background-color: rgb(181, 226, 140);
+	}
+.leaflet-oldie .marker-cluster-small div {
+	background-color: rgb(110, 204, 57);
+	}
+
+.leaflet-oldie .marker-cluster-medium {
+	background-color: rgb(241, 211, 87);
+	}
+.leaflet-oldie .marker-cluster-medium div {
+	background-color: rgb(240, 194, 12);
+	}
+
+.leaflet-oldie .marker-cluster-large {
+	background-color: rgb(253, 156, 115);
+	}
+.leaflet-oldie .marker-cluster-large div {
+	background-color: rgb(241, 128, 23);
+}
+
+.marker-cluster {
+	background-clip: padding-box;
+	border-radius: 20px;
+	}
+.marker-cluster div {
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
+	margin-top: 5px;
+
+	text-align: center;
+	border-radius: 15px;
+	font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+	}
+.marker-cluster span {
+	line-height: 30px;
+	}

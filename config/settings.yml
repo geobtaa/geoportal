@@ -101,3 +101,9 @@ LEAFLET:
       <<: *opacity_control
     IMAGEMAPLAYER:
       <<: *opacity_control
+
+THUMBNAIL:
+  USE_DCT_REFS: true
+  SIZE: 200 # Size of thumbnail to request
+  BASE_PATH: "thumbnails" # Base path for thumbnail urls
+  FILE_BASE_PATH: "./public" # Path to parent of thumbnail images directory

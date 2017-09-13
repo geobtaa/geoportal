@@ -1,0 +1,43 @@
+.constraints-container {
+    padding-left: 0;
+    padding-right: 0;
+    border: none;
+
+    background: none;
+    box-shadow: none;
+}
+
+#documents {
+    margin-bottom: 2em;
+
+    > .document:last-child {
+        border: none;
+    }
+    .document {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.documentHeader.row {
+    padding: 1em;
+    &:hover {
+        background: #CCC;
+    }
+}
+#map-container + #content {
+    float: right;
+}
+
+.params {
+    display: inline-block;
+}
+
+.index_title {
+  white-space: normal;
+}
+
+.document-wrapper {
+  width: calc(100% - 95px);
+  display: inline-block;
+}

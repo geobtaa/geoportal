@@ -24,6 +24,9 @@ jettywrapper.log
 public/sitemap.xml*
 public/blog/feed.xml
 
+# Ignore thumbnails
+public/thumbnails
+
 # Ignore everything in solr/ except the README
 solr/*
 !solr/README-geoblacklight-solr-development.txt
