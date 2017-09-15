@@ -24,7 +24,7 @@ set :deploy_to, "/swadm/usr/local/#{fetch(:application)}"
 # Forces crontab surrounding comments to include deploy target
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}"}
 
-set :whenever_variables, ->{ "'environment=#{fetch :whenever_environment}}'" }
+set :whenever_variables, ->{ "'environment=#{fetch :whenever_environment}'" }
 
 # Default value for :scm is :git
 # set :scm, :git
