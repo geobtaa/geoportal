@@ -45,6 +45,9 @@ Rails.application.routes.draw do
     concerns :searchable
   end
 
+  get '/catalog/:id/view_image' => 'catalog#view_image', as: 'view_image_solr_document'
+
+
   concern :exportable, Blacklight::Routes::Exportable.new
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :exportable

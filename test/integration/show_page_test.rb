@@ -101,14 +101,29 @@ class ShowPageTest < Capybara::Rails::TestCase
     # ISO Metadata
     assert page.has_no_link?("Metadata")
 
-    # IIIF Image
-    assert page.has_selector?("div[data-protocol='Iiif']")
+    # IIIF/Zoomable Image
+    assert page.has_content?("View zoomable image")
+
+    # Thumbnail
+    assert page.has_selector?("div.show-thumbnail")
 
     # Download
     assert page.has_content?("Download Tiff")
 
     # Provenance
     assert page.has_content?("Minnesota")
+  end
+
+  def test_minnesota_view_image
+    visit "/catalog/7e1d9ddf-5cc6-413d-824c-0e1e43e33c8c"
+
+    # IIIF/Zoomable Image
+    assert page.has_content?("View zoomable image")
+
+    click_link "View zoomable image"
+
+    # IIIF/Zoomable Image
+    assert page.has_selector?("div#map")
   end
 
   def test_iowa_map_show

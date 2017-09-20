@@ -2,7 +2,6 @@
 require 'blacklight/catalog'
 
 class CatalogController < ApplicationController
-
   include Blacklight::Catalog
 
   configure_blacklight do |config|
@@ -33,6 +32,7 @@ class CatalogController < ApplicationController
 
     config.index.title_field = 'dc_title_s'
     config.index.document_presenter_class = Geoblacklight::DocumentPresenter
+    config.show.document_presenter_class = Geoblacklight::ShowPresenter
 
     # solr field configuration for document/show views
 
@@ -138,6 +138,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'dc_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_search: true
     config.add_show_field 'dct_temporal_sm', label: 'Year', itemprop: 'temporal'
     config.add_show_field 'dct_provenance_s', label: 'Contributed by', link_to_search: true
+    # config.add_show_field 'dct_references_s', label: 'Thumbnail', itemprop: 'image', helper_method: :thumbnail_image_url
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -226,6 +227,9 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial :exports, partial: 'exports', if: proc { |_context, _config, options| options[:document] }
     config.add_show_tools_partial :downloads, partial: 'downloads', if: proc { |_context, _config, options| options[:document] }
 
+    # Custom action
+    # config.show.document_actions << :view_image
+
     # Remove show tools
     config.show.document_actions.delete(:citation)
     config.show.document_actions.delete(:sms)
@@ -249,6 +253,10 @@ class CatalogController < ApplicationController
   # this action listed here in my catalog_controller.rb  Guessing the GBL
   # ControllerOverride isn't working?
   def web_services
+    @response, @document = fetch params[:id]
+  end
+
+  def view_image
     @response, @document = fetch params[:id]
   end
 
