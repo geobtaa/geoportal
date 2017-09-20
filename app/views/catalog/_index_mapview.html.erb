@@ -1,0 +1,27 @@
+<% # header bar for doc items in index view -%>
+<%= content_tag :div, class: 'documentHeader row', data: { layer_id: document.id, bbox: document.bounding_box_as_wsen } do %>
+    <div class='more-info-area'>
+      <div class='status-icons'>
+        <%= render partial: 'header_icons', locals: { document: document } %>
+      </div>
+      <div class="thumbnail">
+        <%= gbl_thumbnail_img(document) %>
+      </div>
+    </div>
+  <div class="document-wrapper">
+    <h3 class="index_title col-sm-9s cosl-lg-10 text-span">
+      <% counter = document_counter_with_offset(document_counter) %>
+      <span class="document-counter">
+        <%= t('blacklight.search.documents.counter', :counter => counter) if counter %>
+      </span>
+      <%= link_to_document document, document_show_link_field(document), counter: counter, title: document[blacklight_config.index.title_field] %>
+    </h3>
+    <div class='col-xs-12'>
+      <div>
+        <small>
+          <%= geoblacklight_present(:index_fields_display, document) %>
+        </small>
+      </div>
+    </div>
+  </div>
+<% end %>
