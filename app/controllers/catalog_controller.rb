@@ -231,6 +231,7 @@ class CatalogController < ApplicationController
     # config.show.document_actions << :view_image
 
     # Remove show tools
+    config.show.partials.delete(:show_header)
     config.show.document_actions.delete(:citation)
     config.show.document_actions.delete(:sms)
 
