@@ -22,6 +22,8 @@
 //= require Leaflet/leaflet.fullscreen/Control.FullScreen.js
 //= require Leaflet/leaflet.prunecluster/PruneCluster.js
 //= require oboe/oboe-browser.js
+//= require modules/aload
+//= require modules/thumbnail
 
 //= require_tree .
 
