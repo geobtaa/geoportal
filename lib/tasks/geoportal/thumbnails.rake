@@ -38,6 +38,11 @@ namespace :geoportal do
         num_found = results.response[:numFound]
         doc_counter = 0
         results.docs.each do |document|
+
+          # Be polite and crawl slowly
+          puts ".."
+          sleep 2
+
           doc_counter += 1
           puts "#{document[:layer_slug_s]} (#{doc_counter}/#{num_found})"
           begin
