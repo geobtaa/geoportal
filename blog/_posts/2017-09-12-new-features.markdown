@@ -20,4 +20,4 @@ The map on the homepage now displays a center point for each record in the geopo
 ## Autocomplete for the Search box
 When typing text into the Search box, the geoportal will dynamically show matching keywords. For example, typing _bi_ into the Search box returns a dropdown list of terms containing that string, such as _biota_, _biology_, and _biogeography_.
 
-![autocomplete](https://user-images.githubusercontent.com/2367677/30349380-6faef970-97d8-11e7-8675-458fd8c91ffe.png)
+![biota](https://user-images.githubusercontent.com/2367677/31180633-bb94a3f4-a8e4-11e7-87f8-65e302cbee99.png)
