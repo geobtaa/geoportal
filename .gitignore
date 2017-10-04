@@ -23,6 +23,7 @@ jettywrapper.log
 # Sitemap is generated periodically
 public/sitemap.xml*
 public/blog/feed.xml
+public/thumbnails/*
 
 # Ignore everything in solr/ except the README
 solr/*
