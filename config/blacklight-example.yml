@@ -19,4 +19,3 @@ test: &test
 production:
   adapter: solr
   url: http://127.0.0.1:8983/solr/blacklightcore
-
