@@ -16,6 +16,8 @@
 // Required by Blacklight
 //= require blacklight/blacklight
 
+//= require bootstrap/affix
+
 // Required by GeoBlacklight
 //= require geoblacklight/geoblacklight
 //= require geoblacklight/viewers/viewer

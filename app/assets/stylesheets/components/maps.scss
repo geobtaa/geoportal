@@ -1,0 +1,10 @@
+#map-wrapper.affix {
+  position:fixed !important;
+  top: 0;
+  width:850px;
+  z-index:10000;
+}
+
+#map-wrapper.affix + #documents {
+  margin-top: 520px;
+}
