@@ -44,7 +44,7 @@ set :pty, true
 set :linked_files, []
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'public/system')
 
 # tmp directory is user-specific
 set :tmp_dir, "/tmp/#{fetch(:deploy_user)}"
@@ -70,7 +70,8 @@ namespace :deploy do
       # Here we can do anything such as:
       within release_path do
         execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:stage)}"
-        execute :rake, 'geoportal:generate_centroids_solr', "RAILS_ENV=#{fetch(:stage)}"
+        # No need to generate centroids - EWL
+        # execute :rake, 'geoportal:generate_centroids_solr', "RAILS_ENV=#{fetch(:stage)}"
         execute :rake, 'geoportal:generate_centroids_json', "RAILS_ENV=#{fetch(:stage)}"
       end
     end

@@ -56,6 +56,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
   gem 'capistrano-passenger'
+  gem 'capistrano-maintenance'
 end
 
 gem 'geoblacklight', '~> 1.6.0'
