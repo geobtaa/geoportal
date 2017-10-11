@@ -4,7 +4,7 @@ class ShowPageTest < Capybara::Rails::TestCase
 
   def setup
     # Remote testing the show page features
-    Capybara.app_host = 'https://geodev.btaa.org'
+    Capybara.app_host = 'http://localhost:3000/'
   end
 
   def test_purdue_shapefile_show
@@ -165,5 +165,16 @@ class ShowPageTest < Capybara::Rails::TestCase
 
     # Data Relations
     assert page.has_no_content?("Data Relations")
+  end
+
+  def test_ftp_metadata
+    visit "/catalog/7c265045-bd32-4392-95c9-616e4d760298"
+    assert page.has_content?("Centroid Points for Minnesota Historical Aerial Photographs ")
+
+    click_link 'Metadata'
+
+    within('#ajax-modal') do
+      assert page.has_no_content?("NoMethodError")
+    end
   end
 end
