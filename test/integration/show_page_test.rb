@@ -177,4 +177,16 @@ class ShowPageTest < Capybara::Rails::TestCase
       assert page.has_no_content?("NoMethodError")
     end
   end
+
+  def test_https_metadata
+    visit "/catalog/1b62c810-5264-49de-bd30-85a67fe87ef2"
+    assert page.has_content?("108th Congressional Districts for the Delaware River Basin ")
+
+    click_link 'Metadata'
+
+    within('#ajax-modal') do
+      assert page.has_no_content?("NoMethodError")
+    end
+  end
+
 end
