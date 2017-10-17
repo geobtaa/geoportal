@@ -77,6 +77,7 @@ module Geoblacklight
         return response_string unless response_string.nil?
         Geoblacklight.logger.error "Could not reach FTP #{@reference.endpoint}"
         ''
+        # @TODO: Fix rescues for common Net/FTP issues
       rescue Faraday::Error::ConnectionFailed => error
         Geoblacklight.logger.error error.inspect
         ''
@@ -101,7 +102,7 @@ module Geoblacklight
         case URI.parse(@reference.endpoint).scheme
         when "ftp"
           response_body = retrieve_ftp_metadata
-        when "http"
+        when "http", "https"
           response_body = retrieve_http_metadata
         else
           raise Geoblacklight::MetadataTransformer::EmptyMetadataError
