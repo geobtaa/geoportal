@@ -26,7 +26,7 @@ set :rbenv_path, "/swadm/usr/local/rbenv"
 set :rbenv_ruby, File.read('.ruby-version').strip
 
 # Forces crontab surrounding comments to include deploy target
-set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}"}
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:rails_env)}"}
 
 # To get the rbenv custom path into Whenever, it has to be passed as a command line arg
 # so that means overriding the CLI variables it receives. This avoids having to hard-code
@@ -75,10 +75,10 @@ namespace :deploy do
     on roles(:app) do
       # Here we can do anything such as:
       within release_path do
-        execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:stage)}"
+        execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:rails_env)}"
         # No need to generate centroids - EWL
-        # execute :rake, 'geoportal:generate_centroids_solr', "RAILS_ENV=#{fetch(:stage)}"
-        execute :rake, 'geoportal:generate_centroids_json', "RAILS_ENV=#{fetch(:stage)}"
+        # execute :rake, 'geoportal:generate_centroids_solr', "RAILS_ENV=#{fetch(:rails_env)}"
+        execute :rake, 'geoportal:generate_centroids_json', "RAILS_ENV=#{fetch(:rails_env)}"
       end
     end
   end
