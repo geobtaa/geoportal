@@ -88,9 +88,6 @@ GEM
     capistrano-rails (1.3.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-rbenv (2.1.1)
-      capistrano (~> 3.1)
-      sshkit (~> 1.3)
     capistrano-template (0.0.9)
       capistrano (~> 3.0)
     capybara (2.14.4)
@@ -408,7 +405,6 @@ DEPENDENCIES
   capistrano-maintenance
   capistrano-passenger
   capistrano-rails
-  capistrano-rbenv
   capistrano-template
   capybara-selenium
   chromedriver-helper
@@ -444,4 +440,4 @@ DEPENDENCIES
   whenever (~> 0.9.0)
 
 BUNDLED WITH
-   1.13.1
+   1.14.4
