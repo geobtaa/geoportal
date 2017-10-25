@@ -19,7 +19,7 @@ end
 set :deploy_user, 'swadm'
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/swadm/usr/local/#{fetch(:application)}"
+set :deploy_to, "/swadm/var/www/#{fetch(:application)}"
 
 # Forces crontab surrounding comments to include deploy target
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}"}
@@ -69,10 +69,10 @@ namespace :deploy do
     on roles(:app) do
       # Here we can do anything such as:
       within release_path do
-        execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:stage)}"
+        execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:rails_env)}"
         # No need to generate centroids - EWL
-        # execute :rake, 'geoportal:generate_centroids_solr', "RAILS_ENV=#{fetch(:stage)}"
-        execute :rake, 'geoportal:generate_centroids_json', "RAILS_ENV=#{fetch(:stage)}"
+        # execute :rake, 'geoportal:generate_centroids_solr', "RAILS_ENV=#{fetch(:rails_env)}"
+        execute :rake, 'geoportal:generate_centroids_json', "RAILS_ENV=#{fetch(:rails_env)}"
       end
     end
   end
