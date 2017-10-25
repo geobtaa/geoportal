@@ -19,7 +19,7 @@ end
 set :deploy_user, 'swadm'
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/swadm/usr/local/#{fetch(:application)}"
+set :deploy_to, "/swadm/var/www/#{fetch(:application)}"
 
 # Forces crontab surrounding comments to include deploy target
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:rails_env)}"}
