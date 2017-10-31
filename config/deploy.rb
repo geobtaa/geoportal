@@ -19,19 +19,12 @@ end
 set :deploy_user, 'swadm'
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/swadm/usr/local/#{fetch(:application)}"
-
-set :rbenv_path, "/swadm/usr/local/rbenv"
-# Set by `rbenv local <version>`
-set :rbenv_ruby, File.read('.ruby-version').strip
+set :deploy_to, "/swadm/var/www/#{fetch(:application)}"
 
 # Forces crontab surrounding comments to include deploy target
-set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}"}
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:rails_env)}"}
 
-# To get the rbenv custom path into Whenever, it has to be passed as a command line arg
-# so that means overriding the CLI variables it receives. This avoids having to hard-code
-# the path to anyenv & rbenv
-set :whenever_variables, ->{ "'environment=#{fetch :whenever_environment}&rbenv_path=#{fetch :rbenv_path}&rbenv_ruby=#{fetch(:rbenv_ruby)}'" }
+set :whenever_variables, ->{ "'environment=#{fetch :whenever_environment}'" }
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -47,7 +40,8 @@ set :whenever_variables, ->{ "'environment=#{fetch :whenever_environment}&rbenv_
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, fetch(:linked_files, []).push('config/blacklight.yml', 'config/database.yml', 'config/solr.yml', 'config/secrets.yml')
+#set :linked_files, fetch(:linked_files, []).push('config/blacklight.yml', 'config/database.yml', 'config/solr.yml', 'config/secrets.yml')
+set :linked_files, []
 
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'public/system')
@@ -75,10 +69,10 @@ namespace :deploy do
     on roles(:app) do
       # Here we can do anything such as:
       within release_path do
-        execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:stage)}"
+        execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:rails_env)}"
         # No need to generate centroids - EWL
-        # execute :rake, 'geoportal:generate_centroids_solr', "RAILS_ENV=#{fetch(:stage)}"
-        execute :rake, 'geoportal:generate_centroids_json', "RAILS_ENV=#{fetch(:stage)}"
+        # execute :rake, 'geoportal:generate_centroids_solr', "RAILS_ENV=#{fetch(:rails_env)}"
+        execute :rake, 'geoportal:generate_centroids_json', "RAILS_ENV=#{fetch(:rails_env)}"
       end
     end
   end

@@ -54,7 +54,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-template'
   gem 'capistrano-bundler'
-  gem 'capistrano-rbenv'
   gem 'capistrano-passenger'
   gem 'capistrano-maintenance'
 end

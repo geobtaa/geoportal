@@ -10,7 +10,7 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
-/config/database.yml
+#/config/database.yml
 /config/solr.yml
 
 # Ignore all logfiles and tempfiles.
@@ -23,6 +23,7 @@ jettywrapper.log
 # Sitemap is generated periodically
 public/sitemap.xml*
 public/blog/feed.xml
+public/thumbnails/*
 
 # Ignore thumbnails
 public/thumbnails
@@ -39,5 +40,3 @@ doc/
 doc/
 
 public/centroids.json
-
-config/blacklight.yml
