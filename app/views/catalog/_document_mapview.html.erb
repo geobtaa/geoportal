@@ -1,6 +1,4 @@
-<div id="map-wrapper" data-spy='affix' data-offset-top='385'>
-  <%= content_tag :div, '', id: 'map', data: {map: 'index', 'catalog-path'=> search_catalog_path , 'map-bbox' => params[:bbox], basemap: geoblacklight_basemap, leaflet_options: leaflet_options } %>
-</div>
-<div id="documents" class="docView col-md-12">
+<div id="documents" class="docView col-md-6">
   <%= render documents, :as => :document %>
 </div>
+<%= content_tag :div, '', id: 'map', data: { map: 'index', 'catalog-path'=> search_catalog_path , 'map-bbox' => params[:bbox], basemap: geoblacklight_basemap, leaflet_options: leaflet_options } %>
