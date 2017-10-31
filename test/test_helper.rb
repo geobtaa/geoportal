@@ -25,5 +25,6 @@ Capybara.register_driver :headless_chrome do |app|
 end
 
 Capybara.app_host = ENV['REMOTE_URL'] if ENV['REMOTE_URL']
+Capybara.default_max_wait_time = 120
 Capybara.javascript_driver = :chrome
 Capybara.default_driver = :chrome

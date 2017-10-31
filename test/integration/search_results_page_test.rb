@@ -12,7 +12,7 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
 
   def test_map_clustering
     visit '/?q=water'
-    assert page.has_selector?("div.prunecluster.leaflet-marker-icon")
+    assert page.has_selector?("div.prunecluster.leaflet-marker-icon", :wait => 10)
   end
 
   def test_empty_search
