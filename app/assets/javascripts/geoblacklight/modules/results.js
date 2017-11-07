@@ -55,7 +55,9 @@ Blacklight.onLoad(function() {
     var pruneCluster = new PruneClusterForLeaflet();
 
     // Oboe - Re-query Solr for JSON results
-    oboe(window.location.href + '&format=json&per_page=1000&rows=10000')
+    var urlStr = window.location.href + '&format=json&per_page=1000&rows=10000';
+    var urlStr = urlStr.replace(/page=[0-9]/,'');
+    oboe(urlStr)
       .node('response.docs.*', function( doc ){
           if(typeof doc.centroid_s != 'undefined'){
             var latlng = doc.centroid_s.split(",")

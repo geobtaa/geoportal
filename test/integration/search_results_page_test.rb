@@ -11,7 +11,12 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
   end
 
   def test_map_clustering
-    visit '/?q=water'
+    visit '/?q=water&search_field=all_fields&view=mapview'
+    assert page.has_selector?("div.prunecluster.leaflet-marker-icon", :wait => 10)
+  end
+
+  def test_map_clustering_result_paging
+    visit '/?page=2&q=water&search_field=all_fields&view=mapview'
     assert page.has_selector?("div.prunecluster.leaflet-marker-icon", :wait => 10)
   end
 
