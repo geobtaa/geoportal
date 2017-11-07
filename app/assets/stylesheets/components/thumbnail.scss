@@ -52,7 +52,12 @@
 
 [data-aload] { background-image: none !important; }
 
-.more-info-area {
-  width: 90px;
+.more-info-area-split {
   float: right;
+  width: 90px;
+}
+
+.more-info-area-mapview {
+  float: right;
+  width: inherit;
 }

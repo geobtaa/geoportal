@@ -1,6 +1,6 @@
 <% # header bar for doc items in index view -%>
 <%= content_tag :div, class: 'documentHeader row', data: { layer_id: document.id, bbox: document.bounding_box_as_wsen } do %>
-    <div class='more-info-area'>
+    <div class='more-info-area-split'>
       <div class='status-icons'>
         <%= render partial: 'header_icons', locals: { document: document } %>
       </div>
