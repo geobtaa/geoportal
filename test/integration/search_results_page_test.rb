@@ -44,4 +44,19 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
     visit '/?f%5Btime_period%5D%5B%5D=1600s&per_page=10&q=asia&search_field=all_fields'
     assert page.assert_selector('div.document', :count => 10)
   end
+
+  def test_thumbnails_docview
+    visit '/?q=minnesota&search_field=all_fields&view=split'
+    assert page.has_selector?("img.item-thumbnail")
+  end
+
+  def test_thumbnails_mapview
+    visit '/?q=minnesota&search_field=all_fields&view=mapview'
+    assert page.has_no_selector?("img.item-thumbnail")
+  end
+
+  def test_thumbnails_solr_field
+    visit '/?search_field=all_fields&q=87adb12a-30b5-4bc3-866c-97adcd7e3d2e'
+    assert page.has_selector?("img.item-thumbnail")
+  end
 end

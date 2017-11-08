@@ -9,13 +9,21 @@ class Thumbnail
   # Return nil if both of those fail, so the thumbnail is not displayed.
   # @return [String, nil] thumbnail url
   def url
-    if Settings.THUMBNAIL.USE_DCT_REFS
+    if thumbnail_solr_field?
+      thumbnail_solr_field
+    elsif Settings.THUMBNAIL.USE_DCT_REFS
       thumbnail_reference || generated_thumbnail
     elsif restricted_scanned_map?
       thumbnail_reference
     else
       generated_thumbnail
     end
+  end
+
+  # Checks if the document has a thumbnail explicitly stored
+  # @return [Boolean]
+  def thumbnail_solr_field?
+    @document[Settings.THUMBNAIL.SOLR_FIELD].present?
   end
 
   # Checks if the document is has restriced access and is a scanned map
@@ -100,6 +108,13 @@ class Thumbnail
   # @return [String, nil] thumbnail url from dct_references
   def thumbnail_reference
     JSON.parse(@document[@document.references.reference_field])['http://schema.org/thumbnailUrl']
+  end
+
+  ##
+  # Retreives thumbnail url from SOLR_FIELD if it exists.
+  # @return [String, nil] thumbnail url from SOLR_FIELD
+  def thumbnail_solr_field
+    @document[Settings.THUMBNAIL.SOLR_FIELD]
   end
 
   ##

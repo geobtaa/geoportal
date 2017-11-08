@@ -107,3 +107,4 @@ THUMBNAIL:
   SIZE: 200 # Size of thumbnail to request
   BASE_PATH: "thumbnails" # Base path for thumbnail urls
   FILE_BASE_PATH: "./public" # Path to parent of thumbnail images directory
+  SOLR_FIELD: "thumbnail_path_ss"
