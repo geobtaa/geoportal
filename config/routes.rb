@@ -11,6 +11,15 @@ Rails.application.routes.draw do
 
   get '/blog', :to => redirect('/blog/index.html')
 
+  mount Blacklight::Engine => '/'
+
+  root to: "catalog#index"
+  concern :searchable, Blacklight::Routes::Searchable.new
+
+  resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
+    concerns :searchable
+  end
+
   devise_for :users
 
   resources :suggest, only: :index, defaults: { format: 'json' }
@@ -36,14 +45,6 @@ Rails.application.routes.draw do
   resources :download, only: [:show]
 
   mount Geoblacklight::Engine => 'geoblacklight'
-  mount Blacklight::Engine => '/'
-
-  root to: "catalog#index"
-  concern :searchable, Blacklight::Routes::Searchable.new
-
-  resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
-    concerns :searchable
-  end
 
   concern :exportable, Blacklight::Routes::Exportable.new
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
