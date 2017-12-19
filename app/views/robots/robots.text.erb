@@ -4,6 +4,11 @@
 Sitemap: <%= "#{root_url}sitemap.xml.gz" %>
 <%- end -%>
 
+<%- if Socket.gethostname == "lib-geobl-qat.oit.umn.edu" -%>
+User-agent: *
+Disallow: /
+<%- else -%>
 User-agent: *
 Disallow: /?q=
 Disallow: /?f
+<%- end -%>

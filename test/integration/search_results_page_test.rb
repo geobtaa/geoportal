@@ -3,8 +3,6 @@ require "test_helper"
 class SearchResultsPageTest < Capybara::Rails::TestCase
 
   def setup
-    # Remote testing the show page features
-    Capybara.app_host = 'https://geodev.btaa.org'
   end
 
   def test_search
@@ -14,7 +12,7 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
 
   def test_map_clustering
     visit '/?q=water'
-    assert page.has_selector?("div.prunecluster.leaflet-marker-icon")
+    assert page.has_selector?("div.prunecluster.leaflet-marker-icon", :wait => 10)
   end
 
   def test_empty_search
@@ -38,7 +36,7 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
   end
 
   def test_getBounds
-    visit '/?f%5Btime_period%5D%5B%5D=1600s&per_page=10&q=asia&search_field=all_fields'
+    visit '/?f%5Btime_period%5D%5B%5D=1600s&per_page=10&q=minnesota&search_field=all_fields'
     assert page.assert_selector('div.document', :count => 10)
   end
 end
