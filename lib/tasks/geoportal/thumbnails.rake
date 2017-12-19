@@ -62,5 +62,42 @@ namespace :geoportal do
         end
       end
     end
+
+    desc 'Pre-cache all thumbnails for everyone'
+    task :precache_everyone => [:environment] do |t|
+      begin
+        layers = 'layer_slug_s, layer_id_s, dc_rights_s, dct_provenance_s dct_references_s'
+        index = Geoblacklight::SolrDocument.index
+        results = index.send_and_receive(index.blacklight_config.solr_path,
+                                         { q: "*:*",
+                                           fl: layers,
+                                           rows: 100000000 })
+        num_found = results.response[:numFound]
+        doc_counter = 0
+        results.docs.each do |document|
+
+          # Be polite and crawl slowly
+          puts ".."
+          sleep 2
+
+          doc_counter += 1
+          puts "#{document[:layer_slug_s]} (#{doc_counter}/#{num_found})"
+          begin
+            next unless document.available?
+            thumbnail = Thumbnail.new(document)
+            unless (thumbnail.file_exists? || thumbnail.service_url.nil?)
+              PersistThumbnail.new({
+                url: thumbnail.service_url,
+                file_path: thumbnail.file_path_and_name,
+                content_type: 'image/jpeg',
+                timeout: 3000
+              }).create_file
+            end
+          rescue Blacklight::Exceptions::RecordNotFound
+            next
+          end
+        end
+      end
+    end
   end
 end
