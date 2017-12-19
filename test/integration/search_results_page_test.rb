@@ -36,7 +36,7 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
   end
 
   def test_getBounds
-    visit '/?f%5Btime_period%5D%5B%5D=1600s&per_page=10&q=asia&search_field=all_fields'
+    visit '/?f%5Btime_period%5D%5B%5D=1600s&per_page=10&q=minnesota&search_field=all_fields'
     assert page.assert_selector('div.document', :count => 10)
   end
 end
