@@ -14,8 +14,23 @@ module Geoblacklight
       viewer_preference.values.first.to_s
     end
 
+    # PENN STATE
+    # Ex. /catalog/d943e4bf-efbc-479d-83f6-78dbac2a981f
     # CDM big image
     def cdm_big_image
+      if @references.download.present?
+        if @references.download.reference[1].include?("getdownloaditem")
+          return @references.download
+        end
+      end
+      return nil
+    end
+
+    def iu_fedora_big_image
+      # Test institution - "Indiana"
+      # Test dc_format_s - "JPEG" (mostly should be image-ish)
+      # Render SCREEN datastream
+      # http://fedora.dlib.indiana.edu:8080/fedora/objects/iudl%3A1074633/datastreams/SCREEN/content
       if @references.download.present?
         if @references.download.reference[1].include?("getdownloaditem")
           return @references.download
