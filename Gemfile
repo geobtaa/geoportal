@@ -58,7 +58,7 @@ group :development do
   gem 'capistrano-maintenance'
 end
 
-gem 'geoblacklight', '~> 1.6.0'
+gem 'geoblacklight', '~> 1.7.0'
 gem 'geoblacklight-icons', '~> 1.2.0'
 #gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', branch: 'master'
 gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'master'
