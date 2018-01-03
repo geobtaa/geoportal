@@ -92,7 +92,8 @@ class CatalogController < ApplicationController
     config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8
     config.add_facet_field 'dc_format_s', :label => 'Format', :limit => 8
     config.add_facet_field 'dct_provenance_s', label: 'Institution', limit: 8
-    config.add_facet_field 'dc_rights_s', label: 'Access', limit: 8, partial: "icon_facet"
+    # Remove access facet until data is available - EWL
+    # config.add_facet_field 'dc_rights_s', label: 'Access', limit: 8, partial: "icon_facet"
     config.add_facet_field 'dct_isPartOf_sm', :label => 'Collection', limit: 8
 
     # Have BL send all facet field names to Solr, which has been the default
@@ -241,32 +242,6 @@ class CatalogController < ApplicationController
     # Configuration for autocomplete suggestor
     config.autocomplete_enabled = true
     config.autocomplete_path = 'suggest'
-  end
-
-  # Bug Fix? -- Web services action cannot find 'document' without
-  # this action listed here in my catalog_controller.rb  Guessing the GBL
-  # ControllerOverride isn't working?
-  def web_services
-    @response, @document = fetch params[:id]
-  end
-
-  # Bug Fix -- @facet can sometimes be nil
-  # displays values and pagination links for a single facet field
-  def facet
-    @facet = blacklight_config.facet_fields[params[:id]]
-
-    return not_found if @facet.nil?
-
-    @response = get_facet_field_response(@facet.key, params)
-    @display_facet = @response.aggregations[@facet.key]
-    @pagination = facet_paginator(@facet, @display_facet)
-    respond_to do |format|
-      # Draw the facet selector for users who have javascript disabled:
-      format.html
-      format.json
-      # Draw the partial for the "more" facet modal window:
-      format.js { render :layout => false }
-    end
   end
 
 end
