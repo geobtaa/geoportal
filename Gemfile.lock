@@ -438,6 +438,7 @@ DEPENDENCIES
   capistrano-passenger
   capistrano-rails
   capistrano-template
+  capybara
   capybara-selenium
   chromedriver-helper
   coffee-rails (~> 4.2)
