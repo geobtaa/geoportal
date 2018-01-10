@@ -47,34 +47,6 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_content?("Wisconsin")
   end
 
-  def test_minnesota_shapefile_show
-    visit "/catalog/5a60ef842b9e4da5a55c0dec30c4ad8d_1"
-    assert page.has_content?("Polling Places: Carver County, Minnesota")
-
-    # Type
-    click_link 'Web services'
-
-    # WMS Web Service
-    # assert page.has_no_content?("Web Mapping Service (WMS)")
-    # assert page.has_no_selector?("#wms_webservice")
-
-    # Esri Web Service
-    assert page.has_content?("ArcGIS Dynamic Map Layer")
-    assert page.has_selector?("#dynamic_map_layer_webservice")
-
-    # ISO Metadata
-    assert page.has_no_link?("Metadata")
-
-    # IIIF Image
-    assert page.has_no_content?("iiif")
-
-    # Download
-    assert page.has_content?("Download Shapefile")
-
-    # Provenance
-    assert page.has_content?("Minnesota")
-  end
-
   def test_minnesota_tiff_show
     visit "/catalog/71f15b25-64cd-40cc-8f0c-64529293398c"
     assert page.has_content?("Railroad commissioners' map of Minnesota")
@@ -98,6 +70,34 @@ class ShowPageTest < Capybara::Rails::TestCase
 
     # Download
     assert page.has_content?("Download Tiff")
+
+    # Provenance
+    assert page.has_content?("Minnesota")
+  end
+
+  def test_minnesota_shapefile_show
+    visit "/catalog/b98a7b39-830a-48ca-84c2-06332aaebbb8"
+    assert page.has_content?("Twin Cities Land Use Map from the Twin Cities Metropolitan Planning Commission, 1958")
+
+    # Type
+    click_link 'Web services'
+
+    # WMS Web Service
+    assert page.has_no_content?("Web Mapping Service (WMS)")
+    assert page.has_no_selector?("#wms_webservice")
+
+    # Esri Web Service
+    assert page.has_content?("ArcGIS Dynamic Map Layer")
+    assert page.has_selector?("#dynamic_map_layer_webservice")
+
+    # ISO Metadata
+    assert page.has_link?("Metadata")
+
+    # IIIF Image
+    assert page.has_no_selector?("div[data-protocol='Iiif']")
+
+    # Download
+    assert page.has_content?("Download Shapefile")
 
     # Provenance
     assert page.has_content?("Minnesota")
@@ -131,9 +131,68 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_content?("Iowa")
   end
 
+  def test_maryland_esri_slow_show
+    visit "/catalog/7333122beb68414e9e7744f2dd986578_0"
+    assert page.has_content?("Housing Market Typology: Baltimore, Maryland")
+
+    # Type
+    click_link 'Web services'
+
+    # WMS Web Service
+    assert page.has_no_content?("Web Mapping Service (WMS)")
+    assert page.has_no_selector?("#wms_webservice")
+
+    # Esri Feature Layer
+    assert page.has_content?("ArcGIS Feature Layer")
+    assert page.has_selector?("#feature_layer_webservice")
+
+    # ISO Metadata
+    assert page.has_no_link?("Metadata")
+
+    # IIIF Image
+    assert page.has_no_content?("iiif")
+
+    # Download
+    assert page.has_content?("Download Shapefile")
+
+    # Provenance
+    assert page.has_content?("Maryland")
+  end
+
+  def test_iowa_esri_imageserver_show
+    visit "/catalog/e1e49389-801d-4bce-b400-4e20b08aec94"
+    assert page.has_content?("Aerial Imagery: Iowa")
+
+    # Type
+    click_link 'Web services'
+
+    # WMS Web Service
+    assert page.has_no_content?("Web Mapping Service (WMS)")
+    assert page.has_no_selector?("#wms_webservice")
+
+    # Esri Image Map Layer
+    assert page.has_content?("ArcGIS Image Map Layer")
+    assert page.has_selector?("#image_map_layer_webservice")
+
+    # ISO Metadata
+    assert page.has_no_link?("Metadata")
+
+    # IIIF Image
+    assert page.has_no_content?("iiif")
+
+    # Download
+    assert page.has_no_content?("Download Shapefile")
+
+    # Provenance
+    assert page.has_content?("Iowa")
+  end
+
   def test_relations_parent_record
     visit "/catalog/88cc9b19-3294-4da9-9edd-775c81fb1c59"
     assert page.has_content?("Wabash Topo (Parent Record): Indiana, 1929")
+
+    # ISO Metadata
+    assert page.has_link?("Metadata")
 
     # Data Relations
     assert page.has_content?("Data Relations")
@@ -144,18 +203,14 @@ class ShowPageTest < Capybara::Rails::TestCase
     visit "/catalog/02999877-0ee9-4cc0-b67f-f2f48107f517"
     assert page.has_content?("Wabash Topo (14): Indiana, 1929")
 
+    # ISO Metadata
+    assert page.has_link?("Metadata")
+
+    # Download
+    assert page.has_content?("Download Raster Dataset")
+
     # Data Relations
     assert page.has_content?("Data Relations")
     assert page.has_content?("Source Datasets")
-  end
-
-  # Record no longer available?
-  def test_relations_none
-    skip
-    visit "/catalog/1a09f168-4c06-42e1-b91c-f3d4d03ad829"
-    assert page.has_content?("10 Ft Contours: Carver County, Minnesota, 2014")
-
-    # Data Relations
-    assert page.has_no_content?("Data Relations")
   end
 end
