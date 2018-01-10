@@ -5,9 +5,9 @@ class ShowPageTest < Capybara::Rails::TestCase
   def setup
   end
 
-  def test_purdue_shapefile_show
-    visit "/catalog/24bde658-53ff-41a7-9c62-15c5204a497c"
-    assert page.has_content?("Bedrock Geology: Indiana, 2010")
+  def test_indiana_shapefile_show
+    visit "/catalog/4a9b467d-a344-4557-9f14-db166636d4b2"
+    assert page.has_content?("Bicycle and Pedestrian Trails and Paths: Bloomington, Indiana, 2016")
 
     # Type
     click_link 'Web services'
@@ -17,20 +17,14 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_selector?("#wms_webservice")
 
     # Esri Web Service
-    assert page.has_content?("ArcGIS Dynamic Map Layer")
-    assert page.has_selector?("#dynamic_map_layer_webservice")
-
-    # ISO Metadata
-    assert page.has_link?("Metadata")
-
-    # IIIF Image
-    assert page.has_no_content?("iiif")
+    assert page.has_no_content?("ArcGIS Dynamic Map Layer")
+    assert page.has_no_selector?("#dynamic_map_layer_webservice")
 
     # Download
     assert page.has_content?("Download Shapefile")
 
     # Provenance
-    assert page.has_content?("Purdue")
+    assert page.has_content?("Indiana")
   end
 
   def test_wisconsin_geodatabase_show
@@ -82,8 +76,8 @@ class ShowPageTest < Capybara::Rails::TestCase
   end
 
   def test_minnesota_tiff_show
-    visit "/catalog/7e1d9ddf-5cc6-413d-824c-0e1e43e33c8c"
-    assert page.has_content?("Burritt's sectional and township map of Minnesota")
+    visit "/catalog/71f15b25-64cd-40cc-8f0c-64529293398c"
+    assert page.has_content?("Railroad commissioners' map of Minnesota")
 
     # Type
     assert page.has_no_link?("Web services")
