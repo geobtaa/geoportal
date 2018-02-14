@@ -18,6 +18,7 @@
 //= require blacklight/blacklight
 
 // Required by GeoBlacklight
+//= require handlebars.runtime
 //= require geoblacklight/geoblacklight
 //= require geoblacklight/viewers/viewer
 //= require Leaflet/leaflet.fullscreen/Control.FullScreen.js
