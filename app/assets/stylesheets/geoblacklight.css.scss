@@ -1,5 +1,6 @@
 @import 'geoblacklight/application';
 @import 'geoblacklight-icons-rails';
+
 @import 'leaflet.fullscreen/Control.FullScreen';
 @import 'leaflet.prunecluster/PruneCluster';
 
@@ -86,3 +87,22 @@
 .marker-cluster span {
 	line-height: 30px;
 	}
+
+// @TODO: GeoBlacklight Icons - Add vector support
+.geoblacklight-vector:before {
+  display: inline-block;
+  font-family: "geoblacklight-icons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.geoblacklight-vector:before { content: "\f131"; }
+$font-geoblacklight-icons-vector: "\f131";
