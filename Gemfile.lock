@@ -453,6 +453,7 @@ DEPENDENCIES
   guard
   guard-minitest
   haml
+  handlebars_assets (~> 0.23.0)
   high_voltage (~> 3.0.0)
   jbuilder (~> 2.5)
   jekyll
