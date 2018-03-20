@@ -3,9 +3,11 @@
 ##
 # Metadata for indexed documents
 class SolrDocumentSidecar < ApplicationRecord
+  include Statesman::Adapters::ActiveRecordQueries
   mount_uploader :image, ImageUploader
 
   belongs_to :document, required: true, polymorphic: true
+  has_many :image_upload_transitions, autosave: false
 
   # Roll our own polymorphism because our documents are not AREL-able
   def document
@@ -15,4 +17,18 @@ class SolrDocumentSidecar < ApplicationRecord
   def document_type
     (super.constantize if defined?(super)) || default_document_type
   end
+
+  def state_machine
+    @state_machine ||= ImageUploadStateMachine.new(self, transition_class: ImageUploadTransition)
+  end
+
+  def self.transition_class
+    ImageUploadTransition
+  end
+
+  def self.initial_state
+    :initialized
+  end
+
+  private_class_method :initial_state
 end

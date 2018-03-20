@@ -5,6 +5,8 @@ require 'rack/mime'
 class ImageService
   def initialize(document)
     @document = document
+    @document.sidecar.state_machine.transition_to!(:processing)
+    @metadata = Hash.new
     @logger ||= ActiveSupport::TaggedLogging.new(
       Logger.new(
         File.join(
@@ -23,11 +25,19 @@ class ImageService
     sidecar = @document.sidecar
     sidecar.image = image_tempfile(@document.id)
     sidecar.save!
-    @logger.tagged(@document.id, 'STATUS') { @logger.info 'SUCCESS' }
-    @logger.tagged(@document.id, 'SIDECAR_IMAGE_URL') { @logger.info @document.sidecar.image_url }
+    @metadata['sidecar_image_url'] = @document.sidecar.image_url
+    @document.sidecar.state_machine.transition_to!(:succeeded, @metadata)
+    log_output
   rescue ActiveRecord::RecordInvalid, FloatDomainError => invalid
-    @logger.tagged(@document.id, 'STATUS') { @logger.info 'FAILURE' }
-    @logger.tagged(@document.id, 'EXCEPTION') { @logger.info invalid.inspect }
+    @metadata['exception'] = invalid.inspect
+    @document.sidecar.state_machine.transition_to!(:failed,@metadata)
+    log_output
+  end
+
+  def log_output
+    @metadata.each do |key,value|
+      @logger.tagged(@document.id, key.to_s) { @logger.info value }
+    end
   end
 
   # Returns hash containing placeholder thumbnail for the document.
@@ -41,18 +51,15 @@ class ImageService
   private
 
   def image_tempfile(document_id)
-    @logger.tagged(@document.id, 'remote_content_type') { @logger.info remote_content_type }
-    @logger.tagged(@document.id, 'viewer_protocol') { @logger.info @document.viewer_protocol }
-    @logger.tagged(@document.id, 'service_url') { @logger.info service_url }
-    @logger.tagged(@document.id, 'image_extension') { @logger.info image_extension }
+    @metadata['remote_content_type']  = remote_content_type
+    @metadata['viewer_protocol']      = viewer_protocol
+    @metadata['service_url']          = service_url
+    @metadata['image_extension']      = image_extension
 
     file = Tempfile.new([document_id, image_extension])
     file.binmode
     file.write(image_data[:data])
     file.close
-
-    @logger.tagged(@document.id, 'IMAGE_TEMPFILE') { @logger.info file.inspect }
-
     file
   end
 
@@ -194,6 +201,10 @@ class ImageService
     rescue NameError
       return nil
     end
+  end
+
+  def viewer_protocol
+    @document.viewer_protocol
   end
 
   # Retreives a url to a static thumbnail from the document's dct_references field, if it exists.

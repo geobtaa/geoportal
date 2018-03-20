@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307204543) do
+ActiveRecord::Schema.define(version: 20180320190354) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 20180307204543) do
     t.datetime "updated_at", null: false
     t.string "document_type"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "image_upload_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.text "metadata", default: "{}"
+    t.integer "sort_key", null: false
+    t.integer "solr_document_sidecar_id", null: false
+    t.boolean "most_recent", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["solr_document_sidecar_id", "most_recent"], name: "index_image_upload_transitions_parent_most_recent", unique: true, where: "most_recent"
+    t.index ["solr_document_sidecar_id", "sort_key"], name: "index_image_upload_transitions_parent_sort", unique: true
   end
 
   create_table "searches", force: :cascade do |t|
