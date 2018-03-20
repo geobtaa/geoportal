@@ -3,6 +3,7 @@ class SolrDocument
 
   include Blacklight::Solr::Document
   include Geoblacklight::SolrDocument
+ include WmsRewriteConcern
 
   # self.unique_key = 'id'
   self.unique_key = 'layer_slug_s'
@@ -48,4 +49,10 @@ class SolrDocument
     # @TODO: provenance isn't supported out of the box by BL
     :contributor => "dct_provenance_s"
   )
+        def sidecar
+          SolrDocumentSidecar.find_or_create_by!(
+            document_id: id,
+            document_type: self.class.to_s
+          )
+        end
 end

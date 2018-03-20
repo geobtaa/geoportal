@@ -41,6 +41,11 @@ HOSTNAME: 'HOST'
 HOST_URL: 'http://geo.btaa.org'
 INSTITUTION: 'University of Minnesota'
 
+INSTITUTION_LOCAL_NAME: 'Minnesota'
+INSTITUTION_GEOSERVER_URL: 'https://geoserver.princeton.edu'
+PROXY_GEOSERVER_URL: 'http://localhost:3000'
+PROXY_GEOSERVER_AUTH: 'Basic base64encodedusername:password'
+
 # Metadata shown in tool panel
 METADATA_SHOWN:
   - 'fgdc'

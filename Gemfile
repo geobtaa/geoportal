@@ -53,6 +53,7 @@ end
 
 gem 'blacklight', '>= 6.3'
 gem 'geoblacklight', '~> 1.8.0'
+gem 'geoblacklight_sidecar_images'
 # gem 'geoblacklight-icons', '~> 1.2.0'
 gem 'handlebars_assets', '~> 0.23.0'
 gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', :ref => '324d3307a0ad99722bc3a92fd8cd8d3cbba822e5'

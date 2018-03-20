@@ -29,6 +29,9 @@ public/thumbnails/*
 solr/*
 !solr/README-geoblacklight-solr-development.txt
 
+# Ignore public/uploads
+public/uploads/*
+
 vendor/*
 
 .DS_Store
