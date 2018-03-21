@@ -5,7 +5,7 @@ require 'rack/mime'
 class ImageService
   def initialize(document)
     @document = document
-    @document.sidecar.state_machine.transition_to!(:processing)
+    @document.sidecar.state_machine.transition_to(:processing)
     @metadata = Hash.new
     @logger ||= ActiveSupport::TaggedLogging.new(
       Logger.new(
@@ -22,35 +22,31 @@ class ImageService
   #
   # @TODO: EWL
   def store
-    sidecar = @document.sidecar
-    sidecar.image = image_tempfile(@document.id)
-    sidecar.save!
+    @document.sidecar.image = image_tempfile(@document.id)
+    puts "Saving image: #{image_tempfile(@document.id).inspect}"
+    begin
+      @document.sidecar.save!
+    rescue
+      puts "NOT SAVED"
+    end
     @metadata['sidecar_image_url'] = @document.sidecar.image_url
     @document.sidecar.state_machine.transition_to!(:succeeded, @metadata)
     log_output
+
   rescue ActiveRecord::RecordInvalid, FloatDomainError => invalid
     @metadata['exception'] = invalid.inspect
-    @document.sidecar.state_machine.transition_to!(:failed,@metadata)
+    @document.sidecar.state_machine.transition_to!(:failed, @metadata)
     log_output
-  end
 
-  def log_output
-    @metadata.each do |key,value|
-      @logger.tagged(@document.id, key.to_s) { @logger.info value }
-    end
-  end
-
-  # Returns hash containing placeholder thumbnail for the document.
-  # @return [Hash]
-  #   * :type [String] image mime type
-  #   * :data [String] image file data
-  def placeholder
-    placeholder_data
+  # Rescuing Exception intentionally
+  rescue Exception => e
+    puts "Exception: #{e.inspect}"
   end
 
   private
 
   def image_tempfile(document_id)
+    @metadata['gblsi_thumbnail_uri']  = gblsi_thumbnail_uri
     @metadata['remote_content_type']  = remote_content_type
     @metadata['viewer_protocol']      = viewer_protocol
     @metadata['service_url']          = service_url
@@ -61,6 +57,10 @@ class ImageService
     file.write(image_data[:data])
     file.close
     file
+
+    # Rescuing Exception intentionally
+    rescue Exception => e
+      puts "Tempfile exception: #{e.inspect}"
   end
 
   # Returns geoserver auth credentials if the document is a restriced Local WMS layer.
@@ -76,7 +76,7 @@ class ImageService
 
   # Tests if local thumbnail method is configured
   def gblsi_thumbnail_field?
-    Settings.GBLSI_THUMBNAIL_FIELD
+    !Settings.GBLSI_THUMBNAIL_FIELD.blank?
   end
 
   def gblsi_thumbnail_uri
@@ -87,35 +87,13 @@ class ImageService
     end
   end
 
-  def placeholder_base_path
-    Rails.root.join('app', 'assets', 'images')
-  end
-
-  # Generates hash containing placeholder mime_type and image.
-  def placeholder_data
-    { type: 'image/png', data: placeholder_image }
-  end
-
-  # Gets placeholder image from disk.
-  def placeholder_image
-    File.read(placeholder_image_path)
-  end
-
-  # Path to placeholder image based on the layer geometry.
-  def placeholder_image_path
-    geom_type = @document.fetch('layer_geom_type_s', '').tr(' ', '-').downcase
-    thumb_path = "#{placeholder_base_path}/thumbnail-#{geom_type}.png"
-    return "#{placeholder_base_path}/thumbnail-paper-map.png" unless File.exist?(thumb_path)
-    thumb_path
-  end
-
   # Generates hash containing thumbnail mime_type and image.
   def image_data
-    return placeholder_data unless image_url
+    return nil unless image_url
     { type: remote_content_type, data: remote_image }
   end
 
-  # Gets thumbnail image from URL. On error, returns document's placeholder image.
+  # HTTP HEAD Request - What type of image are we expecting
   def remote_content_type
     auth = geoserver_credentials
 
@@ -130,18 +108,21 @@ class ImageService
 
     conn.head.headers['content-type']
   rescue Faraday::Error::ConnectionFailed
-    placeholder_data[:type]
+    return nil
   rescue Faraday::Error::TimeoutError
-    placeholder_data[:type]
+    return nil
 
   # Rescuing Exception intentionally
-  rescue Exception
-    placeholder_data[:type]
+  rescue Exception => e
+    puts "Exception: #{e.inspect}"
+    return nil
   end
 
-  # Gets thumbnail image from URL. On error, returns document's placeholder image.
+  # Gets thumbnail image from URL. On error, returns nil
+
   def remote_image
     auth = geoserver_credentials
+    puts image_url
     conn = Faraday.new(url: image_url)
     conn.options.timeout = timeout
     conn.options.timeout = timeout
@@ -149,9 +130,11 @@ class ImageService
 
     conn.get.body
   rescue Faraday::Error::ConnectionFailed
-    placeholder_image
+    puts "Exception: Faraday::Error::ConnectionFailed"
+    return nil
   rescue Faraday::Error::TimeoutError
-    placeholder_image
+    puts "Exception: Faraday::Error::TimeoutError"
+    return nil
   end
 
   # Returns the thumbnail url.
@@ -221,5 +204,12 @@ class ImageService
   # Faraday timeout value.
   def timeout
     30
+  end
+
+  # Log image_service metadata
+  def log_output
+    @metadata.each do |key,value|
+      @logger.tagged(@document.id, key.to_s) { @logger.info value }
+    end
   end
 end
