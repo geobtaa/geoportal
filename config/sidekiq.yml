@@ -1,0 +1,8 @@
+---
+:development:
+  :concurrency: 5
+:production:
+  :concurrency: 25
+
+:queues:
+  - thumbnails

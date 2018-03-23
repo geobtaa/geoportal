@@ -51,6 +51,8 @@ group :development do
   gem 'capistrano-maintenance'
 end
 
+gem 'sidekiq'
+
 gem 'blacklight', '>= 6.3'
 gem 'geoblacklight', '~> 1.8.0'
 # gem 'geoblacklight-icons', '~> 1.2.0'
