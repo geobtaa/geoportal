@@ -10,6 +10,17 @@ GIT
       rubyzip
 
 GIT
+  remote: https://github.com/ewlarson/geoblacklight_sidecar_images.git
+  revision: 06cbbc5fe8ac05b62cff881bd02b71ce17683adc
+  branch: develop
+  specs:
+    geoblacklight_sidecar_images (0.1.0)
+      carrierwave (~> 1.2)
+      geoblacklight (~> 1.7)
+      mini_magick (~> 4.8)
+      rails (>= 4.2, < 6)
+
+GIT
   remote: https://github.com/geoblacklight/geoblacklight-icons.git
   revision: 324d3307a0ad99722bc3a92fd8cd8d3cbba822e5
   ref: 324d3307a0ad99722bc3a92fd8cd8d3cbba822e5
@@ -207,11 +218,6 @@ GEM
       leaflet-rails (~> 0.7.3)
       mime-types
       rails (~> 5.0)
-    geoblacklight_sidecar_images (0.1.0)
-      carrierwave (~> 1.2)
-      geoblacklight (~> 1.7)
-      mini_magick (~> 4.8)
-      rails (>= 4.2, < 6)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     guard (2.14.2)
@@ -467,7 +473,7 @@ DEPENDENCIES
   exception_notification (~> 4.2.0)
   geoblacklight (~> 1.8.0)
   geoblacklight-icons!
-  geoblacklight_sidecar_images (~> 0.1.0)
+  geoblacklight_sidecar_images!
   guard
   guard-minitest
   haml

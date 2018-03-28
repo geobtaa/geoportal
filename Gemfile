@@ -53,7 +53,7 @@ end
 
 gem 'blacklight', '>= 6.3'
 gem 'geoblacklight', '~> 1.8.0'
-gem 'geoblacklight_sidecar_images', '~>0.1.0'
+gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblacklight_sidecar_images.git', branch: 'develop'
 gem 'statesman', '~> 3.4.1'
 # gem 'geoblacklight-icons', '~> 1.2.0'
 gem 'handlebars_assets', '~> 0.23.0'
