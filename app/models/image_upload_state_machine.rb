@@ -11,7 +11,7 @@ class ImageUploadStateMachine
   # Processing, Succeeded, Failed => ImageService
   transition from: :initialized,  to: [:queued, :processing]
   transition from: :queued,       to: [:processing]
-  transition from: :processing,   to: [:succeeded, :failed]
+  transition from: :processing,   to: [:queued, :succeeded, :failed]
   transition from: :failed,       to: [:queued, :processing]
   transition from: :succeeded,    to: [:queued, :processing]
 end
