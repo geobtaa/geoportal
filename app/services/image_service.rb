@@ -53,6 +53,8 @@ class ImageService
   def image_tempfile(document_id)
     @metadata['remote_content_type']  = remote_content_type
     @metadata['viewer_protocol']      = viewer_protocol
+    @metadata['image_url']            = image_url
+    @metadata['gblsi_thumbnail_uri']  = gblsi_thumbnail_uri
     @metadata['service_url']          = service_url
     @metadata['image_extension']      = image_extension
 
@@ -141,13 +143,18 @@ class ImageService
 
   # Gets thumbnail image from URL. On error, returns document's placeholder image.
   def remote_image
-    auth = geoserver_credentials
-    conn = Faraday.new(url: image_url)
-    conn.options.timeout = timeout
-    conn.options.timeout = timeout
-    conn.authorization :Basic, auth if auth
+    uri = URI.parse(image_url)
+    if uri.class.to_s.include?("HTTP")
+      auth = geoserver_credentials
+      conn = Faraday.new(url: image_url)
+      conn.options.timeout = timeout
+      conn.options.timeout = timeout
+      conn.authorization :Basic, auth if auth
 
-    conn.get.body
+      conn.get.body
+    else
+      return nil
+    end
   rescue Faraday::Error::ConnectionFailed
     placeholder_image
   rescue Faraday::Error::TimeoutError
