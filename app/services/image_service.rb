@@ -22,6 +22,9 @@ class ImageService
   #
   # @TODO: EWL
   def store
+    # Gentle hands.
+    sleep(1)
+    
     sidecar = @document.sidecar
     sidecar.image = image_tempfile(@document.id)
     sidecar.save!
