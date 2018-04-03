@@ -57,5 +57,6 @@ Rails.application.configure do
   #    :sender_address => %{"Geoblacklight" <swadm@lib-geoblacklightdev.oit.umn.edu>},
   #    :exception_recipients => %w{libwebdev+alert@umn.edu}
   #  }
-        config.active_job.queue_adapter = :inline
+
+  config.active_job.queue_adapter = :inline
 end

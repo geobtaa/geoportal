@@ -42,4 +42,7 @@ Rails.application.configure do
 
   # Google Analytics - TEST
   config.google_analytics = 'UA-BANANAS-1'
+
+  # Background jobs
+  config.active_job.queue_adapter = :inline
 end
