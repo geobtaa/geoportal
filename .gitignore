@@ -24,6 +24,7 @@ jettywrapper.log
 public/sitemap.xml*
 public/blog/feed.xml
 public/thumbnails/*
+public/uploads/*
 
 # Ignore everything in solr/ except the README
 solr/*
