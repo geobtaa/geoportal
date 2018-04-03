@@ -2,7 +2,7 @@ class CreateImageUploadTransitions < ActiveRecord::Migration[5.1]
   def change
     create_table :image_upload_transitions do |t|
       t.string :to_state, null: false
-      t.text :metadata, default: "{}"
+      t.text :metadata
       t.integer :sort_key, null: false
       t.integer :solr_document_sidecar_id, null: false
       t.boolean :most_recent, null: false
