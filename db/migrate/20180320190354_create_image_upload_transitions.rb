@@ -2,7 +2,7 @@ class CreateImageUploadTransitions < ActiveRecord::Migration[5.1]
   def change
     create_table :image_upload_transitions do |t|
       t.string :to_state, null: false
-      t.text :metadata
+      t.text :metadata, default: "{}"
       t.integer :sort_key, null: false
       t.integer :solr_document_sidecar_id, null: false
       t.boolean :most_recent, null: false
@@ -14,7 +14,7 @@ class CreateImageUploadTransitions < ActiveRecord::Migration[5.1]
     end
 
     # Foreign keys are optional, but highly recommended
-    add_foreign_key :image_upload_transitions, :solr_document_sidecars
+    # add_foreign_key :image_upload_transitions, :solr_document_sidecars
 
     add_index(:image_upload_transitions,
               [:solr_document_sidecar_id, :sort_key],
