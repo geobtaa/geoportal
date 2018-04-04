@@ -222,7 +222,10 @@ class ImageService
     @service_url ||= begin
       return unless @document.available?
       protocol = @document.viewer_protocol
-      return if protocol == 'map' || protocol.nil?
+      if protocol == 'map' || protocol.nil?
+        @metadata['placeheld'] = true
+        return
+      end
       "ImageService::#{protocol.camelcase}".constantize.image_url(@document, image_size)
     rescue NameError
       @metadata['placeheld'] = true
