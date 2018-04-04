@@ -24,12 +24,18 @@ class ImageService
   def store
     # Gentle hands.
     sleep(1)
-    
+
     sidecar = @document.sidecar
     sidecar.image = image_tempfile(@document.id)
-    sidecar.save!
-    @metadata['sidecar_image_url'] = @document.sidecar.image_url
-    @document.sidecar.state_machine.transition_to!(:succeeded, @metadata)
+
+    if @metadata['placeheld'] == false
+      sidecar.save!
+      @metadata['sidecar_image_url'] = @document.sidecar.image_url
+      @document.sidecar.state_machine.transition_to!(:succeeded, @metadata)
+    else
+      @document.sidecar.state_machine.transition_to!(:placeheld, @metadata)
+    end
+    
     log_output
   rescue ActiveRecord::RecordInvalid, FloatDomainError => invalid
     @metadata['exception'] = invalid.inspect
@@ -60,6 +66,7 @@ class ImageService
     @metadata['gblsi_thumbnail_uri']  = gblsi_thumbnail_uri
     @metadata['service_url']          = service_url
     @metadata['image_extension']      = image_extension
+    @metadata['placeheld']            = false
 
     file = Tempfile.new([document_id, image_extension])
     file.binmode
@@ -116,8 +123,12 @@ class ImageService
 
   # Generates hash containing thumbnail mime_type and image.
   def image_data
-    return placeholder_data unless image_url
-    { type: remote_content_type, data: remote_image }
+    if image_url
+      { type: remote_content_type, data: remote_image }
+    else
+      @metadata['placeheld'] = true
+      return placeholder_data
+    end
   end
 
   # Gets thumbnail image from URL. On error, returns document's placeholder image.
