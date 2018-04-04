@@ -35,7 +35,7 @@ class ImageService
     else
       @document.sidecar.state_machine.transition_to!(:placeheld, @metadata)
     end
-    
+
     log_output
   rescue ActiveRecord::RecordInvalid, FloatDomainError => invalid
     @metadata['exception'] = invalid.inspect
@@ -146,12 +146,15 @@ class ImageService
 
     conn.head.headers['content-type']
   rescue Faraday::Error::ConnectionFailed
+    @metadata['placeheld'] = true
     placeholder_data[:type]
   rescue Faraday::Error::TimeoutError
+    @metadata['placeheld'] = true
     placeholder_data[:type]
 
   # Rescuing Exception intentionally
   rescue Exception
+    @metadata['placeheld'] = true
     placeholder_data[:type]
   end
 
@@ -170,8 +173,10 @@ class ImageService
       return nil
     end
   rescue Faraday::Error::ConnectionFailed
+    @metadata['placeheld'] = true
     placeholder_image
   rescue Faraday::Error::TimeoutError
+    @metadata['placeheld'] = true
     placeholder_image
   end
 
@@ -220,6 +225,7 @@ class ImageService
       return if protocol == 'map' || protocol.nil?
       "ImageService::#{protocol.camelcase}".constantize.image_url(@document, image_size)
     rescue NameError
+      @metadata['placeheld'] = true
       return nil
     end
   end
