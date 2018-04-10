@@ -13,7 +13,7 @@ namespace :geoportal do
     solr = RSolr.connect :url => CONFIG.url
 
     # Search request
-    response = solr.get 'select', :params => {:q => '*:*', :rows => '10000'}
+    response = solr.get 'select', :params => {:q => '*:*', :rows => '15000'}
 
     response["response"]["docs"].each_with_index do |doc, index|
       begin
