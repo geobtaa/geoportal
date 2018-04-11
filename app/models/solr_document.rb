@@ -51,6 +51,7 @@ class SolrDocument
   )
 
   def sidecar
+    # Find or create, and set version
     sidecar = SolrDocumentSidecar.where(
       document_id: id,
       document_type: self.class.to_s
@@ -58,10 +59,12 @@ class SolrDocument
       sc.version = self._source["_version_"]
     end
 
+    # Set version - if doc has changed we'll reimage
     sidecar.version = self._source["_version_"]
 
     if sidecar.version_changed?
       sidecar.save
+      StoreImageJob.perform_later(self.to_h)
     end
 
     sidecar

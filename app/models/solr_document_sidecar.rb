@@ -10,7 +10,7 @@ class SolrDocumentSidecar < ApplicationRecord
   has_many :image_upload_transitions, autosave: false
 
   # If the sidecar is updated, need to re-fetch thumbnail image
-  after_update :reimage, if: :saved_change_to_version?
+  # after_update :reimage, if: :saved_change_to_version?
 
   # Roll our own polymorphism because our documents are not AREL-able
   def document
@@ -35,9 +35,9 @@ class SolrDocumentSidecar < ApplicationRecord
 
   private_class_method :initial_state
 
-  private
-
-  def reimage
-    StoreImageJob.perform_later(self.document.to_h)
-  end
+  # private
+  #
+  # def reimage
+  #  StoreImageJob.perform_later(self.document.to_h)
+  # end
 end
