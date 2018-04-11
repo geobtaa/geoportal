@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require "addressable/uri"
 require 'rack/mime'
 
 class ImageService
@@ -160,10 +160,11 @@ class ImageService
 
   # Gets thumbnail image from URL. On error, returns document's placeholder image.
   def remote_image
-    uri = URI.parse(image_url)
-    if uri.class.to_s.include?("HTTP")
+    uri = Addressable::URI.parse(image_url)
+
+    if uri.scheme.include?("http")
       auth = geoserver_credentials
-      conn = Faraday.new(url: image_url)
+      conn = Faraday.new(url: uri.normalize.to_s)
       conn.options.timeout = timeout
       conn.options.timeout = timeout
       conn.authorization :Basic, auth if auth

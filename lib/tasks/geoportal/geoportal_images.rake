@@ -27,7 +27,8 @@ namespace :geoportal do
     states = [
       :initialized,
       :queued,
-      :processing
+      :processing,
+      :failed
     ]
 
     states.each do |state|
@@ -43,6 +44,19 @@ namespace :geoportal do
         rescue
           puts "orphaned / #{sc.document_id}"
         end
+      end
+    end
+  end
+
+  desc 'Failed State - Inspect metadata'
+  task failed_state_inspect: :environment do
+    states = [
+      :failed
+    ]
+
+    states.each do |state|
+      sidecars = SolrDocumentSidecar.in_state(state).each do |sc|
+        puts "#{state} - #{sc.document_id} - #{sc.state_machine.last_transition.metadata.inspect}"
       end
     end
   end

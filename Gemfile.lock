@@ -465,6 +465,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable (~> 2.5.0)
   blacklight (>= 6.3)
   byebug
   capistrano (= 3.4.1)
