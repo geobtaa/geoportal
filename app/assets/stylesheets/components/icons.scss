@@ -1,0 +1,29 @@
+.glyphicon-mapview        { &:before { content: "\e135"; } }
+.glyphicon-split          { &:before { content: "\e055"; } }
+
+span.icon {
+  color: #CCC;
+  display: inline;
+  align-self: center;
+}
+
+.icon svg {
+  fill: currentColor;
+  height: 1em;
+  width: 1em;
+}
+
+.icon.square {
+  color: #CCC;
+}
+
+.icon.square svg {
+  fill: #CCCCCC;
+  height: 100px;
+  width:100px;
+}
+
+.icon.baseline svg {
+  top: .125em;
+  position: relative;
+}

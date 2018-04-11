@@ -11,7 +11,13 @@
     <div class='col-xs-12'>
       <div class='media'>
         <div class='media-left'>
-          <img class='media-object' src="<%=document.sidecar.image_url(:square)%>"/>
+          <%- if document.sidecar.image_url %>
+            <img class='media-object' src="<%=document.sidecar.image_url(:square)%>"/>
+          <%- else %>
+            <span class="icon square" title="<%=document[Settings.FIELDS.GEOM_TYPE]%>">
+              <%= inline_svg("#{document[Settings.FIELDS.GEOM_TYPE].downcase.gsub(" ", "-")}.svg", {title: document[Settings.FIELDS.GEOM_TYPE]}) %>
+            </span>
+          <%- end %>
         </div>
         <div class='media-body'>
           <small>

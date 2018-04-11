@@ -246,6 +246,9 @@ GEM
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
+    inline_svg (1.3.1)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     io-like (0.3.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -489,6 +492,7 @@ DEPENDENCIES
   haml
   handlebars_assets (~> 0.23.0)
   high_voltage (~> 3.0.0)
+  inline_svg (~> 1.3.0)
   jbuilder (~> 2.5)
   jekyll
   jekyll-feed
