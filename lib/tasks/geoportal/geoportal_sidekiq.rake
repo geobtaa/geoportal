@@ -31,9 +31,9 @@ namespace :geoportal do
 
     stats = Sidekiq::Stats.new
     stats.queues
-    stats.queue.count
-    stats.queue.clear
-    
+    stats.queues.count
+    stats.queues.clear
+
     puts stats.inspect
   end
 end
