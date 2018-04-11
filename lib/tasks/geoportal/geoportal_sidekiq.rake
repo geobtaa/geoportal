@@ -30,6 +30,10 @@ namespace :geoportal do
     Sidekiq::DeadSet.new.clear
 
     stats = Sidekiq::Stats.new
+    stats.queues
+    stats.queue.count
+    stats.queue.clear
+    
     puts stats.inspect
   end
 end
