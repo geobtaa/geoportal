@@ -5,22 +5,19 @@
 	 width="252.645px" height="252.645px" viewBox="0 0 252.645 252.645" enable-background="new 0 0 252.645 252.645"
 	 xml:space="preserve">
 <g>
-	<rect x="6" y="120.822" fill="none" stroke="#000000" stroke-width="12" stroke-miterlimit="10" width="26.143" height="26.143"/>
-	
-		<rect x="105.68" y="120.822" fill="none" stroke="#000000" stroke-width="12" stroke-miterlimit="10" width="26.143" height="26.143"/>
+	<rect x="6" y="120.822" fill="none" stroke="#CCCCCC" stroke-width="12" stroke-miterlimit="10" width="26.143" height="26.143"/>
+
+		<rect x="105.68" y="120.822" fill="none" stroke="#CCCCCC" stroke-width="12" stroke-miterlimit="10" width="26.143" height="26.143"/>
 </g>
 <g>
-	<rect x="6" y="220.502" fill="none" stroke="#000000" stroke-width="12" stroke-miterlimit="10" width="26.143" height="26.143"/>
-	
-		<rect x="105.68" y="220.502" fill="none" stroke="#000000" stroke-width="12" stroke-miterlimit="10" width="26.143" height="26.143"/>
+	<rect x="6" y="220.502" fill="none" stroke="#CCCCCC" stroke-width="12" stroke-miterlimit="10" width="26.143" height="26.143"/>
+
+		<rect x="105.68" y="220.502" fill="none" stroke="#CCCCCC" stroke-width="12" stroke-miterlimit="10" width="26.143" height="26.143"/>
 </g>
-<line fill="none" stroke="#000000" stroke-width="14" stroke-miterlimit="10" x1="32.143" y1="133.893" x2="105.68" y2="133.893"/>
-<line fill="none" stroke="#000000" stroke-width="14" stroke-miterlimit="10" x1="32.143" y1="237.419" x2="105.68" y2="237.419"/>
-<line fill="none" stroke="#000000" stroke-width="14" stroke-miterlimit="10" x1="118.751" y1="220.502" x2="118.751" y2="146.965"/>
-<line fill="none" stroke="#000000" stroke-width="14" stroke-miterlimit="10" x1="19.072" y1="220.502" x2="19.072" y2="146.965"/>
-<g id="icomoon-ignore">
-	<line fill="none" stroke="#449FDB" x1="60.9" y1="175.721" x2="60.9" y2="175.721"/>
-</g>
+<line fill="none" stroke="#CCCCCC" stroke-width="14" stroke-miterlimit="10" x1="32.143" y1="133.893" x2="105.68" y2="133.893"/>
+<line fill="none" stroke="#CCCCCC" stroke-width="14" stroke-miterlimit="10" x1="32.143" y1="237.419" x2="105.68" y2="237.419"/>
+<line fill="none" stroke="#CCCCCC" stroke-width="14" stroke-miterlimit="10" x1="118.751" y1="220.502" x2="118.751" y2="146.965"/>
+<line fill="none" stroke="#CCCCCC" stroke-width="14" stroke-miterlimit="10" x1="19.072" y1="220.502" x2="19.072" y2="146.965"/>
 <path d="M232.097,20.55c13.25,13.252,20.548,30.873,20.548,49.615c0,18.74-7.298,36.363-20.548,49.617
 	c-13.254,13.25-30.877,20.548-49.617,20.548c-18.742,0-36.363-7.298-49.615-20.548c-13.253-13.254-20.55-30.877-20.55-49.617
 	c0-18.742,7.297-36.363,20.55-49.615C146.116,7.297,163.738,0,182.48,0C201.22,0,218.843,7.297,232.097,20.55z M225.888,113.581

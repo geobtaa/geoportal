@@ -2,7 +2,7 @@
 .glyphicon-split          { &:before { content: "\e055"; } }
 
 span.icon {
-  color: #CCC;
+  color: #CCC !important;
   display: inline;
   align-self: center;
 }
@@ -14,13 +14,21 @@ span.icon {
 }
 
 .icon.square {
-  color: #CCC;
+  color: #CCC !important;
 }
 
 .icon.square svg {
   fill: #CCCCCC;
   height: 100px;
   width:100px;
+}
+
+.icon.square svg path{
+  fill: #CCCCCC;
+}
+
+.icon.square svg text{
+  fill: #CCCCCC;
 }
 
 .icon.baseline svg {
