@@ -1,6 +1,22 @@
 .glyphicon-mapview        { &:before { content: "\e135"; } }
 .glyphicon-split          { &:before { content: "\e055"; } }
 
+.geoblacklight-scanned-map:before { content: "\f107"; }
+.geoblacklight-scanned-map:before {
+  display: inline-block;
+  font-family: "geoblacklight-icons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
 span.icon {
   color: #CCC !important;
   display: inline;
