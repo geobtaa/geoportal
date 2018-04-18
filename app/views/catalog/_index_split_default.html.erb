@@ -9,7 +9,7 @@
       <div class='media'>
         <div class='media-left'>
           <%- if document.sidecar.image_url %>
-            <img class='media-object' src="<%=document.sidecar.image_url(:square)%>"/>
+            <img class='media-object' src="<%=document.sidecar.image_url(:square)%>" alt="<%=document[blacklight_config.index.title_field]%>" title="<%=document[blacklight_config.index.title_field]%>"/>
           <%- else %>
             <span class="icon square" title="<%=document[Settings.FIELDS.GEOM_TYPE]%>">
               <%= inline_svg("#{document[Settings.FIELDS.GEOM_TYPE].downcase.gsub(" ", "-")}.svg", {title: document[Settings.FIELDS.GEOM_TYPE]}) %>
