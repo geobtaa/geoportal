@@ -49,6 +49,9 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-passenger'
   gem 'capistrano-maintenance'
+
+  gem 'puma'
+  gem 'foreman'
 end
 
 gem 'blacklight', '>= 6.3'
