@@ -5,7 +5,12 @@ class StoreImageJob < ApplicationJob
 
   def perform(document_hash)
     document = SolrDocument.new(document_hash)
-    document.sidecar.state_machine.transition_to!(:queued)
+
+    metadata = Hash.new
+    metadata['solr_doc_id'] = document.id
+    metadata['solr_version'] = document.sidecar.version
+
+    document.sidecar.state_machine.transition_to!(:queued, metadata)
     ImageService.new(document).store
   end
 end

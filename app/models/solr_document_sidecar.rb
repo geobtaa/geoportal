@@ -7,7 +7,7 @@ class SolrDocumentSidecar < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   belongs_to :document, required: true, polymorphic: true
-  has_many :image_upload_transitions, autosave: false
+  has_many :image_upload_transitions, autosave: false, dependent: :destroy
 
   # If the sidecar is updated, need to re-fetch thumbnail image
   # after_update :reimage, if: :saved_change_to_version?

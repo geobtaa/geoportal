@@ -59,13 +59,9 @@ class SolrDocument
       sc.version = self._source["_version_"]
     end
 
-    # Set version - if doc has changed we'll reimage
+    # Set version - if doc has changed we'll reimage, someday
     sidecar.version = self._source["_version_"]
-
-    if sidecar.version_changed?
-      sidecar.save
-      StoreImageJob.perform_later(self.to_h)
-    end
+    sidecar.save
 
     sidecar
   end

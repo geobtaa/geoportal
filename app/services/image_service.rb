@@ -5,8 +5,12 @@ require 'rack/mime'
 class ImageService
   def initialize(document)
     @document = document
-    @document.sidecar.state_machine.transition_to!(:processing)
     @metadata = Hash.new
+    @metadata['solr_doc_id'] = document.id
+    @metadata['solr_version'] = @document.sidecar.version
+
+    @document.sidecar.state_machine.transition_to!(:processing, @metadata)
+
     @logger ||= ActiveSupport::TaggedLogging.new(
       Logger.new(
         File.join(
