@@ -25,7 +25,7 @@ FIELDS:
   :SPATIAL_COVERAGE: 'dct_spatial_sm'
   :SUBJECT: 'dc_subject_sm'
   :REFERENCES: 'dct_references_s'
-  :YEAR: 'solr_year_i'
+  :YEAR: 'dct_temporal_sm'
   :CREATOR: 'dc_creator_sm'
   :DESCRIPTION: 'dc_description_s'
   :PUBLISHER: 'dc_publisher_s'
