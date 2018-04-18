@@ -34,6 +34,11 @@ namespace :geoportal do
     stats.queues.count
     stats.queues.clear
 
+    queue = Sidekiq::Queue.new("default")
+    queue.each do |job|
+      job.delete
+    end
+
     puts stats.inspect
   end
 end

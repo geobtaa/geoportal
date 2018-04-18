@@ -58,5 +58,5 @@ Rails.application.configure do
   #    :exception_recipients => %w{libwebdev+alert@umn.edu}
   #  }
 
-  config.active_job.queue_adapter = :inline
+  config.active_job.queue_adapter = :sidekiq
 end

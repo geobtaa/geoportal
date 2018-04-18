@@ -1,0 +1,2 @@
+:concurrency:  1
+:max_retries: 1

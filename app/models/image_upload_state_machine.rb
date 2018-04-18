@@ -9,9 +9,9 @@ class ImageUploadStateMachine
   state :placeheld
 
   # Queued => Background Job Init
-  # Processing, Succeeded, Failed => ImageService
+  # Processing => Failed, Placeheld, Succeeded
   transition from: :initialized,  to: :queued
-  transition from: :queued,       to: :processing
+  transition from: :queued,       to: [:processing, :queued]
   transition from: :processing,   to: [:queued, :placeheld, :succeeded, :failed]
   transition from: :placeheld,    to: :queued
   transition from: :failed,       to: :queued

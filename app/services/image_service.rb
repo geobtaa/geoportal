@@ -35,9 +35,9 @@ class ImageService
     else
       @document.sidecar.state_machine.transition_to!(:placeheld, @metadata)
     end
-
     log_output
-  rescue ActiveRecord::RecordInvalid, FloatDomainError => invalid
+
+  rescue Exception => invalid
     @metadata['exception'] = invalid.inspect
     @document.sidecar.state_machine.transition_to!(:failed,@metadata)
     log_output
