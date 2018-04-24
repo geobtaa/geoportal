@@ -13,7 +13,7 @@ class ImageUploadStateMachine
   transition from: :initialized,  to: :queued
   transition from: :queued,       to: [:processing]
   transition from: :processing,   to: [:queued, :placeheld, :succeeded, :failed]
-  transition from: :placeheld,    to: :queued
+  transition from: :placeheld,    to: [:queued, :processing]
   transition from: :failed,       to: :queued
   transition from: :succeeded,    to: :queued
 
