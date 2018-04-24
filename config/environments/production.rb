@@ -85,6 +85,9 @@ Rails.application.configure do
   # Google Analytics - Prod
   config.google_analytics = 'UA-82483267-1'
 
+  # Background jobs
+  config.active_job.queue_adapter = :sidekiq
+
   # Exception email notification
   Rails.application.config.middleware.use ExceptionNotification::Rack,
     # Ignore exception notification from Qualys scanner IPs

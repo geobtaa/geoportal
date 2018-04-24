@@ -1,0 +1,53 @@
+.glyphicon-mapview        { &:before { content: "\e135"; } }
+.glyphicon-split          { &:before { content: "\e055"; } }
+
+.geoblacklight-scanned-map:before { content: "\f107"; }
+.geoblacklight-scanned-map:before {
+  display: inline-block;
+  font-family: "geoblacklight-icons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+span.icon {
+  color: #CCC !important;
+  display: inline;
+  align-self: center;
+}
+
+.icon svg {
+  fill: currentColor;
+  height: 1em;
+  width: 1em;
+}
+
+.icon.square {
+  color: #CCC !important;
+}
+
+.icon.square svg {
+  fill: #CCCCCC;
+  height: 100px;
+  width:100px;
+}
+
+.icon.square svg path{
+  fill: #CCCCCC;
+}
+
+.icon.square svg text{
+  fill: #CCCCCC;
+}
+
+.icon.baseline svg {
+  top: .125em;
+  position: relative;
+}

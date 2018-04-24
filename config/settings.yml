@@ -25,7 +25,7 @@ FIELDS:
   :SPATIAL_COVERAGE: 'dct_spatial_sm'
   :SUBJECT: 'dc_subject_sm'
   :REFERENCES: 'dct_references_s'
-  :YEAR: 'solr_year_i'
+  :YEAR: 'dct_temporal_sm'
   :CREATOR: 'dc_creator_sm'
   :DESCRIPTION: 'dc_description_s'
   :PUBLISHER: 'dc_publisher_s'
@@ -40,6 +40,13 @@ GEOMONITOR_TOLERANCE: 0.8
 HOSTNAME: 'HOST'
 HOST_URL: 'http://geo.btaa.org'
 INSTITUTION: 'University of Minnesota'
+
+INSTITUTION_LOCAL_NAME: 'Minnesota'
+INSTITUTION_GEOSERVER_URL: 'https://geoserver.princeton.edu'
+PROXY_GEOSERVER_URL: 'http://localhost:3000'
+PROXY_GEOSERVER_AUTH: 'Basic base64encodedusername:password'
+
+GBLSI_THUMBNAIL_FIELD: 'thumbnail_path_ss'
 
 # Metadata shown in tool panel
 METADATA_SHOWN:
