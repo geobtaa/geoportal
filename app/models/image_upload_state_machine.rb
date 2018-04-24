@@ -14,8 +14,8 @@ class ImageUploadStateMachine
   transition from: :queued,       to: [:queued, :processing]
   transition from: :processing,   to: [:queued, :processing, :placeheld, :succeeded, :failed]
   transition from: :placeheld,    to: [:queued, :processing]
-  transition from: :failed,       to: :queued
-  transition from: :succeeded,    to: :queued
+  transition from: :failed,       to: [:queued, :processing]
+  transition from: :succeeded,    to: [:queued, :processing]
 
   guard_transition(to: :queued) do |sidecar|
     sidecar.remove_image!
