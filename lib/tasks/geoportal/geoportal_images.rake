@@ -28,7 +28,8 @@ namespace :geoportal do
       :initialized,
       :queued,
       :processing,
-      :failed
+      :failed,
+      :placeheld
     ]
 
     states.each do |state|
