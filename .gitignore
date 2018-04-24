@@ -41,3 +41,4 @@ doc/
 doc/
 
 public/centroids.json
+public/*.csv
