@@ -139,7 +139,9 @@ class ImageService
   def remote_content_type
     auth = geoserver_credentials
 
-    conn = Faraday.new(url: image_url) do |b|
+    uri = Addressable::URI.parse(image_url)
+
+    conn = Faraday.new(url: uri.normalize.to_s) do |b|
       b.use FaradayMiddleware::FollowRedirects
       b.adapter :net_http
     end
