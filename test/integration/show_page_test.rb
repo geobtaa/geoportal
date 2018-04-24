@@ -160,6 +160,7 @@ class ShowPageTest < Capybara::Rails::TestCase
   end
 
   def test_iowa_esri_imageserver_show
+    skip("Doc is no longer in Solr. / EWL 03/28/18")
     visit "/catalog/e1e49389-801d-4bce-b400-4e20b08aec94"
     assert page.has_content?("Aerial Imagery: Iowa")
 

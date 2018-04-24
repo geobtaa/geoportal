@@ -44,7 +44,7 @@ set :pty, true
 set :linked_files, []
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'public/system')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'public/system', 'public/uploads')
 
 # tmp directory is user-specific
 set :tmp_dir, "/tmp/#{fetch(:deploy_user)}"

@@ -2,8 +2,8 @@ require 'rsolr'
 require 'ostruct'
 require 'yaml'
 
-MY_ENV = ENV['ENV'] || 'development'
-CONFIG = OpenStruct.new(YAML.load_file("config/blacklight.yml")[MY_ENV])
+# MY_ENV = ENV['ENV'] || 'development'
+# CONFIG = OpenStruct.new(YAML.load_file("config/blacklight.yml")[MY_ENV])
 
 namespace :geoportal do
   desc 'Migrate from old Solr to new Solr'

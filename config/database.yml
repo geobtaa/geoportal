@@ -11,8 +11,15 @@ default: &default
 
 # Local development with sqlite
 development:
-  <<: *default
-  database: db/development.sqlite3
+  #<<: *default
+  #database: db/development.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  host: localhost
+  database: geoportal_development
+  username: root
+  password:
 
 # MySQL setup (hosted server development)
 #development:
@@ -36,7 +43,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  hostname: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_HOST'] %>
+  host: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_HOST'] %>
   database: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_NAME'] %>
   username: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_USER'] %>
   password: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_PASSWORD'] %>

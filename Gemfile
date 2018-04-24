@@ -49,10 +49,19 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-passenger'
   gem 'capistrano-maintenance'
+
+  gem 'puma'
+  gem 'foreman'
 end
 
 gem 'blacklight', '>= 6.3'
 gem 'geoblacklight', '~> 1.8.0'
+gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblacklight_sidecar_images.git', branch: 'develop'
+gem 'statesman', '~> 3.4.1'
+gem 'sidekiq', '~> 5.1.3'
+gem 'sidekiq-failures', '~> 1.0.0'
+gem 'addressable', '~> 2.5.0'
+gem 'inline_svg', '~> 1.3.0'
 # gem 'geoblacklight-icons', '~> 1.2.0'
 gem 'handlebars_assets', '~> 0.23.0'
 gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', :ref => '324d3307a0ad99722bc3a92fd8cd8d3cbba822e5'

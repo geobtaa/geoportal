@@ -3,6 +3,7 @@ class SolrDocument
 
   include Blacklight::Solr::Document
   include Geoblacklight::SolrDocument
+  include WmsRewriteConcern
 
   # self.unique_key = 'id'
   self.unique_key = 'layer_slug_s'
@@ -48,4 +49,20 @@ class SolrDocument
     # @TODO: provenance isn't supported out of the box by BL
     :contributor => "dct_provenance_s"
   )
+
+  def sidecar
+    # Find or create, and set version
+    sidecar = SolrDocumentSidecar.where(
+      document_id: id,
+      document_type: self.class.to_s
+    ).first_or_create do |sc|
+      sc.version = self._source["_version_"]
+    end
+
+    # Set version - if doc has changed we'll reimage, someday
+    sidecar.version = self._source["_version_"]
+    sidecar.save
+
+    sidecar
+  end
 end
