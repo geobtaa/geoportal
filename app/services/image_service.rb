@@ -14,7 +14,7 @@ class ImageService
     @logger ||= ActiveSupport::TaggedLogging.new(
       Logger.new(
         File.join(
-          Rails.root, '/log/', "image_service_#{Rails.env}.log"
+          '/swadm/var/www/geoblacklight', '/log/', "image_service_#{Rails.env}.log"
         )
       )
     )
@@ -166,7 +166,7 @@ class ImageService
   # Gets thumbnail image from URL. On error, returns document's placeholder image.
   def remote_image
     auth = geoserver_credentials
-    
+
     uri = Addressable::URI.parse(image_url)
 
     if uri.scheme.include?("http")
