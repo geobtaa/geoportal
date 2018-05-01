@@ -13,6 +13,19 @@ namespace :geoportal do
     SolrDocumentSidecar.destroy_all
   end
 
+  desc 'Delete Sidecars and Images'
+  task sidecar_destroy_batch: :environment do
+    # Expects a CSV file in Rails.root/tmp/destroy_batch.csv
+    #
+    # From your local machine, put it there like this:
+    # scp destroy_batch.csv swadm@geoprod:/swadm/var/www/geoblacklight/current/tmp/
+    CSV.foreach("#{Rails.root}/tmp/destroy_batch.csv", headers: true) do |row|
+      sc = SolrDocumentSidecar.find_by(:document_id => row[0])
+      sc.destroy
+      puts "document_id - #{row[0]} - destroyed"
+    end
+  end
+
   desc 'Write state report'
   task sidecar_report: :environment do
     # Create a CSV Dump of Results
