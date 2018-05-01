@@ -11,7 +11,7 @@ class ImageService
 
     @document.sidecar.state_machine.transition_to!(:processing, @metadata)
 
-    @logger ||= ActiveSupport::TaggedLogging.new(
+    @logger = ActiveSupport::TaggedLogging.new(
       Logger.new(
         File.join(
           '/swadm/var/www/geoblacklight', '/log/', "image_service_#{Rails.env}.log"
