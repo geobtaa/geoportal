@@ -14,7 +14,7 @@ class ImageService
     @logger = ActiveSupport::TaggedLogging.new(
       Logger.new(
         File.join(
-          '/swadm/var/www/geoblacklight', '/log/', "image_service_#{Rails.env}.log"
+          '/swadm/var/www/geoblacklight/current', '/log/', "image_service_#{Rails.env}.log"
         )
       )
     )
