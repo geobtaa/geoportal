@@ -34,11 +34,37 @@ namespace :geoportal do
     sidecars = SolrDocumentSidecar.all
 
     CSV.open(file, 'w') do |writer|
+      header = [
+        "Sidecar ID",
+        "Document ID",
+        "Current State",
+        "Doc Title",
+        "Doc Collection",
+        "Doc Institution",
+        "Error",
+        "Viewer Protocol",
+        "Image URL",
+        "GBLSI Thumbnail URL"
+      ]
+      
+      writer << header
+
       sidecars.each do |sc|
         cat = CatalogController.new
         begin
           resp, doc = cat.fetch(sc.document_id)
-          writer << [sc.id, sc.document_id, sc.state_machine.current_state, doc._source['dc_title_s'], doc._source['dct_isPartOf_sm'].join(", "), doc._source['dct_provenance_s'], sc.state_machine.last_transition.metadata['exception']]
+          writer << [
+            sc.id,
+            sc.document_id,
+            sc.state_machine.current_state,
+            doc._source['dc_title_s'],
+            doc._source['dct_isPartOf_sm'].join(", "),
+            doc._source['dct_provenance_s'],
+            sc.state_machine.last_transition.metadata['exception'],
+            sc.state_machine.last_transition.metadata['viewer_protocol'],
+            sc.state_machine.last_transition.metadata['image_url'],
+            sc.state_machine.last_transition.metadata['gblsi_thumbnail_uri']
+          ]
         rescue
           puts "orphaned / #{sc.document_id}"
           next
