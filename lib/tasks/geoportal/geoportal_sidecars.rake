@@ -38,6 +38,7 @@ namespace :geoportal do
         "Sidecar ID",
         "Document ID",
         "Current State",
+        "Doc Data Type",
         "Doc Title",
         "Doc Collection",
         "Doc Institution",
@@ -46,7 +47,7 @@ namespace :geoportal do
         "Image URL",
         "GBLSI Thumbnail URL"
       ]
-      
+
       writer << header
 
       sidecars.each do |sc|
@@ -57,6 +58,7 @@ namespace :geoportal do
             sc.id,
             sc.document_id,
             sc.state_machine.current_state,
+            doc._source['layer_geom_type_s'],
             doc._source['dc_title_s'],
             doc._source['dct_isPartOf_sm'].join(", "),
             doc._source['dct_provenance_s'],
