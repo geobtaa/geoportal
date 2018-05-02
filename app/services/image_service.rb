@@ -11,10 +11,10 @@ class ImageService
 
     @document.sidecar.state_machine.transition_to!(:processing, @metadata)
 
-    @logger ||= ActiveSupport::TaggedLogging.new(
+    @logger = ActiveSupport::TaggedLogging.new(
       Logger.new(
         File.join(
-          Rails.root, '/log/', "image_service_#{Rails.env}.log"
+          '/swadm/var/www/geoblacklight/current', '/log/', "image_service_#{Rails.env}.log"
         )
       )
     )
@@ -147,7 +147,6 @@ class ImageService
     end
 
     conn.options.timeout = timeout
-    conn.options.timeout = timeout
     conn.authorization :Basic, auth if auth
 
     conn.head.headers['content-type']
@@ -166,12 +165,17 @@ class ImageService
 
   # Gets thumbnail image from URL. On error, returns document's placeholder image.
   def remote_image
+    auth = geoserver_credentials
+
     uri = Addressable::URI.parse(image_url)
 
     if uri.scheme.include?("http")
-      auth = geoserver_credentials
-      conn = Faraday.new(url: uri.normalize.to_s)
-      conn.options.timeout = timeout
+
+      conn = Faraday.new(url: uri.normalize.to_s) do |b|
+        b.use FaradayMiddleware::FollowRedirects
+        b.adapter :net_http
+      end
+
       conn.options.timeout = timeout
       conn.authorization :Basic, auth if auth
 

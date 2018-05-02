@@ -4,15 +4,15 @@ require 'sidekiq/api'
 namespace :geoportal do
   desc 'Stop sidekiq'
   task sidekiq_stop: :environment do
-    sh "sudo systemctl stop sidekiq.service"
+    sh "sudo systemctl stop sidekiq.service || true"
     sleep(5)
-    sh "sudo systemctl status sidekiq.service"
+    sh "sudo systemctl status sidekiq.service || true"
   end
 
   task sidekiq_start: :environment do
-    sh "sudo systemctl start sidekiq.service"
+    sh "sudo systemctl start sidekiq.service || true"
     sleep(5)
-    sh "sudo systemctl status sidekiq.service"
+    sh "sudo systemctl status sidekiq.service || true"
   end
 
   desc 'Check sidekiq stats'

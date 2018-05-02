@@ -69,10 +69,15 @@ namespace :deploy do
     on roles(:app) do
       # Here we can do anything such as:
       within release_path do
+        # Refresh the Google/Crawler Sitemap
         execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:rails_env)}"
-        # No need to generate centroids - EWL
-        # execute :rake, 'geoportal:generate_centroids_solr', "RAILS_ENV=#{fetch(:rails_env)}"
+
+        # Load the centroid JSON data for homepage map
         execute :rake, 'geoportal:generate_centroids_json', "RAILS_ENV=#{fetch(:rails_env)}"
+
+        # Stop and Restart Sidekiq
+        execute :rake, 'geoportal:sidekiq_stop', "RAILS_ENV=#{fetch(:rails_env)}"
+        execute :rake, 'geoportal:sidekiq_start', "RAILS_ENV=#{fetch(:rails_env)}"
       end
     end
   end
