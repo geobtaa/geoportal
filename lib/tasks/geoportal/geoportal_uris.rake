@@ -18,7 +18,6 @@ namespace :geoportal do
       num_found = results.response[:numFound]
       doc_counter = 0
       results.docs.each do |document|
-        sleep(1)
         begin
           document.uris.each do |uri|
             ProcessUriJob.perform_later(uri.id)
