@@ -117,7 +117,7 @@ class UriService
 
   def log_output
     @metadata.each do |key,value|
-      @logger.tagged(@document.id, key.to_s) { @logger.info value }
+      @logger.tagged(@uri.id, key.to_s) { @logger.info value }
     end
   end
 
