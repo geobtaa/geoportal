@@ -14,7 +14,7 @@ class ImageService
     @logger = ActiveSupport::TaggedLogging.new(
       Logger.new(
         File.join(
-          '/swadm/var/www/geoblacklight/current', '/log/', "image_service_#{Rails.env}.log"
+          Rails.root, '/log/', "image_service_#{Rails.env}.log"
         )
       )
     )
@@ -48,6 +48,7 @@ class ImageService
   end
 
   def log_output
+    @metadata["state"] = @document.sidecar.state_machine.current_state
     @metadata.each do |key,value|
       @logger.tagged(@document.id, key.to_s) { @logger.info value }
     end
