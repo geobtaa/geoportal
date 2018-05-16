@@ -177,6 +177,6 @@ class UriService
   end
 
   def normalize_uri(uri_string)
-    URI.parse(Addressable::URI.parse(uri_string))
+    URI.parse(Addressable::URI.parse(uri_string).normalize.to_s)
   end
 end
