@@ -7,7 +7,7 @@ require "net/ftp"
 class Result
   attr_accessor :uri_string
 
-  # A new LinkChecker::Result object instance.
+  # A new Result object instance.
   #
   # @param params [Hash] A hash of parameters.  Expects :uri_string.
   def initialize(params)
@@ -15,11 +15,11 @@ class Result
   end
 end
 
-# A good result.  The URL is valid.
+# A Good Result.  The URL is valid.
 class Good < Result
 end
 
-# A redirection to another URL.
+# A Redirect to another URL.
 class Redirect < Result
   attr_reader :good
   attr_reader :final_destination_uri_string
@@ -35,7 +35,7 @@ class Redirect < Result
   end
 end
 
-# A bad result.  The URL is not valid for some reason.  Any reason, other than a 200
+# A Error result.  The URL is not valid for some reason.  Any reason, other than a 200
 # HTTP response.
 #
 # @param params [Hash] A hash of parameters.  Expects :error, which is a string
@@ -74,11 +74,10 @@ class UriService
     # Gentle hands.
     sleep(1)
 
-    if @uri.uri_value.start_with?('http')
-      uri = URI(@uri.uri_value)
-      result = check_uri(uri)
+    uri = Addressable::URI.parse(@uri.uri_value)
 
-      puts "result - #{result.inspect}"
+    if uri.start_with?('http')
+      result = check_uri(uri)
 
       if result.instance_of?(Good)
         @uri.state_machine.transition_to!(:succeeded, @metadata)
@@ -89,8 +88,8 @@ class UriService
         @uri.state_machine.transition_to!(:failed, @metadata)
       end
 
-    elsif @uri.uri_value.start_with?('ftp')
-      uri = URI(@uri.uri_value)
+    elsif uri.start_with?('ftp')
+
       Net::FTP.open(uri.host) do |ftp|
         ftp.passive = true
         ftp.login 'anonymous', 'anonymous@google.com'
@@ -108,17 +107,29 @@ class UriService
         end
       end
     end
+    log_output
+
+  rescue Exception => invalid
+    @metadata['exception'] = invalid.inspect
+    @uri.state_machine.transition_to!(:failed,@metadata)
+    log_output
+  end
+
+  def log_output
+    @metadata.each do |key,value|
+      @logger.tagged(@document.id, key.to_s) { @logger.info value }
+    end
   end
 
   def check_uri(uri, redirected=false)
+    # Don't trust redirect URI values
+    uri = Addressable::URI.parse(uri)
+
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true if uri.scheme == "https"
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     http.start do
-      puts "uri.request_uri - #{uri.request_uri}"
-      http.request_get(uri.request_uri) do |response|
-        puts "response - #{response.inspect}"
-
+      http.request_get(uri.normalize.to_s) do |response|
         case response
         when Net::HTTPSuccess then
           if redirected
