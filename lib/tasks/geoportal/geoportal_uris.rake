@@ -29,6 +29,26 @@ namespace :geoportal do
     end
   end
 
+  desc 'Queue incomplete states for reprocessing'
+  task uri_queue_incomplete_states: :environment do
+    states = [
+      :initialized,
+      :queued,
+      :processing,
+      :failed
+    ]
+
+    states.each do |state|
+      uris = SolrDocumentUri.in_state(state)
+
+      puts "#{state} - #{uris.size}"
+
+      uris.each do |uri|
+        ProcessUriJob.perform_later(uri.id)
+      end
+    end
+  end
+
   desc 'Hash of SolrDocumentUri state counts'
   task uri_states: :environment do
     states = [
