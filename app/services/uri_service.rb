@@ -53,6 +53,8 @@ class UriService
     @uri = solr_document_uri
     @metadata = Hash.new
     @metadata['solr_doc_id'] = @uri.document_id
+    @metadata['uri_key']     = @uri.uri_key
+    @metadata['uri_value']   = @uri.uri_value
     @metadata['solr_version'] = @uri.version
 
     @uri.state_machine.transition_to!(:processing, @metadata)
@@ -74,9 +76,9 @@ class UriService
     # Gentle hands.
     sleep(1)
 
-    uri = Addressable::URI.parse(@uri.uri_value)
+    uri = normalize_uri(@uri.uri_value)
 
-    if uri.start_with?('http')
+    if uri.scheme.start_with?('http')
       result = check_uri(uri)
 
       if result.instance_of?(Good)
@@ -88,7 +90,7 @@ class UriService
         @uri.state_machine.transition_to!(:failed, @metadata)
       end
 
-    elsif uri.start_with?('ftp')
+    elsif uri.scheme.start_with?('ftp')
 
       Net::FTP.open(uri.host) do |ftp|
         ftp.passive = true
@@ -116,20 +118,18 @@ class UriService
   end
 
   def log_output
+    @metadata["state"] = @uri.state_machine.current_state
     @metadata.each do |key,value|
       @logger.tagged(@uri.id, key.to_s) { @logger.info value }
     end
   end
 
   def check_uri(uri, redirected=false)
-    # Don't trust redirect URI values
-    uri = Addressable::URI.parse(uri)
-
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true if uri.scheme == "https"
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     http.start do
-      http.request_get(uri.normalize.to_s) do |response|
+      http.request_get(uri.request_uri) do |response|
         case response
         when Net::HTTPSuccess then
           if redirected
@@ -146,7 +146,7 @@ class UriService
               # using the current uri as a base.
               URI.join("#{uri.scheme}://#{uri.host}:#{uri.port}", response['location'])
             end
-          return check_uri(uri, true)
+          return check_uri(normalize_uri(uri), true)
         when Net::HTTPRedirection then
           uri =
             if response['location'].match(/\:\/\//) # Allows for https://
@@ -156,7 +156,7 @@ class UriService
               # using the current uri as a base.
               URI.join("#{uri.scheme}://#{uri.host}:#{uri.port}", response['location'])
             end
-          return check_uri(uri, true)
+          return check_uri(normalize_uri(uri), true)
         else
           @metadata['error'] = response
           return Error.new(:uri_string => uri.to_s, :error => response)
@@ -174,5 +174,9 @@ class UriService
         false
       end
     end
+  end
+
+  def normalize_uri(uri_string)
+    URI.parse(Addressable::URI.parse(uri_string))
   end
 end

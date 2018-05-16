@@ -79,11 +79,11 @@ namespace :geoportal do
 
     CSV.open(file, 'w') do |writer|
       header = [
+        "State",
         "URI ID",
-        "URI Document ID",
+        "URI Document UUID",
         "URI Key",
         "URI Value",
-        "Current State",
         "Doc Data Type",
         "Doc Title",
         "Doc Collection",
@@ -98,11 +98,11 @@ namespace :geoportal do
         begin
           resp, doc = cat.fetch(uri.document_id)
           writer << [
+            uri.state_machine.current_state,
             uri.id,
             uri.document_id,
             uri.uri_key,
             uri.uri_value,
-            uri.state_machine.current_state,
             doc._source['layer_geom_type_s'],
             doc._source['dc_title_s'],
             doc._source['dct_isPartOf_sm'].join(", "),
