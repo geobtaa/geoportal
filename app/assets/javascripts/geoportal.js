@@ -2,6 +2,15 @@
 $(document ).ready(function() {
   $('a[data-js-fullscreen]').click(function(){
     screenfull.toggle($('#map')[0]);
-    $('#map').toggleClass("fullscreen");
   });
+
+  if (screenfull.enabled) {
+    screenfull.on('change', function() {
+      if (screenfull.isFullscreen) {
+        $('#map').addClass('fullscreen');
+      } else {
+        $('#map').removeClass('fullscreen');
+      }
+  	});
+  }
 });
