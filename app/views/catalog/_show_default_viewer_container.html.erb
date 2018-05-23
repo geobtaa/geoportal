@@ -2,7 +2,7 @@
   <% if show_attribute_table? %>
     <div id='viewer-container' class="col-md-8">
   <% else %>
-    <div id='viewer-container' class="col-md-12 well">
+    <div id='viewer-container' class="col-md-12 well spinner">
   <% end %>
   <%= content_tag :div, id: 'map', class: "", data: { map: 'item', protocol: document.viewer_protocol.camelize, url: document.viewer_endpoint, 'layer-id' => document.wxs_identifier, 'map-bbox' => document.bounding_box_as_wsen, 'catalog-path'=> search_catalog_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
 

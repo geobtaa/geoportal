@@ -1,5 +1,5 @@
 // B1G Geoportal Behaviors
-$(document ).ready(function() {
+$(document).ready(function() {
   $('a[data-js-fullscreen]').click(function(){
     screenfull.toggle($('#map')[0]);
   });
@@ -13,4 +13,8 @@ $(document ).ready(function() {
       }
   	});
   }
+});
+
+$(window).load(function() {
+  $('#viewer-container.well').removeClass('spinner');
 });
