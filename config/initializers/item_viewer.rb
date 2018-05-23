@@ -18,9 +18,9 @@ module Geoblacklight
     def download
       if @references.download.present?
         # .jpg (Michigan State / 06e7f566-852a-4914-929d-1bef38132eba)
-        # /screen/ (Indiana / 697a9115-cdb3-4108-8a1f-1136e98c24d6)
+        # /screen/ || /SCREEN (Indiana / 697a9115-cdb3-4108-8a1f-1136e98c24d6)
         # getdownloaditem (Penn State / d943e4bf-efbc-479d-83f6-78dbac2a981f)
-        if ['.jpg', '/screen/', 'getdownloaditem'].any? { |str| @references.download.reference[1].include?(str) }
+        if ['.jpg', 'full', '/screen/', '/SCREEN ', 'getdownloaditem'].any? { |str| @references.download.reference[1].include?(str) }
           return @references.download
         end
       end
