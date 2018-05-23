@@ -24,6 +24,8 @@
 //= require Leaflet/leaflet.fullscreen/Control.FullScreen.js
 //= require Leaflet/leaflet.prunecluster/PruneCluster.js
 //= require oboe/oboe-browser.js
+//= require screenfull/screenfull.min.js
+//= require geoportal
 
 //= require_tree .
 
