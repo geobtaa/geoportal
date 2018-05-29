@@ -230,6 +230,7 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial :downloads, partial: 'downloads', if: proc { |_context, _config, options| options[:document] }
 
     # Remove show tools
+    config.show.partials.delete(:show_header)
     config.show.document_actions.delete(:citation)
     config.show.document_actions.delete(:sms)
 

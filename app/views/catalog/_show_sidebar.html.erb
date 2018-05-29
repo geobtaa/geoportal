@@ -1,0 +1,14 @@
+<% if ['iiif', 'download'].any?{ |vp| @document.viewer_protocol == vp } %>
+  <%= render :partial => 'show_static_map_bbox' %>
+<% end %>
+
+<%= render :partial => 'show_tools' %>
+
+<% unless @document.more_like_this.empty? %>
+  <div class="panel panel-default">
+    <div class="panel-heading">More Like This</div>
+    <div class="panel-body">
+      <%= render :collection => @document.more_like_this, :partial => 'show_more_like_this', :as => :document %>
+    </div>
+  </div>
+<% end %>
