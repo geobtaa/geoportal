@@ -74,7 +74,8 @@ class CatalogController < ApplicationController
     # config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
 
     config.add_facet_field 'dct_spatial_sm', :label => 'Place', :limit => 8, collapse: false
-    config.add_facet_field 'layer_geom_type_s', label: 'Data type', limit: 8, partial: "icon_facet", collapse: false
+    config.add_facet_field 'dc_type_s', label: 'Resource Type', limit: 8, collapse: false
+    config.add_facet_field 'layer_geom_type_s', label: 'Geometry Type', limit: 8, partial: "icon_facet", collapse: false
     config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8, collapse: false
 
     config.add_facet_field 'time_period', :label => 'Time Period', :query => {
