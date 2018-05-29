@@ -135,7 +135,7 @@ class CatalogController < ApplicationController
     # helper_method: [Symbol] method that can be used to render the value
     config.add_show_field 'dc_creator_sm', label: 'Author', itemprop: 'author'
     config.add_show_field 'dc_description_s', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
-    config.add_show_field 'dc_publisher_s', label: 'Publisher', itemprop: 'publisher'
+    config.add_show_field 'dc_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_search: true
     config.add_show_field 'dct_isPartOf_sm', label: 'Collection', itemprop: 'isPartOf', link_to_search: true
     config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_search: true
     config.add_show_field 'dc_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_search: true
