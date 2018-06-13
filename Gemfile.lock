@@ -155,6 +155,7 @@ GEM
     devise-guests (0.6.0)
       devise
     dotenv (0.7.0)
+    down (4.5.0)
     dry-configurable (0.7.0)
       concurrent-ruby (~> 1.0)
     dry-container (0.6.0)
@@ -490,6 +491,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   devise-guests (~> 0.6)
+  down (~> 4.4)
   exception_notification (~> 4.2.0)
   foreman
   geoblacklight (~> 1.8.0)
