@@ -11,6 +11,8 @@ class LocalizeImageJob < ApplicationJob
         url,
         :destination => Rails.root.join("public/uploads/localized/#{url_hash}")
       )
+
+      FileUtils.chmod 0644, Rails.root.join("public/uploads/localized/#{url_hash}")
     rescue
       Rails.logger.debug("Failed to localize image - #{url}")
     end
