@@ -1,7 +1,7 @@
 require 'rsolr'
 
 # Afterward, to import json dump to ElasticSearch:
-# cat solr_docs.json | jq -c '.[] | {"index": {"_index": "geoportal", "_type":"node", "_id": .uuid}}, .' | curl -XPOST localhost:9200/_bulk --data-binary @-
+# cat solr_docs.json | jq -c '.[] | {"index": {"_index": "geoportal", "_type":"node", "_id": .layer_slug_s}}, .' | curl -XPOST localhost:9200/_bulk --data-binary @-
 namespace :geoportal do
   desc 'Make a Solr document json dump to import into ES'
   task generate_elasticsearch_json: :environment do

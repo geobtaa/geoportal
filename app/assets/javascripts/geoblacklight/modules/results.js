@@ -59,7 +59,7 @@ Blacklight.onLoad(function() {
       .node('response.docs.*', function( doc ){
           if(typeof doc.centroid_s != 'undefined'){
             var latlng = doc.centroid_s.split(",")
-            var marker = new PruneCluster.Marker(latlng[0],latlng[1], {popup: "<a href='/catalog/" + doc.uuid + "'>" + doc.dc_title_s + "</a>"});
+            var marker = new PruneCluster.Marker(latlng[0],latlng[1], {popup: "<a href='/catalog/" + doc.layer_slug_s + "'>" + doc.dc_title_s + "</a>"});
             pruneCluster.RegisterMarker(marker);
           }
         }

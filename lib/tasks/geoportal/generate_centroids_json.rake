@@ -14,7 +14,7 @@ namespace :geoportal do
       begin
         if !doc['centroid_s'].empty?
           entry = {}
-          entry['uuid'] = doc['uuid']
+          entry['layer_slug_s'] = doc['layer_slug_s']
           entry['dc_title_s'] = doc['dc_title_s']
           entry['centroid_s'] = doc['centroid_s']
 
@@ -22,7 +22,7 @@ namespace :geoportal do
         end
       rescue Exception => e
         puts "Caught #{e}"
-        puts "BBox or centroid no good - #{doc['uuid']}"
+        puts "BBox or centroid no good - #{doc['layer_slug_s']}"
       end
     end
 

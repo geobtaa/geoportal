@@ -20,7 +20,7 @@ namespace :geoportal do
 
     response["response"]["docs"].each_with_index do |doc, index|
       begin
-        puts "#{doc['uuid']}"
+        puts "#{doc['layer_slug_s']}"
 
         # Remove "score" from hash before re-indexing
         doc.delete("score")
@@ -36,7 +36,7 @@ namespace :geoportal do
         new_solr.commit({softCommit: true})
       rescue Exception => e
         puts "Caught #{e}"
-        puts "ERROR - #{doc['uuid']}"
+        puts "ERROR - #{doc['layer_slug_s']}"
       end
     end
   end

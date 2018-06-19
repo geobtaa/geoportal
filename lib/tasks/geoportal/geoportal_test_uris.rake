@@ -100,20 +100,20 @@ namespace :geoportal do
     def process(doc, type, string, csv)
 
       # Init results doc
-      if !RESULTS.key?(doc['uuid'])
-        RESULTS[doc['uuid']] = {}
+      if !RESULTS.key?(doc['layer_slug_s'])
+        RESULTS[doc['layer_slug_s']] = {}
       end
 
 
       if string.start_with?('http')
         uri = URI(string)
-        RESULTS[doc['uuid']][type] = check_uri(uri)
-        if RESULTS[doc['uuid']][type].instance_of?(Good)
+        RESULTS[doc['layer_slug_s']][type] = check_uri(uri)
+        if RESULTS[doc['layer_slug_s']][type].instance_of?(Good)
           print "."
         else
           print "F"
         end
-        csv << [RESULTS[doc['uuid']][type].class, doc['uuid'], type, string, doc['dct_provenance_s'], doc['dc_title_s']]
+        csv << [RESULTS[doc['layer_slug_s']][type].class, doc['layer_slug_s'], type, string, doc['dct_provenance_s'], doc['dc_title_s']]
 
       elsif string.start_with?('ftp')
         uri = URI(string)
@@ -126,13 +126,13 @@ namespace :geoportal do
             size = ftp.size(uri.path)
             if size > 0
               print ":"
-              csv << ['Good FTP', doc['uuid'], type, string, doc['dct_provenance_s'], doc['dc_title_s']]
+              csv << ['Good FTP', doc['layer_slug_s'], type, string, doc['dct_provenance_s'], doc['dc_title_s']]
             end
           elsif check_ftp_path(ftp, uri.path)
             print ":"
-            csv << ['Good FTP', doc['uuid'], type, string, doc['dct_provenance_s'], doc['dc_title_s']]
+            csv << ['Good FTP', doc['layer_slug_s'], type, string, doc['dct_provenance_s'], doc['dc_title_s']]
           else
-            csv << ['Error FTP', doc['uuid'], type, string, doc['dct_provenance_s'], doc['dc_title_s']]
+            csv << ['Error FTP', doc['layer_slug_s'], type, string, doc['dct_provenance_s'], doc['dc_title_s']]
             print "?"
           end
         end
@@ -146,7 +146,7 @@ namespace :geoportal do
     # Read response json from Solr
     # @TODO: Blacklight/Solr connection, query
     # For now, just run a query like this...
-    # https://geo.btaa.org/solr/blacklightcore/select?q=*%3A*&wt=json&indent=true&fl=uuid,dct_references_s,dct_provenance_s,dc_title_s&rows=10000
+    # https://geo.btaa.org/solr/blacklightcore/select?q=*%3A*&wt=json&indent=true&fl=layer_slug_s,dct_references_s,dct_provenance_s,dc_title_s&rows=10000
     #
     # Just make sure the rows param is big enough to capture all the records.
     json = JSON.parse(File.open(Rails.root.join('tmp', 'uris', 'uris.json'),'r').read)
@@ -166,7 +166,7 @@ namespace :geoportal do
               process(doc, key, value, csv)
             rescue Exception => e
               print "!"
-              csv << ["FAILED", doc['uuid'], key, value, doc['dct_provenance_s'], doc['dc_title_s'], e.inspect]
+              csv << ["FAILED", doc['layer_slug_s'], key, value, doc['dct_provenance_s'], doc['dc_title_s'], e.inspect]
             end
           end
         end

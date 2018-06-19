@@ -17,7 +17,7 @@ namespace :geoportal do
 
     response["response"]["docs"].each_with_index do |doc, index|
       begin
-        puts "#{doc['uuid']} / #{doc['solr_geom'].to_s}"
+        puts "#{doc['layer_slug_s']} / #{doc['solr_geom'].to_s}"
 
         geom_field = doc['solr_geom'].to_s
 
@@ -58,7 +58,7 @@ namespace :geoportal do
         # This is silly, but also helps to check for bbox/centroid errors
         solr.commit({softCommit: true})
       rescue
-        puts "BBox or centroid no good - #{doc['uuid']}"
+        puts "BBox or centroid no good - #{doc['layer_slug_s']}"
       end
     end
   end
