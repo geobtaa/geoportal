@@ -1,5 +1,5 @@
 namespace :geoportal do
-  desc 'Purge Sidecars and Images'
+  desc 'Purge URIs and State Transition History'
   task uri_purge: :environment do
     # Delete all Transitions and Uris
     UriTransition.destroy_all
@@ -70,7 +70,7 @@ namespace :geoportal do
     end
   end
 
-  desc 'Write state report'
+  desc 'Write CSV formatted URI state report'
   task uri_report: :environment do
     # Create a CSV Dump of Results
     file = "#{Rails.root}/public/#{Time.now.strftime('%Y-%m-%d_%H-%M-%S')}.uri_report.csv"
