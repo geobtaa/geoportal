@@ -94,7 +94,6 @@ class CatalogController < ApplicationController
     config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
     config.add_facet_field 'dc_creator_sm', :label => 'Author', :limit => 8
     config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8
-    config.add_facet_field 'dc_format_s', :label => 'Format', :limit => 8
     config.add_facet_field 'dct_provenance_s', label: 'Institution', limit: 8
     # Remove access facet until data is available - EWL
     # config.add_facet_field 'dc_rights_s', label: 'Access', limit: 8, partial: "icon_facet"
@@ -140,6 +139,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_search: true
     config.add_show_field 'dc_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_search: true
     config.add_show_field 'dct_temporal_sm', label: 'Year', itemprop: 'temporal'
+    config.add_show_field 'dc_format_s', label: 'Format', itemprop: 'format'
     config.add_show_field 'dct_provenance_s', label: 'Contributed by', link_to_search: true
 
     # "fielded" search configuration. Used by pulldown among other places.
