@@ -10,6 +10,6 @@ PointlessFeedback.setup do |config|
   config.send_from_submitter       = true
   # config.from_email                = 'no-reply@geo.btaa.org'
   config.to_emails                 = ['ewlarson@umn.edu','btaa-gdp@umn.edu','geoportal@btaa.org']
-  config.google_captcha_site_key   = ENV["GEOPORTAL_CAPTCHA_SITE_KEY"]
-  config.google_captcha_secret_key = ENV["GEOPORTAL_CAPTCHA_SECRET_KEY"]
+  config.google_captcha_site_key   = ENV["GEOBLACKLIGHT_CAPTCHA_SITE_KEY"]
+  config.google_captcha_secret_key = ENV["GEOBLACKLIGHT_CAPTCHA_SECRET_KEY"]
 end
