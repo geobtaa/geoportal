@@ -1,0 +1,68 @@
+<div class="col-lg-6 col-md-8 col-sm-12">
+  <%= form_for @message do |f| %>
+    <% if @message.errors.any? %>
+      <div class="error_messages">
+        <h2>
+          <%= I18n.t('activerecord.errors.header', :default => 'Invalid Fields') %>
+        </h2>
+
+        <p>
+          <%= I18n.t('activerecord.errors.message', :default => 'Correct the following errors and try again.') %>
+        </p>
+
+        <ul>
+          <% @message.errors.full_messages.each do |message| %>
+            <li><%= message.html_safe %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h2>Feedback</h2>
+    <p>We value your thoughts and opinions. We will reply to all comments shortly.</p>
+
+    <fieldset class="user-fields">
+      <legend>About You</legend>
+
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, {:class=> "form-control", :required => true} %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email_address %>
+        <%= f.text_field :email_address, {:class=> "form-control", :required => true} %>
+      </div>
+    </fieldset>
+
+    <fieldset class="feedback-fields">
+      <legend>Leave Your Feedback</legend>
+
+      <div class="form-group">
+        <%= f.label :topic %>
+        <%= f.select :topic, PointlessFeedback.message_topics, {:prompt => true}, {:class=> "form-control", :required => true } %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, {:required => true, :class=> "form-control"} %>
+      </div>
+
+      <%= f.hidden_field :previous_url, value: ERB::Util.url_encode(request.referrer) unless request.referrer.blank? %>
+      
+      <!-- This is a honeypot field to keep the spammers away. Do not remove. -->
+      <!-- If this field is filled in, feedback will not be emailed -->
+      <div class="contact-input" style="position: absolute; left: -9999px;">
+        <%= f.text_field :contact_info %>
+      </div>
+      <!-- End of honeypot field -->
+
+    </fieldset>
+
+    <% if PointlessFeedback.using_captcha? %>
+      <div class="g-recaptcha" data-sitekey="<%= PointlessFeedback.google_captcha_site_key %>"></div>
+    <% end %>
+
+    <button type="submit" class="btn btn-default">Send Feedback</button>
+  <% end %>
+</div>

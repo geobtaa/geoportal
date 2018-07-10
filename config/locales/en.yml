@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+
+pointless_feedback:
+  messages:
+    saved: "Thanks for your feedback! It is much appreciated. We will be in touch shortly."
