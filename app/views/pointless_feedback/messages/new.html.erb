@@ -48,8 +48,8 @@
         <%= f.text_area :description, {:required => true, :class=> "form-control"} %>
       </div>
 
-      <%= f.hidden_field :previous_url, value: ERB::Util.url_encode(session[:previous_url]) unless session[:previous_url].blank? %>
-
+      <%= f.hidden_field :previous_url, value: ERB::Util.url_encode(request.referrer) unless request.referrer.blank? %>
+      
       <!-- This is a honeypot field to keep the spammers away. Do not remove. -->
       <!-- If this field is filled in, feedback will not be emailed -->
       <div class="contact-input" style="position: absolute; left: -9999px;">
