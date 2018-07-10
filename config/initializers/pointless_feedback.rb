@@ -9,7 +9,7 @@ PointlessFeedback.setup do |config|
   config.email_feedback            = true
   config.send_from_submitter       = false
   config.from_email                = 'no-reply@geo.btaa.org'
-  config.to_emails                 = ['ewlarson@umn.edu','btaa-gdp@umn.edu','geoportal@btaa.org']
+  config.to_emails                 = ['btaa-gdp@umn.edu','geoportal@btaa.org']
   config.google_captcha_site_key   = ENV["GEOBLACKLIGHT_CAPTCHA_SITE_KEY"]
   config.google_captcha_secret_key = ENV["GEOBLACKLIGHT_CAPTCHA_SECRET_KEY"]
 end
