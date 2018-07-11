@@ -1,4 +1,4 @@
-<% if ['iiif', 'download'].any?{ |vp| @document.viewer_protocol == vp } %>
+<% if ['map', 'iiif', 'download'].any?{ |vp| @document.viewer_protocol == vp } %>
   <%= render :partial => 'show_static_map_bbox' %>
 <% end %>
 

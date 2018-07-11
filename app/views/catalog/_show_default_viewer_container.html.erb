@@ -1,4 +1,6 @@
 <% document ||= @document %>
+  <% return if document.viewer_protocol == 'map' %>
+
   <% if show_attribute_table? %>
     <div id='viewer-container' class="col-md-8">
   <% else %>
