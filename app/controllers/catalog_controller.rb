@@ -97,8 +97,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8
     config.add_facet_field 'dc_creator_sm', :label => 'Creator', :limit => 8
 
-    config.add_facet_field 'b1g_geom_type_sm', label: 'Geometry', limit: 8, partial: "icon_facet", collapse: false
-
+    #config.add_facet_field 'b1g_geom_type_sm', label: 'Geometry', limit: 8, partial: "icon_facet", collapse: false
     #config.add_facet_field 'dc_format_s', :label => 'Format', :limit => 8
     config.add_facet_field 'dct_provenance_s', label: 'Institution', limit: 8
     config.add_facet_field 'dc_type_sm', label: 'Type', limit: 8, collapse: false
