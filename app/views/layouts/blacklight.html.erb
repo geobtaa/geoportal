@@ -30,14 +30,22 @@
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <% if PointlessFeedback.using_captcha? %>
+      <head>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+      </head>
+    <% end %>
+
   </head>
   <body class="<%= render_body_class %>">
+
   <%= render :partial => 'shared/header_navbar' %>
 
   <%= render partial: 'shared/ajax_modal' %>
 
   <% if current_page?(root_url) && has_search_parameters? == false %>
     <%# if there are no input/search related params, display the "home" partial -%>
+    <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
     <%= render 'home' %>
   <% else %>
     <div role="main" id="main-container" class="<%= container_classes %>" data-analytics-id="<%= Rails.configuration.google_analytics %>">
