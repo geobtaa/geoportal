@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Contributor Spotlight: University of Wisconsin-Madison"
-date:   2018-07-08
+date:   2018-08-21
 ---
 
 _This post is the second in a monthly series to highlight each Big Ten Academic Alliance university that contributes to the geoportal._
