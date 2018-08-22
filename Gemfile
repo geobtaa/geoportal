@@ -60,6 +60,7 @@ gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblackli
 gem 'statesman', '~> 3.4.1'
 gem 'sidekiq', '~> 5.1.3'
 gem 'sidekiq-failures', '~> 1.0.0'
+gem 'down', '~> 4.4'
 gem 'addressable', '~> 2.5.0'
 gem 'inline_svg', '~> 1.3.0'
 # gem 'geoblacklight-icons', '~> 1.2.0'

@@ -1,0 +1,8 @@
+<% document ||= @document %>
+
+<div class='row' style="padding-bottom:2rem;">
+  <%= render 'show_default_viewer_container' %>
+  <%= render 'show_default_attribute_table' %>
+</div>
+
+<%= render 'upper_metadata', locals: { document: document} %>
