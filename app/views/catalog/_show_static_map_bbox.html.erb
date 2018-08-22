@@ -1,0 +1,19 @@
+<%-
+  # Compare with render_document_functions_partial helper, and
+  # _document_functions partial. BL actually has two groups
+  # of document-related tools. "document functions" by default
+  # contains Bookmark functionality shown on both results and
+  # item view. While "document tools" contains external export type
+  # functions by default only on detail.
+
+-%>
+<div class="panel panel-default show-thumbnail">
+  <div class="panel-heading">
+    Location
+  </div>
+
+  <div class="panel-body">
+    <%= content_tag :div, id: 'static-map', data: { map: 'item', protocol: 'Map', url: @document.viewer_endpoint, 'layer-id' => @document.wxs_identifier, 'map-bbox' => @document.bounding_box_as_wsen, 'catalog-path'=> search_catalog_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
+    <% end %>
+  </div>
+</div>
