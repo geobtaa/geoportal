@@ -92,6 +92,9 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_content?("ArcGIS Dynamic Map Layer")
     assert page.has_selector?("#dynamic_map_layer_webservice")
 
+    # Type
+    click_button 'Close'
+
     # ISO Metadata
     assert page.has_link?("Metadata")
 
@@ -102,7 +105,7 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_content?("Download Shapefile")
 
     # Provenance
-    assert page.has_content?("Minnesota")
+    assert page.has_link?("Minnesota")
   end
 
   def test_iowa_map_show
