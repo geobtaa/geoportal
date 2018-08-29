@@ -70,8 +70,10 @@ class ShowPageTest < Capybara::Rails::TestCase
     # IIIF Image
     assert page.has_selector?("div[data-protocol='Iiif']")
 
-    # Download
-    assert page.has_content?("Download Tiff")
+    # Downloads
+    assert page.has_content?("Downloads")
+    assert page.has_link?("Original Tiff")
+    assert page.has_link?("Original JPG")
 
     # Provenance
     assert page.has_content?("Minnesota")
@@ -103,7 +105,7 @@ class ShowPageTest < Capybara::Rails::TestCase
 
     # Download
     assert page.has_content?("Downloads")
-    assert page.has_content?("Original Shapefile")
+    assert page.has_link?("Original Shapefile")
 
     # Provenance
     assert page.has_link?("Minnesota")
@@ -206,8 +208,8 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_link?("Web services")
 
     # Data Relations
-    assert page.has_content?("Data Relations")
-    assert page.has_content?("Derived Datasets")
+    assert page.has_content?("Relations")
+    assert page.has_content?("Related Records")
   end
 
   def test_relations_child_record
@@ -218,10 +220,11 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_link?("Metadata")
 
     # Download
-    assert page.has_content?("Download GeoTIFF")
+    assert page.has_content?("Downloads")
+    assert page.has_link?("Original GeoTIFF")
 
     # Data Relations
-    assert page.has_content?("Data Relations")
-    assert page.has_content?("Source Datasets")
+    assert page.has_content?("Relations")
+    assert page.has_content?("Parent Record")
   end
 end
