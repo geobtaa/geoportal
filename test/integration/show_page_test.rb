@@ -102,7 +102,8 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_no_selector?("div[data-protocol='Iiif']")
 
     # Download
-    assert page.has_content?("Download Shapefile")
+    assert page.has_content?("Downloads")
+    assert page.has_content?("Original Shapefile")
 
     # Provenance
     assert page.has_link?("Minnesota")
