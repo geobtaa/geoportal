@@ -55,7 +55,7 @@ group :development do
 end
 
 gem 'blacklight', '>= 6.3'
-gem 'geoblacklight', '~> 1.8.0'
+gem 'geoblacklight', '~> 1.9.0'
 gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblacklight_sidecar_images.git', branch: 'develop'
 gem 'statesman', '~> 3.4.1'
 gem 'sidekiq', '~> 5.1.3'
