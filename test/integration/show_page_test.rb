@@ -210,6 +210,12 @@ class ShowPageTest < Capybara::Rails::TestCase
     # Data Relations
     assert page.has_content?("Relations")
     assert page.has_content?("Related Records")
+
+    # Browse Relations
+    click_link("Browse all 25 records...")
+    within("span.page_entries") do
+      assert page.has_content?("25")
+    end
   end
 
   def test_relations_child_record
