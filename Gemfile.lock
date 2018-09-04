@@ -86,6 +86,9 @@ GEM
       rails (>= 4.2, < 6)
       rsolr (>= 1.0.6, < 3)
       twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
+    blacklight_advanced_search (6.3.1)
+      blacklight (~> 6.0, >= 6.0.1)
+      parslet
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -123,6 +126,10 @@ GEM
       mime-types (>= 1.16)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
+    chosen-rails (1.8.7)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
     chromedriver-helper (1.2.0)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
@@ -349,6 +356,7 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
+    parslet (1.8.2)
     pathutil (0.16.1)
       forwardable-extended (~> 2.6)
     pointless_feedback (4.0.5)
@@ -485,6 +493,7 @@ PLATFORMS
 DEPENDENCIES
   addressable (~> 2.5.0)
   blacklight (>= 6.3)
+  blacklight_advanced_search
   byebug
   capistrano (= 3.4.1)
   capistrano-bundler
@@ -494,6 +503,7 @@ DEPENDENCIES
   capistrano-template
   capybara
   capybara-selenium
+  chosen-rails
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
