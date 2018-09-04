@@ -53,6 +53,7 @@ METADATA_SHOWN:
   - 'fgdc'
   - 'iso19139'
   - 'mods'
+  - 'html'
 
 #NEWRELIC_APP_NAME: 'should be specific to stage and prod'
 #NEWRELIC_LICENSE_KEY: 'this is private'
