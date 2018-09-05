@@ -3,6 +3,7 @@ require 'blacklight/catalog'
 
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
+  include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
 
   configure_blacklight do |config|
@@ -103,7 +104,15 @@ class CatalogController < ApplicationController
       '2010-2014' => { :label => '2010-2014', :fq => "solr_year_i:[2010 TO 2014]" },
       '2015-present' => { :label => '2015-present', :fq => "solr_year_i:[2015 TO #{Time.now.year}]"}
     }, collapse: false
-    config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
+
+    # Trying range facet
+    #config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
+
+    config.add_facet_field 'solr_year_i', label: 'Year', limit: 10, all: 'Any year', range: {
+      assumed_boundaries: [1100, 2018]
+      # :num_segments => 6,
+      # :segments => true
+    }
 
     config.add_facet_field 'dct_isPartOf_sm', :label => 'Collection', limit: 8
     config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8

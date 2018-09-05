@@ -22,13 +22,13 @@
 <% end %>
 
 
-<!--<%# Publication Date is a range input %>
-<% pub_date = facet_configuration_for_field(Settings.FIELDS.YEAR) %>
+<%# Publication Date is a range input %>
+<% pub_date = facet_configuration_for_field('solr_year_i') %>
 <div class="form-group advanced-search-facet row">
   <%= label_tag pub_date.field.parameterize, :class => "col-sm-4 control-label" do %>
       <%= pub_date.label %>
   <% end %>
   <div class="col-sm-8 range_limit">
-
+    <%= render_range_input(pub_date.field, :begin) %> – <%= render_range_input(pub_date.field, :end) %>
   </div>
-</div>-->
+</div>
