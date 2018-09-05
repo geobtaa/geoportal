@@ -1,4 +1,5 @@
 @import 'components/icons';
+@import 'components/advanced';
 
 span.list-view.document-counter {
   display:inline-block;
@@ -51,4 +52,9 @@ span.list-view.document-counter {
 
 #tools-sidebar [data-map="item"] {
   height: 280px;
+}
+
+#home-search .navbar-form {
+  padding:0;
+  margin:0;
 }
