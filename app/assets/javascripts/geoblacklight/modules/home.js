@@ -21,7 +21,7 @@ Blacklight.onLoad(function() {
       .node('*', function( doc ){
           if(typeof doc.b1g_centroid_ss != 'undefined'){
             var latlng = doc.b1g_centroid_ss.split(",")
-            var marker = new PruneCluster.Marker(latlng[0],latlng[1], {popup: "<a href='/catalog/" + doc.uuid + "'>" + doc.dc_title_s + "</a>"});
+            var marker = new PruneCluster.Marker(latlng[0],latlng[1], {popup: "<a href='/catalog/" + doc.layer_slug_s + "'>" + doc.dc_title_s + "</a>"});
             pruneCluster.RegisterMarker(marker);
           }
         }
