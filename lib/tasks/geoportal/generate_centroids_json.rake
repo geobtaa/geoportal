@@ -7,7 +7,7 @@ namespace :geoportal do
     solr = RSolr.connect :url => CONFIG.url
 
     # Search request
-    response = solr.get 'select', :params => {:q => '*:*', :rows => '10000'}
+    response = solr.get 'select', :params => {:q => '*:*', :rows => '100000'}
 
     docs = []
     response["response"]["docs"].each_with_index do |doc, index|
@@ -16,7 +16,7 @@ namespace :geoportal do
           entry = {}
           entry['uuid'] = doc['uuid']
           entry['dc_title_s'] = doc['dc_title_s']
-          entry['centroid_s'] = doc['centroid_s']
+          entry['b1g_centroid_ss'] = doc['centroid_s']
 
           docs << entry
         end
