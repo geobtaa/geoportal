@@ -158,7 +158,7 @@ class CatalogController < ApplicationController
     # item_prop: [String] property given to span with Schema.org item property
     # link_to_search: [Boolean] that can be passed to link to a facet search
     # helper_method: [Symbol] method that can be used to render the value
-    config.add_show_field 'dc_creator_sm', label: 'Author', itemprop: 'author'
+    config.add_show_field 'dc_creator_sm', label: 'Creator', itemprop: 'creator'
     config.add_show_field 'dc_description_s', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
     config.add_show_field 'dc_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_search: true
     config.add_show_field 'dct_isPartOf_sm', label: 'Collection', itemprop: 'isPartOf', link_to_search: true
@@ -238,13 +238,12 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial :web_services, if: proc { |_context, _config, options| options[:document] && (Settings.WEBSERVICES_SHOWN & options[:document].references.refs.map(&:type).map(&:to_s)).any? }
     config.add_show_tools_partial :metadata, if: proc { |_context, _config, options| options[:document] && (Settings.METADATA_SHOWN & options[:document].references.refs.map(&:type).map(&:to_s)).any? }
     config.add_show_tools_partial :exports, partial: 'exports', if: proc { |_context, _config, options| options[:document] }
-    config.add_show_tools_partial :downloads, partial: 'downloads', if: proc { |_context, _config, options| options[:document] }
+    config.add_show_tools_partial :data_dictionary, partial: 'data_dictionary', if: proc { |_context, _config, options| options[:document] }
 
     # Remove show tools
     config.show.partials.delete(:show_header)
     config.show.document_actions.delete(:citation)
     config.show.document_actions.delete(:sms)
-
 
     # Configure basemap provider for GeoBlacklight maps (uses https only basemap
     # providers with open licenses)
