@@ -40,15 +40,18 @@
       </div>
     </div>
   </div>
+</header>
+
+<section id="home-search" aria-label='search'>
   <% if controller_name == 'catalog' && has_search_parameters? %>
-    <div id="search-navbar">
+    <div id="search-bar">
       <div class="container">
         <div class='row'>
-          <div class='col-xs-12 col-sm-9'>
-            <%= render_search_bar  %>
+          <div class='col-xs-12 col-sm-12'>
+            <%= render :partial=>'catalog/search_form' %>
           </div>
         </div>
       </div>
     </div>
   <% end %>
-</header>
+</section>

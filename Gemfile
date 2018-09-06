@@ -55,6 +55,9 @@ group :development do
 end
 
 gem 'blacklight', '>= 6.3'
+gem 'blacklight_advanced_search'
+gem 'blacklight_range_limit'
+gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'geoblacklight', '~> 1.8.0'
 gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblacklight_sidecar_images.git', branch: 'develop'
 gem 'statesman', '~> 3.4.1'
