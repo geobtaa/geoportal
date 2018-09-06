@@ -12,11 +12,11 @@ namespace :geoportal do
     docs = []
     response["response"]["docs"].each_with_index do |doc, index|
       begin
-        if !doc['centroid_s'].empty?
+        if !doc['b1g_centroid_ss'].empty?
           entry = {}
           entry['uuid'] = doc['uuid']
           entry['dc_title_s'] = doc['dc_title_s']
-          entry['b1g_centroid_ss'] = doc['centroid_s']
+          entry['b1g_centroid_ss'] = doc['b1g_centroid_ss']
 
           docs << entry
         end
