@@ -11,7 +11,7 @@ _This post is the third in a monthly series to highlight each Big Ten Academic A
 
 
 ### Scanned Maps
-MSU Libraries have submitted a collection of antique scanned maps collections (which focus primarily on Michigan, the Great Lakes region, and Africa)   Here are some of the most downloaded items from this collection:
+MSU Libraries have submitted a collection of antique scanned maps collections (which focus primarily on Michigan, the Great Lakes region, and Africa). Here are some of the most downloaded items from this collection:
 
 ![50740354a1697b151d700f0e8bf9bc88](https://user-images.githubusercontent.com/2367677/45111285-3e6e3780-b10a-11e8-9c39-519b912b6956.jpeg)
 [_A map of the acting superintendency of Michigan, Henry Rowe Schoolcraft, 1837_](https://geo.btaa.org/catalog/b32b70ae-430b-480d-9a34-c6ffbd4f55df)
