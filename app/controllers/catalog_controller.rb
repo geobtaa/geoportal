@@ -203,21 +203,21 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('placename') do |field|
+      field.qt = 'search'
+      field.label = 'Place'
+      field.solr_local_parameters = {
+        qf: '$placename_qf',
+        pf: '$placename_pf'
+      }
+    end
+
     config.add_search_field('publisher') do |field|
       field.qt = 'search'
       field.label = 'Publisher/Creator'
       field.solr_local_parameters = {
         qf: '$publisher_qf',
         pf: '$publisher_pf'
-      }
-    end
-
-    config.add_search_field('subject') do |field|
-      # field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
-      field.qt = 'search'
-      field.solr_local_parameters = {
-        qf: '$subject_qf',
-        pf: '$subject_pf'
       }
     end
 
