@@ -87,8 +87,12 @@ class CatalogController < ApplicationController
     # config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
 
     config.add_facet_field 'dct_spatial_sm', :label => 'Place', :limit => 8, collapse: false
-
     config.add_facet_field 'b1g_genre_sm', :label => 'Genre', :limit => 8, collapse: false
+    config.add_facet_field 'solr_year_i', label: 'Year', limit: 10, collapse: false, all: 'Any year', range: {
+      assumed_boundaries: [1100, 2018]
+      # :num_segments => 6,
+      # :segments => true
+    }
     config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8, collapse: false
 
     config.add_facet_field 'time_period', :label => 'Time Period', :query => {
@@ -107,12 +111,6 @@ class CatalogController < ApplicationController
 
     # Trying range facet
     #config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
-
-    config.add_facet_field 'solr_year_i', label: 'Year', limit: 10, all: 'Any year', range: {
-      assumed_boundaries: [1100, 2018]
-      # :num_segments => 6,
-      # :segments => true
-    }
 
     config.add_facet_field 'dct_isPartOf_sm', :label => 'Collection', limit: 8
     config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8
