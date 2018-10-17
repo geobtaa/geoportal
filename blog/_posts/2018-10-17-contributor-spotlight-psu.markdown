@@ -1,13 +1,12 @@
 ---
 layout: post
 title:  "Contributor Spotlight: Pennsylvania State University"
-date:   2018-10-10
+date:   2018-10-17
 ---
 
 _This post is the third in a monthly series to highlight each Big Ten Academic Alliance university that contributes to the geoportal._
 
 ## The Geoportal in Action
-
 #### Project Task Force Members: Nathan Piekielek, Geospatial Services Librarian; Paige Andrew, Maps Cataloging Librarian and Linda Ballinger, Metadata Strategist
 
 At the start of the BTAA Geoportal project in 2015, the state of Pennsylvania already had a well-developed [geospatial data clearinghouse (PASDA)](http://www.pasda.psu.edu/) and the Penn State University Libraries had already published online [tens of thousands of scanned Sanborn fire insurance maps](https://libraries.psu.edu/about/collections/digital-map-drawer). What we lacked, however, was a user-friendly online interface with which to search for digital cartographic resources geographically, as well as by keyword and topic regardless of their format (i.e., GIS data OR scanned map). We have incorporated both PASDA metadata and Sanborn maps into the Geoportal so that users can discover both of these resources in a single web interface.
@@ -29,7 +28,8 @@ Penn State has contributed three major collections to the Geoportal with one mor
 
 - Historic maps of Pennsylvania – in parallel to the rare maps collection, the Special Collections Library also acquired and curated a substantial collection of historic Pennsylvania maps that had not been previously cataloged and digitized. We are in the process of cataloging and digitizing this collection in preparation for posting to the BTAA Geoportal. This should be complete by winter 2018/2019.
 
-![image2](https://user-images.githubusercontent.com/2367677/46502783-98881880-c7ee-11e8-9ea4-75673c66d811.png)
-_This 1733 map provides an example of early historical maps of Pennsylvania and the Atlantic Coast housed in the Penn State University Libraries Special Collections unit._
+![30114](https://user-images.githubusercontent.com/2367677/46765673-36735b80-cca5-11e8-96fe-cc624e3ac8d8.jpg)
+
+[_This 1733 map provides an example of early historical maps of Pennsylvania and the Atlantic Coast housed in the Penn State University Libraries Special Collections unit._](https://geo.btaa.org/catalog/5ed85c65-6566-4f6e-96fb-cfeeb2d3ded2)
 
 The BTAA Geoportal has provided Penn State Libraries the opportunity to centralize online access to a number of digital cartographic resources for the benefit of our user community. What is more, the Geoportal has provided engaged scholarship opportunities for students to learn marketable skills while providing assistance to us and our participation in this exciting project.
