@@ -54,7 +54,8 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_content?("Railroad commissioners' map of Minnesota")
 
     # Type
-    assert page.has_no_link?("Web services")
+    assert page.has_link?("Web services")
+    click_link 'Web services'
 
     # WMS Web Service
     assert page.has_no_content?("Web Mapping Service (WMS)")
@@ -63,6 +64,12 @@ class ShowPageTest < Capybara::Rails::TestCase
     # Esri Web Service
     assert page.has_no_content?("ArcGIS Dynamic Map Layer")
     assert page.has_no_selector?("#dynamic_map_layer_webservice")
+
+    # IIIF
+    assert page.has_content?("International Image Interoperability Framework (IIIF)")
+
+    # Type
+    click_button 'Close'
 
     # ISO Metadata
     assert page.has_no_link?("Metadata")
@@ -220,7 +227,6 @@ class ShowPageTest < Capybara::Rails::TestCase
 
   def test_relations_child_record
     visit "/catalog/02999877-0ee9-4cc0-b67f-f2f48107f517"
-    assert page.has_content?("Wabash Topo (14): Indiana, 1929")
 
     # ISO Metadata
     assert page.has_link?("Metadata")
@@ -232,5 +238,11 @@ class ShowPageTest < Capybara::Rails::TestCase
     # Data Relations
     assert page.has_content?("Relations")
     assert page.has_content?("Parent Record")
+  end
+
+  def test_open_index_map_record
+    visit "/catalog/cornell-ny-aerial-photos-1960s"
+    assert page.has_selector?("#map")
+    assert page.has_selector?("[data-protocol=IndexMap]")
   end
 end
