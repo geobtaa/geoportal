@@ -54,7 +54,8 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_content?("Railroad commissioners' map of Minnesota")
 
     # Type
-    assert page.has_no_link?("Web services")
+    assert page.has_link?("Web services")
+    click_link 'Web services'
 
     # WMS Web Service
     assert page.has_no_content?("Web Mapping Service (WMS)")
@@ -64,14 +65,22 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_no_content?("ArcGIS Dynamic Map Layer")
     assert page.has_no_selector?("#dynamic_map_layer_webservice")
 
+    # IIIF
+    assert page.has_content?("International Image Interoperability Framework (IIIF)")
+
+    # Type
+    click_button 'Close'
+
     # ISO Metadata
     assert page.has_no_link?("Metadata")
 
     # IIIF Image
     assert page.has_selector?("div[data-protocol='Iiif']")
 
-    # Download
-    assert page.has_content?("Download Tiff")
+    # Downloads
+    assert page.has_content?("Downloads")
+    assert page.has_link?("Original Tiff")
+    assert page.has_link?("Original JPG")
 
     # Provenance
     assert page.has_content?("Minnesota")
@@ -102,7 +111,8 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_no_selector?("div[data-protocol='Iiif']")
 
     # Download
-    assert page.has_content?("Download Shapefile")
+    assert page.has_content?("Downloads")
+    assert page.has_link?("Original Shapefile")
 
     # Provenance
     assert page.has_link?("Minnesota")
@@ -205,22 +215,34 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_link?("Web services")
 
     # Data Relations
-    assert page.has_content?("Data Relations")
-    assert page.has_content?("Derived Datasets")
+    assert page.has_content?("Relations")
+    assert page.has_content?("Related Records")
+
+    # Browse Relations
+    click_link("Browse all 25 records...")
+    within("span.page_entries") do
+      assert page.has_content?("25")
+    end
   end
 
   def test_relations_child_record
     visit "/catalog/02999877-0ee9-4cc0-b67f-f2f48107f517"
-    assert page.has_content?("Wabash Topo (14): Indiana, 1929")
 
     # ISO Metadata
     assert page.has_link?("Metadata")
 
     # Download
-    assert page.has_content?("Download GeoTIFF")
+    assert page.has_content?("Downloads")
+    assert page.has_link?("Original GeoTIFF")
 
     # Data Relations
-    assert page.has_content?("Data Relations")
-    assert page.has_content?("Source Datasets")
+    assert page.has_content?("Relations")
+    assert page.has_content?("Parent Record")
+  end
+
+  def test_open_index_map_record
+    visit "/catalog/cornell-ny-aerial-photos-1960s"
+    assert page.has_selector?("#map")
+    assert page.has_selector?("[data-protocol=IndexMap]")
   end
 end

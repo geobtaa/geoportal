@@ -55,7 +55,10 @@ group :development do
 end
 
 gem 'blacklight', '>= 6.3'
-gem 'geoblacklight', '~> 1.8.0'
+gem 'blacklight_advanced_search'
+gem 'blacklight_range_limit'
+gem 'chosen-rails' #  jquery multiselect plugin for advanced search
+gem 'geoblacklight', '~> 1.9.0'
 gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblacklight_sidecar_images.git', branch: 'develop'
 gem 'statesman', '~> 3.4.1'
 gem 'sidekiq', '~> 5.1.3'
@@ -88,8 +91,7 @@ gem 'sitemap_generator', '~> 5.2.0'
 gem 'exception_notification', '~>4.2.0'
 
 group :test do
-  gem 'capybara'
-  gem 'minitest-rails-capybara'
+  gem 'minitest-rails-capybara', '~>3.0.0'
   gem 'chromedriver-helper'
   gem 'capybara-selenium'
 end

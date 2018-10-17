@@ -7,22 +7,22 @@ namespace :geoportal do
     solr = RSolr.connect :url => CONFIG.url
 
     # Search request
-    response = solr.get 'select', :params => {:q => '*:*', :rows => '10000'}
+    response = solr.get 'select', :params => {:q => '*:*', :rows => '100000'}
 
     docs = []
     response["response"]["docs"].each_with_index do |doc, index|
       begin
-        if !doc['centroid_s'].empty?
+        if !doc['b1g_centroid_ss'].empty?
           entry = {}
-          entry['uuid'] = doc['uuid']
+          entry['layer_slug_s'] = doc['layer_slug_s']
           entry['dc_title_s'] = doc['dc_title_s']
-          entry['centroid_s'] = doc['centroid_s']
+          entry['b1g_centroid_ss'] = doc['b1g_centroid_ss']
 
           docs << entry
         end
       rescue Exception => e
         puts "Caught #{e}"
-        puts "BBox or centroid no good - #{doc['uuid']}"
+        puts "BBox or centroid no good - #{doc['layer_slug_s']}"
       end
     end
 

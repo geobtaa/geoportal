@@ -19,9 +19,9 @@ Blacklight.onLoad(function() {
     // oboe('http://localhost:8983/solr/geoportal/export?fl=uuid_sdv,dc_title_sdv,centroid_sdv&indent=on&q=*:*&wt=json&sort=dc_title_sdv%20asc&rows=10000')
     oboe('/centroids.json')
       .node('*', function( doc ){
-          if(typeof doc.centroid_s != 'undefined'){
-            var latlng = doc.centroid_s.split(",")
-            var marker = new PruneCluster.Marker(latlng[0],latlng[1], {popup: "<a href='/catalog/" + doc.uuid + "'>" + doc.dc_title_s + "</a>"});
+          if(typeof doc.b1g_centroid_ss != 'undefined'){
+            var latlng = doc.b1g_centroid_ss.split(",")
+            var marker = new PruneCluster.Marker(latlng[0],latlng[1], {popup: "<a href='/catalog/" + doc.layer_slug_s + "'>" + doc.dc_title_s + "</a>"});
             pruneCluster.RegisterMarker(marker);
           }
         }

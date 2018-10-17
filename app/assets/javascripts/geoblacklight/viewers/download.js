@@ -4,8 +4,6 @@ GeoBlacklight.Viewer.Download = GeoBlacklight.Viewer.extend({
   load: function() {
     this.map = this.element
 
-    console.log(this.data.url);
-
     var img = document.createElement("img");
 
     img.setAttribute("src", this.data.url);

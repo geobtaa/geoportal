@@ -12,7 +12,7 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
 
   def test_map_clustering
     visit '/?q=water&view=mapview'
-    assert page.has_selector?("div.prunecluster.leaflet-marker-icon", :wait => 10)
+    assert page.has_selector?("div.prunecluster.leaflet-marker-icon")
   end
 
   def test_empty_search
@@ -23,17 +23,18 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
   def test_facets
     visit '/?q=water'
     assert page.has_selector?("#facets")
-    assert page.assert_selector('div.facet_limit', :count => 10)
-    assert page.has_content?("Place")
-    assert page.has_content?("Genre")
-    assert page.has_content?("Subject")
-    assert page.has_content?("Time Period")
-    assert page.has_content?("Year")
-    assert page.has_content?("Collection")
-    assert page.has_content?("Publisher")
-    assert page.has_content?("Creator")
-    assert page.has_content?("Institution")
-    assert page.has_content?("Type")
+    within("#facets") do
+      assert page.has_content?("Place")
+      assert page.has_content?("Genre")
+      assert page.has_content?("Subject")
+      assert page.has_content?("Time Period")
+      assert page.has_content?("Year")
+      assert page.has_content?("Collection")
+      assert page.has_content?("Publisher")
+      assert page.has_content?("Creator")
+      assert page.has_content?("Institution")
+      assert page.has_content?("Type")
+    end
   end
 
   def test_getBounds

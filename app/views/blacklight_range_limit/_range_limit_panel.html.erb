@@ -1,0 +1,25 @@
+<%- # requires solr_config local passed in
+  field_config = range_config(solr_field)
+  label = facet_field_label(solr_field)
+
+  input_label_range_begin = field_config[:input_label_range_begin] || t("blacklight.range_limit.range_begin", field_label: label)
+  input_label_range_end   = field_config[:input_label_range_end] || t("blacklight.range_limit.range_end", field_label: label)
+  maxlength = field_config[:maxlength]
+-%>
+
+<div class="limit_content range_limit">
+  <%= form_tag search_action_path, :method => :get, :class=>"range_limit subsection range_#{solr_field} form-inline" do %>
+    <%= render_hash_as_hidden_fields(search_state.params_for_search) %>
+
+    <!-- we need to include a dummy search_field parameter if none exists,
+         to trick blacklight into displaying actual search results instead
+         of home page. Not a great solution, but easiest for now. -->
+    <% unless params.has_key?(:search_field) %>
+      <%= hidden_field_tag("search_field", "dummy_range") %>
+    <% end %>
+
+    <%= render_range_input(solr_field, :begin, input_label_range_begin, maxlength) %> – <%= render_range_input(solr_field, :end, input_label_range_end, maxlength) %>
+    <%= submit_tag t('blacklight.range_limit.submit_limit'), :class=>'submit btn btn-default' %>
+
+  <% end %>
+</div>
