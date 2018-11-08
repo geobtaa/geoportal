@@ -4,7 +4,7 @@ title:  "Contributor Spotlight: Pennsylvania State University"
 date:   2018-10-17
 ---
 
-_This post is the third in a monthly series to highlight each Big Ten Academic Alliance university that contributes to the geoportal._
+_This post is part of a monthly series to highlight each Big Ten Academic Alliance university that contributes to the geoportal._
 
 ## The Geoportal in Action
 #### Project Task Force Members: Nathan Piekielek, Geospatial Services Librarian; Paige Andrew, Maps Cataloging Librarian and Linda Ballinger, Metadata Strategist
