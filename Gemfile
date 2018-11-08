@@ -68,7 +68,7 @@ gem 'addressable', '~> 2.5.0'
 gem 'inline_svg', '~> 1.3.0'
 # gem 'geoblacklight-icons', '~> 1.2.0'
 gem 'handlebars_assets', '~> 0.23.0'
-gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', :ref => '324d3307a0ad99722bc3a92fd8cd8d3cbba822e5'
+gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', :ref => '84da81140e7ef93e7241b7753c01d7f709216f2b'
 gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'master'
 
 gem 'rsolr', '>= 1.0'
