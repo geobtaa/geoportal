@@ -60,6 +60,7 @@ gem 'blacklight_range_limit'
 gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'geoblacklight', '~> 1.9.0'
 gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblacklight_sidecar_images.git', branch: 'develop'
+gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblacklight_sidecar_images.git', :ref => '3fd6634dc3dfa089d7894620c0fbf15571ab5625'
 gem 'statesman', '~> 3.4.1'
 gem 'sidekiq', '~> 5.1.3'
 gem 'sidekiq-failures', '~> 1.0.0'
