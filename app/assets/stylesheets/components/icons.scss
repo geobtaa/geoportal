@@ -18,12 +18,12 @@
 }
 
 span.icon {
-  color: #CCC !important;
+  color: #CCC;
   display: inline;
   align-self: center;
 }
 
-.icon svg {
+.icon svg, .icon svg>path {
   fill: currentColor;
   height: 1em;
   width: 1em;

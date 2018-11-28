@@ -91,38 +91,54 @@ footer {
   border:4px solid $white;
 }
 
-section#home-search {
-  div#search-bar {
-    background-color:rgba($black,0.8);
-    padding:2rem 2rem;
-    margin-bottom:2rem;
-  }
 
-  padding:0;
+div#home-content-wrapper{
   background:lighten($gray, 12%) asset_url('aerial_photo.jpg') repeat;
+  height:800px;
+  position:relative;
+  overflow:hidden;
 
-  #project-tagline {
-    margin-top:0;
-    padding:1rem;
-    display:inline-block;
-    background-color:rgba($btaa-blue,0.9);
-    color:$white;
+  #map-wrapper {
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    padding-right:0;
   }
 
-  #project-text {
-    padding:1rem;
-    display:inline-block;
-    background-color:rgba(255,255,255,0.9);
-    margin-bottom:2rem;
-
-    .project-action {
-      border-top:1px solid #CCC;
-      padding-top:1rem;
+  #search-bar {
+    .search-query-form {
+      padding-left:0;
+    }
+    .search-input-group {
+      width:100%;
     }
   }
+}
 
-  img {
-    padding-bottom:2rem;
+div#search-bar {
+  background-color:rgba($black,0.8);
+  padding:0rem 3rem 2rem 2rem;
+}
+
+#project-tagline {
+  margin-top:0;
+  padding:1rem;
+  display:inline-block;
+  background-color:rgba($btaa-blue,0.9);
+  color:$white;
+}
+
+#project-text {
+  padding:1rem;
+  display:inline-block;
+  background-color:rgba(255,255,255,0.9);
+  margin-bottom:2rem;
+  border-radius:$radius;
+
+  .project-action {
+    border-top:1px solid #CCC;
+    padding-top:1rem;
   }
 }
 
@@ -201,4 +217,9 @@ section#home-search {
 div#map {
   min-height: 440px;
   height: 100% !important;
+}
+
+.twitter-typeahead input.tt-hint.form-control {
+  width: 100%;
+  border-radius:0px !important;
 }
