@@ -104,11 +104,14 @@ div#home-content-wrapper{
     top:0;
     left:0;
     padding-right:0;
+    padding-left:0;
   }
 
   #search-bar {
     .search-query-form {
       padding-left:0;
+      padding-right:0;
+      margin-left:1px;
     }
     .search-input-group {
       width:100%;
@@ -118,7 +121,14 @@ div#home-content-wrapper{
 
 div#search-bar {
   background-color:rgba($black,0.8);
-  padding:0rem 3rem 2rem 2rem;
+  padding:2rem;
+}
+
+#home-content-wrapper {
+  div#search-bar {
+    background-color:rgba($black,0.8);
+    padding:1rem 3rem 2rem 2rem;
+  }
 }
 
 #project-tagline {
