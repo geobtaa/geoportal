@@ -22,10 +22,10 @@ GIT
 
 GIT
   remote: https://github.com/geoblacklight/geoblacklight-icons.git
-  revision: 324d3307a0ad99722bc3a92fd8cd8d3cbba822e5
-  ref: 324d3307a0ad99722bc3a92fd8cd8d3cbba822e5
+  revision: 84da81140e7ef93e7241b7753c01d7f709216f2b
+  ref: 84da81140e7ef93e7241b7753c01d7f709216f2b
   specs:
-    geoblacklight-icons (1.2.0)
+    geoblacklight-icons (1.3.1)
 
 GEM
   remote: https://rubygems.org/
@@ -69,6 +69,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    appsignal (2.7.2)
+      rack
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (8.0.0)
@@ -495,6 +497,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable (~> 2.5.0)
+  appsignal
   blacklight (>= 6.3)
   blacklight_advanced_search
   blacklight_range_limit

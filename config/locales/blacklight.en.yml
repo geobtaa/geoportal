@@ -1,3 +1,7 @@
 en:
   blacklight:
     application_name: 'Big Ten Academic Alliance Geoportal'
+    tools:
+      title: 'Links'
+    search:
+      start_over: 'Clear search'

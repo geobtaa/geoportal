@@ -65,7 +65,7 @@ en:
       title: 'Relations'
     metadata:
       view_metadata: 'View Metadata'
-      more_details: 'More details at'
+      more_details: 'Visit Source'
       metadata_error: 'The metadata view for selected schema is not available'
       metadata_trace: 'Please select another metadata view. Alternately, try downloading the file or reaching out to the holding institution.'
     show:
