@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.4.1'
+lock '3.9.1'
 
 set :application, 'geoblacklight'
 #set :repo_url, 'git@github.umn.edu:Libraries/geoblacklight.git'
