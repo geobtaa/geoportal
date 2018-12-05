@@ -69,6 +69,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    appsignal (2.7.2)
+      rack
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (8.0.0)
@@ -495,6 +497,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable (~> 2.5.0)
+  appsignal
   blacklight (>= 6.3)
   blacklight_advanced_search
   blacklight_range_limit
