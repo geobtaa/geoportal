@@ -2,13 +2,13 @@
   <div class="row">
     <div id="home-content-wrapper">
 
-      <div id="map-wrapper" class="hidden-sm col-md-6">
+      <div id="map-wrapper" class="hidden-sm col-md-6" role="application">
         <div id='map' aria-label='map-search' data-map='home' data-catalog-path="<%=search_catalog_path%>" data-map-bbox="<%=params[:bbox]%>" data-basemap="<%=geoblacklight_basemap%>">
           <div id="progress"><div id="progress-bar"></div></div>
         </div>
       </div>
 
-      <div id="search-bar" class='col-sm-12 col-md-6' style="height:800px; overflow-y:scroll; float:right;">
+      <div id="search-bar" class='col-sm-12 col-md-6' role="main">
         <div class='row'>
           <div class='col-sm-12'>
             <h2 style="color:#FFF">Explore Maps and Data</h2>
@@ -26,38 +26,38 @@
             <div class='row'>
 
               <div class='col-xs-6 col-sm-4'>
-                <h4 style="color:#FFF">
+                <h3 class="h4" style="color:#FFF">
                   <span class="icon baseline" style="color:#FFF;">
                     <%= inline_svg("vector.svg") %>
                   </span>
                   Geospatial Data
-                </h4>
+                </h3>
                 <%= link_to "/?f%5Bb1g_genre_sm%5D%5B%5D=Geospatial+data" do %>
-                  <%= image_tag('homepage/geospatial_data.png', {:class => "img-responsive thumbnail"}) %>
+                  <%= image_tag('homepage/geospatial_data.png', {:class => "img-responsive thumbnail", :alt => "Geospatial Data"}) %>
                 <% end %>
               </div>
 
               <div class='col-xs-6 col-sm-4'>
-                <h4 style="color:#FFF">
+                <h3 class="h4" style="color:#FFF">
                   <span class="icon baseline" style="color:#FFF;">
                     <%= inline_svg("map.svg") %>
                   </span>
                   Maps
-                </h4>
+                </h3>
                 <%= link_to "/?f%5Bb1g_genre_sm%5D%5B%5D=Maps" do %>
-                  <%= image_tag('homepage/maps.png', {:class => "img-responsive thumbnail"}) %>
+                  <%= image_tag('homepage/maps.png', {:class => "img-responsive thumbnail", :alt => "Scanned Maps"}) %>
                 <% end %>
               </div>
 
               <div class='col-xs-6 col-sm-4'>
-                <h4 style="color:#FFF">
+                <h3 class="h4" style="color:#FFF">
                   <span class="icon baseline" style="color:#FFF;">
                     <%= inline_svg("image.svg") %>
                   </span>
                   Aerial Imagery
-                </h4>
+                </h3>
                 <%= link_to "/?f%5Bb1g_genre_sm%5D%5B%5D=Aerial+imagery" do %>
-                  <%= image_tag('homepage/aerial_imagery.png', {:class => "img-responsive thumbnail"}) %>
+                  <%= image_tag('homepage/aerial_imagery.png', {:class => "img-responsive thumbnail", :alt => "Aerial Imagery"}) %>
                 <% end %>
               </div>
             </div>

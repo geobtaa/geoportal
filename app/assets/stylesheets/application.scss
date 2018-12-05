@@ -108,6 +108,10 @@ div#home-content-wrapper{
   }
 
   #search-bar {
+    height:800px;
+    overflow-y:scroll;
+    float:right;
+    
     .search-query-form {
       padding-left:0;
       padding-right:0;
