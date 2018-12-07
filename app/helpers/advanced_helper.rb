@@ -195,9 +195,10 @@ module BlacklightAdvancedSearch
     # @option options [Array<String>] :classes an array of classes to add to container span.
     # @return [String]
     def render_constraint_element(label, value, options = {})
-      if params[:bbox]
-        value = nil if label == t('geoblacklight.bbox_label')
-      end
+      # Removing. Princeton suppresses the BBox value, but we shall not.
+      # if params[:bbox]
+      #   value = nil if label == t('geoblacklight.bbox_label')
+      # end
       super(label, value, options)
     end
 
