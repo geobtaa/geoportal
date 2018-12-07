@@ -94,24 +94,37 @@ footer {
 
 div#home-content-wrapper{
   background:lighten($gray, 12%) asset_url('aerial_photo.jpg') repeat;
-  height:800px;
+  height:100%;
   position:relative;
   overflow:hidden;
 
   #map-wrapper {
     height:100%;
-    position:absolute;
-    top:0;
+    position:fixed;
+    margin-top:156px;
     left:0;
     padding-right:0;
     padding-left:0;
+
+    div#map {
+      height: 100% !important;
+      background-color:#b8e6fe;
+
+      #map-search-btn {
+        position:fixed;
+        bottom:20px;
+        left:11px;
+        z-index:4000;
+      }
+    }
   }
 
   #search-bar {
-    height:800px;
+    margin-top:156px;
+    height:100%;
     overflow-y:scroll;
     float:right;
-    
+
     .search-query-form {
       padding-left:0;
       padding-right:0;
@@ -228,10 +241,14 @@ div#search-bar {
   border-left:4px solid $btaa-blue;
 }
 
-div#map {
-  min-height: 440px;
-  height: 100% !important;
+div#content {
+  div#map {
+    min-height: 440px;
+    height: 100% !important;
+    background-color:#b8e6fe;
+  }
 }
+
 
 .twitter-typeahead input.tt-hint.form-control {
   width: 100%;
