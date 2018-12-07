@@ -6,6 +6,8 @@ default: &defaults
   # Your app's name
   name: "Geoblacklight"
 
+  files_world_accessible: false
+
   # Actions that should not be monitored by AppSignal
   # ignore_actions:
   #   - ApplicationController#isup
