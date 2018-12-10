@@ -11,11 +11,9 @@ class HomePageTest < Capybara::Rails::TestCase
     assert page.has_selector?("header")
     assert page.has_selector?("header #btaa-header")
     assert page.has_selector?("header #application-header")
-    assert page.has_selector?("section#home-search")
-    assert page.has_selector?("section#home-metadata")
-    assert page.has_selector?("section#map")
-    assert page.has_selector?("section#footer-app")
-    assert page.has_selector?("footer")
+    assert page.has_selector?("main #wrapper-map")
+    assert page.has_selector?("main #wrapper-search")
+    assert page.has_selector?("main #wrapper-search div#map")
   end
 
   def test_header_nav
@@ -36,24 +34,8 @@ class HomePageTest < Capybara::Rails::TestCase
     end
   end
 
-  def test_footer_nav
-    within("section#footer-app") do
-      # Bad Link - Should Fail
-      assert page.has_no_link?("Google")
-
-      # Header Link - Should Fail
-      assert page.has_no_link?("History")
-
-      # Good Links - Should Pass
-      assert page.has_link?("News & Updates")
-      assert page.has_link?("About Us")
-      assert page.has_link?("Contact Project Team")
-      assert page.has_link?("Big Ten Academic Alliance Homepage")
-    end
-  end
-
   def test_search
-    within("section#home-search") do
+    within("div#wrapper-search") do
       fill_in("q", with: 'water')
       click_button 'Search'
     end
@@ -62,7 +44,7 @@ class HomePageTest < Capybara::Rails::TestCase
   end
 
   def test_blank_search
-    within("section#home-search") do
+    within("div#wrapper-search") do
       fill_in("q", with: '')
       click_button 'Search'
     end
@@ -75,7 +57,7 @@ class HomePageTest < Capybara::Rails::TestCase
   end
 
   def test_autocomplete
-    within("section#home-search") do
+    within("div#wrapper-search") do
       fill_in("q", with: 'minn')
     end
 

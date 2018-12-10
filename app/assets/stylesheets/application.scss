@@ -98,7 +98,7 @@ div#home-content-wrapper{
   position:relative;
   overflow:hidden;
 
-  #map-wrapper {
+  #wrapper-map {
     height:100%;
     position:fixed;
     margin-top:156px;
@@ -119,7 +119,9 @@ div#home-content-wrapper{
     }
   }
 
-  #search-bar {
+  #wrapper-search {
+    background-color:rgba($black,0.8);
+    padding:2rem;
     margin-top:156px;
     height:100%;
     overflow-y:scroll;
