@@ -11,9 +11,8 @@ class HomePageTest < Capybara::Rails::TestCase
     assert page.has_selector?("header")
     assert page.has_selector?("header #btaa-header")
     assert page.has_selector?("header #application-header")
-    assert page.has_selector?("main #wrapper-map")
-    assert page.has_selector?("main #wrapper-search")
-    assert page.has_selector?("main #wrapper-search div#map")
+    assert page.has_selector?("#wrapper-map")
+    assert page.has_selector?("#wrapper-search")
   end
 
   def test_header_nav

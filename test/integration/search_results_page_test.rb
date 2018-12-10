@@ -6,6 +6,7 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
   end
 
   def test_footer_nav
+    visit '/?q=water'
     within("section#footer-app") do
       # Bad Link - Should Fail
       assert page.has_no_link?("Google")
