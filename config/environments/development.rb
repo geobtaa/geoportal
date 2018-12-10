@@ -50,13 +50,5 @@ Rails.application.configure do
   # Google Analytics - Dev
   config.google_analytics = 'UA-82483267-2'
 
-  # Exception email notification (not enabled in development mode)
-  #Rails.application.config.middleware.use ExceptionNotification::Rack,
-  #  :email => {
-  #    :email_prefix => "[Geoblacklight Error] ",
-  #    :sender_address => %{"Geoblacklight" <swadm@lib-geoblacklightdev.oit.umn.edu>},
-  #    :exception_recipients => %w{libwebdev+alert@umn.edu}
-  #  }
-
   config.active_job.queue_adapter = :sidekiq
 end
