@@ -93,7 +93,6 @@ gem 'pointless_feedback'
 
 gem 'whenever', '~> 0.9.0', require: false
 gem 'sitemap_generator', '~> 5.2.0'
-gem 'exception_notification', '~>4.2.0'
 
 group :test do
   gem 'minitest-rails-capybara', '~>3.0.0'

@@ -13,4 +13,8 @@ module ApplicationHelper
       external_image_link
     end
   end
+
+  def homepage?
+    current_page?(root_url) && has_search_parameters? == false
+  end
 end

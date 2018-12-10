@@ -1,68 +1,101 @@
-<section id="home-search" aria-label='search'>
-  <div id="search-bar">
-    <div class='container'>
-      <div class='row'>
-        <div class='col-sm-12'>
-          <%= render :partial=>'catalog/search_form' %>
+<main class="">
+  <div class="row">
+    <div id="home-content-wrapper">
+
+      <div id="wrapper-map" class="hidden-sm col-md-6" role="application">
+        <div id='map' aria-label='map-search' data-map='home' data-catalog-path="<%=search_catalog_path%>" data-map-bbox="<%=params[:bbox]%>" data-basemap="<%=geoblacklight_basemap%>">
+          <div id="progress"><div id="progress-bar"></div></div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class='container'>
-    <div class='row'>
-      <div class='col-sm-12'>
+      <div id="wrapper-search" class='col-sm-12 col-md-6' role="main">
         <div class='row'>
-          <div class='col-sm-12 col-md-6'>
-            <h2 id='project-tagline'>Find Maps and Data</h2>
-            <div id='project-text'>
-              <p>The Big Ten Academic Alliance Geoportal provides discoverability and facilitates access to geospatial resources. The resources in the portal are selected and curated by librarians and geospatial specialists at twelve research institutions in the <a href="http://www.btaa.org/homepage">Big Ten Academic Alliance</a>.</p>
-              <p>The resources include GIS datasets, web services, and digitized historical maps. <a href="/about">Learn more</a> about the research institutions involved and the sources of the geospatial records.</p>
-              <p class="project-action">
-                <a class="btn-primary btn-sm" href="/blog"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Follow Our Blog</a> &nbsp;
-                Keep up to date with all the latest news.</p>
+          <div class='col-sm-12'>
+            <h2 style="color:#FFF">Explore Maps and Data</h2>
+          </div>
+          <div class='col-sm-12'>
+            <%= render :partial=>'catalog/search_form' %>
+          </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+          <div class='col-sm-12'>
+
+            <div class='row'>
+
+              <div class='col-xs-6 col-sm-4'>
+                <h3 class="h4" style="color:#FFF">
+                  <span class="icon baseline" style="color:#FFF;">
+                    <%= inline_svg("vector.svg") %>
+                  </span>
+                  Geospatial Data
+                </h3>
+                <%= link_to "/?f%5Bb1g_genre_sm%5D%5B%5D=Geospatial+data" do %>
+                  <%= image_tag('homepage/geospatial_data.png', {:class => "img-responsive thumbnail", :alt => "Geospatial Data"}) %>
+                <% end %>
+              </div>
+
+              <div class='col-xs-6 col-sm-4'>
+                <h3 class="h4" style="color:#FFF">
+                  <span class="icon baseline" style="color:#FFF;">
+                    <%= inline_svg("map.svg") %>
+                  </span>
+                  Maps
+                </h3>
+                <%= link_to "/?f%5Bb1g_genre_sm%5D%5B%5D=Maps" do %>
+                  <%= image_tag('homepage/maps.png', {:class => "img-responsive thumbnail", :alt => "Scanned Maps"}) %>
+                <% end %>
+              </div>
+
+              <div class='col-xs-6 col-sm-4'>
+                <h3 class="h4" style="color:#FFF">
+                  <span class="icon baseline" style="color:#FFF;">
+                    <%= inline_svg("image.svg") %>
+                  </span>
+                  Aerial Imagery
+                </h3>
+                <%= link_to "/?f%5Bb1g_genre_sm%5D%5B%5D=Aerial+imagery" do %>
+                  <%= image_tag('homepage/aerial_imagery.png', {:class => "img-responsive thumbnail", :alt => "Aerial Imagery"}) %>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top:2rem;">
+              <div class='col-xs-12 col-sm-6'>
+                <h4 class='sr-only'>Place</h4>
+                <%= render_facet_partials [:dct_spatial_sm], {class:'active'} %>
+              </div>
+              <div class='col-xs-12 col-sm-6'>
+                <h4 class='sr-only'>Subject</h4>
+                <%= render_facet_partials [:dc_subject_sm] %>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='col-sm-12 col-md-12'>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title facet-field-heading">
+                      <a href="/about">About the BTAA Geoportal</a>
+                    </h3>
+                  </div>
+                  <div class="panel-collapse in">
+                    <div class="panel-body">
+                      <p>The Big Ten Academic Alliance Geoportal provides discoverability and facilitates access to geospatial resources. The resources in the portal are selected and curated by librarians and geospatial specialists at twelve research institutions in the <a href="http://www.btaa.org/homepage">Big Ten Academic Alliance</a>.</p>
+                      <p>The resources include GIS datasets, web services, and digitized historical maps. <a href="/about">Learn more</a> about the research institutions involved and the sources of the geospatial records.</p>
+                      <p class="project-action">
+                        <a class="btn-primary btn-sm" href="/blog"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Follow Our Blog</a> &nbsp; Keep up to date with all the latest news.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div class='col-sm-12 col-md-6'>
-            <%= image_tag "portal_home_page_TC-contours.jpg", alt: 'Twin Cities Contours', class:'img-responsive' %>
-          </div>
         </div>
       </div>
     </div>
   </div>
-</section>
-
-<section id="home-metadata" role="main" data-analytics-id="<%= Rails.configuration.google_analytics %>">
-  <h1 class='sr-only'>Big Ten Academic Alliance Geospatial Discovery Portal</h1>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-sm-12'>
-        <h2 class='sr-only'>Project Data</h2>
-        <h3 class='sr-only'>Metadata Examples</h3>
-
-        <div class='row'>
-          <div class='col-sm-12 col-md-4'>
-            <h4 class='sr-only'>Place</h4>
-            <%= render_facet_partials [:dct_spatial_sm], {class:'active'} %>
-          </div>
-
-          <div class='col-sm-12 col-md-4'>
-            <h4 class='sr-only'>Genre</h4>
-            <%= render_facet_partials [:b1g_genre_sm], {class:'active'} %>
-          </div>
-
-          <div class='col-sm-12 col-md-4'>
-            <h4 class='sr-only'>Subject</h4>
-            <%= render_facet_partials [:dc_subject_sm] %>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id='map' aria-label='map-search' data-map='home' data-catalog-path="<%=search_catalog_path%>" data-map-bbox="<%=params[:bbox]%>" data-basemap="<%=geoblacklight_basemap%>">
-  <div id="progress"><div id="progress-bar"></div></div>
-</section>
+</main>

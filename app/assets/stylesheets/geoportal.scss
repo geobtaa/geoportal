@@ -1,5 +1,6 @@
 @import 'components/icons';
 @import 'components/advanced';
+@import 'components/variables';
 
 span.list-view.document-counter {
   display:inline-block;
@@ -24,6 +25,9 @@ span.list-view.document-counter {
 
 // Feedback
 #feedback {
+  position:absolute;
+  top:0;
+  right:0;
   margin-top:2rem;
 }
 
@@ -52,6 +56,10 @@ span.list-view.document-counter {
 
 #tools-sidebar [data-map="item"] {
   height: 280px;
+}
+
+#home-search {
+  background:lighten($gray, 12%) asset_url('aerial_photo.jpg') repeat;
 }
 
 #home-search .navbar-form {

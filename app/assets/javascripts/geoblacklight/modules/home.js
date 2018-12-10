@@ -4,13 +4,14 @@ Blacklight.onLoad(function() {
     var geoblacklight = new GeoBlacklight.Viewer.Map(this),
         data = $(this).data();
 
+    geoblacklight.map.setZoom(2);
     geoblacklight.map.addControl(L.control.geosearch({
       baseUrl: data.catalogPath,
       dynamic: false,
       searcher: function() {
         window.location.href = this.getSearchUrl();
       },
-      staticButton: '<a class="btn btn-primary">Search here</a>'
+      staticButton: '<a id="map-search-btn" class="btn btn-primary hidden-xs hidden-sm">Search here</a>'
     }));
 
     var pruneCluster = new PruneClusterForLeaflet();

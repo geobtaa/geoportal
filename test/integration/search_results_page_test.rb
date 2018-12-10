@@ -5,6 +5,23 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
   def setup
   end
 
+  def test_footer_nav
+    visit '/?q=water'
+    within("section#footer-app") do
+      # Bad Link - Should Fail
+      assert page.has_no_link?("Google")
+
+      # Header Link - Should Fail
+      assert page.has_no_link?("History")
+
+      # Good Links - Should Pass
+      assert page.has_link?("News & Updates")
+      assert page.has_link?("About Us")
+      assert page.has_link?("Contact Project Team")
+      assert page.has_link?("Big Ten Academic Alliance Homepage")
+    end
+  end
+
   def test_search
     visit '/?q=water'
     assert page.has_content?("Search Results")

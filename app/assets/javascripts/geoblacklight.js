@@ -18,3 +18,13 @@
 //= require leaflet-iiif
 //= require esri-leaflet
 //= require readmore.min
+
+// additional leaflet base layers
+GeoBlacklight.Basemaps.esri =  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+  attribution: false,
+  minZoom: 2,
+  maxZoom: 18,
+  worldCopyJump: true,
+  detectRetina: true,
+  noWrap: false
+});
