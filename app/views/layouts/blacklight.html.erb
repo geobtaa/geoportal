@@ -37,14 +37,13 @@
     <% end %>
 
   </head>
-  <body class="<%= render_body_class %>">
+  <body class="<%= render_body_class %>" style="overflow-x:hidden">
 
   <%= render :partial => 'shared/header_navbar' %>
 
   <%= render partial: 'shared/ajax_modal' %>
 
-  <% if current_page?(root_url) && has_search_parameters? == false %>
-    <%# if there are no input/search related params, display the "home" partial -%>
+  <% if homepage? %>
     <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
     <%= render 'home' %>
   <% else %>
@@ -60,13 +59,15 @@
     </div>
   <% end %>
 
-  <section id="footer-app" aria-label='Application Footer'>
-    <%= render :partial => 'shared/footer_app' %>
-  </section>
+  <% unless homepage? %>
+    <section id="footer-app" aria-label='Application Footer'>
+      <%= render :partial => 'shared/footer_app' %>
+    </section>
 
-  <footer aria-label='University of Minnesota'>
-    <%= render :partial => 'shared/footer_umn' %>
-  </footer>
+    <footer aria-label='University of Minnesota'>
+      <%= render :partial => 'shared/footer_umn' %>
+    </footer>
+  <% end %>
 
   <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0075/0343.js" async="async"></script>
   </body>
