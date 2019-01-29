@@ -1,3 +1,9 @@
+---
+layout: post
+title:  "Featured Collection: Polar Geospatial Center"
+date:   2019-01-29
+---
+
 ## Featured Collection: [Polar Geospatial Center](https://geo.btaa.org/catalog/05d-06)
  
 ### What is in this collection?

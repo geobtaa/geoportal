@@ -1,3 +1,9 @@
+---
+layout: post
+title:  "Contributor Spotlight: University of Michigan"
+date:   2019-01-29
+---
+
 # Contributor Spotlight: University of Michigan
 _This post is part of a monthly series to highlight each Big Ten Academic Alliance university that contributes to the geoportal._
 
