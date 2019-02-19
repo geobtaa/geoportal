@@ -26,11 +26,6 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# APM / AppSignal
-group :production do
-  gem 'appsignal'
-end
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -93,6 +88,7 @@ gem 'pointless_feedback'
 
 gem 'whenever', '~> 0.9.0', require: false
 gem 'sitemap_generator', '~> 5.2.0'
+gem 'exception_notification', '~>4.2.0'
 
 group :test do
   gem 'minitest-rails-capybara', '~>3.0.0'
