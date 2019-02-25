@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-gem 'mysql2', '0.4.8'
+gem 'mysql2', '~> 0.5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -38,13 +38,24 @@ group :development, :test do
   # Guard
   gem 'guard' # NOTE: this is necessary in newer versions
   gem 'guard-minitest'
+  gem 'minitest-rails-capybara', '~>3.0.0'
   gem 'terminal-notifier-guard'
+
+  # RSpec/SolrWrapper
+  gem 'web-console'
+  gem 'capybara'
+  gem 'capybara-selenium'
+  gem 'capybara-screenshot'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'spring'
+  gem 'sqlite3'
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 3.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
@@ -93,9 +104,3 @@ gem 'pointless_feedback'
 
 gem 'whenever', '~> 0.9.0', require: false
 gem 'sitemap_generator', '~> 5.2.0'
-
-group :test do
-  gem 'minitest-rails-capybara', '~>3.0.0'
-  gem 'chromedriver-helper'
-  gem 'capybara-selenium'
-end
