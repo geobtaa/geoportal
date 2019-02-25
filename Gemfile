@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 gem 'mysql2', '0.4.8'
@@ -54,12 +54,13 @@ group :development do
   gem 'foreman'
 end
 
-gem 'blacklight', '>= 6.3'
-gem 'blacklight_advanced_search'
-gem 'blacklight_range_limit'
+gem 'blacklight', '~> 6.19.2'
+gem 'blacklight_advanced_search', '~> 6.4.1'
+gem 'blacklight_range_limit', '~> 6.3.3'
 gem 'chosen-rails' #  jquery multiselect plugin for advanced search
+gem "bootstrap-sass", "~> 3.4.1"
 gem 'geoblacklight', '~> 1.9.0'
-gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblacklight_sidecar_images.git', :ref => '3fd6634dc3dfa089d7894620c0fbf15571ab5625'
+gem 'geoblacklight_sidecar_images', git: 'https://github.com/geoblacklight/geoblacklight_sidecar_images.git', :ref => '3fd6634dc3dfa089d7894620c0fbf15571ab5625'
 gem 'statesman', '~> 3.4.1'
 gem 'sidekiq', '~> 5.1.3'
 gem 'sidekiq-failures', '~> 1.0.0'
@@ -88,7 +89,7 @@ gem 'pointless_feedback'
 
 gem 'whenever', '~> 0.9.0', require: false
 gem 'sitemap_generator', '~> 5.2.0'
-gem 'exception_notification', '~>4.2.0'
+gem 'exception_notification', '~> 4.3.0'
 
 group :test do
   gem 'minitest-rails-capybara', '~>3.0.0'
