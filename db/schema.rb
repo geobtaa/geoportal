@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180627150806) do
 
-  create_table "bookmarks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "bookmarks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer "user_id", null: false
     t.string "user_type"
     t.string "document_id"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180627150806) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
-  create_table "image_upload_transitions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "image_upload_transitions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "to_state", null: false
     t.text "metadata"
     t.integer "sort_key", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20180627150806) do
     t.index ["solr_document_sidecar_id"], name: "index_image_upload_transitions_on_solr_document_sidecar_id"
   end
 
-  create_table "pointless_feedback_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "pointless_feedback_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "name"
     t.string "email_address"
     t.string "topic"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20180627150806) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "searches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "searches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.text "query_params"
     t.integer "user_id"
     t.string "user_type"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20180627150806) do
     t.index ["user_id"], name: "index_searches_on_user_id"
   end
 
-  create_table "solr_document_sidecars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "solr_document_sidecars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "document_id"
     t.string "document_type"
     t.string "image"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20180627150806) do
     t.index ["document_type", "document_id"], name: "solr_document_sidecars_solr_document"
   end
 
-  create_table "solr_document_uris", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "solr_document_uris", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "document_id"
     t.string "document_type"
     t.string "uri_key"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20180627150806) do
     t.index ["document_type", "document_id"], name: "solr_document_uris_solr_document"
   end
 
-  create_table "uri_transitions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "uri_transitions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "to_state", null: false
     t.text "metadata"
     t.integer "sort_key", null: false
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20180627150806) do
     t.index ["solr_document_uri_id"], name: "index_uri_transitions_on_solr_document_uri_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
