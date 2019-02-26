@@ -9,12 +9,11 @@ namespace :geoportal do
     docs = []
     response["response"]["docs"].each_with_index do |doc, index|
       begin
-        if !doc['b1g_centroid_ss'].empty?
+        if doc.key?('b1g_centroid_ss') && !doc['b1g_centroid_ss'].empty?
           entry = {}
           entry['layer_slug_s'] = doc['layer_slug_s']
           entry['dc_title_s'] = doc['dc_title_s']
           entry['b1g_centroid_ss'] = doc['b1g_centroid_ss']
-
           docs << entry
         end
       rescue Exception => e
