@@ -3,9 +3,6 @@ require 'rsolr'
 namespace :geoportal do
   desc 'Test URIs stored in Solr index'
   task generate_centroids_json: :environment do
-    # Connect to solr
-    solr = RSolr.connect :url => CONFIG.url
-
     # Search request
     response = Blacklight.default_index.connection.get 'select', :params => {:q => '*:*', :rows => '100000'}
 
