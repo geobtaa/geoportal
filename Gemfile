@@ -100,7 +100,6 @@ gem 'pointless_feedback'
 
 gem 'whenever', '~> 0.9.0', require: false
 gem 'sitemap_generator', '~> 5.2.0'
-<<<<<<< HEAD
 gem 'exception_notification', '~> 4.3.0'
 
 group :test do
@@ -108,5 +107,3 @@ group :test do
   gem 'chromedriver-helper'
   gem 'capybara-selenium'
 end
-=======
->>>>>>> feature/solrwrapper
