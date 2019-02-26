@@ -43,4 +43,3 @@ doc/
 public/centroids.json
 public/*.csv
 config/appsignal.yml
-config/database.yml

@@ -7,7 +7,7 @@ namespace :geoportal do
     solr = RSolr.connect :url => CONFIG.url
 
     # Search request
-    response = solr.get 'select', :params => {:q => '*:*', :rows => '100000'}
+    response = Blacklight.default_index.connection.get 'select', :params => {:q => '*:*', :rows => '100000'}
 
     docs = []
     response["response"]["docs"].each_with_index do |doc, index|

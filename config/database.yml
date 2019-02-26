@@ -1,0 +1,49 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
+# Local development with sqlite
+development:
+  #<<: *default
+  #database: db/development.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  host: localhost
+  database: geoportal_development
+  username: root
+  password:
+
+# MySQL setup (hosted server development)
+#development:
+#  adapter: mysql2
+#  encoding: utf8
+#  reconnect: false
+#  hostname: hostname
+#  database: dbname
+#  username: dbuser
+#  password: dbpass
+
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: db/test.sqlite3
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  host: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_HOST'] %>
+  database: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_NAME'] %>
+  username: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_USER'] %>
+  password: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_PASSWORD'] %>
