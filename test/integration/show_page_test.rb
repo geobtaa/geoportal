@@ -5,6 +5,10 @@ class ShowPageTest < Capybara::Rails::TestCase
   def setup
   end
 
+  def teardown
+    ran_without_js_errors
+  end
+
   def test_indiana_shapefile_show
     skip("Doc is no longer in Solr. / EWL 07/18/18")
     visit "/catalog/4a9b467d-a344-4557-9f14-db166636d4b2"
@@ -245,5 +249,11 @@ class ShowPageTest < Capybara::Rails::TestCase
     visit "/catalog/cornell-ny-aerial-photos-1960s"
     assert page.has_selector?("#map")
     assert page.has_selector?("[data-protocol=IndexMap]")
+  end
+
+  def test_fullscreen_map_toggle
+    visit "/catalog/87adb12a-30b5-4bc3-866c-97adcd7e3d2e"
+    assert page.has_selector?(".leaflet-control-zoom-fullscreen")
+    click_on(class: 'leaflet-control-zoom-fullscreen')
   end
 end
