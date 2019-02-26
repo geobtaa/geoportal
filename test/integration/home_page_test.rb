@@ -1,8 +1,10 @@
 require "test_helper"
+require "rake"
 
 class HomePageTest < Capybara::Rails::TestCase
 
   def setup
+    Rake::Task["geoportal:generate_centroids_json"].invoke
     visit '/'
   end
 
@@ -60,6 +62,6 @@ class HomePageTest < Capybara::Rails::TestCase
       fill_in("q", with: 'minn')
     end
 
-    assert page.has_content?("minneapolis, minnesota, united states")
+    assert page.has_content?("minnesota, united states")
   end
 end

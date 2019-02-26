@@ -2,9 +2,8 @@ require 'test_helper'
 
 class ErrorsControllerTest < ActionDispatch::IntegrationTest
   test "bad facet id should return not_found" do
-    assert_raises(ActionController::RoutingError) do
-      get '/catalog/facet/about'
-    end
+    get '/catalog/facet/about'
+    assert_response :not_found
   end
 
   test "should get not_found" do

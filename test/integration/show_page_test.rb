@@ -5,6 +5,10 @@ class ShowPageTest < Capybara::Rails::TestCase
   def setup
   end
 
+  def teardown
+    ran_without_js_errors
+  end
+
   def test_indiana_shapefile_show
     skip("Doc is no longer in Solr. / EWL 07/18/18")
     visit "/catalog/4a9b467d-a344-4557-9f14-db166636d4b2"
@@ -204,13 +208,13 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_content?("Iowa")
   end
 
-  def test_relations_parent_record
+  def test_relations_related_records
     visit "/catalog/88cc9b19-3294-4da9-9edd-775c81fb1c59"
     assert page.has_content?("Wabash River Topographic Maps: Indiana, 1929")
 
-    # Metadata link missing?
+    # Metadata
     # ISO Metadata
-    # assert page.has_link?("Metadata")
+    assert page.has_link?("Metadata")
 
     assert page.has_link?("Web services")
 
@@ -218,11 +222,11 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_content?("Relations")
     assert page.has_content?("Related Records")
 
-    # Browse Relations
-    click_link("Browse all 25 records...")
-    within("span.page_entries") do
-      assert page.has_content?("25")
-    end
+    # Browse Relations - Missing?
+    # click_link("Browse all 25 records...")
+    # within("span.page_entries") do
+    #   assert page.has_content?("25")
+    # end
   end
 
   def test_relations_child_record
@@ -241,8 +245,15 @@ class ShowPageTest < Capybara::Rails::TestCase
   end
 
   def test_open_index_map_record
+    skip("Doc is no longer in Solr. / EWL 02/26/19")
     visit "/catalog/cornell-ny-aerial-photos-1960s"
     assert page.has_selector?("#map")
     assert page.has_selector?("[data-protocol=IndexMap]")
+  end
+
+  def test_fullscreen_map_toggle
+    visit "/catalog/87adb12a-30b5-4bc3-866c-97adcd7e3d2e"
+    assert page.has_selector?(".leaflet-control-fullscreen-button")
+    click_on(class: 'leaflet-control-fullscreen-button')
   end
 end

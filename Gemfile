@@ -106,4 +106,5 @@ group :test do
   gem 'minitest-rails-capybara', '~>3.0.0'
   gem 'chromedriver-helper'
   gem 'capybara-selenium'
+  gem 'm', '~> 1.5.0'
 end
