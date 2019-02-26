@@ -2,7 +2,7 @@ require 'rsolr'
 require 'ostruct'
 require 'yaml'
 
-MY_ENV = ENV['ENV'] || 'development'
+MY_ENV = ENV['RAILS_ENV'] || 'development'
 CONFIG = OpenStruct.new(YAML.load_file("config/blacklight.yml")[MY_ENV])
 
 namespace :geoportal do
