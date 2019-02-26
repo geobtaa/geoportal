@@ -25,7 +25,7 @@
 //= require handlebars.runtime
 //= require geoblacklight/geoblacklight
 //= require geoblacklight/viewers/viewer
-//= require Leaflet/leaflet.fullscreen/Control.FullScreen.js
+//= require Leaflet/Leaflet.fullscreen/Leaflet.fullscreen.js
 //= require Leaflet/leaflet.prunecluster/PruneCluster.js
 //= require oboe/oboe-browser.js
 //= require screenfull/screenfull.min.js
@@ -102,3 +102,10 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     }
   }
 });
+
+// Leaflet layer visibility control.
+GeoBlacklight.Controls.Fullscreen = function() {
+  this.map.addControl(new L.Control.Fullscreen({
+    position: 'topright'
+  }));
+};

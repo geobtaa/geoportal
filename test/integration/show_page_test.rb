@@ -253,7 +253,7 @@ class ShowPageTest < Capybara::Rails::TestCase
 
   def test_fullscreen_map_toggle
     visit "/catalog/87adb12a-30b5-4bc3-866c-97adcd7e3d2e"
-    assert page.has_selector?(".leaflet-control-zoom-fullscreen")
-    click_on(class: 'leaflet-control-zoom-fullscreen')
+    assert page.has_selector?(".leaflet-control-fullscreen-button")
+    click_on(class: 'leaflet-control-fullscreen-button')
   end
 end

@@ -100,13 +100,34 @@ LEAFLET:
   MAP:
   LAYERS:
   VIEWERS:
+    DOWNLOAD:
+      CONTROLS:
+        - 'Fullscreen'
+    IIIF:
+      CONTROLS:
+        - 'Fullscreen'
     WMS:
-      <<: *opacity_control
+      CONTROLS:
+        - 'Opacity'
+        - 'Fullscreen'
+        - 'Layers'
     TILEDMAPLAYER:
-      <<: *opacity_control
+      CONTROLS:
+        - 'Opacity'
+        - 'Fullscreen'
+        - 'Layers'
     FEATURELAYER:
-      <<: *opacity_control
+      CONTROLS:
+        - 'Opacity'
+        - 'Fullscreen'
+        - 'Layers'
     DYNAMICMAPLAYER:
-      <<: *opacity_control
+      CONTROLS:
+        - 'Opacity'
+        - 'Fullscreen'
+        - 'Layers'
     IMAGEMAPLAYER:
-      <<: *opacity_control
+      CONTROLS:
+        - 'Opacity'
+        - 'Fullscreen'
+        - 'Layers'
