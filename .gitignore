@@ -45,3 +45,4 @@ public/*.csv
 config/appsignal.yml
 .env.development
 .env.test
+test/reports
