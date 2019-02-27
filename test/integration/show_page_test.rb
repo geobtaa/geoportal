@@ -95,18 +95,7 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_content?("Twin Cities Land Use Map from the Twin Cities Metropolitan Planning Commission, 1958")
 
     # Type
-    click_link 'Web services'
-
-    # WMS Web Service
-    assert page.has_no_content?("Web Mapping Service (WMS)")
-    assert page.has_no_selector?("#wms_webservice")
-
-    # Esri Web Service
-    assert page.has_content?("ArcGIS Dynamic Map Layer")
-    assert page.has_selector?("#dynamic_map_layer_webservice")
-
-    # Type
-    click_button 'Close'
+    assert page.has_no_content?("Web services")
 
     # ISO Metadata
     assert page.has_link?("Metadata")
