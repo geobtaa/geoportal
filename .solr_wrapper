@@ -1,3 +1,2 @@
-version: 6.2.1
 validate: false
 tmp_save_dir: tmp/solr
