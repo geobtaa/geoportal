@@ -109,4 +109,5 @@ group :test do
   gem 'chromedriver-helper'
   gem 'capybara-selenium'
   gem 'm', '~> 1.5.0'
+  gem 'minitest-ci', '~> 3.4.0'
 end
