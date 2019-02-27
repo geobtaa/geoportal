@@ -24,7 +24,6 @@ jobs:
         key: geoportal-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
-
   test:
     working_directory: ~/geoportal
     docker:
