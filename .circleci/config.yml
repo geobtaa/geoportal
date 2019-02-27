@@ -20,33 +20,17 @@ jobs:
       - run: gem install bundler:2.0.1
       - run: bundle update --bundler
       - run: bundle install --path vendor/bundle
+      - run: bundle exec rake db:migrate
+      - run: bundle exec rake geoportal:generate_centroids_json
+      - run: bundle exec rake ci
       # Cache Dependencies
       - type: cache-save
         name: Store bundle cache
         key: geoportal-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
-  test:
-    working_directory: ~/geoportal
-    docker:
-      - image: circleci/ruby:2.6.1-node-browsers
-        environment:
-          RAILS_ENV: test
-          geoportal_DB_HOST: localhost
-          geoportal_DB_USERNAME: geoblacklight
-    steps:
-      - attach_workspace:
-          at: '~/geoportal'
-      # Bundle install dependencies
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - run: bundle exec rake db:migrate
-      - run: bundle exec rake geoportal:generate_centroids_json
-      - run: bundle exec rake ci
 workflows:
   version: 2
   build_accept_deploy:
     jobs:
       - build
-      - test:
-          requires:
-            - build
