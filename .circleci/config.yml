@@ -21,7 +21,6 @@ jobs:
       - run: bundle update --bundler
       - run: bundle install --path vendor/bundle
       - run: bundle exec rake db:migrate
-      - run: bundle exec rake geoportal:generate_centroids_json
       - run: bundle exec rake ci
       # Cache Dependencies
       - type: cache-save
