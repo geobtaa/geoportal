@@ -6,7 +6,7 @@ task :ci do
   SolrWrapper.wrap(shared_solr_opts.merge(port: 8985, instance_dir: 'tmp/geoportal-core-test')) do |solr|
     solr.with_collection(name: "geoportal-core-test", dir: Rails.root.join("solr", "conf").to_s) do
       system 'RAILS_ENV=test bundle exec rails geoblacklight:index:seed'
-      system 'RAILS_ENV=test bundle exec rails test'
+      system 'RAILS_ENV=test bundle exec rails test -f'
     end
   end
 end
