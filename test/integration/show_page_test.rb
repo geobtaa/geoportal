@@ -256,4 +256,9 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_selector?(".leaflet-control-fullscreen-button")
     click_on(class: 'leaflet-control-fullscreen-button')
   end
+
+  def test_sidebar_map_basemap
+    visit "/catalog/f9eb8493-32ab-4ede-8330-9286846eee0d"
+    assert page.has_selector?("[data-basemap=positron]")
+  end
 end
