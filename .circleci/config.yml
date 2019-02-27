@@ -10,17 +10,29 @@ jobs:
           RAILS_ENV: test
           geoportal_DB_HOST: localhost
           geoportal_DB_USERNAME: geoblacklight
+      - image: solr:7.1-alpine
+        command: bin/solr -cloud -noprompt -f -p 8985
     steps:
       - checkout
       # Restore Cached Dependencies
       - type: cache-restore
         name: Restore bundle cache
         key: geoportal-{{ checksum "Gemfile.lock" }}
+      # Load Solr
+      - run: dockerize -wait tcp://localhost:8985 -timeout 1m
+      - run:
+          name: Load config into solr
+          command: |
+            cd solr/conf
+            zip -1 -r solr_config.zip ./*
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://localhost:8985/solr/admin/configs?action=UPLOAD&name=geoportal"
+            curl -H 'Content-type: application/json' http://localhost:8985/api/collections/ -d '{create: {name: geoportal-core-test, config: geoportal, numShards: 1}}'
       # Bundle install dependencies
       - run: gem install bundler:2.0.1
       - run: bundle install --path vendor/bundle
-      - run: bundle exec rake db:migrate
-      - run: bundle exec rake ci
+      - run: bundle exec rails db:migrate
+      - run: bundle exec rake geoblacklight:index:seed
+      - run: bundle exec rake test
       # Cache Dependencies
       - type: cache-save
         name: Store bundle cache
