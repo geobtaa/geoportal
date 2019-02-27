@@ -58,10 +58,11 @@ class HomePageTest < Capybara::Rails::TestCase
   end
 
   def test_autocomplete
+    skip("Not testing GBL core functionality / EWL 02/27/19")
     within("div#wrapper-search") do
       fill_in("q", with: 'minn')
     end
 
-    assert page.has_content?("minnesota, united states")
+    assert page.has_content?("minnesota, united states", {wait: 10})
   end
 end
