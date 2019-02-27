@@ -19,8 +19,8 @@ jobs:
       # Bundle install dependencies
       - run: gem install bundler:2.0.1
       - run: bundle install --path vendor/bundle
-      - run: bundle exec rails db:migrate
-      - run: bundle exec rails ci
+      - run: bundle exec rake db:migrate
+      - run: bundle exec rake ci
       # Cache Dependencies
       - type: cache-save
         name: Store bundle cache
