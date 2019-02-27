@@ -103,7 +103,7 @@ gem 'jekyll-feed'
 gem 'pointless_feedback'
 
 gem 'whenever', '~> 0.9.0', require: false
-gem 'sitemap_generator', '~> 5.2.0'
+gem 'sitemap_generator', '~> 6.0.2'
 gem 'exception_notification', '~> 4.3.0'
 
 group :test do
