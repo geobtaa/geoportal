@@ -5,16 +5,12 @@ jobs:
     working_directory: ~/geoportal
     docker:
       # The primary container is an instance of the first list image listed. Your build commands run in this container.
-      - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.6.1-node-browsers
         environment:
           RAILS_ENV: test
           geoportal_DB_HOST: localhost
           geoportal_DB_USERNAME: geoblacklight
     steps:
-      - run:
-        name: Configure Bundler
-        command: |
-          echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV; source $BASH_ENV; gem install bundler
       - checkout
       # Restore Cached Dependencies
       - type: cache-restore
@@ -31,7 +27,7 @@ jobs:
   test:
     working_directory: ~/geoportal
     docker:
-      - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.6.1-node-browsers
         environment:
           RAILS_ENV: test
           geoportal_DB_HOST: localhost
