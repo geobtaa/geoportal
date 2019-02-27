@@ -17,6 +17,8 @@ jobs:
         name: Restore bundle cache
         key: geoportal-{{ checksum "Gemfile.lock" }}
       # Bundle install dependencies
+      - run: gem install bundler:2.0.1
+      - run: bundle update --bundler
       - run: bundle install --path vendor/bundle
       # Cache Dependencies
       - type: cache-save
