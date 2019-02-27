@@ -14,9 +14,7 @@ jobs:
       - run:
         name: Configure Bundler
         command: |
-          echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-          source $BASH_ENV
-          gem install bundler
+          echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV; source $BASH_ENV; gem install bundler
       - checkout
       # Restore Cached Dependencies
       - type: cache-restore
@@ -41,7 +39,6 @@ jobs:
     steps:
       - attach_workspace:
           at: '~/geoportal'
-
       # Bundle install dependencies
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run: bundle exec rake db:migrate
