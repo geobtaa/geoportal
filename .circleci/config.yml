@@ -11,8 +11,12 @@ jobs:
           geoportal_DB_HOST: localhost
           geoportal_DB_USERNAME: geoblacklight
     steps:
-      # TODO: remove when bundler v2 stablized
-      - run: bundle update --bundler
+      - run:
+        name: Configure Bundler
+        command: |
+          echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+          source $BASH_ENV
+          gem install bundler
       - checkout
       # Restore Cached Dependencies
       - type: cache-restore
