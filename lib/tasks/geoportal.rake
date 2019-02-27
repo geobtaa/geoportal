@@ -3,11 +3,16 @@ task :ci do
   shared_solr_opts = { managed: true, verbose: true, persist: false, download_dir: 'tmp' }
   shared_solr_opts[:version] = ENV['SOLR_VERSION'] if ENV['SOLR_VERSION']
 
+  exit_code = true
   SolrWrapper.wrap(shared_solr_opts.merge(port: 8985, instance_dir: 'tmp/geoportal-core-test')) do |solr|
     solr.with_collection(name: "geoportal-core-test", dir: Rails.root.join("solr", "conf").to_s) do
       system 'RAILS_ENV=test bundle exec rake geoblacklight:index:seed'
-      system 'RAILS_ENV=test bundle exec rake test' or exit!(1)
+      system 'RAILS_ENV=test bundle exec rake test' or exit_code = false
     end
+  end
+
+  if !exit_code
+    exit!(1)
   end
 end
 
