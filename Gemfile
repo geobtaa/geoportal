@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3', '< 1.4'
 gem 'mysql2', '~> 0.5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -33,15 +32,9 @@ group :development, :test do
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
-  # Guard
-  gem 'guard' # NOTE: this is necessary in newer versions
-  gem 'guard-minitest'
   gem 'minitest-rails-capybara', '~>3.0.0'
-  gem 'terminal-notifier-guard'
 
   # RSpec/SolrWrapper
-  gem 'web-console'
   gem 'capybara'
   gem 'capybara-selenium'
   gem 'capybara-screenshot'
@@ -51,12 +44,12 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.5'
   gem 'spring'
-  gem 'sqlite3'
 end
 
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'web-console'
 
   gem 'capistrano', '3.4.1'
   gem 'capistrano-rails'
@@ -101,7 +94,6 @@ gem 'jekyll-feed'
 
 # Feedback
 gem 'pointless_feedback'
-
 gem 'whenever', '~> 0.9.0', require: false
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'exception_notification', '~> 4.3.0'
@@ -111,4 +103,5 @@ group :test do
   gem 'chromedriver-helper'
   gem 'capybara-selenium'
   gem 'm', '~> 1.5.0'
+  gem 'minitest-ci', '~> 3.4.0'
 end

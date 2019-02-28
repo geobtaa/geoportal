@@ -26,10 +26,6 @@ public/blog/feed.xml
 public/thumbnails/*
 public/uploads/*
 
-# Ignore everything in solr/ except the README
-solr/*
-!solr/README-geoblacklight-solr-development.txt
-
 # Ignore public/uploads
 public/uploads/*
 
@@ -45,4 +41,4 @@ public/*.csv
 config/appsignal.yml
 .env.development
 .env.test
-test/reports
+test/reports/*

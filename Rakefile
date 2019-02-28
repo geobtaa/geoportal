@@ -5,5 +5,4 @@ require File.expand_path('../config/application', __FILE__)
 require File.expand_path('../config/initializers/solr_wrapper', __FILE__)
 require 'solr_wrapper/rake_task'
 
-
 Rails.application.load_tasks

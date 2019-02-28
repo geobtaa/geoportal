@@ -1,3 +1,7 @@
-version: 6.2.1
+url: https://archive.apache.org/dist/lucene/solr/6.2.1/solr-6.2.1.zip
 validate: false
-tmp_save_dir: tmp/solr
+instance_dir: tmp/solr
+download_dir: tmp/solr
+collection:
+  dir: solr/conf/
+  name: geoportal-core-test
