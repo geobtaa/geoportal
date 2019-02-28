@@ -1,0 +1,77 @@
+Rails:
+  Enabled: true
+
+AllCops:
+  DisplayCopNames: true
+
+  Exclude:
+  - 'bin/*'
+  - 'db/**/*'
+  - 'vendor/**/*'
+  - 'config/initializers/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/helpers/advanced_helper.rb'
+    - 'lib/tasks/ci.rake'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'app/controllers/catalog_controller.rb'
+    - 'config/routes.rb'
+    - 'lib/tasks/geoportal.rake'
+    - 'lib/tasks/geoportal/geoportal_images.rake'
+    - 'lib/tasks/geoportal/geoportal_test_uris.rake'
+    - 'spec/**/*'
+
+Metrics/BlockNesting:
+  Exclude:
+    - 'app/helpers/advanced_helper.rb'
+
+Metrics/ClassLength:
+  Max: 100
+  Exclude:
+    - 'app/controllers/catalog_controller.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'app/helpers/advanced_helper.rb'
+
+Metrics/LineLength:
+  Max: 118
+  Exclude:
+    - 'Rakefile'
+    # TODO: Refactor add_show_tools_partial procs.
+    - 'app/controllers/catalog_controller.rb'
+    - 'app/helpers/advanced_helper.rb'
+    - 'config/deploy.rb'
+    - 'lib/tasks/geoportal.rake'
+
+Metrics/MethodLength:
+  Max: 14
+  Exclude:
+    - 'app/helpers/advanced_helper.rb'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'app/helpers/advanced_helper.rb'
+
+# TODO: Add top-level class and module documentation.
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+# Overrides method in blacklight. Must use method name.
+Naming/PredicateName:
+  Exclude:
+    - 'app/controllers/catalog_controller.rb'
+
+Rails/Output:
+  Exclude:
+    - 'config/deploy.rb'
+
+Rails/OutputSafety:
+  Exclude:
+    - 'app/helpers/geoportal_geoblacklight_helper.rb'

@@ -98,6 +98,9 @@ gem 'whenever', '~> 0.9.0', require: false
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'exception_notification', '~> 4.3.0'
 
+# Rubocop
+gem 'rubocop', '~> 0.65.0', require: false
+
 group :test do
   gem 'minitest-rails-capybara', '~>3.0.0'
   gem 'chromedriver-helper'
