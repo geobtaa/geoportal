@@ -1,23 +1,22 @@
+# frozen_string_literal: true
+
 desc 'Run test suite'
 task :ci do
   shared_solr_opts = { managed: true, verbose: true, persist: false, download_dir: 'tmp' }
   shared_solr_opts[:version] = ENV['SOLR_VERSION'] if ENV['SOLR_VERSION']
 
-  exit_code = true
+  success = true
   SolrWrapper.wrap(shared_solr_opts.merge(port: 8985, instance_dir: 'tmp/geoportal-core-test')) do |solr|
     solr.with_collection(name: "geoportal-core-test", dir: Rails.root.join("solr", "conf").to_s) do
       system 'RAILS_ENV=test bundle exec rake geoblacklight:index:seed'
-      system 'RAILS_ENV=test bundle exec rake test' or exit_code = false
+      system 'RAILS_ENV=test bundle exec rake test' || success = false
     end
   end
 
-  if !exit_code
-    exit!(1)
-  end
+  exit!(1) unless success
 end
 
 namespace :geoportal do
-
   desc 'Run Solr and GeoBlacklight for interactive development'
   task :server, [:rails_server_args] do |_t, args|
     require 'solr_wrapper'
@@ -79,5 +78,4 @@ namespace :geoportal do
       end
     end
   end
-
 end
