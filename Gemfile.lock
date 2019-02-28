@@ -224,7 +224,6 @@ GEM
       railties (>= 3.2, < 6.0)
     foreman (0.85.0)
       thor (~> 0.19.1)
-    formatador (0.2.5)
     forwardable-extended (2.6.0)
     geo_combine (0.4.0)
       activesupport
@@ -250,19 +249,6 @@ GEM
       rails (~> 5.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    guard (2.15.0)
-      formatador (>= 0.2.4)
-      listen (>= 2.7, < 4.0)
-      lumberjack (>= 1.0.12, < 2.0)
-      nenv (~> 0.1)
-      notiffany (~> 0.0)
-      pry (>= 0.9.12)
-      shellany (~> 0.0)
-      thor (>= 0.18.1)
-    guard-compat (1.2.1)
-    guard-minitest (2.4.6)
-      guard-compat (~> 1.2)
-      minitest (>= 3.0)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -320,6 +306,8 @@ GEM
       addressable (~> 2.3)
     leaflet-rails (1.3.1)
       rails (>= 4.2.0)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     liquid (4.0.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -328,7 +316,6 @@ GEM
     loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    lumberjack (1.0.13)
     m (1.5.1)
       method_source (>= 0.6.7)
       rake (>= 0.9.2.2)
@@ -362,7 +349,6 @@ GEM
     multi_json (1.13.1)
     multipart-post (2.0.0)
     mysql2 (0.5.2)
-    nenv (0.3.0)
     net-http-persistent (2.9.4)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -372,9 +358,6 @@ GEM
       mini_portile2 (~> 2.4.0)
     nokogumbo (2.0.1)
       nokogiri (~> 1.8, >= 1.8.4)
-    notiffany (0.1.1)
-      nenv (~> 0.1)
-      shellany (~> 0.0)
     orm_adapter (0.5.0)
     parslet (1.8.2)
     pathutil (0.16.2)
@@ -383,9 +366,6 @@ GEM
       jquery-rails (>= 4.0)
       rails (>= 4.0)
       typhoeus (~> 0.7, >= 0.7.3)
-    pry (0.12.2)
-      coderay (~> 1.1.0)
-      method_source (~> 0.9.0)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
@@ -471,7 +451,6 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
-    shellany (0.0.1)
     sidekiq (5.1.3)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -496,7 +475,6 @@ GEM
       net-ssh (>= 2.8.0)
     statesman (3.4.1)
     temple (0.8.0)
-    terminal-notifier-guard (1.7.0)
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -561,8 +539,6 @@ DEPENDENCIES
   geoblacklight (~> 1.9.0)
   geoblacklight-icons!
   geoblacklight_sidecar_images!
-  guard
-  guard-minitest
   haml
   handlebars_assets (~> 0.23.0)
   high_voltage (~> 3.0.0)
@@ -571,6 +547,7 @@ DEPENDENCIES
   jekyll
   jekyll-feed
   jquery-rails
+  letter_opener
   m (~> 1.5.0)
   minitest-ci (~> 3.4.0)
   minitest-rails-capybara (~> 3.0.0)
@@ -589,7 +566,6 @@ DEPENDENCIES
   spring
   sqlite3 (~> 1.3, < 1.4)
   statesman (~> 3.4.1)
-  terminal-notifier-guard
   turbolinks
   uglifier (>= 1.3.0)
   web-console
