@@ -135,6 +135,6 @@ class ShowPageTest < Capybara::Rails::TestCase
     visit "/catalog/87adb12a-30b5-4bc3-866c-97adcd7e3d2e"
     assert page.has_selector?(".leaflet-control-fullscreen-button")
     click_on(class: 'leaflet-control-fullscreen-button')
-    #assert page.has_selector?("BREAKTHISTHING")
+    assert page.has_selector?("BREAKTHISTHING")
   end
 end
