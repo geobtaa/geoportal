@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 require 'rsolr'
 
 namespace :geoportal do
   desc 'Test URIs stored in Solr index'
   task generate_centroids_json: :environment do
     # Search request
-    response = Blacklight.default_index.connection.get 'select', :params => {:q => '*:*', :rows => '100000'}
+    response = Blacklight.default_index.connection.get 'select', params: { q: '*:*', rows: '100000' }
 
     docs = []
-    response["response"]["docs"].each_with_index do |doc, index|
+    response["response"]["docs"].each do |doc|
       begin
         if doc.key?('b1g_centroid_ss') && !doc['b1g_centroid_ss'].empty?
           entry = {}
@@ -23,6 +25,6 @@ namespace :geoportal do
     end
 
     centroids_file = "#{Rails.root}/public/centroids.json"
-    File.open(centroids_file, "w"){|f| f.write(JSON.generate(docs))}
+    File.open(centroids_file, "w") { |f| f.write(JSON.generate(docs)) }
   end
 end

@@ -92,7 +92,7 @@ Rails.application.configure do
    # Exception email notification
   Rails.application.config.middleware.use ExceptionNotification::Rack,
     # Ignore exception notification from Qualys scanner IPs
-    :ignore_if => ->(env, exception) { ['160.94.202.168','160.94.202.169','160.94.202.170','160.94.202.171','160.94.202.172','160.94.202.173','160.94.202.174','160.94.202.175'].include?(env['REMOTE_ADDR']) },
+    :ignore_if => ->(env, exception) { ['160.94.202.168', '160.94.202.169', '160.94.202.170', '160.94.202.171', '160.94.202.172', '160.94.202.173', '160.94.202.174', '160.94.202.175'].include?(env['REMOTE_ADDR']) },
     :email => {
       :email_prefix => "[Geoblacklight Error] ",
       # Google Groups won't accept messages unless the sender host resolves!

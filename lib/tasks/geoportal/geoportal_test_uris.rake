@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'uri'
 require 'net/http'
@@ -9,7 +11,7 @@ require 'csv'
 namespace :geoportal do
   desc 'Test URIs stored in Solr index'
   task test_uris: :environment do
-    RESULTS = Hash.new
+    RESULTS = {}
 
     # Abstract base class for representing the results of checking one URI.
     class Result
@@ -56,7 +58,7 @@ namespace :geoportal do
       end
     end
 
-    def check_uri(uri, redirected=false)
+    def check_uri(uri, redirected = false)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true if uri.scheme == "https"
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -65,9 +67,9 @@ namespace :geoportal do
           case response
           when Net::HTTPSuccess then
             if redirected
-              return Redirect.new(:final_destination_uri_string => uri.to_s)
+              return Redirect.new(final_destination_uri_string: uri.to_s)
             else
-              return Good.new(:uri_string => uri.to_s)
+              return Good.new(uri_string: uri.to_s)
             end
           when Net::HTTPRedirection then
             uri =
@@ -80,7 +82,7 @@ namespace :geoportal do
               end
             return check_uri(uri, true)
           else
-            return Error.new(:uri_string => uri.to_s, :error => response)
+            return Error.new(uri_string: uri.to_s, error: response)
           end
         end
       end
@@ -98,12 +100,10 @@ namespace :geoportal do
     end
 
     def process(doc, type, string, csv)
-
       # Init results doc
       if !RESULTS.key?(doc['uuid'])
         RESULTS[doc['uuid']] = {}
       end
-
 
       if string.start_with?('http')
         uri = URI(string)
@@ -122,9 +122,9 @@ namespace :geoportal do
           ftp.login 'anonymous', 'anonymous@google.com'
 
           # Check for file extension
-          if File.extname(uri.path).size > 0
+          if File.extname(uri.path).size.positive?
             size = ftp.size(uri.path)
-            if size > 0
+            if size.positive?
               print ":"
               csv << ['Good FTP', doc['uuid'], type, string, doc['dct_provenance_s'], doc['dc_title_s']]
             end
@@ -161,7 +161,7 @@ namespace :geoportal do
         slice.each do |doc|
           sleep(1)
           refs = JSON.parse(doc['dct_references_s'])
-          refs.each do |key,value|
+          refs.each do |key, value|
             begin
               process(doc, key, value, csv)
             rescue Exception => e
@@ -170,7 +170,7 @@ namespace :geoportal do
             end
           end
         end
-        count = count + 1000
+        count += 1000
         print count
       end
     end

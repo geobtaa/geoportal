@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config valid only for current version of Capistrano
 lock '3.4.1'
 
@@ -22,9 +24,9 @@ set :deploy_user, 'swadm'
 set :deploy_to, "/swadm/var/www/#{fetch(:application)}"
 
 # Forces crontab surrounding comments to include deploy target
-set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:rails_env)}"}
+set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:rails_env)}" }
 
-set :whenever_variables, ->{ "'environment=#{fetch :whenever_environment}'" }
+set :whenever_variables, -> { "'environment=#{fetch :whenever_environment}'" }
 
 # Default value for :scm is :git
 # set :scm, :git

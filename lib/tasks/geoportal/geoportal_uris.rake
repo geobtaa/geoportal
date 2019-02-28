@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :geoportal do
   desc 'Purge URIs and State Transition History'
   task uri_purge: :environment do
@@ -31,12 +33,7 @@ namespace :geoportal do
 
   desc 'Queue incomplete states for reprocessing'
   task uri_queue_incomplete_states: :environment do
-    states = [
-      :initialized,
-      :queued,
-      :processing,
-      :failed
-    ]
+    states = %i[initialized queued processing failed]
 
     states.each do |state|
       uris = SolrDocumentUri.in_state(state)
@@ -51,13 +48,7 @@ namespace :geoportal do
 
   desc 'Hash of SolrDocumentUri state counts'
   task uri_states: :environment do
-    states = [
-      :initialized,
-      :queued,
-      :processing,
-      :succeeded,
-      :failed
-    ]
+    states = %i[initialized queued processing failed]
 
     col_state = {}
     states.each do |state|
@@ -96,7 +87,7 @@ namespace :geoportal do
       uris.each do |uri|
         cat = CatalogController.new
         begin
-          resp, doc = cat.fetch(uri.document_id)
+          _resp, doc = cat.fetch(uri.document_id)
           writer << [
             uri.state_machine.current_state,
             uri.id,

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :geoportal do
   desc 'Purge Sidecars and Images'
   task sidecar_purge: :environment do
@@ -20,7 +22,7 @@ namespace :geoportal do
     # From your local machine, put it there like this:
     # scp destroy_batch.csv swadm@geoprod:/swadm/var/www/geoblacklight/current/tmp/
     CSV.foreach("#{Rails.root}/tmp/destroy_batch.csv", headers: true) do |row|
-      sc = SolrDocumentSidecar.find_by(:document_id => row[0])
+      sc = SolrDocumentSidecar.find_by(document_id: row[0])
       sc.destroy
       puts "document_id - #{row[0]} - destroyed"
     end
@@ -53,7 +55,7 @@ namespace :geoportal do
       sidecars.each do |sc|
         cat = CatalogController.new
         begin
-          resp, doc = cat.fetch(sc.document_id)
+          _resp, doc = cat.fetch(sc.document_id)
           writer << [
             sc.id,
             sc.document_id,

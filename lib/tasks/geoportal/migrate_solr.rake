@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rsolr'
 require 'ostruct'
 require 'yaml'
@@ -16,7 +18,7 @@ namespace :geoportal do
     new_solr = RSolr.connect :url => CONFIG.url
 
     # Search request
-    response = old_solr.get 'select', :params => {:q => '*:*', :rows => '10000'}
+    response = old_solr.get 'select', params: { q: '*:*', rows: '10000' }
 
     response["response"]["docs"].each_with_index do |doc, index|
       begin
@@ -28,12 +30,12 @@ namespace :geoportal do
         # Remove "version"
         doc.delete("_version_")
 
-        #Add Doc to New Solr
+        # Add Doc to New Solr
         new_solr.add(doc)
 
-        #Committing each doc
+        # Committing each doc
         # This is silly, but also helps to check for bbox/centroid errors
-        new_solr.commit({softCommit: true})
+        new_solr.commit(softCommit: true)
       rescue Exception => e
         puts "Caught #{e}"
         puts "ERROR - #{doc['uuid']}"

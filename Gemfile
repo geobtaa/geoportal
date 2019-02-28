@@ -1,5 +1,6 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
 
+source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
@@ -28,7 +29,6 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Dotenv
   gem 'dotenv-rails'
-
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

@@ -1,4 +1,5 @@
-# lib/tasks/migrate/users.rake
+# frozen_string_literal: true
+
 require 'sidekiq/api'
 
 namespace :geoportal do
