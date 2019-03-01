@@ -6,7 +6,7 @@ class ProcessUriJob < ApplicationJob
   def perform(uri_id)
     uri = SolrDocumentUri.find(uri_id)
 
-    metadata = Hash.new
+    metadata = {}
     metadata['solr_doc_id'] = uri.document_id
     metadata['solr_version'] = uri.version
 

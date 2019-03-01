@@ -3,7 +3,7 @@
 class SolrDocumentUri < ApplicationRecord
   include Statesman::Adapters::ActiveRecordQueries
 
-  belongs_to :document, required: true, polymorphic: true
+  belongs_to :document, optional: false, polymorphic: true
   has_many :uri_transitions, autosave: false, dependent: :destroy
 
   # Roll our own polymorphism because our documents are not AREL-able

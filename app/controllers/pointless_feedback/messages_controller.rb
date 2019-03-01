@@ -26,14 +26,7 @@ module PointlessFeedback
     private
 
     def message_params
-      params.require(:message).permit([
-        :description,
-        :email_address,
-        :name,
-        :topic,
-        :contact_info,
-        :previous_url
-      ])
+      params.require(:message).permit(%i[description email_address name topic contact_info previous_url])
     end
 
     def pass_captcha?

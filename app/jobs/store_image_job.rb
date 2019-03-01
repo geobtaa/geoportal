@@ -6,7 +6,7 @@ class StoreImageJob < ApplicationJob
   def perform(document_hash)
     document = SolrDocument.new(document_hash)
 
-    metadata = Hash.new
+    metadata = {}
     metadata['solr_doc_id'] = document.id
     metadata['solr_version'] = document.sidecar.version
 

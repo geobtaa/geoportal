@@ -63,11 +63,11 @@ gem 'jquery-rails'
 gem 'pointless_feedback'
 gem 'rsolr', '>= 1.0'
 gem 'rubocop', '~> 0.65.0', require: false
-gem 'statesman', '~> 3.4.1'
 gem 'sidekiq', '~> 5.1.3'
 gem 'sidekiq-failures', '~> 1.0.0'
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'master'
+gem 'statesman', '~> 3.4.1'
 gem 'whenever', '~> 0.9.0', require: false
 
 group :test do

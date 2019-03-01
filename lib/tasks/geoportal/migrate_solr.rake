@@ -12,10 +12,10 @@ namespace :geoportal do
   task migrate_solr: :environment do
 
     # Connect to OLD SOLR
-    old_solr = RSolr.connect :url => "http://localhost:8984/solr/blacklightcore"
+    old_solr = RSolr.connect url: "http://localhost:8984/solr/blacklightcore"
 
     # Connect to NEW SOLR
-    new_solr = RSolr.connect :url => CONFIG.url
+    new_solr = RSolr.connect url: CONFIG.url
 
     # Search request
     response = old_solr.get 'select', params: { q: '*:*', rows: '10000' }

@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   get 'robots.:format' => 'robots#robots'
 
   # Feedback
-  mount PointlessFeedback::Engine, :at => '/feedback'
+  mount PointlessFeedback::Engine, at: '/feedback'
 
   # Error Pages for exception handling - EWL
   match '/404' => 'errors#not_found', via: :all
   match '/500' => 'errors#internal_server_error', via: :all
 
-  get '/blog', :to => redirect('/blog/index.html')
+  get '/blog', to: redirect('/blog/index.html')
 
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   resources :suggest, only: :index, defaults: { format: 'json' }
 
-  resource :feedback_form, path: 'feedback', only: [:new, :create]
+  resource :feedback_form, path: 'feedback', only: %i[new create]
   get 'feedback' => 'feedback_forms#new'
 
   concern :gbl_exportable, Geoblacklight::Routes::Exportable.new

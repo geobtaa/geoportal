@@ -52,7 +52,7 @@ end
 class UriService
   def initialize(solr_document_uri)
     @uri = solr_document_uri
-    @metadata = Hash.new
+    @metadata = {}
     @metadata['solr_doc_id'] = @uri.document_id
     @metadata['uri_key']     = @uri.uri_key
     @metadata['uri_value']   = @uri.uri_value
@@ -98,9 +98,9 @@ class UriService
         ftp.login 'anonymous', 'anonymous@google.com'
 
         # Check for file extension
-        if File.extname(uri.path).size > 0
+        if File.extname(uri.path).size.positive?
           size = ftp.size(uri.path)
-          if size > 0
+          if size.positive?
             @uri.state_machine.transition_to!(:succeeded, @metadata)
           end
         elsif check_ftp_path(ftp, uri.path)
@@ -111,7 +111,6 @@ class UriService
       end
     end
     log_output
-
   rescue Exception => invalid
     @metadata['exception'] = invalid.inspect
     @uri.state_machine.transition_to!(:failed, @metadata)
@@ -125,7 +124,7 @@ class UriService
     end
   end
 
-  def check_uri(uri, redirected=false)
+  def check_uri(uri, redirected = false)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true if uri.scheme == "https"
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -134,9 +133,9 @@ class UriService
         case response
         when Net::HTTPSuccess then
           if redirected
-            return Redirect.new(:final_destination_uri_string => uri.to_s)
+            return Redirect.new(final_destination_uri_string: uri.to_s)
           else
-            return Good.new(:uri_string => uri.to_s)
+            return Good.new(uri_string: uri.to_s)
           end
         when Net::HTTPMovedPermanently then
           uri =
@@ -160,7 +159,7 @@ class UriService
           return check_uri(normalize_uri(uri), true)
         else
           @metadata['error'] = response
-          return Error.new(:uri_string => uri.to_s, :error => response)
+          return Error.new(uri_string: uri.to_s, error: response)
         end
       end
     end

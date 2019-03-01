@@ -50,7 +50,7 @@ namespace :geoportal do
       col_state[state] = uris.size
     end
 
-    col_state.each do |col,state|
+    col_state.each do |col, state|
       puts "#{col} - #{state}"
     end
   end
@@ -58,7 +58,7 @@ namespace :geoportal do
   desc 'Write CSV formatted URI state report'
   task uri_report: :environment do
     # Create a CSV Dump of Results
-    file = "#{Rails.root}/public/#{Time.now.strftime('%Y-%m-%d_%H-%M-%S')}.uri_report.csv"
+    file = "#{Rails.public_path}/#{Time.zone.now.strftime('%Y-%m-%d_%H-%M-%S')}.uri_report.csv"
 
     uris = SolrDocumentUri.all
 

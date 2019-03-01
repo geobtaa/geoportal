@@ -22,7 +22,7 @@ class SolrDocument
   use_extension(Blacklight::Document::DublinCore)
 
   # @TODO: flush out proper DC record
-  self.field_semantics.merge!(
+  field_semantics.merge!(
     creator: "dc_creator_sm",
     description: "dc_description_s",
     format: "dc_format_s",
@@ -56,32 +56,32 @@ class SolrDocument
       document_id: id,
       document_type: self.class.to_s
     ).first_or_create do |sc|
-      sc.version = self._source["_version_"]
+      sc.version = _source["_version_"]
     end
 
     # Set version - if doc has changed we'll reimage, someday
-    sidecar.version = self._source["_version_"]
+    sidecar.version = _source["_version_"]
     sidecar.save
 
     sidecar
   end
 
   def uris
-    uris = Array.new
+    uris = []
 
-    self.references.refs.each do |ref|
+    references.refs.each do |ref|
       uri = SolrDocumentUri.where(
         document_id: id,
         document_type: self.class.to_s,
         uri_key: ref.reference[0],
         uri_value: ref.reference[1]
       ).first_or_create do |sc|
-        sc.version = self._source["_version_"]
+        sc.version = _source["_version_"]
       end
 
       uris << uri
     end
 
-    return uris
+    uris
   end
 end

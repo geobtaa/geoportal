@@ -69,7 +69,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = { from: %{"B1G Geoportal" <swadm@#{`hostname`.strip}>} }
+  config.action_mailer.default_options = { from: %("B1G Geoportal" <swadm@#{`hostname`.strip}>) }
   config.action_mailer.default_url_options = { host: 'geo.btaa.org' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
@@ -91,14 +91,14 @@ Rails.application.configure do
   # Background jobs
   config.active_job.queue_adapter = :sidekiq
 
-   # Exception email notification
+  # Exception email notification
   Rails.application.config.middleware.use ExceptionNotification::Rack,
     # Ignore exception notification from Qualys scanner IPs
-    ignore_if: ->(env, exception) { ['160.94.202.168', '160.94.202.169', '160.94.202.170', '160.94.202.171', '160.94.202.172', '160.94.202.173', '160.94.202.174', '160.94.202.175'].include?(env['REMOTE_ADDR']) },
+    ignore_if: ->(env, _exception) { ['160.94.202.168', '160.94.202.169', '160.94.202.170', '160.94.202.171', '160.94.202.172', '160.94.202.173', '160.94.202.174', '160.94.202.175'].include?(env['REMOTE_ADDR']) },
     email: {
       email_prefix: "[Geoblacklight Error] ",
       # Google Groups won't accept messages unless the sender host resolves!
-      sender_address: %{"Geoblacklight" <swadm@#{`hostname`.strip}>},
-      exception_recipients: %w{libwebdev+alert@umn.edu majew030@umn.edu}
+      sender_address: %("Geoblacklight" <swadm@#{`hostname`.strip}>),
+      exception_recipients: %w[libwebdev+alert@umn.edu majew030@umn.edu]
     }
 end

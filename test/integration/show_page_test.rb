@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class ShowPageTest < Capybara::Rails::TestCase
 
-  def setup
-  end
+  def setup; end
 
   def teardown
     ran_without_js_errors

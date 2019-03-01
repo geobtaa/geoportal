@@ -1,11 +1,12 @@
 # frozen_string_literal: true
+
 require "addressable/uri"
 require 'rack/mime'
 
 class ImageService
   def initialize(document)
     @document = document
-    @metadata = Hash.new
+    @metadata = {}
     @metadata['solr_doc_id'] = document.id
     @metadata['solr_version'] = @document.sidecar.version
 
@@ -43,13 +44,13 @@ class ImageService
 
   rescue Exception => invalid
     @metadata['exception'] = invalid.inspect
-    @document.sidecar.state_machine.transition_to!(:failed,@metadata)
+    @document.sidecar.state_machine.transition_to!(:failed, @metadata)
     log_output
   end
 
   def log_output
     @metadata["state"] = @document.sidecar.state_machine.current_state
-    @metadata.each do |key,value|
+    @metadata.each do |key, value|
       @logger.tagged(@document.id, key.to_s) { @logger.info value }
     end
   end
@@ -83,6 +84,7 @@ class ImageService
   # Returns geoserver auth credentials if the document is a restriced Local WMS layer.
   def geoserver_credentials
     return unless restricted_wms_layer?
+
     Settings.PROXY_GEOSERVER_AUTH.gsub('Basic ', '')
   end
 
@@ -123,6 +125,7 @@ class ImageService
     geom_type = @document.fetch('layer_geom_type_s', '').tr(' ', '-').downcase
     thumb_path = "#{placeholder_base_path}/thumbnail-#{geom_type}.png"
     return "#{placeholder_base_path}/thumbnail-paper-map.png" unless File.exist?(thumb_path)
+
     thumb_path
   end
 
@@ -132,7 +135,7 @@ class ImageService
       { type: remote_content_type, data: remote_image }
     else
       @metadata['placeheld'] = true
-      return placeholder_data
+      placeholder_data
     end
   end
 
