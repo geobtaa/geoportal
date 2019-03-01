@@ -29,6 +29,8 @@ group :development, :test do
   # Dotenv
   gem 'dotenv-rails'
 
+  # Coveralls
+  gem 'coveralls', require: false
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

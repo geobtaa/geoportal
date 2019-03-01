@@ -5,6 +5,8 @@ require 'selenium/webdriver'
 require 'capybara/dsl'
 require 'capybara/rails'
 require "minitest/rails/capybara"
+require 'coveralls'
+Coveralls.wear!
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
