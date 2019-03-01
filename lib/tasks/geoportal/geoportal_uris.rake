@@ -17,8 +17,6 @@ namespace :geoportal do
                                        q: query,
                                        fl: "*",
                                        rows: 100_000_000)
-      num_found = results.response[:numFound]
-      doc_counter = 0
       results.docs.each do |document|
         begin
           document.uris.each do |uri|
@@ -101,7 +99,7 @@ namespace :geoportal do
             uri.state_machine.last_transition.metadata['exception']
           ]
         rescue Exception => e
-          puts "#{e.inspect}"
+          puts e.inspect.to_s
           puts "exception / #{uri.document_id}"
           next
         end

@@ -31,7 +31,7 @@ namespace :geoportal do
   desc 'Write state report'
   task sidecar_report: :environment do
     # Create a CSV Dump of Results
-    file = "#{Rails.root}/public/#{Time.now.strftime('%Y-%m-%d_%H-%M-%S')}.sidecar_report.csv"
+    file = "#{Rails.public_path}/#{Time.zone.now.strftime('%Y-%m-%d_%H-%M-%S')}.sidecar_report.csv"
 
     sidecars = SolrDocumentSidecar.all
 

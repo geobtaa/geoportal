@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use this file to easily define all of your cron jobs.
 # Learn more: http://github.com/javan/whenever
 job_type :logrotate, '/usr/sbin/logrotate -s :path/../../shared/tmp/logrotate.state :path/config/logrotate.conf > /dev/null'

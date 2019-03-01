@@ -101,7 +101,7 @@ namespace :geoportal do
 
     def process(doc, type, string, csv)
       # Init results doc
-      if !RESULTS.key?(doc['uuid'])
+      unless RESULTS.key?(doc['uuid'])
         RESULTS[doc['uuid']] = {}
       end
 
@@ -140,7 +140,7 @@ namespace :geoportal do
     end
 
     # Start
-    t1 = Time.now
+    t1 = Time.zone.now
     puts t1
 
     # Read response json from Solr
@@ -162,12 +162,10 @@ namespace :geoportal do
           sleep(1)
           refs = JSON.parse(doc['dct_references_s'])
           refs.each do |key, value|
-            begin
-              process(doc, key, value, csv)
-            rescue Exception => e
-              print "!"
-              csv << ["FAILED", doc['uuid'], key, value, doc['dct_provenance_s'], doc['dc_title_s'], e.inspect]
-            end
+            process(doc, key, value, csv)
+          rescue Exception => e
+            print "!"
+            csv << ["FAILED", doc['uuid'], key, value, doc['dct_provenance_s'], doc['dc_title_s'], e.inspect]
           end
         end
         count += 1000
@@ -176,8 +174,8 @@ namespace :geoportal do
     end
 
     # End
-    t2 = Time.now
+    t2 = Time.zone.now
     seconds_to_run = t2 - t1
-    puts "\n\nCOMPLETED: #{Time.at(seconds_to_run).utc.strftime("%H:%M:%S")}\n\n"
+    puts "\n\nCOMPLETED: #{Time.at(seconds_to_run).utc.strftime('%H:%M:%S')}\n\n"
   end
 end

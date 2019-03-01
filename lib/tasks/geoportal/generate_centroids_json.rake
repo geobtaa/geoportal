@@ -10,21 +10,19 @@ namespace :geoportal do
 
     docs = []
     response["response"]["docs"].each do |doc|
-      begin
-        if doc.key?('b1g_centroid_ss') && !doc['b1g_centroid_ss'].empty?
-          entry = {}
-          entry['layer_slug_s'] = doc['layer_slug_s']
-          entry['dc_title_s'] = doc['dc_title_s']
-          entry['b1g_centroid_ss'] = doc['b1g_centroid_ss']
-          docs << entry
-        end
+      if doc.key?('b1g_centroid_ss') && !doc['b1g_centroid_ss'].empty?
+        entry = {}
+        entry['layer_slug_s'] = doc['layer_slug_s']
+        entry['dc_title_s'] = doc['dc_title_s']
+        entry['b1g_centroid_ss'] = doc['b1g_centroid_ss']
+        docs << entry
+      end
       rescue Exception => e
         puts "Caught #{e}"
         puts "BBox or centroid no good - #{doc['layer_slug_s']}"
-      end
     end
 
-    centroids_file = "#{Rails.root}/public/centroids.json"
+    centroids_file = "#{Rails.public_path}/centroids.json"
     File.open(centroids_file, "w") { |f| f.write(JSON.generate(docs)) }
   end
 end

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 solrinst = RSolr.connect url: Blacklight.connection_config[:url]
 
 # Select all the available docs from Solr
-response = solrinst.get('select', params: {q: '*:*', fl: 'layer_slug_s', rows: 999999})
+response = solrinst.get('select', params: { q: '*:*', fl: 'layer_slug_s', rows: 999999 })
 # Build a flat sorted array of all document slugs
 slugs = response['response']['docs'].map { |doc| doc['layer_slug_s'] }.sort
 

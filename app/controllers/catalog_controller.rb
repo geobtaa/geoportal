@@ -25,9 +25,9 @@ class CatalogController < ApplicationController
 
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
-      :start => 0,
-      :rows => 10,
-      'q.alt' => '*:*'
+      start: 0,
+      rows: 10,
+      'q.alt': '*:*'
     }
 
     config.default_per_page = 20 # Works!
@@ -36,8 +36,8 @@ class CatalogController < ApplicationController
     ## parameters included in the Blacklight-jetty document requestHandler.
     #
     config.default_document_solr_params = {
-     :qt => 'document',
-     :q => '{!raw f=layer_slug_s v=$id}'
+     qt: 'document',
+     q: '{!raw f=layer_slug_s v=$id}'
     }
 
     config.search_builder_class = Geoblacklight::SearchBuilder
@@ -86,35 +86,35 @@ class CatalogController < ApplicationController
 
     # config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
 
-    config.add_facet_field 'dct_spatial_sm', :label => 'Place', :limit => 8, collapse: false
-    config.add_facet_field 'b1g_genre_sm', :label => 'Genre', :limit => 8, collapse: false
+    config.add_facet_field 'dct_spatial_sm', label: 'Place', limit: 8, collapse: false
+    config.add_facet_field 'b1g_genre_sm', label: 'Genre', limit: 8, collapse: false
     config.add_facet_field 'solr_year_i', label: 'Year', limit: 10, collapse: false, all: 'Any year', range: {
       assumed_boundaries: [1100, 2018]
       # :num_segments => 6,
       # :segments => true
     }
-    config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8, collapse: false
+    config.add_facet_field 'dc_subject_sm', label: 'Subject', limit: 8, collapse: false
 
-    config.add_facet_field 'time_period', :label => 'Time Period', :query => {
-      '1500s' => { :label => '1500s', :fq => "solr_year_i:[1500 TO 1599]" },
-      '1600s' => { :label => '1600s', :fq => "solr_year_i:[1600 TO 1699]" },
-      '1700s' => { :label => '1700s', :fq => "solr_year_i:[1700 TO 1799]" },
-      '1800-1849' => { :label => '1800-1849', :fq => "solr_year_i:[1800 TO 1849]" },
-      '1850-1899' => { :label => '1850-1899', :fq => "solr_year_i:[1850 TO 1899]" },
-      '1900-1949' => { :label => '1900-1949', :fq => "solr_year_i:[1900 TO 1949]" },
-      '1950-1999' => { :label => '1950-1999', :fq => "solr_year_i:[1950 TO 1999]" },
-      '2000-2004' => { :label => '2000-2004', :fq => "solr_year_i:[2000 TO 2004]" },
-      '2005-2009' => { :label => '2005-2009', :fq => "solr_year_i:[2005 TO 2009]" },
-      '2010-2014' => { :label => '2010-2014', :fq => "solr_year_i:[2010 TO 2014]" },
-      '2015-present' => { :label => '2015-present', :fq => "solr_year_i:[2015 TO #{Time.now.year}]"}
+    config.add_facet_field 'time_period', label: 'Time Period', query: {
+      '1500s': { label: '1500s', fq: "solr_year_i:[1500 TO 1599]" },
+      '1600s': { label: '1600s', fq: "solr_year_i:[1600 TO 1699]" },
+      '1700s': { label: '1700s', fq: "solr_year_i:[1700 TO 1799]" },
+      '1800-1849': { label: '1800-1849', fq: "solr_year_i:[1800 TO 1849]" },
+      '1850-1899': { label: '1850-1899', fq: "solr_year_i:[1850 TO 1899]" },
+      '1900-1949': { label: '1900-1949', fq: "solr_year_i:[1900 TO 1949]" },
+      '1950-1999': { label: '1950-1999', fq: "solr_year_i:[1950 TO 1999]" },
+      '2000-2004': { label: '2000-2004', fq: "solr_year_i:[2000 TO 2004]" },
+      '2005-2009': { label: '2005-2009', fq: "solr_year_i:[2005 TO 2009]" },
+      '2010-2014': { label: '2010-2014', fq: "solr_year_i:[2010 TO 2014]" },
+      '2015-present': { label: '2015-present', fq: "solr_year_i:[2015 TO #{Time.now.year}]"}
     }, collapse: false
 
     # Trying range facet
     #config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
 
-    config.add_facet_field 'dct_isPartOf_sm', :label => 'Collection', limit: 8
-    config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8
-    config.add_facet_field 'dc_creator_sm', :label => 'Creator', :limit => 8
+    config.add_facet_field 'dct_isPartOf_sm', label: 'Collection', limit: 8
+    config.add_facet_field 'dc_publisher_sm', label: 'Publisher', limit: 8
+    config.add_facet_field 'dc_creator_sm', label: 'Creator', limit: 8
 
     #config.add_facet_field 'b1g_geom_type_sm', label: 'Geometry', limit: 8, partial: "icon_facet", collapse: false
     #config.add_facet_field 'dc_format_s', :label => 'Format', :limit => 8
@@ -224,10 +224,10 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc, dc_title_sort asc', :label => 'relevance'
-    config.add_sort_field 'solr_year_i desc, dc_title_sort asc', :label => 'year'
-    config.add_sort_field 'dc_publisher_sort asc, dc_title_sort asc', :label => 'publisher'
-    config.add_sort_field 'dc_title_sort asc', :label => 'title'
+    config.add_sort_field 'score desc, dc_title_sort asc', label: 'relevance'
+    config.add_sort_field 'solr_year_i desc, dc_title_sort asc', label: 'year'
+    config.add_sort_field 'dc_publisher_sort asc, dc_title_sort asc', label: 'publisher'
+    config.add_sort_field 'dc_title_sort asc', label: 'title'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.

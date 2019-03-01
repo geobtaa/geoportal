@@ -11,7 +11,7 @@ namespace :geoportal do
       image_states[state] = sidecars.size
     end
 
-    image_states.each do |col,state|
+    image_states.each do |col, state|
       puts "#{col} - #{state}"
     end
 
@@ -34,7 +34,7 @@ namespace :geoportal do
           StoreImageJob.perform_later(doc.to_h)
           puts "queued / #{sc.document_id}"
         rescue Exception => e
-          puts "#{e.inspect}"
+          puts e.inspect.to_s
           puts "orphaned / #{sc.document_id}"
         end
       end

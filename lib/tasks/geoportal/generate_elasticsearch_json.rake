@@ -21,7 +21,7 @@ namespace :geoportal do
       docs << doc
     end
 
-    docs_file = "#{Rails.root}/public/solr_docs.json"
+    docs_file = "#{Rails.public_path}/solr_docs.json"
     File.open(docs_file, "w") { |f| f.write(JSON.generate(docs)) }
   end
 end

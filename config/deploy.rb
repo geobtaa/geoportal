@@ -4,7 +4,7 @@
 lock '3.4.1'
 
 set :application, 'geoblacklight'
-#set :repo_url, 'git@github.umn.edu:Libraries/geoblacklight.git'
+# set :repo_url, 'git@github.umn.edu:Libraries/geoblacklight.git'
 set :repo_url, 'git@github.com:BTAA-Geospatial-Data-Project/geoportal.git'
 
 set :passenger_restart_with_touch, true
@@ -58,14 +58,12 @@ set :tmp_dir, "/tmp/#{fetch(:deploy_user)}"
 set :keep_releases, 5
 
 namespace :deploy do
-  #beforIe :symlink do
-    desc 'Place templated files'
-    task :templates do
-      on roles(:app) do
-        template 'logrotate.conf', "#{fetch(:release_path)}/config/logrotate.conf"
-      end
+  desc 'Place templated files'
+  task :templates do
+    on roles(:app) do
+      template 'logrotate.conf', "#{fetch(:release_path)}/config/logrotate.conf"
     end
-  #end
+  end
 
   after :restart, :clear_cache do
     on roles(:app) do
