@@ -60,6 +60,7 @@ group :development do
 
   gem 'puma'
   gem 'foreman'
+  gem 'letter_opener'
 end
 
 gem 'blacklight', '~> 6.19.2'

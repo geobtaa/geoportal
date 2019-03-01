@@ -100,11 +100,14 @@ namespace :geoportal do
             doc._source['dct_provenance_s'],
             uri.state_machine.last_transition.metadata['exception']
           ]
-        rescue
-          puts "orphaned / #{uri.document_id}"
+        rescue Exception => e
+          puts "#{e.inspect}"
+          puts "exception / #{uri.document_id}"
           next
         end
       end
     end
+
+    AdminMailer.uri_analysis(file).deliver_now
   end
 end
