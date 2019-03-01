@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PointlessFeedback
   class MessagesController < PointlessFeedback.parent_controller.constantize
     helper PointlessFeedback::ApplicationHelper
@@ -11,12 +13,12 @@ module PointlessFeedback
 
       if pass_captcha? && @message.save
         flash[:notice] = I18n.t('pointless_feedback.messages.saved',
-                                :default => 'Thanks for your feedback!')
+                                default: 'Thanks for your feedback!')
 
         redirect_to after_message_create_path
       else
         flash[:alert] = I18n.t('pointless_feedback.messages.invalid_captcha',
-                               :default => 'Are you a robot? Please check the box at the bottom of the page and try again.')
+                               default: 'Are you a robot? Please check the box at the bottom of the page and try again.')
         render :new
       end
     end

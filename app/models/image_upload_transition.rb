@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ImageUploadTransition < ActiveRecord::Base
   include Statesman::Adapters::ActiveRecordTransition
 

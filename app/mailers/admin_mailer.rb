@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AdminMailer < ApplicationMailer
   def image_states(rake_results)
     @results = rake_results

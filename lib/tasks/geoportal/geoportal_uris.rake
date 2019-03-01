@@ -10,22 +10,18 @@ namespace :geoportal do
 
   desc 'Process all URIs'
   task :uri_process_all, [:override_existing] => [:environment] do |_t, args|
-    begin
-      query = '*:*'
-      index = Geoblacklight::SolrDocument.index
-      results = index.send_and_receive(index.blacklight_config.solr_path,
-                                       q: query,
-                                       fl: "*",
-                                       rows: 100_000_000)
-      results.docs.each do |document|
-        begin
-          document.uris.each do |uri|
-            ProcessUriJob.perform_later(uri.id)
-          end
-        rescue Blacklight::Exceptions::RecordNotFound
-          next
-        end
+    query = '*:*'
+    index = Geoblacklight::SolrDocument.index
+    results = index.send_and_receive(index.blacklight_config.solr_path,
+                                     q: query,
+                                     fl: "*",
+                                     rows: 100_000_000)
+    results.docs.each do |document|
+      document.uris.each do |uri|
+        ProcessUriJob.perform_later(uri.id)
       end
+    rescue Blacklight::Exceptions::RecordNotFound
+      next
     end
   end
 
@@ -77,32 +73,30 @@ namespace :geoportal do
         "Doc Title",
         "Doc Collection",
         "Doc Institution",
-        "Error",
+        "Error"
       ]
 
       writer << header
 
       uris.each do |uri|
         cat = CatalogController.new
-        begin
-          _resp, doc = cat.fetch(uri.document_id)
-          writer << [
-            uri.state_machine.current_state,
-            uri.id,
-            uri.document_id,
-            uri.uri_key,
-            uri.uri_value,
-            doc._source['layer_geom_type_s'],
-            doc._source['dc_title_s'],
-            doc._source['dct_isPartOf_sm'].join(", "),
-            doc._source['dct_provenance_s'],
-            uri.state_machine.last_transition.metadata['exception']
-          ]
-        rescue Exception => e
-          puts e.inspect.to_s
-          puts "exception / #{uri.document_id}"
-          next
-        end
+        _resp, doc = cat.fetch(uri.document_id)
+        writer << [
+          uri.state_machine.current_state,
+          uri.id,
+          uri.document_id,
+          uri.uri_key,
+          uri.uri_value,
+          doc._source['layer_geom_type_s'],
+          doc._source['dc_title_s'],
+          doc._source['dct_isPartOf_sm'].join(", "),
+          doc._source['dct_provenance_s'],
+          uri.state_machine.last_transition.metadata['exception']
+        ]
+      rescue Exception => e
+        puts e.inspect.to_s
+        puts "exception / #{uri.document_id}"
+        next
       end
     end
 

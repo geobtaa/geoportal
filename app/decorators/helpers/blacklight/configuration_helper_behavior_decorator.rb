@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 Blacklight::ConfigurationHelperBehavior.class_eval do
   ##
   # @CUSTOMIZED: added label pluralize call
   # Look up the label for the show field
-  def document_show_field_label document, field
+  def document_show_field_label(document, field)
     field_config = document_show_fields(document)[field]
 
     field_label(
@@ -10,6 +12,6 @@ Blacklight::ConfigurationHelperBehavior.class_eval do
       :"blacklight.search.fields.#{field}",
       (field_config.label if field_config),
       field.to_s.humanize
-    ).pluralize(Array.wrap(document.fetch(field, field)).count)
+    ).pluralize(Array.wrap(document.fetch(field, field)).size)
   end
 end

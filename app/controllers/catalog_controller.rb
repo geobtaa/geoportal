@@ -1,4 +1,5 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 require 'blacklight/catalog'
 
 class CatalogController < ApplicationController
@@ -36,8 +37,8 @@ class CatalogController < ApplicationController
     ## parameters included in the Blacklight-jetty document requestHandler.
     #
     config.default_document_solr_params = {
-     qt: 'document',
-     q: '{!raw f=layer_slug_s v=$id}'
+      qt: 'document',
+      q: '{!raw f=layer_slug_s v=$id}'
     }
 
     config.search_builder_class = Geoblacklight::SearchBuilder
@@ -106,18 +107,18 @@ class CatalogController < ApplicationController
       '2000-2004': { label: '2000-2004', fq: "solr_year_i:[2000 TO 2004]" },
       '2005-2009': { label: '2005-2009', fq: "solr_year_i:[2005 TO 2009]" },
       '2010-2014': { label: '2010-2014', fq: "solr_year_i:[2010 TO 2014]" },
-      '2015-present': { label: '2015-present', fq: "solr_year_i:[2015 TO #{Time.now.year}]"}
+      '2015-present': { label: '2015-present', fq: "solr_year_i:[2015 TO #{Time.zone.now.year}]" }
     }, collapse: false
 
     # Trying range facet
-    #config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
+    # config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
 
     config.add_facet_field 'dct_isPartOf_sm', label: 'Collection', limit: 8
     config.add_facet_field 'dc_publisher_sm', label: 'Publisher', limit: 8
     config.add_facet_field 'dc_creator_sm', label: 'Creator', limit: 8
 
-    #config.add_facet_field 'b1g_geom_type_sm', label: 'Geometry', limit: 8, partial: "icon_facet", collapse: false
-    #config.add_facet_field 'dc_format_s', :label => 'Format', :limit => 8
+    # config.add_facet_field 'b1g_geom_type_sm', label: 'Geometry', limit: 8, partial: "icon_facet", collapse: false
+    # config.add_facet_field 'dc_format_s', :label => 'Format', :limit => 8
     config.add_facet_field 'dct_provenance_s', label: 'Institution', limit: 15
     config.add_facet_field 'dc_type_sm', label: 'Type', limit: 8
     # Remove access facet until data is available - EWL
@@ -234,11 +235,11 @@ class CatalogController < ApplicationController
     config.spell_max = 5
 
     # Custom tools for GeoBlacklight
-    config.add_show_tools_partial :more_details, partial: 'more_details', if: proc { |_context, _config, options| options[:document] && (!options[:document].references.nil? & !options[:document].references.url.nil?)}
+    config.add_show_tools_partial :more_details, partial: 'more_details', if: proc { |_context, _config, options| options[:document] && (!options[:document].references.nil? & !options[:document].references.url.nil?) }
     config.add_show_tools_partial :metadata, if: proc { |_context, _config, options| options[:document] && (Settings.METADATA_SHOWN & options[:document].references.refs.map(&:type).map(&:to_s)).any? }
     config.add_show_tools_partial :web_services, if: proc { |_context, _config, options| options[:document] && (Settings.WEBSERVICES_SHOWN & options[:document].references.refs.map(&:type).map(&:to_s)).any? }
-    config.add_show_tools_partial :exports, partial: 'exports', if: proc { |_context, _config, options| options[:document] && options[:document].carto_reference.present?}
-    config.add_show_tools_partial :data_dictionary, partial: 'data_dictionary', if: proc { |_context, _config, options| options[:document] && options[:document].data_dictionary_download.present?}
+    config.add_show_tools_partial :exports, partial: 'exports', if: proc { |_context, _config, options| options[:document] && options[:document].carto_reference.present? }
+    config.add_show_tools_partial :data_dictionary, partial: 'data_dictionary', if: proc { |_context, _config, options| options[:document] && options[:document].data_dictionary_download.present? }
 
     # Remove nav actions
     config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark', if: false)
@@ -257,11 +258,10 @@ class CatalogController < ApplicationController
     # 'positron' http://cartodb.com/basemaps/
     # 'darkMatter' http://cartodb.com/basemaps/
     config.basemap_provider = 'esri'
-    config.max_per_page = 10000
+    config.max_per_page = 10_000
 
     # Configuration for autocomplete suggestor
     config.autocomplete_enabled = true
     config.autocomplete_path = 'suggest'
   end
-
 end

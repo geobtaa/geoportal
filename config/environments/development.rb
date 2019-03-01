@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -14,11 +16,11 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  #config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = {from: 'no-reply@geo.btaa.org'}
+  config.action_mailer.default_options = { from: 'no-reply@geo.btaa.org' }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -51,7 +53,7 @@ Rails.application.configure do
   config.google_analytics = 'UA-82483267-2'
 
   # Exception email notification (not enabled in development mode)
-  #Rails.application.config.middleware.use ExceptionNotification::Rack,
+  # Rails.application.config.middleware.use ExceptionNotification::Rack,
   #  :email => {
   #    :email_prefix => "[Geoblacklight Error] ",
   #    :sender_address => %{"Geoblacklight" <swadm@lib-geoblacklightdev.oit.umn.edu>},

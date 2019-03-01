@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "addressable/uri"
 require "net/http"
 require "net/ftp"
@@ -113,13 +114,13 @@ class UriService
 
   rescue Exception => invalid
     @metadata['exception'] = invalid.inspect
-    @uri.state_machine.transition_to!(:failed,@metadata)
+    @uri.state_machine.transition_to!(:failed, @metadata)
     log_output
   end
 
   def log_output
     @metadata["state"] = @uri.state_machine.current_state
-    @metadata.each do |key,value|
+    @metadata.each do |key, value|
       @logger.tagged(@uri.id, key.to_s) { @logger.info value }
     end
   end

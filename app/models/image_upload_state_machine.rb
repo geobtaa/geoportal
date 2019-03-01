@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ImageUploadStateMachine
   include Statesman::Machine
 
@@ -11,11 +13,11 @@ class ImageUploadStateMachine
   # Queued => Background Job Init
   # Processing => Failed, Placeheld, Succeeded
   transition from: :initialized,  to: :queued
-  transition from: :queued,       to: [:queued, :processing]
-  transition from: :processing,   to: [:queued, :processing, :placeheld, :succeeded, :failed]
-  transition from: :placeheld,    to: [:queued, :processing]
-  transition from: :failed,       to: [:queued, :processing]
-  transition from: :succeeded,    to: [:queued, :processing]
+  transition from: :queued,       to: %i[queued processing]
+  transition from: :processing,   to: %i[queued processing placeheld succeeded failed]
+  transition from: :placeheld,    to: %i[queued processing]
+  transition from: :failed,       to: %i[queued processing]
+  transition from: :succeeded,    to: %i[queued processing]
 
   guard_transition(to: :queued) do |sidecar|
     sidecar.remove_image!

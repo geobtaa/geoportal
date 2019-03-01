@@ -3,7 +3,6 @@
 require "test_helper"
 
 class SearchResultsPageTest < Capybara::Rails::TestCase
-
   def setup
   end
 
@@ -37,7 +36,7 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
 
   def test_empty_search
     visit '/?utf8=✓&q=&search_field=all_fields'
-    assert page.assert_selector('div.document', :count => 20)
+    assert page.assert_selector('div.document', count: 20)
   end
 
   def test_facets
