@@ -42,3 +42,4 @@ config/appsignal.yml
 .env.development
 .env.test
 test/reports/*
+public/solr_docs.json

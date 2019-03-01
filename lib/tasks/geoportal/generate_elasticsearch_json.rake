@@ -10,11 +10,8 @@ require 'rsolr'
 namespace :geoportal do
   desc 'Make a Solr document json dump to import into ES'
   task generate_elasticsearch_json: :environment do
-    # Connect to solr
-    solr = RSolr.connect url: CONFIG.url
-
     # Search request
-    response = solr.get 'select', params: { q: '*:*', rows: '10000' }
+    response = Blacklight.default_index.connection.get 'select', params: { q: '*:*', rows: '10000' }
 
     docs = []
     response["response"]["docs"].each do |doc|
