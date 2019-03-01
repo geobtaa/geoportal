@@ -11,18 +11,20 @@ namespace :geoportal do
       :placeheld
     ]
 
-    col_state = {}
+    image_states = {}
     states.each do |state|
       sidecars = SolrDocumentSidecar.in_state(state)
-      col_state[state] = sidecars.size
+      image_states[state] = sidecars.size
     end
 
-    col_state.each do |col,state|
+    image_states.each do |col,state|
       puts "#{col} - #{state}"
     end
+
+    AdminMailer.image_states(image_states).deliver_now
   end
 
-  desc 'Queue incomplete states for reprocessing'
+  desc 'Harvest images - Queue incomplete states for reprocessing'
   task queue_incomplete_states: :environment do
     states = [
       :initialized,
@@ -42,7 +44,9 @@ namespace :geoportal do
         begin
           resp, doc = cat.fetch(sc.document_id)
           StoreImageJob.perform_later(doc.to_h)
-        rescue
+          puts "queued / #{sc.document_id}"
+        rescue Exception => e
+          puts "#{e.inspect}"
           puts "orphaned / #{sc.document_id}"
         end
       end

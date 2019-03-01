@@ -2,7 +2,14 @@
 
 GeoBlacklight.Viewer.Download = GeoBlacklight.Viewer.extend({
   load: function() {
-    this.map = this.element
+    this.map = this.map = L.map(this.element, {
+      center: [0, 0],
+      crs: L.CRS.Simple,
+      zoom: 0,
+      zoomControl:false
+    });
+
+    this.loadControls();
 
     var img = document.createElement("img");
 

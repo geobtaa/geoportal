@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>B1G Geoportal<h1>
+    <h2>URI Analysis CSV Report / <%= DateTime.now.to_formatted_s(:long) %></h2>
+    <h3>Filepath:</h3>
+    <p><%= @report %></p>
+    <h3>URL:</h3>
+    <p>
+      <%= "https://geo.btaa.org/#{@report.split('/public/')[1]}" %>
+    </p>
+
+    <hr/>
+    <h3>How this works</h3>
+    <p>Once a month, every solr document uri object in the database is purged and recreated. Each new URI is processed to determine whether the URI is good or bad. That state is captured in the database and after all URIs are processed, we generate this CSV report of how the URI analysis performed.</p>
+    <hr/>
+    <h4>Technical Details</h4>
+    <p>The whenever gem runs these rake tasks:</p>
+    <ul>
+      <li>1st day of month / 1:00am / bundle exec rake geoportal:uri_purge</li>
+      <li>1st day of month / 2:00am / bundle exec rake geoportal:uri_process_all</li>
+      <li>2nd day of month / 2:00am / bundle exec rake geoportal:uri_queue_incomplete_states</li>
+      <li>2nd day of month / 8:00am / bundle exec rake geoportal:uri_report</li>
+    </ul>
+  </body>
+</html>

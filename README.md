@@ -1,5 +1,7 @@
 # Big Ten Academic Alliance Geoportal
 
+[![CircleCI](https://circleci.com/gh/BTAA-Geospatial-Data-Project/geoportal.svg?style=svg)](https://circleci.com/gh/BTAA-Geospatial-Data-Project/geoportal)
+
 This geoportal connects users to digital geospatial resources, including GIS datasets, web services, and digitized historical maps from multiple data clearinghouses and library catalogs. The interface offers both text and place based search options, and item pages display descriptive metadata records along with external links to download, view, or read more about the resources. This site is solely an aggregator and does not host any data. Read more about the Geospatial Data Discovery Project here.
 
 This project is collectively managed by librarians and geospatial specialists at twelve research institutions from across the Big Ten Academic Alliance including:
@@ -23,4 +25,4 @@ The geoportal is built with Geoblacklight, a multi-institutional open-source col
 
 #### Release Version
 
-B1G Geoportal Version 1.9.6 / GeoBlacklight 1.9.1
+B1G Geoportal Version 1.9.7 / GeoBlacklight 1.9.1

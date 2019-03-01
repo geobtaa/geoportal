@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>B1G Geoportal<h1>
+    <h2>Image Harvest States / <%= DateTime.now.to_formatted_s(:long) %></h2>
+    <p>Image State - Count</p>
+    <ul>
+      <%- @results.each do |key, val| %>
+        <li><%= key %> - <%= val %></li>
+      <% end %>
+    </ul>
+    <hr/>
+    <h3>How this works</h3>
+    <p>Each night at midnight, every solr document sidecar object in the database in a non-successful image harvest state is re-queued for processing. Later that morning, the object states are counted and this email is sent.</p>
+    <h4>State Definitions</h4>
+    <dl>
+      <dt>initialized</dt>
+      <dd>New and unprocessed</dd>
+      <dt>queued</dt>
+      <dd>Background job waiting in queue</dd>
+      <dt>processing</dt>
+      <dd>Background job currently running</dd>
+      <dt>succeeded</dt>
+      <dd>Image successfully harvested</dd>
+      <dt>failed</dt>
+      <dd>Image harvest failed (likely from an exception)</dd>
+      <dt>placeheld</dt>
+      <dd>No image available; using placeholder image</dd>
+    </dl>
+    <hr/>
+    <h4>Technical Details</h4>
+    <p>The whenever gem runs these rake tasks:</p>
+    <ul>
+      <li>12:05am / bundle exec rake geoportal:queue_incomplete_states</li>
+      <li>03:00am / bundle exec rake geoportal:sidecar_states</li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+{
+  "geoblacklight_version":"1.0",
+  "dc_description_s":"Greenwich prime meridian. \"By authority of Commo: Charles Morris U.S.N., Chief of Bureau of Ordnance and Hydrography, 1853.\" \"Lith of Endicott \u0026 Co. N.Y.\" 1 map: col., encapsulated in Mylar; 60 x 93 cm. This map is in the public domain. Please attribute access and use of this digitized map to the Stephen S. Clark Library, University of Michigan Library.",
+  "layer_modified_dt":"2019-01-16T16:33:56Z",
+  "solr_geom":"ENVELOPE(-180, 180, 80, -68)",
+  "dct_references_s":"{\"http://schema.org/url\":\"https://quod.lib.umich.edu/c/clark1ic/x-002371876/39015091197205\",\"http://schema.org/downloadUrl\":\"https://quod.lib.umich.edu/cgi/i/image/api/image/clark1ic:002371876:39015091197205/full/res:1/0/native.jpg?attachment=1\",\"http://iiif.io/api/image\":\"https://quod.lib.umich.edu/cgi/i/image/api/image/clark1ic:002371876:39015091197205/info.json\"}",
+  "dc_rights_s":"Public",
+  "b1g_centroid_ss":"6,0",
+  "layer_geom_type_s":"Image",
+  "dct_provenance_s":"Michigan",
+  "dc_language_sm":[
+    "English"
+  ],
+  "dct_temporal_sm":[
+    "1853?"
+  ],
+  "b1g_code_s":"07d-01",
+  "b1g_genre_sm":[
+    "Maps"
+  ],
+  "b1g_geonames_sm":[
+    "http://sws.geonames.org/6295630"
+  ],
+  "dc_format_s":"JPEG",
+  "dc_creator_sm":[
+    "Maury, Matthew Fontaine, 1806-1873.,Wyman, R. H. (Robert Harris), 1822-1882.,Morris, Charles, 1784-1856.,W. Endicott \u0026 Co."
+  ],
+  "dc_identifier_s":"f9eb8493-32ab-4ede-8330-9286846eee0d",
+  "solr_year_i":1853,
+  "dc_source_sm":[
+    "07d-01"
+  ],
+  "b1g_image_ss":"https://quod.lib.umich.edu/cgi/i/image/api/image/clark1ic:002371876:39015091197205/full/res:1/0/native.jpg?attachment=1",
+  "dct_spatial_sm":[
+    "World"
+  ],
+  "dc_type_sm":[
+    "Image"
+  ],
+  "dc_title_s":"A chart showing the favorite resort of the sperm and right whale by M.F. Maury L.L.D. Lieut. U.S. Navy; constructed from Maury's whale chart of the world by Robt. H. Wyman Lieut. U.S.N.",
+  "layer_slug_s":"f9eb8493-32ab-4ede-8330-9286846eee0d",
+  "dct_isPartOf_sm":[
+    "Clark Library Map Collections"
+  ]
+}

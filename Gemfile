@@ -2,10 +2,9 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-gem 'mysql2', '0.4.8'
+gem 'rails', '~> 5.1.6'
+gem 'sqlite3', '~> 1.3', '< 1.4'
+gem 'mysql2', '~> 0.5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -27,21 +26,30 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Dotenv
+  gem 'dotenv-rails'
+
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'minitest-rails-capybara', '~>3.0.0'
 
-  # Guard
-  gem 'guard' # NOTE: this is necessary in newer versions
-  gem 'guard-minitest'
-  gem 'terminal-notifier-guard'
+  # RSpec/SolrWrapper
+  gem 'capybara'
+  gem 'capybara-selenium'
+  gem 'capybara-screenshot'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'spring'
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 3.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'web-console'
 
   gem 'capistrano', '3.4.1'
   gem 'capistrano-rails'
@@ -52,14 +60,16 @@ group :development do
 
   gem 'puma'
   gem 'foreman'
+  gem 'letter_opener'
 end
 
-gem 'blacklight', '>= 6.3'
-gem 'blacklight_advanced_search'
-gem 'blacklight_range_limit'
+gem 'blacklight', '~> 6.19.2'
+gem 'blacklight_advanced_search', '~> 6.4.1'
+gem 'blacklight_range_limit', '~> 6.3.3'
 gem 'chosen-rails' #  jquery multiselect plugin for advanced search
+gem "bootstrap-sass", "~> 3.4.1"
 gem 'geoblacklight', '~> 1.9.0'
-gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblacklight_sidecar_images.git', :ref => '3fd6634dc3dfa089d7894620c0fbf15571ab5625'
+gem 'geoblacklight_sidecar_images', git: 'https://github.com/geoblacklight/geoblacklight_sidecar_images.git', :ref => '3fd6634dc3dfa089d7894620c0fbf15571ab5625'
 gem 'statesman', '~> 3.4.1'
 gem 'sidekiq', '~> 5.1.3'
 gem 'sidekiq-failures', '~> 1.0.0'
@@ -85,13 +95,14 @@ gem 'jekyll-feed'
 
 # Feedback
 gem 'pointless_feedback'
-
 gem 'whenever', '~> 0.9.0', require: false
-gem 'sitemap_generator', '~> 5.2.0'
-gem 'exception_notification', '~>4.2.0'
+gem 'sitemap_generator', '~> 6.0.2'
+gem 'exception_notification', '~> 4.3.0'
 
 group :test do
   gem 'minitest-rails-capybara', '~>3.0.0'
   gem 'chromedriver-helper'
   gem 'capybara-selenium'
+  gem 'm', '~> 1.5.0'
+  gem 'minitest-ci', '~> 3.4.0'
 end

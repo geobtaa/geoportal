@@ -240,6 +240,8 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial :exports, partial: 'exports', if: proc { |_context, _config, options| options[:document] && options[:document].carto_reference.present?}
     config.add_show_tools_partial :data_dictionary, partial: 'data_dictionary', if: proc { |_context, _config, options| options[:document] && options[:document].data_dictionary_download.present?}
 
+    # Remove nav actions
+    config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark', if: false)
 
     # Remove show tools
     config.show.partials.delete(:show_header)

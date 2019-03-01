@@ -1,0 +1,54 @@
+{
+   "geoblacklight_version":"1.0",
+   "dc_description_s":"High-quality GIS land use maps for the Twin Cities Metropolitan Area for 1958 that were developed from paper maps (no GIS version existed previously).",
+   "layer_modified_dt":"2019-02-26T21:58:07Z",
+   "solr_geom":"ENVELOPE(-93.890996, -92.744289, 45.220692, 44.736642)",
+   "dct_references_s":"{\"http://schema.org/url\":\"http://dx.doi.org/10.13020/D6059J\",\"http://schema.org/downloadUrl\":\"https://conservancy.umn.edu/bitstream/handle/11299/160503/L1958_poly.zip?sequence=10\u0026isAllowed=y\",\"http://schema.org/image\":\"https://conservancy.umn.edu/bitstream/handle/11299/160503/1958originalmap.pdf.jpg\",\"http://www.opengis.net/cat/csw/csdgm\":\"https://conservancy.umn.edu/bitstream/handle/11299/160503/1958metadata.xml?sequence=9\u0026isAllowed=y\"}",
+   "dc_rights_s":"Public",
+   "b1g_centroid_ss":"44.978667,-93.3176425",
+   "layer_geom_type_s":"Polygon",
+   "dct_provenance_s":"Minnesota",
+   "dc_subject_sm":[
+      "Planning and Cadastral"
+   ],
+   "dc_language_sm":[
+      "English"
+   ],
+   "dct_temporal_sm":[
+      "1958"
+   ],
+   "b1g_code_s":"05d-03",
+   "dct_issued_s":"2013-11-22",
+   "b1g_genre_sm":[
+      "Geospatial data"
+   ],
+   "b1g_geonames_sm":[
+      "http://sws.geonames.org/6252001"
+   ],
+   "dc_format_s":"Shapefile",
+   "b1g_keyword_sm":[
+      "Land use"
+   ],
+   "dc_creator_sm":[
+      "Chen, Wei",
+      "Levinson, David M."
+   ],
+   "dc_identifier_s":"b98a7b39-830a-48ca-84c2-06332aaebbb8",
+   "solr_year_i":1958,
+   "b1g_image_ss":"https://conservancy.umn.edu/bitstream/handle/11299/160503/1958originalmap.pdf.jpg",
+   "dct_spatial_sm":[
+      "Minneapolis-St. Paul-Bloomington, Minnesota, United States",
+      "Minnesota, United States"
+   ],
+   "dc_publisher_sm":[
+      "University of Minnesota"
+   ],
+   "dc_type_sm":[
+      "Dataset"
+   ],
+   "dc_title_s":"Twin Cities Land Use Map from the Twin Cities Metropolitan Planning Commission, 1958",
+   "layer_slug_s":"b98a7b39-830a-48ca-84c2-06332aaebbb8",
+   "dct_isPartOf_sm":[
+      "Academic Institutions Geospatial Data"
+   ]
+}

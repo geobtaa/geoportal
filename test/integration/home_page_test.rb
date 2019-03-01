@@ -1,8 +1,10 @@
 require "test_helper"
+require "rake"
 
 class HomePageTest < Capybara::Rails::TestCase
 
   def setup
+    Rake::Task["geoportal:generate_centroids_json"].invoke
     visit '/'
   end
 
@@ -25,7 +27,7 @@ class HomePageTest < Capybara::Rails::TestCase
       assert page.has_no_link?("News & Updates")
 
       # Good Links - Should Pass
-      assert page.has_link?("Bookmarks")
+      assert page.has_no_link?("Bookmarks")
       assert page.has_link?("History")
       assert page.has_link?("About")
       assert page.has_link?("Help")
@@ -53,13 +55,5 @@ class HomePageTest < Capybara::Rails::TestCase
 
   def test_map_clustering
     assert page.has_selector?("div.prunecluster.leaflet-marker-icon")
-  end
-
-  def test_autocomplete
-    within("div#wrapper-search") do
-      fill_in("q", with: 'minn')
-    end
-
-    assert page.has_content?("minneapolis, minnesota, united states")
   end
 end

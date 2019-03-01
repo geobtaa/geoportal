@@ -28,34 +28,30 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
   end
 
   def test_map_clustering
-    visit '/?q=water&view=mapview'
+    # Map centered on USA. B1G records have cluster centroid values.
+    visit '/?utf8=✓&view=mapview&q=&search_field=all_fields&bbox=-177.129822%20-36.81918%20-28.067322%2074.70319'
     assert page.has_selector?("div.prunecluster.leaflet-marker-icon")
   end
 
   def test_empty_search
-    visit '/?search_field=all_fields&q='
+    visit '/?utf8=✓&q=&search_field=all_fields'
     assert page.assert_selector('div.document', :count => 20)
   end
 
   def test_facets
-    visit '/?q=water'
+    visit '/?utf8=✓&q=&search_field=all_fields'
     assert page.has_selector?("#facets")
     within("#facets") do
       assert page.has_content?("Place")
       assert page.has_content?("Genre")
+      assert page.has_content?("Year")
       assert page.has_content?("Subject")
       assert page.has_content?("Time Period")
-      assert page.has_content?("Year")
       assert page.has_content?("Collection")
       assert page.has_content?("Publisher")
       assert page.has_content?("Creator")
       assert page.has_content?("Institution")
       assert page.has_content?("Type")
     end
-  end
-
-  def test_getBounds
-    visit '/?f%5Btime_period%5D%5B%5D=1600s&per_page=10&q=minnesota&search_field=all_fields'
-    assert page.assert_selector('div.document', :count => 10)
   end
 end
