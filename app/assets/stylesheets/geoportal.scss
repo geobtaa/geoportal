@@ -54,6 +54,11 @@ span.list-view.document-counter {
   }
 }
 
+#document .row [data-map="item"] {
+  min-height: 440px;
+  height: inherit;
+}
+
 #tools-sidebar [data-map="item"] {
   height: 280px;
 }
