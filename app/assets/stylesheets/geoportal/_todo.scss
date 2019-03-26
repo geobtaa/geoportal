@@ -1,6 +1,224 @@
-@import 'components/icons';
-@import 'components/advanced';
-@import 'components/variables';
+// Big Ten Academic Alliance colors:
+$white: #FFFFFF; // 100%
+$gray: #CCCCCC; // 80%
+$black: #000000; // 0%
+$btaa-blue: #0088ce;
+$radius: 4px;
+
+
+#geoportal-about {
+  margin-top:1rem;
+}
+
+body {
+  background-color:lighten($gray, 18%);
+}
+
+header {
+  background-color: $white;
+}
+
+div#main-container {
+  margin-top:2rem;
+  margin-bottom:4rem;
+}
+
+section#home-metadata {
+  margin-top:4rem;
+}
+
+section#map {
+  height:600px;
+}
+
+section#footer-app{
+  color:$white;
+  padding-bottom:1rem;
+  background-color: $btaa-blue;
+  a {
+    color:$white;
+  }
+}
+
+footer {
+  background-color:$gray;
+  padding-top:2rem;
+  padding-bottom:2rem;
+
+  a {
+    color: $black;
+  }
+}
+
+#university-libraries {
+  border:4px solid $white;
+}
+
+
+div#home-content-wrapper{
+  background:lighten($gray, 12%) asset_url('aerial_photo.jpg') repeat;
+  height:100%;
+  position:relative;
+  overflow:hidden;
+
+  #wrapper-map {
+    height:100%;
+    position:fixed;
+    margin-top:10rem;
+    left:0;
+    padding-right:0;
+    padding-left:0;
+
+    div#map {
+      height: 100% !important;
+      background-color:#b8e6fe;
+
+      #map-search-btn {
+        position:fixed;
+        bottom:20px;
+        left:11px;
+        z-index:4000;
+      }
+    }
+  }
+
+  #wrapper-search {
+    background-color:rgba($black,0.8);
+    padding:2rem;
+    padding-right:4rem;
+    margin-top:10rem;
+    height:100%;
+    overflow-y:scroll;
+    float:right;
+
+    .search-query-form {
+      padding-left:0;
+      padding-right:0;
+      margin-left:1px;
+    }
+    .search-input-group {
+      width:100%;
+    }
+  }
+}
+
+div#search-bar {
+  background-color:rgba($black,0.8);
+  padding:2rem;
+}
+
+#home-content-wrapper {
+  div#search-bar {
+    background-color:rgba($black,0.8);
+    padding:1rem 3rem 2rem 2rem;
+  }
+}
+
+#project-tagline {
+  margin-top:0;
+  padding:1rem;
+  display:inline-block;
+  background-color:rgba($btaa-blue,0.9);
+  color:$white;
+}
+
+#project-text {
+  padding:1rem;
+  display:inline-block;
+  background-color:rgba(255,255,255,0.9);
+  margin-bottom:2rem;
+  border-radius:$radius;
+
+  .project-action {
+    border-top:1px solid #CCC;
+    padding-top:1rem;
+  }
+}
+
+// Overwriting BL/GBL styles
+// Keep search form and results facets within the grid
+
+.navbar-toggle, .facets-toggle {
+  margin-right:0px;
+}
+
+#facet-panel-collapse {
+  padding-left:0;
+  padding-right:0;
+}
+
+#search-navbar {
+  background-color:lighten($gray, 10%);
+  border-bottom: 1px solid $gray;
+  .navbar-form {
+    margin-left:-15px;
+  }
+}
+
+// Lists - Horizontal w/ Bullets
+.list-horizontal {
+  padding-left:0;
+}
+
+.list-horizontal li {
+  display:inline-block;
+}
+.list-horizontal li:before {
+  content: '\00a0\2022\00a0\00a0';
+  color:$white;
+}
+
+.list-horizontal li:first-child {
+  width:auto;
+}
+
+.list-horizontal li:first-child:before {
+  content: none;
+}
+
+// Static page navigation
+.nav.nav-sidebar {
+  margin-left:0;
+}
+
+.nav.nav-sidebar>li{
+  margin-bottom: 0.5em;
+}
+
+.nav.nav-sidebar>li>a{
+  border-left:4px solid #eeeeee;
+  background-color:#eeeeee;
+}
+
+.nav.nav-sidebar>li>a.active {
+  border-left:4px solid #7a0019;
+  background-color:#dddddd;
+  font-weight: bold;
+}
+
+.nav.nav-sidebar>li>a:hover{
+  color:inherit;
+  border-left:4px solid $btaa-blue;
+  background-color:#dddddd;
+  font-weight: bold;
+}
+
+.nav.nav-sidebar>li>a.active {
+  border-left:4px solid $btaa-blue;
+}
+
+div#content {
+  div#map {
+    min-height: 440px;
+    height: 100% !important;
+    background-color:#b8e6fe;
+  }
+}
+
+.twitter-typeahead input.tt-hint.form-control {
+  width: 100%;
+  border-radius:0px !important;
+}
 
 span.list-view.document-counter {
   display:inline-block;
@@ -64,7 +282,7 @@ span.list-view.document-counter {
 }
 
 #home-search {
-  background:lighten($gray, 12%) asset_url('aerial_photo.jpg') repeat;
+  background:lighten(#CCC, 12%) asset_url('aerial_photo.jpg') repeat;
 }
 
 #home-search .navbar-form {

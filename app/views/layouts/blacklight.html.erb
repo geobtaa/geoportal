@@ -41,17 +41,17 @@
 
   <%= render :partial => 'shared/header_navbar' %>
 
-  <%= render partial: 'shared/ajax_modal' %>
+  <%= render partial: 'shared/modal' %>
 
   <% if homepage? %>
-    <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
+    <%= render :partial=>'shared/flash_msg', layout: 'shared/flash_messages' %>
     <%= render 'home' %>
   <% else %>
     <div role="main" id="main-container" class="<%= container_classes %>" data-analytics-id="<%= Rails.configuration.google_analytics %>">
       <h1 class='sr-only'>Big Ten Academic Alliance Geospatial Discovery Portal</h1>
       <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
 
-      <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
+      <%= render :partial=>'shared/flash_msg', layout: 'shared/flash_messages' %>
 
       <div class="row">
         <%= yield %>

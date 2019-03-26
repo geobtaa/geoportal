@@ -5,13 +5,13 @@
 @import 'Leaflet.fullscreen/leaflet.fullscreen';
 @import 'leaflet.prunecluster/PruneCluster';
 
+@import 'geoportal/geoportal';
+
 #content {
   #map {
     height: 504px; // 36px base
   }
 }
-
-
 
 .leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {
 	-webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;

@@ -13,12 +13,19 @@
 
 //= require rails-ujs
 //
-// Required by Blacklight
-//= require jquery
+
+//= require jquery/dist/jquery
+
+// Required by Blacklight Advanced Search
 //= require 'blacklight_advanced_search'
 //= require chosen-jquery
 //= require modules/advanced_chosen
 
+// Required by Blacklight
+//= require popper
+// Twitter Typeahead for autocomplete
+//= require typeahead.js/dist/typeahead.bundle
+//= require bootstrap/dist/js/bootstrap
 //= require blacklight/blacklight
 
 // Required by GeoBlacklight
