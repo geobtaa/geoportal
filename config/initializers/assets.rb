@@ -11,3 +11,6 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( analytics.js )
 
 Rails.application.config.assets.precompile += %w( favicon.ico )
+
+# Add yarn assets
+Rails.application.config.assets.paths << Rails.root.join('node_modules')
