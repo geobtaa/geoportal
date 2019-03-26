@@ -63,13 +63,13 @@ group :development do
   gem 'letter_opener'
 end
 
-gem 'blacklight', '~> 6.19.2'
-gem 'blacklight_advanced_search', '~> 6.4.1'
-gem 'blacklight_range_limit', '~> 6.3.3'
+gem 'blacklight', git: 'https://github.com/projectblacklight/blacklight.git', :branch => 'master'
+gem 'blacklight_advanced_search', git: 'https://github.com/projectblacklight/blacklight_advanced_search.git', :branch => 'master'
+gem 'blacklight_range_limit', '~> 7.0.0'
 gem 'chosen-rails' #  jquery multiselect plugin for advanced search
-gem "bootstrap-sass", "~> 3.4.1"
-gem 'geoblacklight', '~> 1.9.0'
-gem 'geoblacklight_sidecar_images', git: 'https://github.com/geoblacklight/geoblacklight_sidecar_images.git', :ref => '3fd6634dc3dfa089d7894620c0fbf15571ab5625'
+gem 'bootstrap', '~> 4.0'
+gem 'geoblacklight', '~> 2.0.0'
+gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblacklight_sidecar_images.git', :branch => 'geoportal-legacy'
 gem 'statesman', '~> 3.4.1'
 gem 'sidekiq', '~> 5.1.3'
 gem 'sidekiq-failures', '~> 1.0.0'
