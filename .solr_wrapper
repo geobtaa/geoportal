@@ -1,4 +1,4 @@
-url: https://archive.apache.org/dist/lucene/solr/6.2.1/solr-6.2.1.zip
+url: https://archive.apache.org/dist/lucene/solr/7.7.1/solr-7.7.1.zip
 validate: false
 instance_dir: tmp/solr
 download_dir: tmp/solr
