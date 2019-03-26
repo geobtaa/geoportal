@@ -44,7 +44,6 @@ class CatalogController < ApplicationController
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
       :start => 0,
-      :rows => 10,
       'q.alt' => '*:*'
     }
 
@@ -202,41 +201,7 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
-    config.add_search_field('all_fields') do |field|
-      field.qt = 'search'
-      field.label = 'Keyword'
-      field.solr_local_parameters = {
-        qf: '$qf',
-        pf: '$pf'
-      }
-    end
-
-    config.add_search_field('title') do |field|
-      field.qt = 'search'
-      field.label = 'Title'
-      field.solr_local_parameters = {
-        qf: '$title_qf',
-        pf: '$title_pf'
-      }
-    end
-
-    config.add_search_field('placename') do |field|
-      field.qt = 'search'
-      field.label = 'Place'
-      field.solr_local_parameters = {
-        qf: '$placename_qf',
-        pf: '$placename_pf'
-      }
-    end
-
-    config.add_search_field('publisher') do |field|
-      field.qt = 'search'
-      field.label = 'Publisher/Creator'
-      field.solr_local_parameters = {
-        qf: '$publisher_qf',
-        pf: '$publisher_pf'
-      }
-    end
+    config.add_search_field 'all_fields', :label => 'All Fields'
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and

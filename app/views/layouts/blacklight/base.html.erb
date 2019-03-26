@@ -27,7 +27,7 @@
   <body class="<%= render_body_class %>" style="overflow-x:hidden">
     <%= render partial: 'shared/header_navbar' %>
 
-    <% if homepage? %>
+    <% unless has_search_parameters? %>
       <%= render :partial=>'shared/flash_msg', layout: 'shared/flash_messages' %>
       <%= render 'home' %>
 
