@@ -263,6 +263,16 @@ class CatalogController < ApplicationController
 
     # Remove show tools
     config.show.partials.delete(:show_header)
+    config.show.partials.delete(:show)
+
+    config.show.display_type_field = 'format'
+    config.show.partials << 'show_header'
+    config.show.partials << 'show_default_viewer_container'
+    config.show.partials << 'show_default_viewer_information'
+    config.show.partials << 'show_default_attribute_table'
+    config.show.partials << 'show'
+
+
     config.show.document_actions.delete(:email)
     config.show.document_actions.delete(:bookmark)
     config.show.document_actions.delete(:citation)
