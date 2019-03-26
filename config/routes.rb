@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get '/blog', :to => redirect('/blog/index.html')
 
   mount Blacklight::Engine => '/'
-  mount BlacklightAdvancedSearch::Engine => '/'
+  # mount BlacklightAdvancedSearch::Engine => '/'
 
   root to: "catalog#index"
   concern :searchable, Blacklight::Routes::Searchable.new

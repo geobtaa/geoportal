@@ -2,7 +2,7 @@
 require 'blacklight/catalog'
 
 class CatalogController < ApplicationController
-  include BlacklightAdvancedSearch::Controller
+  # include BlacklightAdvancedSearch::Controller
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
 

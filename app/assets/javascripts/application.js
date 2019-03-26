@@ -14,12 +14,7 @@
 //= require rails-ujs
 //
 
-//= require jquery/dist/jquery
-
-// Required by Blacklight Advanced Search
-//= require 'blacklight_advanced_search'
-//= require chosen-jquery
-//= require modules/advanced_chosen
+//= require jquery
 
 // Required by Blacklight
 //= require popper

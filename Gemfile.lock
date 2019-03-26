@@ -40,15 +40,6 @@ GIT
       nokogiri (~> 1.6)
       rails (~> 5.1)
 
-GIT
-  remote: https://github.com/projectblacklight/blacklight_advanced_search.git
-  revision: 9c23f0e9aad6a789ec912336766289927ea0729b
-  branch: master
-  specs:
-    blacklight_advanced_search (7.0.0.alpha)
-      blacklight (~> 7.0)
-      parslet
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -375,7 +366,6 @@ GEM
     nokogumbo (2.0.1)
       nokogiri (~> 1.8, >= 1.8.4)
     orm_adapter (0.5.0)
-    parslet (1.8.2)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     pointless_feedback (4.0.6)
@@ -539,7 +529,6 @@ PLATFORMS
 DEPENDENCIES
   addressable (~> 2.5.0)
   blacklight!
-  blacklight_advanced_search!
   blacklight_range_limit (~> 7.0.0)
   bootstrap (~> 4.0)
   byebug
