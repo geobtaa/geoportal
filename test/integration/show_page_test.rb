@@ -141,6 +141,6 @@ class ShowPageTest < Capybara::Rails::TestCase
 
   def test_sidebar_map_basemap
     visit "/catalog/f9eb8493-32ab-4ede-8330-9286846eee0d"
-    assert page.has_selector?("[data-basemap=positron]")
+    assert page.has_selector?("[data-basemap=esri]")
   end
 end
