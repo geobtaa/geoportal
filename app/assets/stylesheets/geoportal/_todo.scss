@@ -31,30 +31,6 @@ section#map {
   height:600px;
 }
 
-section#footer-app{
-  color:$white;
-  padding-bottom:1rem;
-  background-color: $btaa-blue;
-  a {
-    color:$white;
-  }
-}
-
-footer {
-  background-color:$gray;
-  padding-top:2rem;
-  padding-bottom:2rem;
-
-  a {
-    color: $black;
-  }
-}
-
-#university-libraries {
-  border:4px solid $white;
-}
-
-
 div#home-content-wrapper{
   background:lighten($gray, 12%) asset_url('aerial_photo.jpg') repeat;
   height:100%;
@@ -207,7 +183,7 @@ div#search-bar {
   border-left:4px solid $btaa-blue;
 }
 
-div#content {
+section#content {
   div#map {
     min-height: 440px;
     height: 100% !important;
