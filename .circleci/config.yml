@@ -27,6 +27,19 @@ jobs:
             zip -1 -r solr_config.zip ./*
             curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://localhost:8985/solr/admin/configs?action=UPLOAD&name=geoportal"
             curl -H 'Content-type: application/json' http://localhost:8985/api/collections/ -d '{create: {name: geoportal-core-test, config: geoportal, numShards: 1}}'
+      # Yarn
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
       # Bundle install dependencies
       - run: gem install bundler:2.0.1
       - run: bundle install --path vendor/bundle
