@@ -63,7 +63,7 @@ en:
       ancestor: 'Parent Record'
       descendant: 'Related Records (%{count})'
       browse_all: "Browse all %{count} records..."
-      title: 'Relations'
+      title: 'Related Items'
     metadata:
       view_metadata: 'View Metadata'
       more_details: 'Visit Source'

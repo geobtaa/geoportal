@@ -25,3 +25,16 @@
     width: auto;
   }
 }
+
+.document-metadata {
+  margin-top:1rem;
+}
+
+.relations .list-group {
+  padding-top:0rem !important;
+
+  .list-group-item {
+    background-color: #fafafa;
+    border: none;
+  }
+}

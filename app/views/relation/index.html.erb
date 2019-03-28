@@ -1,0 +1,13 @@
+<% unless @relations.empty? %>
+  <div class="relations">
+    <h3 class="h4">
+      <%= t('geoblacklight.relations.title') %>
+    </h3>
+
+    <ul class="list-group list-group-flush">
+      <%= render 'ancestors' unless @relations.ancestors['numFound'].to_i == 0 %>
+      <%= render 'descendants' unless @relations.descendants['numFound'].to_i == 0 %>
+    </ul>
+
+  </div>
+<% end %>
