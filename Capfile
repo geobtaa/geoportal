@@ -13,6 +13,7 @@ require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 require 'capistrano/passenger'
 require 'capistrano/maintenance'
+require 'capistrano/yarn'
 
 # Whenever gem autocreates crontab
 require 'whenever/capistrano'

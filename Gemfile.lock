@@ -118,6 +118,8 @@ GEM
       capistrano-bundler (~> 1.1)
     capistrano-template (0.0.9)
       capistrano (~> 3.0)
+    capistrano-yarn (2.0.2)
+      capistrano (~> 3.0)
     capybara (2.18.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -543,6 +545,7 @@ DEPENDENCIES
   capistrano-passenger
   capistrano-rails
   capistrano-template
+  capistrano-yarn
   capybara
   capybara-screenshot
   capybara-selenium

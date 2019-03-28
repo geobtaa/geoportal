@@ -57,6 +57,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-passenger'
   gem 'capistrano-maintenance'
+  gem 'capistrano-yarn'
 
   gem 'puma'
   gem 'foreman'
