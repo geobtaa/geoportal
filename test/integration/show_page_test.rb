@@ -107,7 +107,7 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_link?("Web services")
 
     # Data Relations
-    assert page.has_content?("Relations")
+    assert page.has_content?("Related Items")
     assert page.has_content?("Related Records")
 
     # Browse Relations - Missing?
@@ -128,7 +128,7 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_link?("Original GeoTIFF")
 
     # Data Relations
-    assert page.has_content?("Relations")
+    assert page.has_content?("Related Items")
     assert page.has_content?("Parent Record")
   end
 
