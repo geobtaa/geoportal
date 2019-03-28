@@ -91,6 +91,9 @@ WMS_PARAMS:
   :EXCEPTIONS: 'application/json'
   :INFO_FORMAT: 'text/html'
 
+# The bf boost value for overlap ratio
+OVERLAP_RATIO_BOOST: '2'
+
 # Settings for leaflet
 OPACITY_CONTROL: &opacity_control
   CONTROLS:
