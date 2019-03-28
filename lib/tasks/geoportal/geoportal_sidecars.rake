@@ -51,7 +51,7 @@ namespace :geoportal do
       writer << header
 
       sidecars.each do |sc|
-        cat = CatalogController.new
+        cat = Blacklight::SearchService.new(config: CatalogController.blacklight_config)
         begin
           resp, doc = cat.fetch(sc.document_id)
           writer << [
