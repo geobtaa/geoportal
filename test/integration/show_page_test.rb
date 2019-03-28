@@ -143,4 +143,14 @@ class ShowPageTest < Capybara::Rails::TestCase
     visit "/catalog/f9eb8493-32ab-4ede-8330-9286846eee0d"
     assert page.has_selector?("[data-basemap=esri]")
   end
+
+  def test_metadata_links
+    visit "/catalog/2eddde2f-c222-41ca-bd07-2fd74a21f4de"
+    assert page.has_link?("Minnesota Department of Natural Resources (DNR)")
+    assert page.has_link?("Minnesota Geospatial Commons")
+    assert page.has_link?("Minnesota, United States")
+    assert page.has_link?("Imagery and Base Maps")
+    assert page.has_link?("Dataset")
+    assert page.has_link?("Minnesota")
+  end
 end
