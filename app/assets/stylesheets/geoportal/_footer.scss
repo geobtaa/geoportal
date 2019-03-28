@@ -8,10 +8,14 @@ $radius: 4px;
 
 section#footer-app {
   color:$white;
+  padding-top:1rem;
   padding-bottom:1rem;
   background-color: $btaa-blue;
   a {
     color:$white;
+  }
+  ul {
+    margin-bottom:0rem;
   }
 }
 
