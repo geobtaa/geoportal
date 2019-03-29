@@ -1,0 +1,34 @@
+// Big Ten Academic Alliance colors:
+$white: #FFFFFF; // 100%
+$gray: #CCCCCC; // 80%
+$black: #000000; // 0%
+$btaa-blue: #0088ce;
+$radius: 4px;
+
+
+section#footer-app {
+  color:$white;
+  padding-top:1rem;
+  padding-bottom:1rem;
+  background-color: $btaa-blue;
+  a {
+    color:$white;
+  }
+  ul {
+    margin-bottom:0rem;
+  }
+}
+
+footer {
+  background-color:$gray;
+  padding-top:2rem;
+  padding-bottom:2rem;
+
+  a {
+    color: $black;
+  }
+}
+
+#university-libraries {
+  border:4px solid $white;
+}

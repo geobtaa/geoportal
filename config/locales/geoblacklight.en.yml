@@ -30,6 +30,7 @@ en:
     tools:
       login_to_view: 'Login to view and download'
       open_carto: 'Open in Carto'
+      open_arcgis: 'Open in ArcGIS'
     formats:
       arcgrid: 'ArcGRID'
       geojson: 'GeoJSON'
@@ -62,7 +63,7 @@ en:
       ancestor: 'Parent Record'
       descendant: 'Related Records (%{count})'
       browse_all: "Browse all %{count} records..."
-      title: 'Relations'
+      title: 'Related Items'
     metadata:
       view_metadata: 'View Metadata'
       more_details: 'Visit Source'

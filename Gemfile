@@ -26,10 +26,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Dotenv
-  gem 'dotenv-rails'
-
-
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'minitest-rails-capybara', '~>3.0.0'
@@ -50,26 +46,20 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'web-console'
-
-  gem 'capistrano', '3.4.1'
-  gem 'capistrano-rails'
-  gem 'capistrano-template'
-  gem 'capistrano-bundler'
-  gem 'capistrano-passenger'
-  gem 'capistrano-maintenance'
-
   gem 'puma'
   gem 'foreman'
   gem 'letter_opener'
 end
 
-gem 'blacklight', '~> 6.19.2'
-gem 'blacklight_advanced_search', '~> 6.4.1'
-gem 'blacklight_range_limit', '~> 6.3.3'
+gem 'blacklight', '~> 7.0'
+gem 'blacklight_advanced_search', git: 'https://github.com/projectblacklight/blacklight_advanced_search.git', :branch => 'master'
+gem 'blacklight_range_limit', '~> 7.0.0'
 gem 'chosen-rails' #  jquery multiselect plugin for advanced search
-gem "bootstrap-sass", "~> 3.4.1"
-gem 'geoblacklight', '~> 1.9.0'
-gem 'geoblacklight_sidecar_images', git: 'https://github.com/geoblacklight/geoblacklight_sidecar_images.git', :ref => '3fd6634dc3dfa089d7894620c0fbf15571ab5625'
+gem 'bootstrap', '~> 4.0'
+gem 'popper_js'
+gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
+gem 'geoblacklight', '~> 2.0.0'
+gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblacklight_sidecar_images.git', :branch => 'geoportal-legacy'
 gem 'statesman', '~> 3.4.1'
 gem 'sidekiq', '~> 5.1.3'
 gem 'sidekiq-failures', '~> 1.0.0'
@@ -87,6 +77,9 @@ gem 'devise'
 gem 'devise-guests', '~> 0.6'
 
 gem 'haml'
+
+# Dotenv
+gem 'dotenv-rails'
 
 # Static Pages
 gem 'high_voltage', '~> 3.0.0'

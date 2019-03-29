@@ -40,7 +40,7 @@ namespace :geoportal do
       puts "#{state} - #{sidecars.size}"
 
       sidecars.each do |sc|
-        cat = CatalogController.new
+        cat = Blacklight::SearchService.new(config: CatalogController.blacklight_config)
         begin
           resp, doc = cat.fetch(sc.document_id)
           StoreImageJob.perform_later(doc.to_h)

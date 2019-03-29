@@ -1,0 +1,59 @@
+{
+  "geoblacklight_version": "1.0",
+  "dc_description_s": "Atlas and farm directory with complete survey in township plats, Dakota County, Minnesota, containing plats of all townships with owners' names ... / published by The Farmer [magazine] ; engraved by The Kenyon Company, Des Moines, Iowa. St. Paul: Webb Publishing Co., c1916.",
+  "layer_modified_dt": "2019-03-28T19:41:35Z",
+  "solr_geom": "ENVELOPE(-93.3287, -92.7339, 44.9233, 44.4729)",
+  "dct_references_s": "{\"http://schema.org/url\":\"http://purl.umn.edu/193103\",\"https://openindexmaps.org\":\"https://raw.githubusercontent.com/BTAA-Geospatial-Data-Project/indexmaps/master/dakota.geojson\"}",
+  "dc_rights_s": "Public",
+  "b1g_centroid_ss": "44.6981,-93.0313",
+  "layer_geom_type_s": "Image",
+  "dct_provenance_s": "Minnesota",
+  "dc_subject_sm": [
+    "Atlases"
+  ],
+  "dc_language_sm": [
+    "English"
+  ],
+  "dct_temporal_sm": [
+    "1916"
+  ],
+  "suppressed_b": false,
+  "b1g_code_s": "05d-02",
+  "dct_issued_s": "1916",
+  "b1g_genre_sm": [
+    "Maps"
+  ],
+  "b1g_geonames_sm": [
+    "https://sws.geonames.org/5023752/"
+  ],
+  "dc_format_s": "JPEG",
+  "b1g_keyword_sm": [
+    "Real property -- Minnesota -- Dakota County -- Maps; Dakota County (Minn.) -- Maps; Dakota County (Minn.) -- Directories"
+  ],
+  "dc_creator_sm": [
+    "The Farmer [magazine] (Publisher)"
+  ],
+  "dc_identifier_s": "9702bb22-4305-4cc2-a8f4-fc10e4ef05df",
+  "dct_accrual_sm": [
+    "MNHS"
+  ],
+  "solr_year_i": 1916,
+  "dc_source_sm": [
+    "05d-02"
+  ],
+  "dct_spatial_sm": [
+    "Dakota County, Minnesota, United States",
+    "Minnesota, United States"
+  ],
+  "dc_publisher_sm": [
+    "Webb Publishing Co. (St. Paul, Minnesota), 1916"
+  ],
+  "dc_type_sm": [
+    "Image"
+  ],
+  "dc_title_s": "Parent Record; Atlas and farmers‚ directory of Dakota County, Minnesota, 1916.",
+  "layer_slug_s": "9702bb22-4305-4cc2-a8f4-fc10e4ef05df",
+  "dct_isPartOf_sm": [
+    "John R. Borchert Map Library"
+  ]
+}

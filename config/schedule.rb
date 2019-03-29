@@ -18,7 +18,7 @@ every :day, at: '2:30am', roles: [:app] do
   rake 'blacklight:delete_old_searches[7]'
 end
 # Check image harvest state and email results
-every :day, at: '3:00am', roles: [:app] do
+every '0 3 * * 1', roles: [:app] do
   rake 'geoportal:sidecar_states'
 end
 # URI analysis

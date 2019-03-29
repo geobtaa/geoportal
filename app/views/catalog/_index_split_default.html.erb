@@ -7,17 +7,15 @@
     </span>
     <div class='col-xs-11'>
       <div class='media'>
-        <div class='media-left'>
-          <%- if document.sidecar.image_url %>
-            <img class='media-object' src="<%=document.sidecar.image_url(:square)%>" alt="<%=document[blacklight_config.index.title_field]%>" title="<%=document[blacklight_config.index.title_field]%>"/>
-          <%- else %>
-            <span class="icon square" title="<%=document[Settings.FIELDS.GEOM_TYPE]%>">
-              <%= inline_svg("#{document[Settings.FIELDS.GEOM_TYPE].downcase.gsub(" ", "-")}.svg", {title: document[Settings.FIELDS.GEOM_TYPE]}) %>
-            </span>
-          <%- end %>
-        </div>
+        <%- if document.sidecar.image_url %>
+          <img class='mr-3' src="<%=document.sidecar.image_url(:square)%>" alt="<%=document[blacklight_config.index.title_field]%>" title="<%=document[blacklight_config.index.title_field]%>"/>
+        <%- else %>
+          <span class="icon square mr-3" title="<%=document[Settings.FIELDS.GEOM_TYPE]%>">
+            <%= inline_svg("#{document[Settings.FIELDS.GEOM_TYPE].downcase.gsub(" ", "-")}.svg", {title: document[Settings.FIELDS.GEOM_TYPE]}) %>
+          </span>
+        <%- end %>
         <div class='media-body'>
-          <h3 class='media-title'><%= link_to_document document, document_show_link_field(document), counter: counter, title: document[blacklight_config.index.title_field] %></h3>
+          <p class='mt-0'><%= link_to_document document, document_show_link_field(document), counter: counter, title: document[blacklight_config.index.title_field] %></p>
           <p><%= geoblacklight_present(:index_fields_display, document) %></p>
         </div>
       </div>
