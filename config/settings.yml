@@ -95,7 +95,7 @@ WMS_PARAMS:
   :INFO_FORMAT: 'text/html'
 
 # The bf boost value for overlap ratio
-OVERLAP_RATIO_BOOST: '2'
+OVERLAP_RATIO_BOOST: '10'
 
 # Settings for leaflet
 OPACITY_CONTROL: &opacity_control
