@@ -109,12 +109,6 @@ class ShowPageTest < Capybara::Rails::TestCase
     # Data Relations
     assert page.has_content?("Related Items")
     assert page.has_content?("Related Records")
-
-    # Browse Relations - Missing?
-    # click_link("Browse all 25 records...")
-    # within("span.page_entries") do
-    #   assert page.has_content?("25")
-    # end
   end
 
   def test_relations_child_record
@@ -158,6 +152,15 @@ class ShowPageTest < Capybara::Rails::TestCase
     within('#map') do
       assert page.has_selector?("svg.leaflet-zoom-animated")
       assert page.has_selector?("path.leaflet-interactive")
+    end
+  end
+
+  def test_browse_descendants
+    visit "/catalog/princeton-1r66j405w"
+    # Browse Relations
+    click_link("Browse all 4 records...")
+    within("span.page-entries") do
+      assert page.has_content?("4")
     end
   end
 end
