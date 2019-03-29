@@ -136,7 +136,6 @@ class ShowPageTest < Capybara::Rails::TestCase
     visit "/catalog/87adb12a-30b5-4bc3-866c-97adcd7e3d2e"
     assert page.has_selector?(".leaflet-control-fullscreen-button")
     click_on(class: 'leaflet-control-fullscreen-button')
-    # assert page.has_selector?("BREAKTHISTHING")
   end
 
   def test_sidebar_map_basemap
@@ -152,5 +151,13 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_link?("Imagery and Base Maps")
     assert page.has_link?("Dataset")
     assert page.has_link?("Minnesota")
+  end
+
+  def test_b1g_show_index_map
+    visit "/catalog/9702bb22-4305-4cc2-a8f4-fc10e4ef05df"
+    within('#map') do
+      assert page.has_selector?("svg.leaflet-zoom-animated")
+      assert page.has_selector?("path.leaflet-interactive")
+    end
   end
 end
