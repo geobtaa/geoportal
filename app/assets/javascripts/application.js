@@ -22,8 +22,8 @@
 // Required by Blacklight
 //= require popper
 // Twitter Typeahead for autocomplete
-//= require typeahead.js/dist/typeahead.bundle
-//= require bootstrap/dist/js/bootstrap
+//= require twitter/typeahead
+//= require bootstrap
 //= require blacklight/blacklight
 
 // Required by GeoBlacklight
