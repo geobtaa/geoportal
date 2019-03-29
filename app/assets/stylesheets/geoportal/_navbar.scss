@@ -1,0 +1,57 @@
+// Big Ten Academic Alliance colors:
+$white: #FFFFFF; // 100%
+$gray: #CCCCCC; // 80%
+$black: #000000; // 0%
+$btaa-blue: #0088ce;
+$radius: 4px;
+
+
+div#cic-header-navbar {
+  background-color: $white;
+  margin-bottom:0;
+}
+
+#header-navbar {
+  margin:0.5rem 0rem;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rem 1rem;
+}
+
+div#application-header {
+  background-color:$btaa-blue;
+
+  a {
+    color:$white !important;
+    border-top:1px solid $btaa-blue;
+  }
+  a:hover{ color: $black !important;}
+
+  .navbar-brand {
+    margin-top: -1rem;
+    font-weight:bold;
+    font-size:36px;
+    background:none;
+    overflow:visible;
+    text-indent:0;
+    border:none;
+
+  }
+  .navbar-brand:hover {
+    color: $white !important;
+  }
+
+  span.icon-bar {
+    background-color:$white;
+  }
+}
+
+form.search-query-form {
+  max-width: 704px;
+}

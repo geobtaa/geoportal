@@ -147,6 +147,28 @@
         layer_slug_ti^10
         dc_identifier_ti^10
       </str>
+      <str name="title_qf">
+        dc_title_ti^10
+        dct_isPartOf_tmi
+      </str>
+      <str name="title_pf">
+        dc_title_ti^10
+        dct_isPartOf_tmi
+      </str>
+      <str name="publisher_qf">
+        dc_publisher_ti^5
+        dc_creator_tmi
+      </str>
+      <str name="publisher_pf">
+        dc_publisher_ti^5
+        dc_creator_tmi
+      </str>
+      <str name="placename_qf">
+        dct_spatial_tmi
+      </str>
+      <str name="placename_pf">
+        dct_spatial_tmi
+      </str>
       <bool name="facet">true</bool>
       <int name="facet.mincount">1</int>
       <int name="facet.limit">10</int>
@@ -220,7 +242,7 @@
       <str name="name">mySuggester</str>
       <str name="lookupImpl">FuzzyLookupFactory</str>
       <str name="suggestAnalyzerFieldType">textSuggest</str>
-      <str name="buildOnCommit">false</str>
+      <str name="buildOnCommit">true</str>
       <str name="field">suggest</str>
     </lst>
   </searchComponent>

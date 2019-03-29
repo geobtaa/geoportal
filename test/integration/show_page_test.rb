@@ -10,6 +10,7 @@ class ShowPageTest < Capybara::Rails::TestCase
   end
 
   def test_minnesota_tiff_show
+    skip('New UMedia launch has broken this test object')
     visit "/catalog/71f15b25-64cd-40cc-8f0c-64529293398c"
     assert page.has_content?("Railroad commissioners' map of Minnesota")
 
@@ -106,14 +107,8 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_link?("Web services")
 
     # Data Relations
-    assert page.has_content?("Relations")
+    assert page.has_content?("Related Items")
     assert page.has_content?("Related Records")
-
-    # Browse Relations - Missing?
-    # click_link("Browse all 25 records...")
-    # within("span.page_entries") do
-    #   assert page.has_content?("25")
-    # end
   end
 
   def test_relations_child_record
@@ -127,19 +122,46 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_link?("Original GeoTIFF")
 
     # Data Relations
-    assert page.has_content?("Relations")
+    assert page.has_content?("Related Items")
     assert page.has_content?("Parent Record")
   end
 
   def test_fullscreen_map_toggle
+    skip('No toggle on static images for now.')
     visit "/catalog/87adb12a-30b5-4bc3-866c-97adcd7e3d2e"
     assert page.has_selector?(".leaflet-control-fullscreen-button")
     click_on(class: 'leaflet-control-fullscreen-button')
-    # assert page.has_selector?("BREAKTHISTHING")
   end
 
   def test_sidebar_map_basemap
     visit "/catalog/f9eb8493-32ab-4ede-8330-9286846eee0d"
-    assert page.has_selector?("[data-basemap=positron]")
+    assert page.has_selector?("[data-basemap=esri]")
+  end
+
+  def test_metadata_links
+    visit "/catalog/2eddde2f-c222-41ca-bd07-2fd74a21f4de"
+    assert page.has_link?("Minnesota Department of Natural Resources (DNR)")
+    assert page.has_link?("Minnesota Geospatial Commons")
+    assert page.has_link?("Minnesota, United States")
+    assert page.has_link?("Imagery and Base Maps")
+    assert page.has_link?("Dataset")
+    assert page.has_link?("Minnesota")
+  end
+
+  def test_b1g_show_index_map
+    visit "/catalog/9702bb22-4305-4cc2-a8f4-fc10e4ef05df"
+    within('#map') do
+      assert page.has_selector?("svg.leaflet-zoom-animated")
+      assert page.has_selector?("path.leaflet-interactive")
+    end
+  end
+
+  def test_browse_descendants
+    visit "/catalog/princeton-1r66j405w"
+    # Browse Relations
+    click_link("Browse all 4 records...")
+    within("span.page-entries") do
+      assert page.has_content?("4")
+    end
   end
 end

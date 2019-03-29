@@ -1,34 +1,6 @@
-@import 'components/icons';
-@import 'components/advanced';
-@import 'components/variables';
-
-span.list-view.document-counter {
-  display:inline-block;
-  float:left;
-  position:relative;
-  top:1rem;
-  font-weight:500;
-}
-
-.view-type-group {
-  .caption {
-    position:inherit;
-  }
-}
-
-.media {
-  .media-title {
-    font-size:14px;
-    margin-top:0px;
-  }
-}
-
-// Feedback
-#feedback {
-  position:absolute;
-  top:0;
-  right:0;
-  margin-top:2rem;
+#document [data-map="item"] {
+  min-height: 440px;
+  height: inherit !important;
 }
 
 // Transparent Gray CSS Background Spinner
@@ -54,26 +26,15 @@ span.list-view.document-counter {
   }
 }
 
-#document .row [data-map="item"] {
-  min-height: 440px;
-  height: inherit;
+.document-metadata {
+  margin-top:1rem;
 }
 
-#tools-sidebar [data-map="item"] {
-  height: 280px;
-}
+.relations .list-group {
+  padding-top:0rem !important;
 
-#home-search {
-  background:lighten($gray, 12%) asset_url('aerial_photo.jpg') repeat;
-}
-
-#home-search .navbar-form {
-  padding:0;
-  margin:0;
-}
-
-// Blacklight range limit
-.range_limit input.range_begin, .range_limit input.range_end {
-    display: inline-block;
-    width: 4.5em;
+  .list-group-item {
+    background-color: #fafafa;
+    border: none;
+  }
 }

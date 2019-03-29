@@ -7,6 +7,25 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
 
   configure_blacklight do |config|
+    # default advanced config values
+    config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
+
+    # Blacklight update to 7.0.0
+    config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
+
+    config.add_results_collection_tool(:sort_widget)
+    config.add_results_collection_tool(:per_page_widget)
+    config.add_results_collection_tool(:view_type_group)
+
+    config.add_show_tools_partial(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
+    config.add_show_tools_partial(:email, callback: :email_action, validator: :validate_email_params)
+    config.add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
+    config.add_show_tools_partial(:citation)
+
+    config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark', if: :render_bookmarks_control?)
+    config.add_nav_action(:search_history, partial: 'blacklight/nav/search_history')
+    # Blacklight update to 7.0.0
+
     # Advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     # config.advanced_search[:qt] ||= 'advanced'
@@ -23,10 +42,11 @@ class CatalogController < ApplicationController
     config.view['split'].title = "List view"
     config.view['mapview'].title = "Map view"
 
+    config.raw_endpoint.enabled = true
+
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
       :start => 0,
-      :rows => 10,
       'q.alt' => '*:*'
     }
 
@@ -154,17 +174,17 @@ class CatalogController < ApplicationController
     #  The ordering of the field names is the order of the display
     #
     # item_prop: [String] property given to span with Schema.org item property
-    # link_to_search: [Boolean] that can be passed to link to a facet search
+    # link_to_facet: [Boolean] that can be passed to link to a facet search
     # helper_method: [Symbol] method that can be used to render the value
     config.add_show_field 'dc_creator_sm', label: 'Creator', itemprop: 'creator'
     config.add_show_field 'dc_description_s', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
-    config.add_show_field 'dc_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_search: true
-    config.add_show_field 'dct_isPartOf_sm', label: 'Collection', itemprop: 'isPartOf', link_to_search: true
-    config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_search: true
-    config.add_show_field 'dc_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_search: true
-    config.add_show_field 'dc_type_sm', label: 'Type', itemprop: 'keywords', link_to_search: true
+    config.add_show_field 'dc_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_facet: true
+    config.add_show_field 'dct_isPartOf_sm', label: 'Collection', itemprop: 'isPartOf', link_to_facet: true
+    config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true
+    config.add_show_field 'dc_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
+    config.add_show_field 'dc_type_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dct_temporal_sm', label: 'Year', itemprop: 'temporal'
-    config.add_show_field 'dct_provenance_s', label: 'Contributed by', link_to_search: true
+    config.add_show_field 'dct_provenance_s', label: 'Contributed by', link_to_facet: true
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -184,41 +204,7 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
-    config.add_search_field('all_fields') do |field|
-      field.qt = 'search'
-      field.label = 'Keyword'
-      field.solr_local_parameters = {
-        qf: '$qf',
-        pf: '$pf'
-      }
-    end
-
-    config.add_search_field('title') do |field|
-      field.qt = 'search'
-      field.label = 'Title'
-      field.solr_local_parameters = {
-        qf: '$title_qf',
-        pf: '$title_pf'
-      }
-    end
-
-    config.add_search_field('placename') do |field|
-      field.qt = 'search'
-      field.label = 'Place'
-      field.solr_local_parameters = {
-        qf: '$placename_qf',
-        pf: '$placename_pf'
-      }
-    end
-
-    config.add_search_field('publisher') do |field|
-      field.qt = 'search'
-      field.label = 'Publisher/Creator'
-      field.solr_local_parameters = {
-        qf: '$publisher_qf',
-        pf: '$publisher_pf'
-      }
-    end
+    config.add_search_field 'all_fields', :label => 'All Fields'
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
@@ -245,6 +231,16 @@ class CatalogController < ApplicationController
 
     # Remove show tools
     config.show.partials.delete(:show_header)
+    config.show.partials.delete(:show)
+
+    config.show.display_type_field = 'format'
+    config.show.partials << 'show_header'
+    config.show.partials << 'show_default_viewer_container'
+    config.show.partials << 'show_default_viewer_information'
+    config.show.partials << 'show_default_attribute_table'
+    config.show.partials << 'show'
+
+
     config.show.document_actions.delete(:email)
     config.show.document_actions.delete(:bookmark)
     config.show.document_actions.delete(:citation)

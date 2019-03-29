@@ -94,7 +94,7 @@ namespace :geoportal do
       writer << header
 
       uris.each do |uri|
-        cat = CatalogController.new
+        cat = Blacklight::SearchService.new(config: CatalogController.blacklight_config)
         begin
           resp, doc = cat.fetch(uri.document_id)
           writer << [
@@ -105,7 +105,7 @@ namespace :geoportal do
             uri.uri_value,
             doc._source['layer_geom_type_s'],
             doc._source['dc_title_s'],
-            doc._source['dct_isPartOf_sm'].join(", "),
+            doc._source['dct_isPartOf_sm'].to_s,
             doc._source['dct_provenance_s'],
             uri.state_machine.last_transition.metadata['exception']
           ]

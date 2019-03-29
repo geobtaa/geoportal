@@ -2,7 +2,7 @@
   <div class="row">
     <div id="home-content-wrapper">
 
-      <div id="wrapper-map" class="hidden-sm col-md-6" role="application">
+      <div id="wrapper-map" class="d-none d-md-block col-md-6" role="application">
         <div id='map' aria-label='map-search' data-map='home' data-catalog-path="<%=search_catalog_path%>" data-map-bbox="<%=params[:bbox]%>" data-basemap="<%=geoblacklight_basemap%>">
           <div id="progress"><div id="progress-bar"></div></div>
         </div>
@@ -14,7 +14,7 @@
             <h2 style="color:#FFF">Explore Maps and Data</h2>
           </div>
           <div class='col-sm-12'>
-            <%= render :partial=>'catalog/search_form' %>
+            <%= render_search_bar %>
           </div>
         </div>
 
@@ -25,39 +25,39 @@
 
             <div class='row'>
 
-              <div class='col-xs-6 col-sm-4'>
-                <h3 class="h4" style="color:#FFF">
+              <div class='col col-sm col-md-4'>
+                <h3 class="h6" style="color:#FFF">
                   <span class="icon baseline" style="color:#FFF;">
                     <%= inline_svg("vector.svg") %>
                   </span>
                   Geospatial Data
                 </h3>
                 <%= link_to "/?f%5Bb1g_genre_sm%5D%5B%5D=Geospatial+data" do %>
-                  <%= image_tag('homepage/geospatial_data.png', {:class => "img-responsive thumbnail", :alt => "Geospatial Data"}) %>
+                  <%= image_tag('homepage/geospatial_data.png', {:class => "img-fluid img-thumbnail", :alt => "Geospatial Data"}) %>
                 <% end %>
               </div>
 
-              <div class='col-xs-6 col-sm-4'>
-                <h3 class="h4" style="color:#FFF">
+              <div class='col col-sm col-md-4'>
+                <h3 class="h6" style="color:#FFF">
                   <span class="icon baseline" style="color:#FFF;">
                     <%= inline_svg("map.svg") %>
                   </span>
                   Maps
                 </h3>
                 <%= link_to "/?f%5Bb1g_genre_sm%5D%5B%5D=Maps" do %>
-                  <%= image_tag('homepage/maps.png', {:class => "img-responsive thumbnail", :alt => "Scanned Maps"}) %>
+                  <%= image_tag('homepage/maps.png', {:class => "img-fluid img-thumbnail", :alt => "Scanned Maps"}) %>
                 <% end %>
               </div>
 
-              <div class='col-xs-6 col-sm-4'>
-                <h3 class="h4" style="color:#FFF">
+              <div class='col col-sm col-md-4'>
+                <h3 class="h6" style="color:#FFF">
                   <span class="icon baseline" style="color:#FFF;">
                     <%= inline_svg("image.svg") %>
                   </span>
                   Aerial Imagery
                 </h3>
                 <%= link_to "/?f%5Bb1g_genre_sm%5D%5B%5D=Aerial+imagery" do %>
-                  <%= image_tag('homepage/aerial_imagery.png', {:class => "img-responsive thumbnail", :alt => "Aerial Imagery"}) %>
+                  <%= image_tag('homepage/aerial_imagery.png', {:class => "img-fluid img-thumbnail", :alt => "Aerial Imagery"}) %>
                 <% end %>
               </div>
             </div>
@@ -75,20 +75,18 @@
 
             <div class='row'>
               <div class='col-sm-12 col-md-12'>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title facet-field-heading">
+                <div id='geoportal-about' class="card">
+                  <div class="card-header">
+                    <span class="facet-field-heading">
                       <a href="/about">About the BTAA Geoportal</a>
-                    </h3>
+                    </span>
                   </div>
-                  <div class="panel-collapse in">
-                    <div class="panel-body">
-                      <p>The Big Ten Academic Alliance Geoportal provides discoverability and facilitates access to geospatial resources. The resources in the portal are selected and curated by librarians and geospatial specialists at twelve research institutions in the <a href="http://www.btaa.org/homepage">Big Ten Academic Alliance</a>.</p>
-                      <p>The resources include GIS datasets, web services, and digitized historical maps. <a href="/about">Learn more</a> about the research institutions involved and the sources of the geospatial records.</p>
-                      <p class="project-action">
-                        <a class="btn-primary btn-sm" href="/blog"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Follow Our Blog</a> &nbsp; Keep up to date with all the latest news.
-                      </p>
-                    </div>
+                  <div class="card-body">
+                    <p>The Big Ten Academic Alliance Geoportal provides discoverability and facilitates access to geospatial resources. The resources in the portal are selected and curated by librarians and geospatial specialists at twelve research institutions in the <a href="http://www.btaa.org/homepage">Big Ten Academic Alliance</a>.</p>
+                    <p>The resources include GIS datasets, web services, and digitized historical maps. <a href="/about">Learn more</a> about the research institutions involved and the sources of the geospatial records.</p>
+                    <p class="project-action">
+                      <a class="btn-primary btn-sm" href="/blog"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Follow Our Blog</a> &nbsp; Keep up to date with all the latest news.
+                    </p>
                   </div>
                 </div>
               </div>

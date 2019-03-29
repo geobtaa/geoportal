@@ -1,6 +1,6 @@
 <%- # requires solr_config local passed in
-  field_config = range_config(solr_field)
-  label = facet_field_label(solr_field)
+  field_config = range_config(field_name)
+  label = facet_field_label(field_name)
 
   input_label_range_begin = field_config[:input_label_range_begin] || t("blacklight.range_limit.range_begin", field_label: label)
   input_label_range_end   = field_config[:input_label_range_end] || t("blacklight.range_limit.range_end", field_label: label)
@@ -8,18 +8,35 @@
 -%>
 
 <div class="limit_content range_limit">
-  <%= form_tag search_action_path, :method => :get, :class=>"range_limit subsection range_#{solr_field} form-inline" do %>
-    <%= render_hash_as_hidden_fields(search_state.params_for_search) %>
+  <% if has_selected_range_limit?(field_name) %>
+    <ul class="current list-unstyled facet-values">
+      <li class="selected">
+        <span class="facet-label">
+          <span class="selected"><%= range_display(field_name) %></span>
+           <%= link_to remove_range_param(field_name), :class=>"remove", :title => t('blacklight.range_limit.remove_limit') do %>
+            <span class="glyphicon glyphicon-remove"></span>
+            <span class="sr-only">[<%= t('blacklight.range_limit.remove_limit') %>]</span>
+           <% end %>
+        </span>
+        <span class="selected facet-count"><%= number_with_delimiter(@response.total) %></span>
+      </li>
+    </ul>
 
-    <!-- we need to include a dummy search_field parameter if none exists,
-         to trick blacklight into displaying actual search results instead
-         of home page. Not a great solution, but easiest for now. -->
-    <% unless params.has_key?(:search_field) %>
-      <%= hidden_field_tag("search_field", "dummy_range") %>
+  <% end %>
+
+  <% unless selected_missing_for_range_limit?(field_name) %>
+    <%= form_tag search_action_path, :method => :get, class: [BlacklightRangeLimit.classes[:form], "range_#{field_name}"].join(' ') do %>
+      <%= render_hash_as_hidden_fields(search_state.params_for_search.except(:page)) %>
+
+      <!-- we need to include a dummy search_field parameter if none exists,
+           to trick blacklight into displaying actual search results instead
+           of home page. Not a great solution, but easiest for now. -->
+      <% unless params.has_key?(:search_field) %>
+        <%= hidden_field_tag("search_field", "dummy_range") %>
+      <% end %>
+
+      <%= render_range_input(field_name, :begin, input_label_range_begin, maxlength) %> – <%= render_range_input(field_name, :end, input_label_range_end, maxlength) %>
+      <%= submit_tag t('blacklight.range_limit.submit_limit'), class: BlacklightRangeLimit.classes[:submit] %>
     <% end %>
-
-    <%= render_range_input(solr_field, :begin, input_label_range_begin, maxlength) %> – <%= render_range_input(solr_field, :end, input_label_range_end, maxlength) %>
-    <%= submit_tag t('blacklight.range_limit.submit_limit'), :class=>'submit btn btn-default' %>
-
   <% end %>
 </div>
