@@ -17,6 +17,28 @@ task :ci do
 end
 
 namespace :geoportal do
+  namespace :blog do
+    desc 'Build the jekyll blog'
+    task :build do
+      begin
+        # make a spot for the site
+        dest = Rails.root.join('public/blog')
+
+        # generate the site
+        Jekyll::Site.new(
+          Jekyll.configuration({
+            "config" => Rails.root.join('config', 'jekyll.yml').to_s,
+            "source" => Rails.root.join('blog').to_s,
+            "destination" => dest.to_s
+          })
+        ).process
+        puts "\nJekyll blog built!"
+      rescue => e
+        puts "\nJekyll blog failed: Error: #{e}"
+      end
+    end
+  end
+
   desc 'Run Solr and GeoBlacklight for interactive development'
   task :server, [:rails_server_args] do |_t, args|
     require 'solr_wrapper'
