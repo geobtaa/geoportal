@@ -120,7 +120,6 @@ LEAFLET:
   VIEWERS:
     DOWNLOAD:
       CONTROLS:
-        - 'Fullscreen'
     IIIF:
       CONTROLS:
         - 'Fullscreen'
