@@ -15,7 +15,10 @@ EMAIL_TO: 'fake-email@example.com'
 GEOMETRY_FIELD: 'solr_geom'
 
 # The bq boost value for spatial search matches within a bounding box
-# BBOX_WITHIN_BOOST: '10'
+BBOX_WITHIN_BOOST: '10'
+
+# The bf boost value for overlap ratio
+OVERLAP_RATIO_BOOST: '10'
 
 #Solr field mappings
 FIELDS:
@@ -93,9 +96,6 @@ WMS_PARAMS:
   :SRS: 'EPSG:4326'
   :EXCEPTIONS: 'application/json'
   :INFO_FORMAT: 'text/html'
-
-# The bf boost value for overlap ratio
-OVERLAP_RATIO_BOOST: '10'
 
 # Settings for leaflet
 OPACITY_CONTROL: &opacity_control
