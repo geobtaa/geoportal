@@ -26,10 +26,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Dotenv
-  gem 'dotenv-rails'
-
-
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'minitest-rails-capybara', '~>3.0.0'
@@ -50,15 +46,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'web-console'
-
-  gem 'capistrano', '3.4.1'
-  gem 'capistrano-rails'
-  gem 'capistrano-template'
-  gem 'capistrano-bundler'
-  gem 'capistrano-passenger'
-  gem 'capistrano-maintenance'
-  gem 'capistrano-yarn'
-
   gem 'puma'
   gem 'foreman'
   gem 'letter_opener'
@@ -90,6 +77,9 @@ gem 'devise'
 gem 'devise-guests', '~> 0.6'
 
 gem 'haml'
+
+# Dotenv
+gem 'dotenv-rails'
 
 # Static Pages
 gem 'high_voltage', '~> 3.0.0'
