@@ -94,7 +94,7 @@ gem 'exception_notification', '~> 4.3.0'
 
 group :test do
   gem 'minitest-rails-capybara', '~>3.0.0'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
   gem 'capybara-selenium'
   gem 'm', '~> 1.5.0'
   gem 'minitest-ci', '~> 3.4.0'

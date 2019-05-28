@@ -28,10 +28,10 @@ class HomePageTest < Capybara::Rails::TestCase
 
       # Good Links - Should Pass
       assert page.has_no_link?("Bookmarks")
-      assert page.has_link?("History")
+      assert page.has_no_link?("History")
       assert page.has_link?("About")
       assert page.has_link?("Help")
-      assert page.has_link?("Login")
+      assert page.has_no_link?("Login")
     end
   end
 
