@@ -82,7 +82,6 @@ gem 'haml'
 gem 'dotenv-rails'
 
 # Static Pages
-gem 'high_voltage', '~> 3.0.0'
 gem 'jekyll'
 gem 'jekyll-feed'
 

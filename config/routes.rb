@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-
-  # Static Pages via High Voltage - EWL
-  get 'about' => 'high_voltage/pages#show', id: 'about'
-  get 'help' => 'high_voltage/pages#show', id: 'help'
+  get 'about', :to => redirect('https://btaagdp.org/about')
+  get 'help', :to => redirect('https://btaagdp.org/help')
   get 'robots.:format' => 'robots#robots'
 
   # Feedback
