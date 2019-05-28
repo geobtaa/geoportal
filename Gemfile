@@ -81,10 +81,6 @@ gem 'haml'
 # Dotenv
 gem 'dotenv-rails'
 
-# Static Pages
-gem 'jekyll'
-gem 'jekyll-feed'
-
 # Feedback
 gem 'pointless_feedback'
 gem 'whenever', '~> 0.9.0', require: false
