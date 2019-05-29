@@ -1275,7 +1275,7 @@ readdirp@^2.2.1:
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
 
-readmore-js@^3.0.0:
+readmore-js@^3.0.0-beta-1:
   version "3.0.0-beta-1"
   resolved "https://registry.yarnpkg.com/readmore-js/-/readmore-js-3.0.0-beta-1.tgz#730172e6dd21e32b5d4774b4ebc9f849eb6b3f62"
   integrity sha512-yfaoEghzR2V2j8okpOg9D12AttQ9odVLVx51oKKpsk/GTbhIt6O6mprZEN1MZxz69Waye3catBV7mXXkg9sC5Q==
