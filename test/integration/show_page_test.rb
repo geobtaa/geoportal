@@ -47,6 +47,30 @@ class ShowPageTest < Capybara::Rails::TestCase
     assert page.has_content?("Minnesota")
   end
 
+  def test_illinois_open_in_arcgis
+    visit "/catalog/90f14ff4-1359-4beb-b931-5cb41d20ab90"
+    assert page.has_content?("Glacial Boundaries: Illinois, 1998")
+
+    # Type
+    assert page.has_content?("Web services")
+
+    # ISO Metadata
+    assert page.has_no_link?("Metadata")
+
+    # IIIF Image
+    assert page.has_no_selector?("div[data-protocol='Iiif']")
+
+    # Download
+    assert page.has_content?("Downloads")
+    assert page.has_link?("Original Shapefile")
+
+    # Export
+    assert page.has_link?("Open in ArcGIS")
+
+    # Provenance
+    assert page.has_link?("Illinois")
+  end
+
   def test_minnesota_shapefile_show
     visit "/catalog/b98a7b39-830a-48ca-84c2-06332aaebbb8"
     assert page.has_content?("Twin Cities Land Use Map from the Twin Cities Metropolitan Planning Commission, 1958")
