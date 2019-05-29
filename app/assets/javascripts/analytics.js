@@ -69,11 +69,9 @@ Blacklight.onLoad(function() {
   });
 
   // Log failed download
-  $(document).on('DOMNodeInserted', function(e) {
-    var data = $('[data-download="error"]').data();
-    if (data) {
-      window._gaq.push(['_trackEvent', 'Failed Download', data.downloadId, data.downloadType]);
-    }
+  $(document).on('DOMNodeInserted', '[data-download="error"]', function(e) {
+    var data = $(e.target).data();
+    window._gaq.push(['_trackEvent', 'Failed Download', data.downloadId, data.downloadType]);
   });
 
   // Log Open in CartoDB Clicks
