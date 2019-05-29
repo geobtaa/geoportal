@@ -88,7 +88,8 @@ namespace :geoportal do
         "Doc Title",
         "Doc Collection",
         "Doc Institution",
-        "Error",
+        "B1G Status",
+        "Error"
       ]
 
       writer << header
@@ -107,6 +108,7 @@ namespace :geoportal do
             doc._source['dc_title_s'],
             doc._source['dct_isPartOf_sm'].to_s,
             doc._source['dct_provenance_s'],
+            doc._source['b1g_status_s'],
             uri.state_machine.last_transition.metadata['exception']
           ]
         rescue Exception => e
