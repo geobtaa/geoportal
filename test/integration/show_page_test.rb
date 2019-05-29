@@ -6,7 +6,7 @@ class ShowPageTest < Capybara::Rails::TestCase
   end
 
   def teardown
-    # ran_without_js_errors
+    ran_without_js_errors
   end
 
   def test_minnesota_tiff_show
