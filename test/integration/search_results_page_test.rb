@@ -47,7 +47,7 @@ class SearchResultsPageTest < Capybara::Rails::TestCase
       assert page.has_content?("Year")
       assert page.has_content?("Subject")
       assert page.has_content?("Time Period")
-      assert page.has_content?("Collection")
+      assert page.has_no_content?("Collection")
       assert page.has_content?("Publisher")
       assert page.has_content?("Creator")
       assert page.has_content?("Institution")
