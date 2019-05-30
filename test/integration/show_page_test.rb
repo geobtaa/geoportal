@@ -165,7 +165,7 @@ class ShowPageTest < Capybara::Rails::TestCase
   def test_metadata_links
     visit "/catalog/2eddde2f-c222-41ca-bd07-2fd74a21f4de"
     assert page.has_link?("Minnesota Department of Natural Resources (DNR)")
-    assert page.has_link?("Minnesota Geospatial Commons")
+    assert page.has_no_link?("Minnesota Geospatial Commons") # Collection
     assert page.has_link?("Minnesota, United States")
     assert page.has_link?("Imagery and Base Maps")
     assert page.has_link?("Dataset")
