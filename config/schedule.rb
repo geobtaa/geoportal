@@ -17,6 +17,10 @@ end
 every :day, at: '2:30am', roles: [:app] do
   rake 'blacklight:delete_old_searches[7]'
 end
+# Exports SOLR data to public/data.json
+every :day, at: '3:30am', roles: [:app] do
+  rake 'geoportal:export_data'
+end
 # Check image harvest state and email results
 every '0 3 * * 1', roles: [:app] do
   rake 'geoportal:sidecar_states'
