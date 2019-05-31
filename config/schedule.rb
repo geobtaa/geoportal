@@ -21,6 +21,10 @@ end
 every :day, at: '3:30am', roles: [:app] do
   rake 'geoportal:export_data'
 end
+# Clean Carrierwave tmp file directory
+every :day, :at: '4:30 am', roles: [:app] do
+  runner "CarrierWave.clean_cached_files!"
+end
 # Check image harvest state and email results
 every '0 3 * * 1', roles: [:app] do
   rake 'geoportal:sidecar_states'
