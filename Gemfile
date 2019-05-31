@@ -2,7 +2,10 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.6'
+gem 'rails', '~> 5.2.0'
+gem 'bootsnap', require: false
+gem 'listen', '~> 3.0'
+
 gem 'sqlite3', '~> 1.3', '< 1.4'
 gem 'mysql2', '~> 0.5.0'
 # Use SCSS for stylesheets
