@@ -23,7 +23,6 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial(:citation)
 
     config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark', if: :render_bookmarks_control?)
-    config.add_nav_action(:search_history, partial: 'blacklight/nav/search_history')
     # Blacklight update to 7.0.0
 
     # Advanced config values
@@ -132,7 +131,6 @@ class CatalogController < ApplicationController
     # Trying range facet
     #config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
 
-    config.add_facet_field 'dct_isPartOf_sm', :label => 'Collection', limit: 8
     config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8
     config.add_facet_field 'dc_creator_sm', :label => 'Creator', :limit => 8
 
@@ -179,7 +177,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'dc_creator_sm', label: 'Creator', itemprop: 'creator'
     config.add_show_field 'dc_description_s', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
     config.add_show_field 'dc_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_facet: true
-    config.add_show_field 'dct_isPartOf_sm', label: 'Collection', itemprop: 'isPartOf', link_to_facet: true
     config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true
     config.add_show_field 'dc_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dc_type_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
@@ -223,7 +220,7 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial :more_details, partial: 'more_details', if: proc { |_context, _config, options| options[:document] && (!options[:document].references.nil? & !options[:document].references.url.nil?)}
     config.add_show_tools_partial :metadata, if: proc { |_context, _config, options| options[:document] && (Settings.METADATA_SHOWN & options[:document].references.refs.map(&:type).map(&:to_s)).any? }
     config.add_show_tools_partial :web_services, if: proc { |_context, _config, options| options[:document] && (Settings.WEBSERVICES_SHOWN & options[:document].references.refs.map(&:type).map(&:to_s)).any? }
-    config.add_show_tools_partial :exports, partial: 'exports', if: proc { |_context, _config, options| options[:document] && options[:document].carto_reference.present?}
+    config.add_show_tools_partial :exports, partial: 'exports', if: proc { |_context, _config, options| options[:document] }
     config.add_show_tools_partial :data_dictionary, partial: 'data_dictionary', if: proc { |_context, _config, options| options[:document] && options[:document].data_dictionary_download.present?}
 
     # Remove nav actions

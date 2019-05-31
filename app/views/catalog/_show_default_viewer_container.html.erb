@@ -8,6 +8,17 @@
     <div id='viewer-container' class="col-md-12 well spinner">
   <% end %>
 
+  <% if document.viewer_protocol == "index_map" %>
+    <h6 class="viewer help-text"">
+      <a class="help-link" href="https://btaagdp.org/help/indexmaps">
+        Index Map
+        <span class="icon baseline">
+          <%= inline_svg("info-circle-solid.svg") %>
+        </span>
+      </a>
+    </h6>
+  <% end %>
+
   <% if document.viewer_protocol != "download" %>
     <%= content_tag :div, id: 'map', data: { map: 'item', protocol: document.viewer_protocol.camelize, url: document.viewer_endpoint, 'layer-id' => document.wxs_identifier, 'map-bbox' => document.bounding_box_as_wsen, 'catalog-path'=> search_catalog_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
     <% end %>

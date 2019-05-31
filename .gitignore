@@ -43,3 +43,4 @@ config/appsignal.yml
 .env.development
 .env.test
 test/reports/*
+public/data.json

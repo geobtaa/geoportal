@@ -2,23 +2,7 @@
   <%= render_nav_actions do |config, action|%>
     <li class="nav-item"><%= action %></li>
   <% end %>
-  <li class="nav-item"><%=link_to('About', about_path, {class: 'nav-link'})%></li>
-  <li class="nav-item"><%=link_to('Help', help_path, {class: 'nav-link'})%></li>
-
-  <% if has_user_authentication_provider? %>
-    <% if current_user %>
-    <li class="nav-item">
-      <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, {class: 'nav-link'} %>
-    </li>
-    <% unless current_user.to_s.blank? -%>
-    <li class="nav-item">
-      <%= link_to current_user, edit_user_registration_path, {class: 'nav-link'} %>
-    </li>
-    <% end %>
-    <% else %>
-    <li class="nav-item">
-      <%= link_to t('blacklight.header_links.login'), new_user_session_path, {class: 'nav-link'} %>
-    </li>
-    <% end %>
-  <% end %>
+  <li class="nav-item"><%=link_to('About', 'https://btaagdp.org/about', {class: 'nav-link'})%></li>
+  <li class="nav-item"><%=link_to('News', 'https://btaagdp.org/news', {class: 'nav-link'})%></li>
+  <li class="nav-item"><%=link_to('Help', 'https://btaagdp.org/help', {class: 'nav-link'})%></li>
 </ul>

@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-
-  # Static Pages via High Voltage - EWL
-  get 'about' => 'high_voltage/pages#show', id: 'about'
-  get 'help' => 'high_voltage/pages#show', id: 'help'
+  get 'about', :to => redirect('https://btaagdp.org/about')
+  get 'help', :to => redirect('https://btaagdp.org/help')
   get 'robots.:format' => 'robots#robots'
 
   # Feedback
@@ -11,8 +9,6 @@ Rails.application.routes.draw do
   # Error Pages for exception handling - EWL
   match '/404' => 'errors#not_found', via: :all
   match '/500' => 'errors#internal_server_error', via: :all
-
-  get '/blog', :to => redirect('/blog/index.html')
 
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'
@@ -62,6 +58,34 @@ Rails.application.routes.draw do
       delete 'clear'
     end
   end
+
+  # Blog redirects
+  get '/blog', :to => redirect('https://btaagdp.org/news')
+  get '/blog/index.html', :to => redirect('https://btaagdp.org/news')
+  get '/blog/2016/11/15/announcing-the-btaa-geoportal.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2016/11/15-announcing-the-btaa-geoportal?authuser=0')
+  get '/blog/2016/12/01/what-can-i-find-in-the-btaa-geoportal.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2016/12/2016-12-01-what-can-i-find-in-the-btaa-geoporta?authuser=0')
+  get '/blog/2016/12/30/new-collections-added-in-december-2016.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2016/12/30-new-collections-added-in-december-2016?authuser=0')
+  get '/blog/2017/01/31/whats-new-more-scanned-maps-plus-mn-legislative-gis-data.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2017/01/31-whats-new-more-scanned-maps-plus-mn-legislative-gis-data?authuser=0')
+  get '/blog/2017/02/16/love-your-data-week.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2017/02/16-love-your-data-week?authuser=0')
+  get '/blog/2017/04/04/springtime-news.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2017/04/04-springtime-news?authuser=0')
+  get '/blog/2017/05/02/new-records-and-interface-changes.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2017/05/02-new-records-and-interface-changes?authuser=0')
+  get '/blog/2017/06/06/new-records-and-geospatial-metadata-workshop.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2017/06/06-new-records-and-geospatial-metadata-workshop?authuser=0')
+  get '/blog/2017/07/24/welcome-to-osu-and-uchicago.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2017/07/24-welcome-to-osu-and-uchicago?authuser=0')
+  get '/blog/2017/09/12/new-features.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2017/09/12-new-features?authuser=0')
+  get '/blog/2017/12/11/new-gis-scanned-map-records.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2017/12/11-new-gis-scanned-map-records?authuser=0')
+  get '/blog/2018/07/08/contributor-spotlight-umn.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2018/07/08-contributor-spotlight-umn?authuser=0')
+  get '/blog/2018/08/21/contributor-spotlight-uw-madison.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2018/08/21-contributor-spotlight-uw-madison?authuser=0')
+  get '/blog/2018/09/19/contributor-spotlight-msu.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2018/09/19-contributor-spotlight-msu?authuser=0')
+  get '/blog/2018/10/17/contributor-spotlight-psu.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2018/10/17-contributor-spotlight-psu?authuser=0')
+  get '/blog/2018/11/08/contributor-spotlight-iu.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2018/11/08-contributor-spotlight-iu?authuser=0')
+  get '/blog/2018/12/07/contributor-spotlight-osu.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2018/12/07-contributor-spotlight-osu?authuser=0')
+  get '/blog/2019/01/29/contributor-spotlight-umich.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2019/01/29-contributor-spotlight-umich?authuser=0')
+  get '/blog/2019/01/29/featured-collection-polar-geospatial-center.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2019/01/29-featured-collection-polar-geospatial-center?authuser=0')
+  get '/blog/2019/02/28/contributor-spotlight-umd.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2019/02/28-contributor-spotlight-umd?authuser=0')
+  get '/blog/2019/02/28/featured-item-map-of-the-nimrod-glacier.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2019/02/28-featured-item-map-of-the-nimrod-glacier?authuser=0')
+  get '/blog/2019/03/19/contributor-spotlight-iowa.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2019/03/19-contributor-spotlight-iowa?authuser=0')
+  get '/blog/2019/03/19/featured-collection-dc-open-data.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2019/03/19-featured-collection-dc-open-data?authuser=0')
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

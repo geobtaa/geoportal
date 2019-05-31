@@ -58,7 +58,7 @@ gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '~> 2.0.0'
+gem 'geoblacklight', '~> 2.1.0'
 gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblacklight_sidecar_images.git', :branch => 'geoportal-legacy'
 gem 'statesman', '~> 3.4.1'
 gem 'sidekiq', '~> 5.1.3'
@@ -81,11 +81,6 @@ gem 'haml'
 # Dotenv
 gem 'dotenv-rails'
 
-# Static Pages
-gem 'high_voltage', '~> 3.0.0'
-gem 'jekyll'
-gem 'jekyll-feed'
-
 # Feedback
 gem 'pointless_feedback'
 gem 'whenever', '~> 0.9.0', require: false
@@ -94,7 +89,7 @@ gem 'exception_notification', '~> 4.3.0'
 
 group :test do
   gem 'minitest-rails-capybara', '~>3.0.0'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
   gem 'capybara-selenium'
   gem 'm', '~> 1.5.0'
   gem 'minitest-ci', '~> 3.4.0'

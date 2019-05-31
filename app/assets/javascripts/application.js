@@ -14,7 +14,7 @@
 //= require rails-ujs
 //
 
-//= require jquery
+//= require jquery/dist/jquery
 //= require 'blacklight_advanced_search'
 //= require chosen-jquery
 //= require modules/advanced_chosen

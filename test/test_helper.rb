@@ -1,6 +1,7 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'webdrivers'
 require 'selenium/webdriver'
 require 'capybara/dsl'
 require 'capybara/rails'
@@ -22,12 +23,15 @@ class Capybara::Rails::TestCase < ActiveSupport::TestCase
       m.level == 'SEVERE'
     }
 
+    # Ignore CORS errors for testing
+    errors = errors.reject{|e| e.message.include?("CORS")}
+
     assert_equal errors.length, 0, "JS Error Detected"
   end
 end
 
 Capybara.register_driver :chrome_headless do |app|
-  options = Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-gpu window-size=1280,1024)])
+  options = Selenium::WebDriver::Chrome::Options.new(args: %w[disable-gpu window-size=1280,1024)])
   Capybara::Selenium::Driver.new(
     app,
     browser: :chrome,
