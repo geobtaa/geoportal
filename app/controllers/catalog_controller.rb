@@ -180,6 +180,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true
     config.add_show_field 'dc_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dc_type_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
+    config.add_show_field 'dct_issued_s', label: 'Date Published', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dct_temporal_sm', label: 'Year', itemprop: 'temporal'
     config.add_show_field 'dct_provenance_s', label: 'Contributed by', link_to_facet: true
 
