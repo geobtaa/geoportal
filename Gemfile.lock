@@ -82,9 +82,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    archive-zip (0.12.0)
-      io-like (~> 0.3.0)
-    arel (9.0.0)
+    ansi (1.5.0)
+    arel (8.0.0)
     autoprefixer-rails (9.5.1.1)
       execjs
     bcrypt (3.1.12)
@@ -109,13 +108,14 @@ GEM
       sassc-rails (>= 2.0.0)
     builder (3.2.3)
     byebug (11.0.1)
-    capybara (2.18.0)
+    capybara (3.24.0)
       addressable
       mini_mime (>= 0.1.3)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (>= 2.0, < 4.0)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (~> 1.5)
+      xpath (~> 3.2)
     capybara-screenshot (1.0.22)
       capybara (>= 1.0, < 4)
       launchy
@@ -132,9 +132,6 @@ GEM
       coffee-rails (>= 3.2)
       railties (>= 3.0)
       sass-rails (>= 3.2)
-    chromedriver-helper (2.1.1)
-      archive-zip (~> 0.10)
-      nokogiri (~> 1.8)
     chronic (0.10.2)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -145,10 +142,10 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
-    config (1.7.1)
-      activesupport (>= 3.0)
-      deep_merge (~> 1.2.1)
-      dry-validation (>= 0.12.2)
+    config (2.0.0)
+      activesupport (>= 4.2)
+      deep_merge (~> 1.2, >= 1.2.1)
+      dry-schema (~> 1.0)
     connection_pool (2.2.2)
     crass (1.0.4)
     database_cleaner (1.7.0)
@@ -173,31 +170,33 @@ GEM
     dry-configurable (0.8.3)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.4, >= 0.4.7)
-    dry-container (0.7.0)
+    dry-container (0.7.1)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1, >= 0.1.3)
-    dry-core (0.4.7)
+    dry-core (0.4.8)
       concurrent-ruby (~> 1.0)
     dry-equalizer (0.2.2)
     dry-inflector (0.1.2)
-    dry-logic (0.6.1)
+    dry-initializer (3.0.1)
+    dry-logic (1.0.2)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.2)
       dry-equalizer (~> 0.2)
-    dry-types (0.14.1)
+    dry-schema (1.2.0)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 0.8, >= 0.8.3)
+      dry-core (~> 0.4)
+      dry-equalizer (~> 0.2)
+      dry-initializer (~> 3.0)
+      dry-logic (~> 1.0)
+      dry-types (~> 1.0)
+    dry-types (1.0.1)
       concurrent-ruby (~> 1.0)
       dry-container (~> 0.3)
       dry-core (~> 0.4, >= 0.4.4)
-      dry-equalizer (~> 0.2)
+      dry-equalizer (~> 0.2, >= 0.2.2)
       dry-inflector (~> 0.1, >= 0.1.2)
-      dry-logic (~> 0.5, >= 0.5)
-    dry-validation (0.13.3)
-      concurrent-ruby (~> 1.0)
-      dry-configurable (~> 0.1, >= 0.1.3)
-      dry-core (~> 0.2, >= 0.2.1)
-      dry-equalizer (~> 0.2)
-      dry-logic (~> 0.5, >= 0.5.0)
-      dry-types (~> 0.14.0)
+      dry-logic (~> 1.0)
     erubi (1.8.0)
     ethon (0.12.0)
       ffi (>= 1.3.0)
@@ -227,7 +226,7 @@ GEM
       rsolr
       sanitize
       thor
-    geoblacklight (2.1.1)
+    geoblacklight (2.1.2)
       blacklight (~> 7.0)
       coderay
       config
@@ -240,13 +239,13 @@ GEM
       handlebars_assets
       mime-types
       rails (~> 5.0)
-      webpacker (~> 3.5)
+      webpacker
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.1.1)
       temple (>= 0.8.0)
       tilt
-    handlebars_assets (0.23.3)
+    handlebars_assets (0.23.4)
       execjs (~> 2.0)
       sprockets (>= 2.0.0)
       tilt (>= 1.2)
@@ -255,7 +254,6 @@ GEM
     inline_svg (1.3.1)
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
-    io-like (0.3.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jquery-rails (4.3.3)
@@ -303,23 +301,13 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
-    minitest-capybara (0.9.0)
-      capybara
-      minitest (~> 5.0)
-      rake
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
-    minitest-metadata (0.6.0)
-      minitest (>= 4.7, < 6.0)
-    minitest-rails (3.0.0)
-      minitest (~> 5.8)
-      railties (~> 5.0)
-    minitest-rails-capybara (3.0.1)
-      capybara (~> 2.7)
-      minitest-capybara (~> 0.8)
-      minitest-metadata (~> 0.6)
-      minitest-rails (~> 3.0)
-    msgpack (1.2.9)
+    minitest-reporters (1.3.6)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
     multipart-post (2.1.1)
     mysql2 (0.5.2)
     net-http-persistent (2.9.4)
@@ -373,6 +361,7 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redis (4.1.2)
+    regexp_parser (1.5.1)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
@@ -477,13 +466,13 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (~> 1.0)
       selenium-webdriver (~> 3.0)
-    webpacker (3.6.0)
+    webpacker (4.0.7)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.3)
+    websocket-extensions (0.1.4)
     whenever (0.9.7)
       chronic (>= 0.6.3)
     xpath (3.2.0)
@@ -504,7 +493,6 @@ DEPENDENCIES
   capybara-screenshot
   capybara-selenium
   chosen-rails
-  chromedriver-helper
   coffee-rails (~> 4.2)
   database_cleaner
   devise
@@ -525,8 +513,9 @@ DEPENDENCIES
   letter_opener
   listen (~> 3.0)
   m (~> 1.5.0)
+  minitest
   minitest-ci (~> 3.4.0)
-  minitest-rails-capybara (~> 3.0.0)
+  minitest-reporters
   mysql2 (~> 0.5.0)
   pointless_feedback
   popper_js

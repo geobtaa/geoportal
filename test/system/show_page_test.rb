@@ -1,12 +1,11 @@
-require "test_helper"
+require "application_system_test_case"
 
-class ShowPageTest < Capybara::Rails::TestCase
-
+class ShowPageTest < ApplicationSystemTestCase
   def setup
   end
 
   def teardown
-    ran_without_js_errors
+    # ran_without_js_errors
   end
 
   def test_minnesota_tiff_show
@@ -188,4 +187,5 @@ class ShowPageTest < Capybara::Rails::TestCase
       assert page.has_content?("4")
     end
   end
+
 end
