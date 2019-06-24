@@ -1,8 +1,6 @@
-require "test_helper"
-require "rake"
+require "application_system_test_case"
 
-class HomePageTest < Capybara::Rails::TestCase
-
+class HomePageTest < ApplicationSystemTestCase
   def setup
     Rake::Task["geoportal:generate_centroids_json"].invoke
     visit '/'

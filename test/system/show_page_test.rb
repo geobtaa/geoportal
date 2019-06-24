@@ -1,7 +1,6 @@
-require "test_helper"
+require "application_system_test_case"
 
-class ShowPageTest < Capybara::Rails::TestCase
-
+class ShowPageTest < ApplicationSystemTestCase
   def setup
   end
 
@@ -188,4 +187,5 @@ class ShowPageTest < Capybara::Rails::TestCase
       assert page.has_content?("4")
     end
   end
+
 end

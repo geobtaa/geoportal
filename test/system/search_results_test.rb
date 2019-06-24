@@ -1,7 +1,6 @@
-require "test_helper"
+require "application_system_test_case"
 
-class SearchResultsPageTest < Capybara::Rails::TestCase
-
+class SearchResultsPageTest < ApplicationSystemTestCase
   def setup
   end
 
