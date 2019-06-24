@@ -1,0 +1,35 @@
+<div class="modal-header">
+  <button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
+
+  <h3 class="modal-title"><%= t('blacklight.tools.citation') %></h3>
+</div>
+<div class="modal-body">
+  <% @documents.each do |document| %>
+    <p>
+      <% if document["dc_creator_sm"].present? %>
+        <%= document["dc_creator_sm"].join(', ') %>.
+      <% end %>
+
+      <% if document["dct_issued_s"].present? %>
+        (<%= document["dct_issued_s"] %>).
+      <%- end %>
+
+      <% if document["dc_title_s"].present? %>
+        <%= document["dc_title_s"] %>.
+      <% end %>
+
+      <% if document["dc_publisher_s"].present? %>
+        <%= document["dc_publisher_s"] %>.
+      <% end %>
+      
+      <%= url_for(:only_path => false).split("/citation")[0] %>
+    </p>
+
+    <% if document.references.url.present? %>
+      <p>
+        <strong>Canonical source:</strong>
+        <%= document.references.url.endpoint %>
+      </p>
+    <% end %>
+  <% end %>
+</div>
