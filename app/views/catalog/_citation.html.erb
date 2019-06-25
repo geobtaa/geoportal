@@ -12,6 +12,8 @@
 
       <% if document["dct_issued_s"].present? %>
         (<%= document["dct_issued_s"] %>).
+      <% else %>
+        (<%= document["solr_year_i"] %>).
       <%- end %>
 
       <% if document["dc_title_s"].present? %>
