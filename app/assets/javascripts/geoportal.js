@@ -1,6 +1,10 @@
 // B1G Geoportal Behaviors
 $(document).ready(function() {
- // Empty
+  $(function () {
+    $('[data-toggle="popover"]').popover({
+      trigger: 'hover'
+    })
+  })
 });
 
 // @TODO - Breaks in GBL 2.0
