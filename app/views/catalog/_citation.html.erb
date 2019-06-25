@@ -21,13 +21,13 @@
       <% if document["dc_publisher_s"].present? %>
         <%= document["dc_publisher_s"] %>.
       <% end %>
-      
+
       <%= url_for(:only_path => false).split("/citation")[0] %>
     </p>
 
     <% if document.references.url.present? %>
       <p>
-        <strong>Canonical source:</strong>
+        <strong>Source:</strong>
         <%= document.references.url.endpoint %>
       </p>
     <% end %>
