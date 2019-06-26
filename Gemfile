@@ -6,6 +6,8 @@ gem 'rails', '~> 5.2.0'
 gem 'bootsnap', require: false
 gem 'listen', '~> 3.0'
 
+gem 'rack-cors', :require => 'rack/cors'
+
 gem 'sqlite3', '~> 1.3', '< 1.4'
 gem 'mysql2', '~> 0.5.0'
 # Use SCSS for stylesheets
