@@ -6,6 +6,16 @@ GeoBlacklight.Viewer.IiifManifest = GeoBlacklight.Viewer.extend({
 
     var miradorInstance = Mirador.viewer({
        id: 'map',
+       themes: {
+         light: {
+           palette: {
+             type: 'light',
+             primary: {
+               main: '#0088ce',
+             },
+           },
+         },
+       },
        windows: [{
          manifestId: manifest_uri,
          canvasIndex: 2,
@@ -13,6 +23,14 @@ GeoBlacklight.Viewer.IiifManifest = GeoBlacklight.Viewer.extend({
        }],
        window: {
          hideSearchPanel: false,
+         hideWindowTitle: true,
+         hideAnnotationsPanel: true,
+         allowClose: false,
+         allowMaximize: false,
+         allowFullscreen: true,
+       },
+       workspace: {
+         showZoomControls: true,
        },
        workspaceControlPanel: {
          enabled: false,
