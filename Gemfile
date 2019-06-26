@@ -8,6 +8,9 @@ gem 'listen', '~> 3.0'
 
 gem 'rack-cors', :require => 'rack/cors'
 
+# Webpacker
+gem 'webpacker', '~> 4.x'
+
 gem 'sqlite3', '~> 1.3', '< 1.4'
 gem 'mysql2', '~> 0.5.0'
 # Use SCSS for stylesheets
