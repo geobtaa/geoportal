@@ -19,6 +19,11 @@
     </h6>
   <% end %>
 
+  <% if document.references.iiif_manifest %>
+    <%= content_tag :div, id: 'iiif_manifest', data: { url: document.references.iiif_manifest.endpoint } do %>
+    <% end %>
+  <% end %>
+
   <% if document.viewer_protocol != "download" %>
     <%= content_tag :div, id: 'map', data: { map: 'item', protocol: document.viewer_protocol.camelize, url: document.viewer_endpoint, 'layer-id' => document.wxs_identifier, 'map-bbox' => document.bounding_box_as_wsen, 'catalog-path'=> search_catalog_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
     <% end %>
