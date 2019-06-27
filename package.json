@@ -31,6 +31,6 @@
     "typeahead.js": "^0.11.1",
     "mirador": "^3.0.0-alpha.14",
     "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.3",
+    "@babel/core": "^7.2.3"
   }
 }
