@@ -2,7 +2,7 @@
 
 GeoBlacklight.Viewer.IiifManifest = GeoBlacklight.Viewer.extend({
   load: function() {
-    var manifest_uri = document.getElementById('iiif_manifest').getAttribute('data-url');
+    var manifest_uri = document.getElementById('map').getAttribute('data-url');
 
     var miradorInstance = Mirador.viewer({
        id: 'map',
