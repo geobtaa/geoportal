@@ -32,6 +32,6 @@
     "mirador": "^3.0.0-alpha.14",
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.3",
-    "@babel/loader": "^2.3.4"
+    "@babel/loader": "^7.2.3"
   }
 }
