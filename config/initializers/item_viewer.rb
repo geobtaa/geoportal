@@ -35,6 +35,10 @@ module Geoblacklight
       @references.iiif
     end
 
+    def iiif_manifest
+      @references.iiif_manifest
+    end
+
     def tiled_map_layer
       @references.tiled_map_layer
     end
@@ -56,7 +60,7 @@ module Geoblacklight
     end
 
     def viewer_preference
-      [index_map, wms, iiif, download, tiled_map_layer, dynamic_map_layer,
+      [index_map, wms, iiif, iiif_manifest, download, tiled_map_layer, dynamic_map_layer,
        image_map_layer, feature_layer].compact.map(&:to_hash).first
     end
   end

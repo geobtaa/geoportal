@@ -204,4 +204,14 @@ class ShowPageTest < ApplicationSystemTestCase
     end
   end
 
+  def test_mirador_show_page
+    visit "/catalog/62aac6a8-d31e-4364-8946-ff9bebbf4a25"
+
+    # Help
+    # assert page.has_content?("Index Map")
+
+    assert page.has_selector?("#map")
+    assert page.has_selector?("[data-protocol='IiifManifest']")
+  end
+
 end
