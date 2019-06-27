@@ -29,6 +29,7 @@
     "jquery": "^3.4.0",
     "readmore-js": "^3.0.0-beta-1",
     "typeahead.js": "^0.11.1",
-    "mirador": "^3.0.0-alpha.14"
+    "mirador": "^3.0.0-alpha.14",
+    "mirador-dl-plugin": "^0.7.0"
   }
 }

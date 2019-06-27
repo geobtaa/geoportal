@@ -3695,7 +3695,7 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-"http-status-codes@github:edsilv/http-status-codes#v0.0.7":
+http-status-codes@edsilv/http-status-codes#v0.0.7:
   version "0.0.7"
   resolved "https://codeload.github.com/edsilv/http-status-codes/tar.gz/af3a8ab9970b1f291a79b03c7382dc16aebee749"
 
@@ -4760,6 +4760,11 @@ minizlib@^1.1.1:
   integrity sha512-7+4oTUOWKg7AuL3vloEWekXY2/D20cevzsrNT2kGWm+39J9hGTCBv8VI5Pm5lXZ/o3/mdR4f8rflAPhnQb8mPA==
   dependencies:
     minipass "^2.2.1"
+
+mirador-dl-plugin@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/mirador-dl-plugin/-/mirador-dl-plugin-0.7.0.tgz#68a677bfc445ee3e4564d7389b74f17fb8fa0f1e"
+  integrity sha512-J0xSBSSE93+Ls5c+UFsSkmpdC0R3pQCfGw7Qbt7wk3KGFjtRIRzmXzDVVdVu6iAHAcOQGP3bodQ3B4SAVCy4eQ==
 
 mirador@^3.0.0-alpha.14:
   version "3.0.0-alpha.14"
