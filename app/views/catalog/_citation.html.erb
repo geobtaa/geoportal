@@ -20,8 +20,8 @@
         <%= document["dc_title_s"] %>.
       <% end %>
 
-      <% if document["dc_publisher_s"].present? %>
-        <%= document["dc_publisher_s"] %>.
+      <% if document["dc_publisher_sm"].present? %>
+        <%= document["dc_publisher_sm"].join(', ') %>.
       <% end %>
 
       <%= url_for(:only_path => false).split("/citation")[0] %>
