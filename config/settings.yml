@@ -170,6 +170,11 @@ B1G_HELP:
     link_href: https://btaagdp.org/help/web-services
     popover_title: Help - IIIF Service
     popover_text: The International Image Interoperability Framework (IIIF) web service API displays an image from a server. This image can be panned and zoomed.
+  iiif_manifest:
+    link_text: IIIF Service
+    link_href: https://btaagdp.org/help/web-services
+    popover_title: Help - IIIF Service
+    popover_text: The International Image Interoperability Framework (IIIF) web service API displays an image from a server. This image can be panned and zoomed.
   image_map_layer:
     link_text: ArcGIS Image Map Layer
     link_href: https://btaagdp.org/help/web-services
