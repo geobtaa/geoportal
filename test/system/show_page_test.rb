@@ -212,6 +212,11 @@ class ShowPageTest < ApplicationSystemTestCase
 
     assert page.has_selector?("#map")
     assert page.has_selector?("[data-protocol='IiifManifest']")
+
+    # Sidebar Map
+    within(".page-sidebar")do
+      assert page.has_selector?("#static-map")
+    end
   end
 
 end
