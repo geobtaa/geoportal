@@ -20,7 +20,6 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
     config.add_show_tools_partial(:email, callback: :email_action, validator: :validate_email_params)
     config.add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
-    config.add_show_tools_partial(:citation)
 
     config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark', if: :render_bookmarks_control?)
     # Blacklight update to 7.0.0
@@ -180,7 +179,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true
     config.add_show_field 'dc_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dc_type_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
-    config.add_show_field 'dct_temporal_sm', label: 'Year', itemprop: 'temporal'
+    config.add_show_field 'dct_issued_s', label: 'Date Published', itemprop: 'keywords', link_to_facet: true
+    config.add_show_field 'dct_temporal_sm', label: 'Temporal Coverage', itemprop: 'temporal'
     config.add_show_field 'dct_provenance_s', label: 'Contributed by', link_to_facet: true
 
     # "fielded" search configuration. Used by pulldown among other places.
@@ -223,6 +223,8 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial :exports, partial: 'exports', if: proc { |_context, _config, options| options[:document] }
     config.add_show_tools_partial :data_dictionary, partial: 'data_dictionary', if: proc { |_context, _config, options| options[:document] && options[:document].data_dictionary_download.present?}
 
+    config.add_show_tools_partial(:citation)
+
     # Remove nav actions
     config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark', if: false)
 
@@ -240,7 +242,6 @@ class CatalogController < ApplicationController
 
     config.show.document_actions.delete(:email)
     config.show.document_actions.delete(:bookmark)
-    config.show.document_actions.delete(:citation)
     config.show.document_actions.delete(:sms)
 
     # Configure basemap provider for GeoBlacklight maps (uses https only basemap

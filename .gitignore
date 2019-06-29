@@ -40,7 +40,15 @@ doc/
 public/centroids.json
 public/*.csv
 config/appsignal.yml
+.env.production
 .env.development
 .env.test
 test/reports/*
 public/data.json
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

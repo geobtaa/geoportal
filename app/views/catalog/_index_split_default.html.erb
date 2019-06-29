@@ -15,7 +15,9 @@
           </span>
         <%- end %>
         <div class='media-body'>
-          <p class='mt-0'><%= link_to_document document, document_show_link_field(document), counter: counter, title: document[blacklight_config.index.title_field] %></p>
+          <p class='mt-0'><%= link_to_document document, counter: counter, title: document[blacklight_config.index.title_field] %>
+          <%= render partial: 'header_icons', locals: { document: document } %>
+          </p>
           <p><%= geoblacklight_present(:index_fields_display, document) %></p>
         </div>
       </div>

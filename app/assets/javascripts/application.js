@@ -36,6 +36,9 @@
 //= require screenfull/screenfull.min.js
 //= require geoportal
 
+// Mirador
+//= require mirador/dist/mirador.min.js
+
 //= require_tree .
 
 // @CUSTOMIZED

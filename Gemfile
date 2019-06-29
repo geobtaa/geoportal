@@ -2,7 +2,15 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.6'
+gem 'rails', '~> 5.2.0'
+gem 'bootsnap', require: false
+gem 'listen', '~> 3.0'
+
+gem 'rack-cors', :require => 'rack/cors'
+
+# Webpacker
+gem 'webpacker', '~> 4.x'
+
 gem 'sqlite3', '~> 1.3', '< 1.4'
 gem 'mysql2', '~> 0.5.0'
 # Use SCSS for stylesheets
@@ -28,14 +36,12 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'minitest-rails-capybara', '~>3.0.0'
 
   # RSpec/SolrWrapper
   gem 'capybara'
   gem 'capybara-selenium'
   gem 'capybara-screenshot'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.5'
@@ -88,9 +94,10 @@ gem 'sitemap_generator', '~> 6.0.2'
 gem 'exception_notification', '~> 4.3.0'
 
 group :test do
-  gem 'minitest-rails-capybara', '~>3.0.0'
   gem 'webdrivers'
-  gem 'capybara-selenium'
+  gem 'capybara'
   gem 'm', '~> 1.5.0'
+  gem 'minitest'
   gem 'minitest-ci', '~> 3.4.0'
+  gem 'minitest-reporters'
 end

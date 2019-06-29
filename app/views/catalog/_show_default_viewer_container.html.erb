@@ -5,13 +5,13 @@
   <% if show_attribute_table? %>
     <div id='viewer-container' class="col-md-12">
   <% else %>
-    <div id='viewer-container' class="col-md-12 well spinner">
+    <div id='viewer-container' class="col-md-12 spinner">
   <% end %>
 
-  <% if document.viewer_protocol == "index_map" %>
+  <% if Settings.B1G_HELP.send(document.viewer_protocol) %>
     <h6 class="viewer help-text"">
-      <a class="help-link" href="https://btaagdp.org/help/indexmaps">
-        Index Map
+      <a data-toggle="popover" title="<%=Settings.B1G_HELP.send(document.viewer_protocol).popover_title %>" data-content="<%=Settings.B1G_HELP.send(document.viewer_protocol).popover_text %>" class="help-link" href="<%=Settings.B1G_HELP.send(document.viewer_protocol).link_href %>">
+        <%=Settings.B1G_HELP.send(document.viewer_protocol).link_text %>
         <span class="icon baseline">
           <%= inline_svg("info-circle-solid.svg") %>
         </span>

@@ -1,0 +1,52 @@
+{
+  "geoblacklight_version": "1.0",
+  "dc_description_s": "Standard atlas of Kittson County, Minnesota : including a plat book of the villages, cities, and townships ... / compiled and published by Geo. A. Ogle & Co. Chicago : Geo. A. Ogle & Co, 1912.",
+  "layer_modified_dt": "2019-03-29T17:23:04Z",
+  "solr_geom": "ENVELOPE(-97.2393, -96.387, 49.0005, 48.5438)",
+  "dct_references_s": "{\"http://schema.org/url\":\"http://purl.umn.edu/193089\",\"http://iiif.io/api/presentation#manifest\":\"https://gist.githubusercontent.com/ewlarson/d32a03f9f032aba9a6f5e07937813eaf/raw/596609f3e8c61325793b19ec10a867ca4f5bfd98/manifest.json\"}",
+  "dc_rights_s": "Public",
+  "b1g_centroid_ss": "48.77215,-96.81315",
+  "layer_geom_type_s": "Image",
+  "dct_provenance_s": "Minnesota",
+  "dc_subject_sm": [
+    "Atlases"
+  ],
+  "dc_language_sm": [
+    "English"
+  ],
+  "dct_temporal_sm": [
+    "1912"
+  ],
+  "b1g_code_s": "05d-02",
+  "dct_issued_s": "1912",
+  "b1g_genre_sm": [
+    "Maps"
+  ],
+  "b1g_geonames_sm": [
+    "https://sws.geonames.org/5033353/"
+  ],
+  "dc_format_s": "JPEG",
+  "b1g_keyword_sm": [
+    "Real property -- Minnesota -- Kittson County -- Maps; Kittson County (Minn.) -- Maps; Kittson County (Minn.) -- Directories"
+  ],
+  "dc_creator_sm": [
+    "Geo. A. Ogle & Co."
+  ],
+  "dc_identifier_s": "62aac6a8-d31e-4364-8946-ff9bebbf4a25",
+  "solr_year_i": 1912,
+  "dc_source_sm": [
+    "05d-02"
+  ],
+  "dct_spatial_sm": [
+    "Kittson County, Minnesota, United States",
+    "Minnesota, United States"
+  ],
+  "dc_type_sm": [
+    "Image"
+  ],
+  "dc_title_s": "Standard atlas of Kittson County, Minnesota, 1912",
+  "layer_slug_s": "62aac6a8-d31e-4364-8946-ff9bebbf4a25",
+  "dct_isPartOf_sm": [
+    "John R. Borchert Map Library"
+  ]
+}

@@ -1,18 +1,20 @@
-require "test_helper"
+require "application_system_test_case"
 
-class ShowPageTest < Capybara::Rails::TestCase
-
+class ShowPageTest < ApplicationSystemTestCase
   def setup
   end
 
   def teardown
-    ran_without_js_errors
+    # ran_without_js_errors
   end
 
   def test_minnesota_tiff_show
     skip('New UMedia launch has broken this test object')
     visit "/catalog/71f15b25-64cd-40cc-8f0c-64529293398c"
     assert page.has_content?("Railroad commissioners' map of Minnesota")
+
+    # Help
+    assert page.has_content?("IIIF Service")
 
     # Type
     assert page.has_link?("Web services")
@@ -50,6 +52,9 @@ class ShowPageTest < Capybara::Rails::TestCase
   def test_illinois_open_in_arcgis
     visit "/catalog/90f14ff4-1359-4beb-b931-5cb41d20ab90"
     assert page.has_content?("Glacial Boundaries: Illinois, 1998")
+
+    # Help
+    assert page.has_content?("ArcGIS Dynamic Map Layer")
 
     # Type
     assert page.has_content?("Web services")
@@ -124,6 +129,9 @@ class ShowPageTest < Capybara::Rails::TestCase
     visit "/catalog/88cc9b19-3294-4da9-9edd-775c81fb1c59"
     assert page.has_content?("Wabash River Topographic Maps: Indiana, 1929")
 
+    # Help
+    assert page.has_content?("ArcGIS Image Map Layer")
+
     # Metadata
     # ISO Metadata
     assert page.has_link?("Metadata")
@@ -137,6 +145,9 @@ class ShowPageTest < Capybara::Rails::TestCase
 
   def test_relations_child_record
     visit "/catalog/02999877-0ee9-4cc0-b67f-f2f48107f517"
+
+    # Help
+    assert page.has_content?("ArcGIS Image Map Layer")
 
     # ISO Metadata
     assert page.has_link?("Metadata")
@@ -174,6 +185,10 @@ class ShowPageTest < Capybara::Rails::TestCase
 
   def test_b1g_show_index_map
     visit "/catalog/9702bb22-4305-4cc2-a8f4-fc10e4ef05df"
+
+    # Help
+    assert page.has_content?("Index Map")
+
     within('#map') do
       assert page.has_selector?("svg.leaflet-zoom-animated")
       assert page.has_selector?("path.leaflet-interactive")
@@ -188,4 +203,20 @@ class ShowPageTest < Capybara::Rails::TestCase
       assert page.has_content?("4")
     end
   end
+
+  def test_mirador_show_page
+    visit "/catalog/62aac6a8-d31e-4364-8946-ff9bebbf4a25"
+
+    # Help
+    # assert page.has_content?("Index Map")
+
+    assert page.has_selector?("#map")
+    assert page.has_selector?("[data-protocol='IiifManifest']")
+
+    # Sidebar Map
+    within(".page-sidebar")do
+      assert page.has_selector?("#static-map")
+    end
+  end
+
 end

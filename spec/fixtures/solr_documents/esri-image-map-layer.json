@@ -38,5 +38,6 @@
   "layer_modified_dt": "2018-07-20T18:08:03Z",
   "solr_geom": "ENVELOPE(-87.324704, -87.174404, 40.310695, 40.233691)",
   "solr_year_i": 1929,
-  "geoblacklight_version": "1.0"
+  "geoblacklight_version": "1.0",
+  "b1g_child_record_b": true
 }
