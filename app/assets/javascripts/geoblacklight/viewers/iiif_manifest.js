@@ -18,7 +18,6 @@ GeoBlacklight.Viewer.IiifManifest = GeoBlacklight.Viewer.extend({
        },
        windows: [{
          manifestId: manifest_uri,
-         canvasIndex: 2,
          thumbnailNavigationPosition: 'far-bottom',
        }],
        window: {

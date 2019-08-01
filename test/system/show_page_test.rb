@@ -204,11 +204,21 @@ class ShowPageTest < ApplicationSystemTestCase
     end
   end
 
-  def test_mirador_show_page
+  def test_mirador_show_book
     visit "/catalog/62aac6a8-d31e-4364-8946-ff9bebbf4a25"
 
-    # Help
-    # assert page.has_content?("Index Map")
+
+    assert page.has_selector?("#map")
+    assert page.has_selector?("[data-protocol='IiifManifest']")
+
+    # Sidebar Map
+    within(".page-sidebar")do
+      assert page.has_selector?("#static-map")
+    end
+  end
+
+  def test_mirador_show_map
+    visit "/catalog/e1ec54e6-8bb4-496a-93f9-43ac901bea74"
 
     assert page.has_selector?("#map")
     assert page.has_selector?("[data-protocol='IiifManifest']")
