@@ -30,7 +30,7 @@
     "bloodhound-js": "^1.2.3",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.0",
-    "mirador": "^3.0.0-alpha.14",
+    "mirador": "^3.0.0-alpha.16",
     "readmore-js": "^3.0.0-beta-1",
     "typeahead.js": "^0.11.1",
     "lodash": "^4.17.13",
