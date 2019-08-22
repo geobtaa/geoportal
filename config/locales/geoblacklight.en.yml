@@ -73,3 +73,94 @@ en:
       attribute: 'Attribute'
       value: 'Value'
       click_map: 'Click on map to inspect values'
+    help_text:
+      viewer_protocol:
+        download:
+          title: Static Image
+          content: A downloadable image.
+        dynamic_map_layer:
+          title: ArcGIS Dynamic Map Layer
+          content: An ArcGIS Dynamic Map Layer represents vector data (points, lines, and polygons). Map image layers are dynamically rendered image tiles.
+        feature_layer:
+          title: ArcGIS Feature Layer
+          content: An ArcGIS Feature Layer Service displays vector data (points, lines, and polygons) as individual or collected features.
+        iiif:
+          title: IIIF Service
+          content: The International Image Interoperability Framework (IIIF) web service API displays an image from a server. This image can be panned and zoomed.
+        iiif_manifest:
+          title: IIIF Service
+          content: The International Image Interoperability Framework (IIIF) web service API displays an image from a server. This image can be panned and zoomed.
+        image_map_layer:
+          title: ArcGIS Image Map Layer
+          content: An ArcGIS Image Map Layer displays raster data (a grid of cells used to store imagery).
+        index_map:
+          title: Index Map
+          content: Index maps are a "table of contents" that allow users to select a specific map or item within a larger set and navigate to it for viewing or downloading.
+        oembed:
+          title: Embedded Content
+          content: This content is embedded through a third-party viewer.
+        tiled_map_layer:
+          title: ArcGIS Tiled Map Layer
+          content: An ArcGIS Tiled Map Layer Service displays set of web-accessible tiles that reside on a server.
+        wms:
+          title: Web Map Service (WMS)
+          content: A Web Map Service displays a geospatial dataset as map images.
+    aria-labels:
+      arrow-circle-down: Arrow within a circle, pointing down (icon)
+      baruch-cuny: Baruch College (logo)
+      berkeley: University of California, Berkeley (logo)
+      book: Book (icon)
+      bookmark: Bookmark (icon)
+      cd-rom: CD-Rom (icon)
+      chicago: The University of Chicago (logo)
+      columbia: Columbia University (logo)
+      cornell: Cornell University (logo)
+      dvd-rom: DVD-Rom (icon)
+      email: Email (icon)
+      esri-globe: Esri Global (logo)
+      globe: Globe (icon)
+      harvard: Harvard University (logo)
+      home: Home (icon)
+      illinois: University of Illinois (logo)
+      image: Image (icon)
+      indiana: Indiana University (logo)
+      iowa: University of Iowa (logo)
+      leaf: Leaf (icon)
+      lewis-clark: Lewis & Clark (logo)
+      line: Line (icon)
+      map-marker: Map marker (icon)
+      map: Map (icon)
+      maryland: University of Maryland (logo)
+      massgis: MassGIS (logo)
+      metadata: Metadata (icon)
+      michigan-state: Michigan State University (logo)
+      michigan: University of Michigan (logo)
+      minnesota: University of Minnesota (logo)
+      mit: Massachusetts Institute of Technology (logo)
+      mixed: Mixed (icon)
+      multilinestring: Multi-line string  (icon)
+      multipoint: Multi-point (icon)
+      multipolygon: Multi-polygon (icon)
+      nyu: New York University (logo)
+      ohio-state: The Ohio State University (logo)
+      pagelines-brands: Pagelines brands (icon)
+      paper-map: Paper map (icon)
+      penn-state: Penn State University (logo)
+      point: Point (icon)
+      polygon: Polygon (icon)
+      polyline: Polyline (icon)
+      princeton: Princeton University (logo)
+      public: Public content (icon)
+      purdue: Purdue University (logo)
+      raster: Raster (icon)
+      restricted: Restricted content (icon)
+      sms: SMS (icon)
+      stanford: Stanford University (logo)
+      table: Table (icon)
+      tags: Tags (icon)
+      texas: The University of Texas at Austin (logo)
+      tufts: Tufts University (logo)
+      ucla: University of California, Los Angeles (logo)
+      uva: University of Virginia (logo)
+      web_services: Web services (icon)
+      wisconsin: University of Wisconsin (logo)
