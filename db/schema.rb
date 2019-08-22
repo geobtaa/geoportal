@@ -10,9 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180627150806) do
+ActiveRecord::Schema.define(version: 2019_08_22_211031) do
 
-  create_table "bookmarks", force: :cascade do |t|
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "user_type"
     t.string "document_id"
@@ -23,11 +44,11 @@ ActiveRecord::Schema.define(version: 20180627150806) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
-  create_table "image_upload_transitions", force: :cascade do |t|
+  create_table "image_upload_transitions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "to_state", null: false
     t.text "metadata"
     t.integer "sort_key", null: false
-    t.integer "solr_document_sidecar_id"
+    t.bigint "solr_document_sidecar_id"
     t.boolean "most_recent", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,7 +56,7 @@ ActiveRecord::Schema.define(version: 20180627150806) do
     t.index ["solr_document_sidecar_id"], name: "index_image_upload_transitions_on_solr_document_sidecar_id"
   end
 
-  create_table "pointless_feedback_messages", force: :cascade do |t|
+  create_table "pointless_feedback_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "email_address"
     t.string "topic"
@@ -45,7 +66,7 @@ ActiveRecord::Schema.define(version: 20180627150806) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "searches", force: :cascade do |t|
+  create_table "searches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "query_params"
     t.integer "user_id"
     t.string "user_type"
@@ -54,32 +75,32 @@ ActiveRecord::Schema.define(version: 20180627150806) do
     t.index ["user_id"], name: "index_searches_on_user_id"
   end
 
-  create_table "solr_document_sidecars", force: :cascade do |t|
+  create_table "solr_document_sidecars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "document_id"
     t.string "document_type"
     t.string "image"
-    t.integer "version", limit: 8
+    t.bigint "version"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["document_type", "document_id"], name: "solr_document_sidecars_solr_document"
   end
 
-  create_table "solr_document_uris", force: :cascade do |t|
+  create_table "solr_document_uris", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "document_id"
     t.string "document_type"
     t.string "uri_key"
     t.string "uri_value"
-    t.integer "version", limit: 8
+    t.bigint "version"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["document_type", "document_id"], name: "solr_document_uris_solr_document"
   end
 
-  create_table "uri_transitions", force: :cascade do |t|
+  create_table "uri_transitions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "to_state", null: false
     t.text "metadata"
     t.integer "sort_key", null: false
-    t.integer "solr_document_uri_id"
+    t.bigint "solr_document_uri_id"
     t.boolean "most_recent", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -87,7 +108,7 @@ ActiveRecord::Schema.define(version: 20180627150806) do
     t.index ["solr_document_uri_id"], name: "index_uri_transitions_on_solr_document_uri_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -105,4 +126,7 @@ ActiveRecord::Schema.define(version: 20180627150806) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "image_upload_transitions", "solr_document_sidecars"
+  add_foreign_key "uri_transitions", "solr_document_uris"
 end
