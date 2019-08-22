@@ -22,9 +22,12 @@ module ApplicationHelper
 
   def citation_dct_issued_s(dct_issued_s)
     date_string = ""
-    begin
+
+    if dct_issued_s.size == 4
+      date_string = dct_issued_s
+    elsif dct_issued_s.match?(/[-|:|\/]/)
       date_string = Chronic.parse(dct_issued_s).to_date.strftime('%b %d, %Y')
-    rescue
+    else
       date_string = dct_issued_s
     end
 
