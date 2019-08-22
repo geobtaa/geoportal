@@ -495,6 +495,7 @@ DEPENDENCIES
   capybara-screenshot
   capybara-selenium
   chosen-rails
+  chronic
   coffee-rails (~> 4.2)
   database_cleaner
   devise

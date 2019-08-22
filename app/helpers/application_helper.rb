@@ -1,3 +1,5 @@
+require 'chronic'
+
 module ApplicationHelper
   def localized_image_path(url_hash)
     Rails.root.join("public/uploads/localized/#{url_hash}")
@@ -16,5 +18,28 @@ module ApplicationHelper
 
   def homepage?
     current_page?(root_url) && has_search_parameters? == false
+  end
+
+  def citation_dct_issued_s(dct_issued_s)
+    date_string = ""
+    begin
+      date_string = Chronic.parse(dct_issued_s).to_date.strftime('%b %d, %Y')
+    rescue
+      date_string = dct_issued_s
+    end
+
+    date_string
+  end
+
+  def citation_solr_year_i(solr_year_i)
+    date_string = ""
+
+    if solr_year_i.to_s.include?('9999')
+      date_string = "[unknown date]"
+    else
+      date_string = solr_year_i.to_s
+    end
+
+    date_string
   end
 end

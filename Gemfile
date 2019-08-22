@@ -83,6 +83,7 @@ gem 'devise'
 gem 'devise-guests', '~> 0.6'
 
 gem 'haml'
+gem 'chronic'
 
 # Dotenv
 gem 'dotenv-rails'
