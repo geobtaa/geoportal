@@ -8,6 +8,7 @@ class SolrDocumentSidecar < ApplicationRecord
 
   belongs_to :document, required: true, polymorphic: true
   has_many :image_upload_transitions, autosave: false, dependent: :destroy
+  has_one_attached :image_new
 
   # If the sidecar is updated, need to re-fetch thumbnail image
   # after_update :reimage, if: :saved_change_to_version?
