@@ -16,6 +16,14 @@ class CreateSidecarImageTransitions < ActiveRecord::Migration[5.2]
               unique: true,
               name: "index_sidecar_image_transitions_parent_sort")
 
+    # MIGRATION TASK - COPY STATE DATA
+    # Copy image_upload_transation data into sidecar_image_transitions
+    #
+    puts "MIGRATION TASK - COPY IMAGE STATE DATA"
+    sql = 'INSERT INTO sidecar_image_transitions SELECT * FROM image_upload_transitions ORDER BY id'
+    ActiveRecord::Base.connection.execute(sql)
+    puts "TASK - COPY IMAGE STATE DATA - COMPLETE"
+
     # MIGRATION TASK - COPY ASSETS
     # Attaches Carrierwave image to ActiveStorage
     #
@@ -29,13 +37,5 @@ class CreateSidecarImageTransitions < ActiveRecord::Migration[5.2]
         puts e.inspect
       end
     end
-
-    # MIGRATION TASK - COPY STATE DATA
-    # Copy image_upload_transation data into sidecar_image_transitions
-    #
-    puts "MIGRATION TASK - COPY IMAGE STATE DATA"
-    sql = 'INSERT INTO sidecar_image_transitions SELECT * FROM image_upload_transitions ORDER BY id'
-    ActiveRecord::Base.connection.execute(sql)
-    puts "TASK - COPY IMAGE STATE DATA - COMPLETE"
   end
 end
