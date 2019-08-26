@@ -26,43 +26,11 @@ namespace :geoportal do
 
   desc 'Harvest images - Queue incomplete states for reprocessing'
   task queue_incomplete_states: :environment do
-    states = [
-      :initialized,
-      :queued,
-      :processing,
-      :failed,
-      :placeheld
-    ]
-
-    states.each do |state|
-      sidecars = SolrDocumentSidecar.in_state(state)
-
-      puts "#{state} - #{sidecars.size}"
-
-      sidecars.each do |sc|
-        cat = Blacklight::SearchService.new(config: CatalogController.blacklight_config)
-        begin
-          resp, doc = cat.fetch(sc.document_id)
-          StoreImageJob.perform_later(doc.to_h)
-          puts "queued / #{sc.document_id}"
-        rescue Exception => e
-          puts "#{e.inspect}"
-          puts "orphaned / #{sc.document_id}"
-        end
-      end
-    end
+    puts "Deprecated / Instead try: bundle exec rake gblsci:images:harvest_retry"
   end
 
   desc 'Failed State - Inspect metadata'
   task failed_state_inspect: :environment do
-    states = [
-      :failed
-    ]
-
-    states.each do |state|
-      sidecars = SolrDocumentSidecar.in_state(state).each do |sc|
-        puts "#{state} - #{sc.document_id} - #{sc.state_machine.last_transition.metadata.inspect}"
-      end
-    end
+    puts "Deprecated / Instead try: bundle exec rake gblsci:images:harvest_failed_state_inspect"
   end
 end
