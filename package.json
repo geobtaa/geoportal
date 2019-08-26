@@ -33,7 +33,6 @@
     "lodash": "^4.17.13",
     "lodash.template": "^4.5.0",
     "mirador": "^3.0.0-alpha.16",
-    "readmore-js": "^3.0.0-beta-1",
     "typeahead.js": "^0.11.1"
   }
 }

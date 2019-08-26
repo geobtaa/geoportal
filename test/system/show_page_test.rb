@@ -229,4 +229,11 @@ class ShowPageTest < ApplicationSystemTestCase
     end
   end
 
+  def test_oembed_map
+    visit "/catalog/stanford-dc482zx1528"
+
+    assert page.has_selector?("#map")
+    assert page.has_selector?("[data-protocol='Oembed']")
+  end
+
 end

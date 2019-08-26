@@ -149,49 +149,16 @@ LEAFLET:
         - 'Fullscreen'
         - 'Layers'
 
-B1G_HELP:
-  download:
-    link_text: Static Image
-    link_href: https://btaagdp.org/help/web-services
-    popover_title: Help - Static Image
-    popover_text: A downloadable image.
-  dynamic_map_layer:
-    link_text: ArcGIS Dynamic Map Layer
-    link_href: https://btaagdp.org/help/web-services
-    popover_title: Help - ArcGIS Dynamic Map Layer
-    popover_text: An ArcGIS Dynamic Map Layer is based on vector data. (points, lines, and polygons). Map image layers are dynamically rendered image tiles. Click on a feature to view attribute information.
-  feature_layer:
-    link_text: ArcGIS Feature Layer
-    link_href: https://btaagdp.org/help/web-services
-    popover_title: Help - ArcGIS Feature Layer
-    popover_text: An ArcGIS Feature Layer Service displays vector data (points, lines, and polygons) as individual or collected features. Click on a feature to view attribute information.
-  iiif:
-    link_text: IIIF Service
-    link_href: https://btaagdp.org/help/web-services
-    popover_title: Help - IIIF Service
-    popover_text: The International Image Interoperability Framework (IIIF) web service API displays an image from a server. This image can be panned and zoomed.
-  iiif_manifest:
-    link_text: IIIF Service
-    link_href: https://btaagdp.org/help/web-services
-    popover_title: Help - IIIF Service
-    popover_text: The International Image Interoperability Framework (IIIF) web service API displays an image from a server. This image can be panned and zoomed.
-  image_map_layer:
-    link_text: ArcGIS Image Map Layer
-    link_href: https://btaagdp.org/help/web-services
-    popover_title: Help - ArcGIS Image Map Layer
-    popover_text: An ArcGIS Image Map Layer displays raster data (a grid of cells used to store imagery).
-  index_map:
-    link_text: Index Map
-    link_href: https://btaagdp.org/help/web-services
-    popover_title: Help - Index Map
-    popover_text: Index maps are a type of finding aid that allows a user to use a map to select a specific item within a set. Click on a feature to view individual map pages.
-  tiled_map_layer:
-    link_text: ArcGIS Tiled Map Layer
-    link_href: https://btaagdp.org/help/web-services
-    popover_title: Help - ArcGIS Tiled Map Layer
-    popover_text: An ArcGIS Tiled Map Layer Service displays set of web-accessible tiles that reside on a server.
-  wms:
-    link_text: Web Map Service (WMS)
-    link_href: https://btaagdp.org/help/web-services
-    popover_title: Help - Web Map Service (WMS)
-    popover_text: A Web Map Service displays a geospatial dataset as map images.
+# Toggle the help text feature that offers users context
+HELP_TEXT:
+  viewer_protocol:
+      - 'download'
+      - 'dynamic_map_layer'
+      - 'feature_layer'
+      - 'iiif'
+      - 'iiif_manifest'
+      - 'image_map_layer'
+      - 'index_map'
+      - 'tiled_map_layer'
+      - 'wms'
+      - 'oembed'
