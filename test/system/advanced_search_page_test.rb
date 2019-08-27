@@ -14,5 +14,7 @@ class AdvancedSearchPageTest < ApplicationSystemTestCase
       assert page.has_content?("Type")
       assert page.has_content?("Year")
     end
+
+    assert_equal page.all('select#f1 option').map(&:value), %w(keyword title placename publisher)
   end
 end
