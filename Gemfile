@@ -64,7 +64,7 @@ gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '~> 2.1.0'
+gem 'geoblacklight', '~> 2.2.0'
 
 # Image migration
 gem 'geoblacklight_sidecar_images', '~> 0.6.0'
@@ -88,6 +88,7 @@ gem 'devise'
 gem 'devise-guests', '~> 0.6'
 
 gem 'haml'
+gem 'chronic'
 
 # Dotenv
 gem 'dotenv-rails'

@@ -215,7 +215,7 @@ GEM
       rsolr
       sanitize
       thor
-    geoblacklight (2.1.2)
+    geoblacklight (2.2.1)
       blacklight (~> 7.0)
       coderay
       config
@@ -497,6 +497,7 @@ DEPENDENCIES
   capybara-selenium
   carrierwave (~> 1.2)
   chosen-rails
+  chronic
   coffee-rails (~> 4.2)
   database_cleaner
   devise
@@ -506,7 +507,7 @@ DEPENDENCIES
   exception_notification (~> 4.3.0)
   factory_bot_rails
   foreman
-  geoblacklight (~> 2.1.0)
+  geoblacklight (~> 2.2.0)
   geoblacklight-icons!
   geoblacklight_sidecar_images (~> 0.6.0)
   haml
