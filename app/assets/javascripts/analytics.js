@@ -79,4 +79,18 @@ Blacklight.onLoad(function() {
     var data = $(this);
     window._gaq.push(['_trackEvent', $.trim(data[0].innerText), window.location.href.split("/").pop()]);
   });
+
+  // Log all facet expand/collapse clicks
+  $('#facets h3').on('click', function(){
+    var label = $(this).text();
+    var heading_values = ['Facets', 'collapse_expand', label];
+    _gaq.push(['_trackEvent'].concat(heading_values));
+  });
+
+  // Log all facet more link clicks
+  $('#facets li.more_facets a').on('click', function(){
+    var label = $(this).find("span").text();
+    var heading_values = ['Facets', 'more_link', label];
+    _gaq.push(['_trackEvent'].concat(heading_values));
+  });
 });
