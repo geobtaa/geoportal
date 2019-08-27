@@ -6,17 +6,14 @@ class SolrDocumentSidecar < ApplicationRecord
   include Statesman::Adapters::ActiveRecordQueries
 
   # Deprecated - Carrierwave
-  mount_uploader :image, ImageUploader
+  mount_uploader :cw_image, ImageUploader
 
   # ActiveStorage
-  has_one_attached :as_image
+  has_one_attached :image
 
   belongs_to :document, required: true, polymorphic: true
   has_many :image_upload_transitions, autosave: false, dependent: :destroy
   has_many :sidecar_image_transitions, autosave: false, dependent: :destroy
-
-  # If the sidecar is updated, need to re-fetch thumbnail image
-  # after_update :reimage, if: :saved_change_to_version?
 
   # Roll our own polymorphism because our documents are not AREL-able
   def document

@@ -7,11 +7,11 @@
     </span>
     <div class='col-xs-11'>
       <div class='media'>
-        <%- if document.sidecar.as_image.attached? %>
-          <%- if document.sidecar.as_image.variable? %>
-            <%= image_tag document.sidecar.as_image.variant(resize: "100x100"), {class: 'mr-3'} %>
+        <%- if document.sidecar.image.attached? %>
+          <%- if document.sidecar.image.variable? %>
+            <%= image_tag document.sidecar.image.variant(resize: "100x100"), {class: 'mr-3'} %>
           <%- else %>
-            <%= image_tag document.sidecar.as_image, {class: 'mr-3'} %>
+            <%= image_tag document.sidecar.image, {class: 'mr-3'} %>
           <%- end %>
         <%- else %>
             <span class="icon square mr-3" title="<%=document[Settings.FIELDS.GEOM_TYPE]%>">

@@ -1,5 +1,7 @@
 class CreateSidecarImageTransitions < ActiveRecord::Migration[5.2]
   def change
+    rename_column :solr_document_sidecars, :image, :cw_image
+
     create_table :sidecar_image_transitions do |t|
       t.string :to_state, null: false
       t.text :metadata
@@ -30,7 +32,7 @@ class CreateSidecarImageTransitions < ActiveRecord::Migration[5.2]
     puts "MIGRATION TASK - COPY CARRIERWAVE ASSETS to ACTIVE_STOREAGE"
     SolrDocumentSidecar.in_state(:succeeded).each do |sidecar|
       begin
-        sidecar.as_image.attach(io: open(sidecar.image.file.file), filename: sidecar.image.file.filename)
+        sidecar.image.attach(io: open(sidecar.cw_image.file.file), filename: sidecar.cw_image.file.filename)
         puts "#{sidecar.id} - asset successfully migrated"
       rescue => e
         puts "#{sidecar.id} - asset failed to migrate"
