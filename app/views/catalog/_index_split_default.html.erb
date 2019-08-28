@@ -9,7 +9,7 @@
       <div class='media'>
         <%- if document.sidecar.image.attached? %>
           <%- if document.sidecar.image.variable? %>
-            <%= image_tag document.sidecar.image.variant(resize: "100x100"), {class: 'mr-3'} %>
+            <%= image_tag document.sidecar.image.variant(resize: "200"), {class: 'mr-3'} %>
           <%- else %>
             <%= image_tag document.sidecar.image, {class: 'mr-3'} %>
           <%- end %>
