@@ -60,7 +60,7 @@ en:
       services: 'Web services'
       services_close: 'Close'
     relations:
-      ancestor: 'Parent Record'
+      ancestor: 'Collection'
       descendant: 'Related Records (%{count})'
       browse_all: "Browse all %{count} records..."
       title: 'Related Items'
