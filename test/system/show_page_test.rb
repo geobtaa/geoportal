@@ -126,6 +126,7 @@ class ShowPageTest < ApplicationSystemTestCase
   end
 
   def test_relations_related_records
+    skip('Moving to dct_isPartOf_sm for relations')
     visit "/catalog/88cc9b19-3294-4da9-9edd-775c81fb1c59"
     assert page.has_content?("Wabash River Topographic Maps: Indiana, 1929")
 
@@ -196,6 +197,7 @@ class ShowPageTest < ApplicationSystemTestCase
   end
 
   def test_browse_descendants
+    skip('Moving to dct_isPartOf_sm for relations')
     visit "/catalog/princeton-1r66j405w"
     # Browse Relations
     click_link("Browse all 4 records...")
