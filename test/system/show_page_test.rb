@@ -236,4 +236,11 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_selector?("[data-protocol='Oembed']")
   end
 
+  def test_collection_ancestor
+    visit '/catalog/e84a24f0-1c00-4235-a584-db5d7551cbe6'
+
+    # Data Relations
+    assert page.has_content?("Related Items")
+    assert page.has_content?("Collection")
+  end
 end
