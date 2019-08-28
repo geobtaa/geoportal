@@ -157,8 +157,8 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_link?("Original GeoTIFF")
 
     # Data Relations
-    assert page.has_content?("Related Items")
-    assert page.has_content?("Parent Record")
+    # assert page.has_content?("Related Items")
+    # assert page.has_content?("Parent Record")
   end
 
   def test_fullscreen_map_toggle
