@@ -4,7 +4,7 @@ job_type :logrotate, '/usr/sbin/logrotate -s :path/../../shared/tmp/logrotate.st
 
 # Harvest thumbnail images for search results
 every :day, at: '12:05am', roles: [:app] do
-  rake 'geoportal:queue_incomplete_states'
+  rake 'gblsci:images:harvest_retry'
 end
 every :day, at: '12:30am', roles: [:app] do
   rake 'sitemap:refresh'

@@ -26,7 +26,6 @@ class CatalogController < ApplicationController
 
     # Advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
-    # config.advanced_search[:qt] ||= 'advanced'
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
     config.advanced_search[:form_solr_parameters] ||= {}
@@ -201,7 +200,50 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
-    config.add_search_field 'all_fields', :label => 'All Fields'
+    config.add_search_field('all_fields') do |field|
+      field.include_in_advanced_search = false
+      field.label = 'All Fields'
+    end
+
+    config.add_search_field('keyword') do |field|
+      field.include_in_simple_select = false
+      field.qt = 'search'
+      field.label = 'Keyword'
+      field.solr_local_parameters = {
+        qf: '$qf',
+        pf: '$pf'
+      }
+    end
+
+    config.add_search_field('title') do |field|
+      field.include_in_simple_select = false
+      field.qt = 'search'
+      field.label = 'Title'
+      field.solr_local_parameters = {
+        qf: '$title_qf',
+        pf: '$title_pf'
+      }
+    end
+
+    config.add_search_field('placename') do |field|
+      field.include_in_simple_select = false
+      field.qt = 'search'
+      field.label = 'Place'
+      field.solr_local_parameters = {
+        qf: '$placename_qf',
+        pf: '$placename_pf'
+      }
+    end
+
+    config.add_search_field('publisher') do |field|
+      field.include_in_simple_select = false
+      field.qt = 'search'
+      field.label = 'Publisher/Creator'
+      field.solr_local_parameters = {
+        qf: '$publisher_qf',
+        pf: '$publisher_pf'
+      }
+    end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and

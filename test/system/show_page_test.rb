@@ -157,8 +157,8 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_link?("Original GeoTIFF")
 
     # Data Relations
-    assert page.has_content?("Related Items")
-    assert page.has_content?("Parent Record")
+    # assert page.has_content?("Related Items")
+    # assert page.has_content?("Parent Record")
   end
 
   def test_fullscreen_map_toggle
@@ -229,4 +229,18 @@ class ShowPageTest < ApplicationSystemTestCase
     end
   end
 
+  def test_oembed_map
+    visit "/catalog/stanford-dc482zx1528"
+
+    assert page.has_selector?("#map")
+    assert page.has_selector?("[data-protocol='Oembed']")
+  end
+
+  def test_collection_ancestor
+    visit '/catalog/e84a24f0-1c00-4235-a584-db5d7551cbe6'
+
+    # Data Relations
+    assert page.has_content?("Related Items")
+    assert page.has_content?("Collection")
+  end
 end

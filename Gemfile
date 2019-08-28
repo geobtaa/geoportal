@@ -64,8 +64,13 @@ gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '~> 2.1.0'
-gem 'geoblacklight_sidecar_images', git: 'https://github.com/ewlarson/geoblacklight_sidecar_images.git', :branch => 'geoportal-legacy'
+gem 'geoblacklight', '~> 2.2.0'
+
+# Image migration
+gem 'geoblacklight_sidecar_images', '~> 0.6.0'
+gem 'carrierwave', '~> 1.2'
+gem 'mini_magick', '~> 4.9.4'
+
 gem 'statesman', '~> 3.4.1'
 gem 'sidekiq', '~> 5.1.3'
 gem 'sidekiq-failures', '~> 1.0.0'
@@ -83,6 +88,7 @@ gem 'devise'
 gem 'devise-guests', '~> 0.6'
 
 gem 'haml'
+gem 'chronic'
 
 # Dotenv
 gem 'dotenv-rails'

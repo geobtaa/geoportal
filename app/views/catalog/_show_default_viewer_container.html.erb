@@ -8,15 +8,8 @@
     <div id='viewer-container' class="col-md-12 spinner">
   <% end %>
 
-  <% if Settings.B1G_HELP.send(document.viewer_protocol) %>
-    <h6 class="viewer help-text"">
-      <a data-toggle="popover" title="<%=Settings.B1G_HELP.send(document.viewer_protocol).popover_title %>" data-content="<%=Settings.B1G_HELP.send(document.viewer_protocol).popover_text %>" class="help-link" href="<%=Settings.B1G_HELP.send(document.viewer_protocol).link_href %>">
-        <%=Settings.B1G_HELP.send(document.viewer_protocol).link_text %>
-        <span class="icon baseline">
-          <%= inline_svg("info-circle-solid.svg") %>
-        </span>
-      </a>
-    </h6>
+  <% if show_help_text?('viewer_protocol', document.viewer_protocol) %>
+    <%= render_help_text_entry('viewer_protocol', document.viewer_protocol) %>
   <% end %>
 
   <% if document.viewer_protocol != "download" %>

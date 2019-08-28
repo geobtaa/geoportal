@@ -7,12 +7,16 @@
     </span>
     <div class='col-xs-11'>
       <div class='media'>
-        <%- if document.sidecar.image_url %>
-          <img class='mr-3' src="<%=document.sidecar.image_url(:square)%>" alt="<%=document[blacklight_config.index.title_field]%>" title="<%=document[blacklight_config.index.title_field]%>"/>
+        <%- if document.sidecar.image.attached? %>
+          <%- if document.sidecar.image.variable? %>
+            <%= image_tag document.sidecar.image.variant(resize: "200"), {class: 'mr-3'} %>
+          <%- else %>
+            <%= image_tag document.sidecar.image, {class: 'mr-3'} %>
+          <%- end %>
         <%- else %>
-          <span class="icon square mr-3" title="<%=document[Settings.FIELDS.GEOM_TYPE]%>">
-            <%= inline_svg("#{document[Settings.FIELDS.GEOM_TYPE].downcase.gsub(" ", "-")}.svg", {title: document[Settings.FIELDS.GEOM_TYPE]}) %>
-          </span>
+            <span class="icon square mr-3" title="<%=document[Settings.FIELDS.GEOM_TYPE]%>">
+              <%= inline_svg("#{document[Settings.FIELDS.GEOM_TYPE].downcase.gsub(" ", "-")}.svg", {title: document[Settings.FIELDS.GEOM_TYPE]}) %>
+            </span>
         <%- end %>
         <div class='media-body'>
           <p class='mt-0'><%= link_to_document document, counter: counter, title: document[blacklight_config.index.title_field] %>

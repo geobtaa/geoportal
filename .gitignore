@@ -29,6 +29,9 @@ public/uploads/*
 # Ignore public/uploads
 public/uploads/*
 
+# Ignore storage
+storage/*
+
 vendor/*
 node_modules/*
 
