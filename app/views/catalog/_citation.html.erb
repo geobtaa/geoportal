@@ -5,32 +5,49 @@
 </div>
 <div class="modal-body">
   <% @documents.each do |document| %>
-    <p>
-      <% if document["dc_creator_sm"].present? %>
-        <%= document["dc_creator_sm"].join(', ') %>.
-      <% else %>
-         [creator not found],
-      <% end %>
+    <% case document["dc_type_sm"].present? && document["dc_type_sm"].join(",").downcase %>
+    <% when "collection" %>
+      <p>
+        <% if document["dc_title_s"].present? %>
+          <i><%= document["dc_title_s"] %></i>.
+        <% end %>
 
-      <% if document["dct_issued_s"].present? %>
-        (<%= citation_dct_issued_s(document["dct_issued_s"]) %>).
-      <% else %>
-        <% # @TODO: guard against 9999s %>
-        (<%= citation_solr_year_i(document["solr_year_i"]) %>).
-      <%- end %>
+        <% if document["dc_publisher_sm"].present? %>
+          <%= document["dc_publisher_sm"].join(', ') %>.
+        <% end %>
 
-      <% if document["dc_title_s"].present? %>
-        <i><%= document["dc_title_s"] %></i>.
-      <% end %>
+        <% if document.references.url.present? %>
+          <%= document.references.url.endpoint %>
+        <% end %>
+      </p>
+    <% else %>
+      <p>
+        <% if document["dc_creator_sm"].present? %>
+          <%= document["dc_creator_sm"].join(', ') %>.
+        <% else %>
+           [creator not found],
+        <% end %>
 
-      <% if document["dc_publisher_sm"].present? %>
-        <%= document["dc_publisher_sm"].join(', ') %>.
-      <% end %>
+        <% if document["dct_issued_s"].present? %>
+          (<%= citation_dct_issued_s(document["dct_issued_s"]) %>).
+        <% else %>
+          <% # @TODO: guard against 9999s %>
+          (<%= citation_solr_year_i(document["solr_year_i"]) %>).
+        <%- end %>
 
-      <% if document.references.url.present? %>
-        <%= document.references.url.endpoint %>
-      <% end %>
-    </p>
+        <% if document["dc_title_s"].present? %>
+          <i><%= document["dc_title_s"] %></i>.
+        <% end %>
+
+        <% if document["dc_publisher_sm"].present? %>
+          <%= document["dc_publisher_sm"].join(', ') %>.
+        <% end %>
+
+        <% if document.references.url.present? %>
+          <%= document.references.url.endpoint %>
+        <% end %>
+      </p>
+    <% end %>
 
     <p>
       <strong>Available from:</strong>
