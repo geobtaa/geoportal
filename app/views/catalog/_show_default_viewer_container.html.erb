@@ -16,7 +16,7 @@
     <%= content_tag :div, id: 'map', data: { map: 'item', protocol: document.viewer_protocol.camelize, url: document.viewer_endpoint, 'layer-id' => document.wxs_identifier, 'map-bbox' => document.bounding_box_as_wsen, 'catalog-path'=> search_catalog_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
     <% end %>
   <% else %>
-    <%= content_tag :div, id: 'map', class: "", data: { map: 'item', protocol: document.viewer_protocol.camelize, url: "#{remote_image_link(document.viewer_endpoint)}", 'layer-id' => document.wxs_identifier, 'map-bbox' => document.bounding_box_as_wsen, 'catalog-path'=> search_catalog_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
+    <%= content_tag :div, id: 'map', class: "", data: { map: 'item', protocol: document.viewer_protocol.camelize, url: "#{remote_image_link(document)}", 'layer-id' => document.wxs_identifier, 'map-bbox' => document.bounding_box_as_wsen, 'catalog-path'=> search_catalog_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
     <% end %>
   <% end %>
 </div>

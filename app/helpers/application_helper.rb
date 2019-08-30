@@ -5,13 +5,12 @@ module ApplicationHelper
     Rails.root.join("public/uploads/localized/#{url_hash}")
   end
 
-  def remote_image_link(url)
-    url_hash = Digest::MD5.hexdigest(url)
-    if File.exist? localized_image_path(url_hash)
-      geoportal_image_link = asset_url("uploads/localized/#{url_hash}")
+  def remote_image_link(document)
+    if document.sidecar.image.attached?
+      geoportal_image_link = Rails.application.routes.url_helpers.rails_blob_path(document.sidecar.image, only_path: true)
     else
-      external_image_link = url
-      LocalizeImageJob.perform_later(url)
+      external_image_link = document.viewer_endpoint
+      LocalizeImageJob.perform_later(document)
       external_image_link
     end
   end

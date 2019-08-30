@@ -3,18 +3,11 @@
 class LocalizeImageJob < ApplicationJob
   queue_as :default
 
-  def perform(url)
-    url_hash = Digest::MD5.hexdigest(url)
-
+  def perform(document)
     begin
-      Down.download(
-        url,
-        :destination => Rails.root.join("public/uploads/localized/#{url_hash}")
-      )
-
-      FileUtils.chmod 0644, Rails.root.join("public/uploads/localized/#{url_hash}")
+      GeoblacklightSidecarImages::ImageService.new(document).store
     rescue
-      Rails.logger.debug("Failed to localize image - #{url}")
+      Rails.logger.debug("Failed to localize image - #{document}")
     end
   end
 end
