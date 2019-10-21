@@ -93,4 +93,9 @@ Blacklight.onLoad(function() {
     var heading_values = ['Facets', 'more_link', label];
     _gaq.push(['_trackEvent'].concat(heading_values));
   });
+
+  // Log all item viewer definition rollovers
+  $('#viewer-container a[data-toggle="popover"]').hover(function(){
+    window._gaq.push(['_trackEvent', 'Item Viewer Popover', window.location.href.split("/").pop()]);
+  });
 });
