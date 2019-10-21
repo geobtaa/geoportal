@@ -86,7 +86,7 @@ gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'm
 
 gem 'rsolr', '>= 1.0'
 gem 'jquery-rails'
-gem 'devise'
+gem "devise", ">= 4.7.1"
 gem 'devise-guests', '~> 0.6'
 
 gem 'haml'
