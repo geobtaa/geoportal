@@ -245,4 +245,16 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_content?("Related Items")
     assert page.has_content?("Collection")
   end
+
+  def test_citation_tool
+    visit '/catalog/b06d96e4-c917-4afc-a3df-adbbc9a2273c'
+
+    # Citation
+    assert page.has_link?("Cite")
+    visit '/catalog/b06d96e4-c917-4afc-a3df-adbbc9a2273c/citation'
+
+    # Available from link should include slug
+    assert page.has_content?("b06d96e4-c917-4afc-a3df-adbbc9a2273c")
+  end
+
 end

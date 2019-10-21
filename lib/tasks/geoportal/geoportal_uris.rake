@@ -75,7 +75,7 @@ namespace :geoportal do
     # Create a CSV Dump of Results
     file = "#{Rails.root}/public/#{Time.now.strftime('%Y-%m-%d_%H-%M-%S')}.uri_report.csv"
 
-    uris = SolrDocumentUri.all
+    uris = SolrDocumentUri.not_in_state(:succeeded)
 
     CSV.open(file, 'w') do |writer|
       header = [

@@ -14,4 +14,8 @@ class ApplicationHelperTest < ActionView::TestCase
   test "citation date - 2015-11-18T11:02:15.705119" do
     assert_equal "Nov 18, 2015", citation_dct_issued_s('2015-11-18T11:02:15.705119')
   end
+
+  test "citation date - 2004-01-00" do
+    assert_equal "2004-01-00", citation_dct_issued_s('2004-01-00')
+  end
 end

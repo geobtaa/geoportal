@@ -66,6 +66,8 @@ gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '~> 2.2.0'
 
+gem "rubyzip", ">= 1.3.0"
+
 # Image migration
 gem 'geoblacklight_sidecar_images', '~> 0.6.0'
 gem 'carrierwave', '~> 1.2'
@@ -84,7 +86,7 @@ gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'm
 
 gem 'rsolr', '>= 1.0'
 gem 'jquery-rails'
-gem 'devise'
+gem "devise", ">= 4.7.1"
 gem 'devise-guests', '~> 0.6'
 
 gem 'haml'
