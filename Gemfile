@@ -66,6 +66,8 @@ gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '~> 2.2.0'
 
+gem "rubyzip", ">= 1.3.0"
+
 # Image migration
 gem 'geoblacklight_sidecar_images', '~> 0.6.0'
 gem 'carrierwave', '~> 1.2'
