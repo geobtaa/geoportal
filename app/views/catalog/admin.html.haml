@@ -1,0 +1,63 @@
+%h3=@document[blacklight_config.index.title_field]
+
+%hr
+
+%h3 SolrDocument
+%div.solr-document
+  = @document.inspect
+
+%br
+%h3 Item Viewer
+%table.table
+  %thead
+    %tr
+      %th Protocol
+      %th Endpoint
+  %tbody
+    %tr
+      %td= @document.viewer_protocol
+      %td= link_to(@document.viewer_endpoint, @document.viewer_endpoint)
+
+%h3 Thumbnail
+%table.table
+  %thead
+    %tr
+      %th Display
+      %th Attached
+      %th State
+      %th Last Transition
+  %tbody
+    %tr
+      - if @document.sidecar.image.attached?
+        %td
+          %div.media
+            %span.mr-3= image_tag @document.sidecar.image
+      - else
+        %td
+          %div.media
+            %span.icon.square.mr-3= inline_svg("#{@document[Settings.FIELDS.GEOM_TYPE].downcase.gsub(" ", "-")}.svg", {title: @document[Settings.FIELDS.GEOM_TYPE]})
+
+      %td= @document.sidecar.image.attached?
+      %td= @document.sidecar.image_state.current_state
+      %td
+        - if @document.sidecar.image_state.last_transition
+          = @document.sidecar.image_state.last_transition.metadata
+
+%h3 URIs
+%table.table.responsive
+  %thead
+    %tr
+      %th State
+      %th Key
+      %th Value
+
+  %tbody
+    - @document.uris.each do |uri|
+      %tr
+        %td= uri.state_machine.current_state
+        %td= uri.uri_key
+        %td
+          = link_to(uri.uri_value, uri.uri_value)
+
+:javascript
+  new Readmore( '.solr-document', { maxHeight: 40 } );
