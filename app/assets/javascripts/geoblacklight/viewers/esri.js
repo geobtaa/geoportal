@@ -8,11 +8,37 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
     this.map = L.map(this.element).fitBounds(this.options.bbox);
     this.map.addLayer(this.selectBasemap());
     this.map.addLayer(this.overlay);
+    this.testNetwork();
+
     if (this.data.available) {
       this.getEsriLayer();
     } else {
       this.addBoundsOverlay(this.options.bbox);
     }
+  },
+
+  testNetwork: function() {
+    var _this = this;
+    xhr = new XMLHttpRequest();
+    xhr.onerror = (error) => this.displayLayerError();
+    xhr.open('GET', _this.data.url);
+    xhr.send();
+  },
+
+  displayLayerError: function(error_message = '') {
+    $('.help-text.viewer_protocol').append(
+    "<span class='float-right badge badge-danger'>" + "Network Error" + error_message + '</span>'
+    )
+  },
+
+  displayLayerLoading: function() {
+    $('.help-text.viewer_protocol').append(
+    "<span class='float-right badge badge-warning'>" + "Data Loading" +'</span>'
+    )
+  },
+
+  displayLayerSuccess: function() {
+    $('.help-text.viewer_protocol span').remove()
   },
 
   getEsriLayer: function() {
@@ -21,7 +47,11 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
     // remove any trailing slash from endpoint url
     _this.data.url = _this.data.url.replace(/\/$/, '');
     L.esri.get(_this.data.url, {}, function(error, response){
-      if(!error) {
+      if(error) {
+        _this.displayLayerError(" - " + error.message);
+        console.log(error);
+      }
+      else {
         _this.layerInfo = response;
 
         // get layer as defined in submodules (e.g. esri/mapservice)
@@ -37,11 +67,11 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
   },
 
   addPreviewLayer: function(layer) {
-
     // if not null, add layer to map
     if (layer) {
 
       this.overlay.addLayer(layer);
+      this.displayLayerSuccess();
       return true;
     }
   },
