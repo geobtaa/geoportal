@@ -1,0 +1,58 @@
+{
+  "geoblacklight_version": "1.0",
+  "layer_geom_type_s": "Vector",
+  "layer_modified_dt": "2019-09-20T18:19:08Z",
+  "solr_geom": "ENVELOPE(-86.3291,-85.9369,39.9278,39.6322)",
+  "dct_references_s": "{\"http://schema.org/url\":\"http://data1-indygis.opendata.arcgis.com/datasets/458cf4b7d44543d2a3bee3bd92914af9_3\",\"http://schema.org/downloadUrl\":\"http://data1-indygis.opendata.arcgis.com/datasets/458cf4b7d44543d2a3bee3bd92914af9_3.zip\",\"urn:x-esri:serviceType:ArcGIS#DynamicMapLayer\":\"https://xmaps.indy.gov/arcgis/rest/services/OpenData/OpenData_Boundaries/MapServer/3\"}",
+  "dc_rights_s": "Public",
+  "b1g_centroid_ss": "39.78,-86.133",
+  "dc_description_s": "Polygon file representing parcel boundaries in Indianapolis and Marion County, Indiana with address attributes.Data projection: NAD 1983 StatePlane Indiana East FIPS 1301 (US Feet)",
+  "b1g_status_s": "Active",
+  "dct_provenance_s": "Indiana",
+  "dc_subject_sm": [
+    "Planning and Cadastral"
+  ],
+  "dc_language_sm": [
+    "English"
+  ],
+  "dc_format_s": "Shapefile",
+  "suppressed_b": false,
+  "dct_accrualMethod_s": "ArcGIS Hub",
+  "b1g_code_s": "01c-02",
+  "dct_issued_s": "2016-01-14",
+  "b1g_genre_sm": [
+    "Geospatial data"
+  ],
+  "dct_temporal_sm": [
+    "2016"
+  ],
+  "dc_creator_sm": [
+    "City of Indianapolis and Marion County - IndyGIS"
+  ],
+  "b1g_keyword_sm": [
+    "Indianapolis",
+    "Marion County",
+    "Boundaries",
+    "Parcels",
+    "Building Blocks"
+  ],
+  "dct_isPartOf_sm": [
+    "01c-02"
+  ],
+  "solr_year_i": 2016,
+  "dct_spatial_sm": [
+    "City of Indianapolis, Indiana",
+    "Indiana"
+  ],
+  "dc_publisher_sm": [
+    "City of Indianapolis, Indiana"
+  ],
+  "dc_identifier_s": "458cf4b7d44543d2a3bee3bd92914af9_3",
+  "dc_type_sm": [
+    "Dataset",
+    "Service"
+  ],
+  "dc_title_s": "Parcels: Indianapolis, Indiana",
+  "layer_slug_s": "458cf4b7d44543d2a3bee3bd92914af9_3",
+  "b1g_dateAccessioned_s": "2019-03-28"
+}
