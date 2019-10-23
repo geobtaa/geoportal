@@ -4,6 +4,7 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
   layerInfo: {},
 
   load: function() {
+    this.displayLayerLoading();
     this.options.bbox = L.bboxToBounds(this.data.mapBbox);
     this.map = L.map(this.element).fitBounds(this.options.bbox);
     this.map.addLayer(this.selectBasemap());
@@ -26,12 +27,14 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
   },
 
   displayLayerError: function(error_message = '') {
+    $('.help-text.viewer_protocol span').remove()
     $('.help-text.viewer_protocol').append(
     "<span class='float-right badge badge-danger'>" + "Network Error" + error_message + '</span>'
     )
   },
 
   displayLayerLoading: function() {
+    $('.help-text.viewer_protocol span').remove()
     $('.help-text.viewer_protocol').append(
     "<span class='float-right badge badge-warning'>" + "Data Loading" +'</span>'
     )
