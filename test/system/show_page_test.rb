@@ -267,4 +267,12 @@ class ShowPageTest < ApplicationSystemTestCase
   # ESRI - Deleted - Feature Layer
   # http://localhost:3000/catalog/4d2053c593cc4f7685f2823f9e2061b8_1
 
+  # ESRI - Nonsecure -
+  # http://localhost:3000/catalog/2ba463d1c6114f74ac4c785fe19e8d1e_10
+
+  # ESRI - Extremely Large
+  # http://localhost:3000/catalog/ab0f0408fcb5479e97df5a13d9a3c648_0
+
+  # ESRI - Visibility Extent
+  # http://localhost:3000/catalog/458cf4b7d44543d2a3bee3bd92914af9_3
 end
