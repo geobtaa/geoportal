@@ -75,6 +75,7 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (9.6.1)
       execjs
+    awesome_print (1.8.0)
     bcrypt (3.1.13)
     bindex (0.8.1)
     blacklight (7.0.1)
@@ -486,6 +487,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable (~> 2.5.0)
+  awesome_print
   blacklight (~> 7.0)
   blacklight_advanced_search!
   blacklight_range_limit (~> 7.0.0)
