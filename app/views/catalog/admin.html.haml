@@ -1,10 +1,20 @@
 %h3=@document[blacklight_config.index.title_field]
 
+%table.table.table-borderless.table-sm
+  %thead
+    %tr
+      %th Provenance
+      %th Indexed
+
+  %tbody
+    %tr
+      %td= @document._source['dct_provenance_s']
+      %td= DateTime.parse(@document._source['timestamp']).strftime('%D %r')
 %hr
 
 %h3 SolrDocument
 %div.solr-document
-  = @document.inspect
+  != ap @document.to_h
 
 %br
 %h3 Item Viewer
