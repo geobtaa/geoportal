@@ -257,4 +257,14 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_content?("b06d96e4-c917-4afc-a3df-adbbc9a2273c")
   end
 
+  # @TODO
+  # ESRI - CORS Error - DynamicMapLayer
+  # http://localhost:3000/catalog/4669301e-b4b2-4c8b-bf40-01b968a2865b
+
+  # ESRI - Slow - ImageMapLayer
+  # http://localhost:3000/catalog/457dc8bbff9b46848843c8b1bf0ae689
+
+  # ESRI - Deleted - Feature Layer
+  # http://localhost:3000/catalog/4d2053c593cc4f7685f2823f9e2061b8_1
+
 end
