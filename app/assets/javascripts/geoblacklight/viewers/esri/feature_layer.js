@@ -19,7 +19,7 @@ GeoBlacklight.Viewer.FeatureLayer = GeoBlacklight.Viewer.Esri.extend({
     this.options.style = this.getFeatureStyle();
 
     // define feature layer
-    this.esriFeatureLayer = L.esri.featureLayer(this.options);
+    this.esriFeatureLayer = L.esri.Cluster.featureLayer(this.options);
 
     //setup feature inspection and opacity
     this.setupInspection(this.esriFeatureLayer);
