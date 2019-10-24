@@ -30,8 +30,11 @@
 //= require handlebars.runtime
 //= require geoblacklight/geoblacklight
 //= require geoblacklight/viewers/viewer
+//= require leaflet-iiif
+//= require esri-leaflet
 //= require Leaflet/Leaflet.fullscreen/Leaflet.fullscreen.js
 //= require Leaflet/leaflet.markercluster/leaflet.markercluster.js
+//= require Leaflet/leaflet.esri_leaflet_cluster/esri_leaflet_cluster.js
 //= require oboe/oboe-browser.js
 //= require screenfull/screenfull.min.js
 //= require geoportal
