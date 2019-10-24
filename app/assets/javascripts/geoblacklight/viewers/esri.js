@@ -35,9 +35,14 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
       "<span class='float-right badge badge-danger'>" + "Network Error" + error_message + '</span>'
     );
 
-    var esriError = $('#esri-error');
-    esriError.show();
-    $('#map').append(esriError);
+    $('#map').append(
+      "<div id='esri-error'>" +
+        "<div class='content'>" +
+          "<h3>Our Apologies</h3>" +
+          "<h4>A web service preview for this map is unavailable.</h4>" +
+        "</div>" +
+      "</div>"
+    );
 
     $('#attribute-table').hide();
   },
