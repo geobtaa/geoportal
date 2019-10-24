@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     concerns :searchable
   end
 
+  get '/catalog/:id/admin' => 'catalog#admin', as: 'admin_catalog'
+
   devise_for :users
 
   resources :suggest, only: :index, defaults: { format: 'json' }

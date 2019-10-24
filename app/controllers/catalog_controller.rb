@@ -300,4 +300,11 @@ class CatalogController < ApplicationController
     config.autocomplete_path = 'suggest'
   end
 
+  # Administrative view of document
+  # - Sidecar Image
+  # - URIs
+  def admin
+    deprecated_response, @document = search_service.fetch(params[:id])
+  end
+
 end
