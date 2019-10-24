@@ -22,7 +22,7 @@ Blacklight.onLoad(function() {
       .node('*', function( doc ){
           if(typeof doc.b1g_centroid_ss != 'undefined'){
             var latlng = doc.b1g_centroid_ss.split(",")
-            markers.addLayer(L.marker([latlng[0],latlng[1]])).bindPopup("<a href='/catalog/" + doc.layer_slug_s + "'>" + doc.dc_title_s + "</a>");
+            markers.addLayer(L.marker([latlng[0],latlng[1]]).bindPopup("<a href='/catalog/" + doc.layer_slug_s + "'>" + doc.dc_title_s + "</a>"));
           }
         }
       )
