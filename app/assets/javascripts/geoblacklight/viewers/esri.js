@@ -46,7 +46,7 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
 
     $('#attribute-table').hide();
 
-    // Log all item viewer definition rollovers
+    // Log all item viewer errors
     window._gaq.push(['_trackEvent', 'Item Viewer Error', window.location.href.split("/").pop()]);
   },
 
