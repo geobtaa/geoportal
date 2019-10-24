@@ -18,6 +18,7 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
     }
   },
 
+  // Check the data url to see if CORS or http (non-secure) error exists
   testNetwork: function() {
     var _this = this;
     xhr = new XMLHttpRequest();
@@ -26,13 +27,22 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
     xhr.send();
   },
 
+  // Warn the user the web service is unavailable
   displayLayerError: function(error_message = '') {
     $('.help-text.viewer_protocol span').remove()
+
     $('.help-text.viewer_protocol').append(
-    "<span class='float-right badge badge-danger'>" + "Network Error" + error_message + '</span>'
-    )
+      "<span class='float-right badge badge-danger'>" + "Network Error" + error_message + '</span>'
+    );
+
+    var esriError = $('#esri-error');
+    esriError.show();
+    $('#map').append(esriError);
+
+    $('#attribute-table').hide();
   },
 
+  // Add badge for layer data loading
   displayLayerLoading: function() {
     $('.help-text.viewer_protocol span').remove()
     $('.help-text.viewer_protocol').append(
@@ -40,6 +50,7 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
     )
   },
 
+  // Success remove any badges
   displayLayerSuccess: function() {
     $('.help-text.viewer_protocol span').remove()
   },
