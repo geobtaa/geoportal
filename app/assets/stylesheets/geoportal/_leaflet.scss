@@ -1,0 +1,15 @@
+#esri-error {
+  z-index: 1000;
+  background-color: black;
+  position: relative;
+  min-height: 440px;
+  opacity: 0.65;
+  color: white;
+
+  .content {
+    padding:2rem;
+    text-align: center;
+    position: relative;
+    top:8rem;
+  }
+}

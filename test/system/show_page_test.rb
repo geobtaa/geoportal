@@ -257,4 +257,28 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_content?("b06d96e4-c917-4afc-a3df-adbbc9a2273c")
   end
 
+  def test_item_viewer_cors_error
+    visit '/catalog/4669301e-b4b2-4c8b-bf40-01b968a2865b'
+    assert page.has_content?("Network Error")
+  end
+
+  def test_item_viewer_nonsecure_error
+    visit '/catalog/4669301e-b4b2-4c8b-bf40-01b968a2865b'
+    assert page.has_content?("Network Error")
+  end
+
+  def test_item_viewer_deleted_feature
+    visit '/catalog/4d2053c593cc4f7685f2823f9e2061b8_1'
+    assert page.has_content?("Network Error - Invalid URL")
+  end
+
+  # @TODO
+  # ESRI - Slow - ImageMapLayer
+  # http://localhost:3000/catalog/457dc8bbff9b46848843c8b1bf0ae689
+
+  # ESRI - Extremely Large
+  # http://localhost:3000/catalog/ab0f0408fcb5479e97df5a13d9a3c648_0
+
+  # ESRI - Visibility Extent
+  # http://localhost:3000/catalog/458cf4b7d44543d2a3bee3bd92914af9_3
 end
