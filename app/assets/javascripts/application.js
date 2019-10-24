@@ -31,7 +31,7 @@
 //= require geoblacklight/geoblacklight
 //= require geoblacklight/viewers/viewer
 //= require Leaflet/Leaflet.fullscreen/Leaflet.fullscreen.js
-//= require Leaflet/leaflet.prunecluster/PruneCluster.js
+//= require Leaflet/leaflet.markercluster/leaflet.markercluster.js
 //= require oboe/oboe-browser.js
 //= require screenfull/screenfull.min.js
 //= require geoportal
