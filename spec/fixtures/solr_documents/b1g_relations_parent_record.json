@@ -24,5 +24,9 @@
     "Academic Institutions Maps"
   ],
   "dc_rights_s": "Public",
-  "layer_slug_s": "09d-01"
+  "layer_slug_s": "09d-01",
+  "b1g_date_range__drsim": [
+    "[2012 TO 2015]",
+    "[2019 TO *]"
+  ]
 }

@@ -15,6 +15,9 @@
   "dct_temporal_sm": [
     "2015-2018"
   ],
+  "b1g_date_range__drsim": [
+    "[2015 TO 2018]"
+  ],
   "b1g_code_s": "02a-02",
   "b1g_genre_sm": [
     "Geospatial data"
