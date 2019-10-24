@@ -112,6 +112,13 @@ class CatalogController < ApplicationController
     }
     config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8, collapse: false
 
+    config.add_facet_field 'date_range_facet_field', label: 'Date Range', :query => {
+       :years_1 => { label: 'within 1 Year', fq: "b1g_date_range_drsim:[#{Time.zone.now.year} TO *]" },
+       :years_5 => { label: 'within 5 Years', fq: "b1g_date_range_drsim:[#{Time.zone.now.year - 5 } TO *]" },
+       :years_10 => { label: 'within 10 Years', fq: "b1g_date_range_drsim:[#{Time.zone.now.year - 10 } TO *]" },
+       :years_25 => { label: 'within 25 Years', fq: "b1g_date_range_drsim:[#{Time.zone.now.year - 25 } TO *]" }
+    }
+
     config.add_facet_field 'time_period', :label => 'Time Period', :query => {
       '1500s' => { :label => '1500s', :fq => "solr_year_i:[1500 TO 1599]" },
       '1600s' => { :label => '1600s', :fq => "solr_year_i:[1600 TO 1699]" },
