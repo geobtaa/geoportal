@@ -60,7 +60,11 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
 
   // Success remove any badges
   displayLayerSuccess: function() {
-    $('.help-text.viewer_protocol span').remove()
+    $('.help-text.viewer_protocol span').fadeTo(4000, 0.01, function(){
+        $(this).slideUp(150, function() {
+            $(this).remove();
+        });
+    });
   },
 
   getEsriLayer: function() {
