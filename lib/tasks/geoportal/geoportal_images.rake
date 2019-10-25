@@ -1,14 +1,15 @@
-# lib/tasks/migrate/users.rake
+# frozen_string_literal: true
+
 namespace :geoportal do
   desc 'Hash of SolrDocumentSidecar state counts'
   task sidecar_states: :environment do
-    states = [
-      :initialized,
-      :queued,
-      :processing,
-      :succeeded,
-      :failed,
-      :placeheld
+    states = i[
+      initialized,
+      queued,
+      processing,
+      succeeded,
+      failed,
+      placeheld
     ]
 
     image_states = {}
@@ -17,7 +18,7 @@ namespace :geoportal do
       image_states[state] = sidecars.size
     end
 
-    image_states.each do |col,state|
+    image_states.each do |col, state|
       puts "#{col} - #{state}"
     end
 
