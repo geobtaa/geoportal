@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :geoportal do
   desc 'Purge URIs and State Transition History'
   task uri_purge: :environment do
@@ -7,36 +9,25 @@ namespace :geoportal do
   end
 
   desc 'Process all URIs'
-  task :uri_process_all, [:override_existing] => [:environment] do |_t, args|
-    begin
-      query = '*:*'
-      index = Geoblacklight::SolrDocument.index
-      results = index.send_and_receive(index.blacklight_config.solr_path,
-                                       q: query,
-                                       fl: "*",
-                                       rows: 100_000_000)
-      num_found = results.response[:numFound]
-      doc_counter = 0
-      results.docs.each do |document|
-        begin
-          document.uris.each do |uri|
-            ProcessUriJob.perform_later(uri.id)
-          end
-        rescue Blacklight::Exceptions::RecordNotFound
-          next
-        end
+  task :uri_process_all, [:override_existing] => [:environment] do
+    query = '*:*'
+    index = Geoblacklight::SolrDocument.index
+    results = index.send_and_receive(index.blacklight_config.solr_path,
+                                     q: query,
+                                     fl: "*",
+                                     rows: 100_000_000)
+    results.docs.each do |document|
+      document.uris.each do |uri|
+        ProcessUriJob.perform_later(uri.id)
       end
+    rescue Blacklight::Exceptions::RecordNotFound
+      next
     end
   end
 
   desc 'Queue incomplete states for reprocessing'
   task uri_queue_incomplete_states: :environment do
-    states = [
-      :initialized,
-      :queued,
-      :processing,
-      :failed
-    ]
+    states = %i[initialized queued processing failed]
 
     states.each do |state|
       uris = SolrDocumentUri.in_state(state)
@@ -51,13 +42,7 @@ namespace :geoportal do
 
   desc 'Hash of SolrDocumentUri state counts'
   task uri_states: :environment do
-    states = [
-      :initialized,
-      :queued,
-      :processing,
-      :succeeded,
-      :failed
-    ]
+    states = %i[initialized queued processing succeeded failed]
 
     col_state = {}
     states.each do |state|
@@ -65,7 +50,7 @@ namespace :geoportal do
       col_state[state] = uris.size
     end
 
-    col_state.each do |col,state|
+    col_state.each do |col, state|
       puts "#{col} - #{state}"
     end
   end
@@ -73,7 +58,10 @@ namespace :geoportal do
   desc 'Write CSV formatted URI state report'
   task uri_report: :environment do
     # Create a CSV Dump of Results
-    file = "#{Rails.root}/public/#{Time.now.strftime('%Y-%m-%d_%H-%M-%S')}.uri_report.csv"
+    file = Rails.root.join(
+      'public',
+      "#{Time.zone.now.strftime('%Y-%m-%d_%H-%M-%S')}.uri_report.csv"
+    )
 
     uris = SolrDocumentUri.not_in_state(:succeeded)
 
@@ -97,7 +85,7 @@ namespace :geoportal do
       uris.each do |uri|
         cat = Blacklight::SearchService.new(config: CatalogController.blacklight_config)
         begin
-          resp, doc = cat.fetch(uri.document_id)
+          _resp, doc = cat.fetch(uri.document_id)
           writer << [
             uri.state_machine.current_state,
             uri.id,
@@ -111,8 +99,8 @@ namespace :geoportal do
             doc._source['b1g_status_s'],
             uri.state_machine.last_transition.metadata['exception']
           ]
-        rescue Exception => e
-          puts "#{e.inspect}"
+        rescue StandardError => error
+          puts error.inspect.to_s
           puts "exception / #{uri.document_id}"
           next
         end
