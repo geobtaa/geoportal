@@ -23,6 +23,9 @@ This project is collectively managed by librarians and geospatial specialists at
 
 The geoportal is built with Geoblacklight, a multi-institutional open-source collaboration for finding and sharing geospatial data. The technical infrastructure for the project is provided by the University of Minnesota Libraries Web Development department.
 
+### Contributing
+Visit the [project wiki](wiki) for developer getting started documentation.
+
 #### Release Version
 
 B1G Geoportal Version 2.2.9 / GeoBlacklight 2.2.1
