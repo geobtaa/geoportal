@@ -3,7 +3,7 @@
 <%- header_classes = homepage? ? 'fixed-top' : nil %>
 <header aria-label='Primary' class="<%= header_classes %>">
   <div id="btaa-header">
-    <div class='container'>
+    <div class='container-fluid'>
       <div class='row'>
         <div class='col-sm-12'>
           <div id="cic-header-navbar" class="navbar navbar-static-top">
@@ -21,25 +21,17 @@
   </div>
 
   <div id='application-header'>
-    <div class='container'>
-      <div class='row'>
-        <div class='col-sm-12'>
-          <nav id="header-navbar" class="navbar navbar-expand-md navbar-dark topbar" role="navigation">
-            <div class="container">
-              <%=link_to "Geoportal", root_path, class: "navbar-brand" %>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#user-util-collapse" aria-controls="user-util-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse justify-content-md-end" id="user-util-collapse">
-                <%= render :partial=>'/user_util_links' %>
-              </div>
-            </div>
-
-
-          </nav>
+    <nav id="header-navbar" class="navbar navbar-expand-md navbar-dark topbar" role="navigation">
+      <div class="container-fluid">
+        <%=link_to "Geoportal", root_path, class: "navbar-brand" %>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#user-util-collapse" aria-controls="user-util-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-md-end" id="user-util-collapse">
+          <%= render :partial=>'/user_util_links' %>
         </div>
       </div>
-    </div>
+    </nav>
   </div>
 </header>
 
