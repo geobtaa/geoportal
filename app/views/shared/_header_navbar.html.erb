@@ -30,11 +30,12 @@
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#user-util-collapse" aria-controls="user-util-collapse" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
               </button>
+              <div class="collapse navbar-collapse justify-content-md-end" id="user-util-collapse">
+                <%= render :partial=>'/user_util_links' %>
+              </div>
             </div>
 
-            <div class="collapse navbar-collapse justify-content-md-end" id="user-util-collapse">
-              <%= render :partial=>'/user_util_links' %>
-            </div>
+
           </nav>
         </div>
       </div>
