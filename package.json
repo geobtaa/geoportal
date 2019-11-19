@@ -18,21 +18,28 @@
   "homepage": "https://github.com/projectblacklight/blacklight#readme",
   "devDependencies": {
     "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/register": "^7.7.0",
+    "babel-loader": "^8.0.6",
     "shx": "^0.3.2",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
     "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@rails/webpacker": "^4.0.7",
-    "babel-loader": "^8.0.6",
+    "@babel/polyfill": "^7.7.0",
+    "@rails/webpacker": "^4.2.0",
     "bloodhound-js": "^1.2.3",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.0",
     "lodash": "^4.17.13",
     "lodash.template": "^4.5.0",
     "mirador": "^3.0.0-alpha.16",
-    "typeahead.js": "^0.11.1"
+    "mirador-dl-plugin": "^0.8.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "typeahead.js": "^0.11.1",
+    "unfetch": "^4.1.0",
+    "url-polyfill": "^1.1.7"
   }
 }
