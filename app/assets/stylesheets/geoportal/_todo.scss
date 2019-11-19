@@ -11,6 +11,7 @@ $radius: 4px;
 }
 
 body {
+  height: 100%;
   background-color:lighten($gray, 18%);
 }
 
@@ -29,54 +30,6 @@ section#home-metadata {
 
 section#map {
   height:600px;
-}
-
-div#home-content-wrapper{
-  background:lighten($gray, 12%) asset_url('aerial_photo.jpg') repeat;
-  height:100%;
-  position:relative;
-  overflow:hidden;
-
-  #wrapper-map {
-    height:100%;
-    position:fixed;
-    margin-top:10rem;
-    left:0;
-    padding-right:0;
-    padding-left:0;
-
-    div#map {
-      height: 100% !important;
-      background-color:#b8e6fe;
-
-      #map-search-btn {
-        position:fixed;
-        bottom:20px;
-        left:11px;
-        z-index:4000;
-        color:$white;
-      }
-    }
-  }
-
-  #wrapper-search {
-    background-color:rgba($black,0.8);
-    padding:2rem;
-    padding-right:4rem;
-    margin-top:10rem;
-    height:100%;
-    overflow-y:scroll;
-    float:right;
-
-    .search-query-form {
-      padding-left:0;
-      padding-right:0;
-      margin-left:1px;
-    }
-    .search-input-group {
-      width:100%;
-    }
-  }
 }
 
 div#search-bar {
