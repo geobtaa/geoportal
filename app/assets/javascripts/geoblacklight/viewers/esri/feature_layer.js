@@ -1,5 +1,19 @@
 //= require geoblacklight/viewers/esri
 
+// populates attribute table with feature properties
+var populateAttributeTable = function(feature) {
+  var html = $('<tbody class="attribute-table-body"></tbody>');
+
+  // step through properties and append to table
+  for (var property in feature.properties) {
+    if ( feature.properties[property] != null ) {
+      html.append('<tr><td>' + property + '</td>'+
+                  '<td>' + GeoBlacklight.Util.linkify(feature.properties[property]) + '</tr>');
+    }
+  }
+  $('.attribute-table-body').replaceWith(html);
+}
+
 GeoBlacklight.Viewer.FeatureLayer = GeoBlacklight.Viewer.Esri.extend({
 
   // default feature styles
@@ -18,11 +32,19 @@ GeoBlacklight.Viewer.FeatureLayer = GeoBlacklight.Viewer.Esri.extend({
     // set default style
     this.options.style = this.getFeatureStyle();
 
+    // set pointToLayer
+    this.options.pointToLayer = function (geojson, latlng) {
+      return L.marker(latlng, {
+      }).on('click', function(e) {
+        populateAttributeTable(geojson);
+      });
+    }
+
     // define feature layer
     this.esriFeatureLayer = L.esri.Cluster.featureLayer(this.options);
 
     //setup feature inspection and opacity
-    this.setupInspection(this.esriFeatureLayer);
+    // this.setupInspection(this.esriFeatureLayer);
     this.setupInitialOpacity(this.esriFeatureLayer);
 
     return this.esriFeatureLayer;

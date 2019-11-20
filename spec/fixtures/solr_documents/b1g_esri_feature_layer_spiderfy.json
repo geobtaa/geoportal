@@ -1,0 +1,58 @@
+{
+  "geoblacklight_version": "1.0",
+  "dc_description_s": "For questions about this data please contact HealthOpenData@minneapolismn.govFor more information about Air Quality in the City of Minneapolis, check the Health Department's page on the City websiteAttribute InformationDate The month and year during which this sample was collected. Each sample is collected over a period of 72-hours. The exact dates of collection are not specified on this dataset.Can ID A unique identifier for this sample and is determined by concatenating the collecting Summa canister s identification number with the month and year of collection.Parameter The chemical (for this study, all are Volatile Organic Compounds, or VOCs) for which the result is reported.Results The amount of the particular VOC (parameter) detected in this sample. All results above the detection limit are reported in this dataset.Units The units in which the result is reported. All results are reported in units of micrograms per cubic meter ( g/m3).CAS The CAS Registry Number, also referred to as CASRN or CAS Number, is a unique numerical identifier assigned by Chemical Abstracts Service to every chemical substance described in the open scientific literature.HRV A Health Risk Value (HRV) is the concentration of a chemical that is likely to pose little or no risk to human health and is being used by our study as a reference level for comparing the results. Most HRVs are expressed as concentrations of micrograms of chemical per cubic meter of air ( g/m3). HRVs are developed to protect human health for a specified length of exposure (e.g., one hour, 13 weeks, a lifetime). In cases where an HRV promulgated using the public process described in the Administrative Procedures Act (Minnesota Statutes Chapter 14) was not available as a reference level, we instead used the recommended exposure limit (REL) from the National Institute for Occupational Safety and Health (NIOSH) or the permissible exposure limit (PEL) from the Occupational Safety and Health Administration (OSHA), selecting the most conservative level. For purposes of our study, all reference levels (HRVs, RELs, and PELs) will be referred to as a Health Risk Value.Units - The units associated with the HRV, REL, or PEL reference level. All reference levels have been converted to units of micrograms per cubic meter ( g/m3).HRV Types The type (HRV, REL, or PEL) of reference level selected. For the purpose of this study, all are referred to as a Health Risk Value. The value selected was the lowest, most conservative value.Name The name of the location. Volunteer names and business names are left blank.Description The type of location where the canister was placed. Volunteer locations are typically residential sites where the property owner/occupant hosts a sampling Summa canister. Business locations, which are also VOC emitters, who are voluntarily participating in the study. MPCA locations are sites of existing Minnesota Pollution Control Agency air monitors sampling for VOCs where a sampling Summa canister is placed for data comparison. MPRB locations are Minneapolis Park and Recreation Board properties. Sponsored locations are sites where the community has paid for additional sampling Summa canisters to be placed.Address The address at or near where the sampling Summa canister was placed.City For mapping purposes, we have included the city where the sampling Summa canister was placed (all are within the Minneapolis boundary).State For mapping purposes, we have included the state where the sampling Summa canister was placed.Zip For mapping purposes, we have included the zip code where the sampling Summa canister was placed.",
+  "layer_modified_dt": "2019-10-31T17:11:35Z",
+  "solr_geom": "ENVELOPE(-93.32676124,-93.20877911,45.04759052,44.89270887)",
+  "dct_references_s": "{\"http://schema.org/url\":\"http://opendata.minneapolismn.gov/datasets/77c3283978464432b9a391b8b9cf7885_0\",\"http://schema.org/downloadUrl\":\"http://opendata.minneapolismn.gov/datasets/77c3283978464432b9a391b8b9cf7885_0.zip\",\"urn:x-esri:serviceType:ArcGIS#FeatureLayer\":\"https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/AirQualitySurvey2015Update/FeatureServer/0\"}",
+  "dc_rights_s": "Public",
+  "b1g_centroid_ss": "44.970149695,-93.267770175",
+  "layer_geom_type_s": "Vector",
+  "b1g_status_s": "Active",
+  "dct_provenance_s": "Minnesota",
+  "dc_subject_sm": [
+    "Environment",
+    "Health"
+  ],
+  "dc_language_sm": [
+    "English"
+  ],
+  "dct_temporal_sm": [
+    "2015"
+  ],
+  "suppressed_b": false,
+  "dct_accrualMethod_s": "ArcGIS Hub",
+  "b1g_code_s": "05c-01",
+  "dct_issued_s": "2015-04-27",
+  "b1g_genre_sm": [
+    "Geospatial data"
+  ],
+  "dc_format_s": "Shapefile",
+  "b1g_keyword_sm": [
+    "health",
+    "open data",
+    "air quality",
+    "Environment"
+  ],
+  "dc_creator_sm": [
+    "MapIT Minneapolis"
+  ],
+  "dc_identifier_s": "77c3283978464432b9a391b8b9cf7885_0",
+  "dct_isPartOf_sm": [
+    "05c-01"
+  ],
+  "solr_year_i": 2015,
+  "dct_spatial_sm": [
+    "Minneapolis, Minnesota",
+    "Minnesota"
+  ],
+  "dc_publisher_sm": [
+    "City of Minneapolis, Minnesota"
+  ],
+  "dc_type_sm": [
+    "Dataset",
+    "Service"
+  ],
+  "dc_title_s": "Air Quality Survey: Minneapolis, Minnesota, 2015",
+  "layer_slug_s": "77c3283978464432b9a391b8b9cf7885_0",
+  "b1g_dateAccessioned_s": "2019-03-28"
+}
