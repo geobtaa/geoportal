@@ -103,6 +103,7 @@ class CatalogController < ApplicationController
 
     # config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
 
+    # config.add_facet_field 'dc_rights_s', :label => 'Access'
     config.add_facet_field 'dct_spatial_sm', :label => 'Place', :limit => 8, collapse: false
     config.add_facet_field 'b1g_genre_sm', :label => 'Genre', :limit => 8, collapse: false
     config.add_facet_field 'solr_year_i', label: 'Year', limit: 10, collapse: false, all: 'Any year', range: {
@@ -264,8 +265,8 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial :web_services, if: proc { |_context, _config, options| options[:document] && (Settings.WEBSERVICES_SHOWN & options[:document].references.refs.map(&:type).map(&:to_s)).any? }
     config.add_show_tools_partial :exports, partial: 'exports', if: proc { |_context, _config, options| options[:document] }
     config.add_show_tools_partial :data_dictionary, partial: 'data_dictionary', if: proc { |_context, _config, options| options[:document] && options[:document].data_dictionary_download.present?}
-
     config.add_show_tools_partial(:citation)
+    config.add_show_tools_partial(:access_links, partial: 'access_links')
 
     # Remove nav actions
     config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark', if: false)

@@ -272,6 +272,14 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_content?("Our Apologies")
   end
 
+  def test_access_links
+    visit '/catalog/99-0001-test'
+    within('div.show-tools') do
+      assert page.has_content?("Licensed Resource")
+      assert page.has_link?("Minnesota")
+    end
+  end
+
   # @TODO
   # ESRI - Slow - ImageMapLayer
   # http://localhost:3000/catalog/457dc8bbff9b46848843c8b1bf0ae689

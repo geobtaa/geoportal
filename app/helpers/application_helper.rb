@@ -51,4 +51,30 @@ module ApplicationHelper
 
     date_string
   end
+
+  def b1g_institution_codes
+    {
+      '01'=> 'Indiana',
+      '02'=> 'Illinois',
+      '03'=> 'Iowa',
+      '04'=> 'Maryland',
+      '05'=> 'Minnesota',
+      '06'=> 'Michigan',
+      '07'=> 'Michigan State',
+      '08'=> 'Purdue',
+      '09'=> 'Penn State',
+      '10'=> 'Wisconsin',
+      '11'=> 'Ohio State',
+      '12'=> 'Chicago'
+    }
+  end
+
+  def b1g_access_links(document)
+    links = {}
+    document.access_links.each do |key,value|
+      links[b1g_institution_codes[key]] = value
+    end
+
+    links.sort.to_h
+  end
 end
