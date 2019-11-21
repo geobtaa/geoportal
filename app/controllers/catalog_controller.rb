@@ -266,7 +266,7 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial :exports, partial: 'exports', if: proc { |_context, _config, options| options[:document] }
     config.add_show_tools_partial :data_dictionary, partial: 'data_dictionary', if: proc { |_context, _config, options| options[:document] && options[:document].data_dictionary_download.present?}
     config.add_show_tools_partial(:citation)
-    config.add_show_tools_partial(:access_links, partial: 'access_links')
+    config.add_show_tools_partial(:access_links, partial: 'access_links', if: proc { |_context, _config, options| options[:document] && options[:document].access_links.present?})
 
     # Remove nav actions
     config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark', if: false)
