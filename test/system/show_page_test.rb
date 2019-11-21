@@ -259,17 +259,17 @@ class ShowPageTest < ApplicationSystemTestCase
 
   def test_item_viewer_cors_error
     visit '/catalog/4669301e-b4b2-4c8b-bf40-01b968a2865b'
-    assert page.has_content?("Network Error")
+    assert page.has_content?("Our Apologies")
   end
 
   def test_item_viewer_nonsecure_error
     visit '/catalog/4669301e-b4b2-4c8b-bf40-01b968a2865b'
-    assert page.has_content?("Network Error")
+    assert page.has_content?("Our Apologies")
   end
 
   def test_item_viewer_deleted_feature
     visit '/catalog/4d2053c593cc4f7685f2823f9e2061b8_1'
-    assert page.has_content?("Network Error - Invalid URL")
+    assert page.has_content?("Our Apologies")
   end
 
   # @TODO
