@@ -1,1 +1,7 @@
-<%= geoblacklight_icon(document[Settings.FIELDS.PROVENANCE]) %>
+<%- unless document[Settings.FIELDS.PROVENANCE] == "[none]" %>
+  <%= geoblacklight_icon(document[Settings.FIELDS.PROVENANCE]) %>
+<% end %>
+
+<%- if document[Settings.FIELDS.RIGHTS] == "Restricted" %>
+  <%= geoblacklight_icon(document[Settings.FIELDS.RIGHTS]) %>
+<% end %>
