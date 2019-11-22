@@ -21,19 +21,18 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
   // Check the data url to see if CORS or http (non-secure) error exists
   testNetwork: function() {
     var _this = this;
-    xhr = new XMLHttpRequest();
-    xhr.onerror = (error) => this.displayLayerError();
-    xhr.open('GET', _this.data.url);
-    xhr.send();
+
+    $.ajax(this.data.url, {
+      success: function() {},
+      error: function() {
+        _this.displayLayerError();
+      }
+    });
   },
 
   // Warn the user the web service is unavailable
-  displayLayerError: function(error_message = '') {
+  displayLayerError: function() {
     $('.help-text.viewer_protocol span').remove()
-
-    $('.help-text.viewer_protocol').append(
-      "<span class='float-right badge badge-danger'>" + "Network Error" + error_message + '</span>'
-    );
 
     $('#map').append(
       "<div id='esri-error'>" +
@@ -125,8 +124,10 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
 
     // step through properties and append to table
     for (var property in feature.properties) {
-      html.append('<tr><td>' + property + '</td>'+
-                  '<td>' + GeoBlacklight.Util.linkify(feature.properties[property]) + '</tr>');
+      if ( feature.properties[property] != null ) {
+        html.append('<tr><td>' + property + '</td>'+
+                    '<td>' + GeoBlacklight.Util.linkify(feature.properties[property]) + '</tr>');
+      }
     }
     $('.attribute-table-body').replaceWith(html);
   }

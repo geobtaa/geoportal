@@ -1,0 +1,9 @@
+%a{data:{toggle: 'popover', content:'This resource requires authentication through one of the following institutions. Select your institution for access.'}, title: 'Licensed Resource', }
+  = geoblacklight_icon(document[Settings.FIELDS.RIGHTS])
+  Licensed Resource
+
+%div.access-links.list-group
+  - b1g_access_links(@document).each do |key,value|
+    %a.list-group-item.list-group-item-action{href:value}
+      = geoblacklight_icon(key)
+      = key

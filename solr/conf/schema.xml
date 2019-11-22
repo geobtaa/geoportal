@@ -44,6 +44,14 @@
 
     <dynamicField name="*suggest" type="textSuggest" indexed="true" stored="false" multiValued="true" />
 
+    <!-- date range (_dr...) (for faster AND better range queries) -->
+    <dynamicField name="*_dri" type="dateRange" stored="false" indexed="true" multiValued="false"/>
+    <dynamicField name="*_drim" type="dateRange" stored="false" indexed="true" multiValued="true"/>
+    <dynamicField name="*_drs" type="dateRange" stored="true" indexed="false" multiValued="false"/>
+    <dynamicField name="*_drsm" type="dateRange" stored="true" indexed="false" multiValued="true"/>
+    <dynamicField name="*_drsi" type="dateRange" stored="true" indexed="true" multiValued="false"/>
+    <dynamicField name="*_drsim" type="dateRange" stored="true" indexed="true" multiValued="true"/>
+
     <!-- Spatial field types:
 
          Solr3:
@@ -82,6 +90,9 @@
          The trailing "Z" designates UTC time and is mandatory.
          A Trie based date field for faster date range queries and date faceting. -->
     <fieldType name="date" class="solr.TrieDateField" precisionStep="6" positionIncrementGap="0"/>
+
+    <!-- A DateRange based date field for truly faster date range queries. -->
+    <fieldType name="dateRange" class="solr.DateRangeField"/>
 
     <!--Binary data type. The data should be sent/retrieved in as Base64 encoded Strings -->
     <fieldtype name="binary" class="solr.BinaryField"/>
