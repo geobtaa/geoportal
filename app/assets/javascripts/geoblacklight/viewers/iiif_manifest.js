@@ -34,6 +34,11 @@ GeoBlacklight.Viewer.IiifManifest = GeoBlacklight.Viewer.extend({
        workspaceControlPanel: {
          enabled: false,
        }
-     });
+     }, [
+       // osdReferencePlugin,
+       // miradorDownloadDialogPlugin,
+       // miradorDownloadPlugin
+     ]
+   );
   }
 });
