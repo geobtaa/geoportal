@@ -259,19 +259,35 @@ class ShowPageTest < ApplicationSystemTestCase
 
   def test_item_viewer_cors_error
     visit '/catalog/4669301e-b4b2-4c8b-bf40-01b968a2865b'
-    assert page.has_content?("Network Error")
+    assert page.has_content?("Our Apologies")
   end
 
   def test_item_viewer_nonsecure_error
     visit '/catalog/4669301e-b4b2-4c8b-bf40-01b968a2865b'
-    assert page.has_content?("Network Error")
+    assert page.has_content?("Our Apologies")
   end
 
   def test_item_viewer_deleted_feature
     visit '/catalog/4d2053c593cc4f7685f2823f9e2061b8_1'
-    assert page.has_content?("Network Error - Invalid URL")
+    assert page.has_content?("Our Apologies")
   end
 
+  def test_access_links_restricted_document
+    visit '/catalog/99-0001-test'
+    within('div.show-tools') do
+      assert page.has_content?("Licensed Resource")
+      assert page.has_link?("Minnesota")
+    end
+  end
+
+  def test_access_links_public_document
+    visit '/catalog/4d2053c593cc4f7685f2823f9e2061b8_1'
+    within('div.show-tools') do
+      assert page.has_no_content?("Licensed Resource")
+      assert page.has_no_link?("Minnesota")
+    end
+  end
+  
   # @TODO
   # ESRI - Slow - ImageMapLayer
   # http://localhost:3000/catalog/457dc8bbff9b46848843c8b1bf0ae689

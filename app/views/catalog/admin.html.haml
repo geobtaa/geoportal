@@ -69,5 +69,18 @@
         %td
           = link_to(uri.uri_value, uri.uri_value)
 
+%h3 Access Links
+%table.table.responsive
+  %thead
+    %tr
+      %th University
+      %th Access Link
+  %tbody
+    - b1g_access_links(@document).each do |key,value|
+      %tr
+        %td=key
+        %td
+          %a{href:value}=value
+
 :javascript
   new Readmore( '.solr-document', { maxHeight: 40 } );
