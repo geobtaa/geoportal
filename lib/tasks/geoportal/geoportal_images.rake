@@ -3,12 +3,12 @@
 namespace :geoportal do
   desc 'Hash of SolrDocumentSidecar state counts'
   task sidecar_states: :environment do
-    states = i[
-      initialized,
-      queued,
-      processing,
-      succeeded,
-      failed,
+    states = %i[
+      initialized
+      queued
+      processing
+      succeeded
+      failed
       placeheld
     ]
 
