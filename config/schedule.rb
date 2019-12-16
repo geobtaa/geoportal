@@ -1,6 +1,5 @@
 # Use this file to easily define all of your cron jobs.
 # Learn more: http://github.com/javan/whenever
-job_type :logrotate, '/usr/sbin/logrotate -s :path/../../shared/tmp/logrotate.state :path/config/logrotate.conf > /dev/null'
 
 # Harvest thumbnail images for search results
 every :day, at: '12:05am', roles: [:app] do
@@ -41,10 +40,4 @@ every '0 1 2 * *', roles: [:app] do
 end
 every '0 8 2 * *', roles: [:app] do
   rake 'geoportal:uri_report'
-end
-
-# Log rotation does not use the template bash & env var wrapper
-set :job_template, nil
-every :day, at: '12:00am', roles: [:app] do
-  logrotate nil
 end

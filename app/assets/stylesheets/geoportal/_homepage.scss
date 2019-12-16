@@ -1,0 +1,42 @@
+// Big Ten Academic Alliance colors:
+$white: #FFFFFF; // 100%
+$gray: #CCCCCC; // 80%
+$black: #000000; // 0%
+$btaa-blue: #0088ce;
+$radius: 4px;
+
+div#home-content{
+  background:lighten($gray, 12%) asset_url('aerial_photo.jpg') repeat;
+  padding:0px;
+
+  #wrapper-map {
+    div#map-container {
+      position:fixed;
+      top:10rem;
+      height: 100%;
+      padding:0px;
+
+      div#map {
+        height: 100% !important;
+        background-color:#b8e6fe;
+
+        #map-search-btn {
+          position:fixed;
+          bottom:20px;
+          left:11px;
+          z-index:4000;
+          color:$white;
+        }
+      }
+    }
+  }
+
+  #wrapper-search {
+    background-color:rgba($black,0.8);
+    padding:2rem;
+    padding-right:4rem;
+    margin-top:10rem;
+    height:100%;
+    overflow-y:scroll;
+  }
+}

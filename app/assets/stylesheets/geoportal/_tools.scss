@@ -1,0 +1,14 @@
+.access-links.list-group {
+  padding-top:0.5rem;
+  .list-group-item:first-child {
+    border-top: 1px solid lightgray !important;
+    border-top-right-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+  }
+  .list-group-item:last-child {
+    border-bottom: 1px solid lightgray !important;
+  }
+  .list-group-item {
+    border: 1px solid lightgray;
+  }
+}

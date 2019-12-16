@@ -18,7 +18,7 @@ end
 
 namespace :geoportal do
   desc 'Run Solr and GeoBlacklight for interactive development'
-  task :server, [:rails_server_args] do |_t, args|
+  task :server, [:rails_server_args] do
     require 'solr_wrapper'
 
     shared_solr_opts = { managed: true, verbose: true, persist: false, download_dir: 'tmp' }

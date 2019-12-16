@@ -10,7 +10,7 @@
     <p><%= @report %></p>
     <h3>URL:</h3>
     <p>
-      <%= "https://geo.btaa.org/#{@report.split('/public/')[1]}" %>
+      <%= "https://geo.btaa.org/#{@report.to_s.split('/public/')[1]}" %>
     </p>
 
     <hr/>
