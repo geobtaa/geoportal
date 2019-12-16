@@ -59,7 +59,7 @@ end
 
 gem 'blacklight', '~> 7.0.0'
 gem 'blacklight_advanced_search', git: 'https://github.com/projectblacklight/blacklight_advanced_search.git', :branch => 'master'
-gem 'blacklight_range_limit', git: 'https://github.com/ewlarson/blacklight_range_limit.git', :branch => 'master'
+gem 'blacklight_range_limit', '~> 7.0.0'
 gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
