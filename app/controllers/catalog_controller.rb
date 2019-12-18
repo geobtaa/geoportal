@@ -137,6 +137,7 @@ class CatalogController < ApplicationController
     #config.add_facet_field 'dc_format_s', :label => 'Format', :limit => 8
     config.add_facet_field 'dct_provenance_s', label: 'Contributor', limit: 15
     config.add_facet_field 'dc_type_sm', label: 'Type', limit: 8
+    config.add_facet_field 'dct_mediator_sm', label: 'Institutional Access', limit: 15
     # Remove access facet until data is available - EWL
     # config.add_facet_field 'dc_rights_s', label: 'Access', limit: 8, partial: "icon_facet"
 
