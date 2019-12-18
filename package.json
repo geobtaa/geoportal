@@ -36,7 +36,7 @@
     "lodash": "^4.17.13",
     "lodash.template": "^4.5.0",
     "mirador": "^3.0.0-beta.0",
-    "mirador-dl-plugin": "^0.8.0",
+    "mirador-dl-plugin": "file:/Users/ewlarson/Nodejs/mirador-dl-plugin",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "serialize-javascript": "^2.1.1",
