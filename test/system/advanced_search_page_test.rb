@@ -10,7 +10,7 @@ class AdvancedSearchPageTest < ApplicationSystemTestCase
     assert page.has_content?("Limit Results By")
     within("div.limit-criteria") do
       assert page.has_content?("Genre")
-      assert page.has_content?("Institution")
+      assert page.has_content?("Contributor")
       assert page.has_content?("Type")
       assert page.has_content?("Year")
     end
