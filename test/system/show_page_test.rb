@@ -210,8 +210,7 @@ class ShowPageTest < ApplicationSystemTestCase
     visit "/catalog/62aac6a8-d31e-4364-8946-ff9bebbf4a25"
 
 
-    assert page.has_selector?("#map")
-    assert page.has_selector?("[data-protocol='IiifManifest']")
+    assert page.has_selector?("div.uv")
 
     # Sidebar Map
     within(".page-sidebar")do
@@ -222,8 +221,7 @@ class ShowPageTest < ApplicationSystemTestCase
   def test_mirador_show_map
     visit "/catalog/e1ec54e6-8bb4-496a-93f9-43ac901bea74"
 
-    assert page.has_selector?("#map")
-    assert page.has_selector?("[data-protocol='IiifManifest']")
+    assert page.has_selector?("div.uv")
 
     # Sidebar Map
     within(".page-sidebar")do
@@ -287,7 +285,7 @@ class ShowPageTest < ApplicationSystemTestCase
       assert page.has_no_link?("Minnesota")
     end
   end
-  
+
   # @TODO
   # ESRI - Slow - ImageMapLayer
   # http://localhost:3000/catalog/457dc8bbff9b46848843c8b1bf0ae689
