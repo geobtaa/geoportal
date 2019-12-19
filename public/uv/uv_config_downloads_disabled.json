@@ -1,0 +1,34 @@
+{
+  "modules":
+  {
+    "pagingHeaderPanel":
+    {
+      "options":
+      {
+        "autoCompleteBoxEnabled": false,
+        "imageSelectionBoxEnabled": true
+      }
+    },
+    "contentLeftPanel":
+    {
+      "options":
+      {
+        "branchNodesSelectable": true,
+        "defaultToTreeEnabled": true
+      }
+    },
+    "footerPanel":
+    {
+      "options":
+      {
+        "downloadEnabled": false,
+        "shareEnabled": false
+      }
+    },
+    "seadragonCenterPanel": {
+      "options": {
+        "immediateRender": true
+      }
+    }
+  }
+}
