@@ -118,35 +118,29 @@
       <str name="bf">if(exists(b1g_child_record_b),0,100)^0.5</str>
       <str name="qf">
         text^1
-        dc_description_ti^2
-        dc_creator_tmi^3
-        dc_publisher_ti^3
-        dct_isPartOf_tmi^4
-        dc_subject_tmi^5
-        dct_spatial_tmi^5
-        dct_temporal_tmi^5
-        dc_title_ti^6
-        dc_rights_ti^7
-        dct_provenance_ti^8
-        layer_geom_type_ti^9
+        dct_temporal_tmi^1
+        dct_alternativeTitle_tmi^3
+        dc_description_ti^3
+        b1g_code_ti^5
+        b1g_keyword_tmi^6
+        dc_subject_tmi^6
+        b1g_genre_tmi^6
+        dct_spatial_tmi^8
+        dc_title_ti^9
         layer_slug_ti^10
-        dc_identifier_ti^10
       </str>
       <str name="pf"><!-- phrase boost within result set -->
         text^1
-        dc_description_ti^2
-        dc_creator_tmi^3
-        dc_publisher_ti^3
-        dct_isPartOf_tmi^4
-        dc_subject_tmi^5
-        dct_spatial_tmi^5
-        dct_temporal_tmi^5
-        dc_title_ti^6
-        dc_rights_ti^7
-        dct_provenance_ti^8
-        layer_geom_type_ti^9
+        dct_temporal_tmi^1
+        dct_alternativeTitle_tmi^3
+        dc_description_ti^3
+        b1g_code_ti^5
+        b1g_keyword_tmi^6
+        dc_subject_tmi^6
+        b1g_genre_tmi^6
+        dct_spatial_tmi^8
+        dc_title_ti^9
         layer_slug_ti^10
-        dc_identifier_ti^10
       </str>
       <str name="title_qf">
         dc_title_ti^10
@@ -157,11 +151,11 @@
         dct_isPartOf_tmi
       </str>
       <str name="publisher_qf">
-        dc_publisher_ti^5
+        dc_publisher_tmi^5
         dc_creator_tmi
       </str>
       <str name="publisher_pf">
-        dc_publisher_ti^5
+        dc_publisher_tmi^5
         dc_creator_tmi
       </str>
       <str name="placename_qf">
@@ -173,18 +167,13 @@
       <bool name="facet">true</bool>
       <int name="facet.mincount">1</int>
       <int name="facet.limit">10</int>
-      <str name="facet.field">dct_isPartOf_sm</str>
       <str name="facet.field">dct_provenance_s</str>
       <str name="facet.field">dct_spatial_sm</str>
       <str name="facet.field">dc_creator_sm</str>
-      <str name="facet.field">dc_format_s</str>
-      <str name="facet.field">dc_language_s</str>
       <str name="facet.field">dc_publisher_s</str>
       <str name="facet.field">dc_rights_s</str>
       <str name="facet.field">dc_subject_sm</str>
-      <str name="facet.field">layer_geom_type_s</str>
       <str name="facet.field">solr_year_i</str>
-
       <str name="spellcheck">true</str>
     </lst>
     <arr name="last-components">
