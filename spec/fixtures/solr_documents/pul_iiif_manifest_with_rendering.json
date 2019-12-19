@@ -1,0 +1,31 @@
+{
+  "geoblacklight_version": "1.0",
+  "dc_identifier_s": "ark:/88435/g158bk83b",
+  "layer_slug_s": "princeton-g158bk83b",
+  "uuid": "princeton-g158bk83b",
+  "dc_title_s": "Novissima & exactissima totius regni Neapolis tabula",
+  "solr_geom": "ENVELOPE(12.5092, 18.6231, 42.9128, 37.7996)",
+  "dct_provenance_s": "Princeton",
+  "dc_rights_s": "Public",
+  "dc_description_s": "Relief shown pictorially. Lacks the imperial privilege found on a later state of map, dated to 1720. Homann founded his own cartographic and publishing establishment in 1702. He became geographer to the Holy Roman Emperor in 1715. cf. Tooley's dictionary of mapmakers. Includes view of Mount Vesuvius.",
+  "dc_creator_sm": [
+    "Homann, Johann Baptist, 1663-1724"
+  ],
+  "dc_language_s": "lat",
+  "dc_publisher_s": "Norimbergae : Ioanne Bapt. Homann, [ca. 1710]",
+  "dc_subject_sm": [
+    "Naples (Italy : Province)—Maps—Early works to 1800",
+    "Naples (Kingdom)—Maps—Early works to 1800"
+  ],
+  "dct_spatial_sm": [
+    "Italy"
+  ],
+  "solr_year_i": 1710,
+  "layer_modified_dt": "2019-06-04T19:31:43Z",
+  "layer_id_s": "public-figgy:p-b0be276d-5cf3-4ef8-bc48-8fce721566e2",
+  "dct_references_s": "{\"http://schema.org/url\":\"https://catalog.princeton.edu/catalog/8554551\",\"http://schema.org/downloadUrl\":\"https://figgy.princeton.edu/downloads/b0be276d-5cf3-4ef8-bc48-8fce721566e2/file/f36fd669-af41-4918-93b6-ab522db41b71\",\"http://schema.org/thumbnailUrl\":\"https://figgy.princeton.edu/downloads/b0be276d-5cf3-4ef8-bc48-8fce721566e2/file/e2da703d-5309-4f98-b303-43438033b7bd\",\"http://iiif.io/api/image\":\"https://iiif.princeton.edu/loris/figgy_prod/71%2Fae%2Ffe%2F71aefe7a08704ed7830666df75813f96%2Fintermediate_file.jp2/info.json\",\"http://iiif.io/api/presentation#manifest\":\"https://figgy.princeton.edu/concern/scanned_maps/469f076b-dfe9-44dd-a600-3da6b8656159/manifest\"}",
+  "layer_geom_type_s": "Image",
+  "dc_format_s": "TIFF",
+  "suppressed_b": false,
+  "call_number_s": "HMC01.2565"
+}
