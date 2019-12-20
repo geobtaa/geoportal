@@ -52,7 +52,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'web-console'
-  gem 'puma'
+  gem 'puma', '>= 4.3.1'
   gem 'foreman'
   gem 'letter_opener'
 end

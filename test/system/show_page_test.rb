@@ -209,7 +209,6 @@ class ShowPageTest < ApplicationSystemTestCase
   def test_mirador_show_book
     visit "/catalog/62aac6a8-d31e-4364-8946-ff9bebbf4a25"
 
-
     assert page.has_selector?("#map")
     assert page.has_selector?("[data-protocol='IiifManifest']")
 
@@ -287,7 +286,7 @@ class ShowPageTest < ApplicationSystemTestCase
       assert page.has_no_link?("Minnesota")
     end
   end
-  
+
   # @TODO
   # ESRI - Slow - ImageMapLayer
   # http://localhost:3000/catalog/457dc8bbff9b46848843c8b1bf0ae689
