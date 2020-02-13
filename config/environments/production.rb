@@ -108,8 +108,8 @@ Rails.application.configure do
   Rails.application.config.middleware.use ExceptionNotification::Rack,
     # Blacklight uses its own 404 extension we need to ignore separately
     :ignore_exceptions => ['Blacklight::Exceptions::RecordNotFound'] + ExceptionNotifier.ignored_exceptions,
-    # Ignore exception notification from Qualys scanner IPs and UT Austin DorkBot scanner 146.6.15.11
-    :ignore_if => ->(env, exception) { ['160.94.202.161','160.94.202.162','160.94.202.163','160.94.202.164','160.94.202.165','160.94.202.166','160.94.202.167','160.94.202.168','160.94.202.169','160.94.202.170','160.94.202.171','160.94.202.172','160.94.202.173','160.94.202.174','160.94.202.175','146.6.15.11'].include?(env['REMOTE_ADDR']) },
+    # Ignore exception notification from IPs defined in environment variable as comma-separated
+    :ignore_if => ->(env, exception) { ENV['EXCEPTION_NOTIFIER_EXCLUDE_IPS'].to_s.split(/[, ]+/).include?(env['REMOTE_ADDR']) },
     :email => {
       :email_prefix => "[Geoblacklight Error] ",
       # Google Groups won't accept messages unless the sender host resolves!
