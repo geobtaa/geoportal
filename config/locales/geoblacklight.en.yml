@@ -75,6 +75,9 @@ en:
       click_map: 'Click on map to inspect values'
     help_text:
       viewer_protocol:
+        b1g_image:
+          title: Static Image
+          content: A downloadable image.
         download:
           title: Static Image
           content: A downloadable image.

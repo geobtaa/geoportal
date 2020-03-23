@@ -237,6 +237,16 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_selector?("[data-protocol='Oembed']")
   end
 
+  def test_b1g_image_map
+    visit "/catalog/VAC9619-001727"
+
+    # Help
+    assert page.has_content?("Static Image")
+
+    assert page.has_selector?("#map.b1g_image")
+    assert page.has_selector?("[data-protocol='B1gImage']")
+  end
+
   def test_collection_ancestor
     visit '/catalog/e84a24f0-1c00-4235-a584-db5d7551cbe6'
 
