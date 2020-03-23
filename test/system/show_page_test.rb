@@ -257,11 +257,13 @@ class ShowPageTest < ApplicationSystemTestCase
   end
 
   def test_item_viewer_cors_error
+    skip('No longer erring - EWL')
     visit '/catalog/4669301e-b4b2-4c8b-bf40-01b968a2865b'
     assert page.has_content?("Our Apologies")
   end
 
   def test_item_viewer_nonsecure_error
+    skip('No longer erring - EWL')
     visit '/catalog/4669301e-b4b2-4c8b-bf40-01b968a2865b'
     assert page.has_content?("Our Apologies")
   end
