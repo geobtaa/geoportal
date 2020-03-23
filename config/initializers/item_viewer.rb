@@ -15,6 +15,9 @@ module Geoblacklight
     end
 
     # Pull image from b1g_image_ss field
+    #
+    # The @document object is unavailable
+    # Must inspect @references for item viewer vals
     def b1g_image
       if @references.download.present?
         if ['iu.box.com'].any? { |str| @references.download.reference[1].include?(str) }

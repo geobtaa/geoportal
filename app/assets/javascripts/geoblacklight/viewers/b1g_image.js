@@ -16,7 +16,7 @@ GeoBlacklight.Viewer.B1gImage = GeoBlacklight.Viewer.extend({
     img.setAttribute("src", this.data.url);
     img.setAttribute("class", "col-lg-12");
     img.setAttribute("style", "height: auto; width: auto");
-    img.setAttribute("data-viewer", 'download');
+    img.setAttribute("data-viewer", 'b1g_image');
     document.getElementById("map").appendChild(img);
   }
 });
