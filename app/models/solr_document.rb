@@ -85,4 +85,8 @@ class SolrDocument
 
     return uris
   end
+
+  def b1g_image
+    self._source["b1g_image_ss"]
+  end
 end

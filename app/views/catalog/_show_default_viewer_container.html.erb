@@ -12,9 +12,14 @@
     <%= render_help_text_entry('viewer_protocol', document.viewer_protocol) %>
   <% end %>
 
-  <% if document.viewer_protocol != "download" %>
+  <% if document.viewer_protocol == "b1g_image" %>
+    <%= content_tag :div, id: 'map', class: "b1g_image", data: { map: 'item', protocol: "B1gImage", url: "#{remote_image_link(document.b1g_image)}", 'layer-id' => document.wxs_identifier, 'map-bbox' => document.bounding_box_as_wsen, 'catalog-path'=> search_catalog_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
+    <% end %>
+
+  <% elsif document.viewer_protocol != "download" %>
     <%= content_tag :div, id: 'map', data: { map: 'item', protocol: document.viewer_protocol.camelize, url: document.viewer_endpoint, 'layer-id' => document.wxs_identifier, 'map-bbox' => document.bounding_box_as_wsen, 'catalog-path'=> search_catalog_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
     <% end %>
+
   <% else %>
     <%= content_tag :div, id: 'map', class: "", data: { map: 'item', protocol: document.viewer_protocol.camelize, url: "#{remote_image_link(document.viewer_endpoint)}", 'layer-id' => document.wxs_identifier, 'map-bbox' => document.bounding_box_as_wsen, 'catalog-path'=> search_catalog_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
     <% end %>
