@@ -5,4 +5,4 @@ import '@babel/polyfill';
 import 'url-polyfill/url-polyfill';
 import 'unfetch/polyfill';
 
-import M3Viewer from 'm3_viewer';
+import M3Viewer from 'm3';

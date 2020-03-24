@@ -16,6 +16,11 @@ GeoBlacklight.Viewer.IiifManifest = GeoBlacklight.Viewer.extend({
            },
          },
        },
+       translations: {
+         en: {
+           windowPluginMenu: 'Download'
+         }
+       },
        windows: [{
          manifestId: manifest_uri,
          thumbnailNavigationPosition: 'far-bottom',
@@ -37,7 +42,8 @@ GeoBlacklight.Viewer.IiifManifest = GeoBlacklight.Viewer.extend({
      }, [
        OSDReferencesPlugin,
        miradorDownloadDialogPlugin,
-       miradorDownloadPlugin
+       miradorDownloadPlugin,
+       customIconPlugin
      ]
    );
   }
