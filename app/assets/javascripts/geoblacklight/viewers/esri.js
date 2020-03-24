@@ -22,7 +22,7 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
   testNetwork: function() {
     var _this = this;
 
-    $.ajax(this.data.url, {
+    L.esri.get(this.data.url, {
       success: function() {},
       error: function() {
         _this.displayLayerError();

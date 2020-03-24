@@ -266,6 +266,11 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_content?("b06d96e4-c917-4afc-a3df-adbbc9a2273c")
   end
 
+  def test_crawford_county_403_error
+    visit '/catalog/d6efb1e4d0ca491db8c79e5b18c4dee9_3'
+    assert page.has_no_content?("Our Apologies")
+  end
+
   def test_item_viewer_cors_error
     skip('No longer erring - EWL')
     visit '/catalog/4669301e-b4b2-4c8b-bf40-01b968a2865b'
