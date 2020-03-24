@@ -4975,12 +4975,12 @@ minipass@^3.0.0, minipass@^3.1.1:
   dependencies:
     yallist "^4.0.0"
 
-mirador-dl-plugin@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/mirador-dl-plugin/-/mirador-dl-plugin-0.9.0.tgz#ff505a56b47573adfcc1a18cb9f16f260eaf986c"
-  integrity sha512-fnouFQkp3g8sVXml1Xwe51DrkY1rW8ZGX00SPSg37jmhY/URLuAnExtNKj+R+8nYATcE12T5q5oJHHZTPCOhIw==
+mirador-dl-plugin@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/mirador-dl-plugin/-/mirador-dl-plugin-0.11.0.tgz#8385d9334b172b51707c943f690a8222fb845cc2"
+  integrity sha512-H+O+ZF9CB/wUTlC7uwUKE7EszocM9Y1AtD0mHj6+YCDlpbRcW+QEDZHlgDujum4fZ3zQOJGT9FI0v6cvtWhFUQ==
 
-mirador@^3.0.0-beta.4:
+mirador@^3.0.0-beta.6:
   version "3.0.0-beta.6"
   resolved "https://registry.yarnpkg.com/mirador/-/mirador-3.0.0-beta.6.tgz#dbd62f3f6aa17dc652dda46a7f68334537cfb72d"
   integrity sha512-tn5VpAa3x/+daB0XYlOeJuMnvvawrfiQPb7s1CoAG/1oRmpOABkAJ9rB7enx31hHOb+5WfKxp20rYUNtYqcF8A==
