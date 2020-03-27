@@ -237,6 +237,16 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_selector?("[data-protocol='Oembed']")
   end
 
+  def test_b1g_image_map
+    visit "/catalog/VAC9619-001727"
+
+    # Help
+    assert page.has_content?("Static Image")
+
+    assert page.has_selector?("#map.b1g_image")
+    assert page.has_selector?("[data-protocol='B1gImage']")
+  end
+
   def test_collection_ancestor
     visit '/catalog/e84a24f0-1c00-4235-a584-db5d7551cbe6'
 
@@ -256,12 +266,19 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_content?("b06d96e4-c917-4afc-a3df-adbbc9a2273c")
   end
 
+  def test_crawford_county_403_error
+    visit '/catalog/d6efb1e4d0ca491db8c79e5b18c4dee9_3'
+    assert page.has_no_content?("Our Apologies")
+  end
+
   def test_item_viewer_cors_error
+    skip('No longer erring - EWL')
     visit '/catalog/4669301e-b4b2-4c8b-bf40-01b968a2865b'
     assert page.has_content?("Our Apologies")
   end
 
   def test_item_viewer_nonsecure_error
+    skip('No longer erring - EWL')
     visit '/catalog/4669301e-b4b2-4c8b-bf40-01b968a2865b'
     assert page.has_content?("Our Apologies")
   end

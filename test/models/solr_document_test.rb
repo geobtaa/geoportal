@@ -11,4 +11,8 @@ class SolrDocumentTest < ActiveSupport::TestCase
   test 'supports B1G access links' do
     assert @document.respond_to? :access_links
   end
+
+  test 'supports B1G image attribute' do
+    assert @document.respond_to? :b1g_image
+  end
 end

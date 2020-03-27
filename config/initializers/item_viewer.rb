@@ -14,6 +14,24 @@ module Geoblacklight
       viewer_preference.values.first.to_s
     end
 
+    # Pull image from b1g_image_ss field
+    #
+    # The @document object is unavailable
+    # Must inspect @references for item viewer vals
+    def b1g_image
+      if @references.download.present?
+        if ['iu.box.com'].any? { |str| @references.download.reference[1].include?(str) }
+          viewer = Struct.new(:b1g_image) do
+            def to_hash
+              { b1g_image: true }
+            end
+          end
+
+          return viewer.new("b1g_image")
+        end
+      end
+    end
+
     # Download image
     def download
       if @references.download.present?
@@ -64,8 +82,19 @@ module Geoblacklight
     end
 
     def viewer_preference
-      [oembed, index_map, wms, iiif, iiif_manifest, download, tiled_map_layer, dynamic_map_layer,
-       image_map_layer, feature_layer].compact.map(&:to_hash).first
+      [
+        oembed,
+        index_map,
+        wms,
+        iiif,
+        iiif_manifest,
+        b1g_image,
+        download,
+        tiled_map_layer,
+        dynamic_map_layer,
+        image_map_layer,
+        feature_layer
+      ].compact.map(&:to_hash).first
     end
   end
 end

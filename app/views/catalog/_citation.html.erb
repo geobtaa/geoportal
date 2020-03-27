@@ -31,8 +31,7 @@
         <% if document["dct_issued_s"].present? %>
           (<%= citation_dct_issued_s(document["dct_issued_s"]) %>).
         <% else %>
-          <% # @TODO: guard against 9999s %>
-          (<%= citation_solr_year_i(document["solr_year_i"]) %>).
+          (n.d.).
         <%- end %>
 
         <% if document["dc_title_s"].present? %>

@@ -152,6 +152,7 @@ LEAFLET:
 # Toggle the help text feature that offers users context
 HELP_TEXT:
   viewer_protocol:
+      - 'b1g_image'
       - 'download'
       - 'dynamic_map_layer'
       - 'feature_layer'
