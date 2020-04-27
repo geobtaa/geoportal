@@ -290,6 +290,9 @@ class ShowPageTest < ApplicationSystemTestCase
 
   def test_access_links_restricted_document
     visit '/catalog/99-0001-test'
+    within('dl.document-metadata') do
+      assert page.has_content?("Access Rights")
+    end
     within('div.show-tools') do
       assert page.has_content?("Licensed Resource")
       assert page.has_link?("Minnesota")

@@ -56,5 +56,8 @@
   ],
   "dc_title_s": "Social Explorer",
   "layer_slug_s": "99-0001-test",
-  "b1g_dateAccessioned_s": "2019-11-20"
+  "b1g_dateAccessioned_s": "2019-11-20",
+  "dct_accessRights_sm": [
+    "Requires creating a free account or logging in through an organization with licensed access"
+  ]
 }
