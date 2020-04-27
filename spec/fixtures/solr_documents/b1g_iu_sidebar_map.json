@@ -1,0 +1,57 @@
+{
+  "geoblacklight_version": "1.0",
+  "dc_description_s": "Modern area represented: Liepāja, Latvia; Scale =1:50,000",
+  "layer_modified_dt": "2020-04-17T16:17:52Z",
+  "solr_geom": "ENVELOPE(21.25,20.959,56.667,56.5)",
+  "dct_references_s": "{\"http://schema.org/url\":\"http://purl.dlib.indiana.edu/iudl/images/VAC9619/VAC9619-001735\",\"http://lccn.loc.gov/sh85035852\":\"http://iucat.iu.edu/catalog/5020131\",\"http://schema.org/downloadUrl\":\"https://iu.box.com/s/co6nceqxesli2ihv8obi9e2cooe9v4xv\"}",
+  "dc_rights_s": "Public",
+  "b1g_centroid_ss": "56.5835,21.1045",
+  "layer_geom_type_s": "Image",
+  "b1g_status_s": "Active",
+  "dct_provenance_s": "Indiana",
+  "dc_subject_sm": [
+    "Topographic maps",
+    "Military maps"
+  ],
+  "dc_language_sm": [
+    "Russian"
+  ],
+  "dc_format_s": "GeoTIFF",
+  "suppressed_b": false,
+  "b1g_child_record_b": true,
+  "dct_accrualMethod_s": "Spreadsheet export",
+  "b1g_code_s": "01d-03",
+  "layer_slug_s": "VAC9619-001735",
+  "b1g_genre_sm": [
+    "Maps"
+  ],
+  "dct_temporal_sm": [
+    "1905-1907"
+  ],
+  "b1g_keyword_sm": [
+    "Soviet Union;Maps"
+  ],
+  "dc_identifier_s": "VAC9619-001735",
+  "dct_isPartOf_sm": [
+    "01d-03",
+    "01d-03-50k"
+  ],
+  "solr_year_i": 1905,
+  "b1g_image_ss": "http://purl.dlib.indiana.edu/iudl/images/VAC9619/screen/VAC9619-001735",
+  "dct_spatial_sm": [
+    "Liepāja, Latvia",
+    "Latvia"
+  ],
+  "dc_publisher_sm": [
+    "Генеральный штаб РККА"
+  ],
+  "dc_type_sm": [
+    "Image"
+  ],
+  "dc_title_s": "О-34-126-B/127-А Лиэпайя (Liepāja, Latvia)",
+  "dct_issued_s": "1905",
+  "b1g_date_range_drsim": [
+    "[1905 TO 1907]"
+  ],
+  "b1g_dateAccessioned_s": "2020-03-13"
+}

@@ -304,6 +304,14 @@ class ShowPageTest < ApplicationSystemTestCase
     end
   end
 
+  def test_b1g_image_sidebar_map
+    visit '/catalog/VAC9619-001735'
+    within('.page-sidebar') do
+      assert page.has_content?("Location")
+      assert page.has_selector?("#static-map")
+    end
+  end
+
   # @TODO
   # ESRI - Slow - ImageMapLayer
   # http://localhost:3000/catalog/457dc8bbff9b46848843c8b1bf0ae689
