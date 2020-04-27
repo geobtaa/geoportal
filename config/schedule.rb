@@ -1,6 +1,10 @@
 # Use this file to easily define all of your cron jobs.
 # Learn more: http://github.com/javan/whenever
 
+# Generate Homepage Centroids for Map Clustering
+every :day, at: '11:45pm', roles: [:app] do
+  rake 'geoportal:generate_centroids_json'
+end
 # Harvest thumbnail images for search results
 every :day, at: '12:05am', roles: [:app] do
   rake 'gblsci:images:harvest_retry'
