@@ -1,7 +1,7 @@
 require 'rsolr'
 
 namespace :geoportal do
-  desc 'Test URIs stored in Solr index'
+  desc 'Generate homepage centroids for map clustering'
   task generate_centroids_json: :environment do
     # Search request
     response = Blacklight.default_index.connection.get 'select', :params => {:q => '*:*', :rows => '100000'}
