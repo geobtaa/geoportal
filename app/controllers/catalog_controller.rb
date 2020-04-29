@@ -44,7 +44,8 @@ class CatalogController < ApplicationController
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
       :start => 0,
-      'q.alt' => '*:*'
+      'q.alt' => '*:*',
+      'bf' => ['if(exists(b1g_child_record_b),0,100)^0.5']
     }
 
     config.default_per_page = 20 # Works!
