@@ -44,7 +44,8 @@ class CatalogController < ApplicationController
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
       :start => 0,
-      'q.alt' => '*:*'
+      'q.alt' => '*:*',
+      'bf' => ['if(exists(b1g_child_record_b),0,100)^0.5']
     }
 
     config.default_per_page = 20 # Works!
@@ -183,6 +184,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'dct_issued_s', label: 'Date Published', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dct_temporal_sm', label: 'Temporal Coverage', itemprop: 'temporal'
     config.add_show_field 'dct_provenance_s', label: 'Contributed by', link_to_facet: true
+    config.add_show_field 'dct_accessRights_sm', label: 'Access Rights'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields

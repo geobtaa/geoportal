@@ -49,8 +49,6 @@ group :development, :test do
 end
 
 group :development do
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
   gem 'web-console'
   gem 'puma', '>= 4.3.1'
   gem 'foreman'
@@ -104,7 +102,6 @@ gem 'exception_notification', '~> 4.3.0'
 
 group :test do
   gem 'webdrivers'
-  gem 'capybara'
   gem 'm', '~> 1.5.0'
   gem 'minitest'
   gem 'minitest-ci', '~> 3.4.0'

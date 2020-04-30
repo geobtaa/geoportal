@@ -290,6 +290,9 @@ class ShowPageTest < ApplicationSystemTestCase
 
   def test_access_links_restricted_document
     visit '/catalog/99-0001-test'
+    within('dl.document-metadata') do
+      assert page.has_content?("Access Rights")
+    end
     within('div.show-tools') do
       assert page.has_content?("Licensed Resource")
       assert page.has_link?("Minnesota")
@@ -301,6 +304,14 @@ class ShowPageTest < ApplicationSystemTestCase
     within('div.show-tools') do
       assert page.has_no_content?("Licensed Resource")
       assert page.has_no_link?("Minnesota")
+    end
+  end
+
+  def test_b1g_image_sidebar_map
+    visit '/catalog/VAC9619-001735'
+    within('.page-sidebar') do
+      assert page.has_content?("Location")
+      assert page.has_selector?("#static-map")
     end
   end
 
