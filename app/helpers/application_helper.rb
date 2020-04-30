@@ -8,7 +8,7 @@ module ApplicationHelper
   def remote_image_link(url)
     url_hash = Digest::MD5.hexdigest(url)
     if File.exist? localized_image_path(url_hash)
-      geoportal_image_link = asset_url("uploads/localized/#{url_hash}")
+      geoportal_image_link = asset_url("uploads/localized/#{url_hash}", skip_pipeline: true)
     else
       external_image_link = url
       LocalizeImageJob.perform_later(url)
