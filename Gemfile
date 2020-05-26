@@ -50,7 +50,7 @@ end
 
 group :development do
   gem 'web-console'
-  gem 'puma', '>= 4.3.1'
+  gem "puma", ">= 4.3.5"
   gem 'foreman'
   gem 'letter_opener'
 end
