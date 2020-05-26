@@ -159,11 +159,12 @@ class CatalogController < ApplicationController
     # config.add_index_field 'published_vern_display', :label => 'Published:'
     # config.add_index_field 'lc_callnum_display', :label => 'Call number:'
 
-    # config.add_index_field 'dc_title_t', :label => 'Display Name:'
-    # config.add_index_field 'dct_provenance_s', :label => 'Institution:'
-    # config.add_index_field 'dc_rights_s', :label => 'Access:'
-    # config.add_index_field 'Area', :label => 'Area:'
-    # config.add_index_field 'dc_subject_sm', :label => 'Keywords:'
+    config.add_index_field 'dc_title_s', :label => 'Title:'
+    config.add_index_field 'layer_slug_s', :label => 'Identifier:'
+    config.add_index_field 'dct_provenance_s', :label => 'Institution:'
+    config.add_index_field 'dc_rights_s', :label => 'Access:'
+    config.add_index_field 'dc_subject_sm', :label => 'Keywords:'
+    config.add_index_field 'b1g_centroid_ss', :label => 'Centroid:'
     config.add_index_field Settings.FIELDS.YEAR
     config.add_index_field Settings.FIELDS.CREATOR
     config.add_index_field Settings.FIELDS.DESCRIPTION, helper_method: :snippit
