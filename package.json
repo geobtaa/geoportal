@@ -34,7 +34,7 @@
     "bloodhound-js": "^1.2.3",
     "bootstrap": "^4.3.1",
     "core-js": "^3.4.8",
-    "jquery": "3.4.1",
+    "jquery": "3.5.1",
     "lodash": "^4.17.13",
     "lodash.template": "^4.5.0",
     "mirador": "^3.0.0-beta.7",
