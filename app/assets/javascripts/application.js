@@ -32,6 +32,10 @@
 //= require geoblacklight/viewers/viewer
 //= require leaflet-iiif
 //= require esri-leaflet
+
+// Geoportal
+//= require linkifyjs/dist/linkify
+//= require linkifyjs/dist/linkify-jquery
 //= require Leaflet/Leaflet.fullscreen/Leaflet.fullscreen.js
 //= require Leaflet/leaflet.markercluster/leaflet.markercluster.js
 //= require Leaflet/leaflet.esri_leaflet_cluster/esri_leaflet_cluster.js

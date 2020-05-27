@@ -315,6 +315,20 @@ class ShowPageTest < ApplicationSystemTestCase
     end
   end
 
+  def test_b1g_description_html_link
+    visit '/catalog/99-0011'
+    within('.truncate-abstract') do
+      assert page.has_link?("https://sites.google.com/umn.edu/btaa-gdp/help/restricted-resources")
+    end
+  end
+
+  def test_b1g_access_rights_html_link
+    visit '/catalog/99-0011-minnesota'
+    within('.blacklight-dct_accessrights_sm.col-md-9') do
+      assert page.has_link?("https://sites.google.com/umn.edu/btaa-gdp/help/restricted-resources")
+    end
+  end
+
   # @TODO
   # ESRI - Slow - ImageMapLayer
   # http://localhost:3000/catalog/457dc8bbff9b46848843c8b1bf0ae689
