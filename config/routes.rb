@@ -16,8 +16,11 @@ Rails.application.routes.draw do
   root to: "catalog#index"
   concern :searchable, Blacklight::Routes::Searchable.new
 
-  resource :api, only: [:index], as: 'api', path: '/api', controller: 'api' do
-    concerns :searchable
+  # GEOMG // Metadata Toolkit JSON-API
+  # - Only JSON GET requests
+  namespace :admin do
+    get '/api' => 'api#index', constraints: lambda { |req| req.format == :json }
+    get '/api/facet/:id' => 'api#facet', constraints: lambda { |req| req.format == :json }
   end
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
