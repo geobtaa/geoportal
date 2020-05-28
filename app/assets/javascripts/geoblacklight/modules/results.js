@@ -54,8 +54,13 @@ Blacklight.onLoad(function() {
 
     var markers = L.markerClusterGroup();
 
+    // Send Oboe to admin/api for non-web-ui attributes like centroid
+    // Not usingURL() to maintain legacy IE support
+    url = document.createElement('a');
+    url.href = window.location.href;
+    url.pathname = '/admin/api.json'
     // Oboe - Re-query Solr for JSON results
-    oboe(window.location.href + '&format=json&per_page=1000&rows=10000')
+    oboe(url.toString() + '&format=json&per_page=1000&rows=10000')
       .node('data.*', function( doc ){
           if(typeof doc['attributes']['b1g_centroid_ss'] != 'undefined'){
             var latlng = doc['attributes']['b1g_centroid_ss']['attributes']['value'].split(",")
