@@ -317,15 +317,24 @@ class ShowPageTest < ApplicationSystemTestCase
 
   def test_b1g_description_html_link
     visit '/catalog/99-0011'
-    within('.truncate-abstract') do
-      assert page.has_link?("https://sites.google.com/umn.edu/btaa-gdp/help/restricted-resources")
+    within('dd.blacklight-dc_description_s') do
+      within('.truncate-abstract') do
+        assert page.has_link?("https://sites.google.com/umn.edu/btaa-gdp/help/restricted-resources")
+      end
     end
   end
 
   def test_b1g_access_rights_html_link
     visit '/catalog/99-0011-minnesota'
-    within('.blacklight-dct_accessrights_sm.col-md-9') do
+    within('dd.blacklight-dct_accessrights_sm') do
       assert page.has_link?("https://sites.google.com/umn.edu/btaa-gdp/help/restricted-resources")
+    end
+  end
+
+  def test_b1g_placename_readmore_link
+    visit '/catalog/99-0011-minnesota'
+    within('dd.blacklight-dct_spatial_sm') do
+      assert page.has_link?("Read More")
     end
   end
 
