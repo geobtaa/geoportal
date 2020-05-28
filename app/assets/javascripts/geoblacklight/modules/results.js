@@ -56,10 +56,10 @@ Blacklight.onLoad(function() {
 
     // Oboe - Re-query Solr for JSON results
     oboe(window.location.href + '&format=json&per_page=1000&rows=10000')
-      .node('response.docs.*', function( doc ){
-          if(typeof doc.b1g_centroid_ss != 'undefined'){
-            var latlng = doc.b1g_centroid_ss.split(",")
-            markers.addLayer(L.marker([latlng[0],latlng[1]]).bindPopup("<a href='/catalog/" + doc.layer_slug_s + "'>" + doc.dc_title_s + "</a>"));
+      .node('data.*', function( doc ){
+          if(typeof doc['attributes']['b1g_centroid_ss'] != 'undefined'){
+            var latlng = doc['attributes']['b1g_centroid_ss']['attributes']['value'].split(",")
+            markers.addLayer(L.marker([latlng[0],latlng[1]]).bindPopup("<a href='/catalog/" + doc['attributes']['layer_slug_s']['attributes']['value'] + "'>" + doc['attributes']['dc_title_s']['attributes']['value'] + "</a>"));
           }
         }
       )

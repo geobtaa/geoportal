@@ -159,11 +159,12 @@ class CatalogController < ApplicationController
     # config.add_index_field 'published_vern_display', :label => 'Published:'
     # config.add_index_field 'lc_callnum_display', :label => 'Call number:'
 
-    # config.add_index_field 'dc_title_t', :label => 'Display Name:'
-    # config.add_index_field 'dct_provenance_s', :label => 'Institution:'
-    # config.add_index_field 'dc_rights_s', :label => 'Access:'
-    # config.add_index_field 'Area', :label => 'Area:'
-    # config.add_index_field 'dc_subject_sm', :label => 'Keywords:'
+    config.add_index_field 'dc_title_s', :label => 'Title:'
+    config.add_index_field 'layer_slug_s', :label => 'Identifier:'
+    config.add_index_field 'dct_provenance_s', :label => 'Institution:'
+    config.add_index_field 'dc_rights_s', :label => 'Access:'
+    config.add_index_field 'dc_subject_sm', :label => 'Keywords:'
+    config.add_index_field 'b1g_centroid_ss', :label => 'Centroid:'
     config.add_index_field Settings.FIELDS.YEAR
     config.add_index_field Settings.FIELDS.CREATOR
     config.add_index_field Settings.FIELDS.DESCRIPTION, helper_method: :snippit
@@ -178,7 +179,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'dc_creator_sm', label: 'Creator', itemprop: 'creator'
     config.add_show_field 'dc_description_s', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
     config.add_show_field 'dc_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_facet: true
-    config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true
+    config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
     config.add_show_field 'dc_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dc_type_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dct_issued_s', label: 'Date Published', itemprop: 'keywords', link_to_facet: true
