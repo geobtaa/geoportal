@@ -1,0 +1,63 @@
+{
+  "geoblacklight_version": "1.0",
+  "layer_modified_dt": "2020-06-10T09:31:45Z",
+  "layer_slug_s": "p16022coll230:318_string",
+  "dc_identifier_s": "p16022coll230:318",
+  "dc_title_s": "A Chronological chart of ancient, modern and Biblical history",
+  "dc_description_s": "Cover title: Adams' synchronological chart or map of history. Includes illus., port., etc.; 3rd ed., carefully and critically rev. and brought down to 1878.",
+  "dc_language_sm": [
+    "English"
+  ],
+  "dc_creator_sm": [
+    "Adams, Sebastian C"
+  ],
+  "dc_publisher_sm": [
+    "Colby (New York), 1871"
+  ],
+  "b1g_genre_sm": [
+    "Maps"
+  ],
+  "dc_subject_sm": [
+    "Strip maps",
+    "Thematic maps",
+    "World maps"
+  ],
+  "b1g_keyword_sm": [
+    "Chronology, Historical Charts, Diagrams, Etc",
+    "bbox-update-mar2020"
+  ],
+  "dct_issued_s": "1878",
+  "dct_temporal_sm": [
+    "1871-1878"
+  ],
+  "b1g_date_range_drsim": [
+    "[1871 TO 1878]"
+  ],
+  "solr_year_i": 1878,
+  "dct_spatial_sm": [
+    ""
+  ],
+  "solr_geom": "ENVELOPE(-13.5,65.0,71.8,10.6)",
+  "b1g_centroid_ss": "41.199999999999996,25.75",
+  "dc_type_sm": [
+    "Image"
+  ],
+  "layer_geom_type_s": "Image",
+  "dc_format_s": "JPEG",
+  "b1g_image_ss": "https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/p16022coll230/id/318",
+  "dct_provenance_s": "Minnesota",
+  "b1g_code_s": "05d-01",
+  "dct_isPartOf_sm": [
+    "05d-p16022coll230",
+    "05d-01"
+  ],
+  "b1g_status_s": "Active",
+  "dct_accrualMethod_s": "Blacklight",
+  "dc_rights_s": "Public",
+  "dct_accessRights_sm": [
+    "Use of this item may be governed by US and international copyright laws. You may be able to use this item, but copyright and other considerations may apply. For possible additional information or guidance on your use, please contact the contributing organization: University of Minnesota Libraries, John R. Borchert Map Library. S-76 Wilson Library, 309 19th Ave S, Minneapolis, MN 55455; https://www.lib.umn.edu/borchert"
+  ],
+  "suppressed_b": false,
+  "b1g_child_record_b": false,
+  "dct_references_s": "{\"http://schema.org/url\":\"http://purl.umn.edu/210879\",\"http://iiif.io/api/presentation#manifest\":\"https://cdm16022.contentdm.oclc.org/iiif/info/p16022coll230/318/manifest.json\"}"
+}
