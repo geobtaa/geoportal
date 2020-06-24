@@ -338,6 +338,11 @@ class ShowPageTest < ApplicationSystemTestCase
     end
   end
 
+  def test_b1g_iowa_no_dates
+    visit '/catalog/03a-04'
+    assert page.has_content?('State of Iowa Open Spatial Data')
+  end
+
   # @TODO
   # ESRI - Slow - ImageMapLayer
   # http://localhost:3000/catalog/457dc8bbff9b46848843c8b1bf0ae689

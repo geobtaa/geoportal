@@ -1,0 +1,36 @@
+{
+  "geoblacklight_version": "1.0",
+  "dc_description_s": "Find and explore spatial data from State of Iowa agencies to better understand how government provides services to citizens.",
+  "layer_modified_dt": "2020-04-24T11:13:18Z",
+  "solr_geom": "ENVELOPE(-96.6397,-90.1401,43.5011,40.3756)",
+  "dct_references_s": "{\"http://schema.org/url\":\"https://open-iowa.opendata.arcgis.com\"}",
+  "dc_rights_s": "Public",
+  "b1g_centroid_ss": "41.93835,-93.38990000000001",
+  "layer_geom_type_s": "Table",
+  "b1g_status_s": "Active",
+  "dct_provenance_s": "Iowa",
+  "dc_language_sm": [
+    "English"
+  ],
+  "suppressed_b": false,
+  "b1g_child_record_b": false,
+  "dct_accrualMethod_s": "ArcGIS Hub",
+  "b1g_code_s": "03a-04",
+  "layer_slug_s": "03a-04",
+  "b1g_genre_sm": [
+    "Geospatial data"
+  ],
+  "dc_identifier_s": "03a-04",
+  "b1g_image_ss": "https://iowageodata.s3.amazonaws.com/siteassets/geodata_header_transparent.png",
+  "dct_spatial_sm": [
+    "Iowa"
+  ],
+  "dc_publisher_sm": [
+    "State of Iowa"
+  ],
+  "dc_type_sm": [
+    "Collection"
+  ],
+  "dc_title_s": "State of Iowa Open Spatial Data",
+  "b1g_dateAccessioned_s": "2020-04-24"
+}
