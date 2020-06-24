@@ -115,7 +115,7 @@
       <str name="fl">*,score</str>
       <str name="sort">score desc, dc_title_sort asc</str>
       <str name="q.alt">*:*</str>
-      <str name="bf">if(exists(b1g_child_record_b),0,100)^0.5</str>
+      <str name="bq">b1g_child_record_b:false^10</str>
       <str name="qf">
         text^1
         dct_temporal_tmi^1
