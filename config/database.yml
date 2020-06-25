@@ -11,25 +11,18 @@ default: &default
 
 # Local development with sqlite
 development:
-  #<<: *default
-  #database: db/development.sqlite3
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  host: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_HOST'] %>
-  database: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_NAME'] %>
-  username: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_USER'] %>
-  password: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_PASSWORD'] %>
+  <<: *default
+  database: db/development.sqlite3
 
 # MySQL setup (hosted server development)
 #development:
 #  adapter: mysql2
 #  encoding: utf8
 #  reconnect: false
-#  hostname: hostname
-#  database: dbname
-#  username: dbuser
-#  password: dbpass
+#  host: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_HOST'] %>
+#  database: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_NAME'] %>
+#  username: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_USER'] %>
+#  password: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_PASSWORD'] %>
 
 
 # Warning: The database defined as "test" will be erased and
