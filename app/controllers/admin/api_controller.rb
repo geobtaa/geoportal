@@ -104,9 +104,24 @@ module Admin
 
       # config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
 
+      ## FACETS
+      #
+      # Genre
       config.add_facet_field 'b1g_genre_sm', :label => 'Genre', :limit => 8, collapse: false
+      # Contributor
       config.add_facet_field 'dct_provenance_s', label: 'Contributor', limit: 15
+      # Type
       config.add_facet_field 'dc_type_sm', label: 'Type', limit: 8
+      # Code
+      config.add_facet_field 'b1g_code_s', label: 'Code', limit: 10
+      # Is Part Of
+      config.add_facet_field 'dct_isPartOf_sm', label: 'Is Part Of', limit: 10
+      # Date Accessioned
+      config.add_facet_field 'b1g_dateAccessioned_s', label: 'Date Accessioned', limit: 10
+      # Date Retired
+      config.add_facet_field 'b1g_dateRetired_s', label: 'Date Retired', limit: 10
+      # Access
+      config.add_facet_field 'dc_rights_s', :label => 'Public/Restricted'
 
       config.add_facet_field 'dct_spatial_sm', :label => 'Place', :limit => 8, collapse: false
 
@@ -139,7 +154,6 @@ module Admin
 
       #config.add_facet_field 'b1g_geom_type_sm', label: 'Geometry', limit: 8, partial: "icon_facet", collapse: false
       #config.add_facet_field 'dc_format_s', :label => 'Format', :limit => 8
-      config.add_facet_field 'dc_rights_s', :label => 'Public/Restricted'
       config.add_facet_field 'dct_mediator_sm', label: 'Institutional Access', limit: 15
       # Remove access facet until data is available - EWL
       # config.add_facet_field 'dc_rights_s', label: 'Access', limit: 8, partial: "icon_facet"
