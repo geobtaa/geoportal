@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   # - Only JSON GET requests
   namespace :admin do
     get '/api' => 'api#index', constraints: lambda { |req| req.format == :json }
+    get '/api/fetch' => 'api#fetch', constraints: lambda { |req| req.format == :json }
     get '/api/facet/:id' => 'api#facet', constraints: lambda { |req| req.format == :json }
   end
 
