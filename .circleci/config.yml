@@ -15,7 +15,6 @@ jobs:
     steps:
       - checkout
       # Update node
-            - checkout
       - run:
           name: "Update Node.js and npm"
           command: |
