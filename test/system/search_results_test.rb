@@ -29,6 +29,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
   def test_map_clustering
     # Map centered on USA. B1G records have cluster centroid values.
     visit '/?utf8=✓&view=mapview&q=&search_field=all_fields&bbox=-177.129822%20-36.81918%20-28.067322%2074.70319'
+    sleep(3)
     assert page.has_selector?("div.marker-cluster")
   end
 
@@ -119,7 +120,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     # Search 1874 -
     # Expect 7 results
     visit '/?utf8=✓&q=&search_field=all_fields&range%5Bsolr_year_i%5D%5Bbegin%5D=1874&range%5Bsolr_year_i%5D%5Bend%5D=&commit=Limit'
-    assert page.assert_selector('article.document', :count => 7)
+    assert page.assert_selector('article.document', :count => 8)
     assert page.assert_selector('div[data-layer-id="VAC9619-001735"]')
     assert page.assert_selector('div[data-layer-id="VAC9619-001727"]')
     assert page.assert_selector('div[data-layer-id="d6efb1e4d0ca491db8c79e5b18c4dee9_3"]')
