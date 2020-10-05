@@ -106,6 +106,9 @@ module Admin
 
       ## FACETS
       #
+      # Publication State
+      config.add_facet_field 'b1g_publication_state_s', :label => 'Publication State', :limit => 8, collapse: false
+
       # Genre
       config.add_facet_field 'b1g_genre_sm', :label => 'Genre', :limit => 8, collapse: false
       # Contributor
@@ -328,5 +331,17 @@ module Admin
       deprecated_response, @document = search_service.fetch(params[:id])
     end
 
+    # Administrative view for array of document ids
+    # - bookmarks
+    def fetch
+      @response, deprecated_document_list = search_service.fetch(params[:id])
+
+      respond_to do |format|
+        format.json do
+          @presenter = Blacklight::JsonPresenter.new(@response,
+                                                     blacklight_config)
+        end
+      end
+    end
   end
 end
