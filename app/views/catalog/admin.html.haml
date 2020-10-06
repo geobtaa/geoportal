@@ -45,7 +45,7 @@
       - else
         %td
           %div.media
-            %span.icon.square.mr-3= inline_svg("#{@document[Settings.FIELDS.GEOM_TYPE].downcase.gsub(" ", "-")}.svg", {title: @document[Settings.FIELDS.GEOM_TYPE]})
+            %span.icon.square.mr-3= blacklight_icon("#{@document[Settings.FIELDS.GEOM_TYPE].downcase.gsub(" ", "-")}")
 
       %td= @document.sidecar.image.attached?
       %td= @document.sidecar.image_state.current_state

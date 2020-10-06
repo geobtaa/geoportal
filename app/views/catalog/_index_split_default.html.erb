@@ -15,7 +15,7 @@
           <%- end %>
         <%- else %>
             <span class="icon square mr-3" title="<%=document[Settings.FIELDS.GEOM_TYPE]%>">
-              <%= inline_svg("#{document[Settings.FIELDS.GEOM_TYPE].downcase.gsub(" ", "-")}.svg", {title: document[Settings.FIELDS.GEOM_TYPE]}) %>
+              <%= blacklight_icon("#{document[Settings.FIELDS.GEOM_TYPE].downcase.gsub(" ", "-")}") %>
             </span>
         <%- end %>
         <div class='media-body'>

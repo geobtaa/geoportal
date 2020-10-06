@@ -5,5 +5,5 @@
 %div.access-links.list-group
   - b1g_access_links(@document).each do |key,value|
     %a.list-group-item.list-group-item-action{href:value}
-      = geoblacklight_icon(key)
+      = blacklight_icon(key.parameterize)
       = key
