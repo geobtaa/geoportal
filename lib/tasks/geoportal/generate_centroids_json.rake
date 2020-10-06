@@ -1,5 +1,4 @@
 require 'rsolr'
-include ActionView::Helpers::TextHelper
 
 namespace :geoportal do
   desc 'Generate homepage centroids for map clustering'
@@ -13,7 +12,7 @@ namespace :geoportal do
         if doc.key?('b1g_centroid_ss') && !doc['b1g_centroid_ss'].empty?
           entry = {}
           entry['l'] = doc['layer_slug_s']
-          entry['t'] = truncate(doc['dc_title_s'], length: 50)
+          entry['t'] = ActionController::Base.helpers.truncate(doc['dc_title_s'], length: 50)
           lat,lng    = doc['b1g_centroid_ss'].split(",")
           lat = lat.to_f.round(4) # Truncate long values
           lng = lng.to_f.round(4) # Truncate long values
