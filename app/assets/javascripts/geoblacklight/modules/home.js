@@ -35,12 +35,12 @@ Blacklight.onLoad(function() {
 
     // Oboe - SAX steam JSON results from Solr /export
     // oboe('http://localhost:8983/solr/geoportal/export?fl=uuid_sdv,dc_title_sdv,centroid_sdv&indent=on&q=*:*&wt=json&sort=dc_title_sdv%20asc&rows=10000')
-    
+
     oboe('/centroids.json')
       .node('*', function( doc ){
-          if(typeof doc.b1g_centroid_ss != 'undefined'){
-            var latlng = doc.b1g_centroid_ss.split(",")
-            var marker = L.marker([latlng[0],latlng[1]]).bindPopup("<a href='/catalog/" + doc.layer_slug_s + "'>" + doc.dc_title_s + "</a>")
+          if(typeof doc.c != 'undefined'){
+            var latlng = doc.c.split(",")
+            var marker = L.marker([latlng[0],latlng[1]]).bindPopup("<a href='/catalog/" + doc.l + "'>" + doc.t + "</a>")
             markerList.push(marker);
           }
         }
