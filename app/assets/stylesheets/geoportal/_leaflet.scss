@@ -13,3 +13,26 @@
     top:8rem;
   }
 }
+
+#progress {
+    display: none;
+    position: relative;
+    z-index: 1000;
+    left: 50%;
+    top: 40%;
+    width: 200px;
+    height: 1rem;
+    margin-top: -20px;
+    margin-left: -100px;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+    padding: 2px;
+}
+
+#progress-bar {
+    width: 0;
+    height: 100%;
+    background-color: #76A6FC;
+    border-radius: 4px;
+}
