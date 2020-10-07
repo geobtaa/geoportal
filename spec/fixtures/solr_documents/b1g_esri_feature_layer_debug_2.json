@@ -1,0 +1,77 @@
+{
+  "geoblacklight_version": "1.0",
+  "layer_modified_dt": "2020-10-06T13:44:50Z",
+  "solr_geom": "ENVELOPE(-179.1474,179.7785,71.3526,17.8848)",
+  "dct_references_s": "{\"http://schema.org/url\":\"http://gis-for-racialequity.hub.arcgis.com/datasets/019f5e3f77da4c89bf6d00b376389a0c_1\",\"http://schema.org/downloadUrl\":\"http://gis-for-racialequity.hub.arcgis.com/datasets/019f5e3f77da4c89bf6d00b376389a0c_1.zip\",\"urn:x-esri:serviceType:ArcGIS#FeatureLayer\":\"https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/ACS_Housing_Tenure_by_Race_Boundaries/FeatureServer/1\"}",
+  "dc_rights_s": "Public",
+  "b1g_centroid_ss": "44.6187,0.3156",
+  "layer_geom_type_s": "Vector",
+  "b1g_status_s": "Active",
+  "dct_alternativeTitle_sm": [
+    "County"
+  ],
+  "dc_subject_sm": [
+    "Society"
+  ],
+  "dc_language_sm": [
+    "English"
+  ],
+  "dct_temporal_sm": [
+    "2020"
+  ],
+  "suppressed_b": false,
+  "b1g_child_record_b": false,
+  "dct_accrualMethod_s": "ArcGIS Hub",
+  "b1g_code_s": "99-1100",
+  "dct_issued_s": "2018-10-22",
+  "b1g_genre_sm": [
+    "Geospatial data"
+  ],
+  "dc_format_s": "Shapefile",
+  "b1g_keyword_sm": [
+    "ACS",
+    "demographics",
+    "people",
+    "states",
+    "counties",
+    "tracts",
+    "Tenure",
+    "Race",
+    "Ethnicity",
+    "Housing",
+    "Demographics",
+    "Policy",
+    "AmericanCommunitySurvey",
+    "Census",
+    "CensusBureau",
+    "homeownership",
+    "currentyear",
+    "housing",
+    "Homeownership"
+  ],
+  "dc_creator_sm": [
+    "Esri"
+  ],
+  "dc_identifier_s": "http://gis-for-racialequity.hub.arcgis.com/datasets/019f5e3f77da4c89bf6d00b376389a0c_1",
+  "dct_isPartOf_sm": [
+    "99-1100"
+  ],
+  "solr_year_i": 2020,
+  "dct_spatial_sm": [
+    "United States"
+  ],
+  "dc_publisher_sm": [
+    "Esri"
+  ],
+  "dc_type_sm": [
+    "Dataset",
+    "Service"
+  ],
+  "dc_title_s": "Tenure (owner or renter) by race of householder (Boundaries): United States",
+  "layer_slug_s": "019f5e3f77da4c89bf6d00b376389a0c_1",
+  "b1g_date_range_drsim": [
+    "[2020 TO 2020]"
+  ],
+  "b1g_dateAccessioned_s": "2020-10-06",
+  "dc_description_s": "This layer shows tenure (owner or renter) by race of householder.This is shown by tract, county, and state boundaries.This service is updated annually to contain the most currently released American Community Survey (ACS) 5-year data, and contains estimates and margins of error. There are also additional calculated attributes related to this topic, which can be mapped or used within analysis. This layer is symbolized by the overall homeownership rate. To see the full list of attributes available in this service, go to the \"Data\" tab, and choose \"Fields\" at the top right.Current Vintage: 2014-2018ACS Table(s): B25003, B25003B, B25003C, B25003D, B25003E, B25003F, B25003G, B25003H, B25003IData downloaded from:Census Bureau's API for American Community SurveyDate of API call: December 19, 2019National Figures:data.census.govThe United States Census Bureau's American Community Survey (ACS):About the SurveyGeography & ACSTechnical DocumentationNews & UpdatesThis ready-to-use layer can be used within ArcGIS Pro, ArcGIS Online, its configurable apps, dashboards, Story Maps, custom apps, and mobile apps. Data can also be exported for offline workflows. Please cite the Census and ACS when using this data.Data Note from the Census:Data are based on a sample and are subject to sampling variability. The degree of uncertainty for an estimate arising from sampling variability is represented through the use of a margin of error. The value shown here is the 90 percent margin of error. The margin of error can be interpreted as providing a 90 percent probability that the interval defined by the estimate minus the margin of error and the estimate plus the margin of error (the lower and upper confidence bounds) contains the true value. In addition to sampling variability, the ACS estimates are subject to nonsampling error (for a discussion of nonsampling variability, seeAccuracy of the Data). The effect of nonsampling error is not represented in these tables.Data Processing Notes:This layer is updated automatically when the most current vintage of ACS data is released each year, usually in December. The layer always contains the latest available ACS 5-year estimates. It is updated annually within days of the Census Bureau's release schedule.Click hereto learn more about ACS data releases.Boundaries come from theUS Census TIGER geodatabases. Boundaries are updated at the same time as the data updates (annually), and the boundary vintage appropriately matches the data vintageas specified by the Census. These are Census boundaries with water and/or coastlines clipped for cartographic purposes. For census tracts, the water cutouts are derived from a subset of the 2010 AWATER (Area Water) boundaries offered by TIGER. For state and county boundaries, the water and coastlines are derived from the coastlines of the 500kTIGER Cartographic Boundary Shapefiles. The original AWATER and ALAND fields are still available as attributes within the data table (units are square meters).The States layer contains 52 records - all US states, Washington D.C., and Puerto RicoCensus tracts with no population that occur in areas of water, such as oceans, are removed from this data service (Census Tracts beginning with 99).Percentages and derived counts, and associated margins of error, are calculated values (that can be identified by the \"_calc_\" stub in the field name), and abide by the specificationsdefined by the American Community Survey.Field alias names were created based on theTable Shellsfile available from theAmerican Community Survey Summary File Documentation page.Negative values (e.g., -555555...) have been set to null. These negative values exist in the raw API data to indicate the following situations:The margin of error column indicates that either no sample observations or too few sample observations were available to compute a standard error and thus the margin of error. A statistical test is not appropriate.Either no sample observations or too few sample observations were available to compute an estimate, or a ratio of medians cannot be calculated because one or both of the median estimates falls in the lowest interval or upper interval of an open-ended distribution.The median falls in the lowest interval of an open-ended distribution, or in the upper interval of an open-ended distribution. A statistical test is not appropriate.The estimate is controlled. A statistical test for sampling variability is not appropriate.The data for this geographic area cannot be displayed because the number of sample cases is too small.NOTE: any calculated percentages or counts that contain estimates that have null margins of error yield null margins of error for the calculated fields."
+}
