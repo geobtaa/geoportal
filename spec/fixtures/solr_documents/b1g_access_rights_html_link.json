@@ -171,12 +171,12 @@
   ],
   "layer_geom_type_s": "Table",
   "dct_mediator_sm": [
-    "Minnesota",
-    "Illinois",
-    "Indiana",
-    "Iowa",
-    "Maryland",
-    "Michigan"
+    "University of Minnesota",
+    "University of Illinois Urbana-Champaign",
+    "Indiana University",
+    "University of Iowa",
+    "University of Maryland",
+    "University of Michigan"
   ],
   "b1g_access_s": "{\"05\":\"https://primo.lib.umn.edu/permalink/f/1q7ssba/UMN_ALMA51561651310001701\",\"01\":\"https://libraries.indiana.edu/digital-sanborn-maps-national-edition\",\"02\":\"https://vufind.carli.illinois.edu/vf-uiu/Record/uiu_8895076\",\"03\":\"https://search.lib.uiowa.edu/permalink/f/9i2ftm/AZ_GUIDESaz/4684636\",\"04\":\"https://catalog.umd.edu/docno=003850234\",\"07\":\"https://search.lib.umich.edu/databases/record/9549\"}",
   "b1g_image_ss": "",

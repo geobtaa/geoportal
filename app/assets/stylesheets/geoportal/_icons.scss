@@ -18,33 +18,20 @@
 }
 
 span.icon {
-  color: #CCC;
   display: inline;
   align-self: center;
 }
 
-.icon svg, .icon svg>path {
+// Homepage white icons
+h3.h6 svg>path {
   fill: currentColor;
   height: 1em;
   width: 1em;
 }
 
-.icon.square {
-  color: #CCC !important;
-}
-
 .icon.square svg {
-  fill: #CCCCCC;
   height: 100px;
   width:100px;
-}
-
-.icon.square svg path{
-  fill: #CCCCCC;
-}
-
-.icon.square svg text{
-  fill: #CCCCCC;
 }
 
 .icon.baseline svg {

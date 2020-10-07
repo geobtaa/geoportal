@@ -4,6 +4,7 @@
 
       <div id="wrapper-map" class="d-none d-md-block col-md-6" role="application">
         <div id='map-container' class="d-md-block col-md-6">
+          <div id="progress"><div id="progress-bar"></div></div>
           <div id='map' aria-label='map-search' data-map='home' data-catalog-path="<%=search_catalog_path%>" data-map-bbox="<%=params[:bbox]%>" data-basemap="<%=geoblacklight_basemap%>">
             <div id="progress"><div id="progress-bar"></div></div>
           </div>
@@ -29,7 +30,7 @@
               <div class='col col-sm col-md-4'>
                 <h3 class="h6" style="color:#FFF">
                   <span class="icon baseline" style="color:#FFF;">
-                    <%= inline_svg("vector.svg") %>
+                    <%= blacklight_icon("vector") %>
                   </span>
                   Geospatial Data
                 </h3>
@@ -41,7 +42,7 @@
               <div class='col col-sm col-md-4'>
                 <h3 class="h6" style="color:#FFF">
                   <span class="icon baseline" style="color:#FFF;">
-                    <%= inline_svg("map.svg") %>
+                    <%= blacklight_icon("map") %>
                   </span>
                   Maps
                 </h3>
@@ -53,7 +54,7 @@
               <div class='col col-sm col-md-4'>
                 <h3 class="h6" style="color:#FFF">
                   <span class="icon baseline" style="color:#FFF;">
-                    <%= inline_svg("image.svg") %>
+                    <%= blacklight_icon("image") %>
                   </span>
                   Aerial Imagery
                 </h3>
