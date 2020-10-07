@@ -44,7 +44,7 @@ GeoBlacklight.Viewer.FeatureLayer = GeoBlacklight.Viewer.Esri.extend({
     this.esriFeatureLayer = L.esri.Cluster.featureLayer(this.options);
 
     //setup feature inspection and opacity
-    // this.setupInspection(this.esriFeatureLayer);
+    this.setupInspection(this.esriFeatureLayer);
     this.setupInitialOpacity(this.esriFeatureLayer);
 
     return this.esriFeatureLayer;
