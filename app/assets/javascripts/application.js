@@ -38,6 +38,7 @@
 //= require linkifyjs/dist/linkify-jquery
 //= require Leaflet/Leaflet.fullscreen/Leaflet.fullscreen.js
 //= require Leaflet/leaflet.markercluster/leaflet.markercluster.js
+//= require Leaflet/leaflet.prunecluster/PruneCluster.js
 //= require Leaflet/leaflet.esri_leaflet_cluster/esri_leaflet_cluster.js
 //= require oboe/oboe-browser.js
 //= require screenfull/screenfull.min.js
