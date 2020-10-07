@@ -30,8 +30,7 @@ Blacklight.onLoad(function() {
       }
     }
 
-    var markers = L.markerClusterGroup({ chunkedLoading: true, chunkProgress: updateProgressBar });
-    var markerList = [];
+    var pruneCluster = new PruneClusterForLeaflet();
 
     // Oboe - SAX steam JSON results from Solr /export
     // oboe('http://localhost:8983/solr/geoportal/export?fl=uuid_sdv,dc_title_sdv,centroid_sdv&indent=on&q=*:*&wt=json&sort=dc_title_sdv%20asc&rows=10000')
@@ -40,14 +39,14 @@ Blacklight.onLoad(function() {
       .node('*', function( doc ){
           if(typeof doc.c != 'undefined'){
             var latlng = doc.c.split(",")
-            var marker = L.marker([latlng[0],latlng[1]]).bindPopup("<a href='/catalog/" + doc.l + "'>" + doc.t + "</a>")
-            markerList.push(marker);
+
+            var marker = new PruneCluster.Marker(latlng[0],latlng[1], {popup: "<a href='/catalog/" + doc.l + "'>" + doc.t + "</a>"});
+            pruneCluster.RegisterMarker(marker);
           }
         }
       )
       .done(function(){
-        markers.addLayers(markerList)
-        geoblacklight.map.addLayer(markers);
+        geoblacklight.map.addLayer(pruneCluster)
       })
   });
 });

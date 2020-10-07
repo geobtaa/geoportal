@@ -52,6 +52,6 @@ class HomePageTest < ApplicationSystemTestCase
   end
 
   def test_map_clustering
-    assert page.has_selector?("div.marker-cluster")
+    assert page.has_selector?("div.prunecluster")
   end
 end
