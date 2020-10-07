@@ -1,3 +1,8 @@
+/* cursors */
+.leaflet-interactive {
+  cursor: crosshair !important;
+}
+
 #esri-error {
   z-index: 1000;
   background-color: black;

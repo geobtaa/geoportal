@@ -1,0 +1,59 @@
+{
+  "geoblacklight_version": "1.0",
+  "layer_modified_dt": "2020-04-05T21:15:01Z",
+  "solr_geom": "ENVELOPE(-93.32910837,-93.19432852,45.05124626,44.89058851)",
+  "dct_references_s": "{\"http://schema.org/url\":\"http://opendata.minneapolismn.gov/datasets/714589fbf99d4045bc57bf298be2578e_0\",\"http://schema.org/downloadUrl\":\"http://opendata.minneapolismn.gov/datasets/714589fbf99d4045bc57bf298be2578e_0.zip\",\"urn:x-esri:serviceType:ArcGIS#FeatureLayer\":\"https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/Minneapolis_Police_Districts/FeatureServer/0\"}",
+  "dc_rights_s": "Public",
+  "b1g_centroid_ss": "44.970917385,-93.261718445",
+  "layer_geom_type_s": "Vector",
+  "b1g_status_s": "Active",
+  "dct_provenance_s": "Minnesota",
+  "dc_subject_sm": [
+    "Boundaries"
+  ],
+  "dc_language_sm": [
+    "English"
+  ],
+  "dc_format_s": "Shapefile",
+  "suppressed_b": false,
+  "b1g_child_record_b": false,
+  "dct_accrualMethod_s": "ArcGIS Hub",
+  "b1g_code_s": "05c-01",
+  "layer_slug_s": "714589fbf99d4045bc57bf298be2578e_0",
+  "b1g_genre_sm": [
+    "Geospatial data"
+  ],
+  "dct_temporal_sm": [
+    "2015"
+  ],
+  "b1g_keyword_sm": [
+    "Minneapolis",
+    "Police",
+    "Public Safety"
+  ],
+  "dc_creator_sm": [
+    "MapIT Minneapolis"
+  ],
+  "dc_identifier_s": "714589fbf99d4045bc57bf298be2578e_0",
+  "dct_isPartOf_sm": [
+    "05c-01"
+  ],
+  "solr_year_i": 2015,
+  "dct_spatial_sm": [
+    "Minneapolis, Minnesota",
+    "Minnesota"
+  ],
+  "dc_publisher_sm": [
+    "City of Minneapolis, Minnesota"
+  ],
+  "dc_type_sm": [
+    "Dataset",
+    "Service"
+  ],
+  "dc_title_s": "Minneapolis Police Districts: Minneapolis, Minnesota",
+  "dct_issued_s": "2015-11-20",
+  "b1g_date_range_drsim": [
+    "[2015 TO 2015]"
+  ],
+  "b1g_dateAccessioned_s": "2019-03-28"
+}
