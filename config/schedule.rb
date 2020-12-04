@@ -33,15 +33,15 @@ every '0 3 * * 1', roles: [:app] do
   rake 'geoportal:sidecar_states'
 end
 # URI analysis
-every '0 1 1 * *', roles: [:app] do
+every '0 1 1 * *', roles: [:prodcron] do
   rake 'geoportal:uri_purge'
 end
-every '0 2 1 * *', roles: [:app] do
+every '0 2 1 * *', roles: [:prodcron] do
   rake 'geoportal:uri_process_all'
 end
-every '0 1 2 * *', roles: [:app] do
+every '0 1 2 * *', roles: [:prodcron] do
   rake 'geoportal:uri_queue_incomplete_states'
 end
-every '0 8 2 * *', roles: [:app] do
+every '0 8 2 * *', roles: [:prodcron] do
   rake 'geoportal:uri_report'
 end
