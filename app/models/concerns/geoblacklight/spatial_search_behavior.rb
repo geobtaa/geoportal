@@ -64,7 +64,7 @@ module Geoblacklight
       return if solr_params[:q]&.include?('{!lucene}layer_slug_s:')
 
       solr_params[:fq] ||= []
-      solr_params[:fq] << '-suppressed_b: true'
+      solr_params[:fq] << '-suppressed_b: true' unless solr_params['admin.api']
     end
   end
 end

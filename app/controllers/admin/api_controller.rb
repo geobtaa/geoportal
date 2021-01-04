@@ -45,7 +45,8 @@ module Admin
       config.default_solr_params = {
         :start => 0,
         'q.alt' => '*:*',
-        'bf' => ['if(exists(b1g_child_record_b),0,100)^0.5']
+        'bf' => ['if(exists(b1g_child_record_b),0,100)^0.5'],
+        'admin.api' => true
       }
 
       config.default_per_page = 20 # Works!
