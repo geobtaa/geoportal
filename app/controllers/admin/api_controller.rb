@@ -29,7 +29,7 @@ module Admin
       config.advanced_search[:url_key] ||= 'advanced'
       config.advanced_search[:query_parser] ||= 'edismax'
       config.advanced_search[:form_solr_parameters] ||= {}
-      config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[dct_provenance_s dc_type_sm b1g_genre_sm]
+      config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[dct_provenance_s dc_type_sm b1g_genre_sm b1g_code_s dct_isPartOf_sm]
       config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
       config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
       config.advanced_search[:form_solr_parameters]['facet.sort'] ||= 'index'
@@ -336,6 +336,25 @@ module Admin
     # - bookmarks
     def fetch
       @response, deprecated_document_list = search_service.fetch(params[:id])
+
+      respond_to do |format|
+        format.json do
+          @presenter = Blacklight::JsonPresenter.new(@response,
+                                                     blacklight_config)
+        end
+      end
+    end
+
+    # Administrative view of adv search facets
+    def advanced_search_facets
+      # We want to find the facets available for the current search, but:
+      # * IGNORING current query (add in facets_for_advanced_search_form filter)
+      # * IGNORING current advanced search facets (remove add_advanced_search_to_solr filter)
+      @response, _ = search_service.search_results do |search_builder|
+        search_builder.except(:add_advanced_search_to_solr).append(:facets_for_advanced_search_form)
+      end
+
+      @response
 
       respond_to do |format|
         format.json do
