@@ -125,8 +125,6 @@ module Admin
       # Is Part Of
       config.add_facet_field 'dct_isPartOf_sm', label: 'Is Part Of', limit: 1000
 
-      config.add_facet_field 'dct_mediator_sm', label: 'Institutional Access', limit: 15
-
       # Have BL send all facet field names to Solr, which has been the default
       # previously. Simply remove these lines if you'd rather use Solr request
       # handler defaults, or have no facets.
