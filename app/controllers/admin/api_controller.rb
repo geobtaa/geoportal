@@ -109,58 +109,21 @@ module Admin
       #
       # Publication State
       config.add_facet_field 'b1g_publication_state_s', :label => 'Publication State', :limit => 8, collapse: false
-
-      # Genre
-      config.add_facet_field 'b1g_genre_sm', :label => 'Genre', :limit => 8, collapse: false
-      # Contributor
-      config.add_facet_field 'dct_provenance_s', label: 'Contributor', limit: 15
       # Type
       config.add_facet_field 'dc_type_sm', label: 'Type', limit: 8
-      # Code
-      config.add_facet_field 'b1g_code_s', label: 'Code', limit: 10
-      # Is Part Of
-      config.add_facet_field 'dct_isPartOf_sm', label: 'Is Part Of', limit: 10
-      # Date Accessioned
-      config.add_facet_field 'b1g_dateAccessioned_s', label: 'Date Accessioned', limit: 10
-      # Date Retired
-      config.add_facet_field 'b1g_dateRetired_s', label: 'Date Retired', limit: 10
-      # Access
+      # Contributor
+      config.add_facet_field 'dct_provenance_s', label: 'Contributor', limit: 15
+      # Accrual Method
+      config.add_facet_field 'dct_accrualMethod_s', :label => 'Accrual Method'
+      # Public/Restricted
       config.add_facet_field 'dc_rights_s', :label => 'Public/Restricted'
 
-      config.add_facet_field 'dct_spatial_sm', :label => 'Place', :limit => 8, collapse: false
-
-      config.add_facet_field 'solr_year_i', label: 'Year', limit: 10, collapse: false, all: 'Any year', range: {
-        assumed_boundaries: [1100, 2018]
-        # :num_segments => 6,
-        # :segments => true
-      }
-      config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8, collapse: false
-
-      config.add_facet_field 'time_period', :label => 'Time Period', :query => {
-        '1500s' => { :label => '1500s', :fq => "solr_year_i:[1500 TO 1599]" },
-        '1600s' => { :label => '1600s', :fq => "solr_year_i:[1600 TO 1699]" },
-        '1700s' => { :label => '1700s', :fq => "solr_year_i:[1700 TO 1799]" },
-        '1800-1849' => { :label => '1800-1849', :fq => "solr_year_i:[1800 TO 1849]" },
-        '1850-1899' => { :label => '1850-1899', :fq => "solr_year_i:[1850 TO 1899]" },
-        '1900-1949' => { :label => '1900-1949', :fq => "solr_year_i:[1900 TO 1949]" },
-        '1950-1999' => { :label => '1950-1999', :fq => "solr_year_i:[1950 TO 1999]" },
-        '2000-2004' => { :label => '2000-2004', :fq => "solr_year_i:[2000 TO 2004]" },
-        '2005-2009' => { :label => '2005-2009', :fq => "solr_year_i:[2005 TO 2009]" },
-        '2010-2014' => { :label => '2010-2014', :fq => "solr_year_i:[2010 TO 2014]" },
-        '2015-present' => { :label => '2015-present', :fq => "solr_year_i:[2015 TO #{Time.now.year}]"}
-      }, collapse: false
-
-      # Trying range facet
-      #config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
-
-      config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8
-      config.add_facet_field 'dc_creator_sm', :label => 'Creator', :limit => 8
-
-      #config.add_facet_field 'b1g_geom_type_sm', label: 'Geometry', limit: 8, partial: "icon_facet", collapse: false
-      #config.add_facet_field 'dc_format_s', :label => 'Format', :limit => 8
-      config.add_facet_field 'dct_mediator_sm', label: 'Institutional Access', limit: 15
-      # Remove access facet until data is available - EWL
-      # config.add_facet_field 'dc_rights_s', label: 'Access', limit: 8, partial: "icon_facet"
+      # ADVANCED SEARCH
+      #
+      # Code
+      config.add_facet_field 'b1g_code_s', label: 'Code', limit: 1000
+      # Is Part Of
+      config.add_facet_field 'dct_isPartOf_sm', label: 'Is Part Of', limit: 1000
 
       # Have BL send all facet field names to Solr, which has been the default
       # previously. Simply remove these lines if you'd rather use Solr request
