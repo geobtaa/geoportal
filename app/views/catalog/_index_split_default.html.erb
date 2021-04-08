@@ -1,5 +1,5 @@
 <% # header bar for doc items in index view -%>
-<%= content_tag :div, class: 'documentHeader row', data: { layer_id: document.id, bbox: document.bounding_box_as_wsen } do %>
+<%= content_tag :div, class: 'documentHeader row', data: { layer_id: document.id, geom: document.geometry.geojson } do %>
   <div class="document-wrapper">
     <% counter = document_counter_with_offset(document_counter) %>
     <span class="list-view document-counter">
@@ -14,9 +14,11 @@
             <%= image_tag document.sidecar.image, {class: 'mr-3'} %>
           <%- end %>
         <%- else %>
+          <%- if document[Settings.FIELDS.GEOM_TYPE].present? %>
             <span class="icon square mr-3" title="<%=document[Settings.FIELDS.GEOM_TYPE]%>">
-              <%= blacklight_icon("#{document[Settings.FIELDS.GEOM_TYPE].downcase.gsub(" ", "-")}") %>
+              <%= blacklight_icon("#{document[Settings.FIELDS.GEOM_TYPE].first.downcase.gsub(" ", "-")}") %>
             </span>
+          <% end %>
         <%- end %>
         <div class='media-body'>
           <p class='mt-0'><%= link_to_document document, counter: counter, title: document[blacklight_config.index.title_field] %>
