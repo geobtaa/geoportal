@@ -5,7 +5,7 @@ class SolrDocumentTest < ActiveSupport::TestCase
     cat = Blacklight::SearchService.new(
       config: CatalogController.blacklight_config
     )
-    _resp, @document = cat.fetch("99-0001-test")
+    _resp, @document = cat.fetch("99-0001")
   end
 
   test 'supports B1G access links' do
