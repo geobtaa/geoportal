@@ -29,7 +29,7 @@ namespace :geoportal do
         puts "Solr running at http://localhost:8983/solr/geoportal-core-development/, ^C to exit"
         puts ' '
         begin
-          Rake::Task['geoblacklight:solr:seed'].invoke
+          Rake::Task['geoportal:index:seed'].invoke
           system "bundle exec rails s --binding=#{ENV.fetch('GEOPORTAL_SERVER_BIND_INTERFACE', '0.0.0.0')} --port=#{ENV.fetch('GEOPORTAL_SERVER_PORT', '3000')}"
           sleep
         rescue Interrupt
@@ -76,6 +76,15 @@ namespace :geoportal do
           puts "\nShutting down..."
         end
       end
+    end
+  end
+
+  namespace :index do
+    desc 'Put all sample data into solr'
+    task :seed => :environment do
+      docs = Dir['test/fixtures/files/**/*.json'].map { |f| JSON.parse File.read(f) }.flatten
+      Blacklight.default_index.connection.add docs
+      Blacklight.default_index.connection.commit
     end
   end
 end
