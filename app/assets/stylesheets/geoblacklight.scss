@@ -1,6 +1,8 @@
 $link-color:#0088ce;
+@import 'bootstrap';
 
-@import 'geoblacklight/application';
+//@import 'geoblacklight/application';
+@import 'geoblacklight/geoblacklight';
 @import 'geoblacklight-icons-rails';
 
 @import 'leaflet-label';
