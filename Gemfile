@@ -62,13 +62,13 @@ gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '2.4.0'
+gem 'geoblacklight', '3.0.0'
 
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
 
 # Image migration
-gem 'geoblacklight_sidecar_images', '~> 0.6.0'
+gem 'geoblacklight_sidecar_images', '~> 0.7.0'
 gem 'carrierwave', '~> 1.2'
 gem 'mini_magick', '~> 4.9.4'
 

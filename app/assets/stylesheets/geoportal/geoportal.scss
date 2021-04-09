@@ -14,3 +14,8 @@
 @import 'tools';
 @import 'universal_viewer';
 @import 'viewer';
+
+// Fix missing pull-right
+.pull-right {
+  float: right;
+}
