@@ -78,13 +78,13 @@ GEM
     awesome_print (1.8.0)
     bcrypt (3.1.13)
     bindex (0.8.1)
-    blacklight (7.0.1)
+    blacklight (7.9.0)
       deprecation
       globalid
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
-      nokogiri (~> 1.6)
-      rails (~> 5.1)
+      rails (>= 5.1, < 7)
+      view_component
     blacklight_range_limit (7.0.0)
       blacklight
       jquery-rails
@@ -222,7 +222,7 @@ GEM
       rsolr
       sanitize
       thor
-    geoblacklight (2.3.0)
+    geoblacklight (2.4.0)
       blacklight (~> 7.0)
       coderay
       config
@@ -467,6 +467,8 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
+    view_component (2.30.0)
+      activesupport (>= 5.0.0, < 7.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -496,7 +498,7 @@ PLATFORMS
 DEPENDENCIES
   addressable (~> 2.5.0)
   awesome_print
-  blacklight (~> 7.0.0)
+  blacklight (= 7.9.0)
   blacklight_advanced_search!
   blacklight_range_limit (~> 7.0.0)
   bootsnap
@@ -517,7 +519,7 @@ DEPENDENCIES
   exception_notification (~> 4.3.0)
   factory_bot_rails
   foreman
-  geoblacklight (= 2.3.0)
+  geoblacklight (= 2.4.0)
   geoblacklight-icons!
   geoblacklight_sidecar_images (~> 0.6.0)
   haml

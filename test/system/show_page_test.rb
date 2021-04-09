@@ -348,7 +348,7 @@ class ShowPageTest < ApplicationSystemTestCase
   def test_b1g_placename_readmore_link
     visit '/catalog/99-0011-minnesota'
     within('dd.blacklight-dct_spatial_sm') do
-      assert page.has_link?("Read More")
+      assert page.has_content?("Read more")
     end
   end
 

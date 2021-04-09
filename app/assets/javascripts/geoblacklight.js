@@ -3,7 +3,6 @@
 //= require geoblacklight/basemaps
 //= require geoblacklight/controls
 //= require geoblacklight/viewers
-//= require geoblacklight/modules/collapse
 //= require geoblacklight/modules/download
 //= require geoblacklight/modules/metadata_download_button.js
 //= require geoblacklight/modules/metadata.js
