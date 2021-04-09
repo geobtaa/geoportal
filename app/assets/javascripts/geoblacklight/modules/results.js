@@ -58,7 +58,7 @@ Blacklight.onLoad(function() {
       .node('data.*', function( doc ){
           if(typeof doc['attributes']['b1g_centroid_ss'] != 'undefined'){
             var latlng = doc['attributes']['b1g_centroid_ss']['attributes']['value'].split(",")
-            markers.addLayer(L.marker([latlng[0],latlng[1]]).bindPopup("<a href='/catalog/" + doc['attributes']['layer_slug_s']['attributes']['value'] + "'>" + doc['attributes']['dc_title_s']['attributes']['value'] + "</a>"));
+            markers.addLayer(L.marker([latlng[0],latlng[1]]).bindPopup("<a href='/catalog/" + doc['attributes']['geomg_id_s']['attributes']['value'] + "'>" + doc['attributes']['dct_title_s']['attributes']['value'] + "</a>"));
           }
         }
       )

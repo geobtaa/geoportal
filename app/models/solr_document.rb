@@ -7,7 +7,7 @@ class SolrDocument
   include B1gLicensedDataConcern
 
   # self.unique_key = 'id'
-  self.unique_key = 'layer_slug_s'
+  self.unique_key = 'geomg_id_s'
 
   # Email uses the semantic field mappings below to generate the body of an email.
   SolrDocument.use_extension( Blacklight::Document::Email )
@@ -24,21 +24,21 @@ class SolrDocument
 
   # @TODO: flush out proper DC record
   self.field_semantics.merge!(
-    :creator => "dc_creator_sm",
-    :description => "dc_description_s",
-    :format => "dc_format_s",
-    :identifier => "dc_identifier_s",
-    :language => "dc_language_s",
+    :creator => "dct_creator_sm",
+    :description => "dct_description_sm",
+    :format => "dct_format_s",
+    :identifier => "dct_identifier_sm",
+    :language => "dct_language_sm",
 
     # @TODO: multiple publisher fields
     #:publisher => "dc_publisher_s",
-    :publisher => "dc_publisher_sm",
-    :relation => "dc_relation_sm",
-    :rights => "dc_rights_s",
-    :source => "dc_source_sm",
-    :subject => "dc_subject_sm",
-    :title => "dc_title_s",
-    :type => "dc_type_s",
+    :publisher => "dct_publisher_sm",
+    :relation => "dct_relation_sm",
+    :rights => "dct_accessRights_s",
+    :source => "dct_source_sm",
+    :subject => "dct_subject_sm",
+    :title => "dct_title_s",
+    :type => "gbl_resourceClass_sm",
 
     # @TODO: multiple relation fields
     #:relation => "dct_isPartOf_sm",
@@ -48,7 +48,7 @@ class SolrDocument
 
     # @TODO: contributor or provenance?
     # @TODO: provenance isn't supported out of the box by BL
-    :contributor => "dct_provenance_s"
+    :contributor => "schema_provider_s"
   )
 
   def sidecar

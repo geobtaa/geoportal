@@ -45,7 +45,7 @@
       - else
         %td
           %div.media
-            %span.icon.square.mr-3= blacklight_icon("#{@document[Settings.FIELDS.GEOM_TYPE].downcase.gsub(" ", "-")}")
+            %span.icon.square.mr-3= geoblacklight_icon(@document[Settings.FIELDS.GEOM_TYPE], classes: 'svg_tooltip')
 
       %td= @document.sidecar.image.attached?
       %td= @document.sidecar.image_state.current_state
