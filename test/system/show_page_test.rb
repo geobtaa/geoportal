@@ -185,7 +185,6 @@ class ShowPageTest < ApplicationSystemTestCase
   end
 
   def test_b1g_show_index_map
-    skip('B1G Index Map not rendering')
     visit "/catalog/9702bb22-4305-4cc2-a8f4-fc10e4ef05df"
 
     # Help
