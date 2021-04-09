@@ -185,6 +185,7 @@ class ShowPageTest < ApplicationSystemTestCase
   end
 
   def test_b1g_show_index_map
+    skip('B1G Index Map not rendering')
     visit "/catalog/9702bb22-4305-4cc2-a8f4-fc10e4ef05df"
 
     # Help
@@ -195,6 +196,20 @@ class ShowPageTest < ApplicationSystemTestCase
       assert page.has_selector?("path.leaflet-interactive")
     end
   end
+
+  def test_stanford_show_index_map
+    visit "/catalog/stanford-fb897vt9938"
+
+    # Help
+    assert page.has_content?("Index Map")
+
+    within('#map') do
+      assert page.has_selector?("svg.leaflet-zoom-animated")
+      assert page.has_selector?("path.leaflet-interactive")
+    end
+  end
+
+
 
   def test_browse_descendants
     skip('Moving to dct_isPartOf_sm for relations')
