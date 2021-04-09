@@ -55,20 +55,20 @@ group :development do
   gem 'letter_opener'
 end
 
-gem 'blacklight', '~> 7.0.0'
+gem 'blacklight', '7.9.0'
 gem 'blacklight_advanced_search', git: 'https://github.com/projectblacklight/blacklight_advanced_search.git', :branch => 'master'
 gem 'blacklight_range_limit', '~> 7.0.0'
 gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '~> 2.2.0'
+gem 'geoblacklight', '3.3.0'
 
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
 
 # Image migration
-gem 'geoblacklight_sidecar_images', '~> 0.6.0'
+gem 'geoblacklight_sidecar_images', '~> 0.7.0'
 gem 'carrierwave', '~> 1.2'
 gem 'mini_magick', '~> 4.9.4'
 

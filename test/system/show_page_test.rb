@@ -185,7 +185,6 @@ class ShowPageTest < ApplicationSystemTestCase
   end
 
   def test_b1g_show_index_map
-    skip('B1G Index Map not rendering')
     visit "/catalog/9702bb22-4305-4cc2-a8f4-fc10e4ef05df"
 
     # Help
@@ -266,7 +265,6 @@ class ShowPageTest < ApplicationSystemTestCase
     visit '/catalog/e84a24f0-1c00-4235-a584-db5d7551cbe6'
 
     # Data Relations
-    assert page.has_content?("Related Items")
     assert page.has_content?("Collection")
   end
 
@@ -349,7 +347,7 @@ class ShowPageTest < ApplicationSystemTestCase
   def test_b1g_placename_readmore_link
     visit '/catalog/99-0011-minnesota'
     within('dd.blacklight-dct_spatial_sm') do
-      assert page.has_link?("Read More")
+      assert page.has_content?("Read more")
     end
   end
 

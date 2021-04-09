@@ -1,14 +1,12 @@
+@import 'geoportal/geoportal';
+
+// GEOPORTAL BELOW
+
 $link-color:#0088ce;
-
-@import 'geoblacklight/application';
-@import 'geoblacklight-icons-rails';
-
 @import 'leaflet-label';
 @import 'Leaflet.fullscreen/leaflet.fullscreen';
 @import 'leaflet.markercluster/MarkerCluster';
 @import 'leaflet.prunecluster/LeafletStyleSheet';
-
-@import 'geoportal/geoportal';
 
 /* ------- customize primary buttons -------- */
 $mynewcolor:#0088ce;
