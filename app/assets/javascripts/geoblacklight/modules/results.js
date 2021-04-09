@@ -11,34 +11,28 @@ Blacklight.onLoad(function() {
   $('[data-map="index"]').each(function() {
     var data = $(this).data(),
     opts = { baseUrl: data.catalogPath },
+    world = L.latLngBounds([[-90, -180], [90, 180]]),
     geoblacklight, bbox;
 
-    var lngRe = '(-?[0-9]{1,2}(\\.[0-9]+)?)';
-    var latRe = '(-?[0-9]{1,3}(\\.[0-9]+)?)';
-
-    var parseableBbox = new RegExp(
-      [lngRe,latRe,lngRe,latRe].join('\\s+')
-    );
-
-    if (typeof data.mapBbox === 'string') {
-      bbox = L.bboxToBounds(data.mapBbox);
+    if (typeof data.mapGeom === 'string') {
+      bbox = L.geoJSONToBounds(data.mapGeom);
     } else {
-      $('.document [data-bbox]').each(function() {
-        var currentBbox = $(this).data().bbox;
-        if (parseableBbox.test(currentBbox)) {
-          if (typeof bbox === 'undefined') {
-            bbox = L.bboxToBounds(currentBbox);
-          } else {
-            bbox.extend(L.bboxToBounds(currentBbox));
+      $('.document [data-geom]').each(function() {
+        try {
+          var currentBounds = L.geoJSONToBounds($(this).data().geom);
+          if (!world.contains(currentBounds)) {
+            throw "Invalid bounds";
           }
-        } else {
-          // bbox not parseable, use default value.
-          // [[-180, -90], [180, 90]];
+          if (typeof bbox === 'undefined') {
+            bbox = currentBounds;
+          } else {
+            bbox.extend(currentBounds);
+          }
+        } catch (e) {
           bbox = L.bboxToBounds("-180 -90 180 90");
         }
       });
     }
-
 
     if (!historySupported) {
       $.extend(opts, {
@@ -75,9 +69,9 @@ Blacklight.onLoad(function() {
     // set hover listeners on map
     $('#content')
       .on('mouseenter', '#documents [data-layer-id]', function() {
-        if($(this).data('bbox').length > 0) {
-          var bounds = L.bboxToBounds($(this).data('bbox'));
-          geoblacklight.addBoundsOverlay(bounds);
+        if($(this).data('bbox') !== "") {
+          var geom = $(this).data('geom')
+          geoblacklight.addGeoJsonOverlay(geom)
         }
       })
       .on('mouseleave', '#documents [data-layer-id]', function() {
@@ -96,6 +90,7 @@ Blacklight.onLoad(function() {
       $('#sidebar').replaceWith($doc.find('#sidebar'));
       $('#sortAndPerPage').replaceWith($doc.find('#sortAndPerPage'));
       $('#appliedParams').replaceWith($doc.find('#appliedParams'));
+      $('#pagination').replaceWith($doc.find('#pagination'));
       if ($('#map').next().length) {
         $('#map').next().replaceWith($doc.find('#map').next());
       } else {
@@ -103,5 +98,4 @@ Blacklight.onLoad(function() {
       }
     });
   }
-
 });

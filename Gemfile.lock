@@ -220,7 +220,7 @@ GEM
       rsolr
       sanitize
       thor
-    geoblacklight (3.2.0)
+    geoblacklight (3.3.0)
       blacklight (~> 7.0)
       coderay
       config
@@ -231,6 +231,7 @@ GEM
       handlebars_assets
       mime-types
       rails (>= 5.2.4, < 6.2)
+      rgeo-geojson
     geoblacklight_sidecar_images (0.7.0)
       geoblacklight (>= 2.0)
       image_processing (~> 1.6)
@@ -371,6 +372,9 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     retriable (3.1.2)
+    rgeo (2.2.0)
+    rgeo-geojson (2.1.1)
+      rgeo (>= 1.0.0)
     rsolr (2.3.0)
       builder (>= 2.1.2)
       faraday (>= 0.9.0)
@@ -514,7 +518,7 @@ DEPENDENCIES
   exception_notification (~> 4.3.0)
   factory_bot_rails
   foreman
-  geoblacklight (= 3.2.0)
+  geoblacklight (= 3.3.0)
   geoblacklight-icons!
   geoblacklight_sidecar_images (~> 0.7.0)
   haml

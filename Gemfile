@@ -62,7 +62,7 @@ gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '3.2.0'
+gem 'geoblacklight', '3.3.0'
 
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
