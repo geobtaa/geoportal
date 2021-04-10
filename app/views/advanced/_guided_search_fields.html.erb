@@ -28,4 +28,15 @@
       <%= text_field_tag "q3", label_tag_default_for(:q3), :class => 'form-control', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
     </div>
   </div>
+  <div class="search-operators">
+    <label><%= radio_button_tag("op4", "AND", guided_radio(:op4, "AND")) %> AND</label>
+    <label><%= radio_button_tag("op4", "OR", guided_radio(:op4, "OR")) %> OR</label>
+    <label><%= radio_button_tag("op4", "NOT", guided_radio(:op4, "NOT")) %> NOT</label>
+  </div>
+  <div class="search-field">
+    <%= select_tag('f4', options_for_select(advanced_key_value, guided_field(:f4, 'placename')), {class: 'form-control'}) %>
+    <div name="row4">
+      <%= text_field_tag "q4", label_tag_default_for(:q4), :class => 'form-control', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
+    </div>
+  </div>
 </div>
