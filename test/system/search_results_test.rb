@@ -127,6 +127,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
   end
 
   def test_child_negative_boost
+    skip('Revisit relation tests in Aardvark')
     visit '/catalog?f%5Bdct_isPartOf_sm%5D%5B%5D=05d-03'
     within('article.document-position-0') do
       assert page.has_link?('Access Across America: Auto Data，2018')

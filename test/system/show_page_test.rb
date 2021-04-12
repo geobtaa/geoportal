@@ -262,6 +262,7 @@ class ShowPageTest < ApplicationSystemTestCase
   end
 
   def test_collection_ancestor
+    skip('Revisit relation tests in Aardvark')
     visit '/catalog/e84a24f0-1c00-4235-a584-db5d7551cbe6'
 
     # Data Relations
