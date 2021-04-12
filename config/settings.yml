@@ -23,6 +23,7 @@ OVERLAP_RATIO_BOOST: '10'
 #Solr field mappings
 FIELDS:
   :CREATOR: 'dct_creator_sm'
+  :DATE_RANGE: 'gbl_dateRange_drsim'
   :DESCRIPTION: 'dct_description_sm'
   :FILE_FORMAT: 'dct_format_s'
   :GEOM_TYPE: 'gbl_resourceType_sm'

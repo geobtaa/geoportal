@@ -29,7 +29,7 @@ module Admin
       config.advanced_search[:url_key] ||= 'advanced'
       config.advanced_search[:query_parser] ||= 'edismax'
       config.advanced_search[:form_solr_parameters] ||= {}
-      config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[dct_provenance_s dc_type_sm b1g_genre_sm b1g_code_s dct_isPartOf_sm]
+      config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[schema_provider_s gbl_resourceType_sm gbl_resourceClass_sm b1g_code_s dct_isPartOf_sm]
       config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
       config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
       config.advanced_search[:form_solr_parameters]['facet.sort'] ||= 'index'
@@ -148,7 +148,7 @@ module Admin
       config.add_index_field 'schema_provider_s', :label => 'Institution:'
       config.add_index_field 'dct_accessRights_s', :label => 'Access:'
       config.add_index_field 'dct_subject_sm', :label => 'Keywords:'
-      config.add_index_field 'b1g_centroid_ss', :label => 'Centroid:'
+      config.add_index_field 'dcat_centroid_ss', :label => 'Centroid:'
       config.add_index_field Settings.FIELDS.YEAR
       config.add_index_field Settings.FIELDS.CREATOR
       config.add_index_field Settings.FIELDS.DESCRIPTION, helper_method: :snippit
@@ -165,7 +165,7 @@ module Admin
       config.add_show_field 'dct_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_facet: true
       config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
       config.add_show_field 'dct_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
-      # config.add_show_field 'dc_type_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
+      config.add_show_field 'gbl_resourceType_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
       config.add_show_field 'dct_issued_s', label: 'Date Published', itemprop: 'keywords', link_to_facet: true
       config.add_show_field 'dct_temporal_sm', label: 'Temporal Coverage', itemprop: 'temporal'
       config.add_show_field 'schema_provider_s', label: 'Contributed by', link_to_facet: true

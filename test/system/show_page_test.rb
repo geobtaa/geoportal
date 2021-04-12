@@ -180,7 +180,7 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_no_link?("Minnesota Geospatial Commons") # Collection
     assert page.has_link?("Minnesota, United States")
     assert page.has_link?("Imagery and Base Maps")
-    assert page.has_link?("Dataset")
+    assert page.has_link?("Raster")
     assert page.has_link?("Minnesota")
   end
 
@@ -330,7 +330,7 @@ class ShowPageTest < ApplicationSystemTestCase
 
   def test_b1g_description_html_link
     visit '/catalog/99-0011'
-    within('dd.blacklight-dc_description_s') do
+    within('dd.blacklight-dct_description_sm') do
       within('.truncate-abstract') do
         assert page.has_link?("https://sites.google.com/umn.edu/btaa-gdp/help/restricted-resources")
       end
@@ -339,7 +339,7 @@ class ShowPageTest < ApplicationSystemTestCase
 
   def test_b1g_access_rights_html_link
     visit '/catalog/99-0011-minnesota'
-    within('dd.blacklight-dct_accessrights_sm') do
+    within('dd.blacklight-dct_rights_sm') do
       assert page.has_link?("https://sites.google.com/umn.edu/btaa-gdp/help/restricted-resources")
     end
   end

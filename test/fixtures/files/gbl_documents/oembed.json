@@ -1,0 +1,25 @@
+{
+  "gbl_mdVersion_s": "Aardvark",
+  "dct_description_sm": "Publication date estimate from dealer description.",
+  "dct_format_s": "JPEG",
+  "dct_identifier_sm": "http://purl.stanford.edu/dc482zx1528",
+  "dct_language_sm": "Japanese",
+  "dct_publisher_sm": "Kiky\u014dya Genkichi han",
+  "dct_accessRights_s": "Public",
+  "dct_title_s": "J\u014dsh\u016b Kusatsu Onsenzu",
+  "dct_type_s": "Image",
+  "locn_geometry": "ENVELOPE(138.523426, 138.630362, 36.656354, 36.597519)",
+  "schema_provider_s": "Stanford",
+  "dct_references_s": "{\"http://schema.org/url\":\"http://purl.stanford.edu/dc482zx1528\",\"https://oembed.com\":\"https://purl.stanford.edu/embed.json?&hide_title=true&url=https://purl.stanford.edu/dc482zx1528\"}",
+  "dct_spatial_sm": [
+    "Japan"
+  ],
+  "dct_subject_sm": [
+    "Hot springs",
+    "Kusatsu-machi",
+    "Maps"
+  ],
+  "geomg_id_s": "stanford-dc482zx1528",
+  "id": "stanford-dc482zx1528",
+  "gbl_resourceType_sm": "Image"
+}

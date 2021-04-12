@@ -1,0 +1,26 @@
+{
+  "georss_polygon_s": "36.82 -76.346 36.971 -76.346 36.971 -76.176 36.82 -76.176 36.82 -76.346",
+  "gbl_mdVersion_s": "Aardvark",
+  "dct_description_sm": "Police stations for Norfolk, Virginia.",
+  "dct_format_s": "Shapefile",
+  "dct_identifier_sm": "315fc8ee-3b57-4ebb-aa24-4300f1c42dc9-13",
+  "dct_language_sm": "eng",
+  "dct_accessRights_s": "Public",
+  "dct_title_s": "Norfolk 2005 Police Stations",
+  "gbl_mdModified_dt": "2008-11-12T15:29:47Z",
+  "locn_geometry": "ENVELOPE(-76.346, -76.176, 36.971, 36.82)",
+  "gbl_indexYear_i": 2005,
+  "dct_issued_s": "2008-10-17",
+  "schema_provider_s": "UVa",
+  "dct_references_s": "{\"http://www.opengis.net/def/serviceType/ogc/wms\":\"http://gis.lib.virginia.edu/geoserver/wms\",\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"http://gis.lib.virginia.edu/geoserver/wfs\",\"http://www.opengis.net/def/serviceType/ogc/wcs\":\"http://gis.lib.virginia.edu/geoserver/wcs\",\"http://schema.org/downloadUrl\":\"http://gis.lib.virginia.edu/geoserver/ows?service=WFS\\u0026typeName=Norfolk:police_point\\u0026request=GetFeature\\u0026outputFormat=shape-zip\",\"http://www.isotc211.org/schemas/2005/gmd/\":\"https://opengeometadata.github.io/edu.virginia/382/13/iso19139.xml\"}",
+  "dct_subject_sm": [
+    "Location"
+  ],
+  "dct_temporal_sm": [
+    "2005-2005"
+  ],
+  "dcat_servesDataset_s": "Norfolk:police_point",
+  "geomg_id_s": "uva-Norfolk:police_point",
+  "id": "uva-Norfolk:police_point",
+  "gbl_resourceType_sm": "MultiPoint"
+}

@@ -1,0 +1,66 @@
+{
+  "dc_type_sm": [
+    "Dataset",
+    "Service"
+  ],
+  "b1g_code_s": "13a-01",
+  "b1g_status_s": "Active",
+  "dct_accrualMethod_s": "ArcGIS Hub",
+  "b1g_dateAccessioned_s": "2020-07-27",
+  "b1g_child_record_b": "FALSE",
+  "dct_title_s": "Deer River Antlerless Units: Nebraska",
+  "dct_alternative_sm": [
+    "Deer River Antlerless Units"
+  ],
+  "dct_description_sm": [
+    "Data layer showing deer antlerless only season choice (AOSC) hunting unit boundaries in Nebraska. For additional information on regulations, permitting, season dates, visit thebig game deerpageon the NGPC website"
+  ],
+  "dct_language_sm": [
+    "English"
+  ],
+  "dct_creator_sm": [
+    "Nebraska Game & Parks Commission"
+  ],
+  "dct_publisher_sm": [
+    "State of Nebraska"
+  ],
+  "schema_provider_s": "University of Nebraska-Lincoln",
+  "gbl_resourceClass_sm": [
+    "Geospatial data"
+  ],
+  "gbl_resourceType_sm": [
+    "Vector"
+  ],
+  "dct_subject_sm": [
+    "Biota"
+  ],
+  "dct_temporal_sm": [
+    "2020"
+  ],
+  "dct_issued_s": "2015-07-07T18:30:24.000Z",
+  "gbl_indexYear_im": [
+    "2020"
+  ],
+  "gbl_dateRange_drsim": [
+    "[2020 TO 2020]"
+  ],
+  "dct_spatial_sm": [
+    "Nebraska"
+  ],
+  "locn_geometry": "ENVELOPE(-104.0535,-95.3083,43.0017,39.9999)",
+  "dcat_centroid_ss": "41.5008,-99.68090000000001",
+  "pcdm_memberOf_sm": [
+    "13a-01"
+  ],
+  "dct_accessRights_s": "Public",
+  "dct_format_s": "Shapefile",
+  "dct_references_s": "{\"http://schema.org/url\":\"https://www.nebraskamap.gov/datasets/0cb3c38fcab148afb42c96d7b7b761b3_15\",\"http://schema.org/downloadUrl\":\"https://www.nebraskamap.gov/datasets/0cb3c38fcab148afb42c96d7b7b761b3_15.zip\",\"urn:x-esri:serviceType:ArcGIS#DynamicMapLayer\":\"https://maps.outdoornebraska.gov/arcgis/rest/services/OpenData/OpenDataLayers/MapServer/15\"}",
+  "id": "0cb3c38fcab148afb42c96d7b7b761b3_15",
+  "geomg_id_s": "0cb3c38fcab148afb42c96d7b7b761b3_15",
+  "dct_identifier_sm": [
+    "0cb3c38fcab148afb42c96d7b7b761b3_15"
+  ],
+  "gbl_mdModified_dt": "2020-07-27T13:02:54Z",
+  "gbl_mdVersion_s": "1.0",
+  "gbl_suppressed_b": "FALSE"
+}

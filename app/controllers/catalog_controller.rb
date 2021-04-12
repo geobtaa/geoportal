@@ -29,7 +29,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[dct_provenance_s dc_type_sm b1g_genre_sm]
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[schema_provider_s gbl_resourceType_sm gbl_resourceClass_sm]
     config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.sort'] ||= 'index'
@@ -172,14 +172,14 @@ class CatalogController < ApplicationController
     # link_to_facet: [Boolean] that can be passed to link to a facet search
     # helper_method: [Symbol] method that can be used to render the value
     config.add_show_field 'dct_creator_sm', label: 'Creator', itemprop: 'creator'
-    config.add_show_field 'dct_description_s', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
+    config.add_show_field 'dct_description_sm', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
     config.add_show_field 'dct_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_facet: true
     config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
     config.add_show_field 'dct_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'gbl_resourceType_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dct_issued_s', label: 'Date Published', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dct_temporal_sm', label: 'Temporal Coverage', itemprop: 'temporal'
-    config.add_show_field 'dct_provenance_s', label: 'Contributed by', link_to_facet: true
+    config.add_show_field 'schema_provider_s', label: 'Contributed by', link_to_facet: true
     config.add_show_field 'dct_rights_sm', label: 'Access Rights'
 
     # "fielded" search configuration. Used by pulldown among other places.

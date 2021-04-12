@@ -1,0 +1,47 @@
+{
+  "b1g_code_s": "08d-01",
+  "b1g_image_ss": "https://collection1.libraries.psu.edu/utils/getdownloaditem/collection/maps1/id/30130/type/singleitem/filename/30291.jp2/width/8320/height/5698/mapsto/image/filesize/82281747/title/30291/size/fullSize",
+  "dc_type_sm": [
+    "Image"
+  ],
+  "dct_title_s": "A General map of the new settlement called Transilvania.",
+  "dct_description_sm": [
+    "Scale approximately 1:3,000,000; 1 map; 27 x 53 cm. Maps"
+  ],
+  "dct_language_sm": [
+    "English"
+  ],
+  "schema_provider_s": "Penn State",
+  "gbl_resourceClass_sm": [
+    "Maps"
+  ],
+  "gbl_resourceType_sm": [
+    "Image"
+  ],
+  "gbl_indexYear_im": [
+    9999
+  ],
+  "dct_spatial_sm": [
+    "Virginia, United States",
+    "North Carolina, United States",
+    "South Carolina, United States"
+  ],
+  "locn_geometry": "ENVELOPE(-92, -74, 39, 33)",
+  "dcat_centroid_ss": "36,-83",
+  "pcdm_memberOf_sm": [
+    "Penn State Rare Maps"
+  ],
+  "dct_source_sm": [
+    "08d-01"
+  ],
+  "dct_accessRights_s": "Public",
+  "dct_format_s": "JPEG",
+  "dct_references_s": "{\"http://schema.org/url\":\"https://collection1.libraries.psu.edu/cdm/ref/collection/maps1/id/30130\",\"http://schema.org/downloadUrl\":\"https://collection1.libraries.psu.edu/utils/getdownloaditem/collection/maps1/id/30130/type/singleitem/filename/30291.jp2/width/8320/height/5698/mapsto/image/filesize/82281747/title/30291/size/fullSize\"}",
+  "id": "87adb12a-30b5-4bc3-866c-97adcd7e3d2e",
+  "geomg_id_s": "87adb12a-30b5-4bc3-866c-97adcd7e3d2e",
+  "dct_identifier_sm": [
+    "87adb12a-30b5-4bc3-866c-97adcd7e3d2e"
+  ],
+  "gbl_mdModified_dt": "2019-01-16T16:36:13Z",
+  "gbl_mdVersion_s": "1.0"
+}

@@ -1,0 +1,33 @@
+{
+  "b1g_code_s": "09d-01",
+  "dc_type_sm": [
+    "Collection"
+  ],
+  "dct_title_s": "Purdue Georeferenced Imagery",
+  "dct_language_sm": [
+    "English"
+  ],
+  "dct_publisher_sm": [
+    "Purdue University"
+  ],
+  "schema_provider_s": "Purdue",
+  "gbl_resourceClass_sm": [
+    "Maps",
+    "Aerial imagery"
+  ],
+  "gbl_resourceType_sm": [
+    "Image"
+  ],
+  "locn_geometry": "ENVELOPE(-88.1, -84.78, 41.76, 37.77)",
+  "pcdm_memberOf_sm": [
+    "Academic Institutions Maps"
+  ],
+  "dct_accessRights_s": "Public",
+  "dct_references_s": "{\"http://schema.org/url\":\"https://mapsweb.lib.purdue.edu/arcgis/rest/services/Purdue/campus_history/ImageServer/\"}",
+  "id": "09d-01",
+  "geomg_id_s": "09d-01",
+  "dct_identifier_sm": [
+    "09d-01"
+  ],
+  "gbl_mdModified_dt": "2019-01-10T19:47:16Z"
+}
