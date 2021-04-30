@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'about', :to => redirect('https://btaagdp.org/about')
-  get 'help', :to => redirect('https://btaagdp.org/help')
+  get 'about', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/about')
+  get 'help', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/help')
   get 'robots.:format' => 'robots#robots'
 
   # Feedback
@@ -70,8 +70,8 @@ Rails.application.routes.draw do
   end
 
   # Blog redirects
-  get '/blog', :to => redirect('https://btaagdp.org/news')
-  get '/blog/index.html', :to => redirect('https://btaagdp.org/news')
+  get '/blog', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news')
+  get '/blog/index.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news')
   get '/blog/2016/11/15/announcing-the-btaa-geoportal.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2016/11/15-announcing-the-btaa-geoportal?authuser=0')
   get '/blog/2016/12/01/what-can-i-find-in-the-btaa-geoportal.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2016/12/2016-12-01-what-can-i-find-in-the-btaa-geoporta?authuser=0')
   get '/blog/2016/12/30/new-collections-added-in-december-2016.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2016/12/30-new-collections-added-in-december-2016?authuser=0')
