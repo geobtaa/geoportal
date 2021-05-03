@@ -56,7 +56,7 @@ class CatalogController < ApplicationController
     #
     config.default_document_solr_params = {
      :qt => 'document',
-     :q => '{!raw f=geomg_is_s v=$id}'
+     :q => '{!raw f=geomg_id_s v=$id}'
     }
 
     config.search_builder_class = Geoblacklight::SearchBuilder
@@ -251,7 +251,6 @@ class CatalogController < ApplicationController
     # except in the relevancy case).
     config.add_sort_field 'score desc, dct_title_sort asc', :label => 'relevance'
     config.add_sort_field 'gbl_indexYear_im desc, dct_title_sort asc', :label => 'year'
-    config.add_sort_field 'dct_publisher_sort asc, dct_title_sort asc', :label => 'publisher'
     config.add_sort_field 'dct_title_sort asc', :label => 'title'
 
     # If there are more than this many search results, no spelling ("did you
