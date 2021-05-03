@@ -40,7 +40,7 @@ FIELDS:
   :RIGHTS: 'dct_accessRights_s'
   :SPATIAL_COVERAGE: 'dct_spatial_sm'
   :SUBJECT: 'dct_subject_sm'
-  :SOURCE: 'dct_source_sm'
+  :SOURCE: 'pcdm_memberOf_sm'
   :SUPPRESSED: 'gbl_suppressed_b'
   :TEMPORAL: 'dct_temporal_sm'
   :TITLE: 'dct_title_s'
