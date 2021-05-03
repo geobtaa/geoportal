@@ -37,6 +37,7 @@ FIELDS:
   :PUBLISHER: 'dct_publisher_sm'
   :PROVENANCE: 'schema_provider_s'
   :REFERENCES: 'dct_references_s'
+  :RESOURCE_CLASS: 'gbl_resourceClass_sm'
   :RIGHTS: 'dct_accessRights_s'
   :SPATIAL_COVERAGE: 'dct_spatial_sm'
   :SUBJECT: 'dct_subject_sm'

@@ -109,8 +109,9 @@ module Admin
       #
       # Publication State
       config.add_facet_field 'b1g_publication_state_s', :label => 'Publication State', :limit => 8, collapse: false
-      # Type
-      # config.add_facet_field 'dc_type_sm', label: 'Type', limit: 8
+
+      # Resouce Class
+      config.add_facet_field 'gbl_resourceClass_sm', label: 'Resouce Class', limit: 8
 
       # Contributor
       config.add_facet_field 'schema_provider_s', label: 'Contributor', limit: 15
