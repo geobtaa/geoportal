@@ -15,6 +15,12 @@ class HomePageTest < ApplicationSystemTestCase
     assert page.has_selector?("#wrapper-search")
   end
 
+  def test_homepage_highlight_links
+    assert page.has_link?(href: "/?f%5Bgbl_resourceClass_sm%5D%5B%5D=Datasets")
+    assert page.has_link?(href: "/?f%5Bgbl_resourceClass_sm%5D%5B%5D=Maps")
+    assert page.has_link?(href: "/?f%5Bgbl_resourceClass_sm%5D%5B%5D=Imagery")
+  end
+
   def test_header_nav
     within("header") do
 
