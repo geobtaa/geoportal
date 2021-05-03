@@ -106,13 +106,15 @@ class CatalogController < ApplicationController
     # config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
 
     config.add_facet_field 'dct_spatial_sm', :label => 'Place', :limit => 8, collapse: false
-    config.add_facet_field 'gbl_resourceClass_sm', :label => 'Genre', :limit => 8, collapse: false
+    config.add_facet_field 'gbl_resourceClass_sm', :label => 'Resource Class', :limit => 8, collapse: false
+    config.add_facet_field 'gbl_resourceType_sm', label: 'Resource Type', limit: 8, collapse: false
+    config.add_facet_field 'dct_subject_sm', :label => 'Subject', :limit => 8, collapse: false
+
     config.add_facet_field 'gbl_indexYear_im', label: 'Year', limit: 10, collapse: false, all: 'Any year', range: {
       assumed_boundaries: [1100, 2018]
       # :num_segments => 6,
       # :segments => true
     }
-    config.add_facet_field 'dct_subject_sm', :label => 'Subject', :limit => 8, collapse: false
 
     config.add_facet_field 'time_period', :label => 'Time Period', :query => {
       '1500s' => { :label => '1500s', :fq => "gbl_indexYear_im:[1500 TO 1599]" },
@@ -136,8 +138,8 @@ class CatalogController < ApplicationController
 
     #config.add_facet_field 'b1g_geom_type_sm', label: 'Geometry', limit: 8, partial: "icon_facet", collapse: false
     #config.add_facet_field 'dc_format_s', :label => 'Format', :limit => 8
-    config.add_facet_field 'schema_provider_s', label: 'Contributor', limit: 15
-    config.add_facet_field 'gbl_resourceType_sm', label: 'Type', limit: 8
+    config.add_facet_field 'schema_provider_s', label: 'Provider', limit: 15
+
     config.add_facet_field 'dct_accessRights_s', :label => 'Public/Restricted'
     config.add_facet_field 'dct_mediator_sm', label: 'Institutional Access', limit: 15
     # Remove access facet until data is available - EWL

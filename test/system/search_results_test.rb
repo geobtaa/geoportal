@@ -44,15 +44,16 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     assert page.has_selector?("#facets")
     within("#facets") do
       assert page.has_content?("Place")
-      assert page.has_content?("Genre")
-      assert page.has_content?("Year")
+      assert page.has_content?("Resource Class")
+      assert page.has_content?("Resource Type")
       assert page.has_content?("Subject")
+      assert page.has_content?("Year")
       assert page.has_content?("Time Period")
-      assert page.has_no_content?("Collection")
       assert page.has_content?("Publisher")
       assert page.has_content?("Creator")
-      assert page.has_content?("Institution")
-      assert page.has_content?("Type")
+      assert page.has_content?("Provider")
+      assert page.has_content?("Public/Restricted")
+      # assert page.has_content?("Institutional Access")
     end
   end
 
