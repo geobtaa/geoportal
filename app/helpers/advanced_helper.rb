@@ -46,7 +46,7 @@ module AdvancedHelper
 
   # carries over original search field and original guided search fields if user switches to guided search from regular search
   def guided_field(field_num, default_val)
-    if field_num == :f1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
+    if field_num == :f1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:f4].nil? && params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
       return search_fields_for_advanced_search[params[:search_field]].key || default_val
     end
     params[field_num] || default_val
@@ -54,7 +54,7 @@ module AdvancedHelper
 
   # carries over original search query if user switches to guided search from regular search
   def guided_context(key)
-    key == :q1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? &&
+    key == :q1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:f4].nil? &&
       params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
   end
 
@@ -81,7 +81,10 @@ module BlacklightAdvancedSearch
       unless @params[:q3].blank? || @params[:op3] == 'NOT' || (@params[:q1].blank? && @params[:q2].blank?)
         @keyword_op << @params[:op3] unless [@params[:f1], @params[:f2]].include?(@params[:f3]) && ((@params[:f1] == @params[:f3] && @params[:q1].present?) || (@params[:f2] == @params[:f3] && @params[:q2].present?))
       end
-      @keyword_op
+      unless @params[:q4].blank? || @params[:op4] == 'NOT' || (@params[:q1].blank? && @params[:q2].blank? && @params[:q3].blank?)
+        @keyword_op << @params[:op4] unless [@params[:f1], @params[:f2], @params[:f3]].include?(@params[:f4]) && ((@params[:f1] == @params[:f4] && @params[:q1].present?) || (@params[:f2] == @params[:f4] && @params[:q2].present?) || (@params[:f3] == @params[:f4] && @params[:q3].present?))
+      end
+        @keyword_op
     end
 
     def keyword_queries
@@ -93,6 +96,7 @@ module BlacklightAdvancedSearch
         q1 = @params[:q1]
         q2 = @params[:q2]
         q3 = @params[:q3]
+        q4 = @params[:q4]
 
         been_combined = false
         @keyword_queries[@params[:f1]] = q1 if @params[:q1].present?
@@ -114,6 +118,16 @@ module BlacklightAdvancedSearch
             @keyword_queries[@params[:f3]] = 'NOT ' + q3
           else
             @keyword_queries[@params[:f3]] = q3
+          end
+        end
+        if @params[:q4].present?
+          if @keyword_queries.key?(@params[:f4])
+            @keyword_queries[@params[:f4]] = "(#{@keyword_queries[@params[:f4]]})" unless been_combined
+            @keyword_queries[@params[:f4]] = "#{@keyword_queries[@params[:f4]]} " + @params[:op4] + " (#{q4})"
+          elsif @params[:op4] == 'NOT'
+            @keyword_queries[@params[:f4]] = 'NOT ' + q4
+          else
+            @keyword_queries[@params[:f4]] = q4
           end
         end
       end
@@ -177,6 +191,15 @@ module BlacklightAdvancedSearch
         constraints << render_constraint_element(
           label, query,
           remove: search_catalog_path(remove_guided_keyword_query(%i[f3 q3 op3], my_params))
+        )
+      end
+      if my_params[:q4].present?
+        label = blacklight_config.search_fields[my_params[:f4]][:label]
+        query = my_params[:q4]
+        query = 'NOT ' + my_params[:q4] if my_params[:op4] == 'NOT'
+        constraints << render_constraint_element(
+          label, query,
+          remove: search_catalog_path(remove_guided_keyword_query(%i[f4 q4 op4], my_params))
         )
       end
       constraints
