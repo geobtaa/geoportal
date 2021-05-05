@@ -29,7 +29,7 @@ module Admin
       config.advanced_search[:url_key] ||= 'advanced'
       config.advanced_search[:query_parser] ||= 'edismax'
       config.advanced_search[:form_solr_parameters] ||= {}
-      config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[schema_provider_s gbl_resourceType_sm gbl_resourceClass_sm b1g_code_s dct_isPartOf_sm]
+      config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[schema_provider_s b1g_code_s pcdm_memberOf_sm dct_isPartOf_sm gbl_resourceClass_sm gbl_resourceType_sm dct_subject_sm dcat_theme_sm dct_format_s gbl_suppressed_b b1g_child_record_b gbl_georeferenced_b]
       config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
       config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
       config.advanced_search[:form_solr_parameters]['facet.sort'] ||= 'index'
@@ -111,12 +111,14 @@ module Admin
       config.add_facet_field 'b1g_publication_state_s', :label => 'Publication State', :limit => 8, collapse: false
 
       # Resouce Class
-      config.add_facet_field 'gbl_resourceClass_sm', label: 'Resouce Class', limit: 8
+      config.add_facet_field 'gbl_resourceClass_sm', label: 'Resource Class', limit: 8
 
       # Contributor
-      config.add_facet_field 'schema_provider_s', label: 'Contributor', limit: 15
+      config.add_facet_field 'schema_provider_s', label: 'Provider', limit: 15
+
       # Accrual Method
       config.add_facet_field 'b1g_dct_accrualMethod_s', :label => 'Accrual Method'
+
       # Public/Restricted
       config.add_facet_field 'dct_accessRights_s', :label => 'Public/Restricted'
 
@@ -124,13 +126,38 @@ module Admin
       #
       # Code
       config.add_facet_field 'b1g_code_s', label: 'Code', limit: 1000
+
       # Is Part Of
       config.add_facet_field 'dct_isPartOf_sm', label: 'Is Part Of', limit: 1000
+
+      # Member Of
+      config.add_facet_field 'pcdm_memberOf_sm', label: 'Member Of', limit: 1000
+
+      # Resource Type
+      config.add_facet_field 'gbl_resourceType_sm', label: 'Resource Type', limit: 1000
+
+      # Subject
+      config.add_facet_field 'dct_subject_sm', label: 'Subject', limit: 1000
+
+      # ISO Topic Category
+      config.add_facet_field 'dcat_theme_sm', label: 'ISO Topic Category', limit: 1000
+
+      # Format
+      config.add_facet_field 'dct_format_s', label: 'Format', limit: 1000
+
+      # Suppressed
+      config.add_facet_field 'gbl_suppressed_b', label: 'Suppressed'
+
+      # Child Record
+      config.add_facet_field 'b1g_child_record_b', label: 'Child Record'
+
+      # Georeferenced
+      config.add_facet_field 'gbl_georeferenced_b', label: 'Georeferenced'
 
       # Have BL send all facet field names to Solr, which has been the default
       # previously. Simply remove these lines if you'd rather use Solr request
       # handler defaults, or have no facets.
-      config.add_facet_fields_to_solr_request!
+      # config.add_facet_fields_to_solr_request!
 
       # solr fields to be displayed in the index (search results) view
       #   The ordering of the field names is the order of the display
@@ -241,7 +268,6 @@ module Admin
       # except in the relevancy case).
       config.add_sort_field 'score desc, dct_title_sort asc', :label => 'relevance'
       config.add_sort_field 'gbl_indexYear_im desc, dct_title_sort asc', :label => 'year'
-      config.add_sort_field 'dct_publisher_sort asc, dct_title_sort asc', :label => 'publisher'
       config.add_sort_field 'dct_title_sort asc', :label => 'title'
 
       # If there are more than this many search results, no spelling ("did you
