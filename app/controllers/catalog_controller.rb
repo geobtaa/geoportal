@@ -46,7 +46,7 @@ class CatalogController < ApplicationController
       :start => 0,
       'q.alt' => '*:*',
       'bf' => ['if(exists(b1g_child_record_b),0,100)^0.5'],
-      'fq' => ['b1g_publication_state_s:Published']
+      'fq' => ['b1g_publication_state_s:published']
     }
 
     config.default_per_page = 20 # Works!
