@@ -141,7 +141,8 @@ class CatalogController < ApplicationController
     config.add_facet_field 'schema_provider_s', label: 'Provider', limit: 15
 
     config.add_facet_field 'dct_accessRights_s', :label => 'Public/Restricted'
-    config.add_facet_field 'dct_mediator_sm', label: 'Institutional Access', limit: 15
+    config.add_facet_field 'b1g_dct_mediator_sm', label: 'Institutional Access', limit: 15
+    
     # Remove access facet until data is available - EWL
     # config.add_facet_field 'dc_rights_s', label: 'Access', limit: 8, partial: "icon_facet"
 
