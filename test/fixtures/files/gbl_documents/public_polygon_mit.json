@@ -24,5 +24,6 @@
   "dcat_servesDataset_s": "mit:SDE_DATA_US_MA_E25ZCTA5DCT_2000",
   "geomg_id_s": "mit-f6rqs4ucovjk2",
   "id": "mit-f6rqs4ucovjk2",
-  "gbl_resourceType_sm": "Polygon"
+  "gbl_resourceType_sm": "Polygon",
+  "b1g_publication_state_s": "published"
 }

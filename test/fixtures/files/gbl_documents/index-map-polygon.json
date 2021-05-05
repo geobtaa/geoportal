@@ -34,5 +34,6 @@
   "dcat_servesDataset_s": "cugir008186",
   "geomg_id_s": "cugir-008186",
   "id": "cugir-008186",
-  "gbl_resourceType_sm": "Raster"
+  "gbl_resourceType_sm": "Raster",
+  "b1g_publication_state_s": "published"
 }

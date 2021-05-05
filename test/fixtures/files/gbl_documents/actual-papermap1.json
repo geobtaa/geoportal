@@ -20,5 +20,6 @@
   "dcat_servesDataset_s": "MIT:001145244",
   "geomg_id_s": "mit-001145244",
   "id": "mit-001145244",
-  "gbl_resourceType_sm": "Paper Map"
+  "gbl_resourceType_sm": "Paper Map",
+  "b1g_publication_state_s": "published"
 }

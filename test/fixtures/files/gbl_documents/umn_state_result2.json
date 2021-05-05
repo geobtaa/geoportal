@@ -35,5 +35,6 @@
   ],
   "geomg_id_s": "e9c71086-6b25-4950-8e1c-84c2794e3382",
   "id": "e9c71086-6b25-4950-8e1c-84c2794e3382",
-  "gbl_resourceType_sm": "Raster"
+  "gbl_resourceType_sm": "Raster",
+  "b1g_publication_state_s": "published"
 }

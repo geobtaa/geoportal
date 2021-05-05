@@ -33,5 +33,6 @@
   "dcat_servesDataset_s": "cugir007950",
   "geomg_id_s": "cugir-007950",
   "id": "cugir-007950",
-  "gbl_resourceType_sm": "Polygon"
+  "gbl_resourceType_sm": "Polygon",
+  "b1g_publication_state_s": "published"
 }

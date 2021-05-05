@@ -22,5 +22,6 @@
   "dcat_servesDataset_s": "Norfolk:police_point",
   "geomg_id_s": "uva-Norfolk:police_point",
   "id": "uva-Norfolk:police_point",
-  "gbl_resourceType_sm": "MultiPoint"
+  "gbl_resourceType_sm": "MultiPoint",
+  "b1g_publication_state_s": "published"
 }

@@ -30,5 +30,6 @@
   "dcat_servesDataset_s": "0",
   "geomg_id_s": "purdue-urn-f082acb1-b01e-4a08-9126-fd62a23fd9aa",
   "id": "purdue-urn-f082acb1-b01e-4a08-9126-fd62a23fd9aa",
-  "gbl_resourceType_sm": "Mixed"
+  "gbl_resourceType_sm": "Mixed",
+  "b1g_publication_state_s": "published"
 }

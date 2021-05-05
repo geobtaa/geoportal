@@ -20,5 +20,6 @@
   "dcat_servesDataset_s": "sde:GISPORTAL.GISOWNER01.CAMBRIDGEGRID100_04",
   "geomg_id_s": "tufts-cambridgegrid100-04",
   "id": "tufts-cambridgegrid100-04",
-  "gbl_resourceType_sm": "Polygon"
+  "gbl_resourceType_sm": "Polygon",
+  "b1g_publication_state_s": "published"
 }

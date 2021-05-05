@@ -19,5 +19,6 @@
   ],
   "geomg_id_s": "aster-global-emissivity-dataset-1-kilometer-v003-ag1kmcad20",
   "id": "aster-global-emissivity-dataset-1-kilometer-v003-ag1kmcad20",
-  "gbl_resourceType_sm": "dataset"
+  "gbl_resourceType_sm": "dataset",
+  "b1g_publication_state_s": "published"
 }

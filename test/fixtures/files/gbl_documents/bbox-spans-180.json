@@ -17,5 +17,6 @@
   "dcat_servesDataset_s": "public-figgy:a990e1b4-7f0e-44b8-ae2a-de7e93cdd74a",
   "geomg_id_s": "princeton-sx61dn82p",
   "id": "princeton-sx61dn82p",
-  "gbl_resourceType_sm": "Image"
+  "gbl_resourceType_sm": "Image",
+  "b1g_publication_state_s": "published"
 }

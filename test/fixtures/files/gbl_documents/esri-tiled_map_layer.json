@@ -19,5 +19,6 @@
   "dcat_servesDataset_s": "test-soil-survey_map",
   "geomg_id_s": "nyu-test-soil-survey-map",
   "id": "nyu-test-soil-survey-map",
-  "gbl_resourceType_sm": "Raster"
+  "gbl_resourceType_sm": "Raster",
+  "b1g_publication_state_s": "published"
 }

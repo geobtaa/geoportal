@@ -33,5 +33,6 @@
   "dcat_servesDataset_s": "02870w62c",
   "geomg_id_s": "princeton-02870w62c",
   "id": "princeton-02870w62c",
-  "gbl_resourceType_sm": "Raster"
+  "gbl_resourceType_sm": "Raster",
+  "b1g_publication_state_s": "published"
 }

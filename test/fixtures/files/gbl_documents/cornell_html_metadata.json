@@ -39,5 +39,6 @@
   "dcat_servesDataset_s": "cugir007741",
   "geomg_id_s": "cugir-007741",
   "id": "cugir-007741",
-  "gbl_resourceType_sm": "Point"
+  "gbl_resourceType_sm": "Point",
+  "b1g_publication_state_s": "published"
 }

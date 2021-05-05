@@ -43,5 +43,6 @@
   "dcat_servesDataset_s": "sdr:nyu_2451_34636",
   "geomg_id_s": "nyu_2451_34636",
   "id": "nyu_2451_34636",
-  "gbl_resourceType_sm": "Mixed"
+  "gbl_resourceType_sm": "Mixed",
+  "b1g_publication_state_s": "published"
 }

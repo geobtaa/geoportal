@@ -24,5 +24,6 @@
   ],
   "geomg_id_s": "cornell-ny-aerial-photos-1960s",
   "id": "cornell-ny-aerial-photos-1960s",
-  "gbl_resourceType_sm": "Point"
+  "gbl_resourceType_sm": "Point",
+  "b1g_publication_state_s": "published"
 }

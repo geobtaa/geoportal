@@ -31,5 +31,6 @@
   "dcat_servesDataset_s": "druid:cz128vq0535",
   "geomg_id_s": "stanford-cz128vq0535",
   "id": "stanford-cz128vq0535",
-  "gbl_resourceType_sm": "Polygon"
+  "gbl_resourceType_sm": "Polygon",
+  "b1g_publication_state_s": "published"
 }

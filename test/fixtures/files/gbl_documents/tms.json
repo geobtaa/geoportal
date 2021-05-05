@@ -26,5 +26,6 @@
   ],
   "locn_geometry": "ENVELOPE(-156.02, -70.80, 65.59, 18.93)",
   "gbl_indexYear_i": 2020,
-  "gbl_mdVersion_s": "Aardvark"
+  "gbl_mdVersion_s": "Aardvark",
+  "b1g_publication_state_s": "published"
 }

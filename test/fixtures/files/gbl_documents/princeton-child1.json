@@ -26,5 +26,6 @@
     "Princeton (N.J.)-Maps"
   ],
   "dcat_servesDataset_s": "public-figgy:p-b6ba3091-fcf4-4d2d-9d6a-df7df5c8c588",
-  "gbl_resourceType_sm": "Image"
+  "gbl_resourceType_sm": "Image",
+  "b1g_publication_state_s": "published"
 }
