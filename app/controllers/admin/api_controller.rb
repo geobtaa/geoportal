@@ -309,7 +309,7 @@ module Admin
       # 'positron' http://cartodb.com/basemaps/
       # 'darkMatter' http://cartodb.com/basemaps/
       config.basemap_provider = 'esri'
-      config.max_per_page = 10000
+      config.max_per_page = 100000
 
       # Configuration for autocomplete suggestor
       config.autocomplete_enabled = true
