@@ -9,11 +9,11 @@ namespace :geoportal do
     docs = []
     response["response"]["docs"].each_with_index do |doc, index|
       begin
-        if doc.key?('b1g_centroid_ss') && !doc['b1g_centroid_ss'].empty?
+        if doc.key?('dcat_centroid_ss') && !doc['dcat_centroid_ss'].empty?
           entry = {}
-          entry['l'] = doc['layer_slug_s']
-          entry['t'] = ActionController::Base.helpers.truncate(doc['dc_title_s'], length: 50)
-          lat,lng    = doc['b1g_centroid_ss'].split(",")
+          entry['l'] = doc['geomg_id_s']
+          entry['t'] = ActionController::Base.helpers.truncate(doc['dct_title_s'], length: 50)
+          lat,lng    = doc['dcat_centroid_ss'].split(",")
           lat = lat.to_f.round(4) # Truncate long values
           lng = lng.to_f.round(4) # Truncate long values
           entry['c'] = "#{lat},#{lng}"
@@ -21,7 +21,7 @@ namespace :geoportal do
         end
       rescue Exception => e
         puts "Caught #{e}"
-        puts "BBox or centroid no good - #{doc['layer_slug_s']}"
+        puts "BBox or centroid no good - #{doc['geomg_id_s']}"
       end
     end
 

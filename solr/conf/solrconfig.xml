@@ -49,7 +49,7 @@
       <str name="dir">${solr.ulog.dir:}</str>
     </updateLog>
     <autoCommit>
-      <maxTime>15000</maxTime>
+      <maxTime>120000</maxTime>
       <openSearcher>false</openSearcher>
     </autoCommit>
   </updateHandler>
@@ -63,7 +63,20 @@
     </lst>
   </requestHandler>
 
-  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
+  <!-- Basic backup handler replication -->
+  <!--requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" /-->
+  <!-- Replication slave -->
+  <!--
+  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy">
+    <lst name="slave">
+        <str name="masterUrl">https://geomg.example.com/solr/geomg/replication</str>
+        <str name="pollInterval">00:05:00</str>
+        <str name="httpBasicAuthUser">authusername</str>
+        <str name="httpBasicAuthPassword">authpassword</str>
+    </lst>
+  </requestHandler>
+  -->
+  <!-- ANSIBLE-MANAGED-REPLICATION KEEP THIS LINE -->
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
        Query section - these settings control query time things like caches
@@ -113,50 +126,50 @@
       <int name="ps">0</int>
       <float name="tie">0.01</float>
       <str name="fl">*,score</str>
-      <str name="sort">score desc, dc_title_sort asc</str>
+      <str name="sort">score desc, dct_title_sort asc</str>
       <str name="q.alt">*:*</str>
       <str name="bq">b1g_child_record_b:false^10</str>
       <str name="qf">
         text^1
         dct_temporal_tmi^1
-        dct_alternativeTitle_tmi^3
-        dc_description_ti^3
+        dct_alternative_tmi^3
+        dct_description_ti^3
         b1g_code_ti^5
-        b1g_keyword_tmi^6
-        dc_subject_tmi^6
-        b1g_genre_tmi^6
+        dcat_keyword_tmi^6
+        dct_subject_tmi^6
+        gbl_resourceClass_tmi^6
         dct_spatial_tmi^8
-        dc_title_ti^9
-        layer_slug_ti^10
+        dct_title_ti^9
+        geomg_s_ti^10
       </str>
       <str name="pf"><!-- phrase boost within result set -->
         text^1
         dct_temporal_tmi^1
-        dct_alternativeTitle_tmi^3
-        dc_description_ti^3
+        dct_alternative_tmi^3
+        dct_description_ti^3
         b1g_code_ti^5
-        b1g_keyword_tmi^6
-        dc_subject_tmi^6
-        b1g_genre_tmi^6
+        dcat_keyword_tmi^6
+        dct_subject_tmi^6
+        gbl_resourceClass_tmi^6
         dct_spatial_tmi^8
-        dc_title_ti^9
-        layer_slug_ti^10
+        dct_title_ti^9
+        geomg_s_ti^10
       </str>
       <str name="title_qf">
-        dc_title_ti^10
+        dct_title_ti^10
         dct_isPartOf_tmi
       </str>
       <str name="title_pf">
-        dc_title_ti^10
+        dct_title_ti^10
         dct_isPartOf_tmi
       </str>
       <str name="publisher_qf">
-        dc_publisher_tmi^5
-        dc_creator_tmi
+        dct_publisher_tmi^5
+        dct_creator_tmi
       </str>
       <str name="publisher_pf">
-        dc_publisher_tmi^5
-        dc_creator_tmi
+        dct_publisher_tmi^5
+        dct_creator_tmi
       </str>
       <str name="placename_qf">
         dct_spatial_tmi
@@ -167,13 +180,10 @@
       <bool name="facet">true</bool>
       <int name="facet.mincount">1</int>
       <int name="facet.limit">10</int>
-      <str name="facet.field">dct_provenance_s</str>
-      <str name="facet.field">dct_spatial_sm</str>
-      <str name="facet.field">dc_creator_sm</str>
-      <str name="facet.field">dc_publisher_s</str>
-      <str name="facet.field">dc_rights_s</str>
-      <str name="facet.field">dc_subject_sm</str>
-      <str name="facet.field">solr_year_i</str>
+      <str name="facet.field">b1g_publication_state_s</str>
+      <str name="facet.field">schema_provider_s</str>
+      <str name="facet.field">b1g_dct_accrualMethod_s</str>
+      <str name="facet.field">dct_accessRights_s</str>
       <str name="spellcheck">true</str>
     </lst>
     <arr name="last-components">
@@ -232,7 +242,7 @@
       <str name="name">mySuggester</str>
       <str name="lookupImpl">FuzzyLookupFactory</str>
       <str name="suggestAnalyzerFieldType">textSuggest</str>
-      <str name="buildOnCommit">true</str>
+      <str name="buildOnCommit">false</str>
       <str name="field">suggest</str>
     </lst>
   </searchComponent>

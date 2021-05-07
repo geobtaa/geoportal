@@ -32,9 +32,9 @@
                   <span class="icon baseline" style="color:#FFF;">
                     <%= blacklight_icon("vector") %>
                   </span>
-                  Geospatial Data
+                  Datasets
                 </h3>
-                <%= link_to "/?f%5Bb1g_genre_sm%5D%5B%5D=Geospatial+data" do %>
+                <%= link_to "/?f%5Bgbl_resourceClass_sm%5D%5B%5D=Datasets" do %>
                   <%= image_tag('homepage/geospatial_data.png', {:class => "img-fluid img-thumbnail", :alt => "Geospatial Data"}) %>
                 <% end %>
               </div>
@@ -46,7 +46,7 @@
                   </span>
                   Maps
                 </h3>
-                <%= link_to "/?f%5Bb1g_genre_sm%5D%5B%5D=Maps" do %>
+                <%= link_to "/?f%5Bgbl_resourceClass_sm%5D%5B%5D=Maps" do %>
                   <%= image_tag('homepage/maps.png', {:class => "img-fluid img-thumbnail", :alt => "Scanned Maps"}) %>
                 <% end %>
               </div>
@@ -56,10 +56,10 @@
                   <span class="icon baseline" style="color:#FFF;">
                     <%= blacklight_icon("image") %>
                   </span>
-                  Aerial Imagery
+                  Imagery
                 </h3>
-                <%= link_to "/?f%5Bb1g_genre_sm%5D%5B%5D=Aerial+imagery" do %>
-                  <%= image_tag('homepage/aerial_imagery.png', {:class => "img-fluid img-thumbnail", :alt => "Aerial Imagery"}) %>
+                <%= link_to "/?f%5Bgbl_resourceClass_sm%5D%5B%5D=Imagery" do %>
+                  <%= image_tag('homepage/aerial_imagery.png', {:class => "img-fluid img-thumbnail", :alt => "Imagery"}) %>
                 <% end %>
               </div>
             </div>
@@ -71,7 +71,7 @@
               </div>
               <div class='col-xs-12 col-sm-6'>
                 <h4 class='sr-only'>Subject</h4>
-                <%= render_facet_partials [:dc_subject_sm] %>
+                <%= render_facet_partials [:dct_subject_sm] %>
               </div>
             </div>
 

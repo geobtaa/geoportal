@@ -5,7 +5,7 @@ jobs:
     working_directory: ~/geoportal
     docker:
       # The primary container is an instance of the first list image listed. Your build commands run in this container.
-      - image: circleci/ruby:2.6.1-node-browsers
+      - image: circleci/ruby:2.7.3-node-browsers
         environment:
           RAILS_ENV: test
           geoportal_DB_HOST: localhost
@@ -18,7 +18,7 @@ jobs:
       - run:
           name: "Update Node.js and npm"
           command: |
-            curl -sSL "https://nodejs.org/dist/v11.10.0/node-v11.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v11.10.0-linux-x64/bin/node
+            curl -sSL "https://nodejs.org/dist/v14.16.1/node-v14.16.1-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v14.16.1-linux-x64/bin/node
             curl https://www.npmjs.com/install.sh | sudo bash
       - run:
           name: Check current version of node
@@ -58,7 +58,7 @@ jobs:
       - run: gem install bundler:2.0.1
       - run: bundle install --path vendor/bundle
       - run: bundle exec rails db:migrate
-      - run: bundle exec rake geoblacklight:index:seed
+      - run: bundle exec rake geoportal:index:seed
       - run: bundle exec rake test
       # Cache Dependencies
       - type: cache-save

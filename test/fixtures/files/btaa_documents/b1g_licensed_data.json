@@ -1,0 +1,71 @@
+{
+  "dct_mediator_sm": [
+    "Indiana University",
+    "University of Illinois Urbana-Champaign",
+    "University of Iowa",
+    "University of Maryland",
+    "University of Minnesota",
+    "University of Michigan",
+    "Michigan State University",
+    "Pennsylvania State University",
+    "University of Wisconsin",
+    "The Ohio State University",
+    "University of Chicago"
+  ],
+  "b1g_status_s": "Testing",
+  "b1g_code_s": "99-0001",
+  "b1g_access_s": "{\"01\":\"https://proxyiub.uits.iu.edu/login?url=https://www.socialexplorer.com\",\"02\":\"http://sfx.carli.illinois.edu/sfxuiu?sfx.ignore_date_threshold=1&rft.object_id=63750000000000353\",\"03\":\"https://uiowa.alma.exlibrisgroup.com/view/action/uresolver.do;jsessionid=1FD9438105E0676AA5EAF51783A60194.app02.na03.prod.alma.dc04.hosted.exlibrisgroup.com:1801?operation=resolveService&package_service_id=16484718570002771&institutionId=2771&customerId=2770\",\"04\":\"http://proxy-um.researchport.umd.edu/login?url=http://www.socialexplorer.com/.\",\"05\":\"https://na01.alma.exlibrisgroup.com/view/action/uresolver.do?operation=resolveService&package_service_id=2262110332520001701&institutionId=1701&customerId=1700\",\"06\":\"http://proxy.lib.umich.edu/login?url=http://www.socialexplorer.com/ezproxy\",\"07\":\"http://ezproxy.msu.edu/login?url=http://www.socialexplorer.com/\",\"09\":\"http://ezaccess.libraries.psu.edu/login?url=https://www.socialexplorer.com/pub/home/home.aspx\",\"10\":\"http://digital.library.wisc.edu/1711.web/socialexplorer\",\"11\":\"http://proxy.lib.ohio-state.edu/login?url=http://www.socialexplorer.com/pub/home/home.aspx\",\"12\":\"http://proxy.uchicago.edu/login?qurl=http%3A%2F%2Fwww.lib.uchicago.edu%2Fh%2Fsocialexplorer\"}",
+  "b1g_image_ss": "https://se-static-uploads.s3.amazonaws.com/newsletter/Newsletters-Amina/Thumbnaill-SE_NewCopy_small.jpg",
+  "dc_type_sm": [
+    "Interactive Resource"
+  ],
+  "b1g_dateAccessioned_s": "2019-11-20",
+  "dct_title_s": "Social Explorer",
+  "dct_description_sm": [
+    "Requires creating a free account or logging in through an organization with licensed access. This interactive website includes the entire US census history from 1790 to 2000, the American Community Survey (ACS), and the Religious Congregations and Membership Study (RCMS) from 1980 to 2000? the most complete census available on religion in the U.S. Overall, the site contains 39 billion data points, 200,000 variables, and 15,000 interactive maps"
+  ],
+  "dct_creator_sm": [
+    "Queens College (New York, N.Y.). Department of Sociology"
+  ],
+  "dct_publisher_sm": [
+    "Social Explorer"
+  ],
+  "schema_provider_s": "[none]",
+  "gbl_resourceClass_sm": [
+    "Datasets"
+  ],
+  "gbl_resourceType_sm": [
+    "Table"
+  ],
+  "dct_subject_sm": [
+    "Society"
+  ],
+  "dcat_keyword_sm": [
+    "Census",
+    "Population",
+    "Statistics"
+  ],
+  "dct_temporal_sm": [
+    "1790-present"
+  ],
+  "dct_issued_s": "2005",
+  "dct_spatial_sm": [
+    "United States"
+  ],
+  "locn_geometry": "ENVELOPE(-179.9,-64.4,71.6,-14.8)",
+  "dcat_centroid_ss": "28.4,-122.15",
+  "dct_accessRights_s": "Restricted",
+  "dct_rights_sm": [
+    "Requires creating a free account or logging in through an organization with licensed access"
+  ],
+  "dct_references_s": "{}",
+  "id": "99-0001-test",
+  "geomg_id_s": "99-0001-test",
+  "dct_identifier_sm": [
+    "99-0001-test"
+  ],
+  "gbl_mdModified_dt": "2019-11-20T16:19:53Z",
+  "gbl_mdVersion_s": "1.0",
+  "gbl_suppressed_b": false,
+  "b1g_publication_state_s": "published"
+}

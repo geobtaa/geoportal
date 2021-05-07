@@ -1,0 +1,66 @@
+{
+  "b1g_status_s": "Active",
+  "dct_accrualMethod_s": "ArcGIS Hub",
+  "b1g_code_s": "11a-01",
+  "dc_type_sm": [
+    "Dataset",
+    "Service"
+  ],
+  "b1g_dateAccessioned_s": "2019-03-28",
+  "dct_title_s": "Address Points -Location Based Response System (LBRS): Cuyahoga County, Ohio",
+  "dct_description_sm": [
+    "The State of Ohio Location Based Response System address points depict the access points to addressable structures along public and private roads within participating Ohio Counties. Address point data was developed from data collected by field observation of existing address locations at the time of collection. View Full Metadata"
+  ],
+  "dct_language_sm": [
+    "English"
+  ],
+  "dct_creator_sm": [
+    "Ohio Geographically Referenced Information Program"
+  ],
+  "dct_publisher_sm": [
+    "State of Ohio"
+  ],
+  "schema_provider_s": "Ohio State",
+  "gbl_resourceClass_sm": [
+    "Datasets"
+  ],
+  "gbl_resourceType_sm": [
+    "Vector"
+  ],
+  "dct_subject_sm": [
+    "Location"
+  ],
+  "dcat_keyword_sm": [
+    "Addresses",
+    "Cuyahoga",
+    "Ohio",
+    "LBRS",
+    "Trans",
+    "Transportation",
+    "Address Points"
+  ],
+  "dct_issued_s": "2014-12-31",
+  "gbl_indexYear_im": [
+    2015
+  ],
+  "dct_spatial_sm": [
+    "Ohio"
+  ],
+  "locn_geometry": "ENVELOPE(-81.9761,-81.3671,41.6327,41.2698)",
+  "dcat_centroid_ss": "41.45125,-81.6716",
+  "pcdm_memberOf_sm": [
+    "11a-01"
+  ],
+  "dct_accessRights_s": "Public",
+  "dct_format_s": "Shapefile",
+  "dct_references_s": "{\"http://schema.org/url\":\"http://ogrip-geohio.opendata.arcgis.com/datasets/ab0f0408fcb5479e97df5a13d9a3c648_0\",\"http://schema.org/downloadUrl\":\"http://ogrip-geohio.opendata.arcgis.com/datasets/ab0f0408fcb5479e97df5a13d9a3c648_0.zip\",\"urn:x-esri:serviceType:ArcGIS#FeatureLayer\":\"https://geo.oit.ohio.gov/arcgis/rest/services/LBRS/Cuyahoga_LBRS/FeatureServer/0\"}",
+  "id": "ab0f0408fcb5479e97df5a13d9a3c648_0",
+  "geomg_id_s": "ab0f0408fcb5479e97df5a13d9a3c648_0",
+  "dct_identifier_sm": [
+    "ab0f0408fcb5479e97df5a13d9a3c648_0"
+  ],
+  "gbl_mdModified_dt": "2019-09-20T18:19:08Z",
+  "gbl_mdVersion_s": "1.0",
+  "gbl_suppressed_b": false,
+  "b1g_publication_state_s": "published"
+}

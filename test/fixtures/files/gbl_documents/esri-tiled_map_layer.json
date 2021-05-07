@@ -1,0 +1,24 @@
+{
+  "gbl_mdVersion_s": "Aardvark",
+  "dct_description_sm": "This map shows the Soil Survey Geographic (SSURGO) by the United States Department of Agriculture's Natural Resources Conservation Service. It also shows data that was developed by the National Cooperative Soil Survey and supersedes the State Soil Geographic (STATSGO) dataset published in 1994. SSURGO digitizing duplicates the original soil survey maps. This level of mapping is designed for use by landowners, townships, and county natural resource planning and management. The user should be knowledgeable of soils data and their characteristics. The smallest scale map shows the Global Soil Regions map by the United States Department of Agriculture\u2019s Natural Resources Conservation Service.",
+  "dct_format_s": "GeoTIFF",
+  "dct_identifier_sm": "test-soil-survey-map",
+  "dct_language_sm": "English",
+  "dct_publisher_sm": "United States Department of Agriculture, Natural Resources Conservation Service",
+  "dct_accessRights_s": "Public",
+  "dct_title_s": "Soil Survey Geographic (SSURGO)",
+  "dct_type_s": "Dataset",
+  "gbl_mdModified_dt": "2015-06-16T00:59:49Z",
+  "locn_geometry": "ENVELOPE(-129.4956, -64.4393, 48.6336, 21.8079)",
+  "gbl_indexYear_i": 2010,
+  "schema_provider_s": "NYU",
+  "dct_references_s": "{\"urn:x-esri:serviceType:ArcGIS#TiledMapLayer\": \"http://services.arcgisonline.com/arcgis/rest/services/Specialty/Soil_Survey_Map/MapServer\"}",
+  "dct_temporal_sm": [
+    "2010"
+  ],
+  "dcat_servesDataset_s": "test-soil-survey_map",
+  "geomg_id_s": "nyu-test-soil-survey-map",
+  "id": "nyu-test-soil-survey-map",
+  "gbl_resourceType_sm": "Raster",
+  "b1g_publication_state_s": "published"
+}

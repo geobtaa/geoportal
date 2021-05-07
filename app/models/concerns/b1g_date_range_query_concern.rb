@@ -28,7 +28,7 @@ module B1gDateRangeQueryConcern
         if !hash["missing"].blank?
           # missing specified in request params
           solr_params[:fq] ||= []
-          solr_params[:fq] << "-b1g_date_range_drsim:[* TO *]"
+          solr_params[:fq] << "-#{Settings.FIELDS.DATE_RANGE}:[* TO *]"
 
         elsif !(hash["begin"].blank? && hash["end"].blank?)
           # specified in request params, begin and/or end, might just have one
@@ -36,7 +36,7 @@ module B1gDateRangeQueryConcern
           finish = hash["end"].blank? ? "*" : hash["end"]
 
           solr_params[:fq] ||= []
-          solr_params[:fq] << "b1g_date_range_drsim: [#{start} TO #{finish}]"
+          solr_params[:fq] << "#{Settings.FIELDS.DATE_RANGE}: [#{start} TO #{finish}]"
         end
       end
 

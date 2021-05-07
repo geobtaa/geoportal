@@ -1,0 +1,35 @@
+{
+  "gbl_mdVersion_s": "Aardvark",
+  "dct_publisher_sm": [
+    "Bernardin, Lochmueller and Associates"
+  ],
+  "dct_creator_sm": [
+    "(creation): U.S. Geological Survey",
+    "(selection/conversion): Bernardin, Lochmueller and Associates"
+  ],
+  "dct_description_sm": "USGS National Atlas metadata states NThis data set portrays the National Agricultural Statistics Service, U.S. Department of Agriculture's 1997 Census data for the United States, presented by county. There are 25 categories of data which include information about farms, crops, livestock, values of products, and farm operator characteristics.N",
+  "dct_format_s": "Shapefile",
+  "dct_identifier_sm": "urn-f082acb1-b01e-4a08-9126-fd62a23fd9aa",
+  "dct_accessRights_s": "Public",
+  "dct_title_s": "Agriculture Census: Indiana, 1997",
+  "dct_type_s": "Dataset",
+  "gbl_mdModified_dt": "2016-06-20T16:17:36Z",
+  "locn_geometry": "ENVELOPE(-88.1607, -84.6882, 41.7753, 37.7554)",
+  "gbl_indexYear_i": 1972,
+  "dct_issued_s": "2003-01-28",
+  "schema_provider_s": "Purdue",
+  "dct_references_s": "{\"http://schema.org/downloadUrl\":\"http://maps.indiana.edu/download/Environment/Agriculture_Census.zip\",\"http://schema.org/url\":\"http://indianamap.org/\",\"http://www.isotc211.org/schemas/2005/gmd/\":\"https://opengeometadata.github.io/edu.purdue/f0/82/ac/b1b01e4a089126fd62a23fd9aa/iso19139.xml\",\"http://www.opengis.net/def/serviceType/ogc/wms\":\"https://maps.indiana.edu/arcgis/services/Environment/Agriculture_Census/MapServer/WMSServer\",\"urn:x-esri:serviceType:ArcGIS#DynamicMapLayer\":\"https://maps.indiana.edu/arcgis/rest/services/Environment/Agriculture_Census/MapServer\"}",
+  "dct_spatial_sm": [
+    "Indiana"
+  ],
+  "dct_subject_sm": [
+    "farming",
+    "agriculture"
+  ],
+  "dct_temporal_sm": "1972-1997",
+  "dcat_servesDataset_s": "0",
+  "geomg_id_s": "purdue-urn-f082acb1-b01e-4a08-9126-fd62a23fd9aa",
+  "id": "purdue-urn-f082acb1-b01e-4a08-9126-fd62a23fd9aa",
+  "gbl_resourceType_sm": "Mixed",
+  "b1g_publication_state_s": "published"
+}

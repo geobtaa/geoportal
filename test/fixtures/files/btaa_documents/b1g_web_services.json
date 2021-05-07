@@ -1,0 +1,62 @@
+{
+  "b1g_code_s": "05d-01",
+  "b1g_geonames_sm": [
+    "http://sws.geonames.org/5037779"
+  ],
+  "b1g_image_ss": "https://umedia.lib.umn.edu/sites/default/files/imagecache/square300/reference/60/image/jpeg/1013914.jpg",
+  "dc_type_sm": [
+    "Image"
+  ],
+  "dct_title_s": "Railroad commissioners' map of Minnesota",
+  "dct_description_sm": [
+    "Cartographic Details: Scale [1:760,320]. 1 in. = 12 miles (W 97\u207014\u02b9--W 89\u207036\u02b9/N 49\u207000\u02b9--N 43\u207030\u02b9). Includes inset of \"North east corner of Minnesota.\" 99 x 66 cm"
+  ],
+  "dct_language_sm": [
+    "English"
+  ],
+  "dct_creator_sm": [
+    "Rand McNally and Company.",
+    "Minnesota. Office of Railroad Commissioners."
+  ],
+  "dct_publisher_sm": [
+    "Rand, McNally and Co."
+  ],
+  "schema_provider_s": "Minnesota",
+  "gbl_resourceClass_sm": [
+    "Maps"
+  ],
+  "gbl_resourceType_sm": [
+    "Image"
+  ],
+  "dcat_keyword_sm": [
+    "RailroadsThematic maps"
+  ],
+  "dct_temporal_sm": [
+    "1886"
+  ],
+  "gbl_indexYear_im": [
+    1886
+  ],
+  "dct_spatial_sm": [
+    "Minnesota, United States"
+  ],
+  "locn_geometry": "ENVELOPE(-97.23, -89.6, 49, 43.5)",
+  "dcat_centroid_ss": "46.25,-93.415",
+  "pcdm_memberOf_sm": [
+    "John R. Borchert Map Library"
+  ],
+  "dct_source_sm": [
+    "05d-01"
+  ],
+  "dct_accessRights_s": "Public",
+  "dct_format_s": "TIFF",
+  "dct_references_s": "{\"http://schema.org/url\":\"http://purl.umn.edu/191028\",\"http://schema.org/downloadUrl\":\"https://umedia.lib.umn.edu/sites/default/files/archive/60/image/tiff/1013914.tif\",\"http://iiif.io/api/image\":\"https://umedia.lib.umn.edu/fcgi-bin/iipsrv.fcgi?IIIF=sites/default/files/reference/60/image/jp2/1013914.jp2/info.json\"}",
+  "id": "71f15b25-64cd-40cc-8f0c-64529293398c",
+  "geomg_id_s": "71f15b25-64cd-40cc-8f0c-64529293398c",
+  "dct_identifier_sm": [
+    "71f15b25-64cd-40cc-8f0c-64529293398c"
+  ],
+  "gbl_mdModified_dt": "2019-01-16T16:34:23Z",
+  "gbl_mdVersion_s": "1.0",
+  "b1g_publication_state_s": "published"
+}
