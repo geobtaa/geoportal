@@ -180,13 +180,10 @@
       <bool name="facet">true</bool>
       <int name="facet.mincount">1</int>
       <int name="facet.limit">10</int>
+      <str name="facet.field">b1g_publication_state_s</str>
       <str name="facet.field">schema_provider_s</str>
-      <str name="facet.field">dct_spatial_sm</str>
-      <str name="facet.field">dct_creator_sm</str>
-      <str name="facet.field">dct_publisher_sm</str>
-      <str name="facet.field">dct_rights_sm</str>
-      <str name="facet.field">dct_subject_sm</str>
-      <str name="facet.field">gbl_indexYear_im</str>
+      <str name="facet.field">b1g_dct_accrualMethod_s</str>
+      <str name="facet.field">dct_accessRights_s</str>
       <str name="spellcheck">true</str>
     </lst>
     <arr name="last-components">
