@@ -5,7 +5,7 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
 
   load: function() {
     this.displayLayerLoading();
-    this.options.bbox = L.bboxToBounds(this.data.mapBbox);
+    this.options.bbox = L.geoJSONToBounds(this.data.mapGeom);
     this.map = L.map(this.element).fitBounds(this.options.bbox);
     this.map.addLayer(this.selectBasemap());
     this.map.addLayer(this.overlay);

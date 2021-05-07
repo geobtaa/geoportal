@@ -11,7 +11,7 @@ Blacklight.onLoad(function() {
       searcher: function() {
         window.location.href = this.getSearchUrl();
       },
-      staticButton: '<a id="map-search-btn" class="btn btn-primary hidden-xs hidden-sm">Search here</a>'
+      staticButton: '<a href="#" id="map-search-btn" class="btn btn-primary hidden-xs hidden-sm">Search here</a>'
     }));
 
     var progress = document.getElementById('progress');

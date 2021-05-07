@@ -1,5 +1,5 @@
 <% # header bar for doc items in index view -%>
-<%= content_tag :div, class: 'documentHeader row', data: { layer_id: document.id, bbox: document.bounding_box_as_wsen } do %>
+<%= content_tag :div, class: 'documentHeader row', data: { layer_id: document.id, geom: document.geometry.geojson } do %>
   <div class="document-wrapper">
     <% counter = document_counter_with_offset(document_counter) %>
     <span class="list-view document-counter">

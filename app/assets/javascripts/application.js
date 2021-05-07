@@ -63,8 +63,8 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
   overlay: L.layerGroup(),
 
   load: function() {
-    if (this.data.mapBbox) {
-      this.options.bbox = L.bboxToBounds(this.data.mapBbox);
+    if (this.data.mapGeom) {
+      this.options.bbox = L.geoJSONToBounds(this.data.mapGeom);
     }
     this.map = L.map(this.element, {scrollWheelZoom:false, noWrap: true}).fitBounds(this.options.bbox);
     this.map.addLayer(this.selectBasemap());
@@ -101,6 +101,16 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
    */
   addOpacityControl: function() {
     this.map.addControl(new L.Control.LayerOpacity(this.overlay));
+  },
+
+  /**
+   * Add a GeoJSON overlay to map.
+   * @param {string} geojson GeoJSON string
+   */
+  addGeoJsonOverlay: function(geojson) {
+    var layer = L.geoJSON();
+    layer.addData(geojson);
+    this.overlay.addLayer(layer);
   },
 
   /**

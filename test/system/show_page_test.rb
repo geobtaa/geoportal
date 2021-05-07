@@ -196,6 +196,20 @@ class ShowPageTest < ApplicationSystemTestCase
     end
   end
 
+  def test_stanford_show_index_map
+    visit "/catalog/stanford-fb897vt9938"
+
+    # Help
+    assert page.has_content?("Index Map")
+
+    within('#map') do
+      assert page.has_selector?("svg.leaflet-zoom-animated")
+      assert page.has_selector?("path.leaflet-interactive")
+    end
+  end
+
+
+
   def test_browse_descendants
     skip('Moving to dct_isPartOf_sm for relations')
     visit "/catalog/princeton-1r66j405w"
@@ -251,7 +265,6 @@ class ShowPageTest < ApplicationSystemTestCase
     visit '/catalog/e84a24f0-1c00-4235-a584-db5d7551cbe6'
 
     # Data Relations
-    assert page.has_content?("Related Items")
     assert page.has_content?("Collection")
   end
 
@@ -334,7 +347,7 @@ class ShowPageTest < ApplicationSystemTestCase
   def test_b1g_placename_readmore_link
     visit '/catalog/99-0011-minnesota'
     within('dd.blacklight-dct_spatial_sm') do
-      assert page.has_link?("Read More")
+      assert page.has_content?("Read more")
     end
   end
 
