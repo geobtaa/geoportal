@@ -44,15 +44,16 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     assert page.has_selector?("#facets")
     within("#facets") do
       assert page.has_content?("Place")
-      assert page.has_content?("Genre")
-      assert page.has_content?("Year")
+      assert page.has_content?("Resource Class")
+      assert page.has_content?("Resource Type")
       assert page.has_content?("Subject")
+      assert page.has_content?("Year")
       assert page.has_content?("Time Period")
-      assert page.has_no_content?("Collection")
       assert page.has_content?("Publisher")
       assert page.has_content?("Creator")
-      assert page.has_content?("Institution")
-      assert page.has_content?("Type")
+      assert page.has_content?("Provider")
+      assert page.has_content?("Public/Restricted")
+      # assert page.has_content?("Institutional Access")
     end
   end
 
@@ -65,7 +66,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     # Returns zero results outside of range
     # Search 1865 - 1872
     # Expect 1 results
-    visit '/?utf8=%E2%9C%93&search_field=all_fields&q=&range%5Bsolr_year_i%5D%5Bbegin%5D=1865&range%5Bsolr_year_i%5D%5Bend%5D=1872&commit=Limit'
+    visit '/?utf8=%E2%9C%93&search_field=all_fields&q=&range%5Bgbl_indexYear_im%5D%5Bbegin%5D=1865&range%5Bgbl_indexYear_im%5D%5Bend%5D=1872&commit=Limit'
     assert page.assert_selector('article.document', :count => 1)
   end
 
@@ -73,7 +74,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     # Returns search for first year
     # Search 1874 - 1874
     # Expect 2 results
-    visit '/?utf8=%E2%9C%93&search_field=all_fields&q=&range%5Bsolr_year_i%5D%5Bbegin%5D=1874&range%5Bsolr_year_i%5D%5Bend%5D=1874&commit=Limit'
+    visit '/?utf8=%E2%9C%93&search_field=all_fields&q=&range%5Bgbl_indexYear_im%5D%5Bbegin%5D=1874&range%5Bgbl_indexYear_im%5D%5Bend%5D=1874&commit=Limit'
     assert page.assert_selector('article.document', :count => 2)
     assert page.assert_selector('div[data-layer-id="VAC9619-001727"]')
   end
@@ -82,7 +83,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     # Returns results for last year
     # Search 1912 - 1912
     # Expect 3 results
-    visit '/?utf8=%E2%9C%93&search_field=all_fields&q=&range%5Bsolr_year_i%5D%5Bbegin%5D=1912&range%5Bsolr_year_i%5D%5Bend%5D=1912&commit=Limit'
+    visit '/?utf8=%E2%9C%93&search_field=all_fields&q=&range%5Bgbl_indexYear_im%5D%5Bbegin%5D=1912&range%5Bgbl_indexYear_im%5D%5Bend%5D=1912&commit=Limit'
     assert page.assert_selector('article.document', :count => 3)
     assert page.assert_selector('div[data-layer-id="VAC9619-001727"]')
   end
@@ -91,7 +92,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     # Returns results at bookends
     # Search 1874 - 1912
     # Expect 4 results
-    visit '/?utf8=✓&search_field=all_fields&q=&range%5Bsolr_year_i%5D%5Bbegin%5D=1874&range%5Bsolr_year_i%5D%5Bend%5D=1912&commit=Limit'
+    visit '/?utf8=✓&search_field=all_fields&q=&range%5Bgbl_indexYear_im%5D%5Bbegin%5D=1874&range%5Bgbl_indexYear_im%5D%5Bend%5D=1912&commit=Limit'
     assert page.assert_selector('article.document', :count => 4)
     assert page.assert_selector('div[data-layer-id="VAC9619-001735"]')
     assert page.assert_selector('div[data-layer-id="VAC9619-001727"]')
@@ -101,7 +102,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     # Returns overlapping results
     # Search 1904 - 1908
     # Expect to include 4 docs
-    visit '/?utf8=%E2%9C%93&search_field=all_fields&q=&range%5Bsolr_year_i%5D%5Bbegin%5D=1904&range%5Bsolr_year_i%5D%5Bend%5D=1908&commit=Limit'
+    visit '/?utf8=%E2%9C%93&search_field=all_fields&q=&range%5Bgbl_indexYear_im%5D%5Bbegin%5D=1904&range%5Bgbl_indexYear_im%5D%5Bend%5D=1908&commit=Limit'
     assert page.assert_selector('article.document', :count => 4)
     assert page.assert_selector('div[data-layer-id="VAC9619-001735"]')
     assert page.assert_selector('div[data-layer-id="VAC9619-001727"]')
@@ -111,7 +112,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     # Returns overlapping results
     # Search  - 1900
     # Expect 2 results
-    visit '/?utf8=✓&q=&search_field=all_fields&range%5Bsolr_year_i%5D%5Bbegin%5D=&range%5Bsolr_year_i%5D%5Bend%5D=1875&commit=Limit'
+    visit '/?utf8=✓&q=&search_field=all_fields&range%5Bgbl_indexYear_im%5D%5Bbegin%5D=&range%5Bgbl_indexYear_im%5D%5Bend%5D=1875&commit=Limit'
     assert page.assert_selector('article.document', :count => 2)
     assert page.assert_selector('div[data-layer-id="VAC9619-001727"]')
   end
@@ -120,7 +121,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     # Returns overlapping results
     # Search 1874 -
     # Expect 7 results
-    visit '/?utf8=✓&q=&search_field=all_fields&range%5Bsolr_year_i%5D%5Bbegin%5D=1874&range%5Bsolr_year_i%5D%5Bend%5D=&commit=Limit'
+    visit '/?utf8=✓&q=&search_field=all_fields&range%5Bgbl_indexYear_im%5D%5Bbegin%5D=1874&range%5Bgbl_indexYear_im%5D%5Bend%5D=&commit=Limit'
     assert page.assert_selector('article.document', :count => 10)
     assert page.assert_selector('div[data-layer-id="VAC9619-001735"]')
     assert page.assert_selector('div[data-layer-id="VAC9619-001727"]')
@@ -128,6 +129,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
   end
 
   def test_child_negative_boost
+    skip('Revisit relation tests in Aardvark')
     visit '/catalog?f%5Bdct_isPartOf_sm%5D%5B%5D=05d-03'
     within('article.document-position-0') do
       assert page.has_link?('Access Across America: Auto Data，2018')

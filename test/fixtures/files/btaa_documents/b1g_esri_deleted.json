@@ -1,0 +1,65 @@
+{
+  "b1g_status_s": "Retired",
+  "dct_accrualMethod_s": "ArcGIS Hub",
+  "b1g_code_s": "05b-27163",
+  "b1g_dateRetired_s": "2019-02-15",
+  "alternativeTitle_sm": [
+    "Bikeways and Trails"
+  ],
+  "dc_type_sm": [
+    "Dataset",
+    "Service"
+  ],
+  "b1g_dateAccessioned_s": "2019-07-23",
+  "dct_title_s": "Bikeways and Trails: Washington County, Minnesota",
+  "dct_description_sm": [
+    "THE ACCESS LINKS FOR THIS RECORD WERE REPORTED AS BROKEN. THE RECORD MAY HAVE BEEN RETIRED BY THE HOST. This dataset was created by the Metro Trails and Bikeways Collaborative, a joint collaborative project involving the technical and managerial GIS staff from the Seven Metropolitan Counties (Anoka, Carver, Dakota, Hennepin, Ramsey, Scott and Washington). Data were gathered from local, state, and federal partners by the project team and put into the metro data model."
+  ],
+  "dct_language_sm": [
+    "English"
+  ],
+  "dct_creator_sm": [
+    "Washington County, MN"
+  ],
+  "dct_publisher_sm": [
+    "Washington County, Minnesota"
+  ],
+  "schema_provider_s": "Minnesota",
+  "gbl_resourceClass_sm": [
+    "Datasets"
+  ],
+  "gbl_resourceType_sm": [
+    "Vector"
+  ],
+  "dct_subject_sm": [
+    "Transportation"
+  ],
+  "dcat_keyword_sm": [
+    "trails",
+    "ArcGIS",
+    "Service Definition",
+    "sd"
+  ],
+  "dct_issued_s": "2018-03-28",
+  "gbl_indexYear_im": [
+    2018
+  ],
+  "dct_spatial_sm": [
+    "Washington County, Minnesota",
+    "Minnesota"
+  ],
+  "locn_geometry": "ENVELOPE(-93.04126601,-92.7581332,45.29691953,44.7467814)",
+  "dcat_centroid_ss": "45.021850465,-92.899699605",
+  "dct_accessRights_s": "Public",
+  "dct_format_s": "Shapefile",
+  "dct_references_s": "{\"http://schema.org/url\":\"http://data-wcmn.opendata.arcgis.com/datasets/4d2053c593cc4f7685f2823f9e2061b8_1\",\"http://schema.org/downloadUrl\":\"http://data-wcmn.opendata.arcgis.com/datasets/4d2053c593cc4f7685f2823f9e2061b8_1.zip\",\"urn:x-esri:serviceType:ArcGIS#FeatureLayer\":\"https://services1.arcgis.com/3fjYPqJf7qalQMlb/arcgis/rest/services/Map_WFL1/FeatureServer/1\"}",
+  "id": "4d2053c593cc4f7685f2823f9e2061b8_1",
+  "geomg_id_s": "4d2053c593cc4f7685f2823f9e2061b8_1",
+  "dct_identifier_sm": [
+    "4d2053c593cc4f7685f2823f9e2061b8_1"
+  ],
+  "gbl_mdModified_dt": "2019-09-20T18:19:08Z",
+  "gbl_mdVersion_s": "1.0",
+  "gbl_suppressed_b": true,
+  "b1g_publication_state_s": "published"
+}

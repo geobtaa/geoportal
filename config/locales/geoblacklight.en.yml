@@ -61,7 +61,7 @@ en:
       services_close: 'Close'
     relations:
       ancestor: 'Collection'
-      descendant: 'Related Records (%{count})'
+      descendant: "Related Records"
       browse_all: "Browse all %{count} records..."
       title: 'Related Items'
     metadata:

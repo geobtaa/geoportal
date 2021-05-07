@@ -12,3 +12,11 @@
     border: 1px solid lightgray;
   }
 }
+
+.show-tools .list-group .list-group-item {
+  padding: 0 20px;
+
+  .list-group-item-action {
+    padding: 0.25rem 0.5rem;
+  }
+}

@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="geoblacklight-schema" version="2.0">
-  <uniqueKey>layer_slug_s</uniqueKey>
+  <uniqueKey>geomg_id_s</uniqueKey>
   <fields>
     <field name="_version_" type="long"   stored="true" indexed="true"/>
     <field name="timestamp" type="date"   stored="true" indexed="true" default="NOW"/>
-    <field name="layer_slug_s" type="string" stored="true" indexed="true" required="true"/>
-    <field name="geoblacklight_version" type="string" stored="true" indexed="true"/>
-    <field name="uuid" type="string" stored="true" indexed="true"/><!-- deprecated -->
+
+    <!-- Kithe -->
+    <!-- id is the unique key -->
+    <field name="id" type="string" stored="true" indexed="true" multiValued="false" required="true"/>
+    <!-- model_name_ssi -->
+    <dynamicField name="*_ssi" type="string" stored="true" indexed="true" multiValued="false"/>
+    <!-- date_created_dtsi -->
+    <dynamicField name="*_dtsi" type="pdate" stored="true" indexed="true" multiValued="false"/>
+
+    <!-- END Kithe -->
+
+    <!-- GeoBlacklight -->
+    <field name="geomg_id_s" type="string" stored="true" indexed="true" required="true"/>
 
     <!-- core generated fields -->
     <field name="text" type="text_en" stored="false" indexed="true" multiValued="true"
@@ -63,7 +73,7 @@
            <field name="my_bbox">-117.312 83.1 -115.39 84.31</field>
              as (W S E N)
 
-           <field name="my_geom">ENVELOPE(-117.312, -115.39, 84.31, 83.1)</field>
+           <field name="my_geometry">ENVELOPE(-117.312, -115.39, 84.31, 83.1)</field>
              as (W E N S)
 
            <field name="my_jts">POLYGON((1 8, 1 9, 2 9, 2 8, 1 8))</field>
@@ -72,7 +82,7 @@
       -->
     <dynamicField name="*_pt"   type="location"     stored="true" indexed="true"/>
     <dynamicField name="*_bbox" type="location_rpt" stored="true" indexed="true"/><!-- deprecated -->
-    <dynamicField name="*_geom" type="location_rpt" stored="true" indexed="true"/>
+    <dynamicField name="*_geometry" type="location_rpt" stored="true" indexed="true"/>
     <dynamicField name="*_bboxtype" type="bbox" stored="true" indexed="true"/>
 
   </fields>
@@ -93,6 +103,9 @@
 
     <!-- A DateRange based date field for truly faster date range queries. -->
     <fieldType name="dateRange" class="solr.DateRangeField"/>
+
+    <!-- KD-tree versions of date fields -->
+    <fieldType name="pdate" class="solr.DatePointField" docValues="true"/>
 
     <!--Binary data type. The data should be sent/retrieved in as Base64 encoded Strings -->
     <fieldtype name="binary" class="solr.BinaryField"/>
@@ -168,49 +181,48 @@
 
   <!-- for scoring formula -->
   <copyField source="b1g_code_s"         dest="b1g_code_ti"       maxChars="100"/>
-  <copyField source="b1g_genre_sm"       dest="b1g_genre_tmi"    maxChars="1000"/>
-  <copyField source="b1g_keyword_sm"     dest="b1g_keyword_tmi"      maxChars="10000"/>
-  <copyField source="dct_alternativeTitle_sm"    dest="dct_alternativeTitle_tmi"         maxChars="1000"/>
-  <copyField source="dc_creator_sm"      dest="dc_creator_tmi"      maxChars="1000"/>
-  <copyField source="dc_description_s"   dest="dc_description_ti"   maxChars="10000"/>
-  <copyField source="dc_format_s"        dest="dc_format_ti"        maxChars="100"/>
-  <copyField source="dc_language_sm"     dest="dc_language_tmi"       maxChars="100"/>
-  <copyField source="dc_publisher_sm"     dest="dc_publisher_tmi"     maxChars="1000"/>
-  <copyField source="dct_provenance_s"   dest="dct_provenance_ti"   maxChars="1000"/>
+  <copyField source="gbl_resourceClass_sm"       dest="gbl_resourceClass_tmi"    maxChars="1000"/>
+  <copyField source="dcat_keyword_sm"     dest="dcat_keyword_tmi"      maxChars="10000"/>
+  <copyField source="dct_alternative_sm"    dest="dct_alternative_tmi"         maxChars="1000"/>
+  <copyField source="dct_creator_sm"      dest="dct_creator_tmi"      maxChars="1000"/>
+  <copyField source="dct_description_sm"   dest="dct_description_tmi"   maxChars="10000"/>
+  <copyField source="dct_format_s"        dest="dct_format_ti"        maxChars="100"/>
+  <copyField source="dct_language_sm"     dest="dct_language_tmi"       maxChars="100"/>
+  <copyField source="dct_publisher_sm"     dest="dct_publisher_tmi"     maxChars="1000"/>
+  <copyField source="schema_provider_s"   dest="schema_provider_ti"   maxChars="1000"/>
   <copyField source="dct_spatial_sm"     dest="dct_spatial_tmi"     maxChars="10000"/>
-  <copyField source="dc_subject_sm"      dest="dc_subject_tmi"      maxChars="10000"/>
+  <copyField source="dct_subject_sm"      dest="dct_subject_tmi"      maxChars="10000"/>
   <copyField source="dct_temporal_sm"    dest="dct_temporal_tmi"    maxChars="10000"/>
-  <copyField source="dc_title_s"         dest="dc_title_ti"         maxChars="1000"/>
-  <copyField source="dc_type_sm"         dest="dc_type_tmi"         maxChars="100"/>
+  <copyField source="dct_title_s"         dest="dct_title_ti"         maxChars="1000"/>
   <copyField source="dct_isPartOf_sm"    dest="dct_isPartOf_tmi"    maxChars="1000"/>
-  <copyField source="layer_geom_type_ti" dest="layer_geom_type_ti"     maxChars="100"/>
-  <copyField source="layer_slug_s"       dest="layer_slug_ti"       maxChars="100"/>
+  <copyField source="gbl_resourceType_sm" dest="gbl_resourceType_tmi"     maxChars="100"/>
+  <copyField source="geomg_id_s"       dest="geomg_id_ti"       maxChars="100"/>
 
   <!-- core text search -->
   <copyField source="*_s"               dest="text" />
   <copyField source="*_sm"              dest="text" />
 
   <!-- for sorting text fields -->
-  <copyField source="dct_provenance_s"   dest="dct_provenance_sort"/>
-  <copyField source="dc_publisher_s"     dest="dc_publisher_sort"/>
-  <copyField source="dc_title_s"         dest="dc_title_sort"/>
+  <copyField source="schema_provider_s"   dest="schema_provider_sort"/>
+  <copyField source="dct_publisher_sm"     dest="dct_publisher_sort"/>
+  <copyField source="dct_title_s"         dest="dct_title_sort"/>
 
   <!-- for spell checking -->
-  <copyField source="dc_title_s" dest="spell"/>
-  <copyField source="dc_creator_sm" dest="spell"/>
-  <copyField source="dc_publisher_s" dest="spell"/>
-  <copyField source="dct_provenance_s" dest="spell"/>
-  <copyField source="dc_subject_sm" dest="spell"/>
+  <copyField source="dct_title_s" dest="spell"/>
+  <copyField source="dct_creator_sm" dest="spell"/>
+  <copyField source="dct_publisher_sm" dest="spell"/>
+  <copyField source="schema_provider_s" dest="spell"/>
+  <copyField source="dct_subject_sm" dest="spell"/>
   <copyField source="dct_spatial_sm" dest="spell"/>
 
   <!-- for suggestions -->
-  <copyField source="dc_title_s" dest="suggest"/>
-  <copyField source="dc_creator_sm" dest="suggest"/>
-  <copyField source="dc_publisher_s" dest="suggest"/>
-  <copyField source="dct_provenance_s" dest="suggest"/>
-  <copyField source="dc_subject_sm" dest="suggest"/>
+  <copyField source="dct_title_s" dest="suggest"/>
+  <copyField source="dct_creator_sm" dest="suggest"/>
+  <copyField source="dct_publisher_sm" dest="suggest"/>
+  <copyField source="schema_provider_s" dest="suggest"/>
+  <copyField source="dct_subject_sm" dest="suggest"/>
   <copyField source="dct_spatial_sm" dest="suggest"/>
 
   <!-- for bbox value -->
-  <copyField source="solr_geom" dest="solr_bboxtype"/>
+  <copyField source="locn_geometry" dest="solr_bboxtype"/>
 </schema>

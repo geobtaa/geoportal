@@ -29,7 +29,7 @@ module Admin
       config.advanced_search[:url_key] ||= 'advanced'
       config.advanced_search[:query_parser] ||= 'edismax'
       config.advanced_search[:form_solr_parameters] ||= {}
-      config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[dct_provenance_s dc_type_sm b1g_genre_sm b1g_code_s dct_isPartOf_sm]
+      config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[schema_provider_s b1g_code_s pcdm_memberOf_sm dct_isPartOf_sm gbl_resourceClass_sm gbl_resourceType_sm dct_subject_sm dcat_theme_sm dct_format_s gbl_suppressed_b b1g_child_record_b gbl_georeferenced_b]
       config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
       config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
       config.advanced_search[:form_solr_parameters]['facet.sort'] ||= 'index'
@@ -56,7 +56,7 @@ module Admin
       #
       config.default_document_solr_params = {
        :qt => 'document',
-       :q => '{!raw f=layer_slug_s v=$id}'
+       :q => '{!raw f=geomg_id_s v=$id}'
       }
 
       # config.search_builder_class = Geoblacklight::SearchBuilder
@@ -65,7 +65,7 @@ module Admin
       # config.index.show_link = 'title_display'
       # config.index.record_display_type = 'format'
 
-      config.index.title_field = 'dc_title_s'
+      config.index.title_field = 'dct_title_s'
       config.index.document_presenter_class = Geoblacklight::DocumentPresenter
 
       # solr field configuration for document/show views
@@ -74,7 +74,7 @@ module Admin
 
       # Custom GeoBlacklight fields which currently map to GeoBlacklight-Schema
       # v0.3.2
-      config.wxs_identifier_field = 'layer_id_s'
+      config.wxs_identifier_field = 'gbl_wxsIdentifier_s'
 
       # solr fields that will be treated as facets by the blacklight application
       #   The ordering of the field names is the order of the display
@@ -109,26 +109,55 @@ module Admin
       #
       # Publication State
       config.add_facet_field 'b1g_publication_state_s', :label => 'Publication State', :limit => 8, collapse: false
-      # Type
-      config.add_facet_field 'dc_type_sm', label: 'Type', limit: 8
+
+      # Resouce Class
+      config.add_facet_field 'gbl_resourceClass_sm', label: 'Resource Class', limit: 8
+
       # Contributor
-      config.add_facet_field 'dct_provenance_s', label: 'Contributor', limit: 15
+      config.add_facet_field 'schema_provider_s', label: 'Provider', limit: 15
+
       # Accrual Method
-      config.add_facet_field 'dct_accrualMethod_s', :label => 'Accrual Method'
+      config.add_facet_field 'b1g_dct_accrualMethod_s', :label => 'Accrual Method'
+
       # Public/Restricted
-      config.add_facet_field 'dc_rights_s', :label => 'Public/Restricted'
+      config.add_facet_field 'dct_accessRights_s', :label => 'Public/Restricted'
 
       # ADVANCED SEARCH
       #
       # Code
       config.add_facet_field 'b1g_code_s', label: 'Code', limit: 1000
+
       # Is Part Of
       config.add_facet_field 'dct_isPartOf_sm', label: 'Is Part Of', limit: 1000
+
+      # Member Of
+      config.add_facet_field 'pcdm_memberOf_sm', label: 'Member Of', limit: 1000
+
+      # Resource Type
+      config.add_facet_field 'gbl_resourceType_sm', label: 'Resource Type', limit: 1000
+
+      # Subject
+      config.add_facet_field 'dct_subject_sm', label: 'Subject', limit: 1000
+
+      # ISO Topic Category
+      config.add_facet_field 'dcat_theme_sm', label: 'ISO Topic Category', limit: 1000
+
+      # Format
+      config.add_facet_field 'dct_format_s', label: 'Format', limit: 1000
+
+      # Suppressed
+      config.add_facet_field 'gbl_suppressed_b', label: 'Suppressed'
+
+      # Child Record
+      config.add_facet_field 'b1g_child_record_b', label: 'Child Record'
+
+      # Georeferenced
+      config.add_facet_field 'gbl_georeferenced_b', label: 'Georeferenced'
 
       # Have BL send all facet field names to Solr, which has been the default
       # previously. Simply remove these lines if you'd rather use Solr request
       # handler defaults, or have no facets.
-      config.add_facet_fields_to_solr_request!
+      # config.add_facet_fields_to_solr_request!
 
       # solr fields to be displayed in the index (search results) view
       #   The ordering of the field names is the order of the display
@@ -142,12 +171,12 @@ module Admin
       # config.add_index_field 'published_vern_display', :label => 'Published:'
       # config.add_index_field 'lc_callnum_display', :label => 'Call number:'
 
-      config.add_index_field 'dc_title_s', :label => 'Title:'
-      config.add_index_field 'layer_slug_s', :label => 'Identifier:'
-      config.add_index_field 'dct_provenance_s', :label => 'Institution:'
-      config.add_index_field 'dc_rights_s', :label => 'Access:'
-      config.add_index_field 'dc_subject_sm', :label => 'Keywords:'
-      config.add_index_field 'b1g_centroid_ss', :label => 'Centroid:'
+      config.add_index_field 'dct_title_s', :label => 'Title:'
+      config.add_index_field 'geomg_id_s', :label => 'Identifier:'
+      config.add_index_field 'schema_provider_s', :label => 'Institution:'
+      config.add_index_field 'dct_accessRights_s', :label => 'Access:'
+      config.add_index_field 'dct_subject_sm', :label => 'Keywords:'
+      config.add_index_field 'dcat_centroid_ss', :label => 'Centroid:'
       config.add_index_field Settings.FIELDS.YEAR
       config.add_index_field Settings.FIELDS.CREATOR
       config.add_index_field Settings.FIELDS.DESCRIPTION, helper_method: :snippit
@@ -159,16 +188,16 @@ module Admin
       # item_prop: [String] property given to span with Schema.org item property
       # link_to_facet: [Boolean] that can be passed to link to a facet search
       # helper_method: [Symbol] method that can be used to render the value
-      config.add_show_field 'dc_creator_sm', label: 'Creator', itemprop: 'creator'
-      config.add_show_field 'dc_description_s', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
-      config.add_show_field 'dc_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_facet: true
+      config.add_show_field 'dct_creator_sm', label: 'Creator', itemprop: 'creator'
+      config.add_show_field 'dct_description_sm', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
+      config.add_show_field 'dct_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_facet: true
       config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
-      config.add_show_field 'dc_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
-      config.add_show_field 'dc_type_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
+      config.add_show_field 'dct_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
+      config.add_show_field 'gbl_resourceType_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
       config.add_show_field 'dct_issued_s', label: 'Date Published', itemprop: 'keywords', link_to_facet: true
       config.add_show_field 'dct_temporal_sm', label: 'Temporal Coverage', itemprop: 'temporal'
-      config.add_show_field 'dct_provenance_s', label: 'Contributed by', link_to_facet: true
-      config.add_show_field 'dct_accessRights_sm', label: 'Access Rights'
+      config.add_show_field 'schema_provider_s', label: 'Contributed by', link_to_facet: true
+      config.add_show_field 'dct_rights_sm', label: 'Access Rights'
 
       # "fielded" search configuration. Used by pulldown among other places.
       # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -237,10 +266,9 @@ module Admin
       # label in pulldown is followed by the name of the SOLR field to sort by and
       # whether the sort is ascending or descending (it must be asc or desc
       # except in the relevancy case).
-      config.add_sort_field 'score desc, dc_title_sort asc', :label => 'relevance'
-      config.add_sort_field 'solr_year_i desc, dc_title_sort asc', :label => 'year'
-      config.add_sort_field 'dc_publisher_sort asc, dc_title_sort asc', :label => 'publisher'
-      config.add_sort_field 'dc_title_sort asc', :label => 'title'
+      config.add_sort_field 'score desc, dct_title_sort asc', :label => 'relevance'
+      config.add_sort_field 'gbl_indexYear_im desc, dct_title_sort asc', :label => 'year'
+      config.add_sort_field 'dct_title_sort asc', :label => 'title'
 
       # If there are more than this many search results, no spelling ("did you
       # mean") suggestion is offered.
@@ -281,7 +309,7 @@ module Admin
       # 'positron' http://cartodb.com/basemaps/
       # 'darkMatter' http://cartodb.com/basemaps/
       config.basemap_provider = 'esri'
-      config.max_per_page = 10000
+      config.max_per_page = 100000
 
       # Configuration for autocomplete suggestor
       config.autocomplete_enabled = true

@@ -1,0 +1,129 @@
+{
+  "dc_type_sm": [
+    "Interactive Resource"
+  ],
+  "dct_mediator_sm": [
+    "University of Illinois Urbana-Champaign",
+    "Indiana University",
+    "University of Iowa",
+    "University of Maryland",
+    "University of Michigan"
+  ],
+  "b1g_access_s": "{\"01\":\"https://libraries.indiana.edu/digital-sanborn-maps-national-edition\",\"02\":\"https://vufind.carli.illinois.edu/vf-uiu/Record/uiu_8895076\",\"03\":\"https://search.lib.uiowa.edu/permalink/f/9i2ftm/AZ_GUIDESaz/4684636\",\"04\":\"https://catalog.umd.edu/docno=003850234\",\"07\":\"https://search.lib.umich.edu/databases/record/9549\"}",
+  "b1g_image_ss": "https://www.lib.berkeley.edu/EART/images/sand2.jpg",
+  "b1g_code_s": "99-0011",
+  "b1g_status_s": "Active",
+  "b1g_dateAccessioned_s": "2020-04-29",
+  "b1g_child_record_b": "FALSE",
+  "dct_title_s": "Digital Sanborn Maps (Black & White): All States, 1867-1970",
+  "dct_alternative_sm": [
+    "Digital Sanborn Maps, 1867-1970"
+  ],
+  "dct_description_sm": [
+    "Digital Sanborn\u00ae Maps (1867-1970) delivers detailed property and land-use records that depict the grid of everyday life in more than 12,000 U.S. towns and cities across a century of change. Contains large-scale plans with information such as the outline of each building, the size, shape, height, and the structure\u2019s purpose. The maps also give addresses, street names, property boundaries, and block numbers. Read more about Sanborn Maps here: https://sites.google.com/umn.edu/btaa-gdp/help/restricted-resources"
+  ],
+  "dct_language_sm": [
+    "English"
+  ],
+  "dct_creator_sm": [
+    "Sanborn Map Company"
+  ],
+  "dct_publisher_sm": [
+    "ProQuest Information and Learning"
+  ],
+  "schema_provider_s": " ",
+  "gbl_resourceClass_sm": [
+    "Maps"
+  ],
+  "gbl_resourceType_sm": [
+    "Table"
+  ],
+  "dct_subject_sm": [
+    "Fire insurance maps"
+  ],
+  "dcat_keyword_sm": [
+    "Sanborn"
+  ],
+  "dct_temporal_sm": [
+    "1867-1970"
+  ],
+  "dct_issued_s": "2001",
+  "gbl_indexYear_im": [
+    "1867"
+  ],
+  "gbl_dateRange_drsim": [
+    "[1867 TO 1970]"
+  ],
+  "dct_spatial_sm": [
+    "Alabama",
+    "Alaska",
+    "Arizona",
+    "Arkansas",
+    "California",
+    "Colorado",
+    "Connecticut",
+    "Delaware",
+    "Florida",
+    "Georgia",
+    "Hawaii",
+    "Idaho",
+    "Illinois",
+    "Indiana",
+    "Iowa",
+    "Kansas",
+    "Kentucky",
+    "Louisiana",
+    "Maine",
+    "Maryland",
+    "Massachusetts",
+    "Michigan",
+    "Minnesota",
+    "Mississippi",
+    "Missouri",
+    "Montana",
+    "Nebraska",
+    "Nevada",
+    "New Hampshire",
+    "New Jersey",
+    "New Mexico",
+    "New York",
+    "North Carolina",
+    "North Dakota",
+    "Ohio",
+    "Oklahoma",
+    "Oregon",
+    "Pennsylvania",
+    "Puerto Rico",
+    "Rhode Island",
+    "South Carolina",
+    "South Dakota",
+    "Tennessee",
+    "Texas",
+    "Utah",
+    "Vermont",
+    "Virginia",
+    "Washington",
+    "West Virginia",
+    "Wisconsin",
+    "Wyoming"
+  ],
+  "locn_geometry": "ENVELOPE(-179.9,-64.4,71.6,-14.8)",
+  "dcat_centroid_ss": "28.4,-122.15",
+  "pcdm_memberOf_sm": [
+    ""
+  ],
+  "dct_accessRights_s": "Restricted",
+  "dct_rights_sm": [
+    "Requires logging in through an organization with licensed access. Different institutions may have licenses for different years or locations."
+  ],
+  "dct_references_s": "{\"http://lccn.loc.gov/sh85035852\":\"https://www.proquest.com/products-services/databases/sanborn.html\"}",
+  "id": "99-0011",
+  "geomg_id_s": "99-0011",
+  "dct_identifier_sm": [
+    "99-0011"
+  ],
+  "gbl_mdModified_dt": "2020-05-11T14:12:09Z",
+  "gbl_mdVersion_s": "1.0",
+  "gbl_suppressed_b": "FALSE",
+  "b1g_publication_state_s": "published"
+}

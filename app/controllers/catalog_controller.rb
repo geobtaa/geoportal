@@ -29,7 +29,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[dct_provenance_s dc_type_sm b1g_genre_sm]
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[schema_provider_s gbl_resourceType_sm gbl_resourceClass_sm]
     config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.sort'] ||= 'index'
@@ -46,7 +46,7 @@ class CatalogController < ApplicationController
       :start => 0,
       'q.alt' => '*:*',
       'bf' => ['if(exists(b1g_child_record_b),0,100)^0.5'],
-      # 'fq' => ['b1g_publication_state_s:Published']
+      'fq' => ['b1g_publication_state_s:published']
     }
 
     config.default_per_page = 20 # Works!
@@ -56,7 +56,7 @@ class CatalogController < ApplicationController
     #
     config.default_document_solr_params = {
      :qt => 'document',
-     :q => '{!raw f=layer_slug_s v=$id}'
+     :q => '{!raw f=geomg_id_s v=$id}'
     }
 
     config.search_builder_class = Geoblacklight::SearchBuilder
@@ -65,7 +65,7 @@ class CatalogController < ApplicationController
     # config.index.show_link = 'title_display'
     # config.index.record_display_type = 'format'
 
-    config.index.title_field = 'dc_title_s'
+    config.index.title_field = 'dct_title_s'
     config.index.document_presenter_class = Geoblacklight::DocumentPresenter
 
     # solr field configuration for document/show views
@@ -74,7 +74,7 @@ class CatalogController < ApplicationController
 
     # Custom GeoBlacklight fields which currently map to GeoBlacklight-Schema
     # v0.3.2
-    config.wxs_identifier_field = 'layer_id_s'
+    config.wxs_identifier_field = 'gbl_wxsIdentifier_s'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -106,40 +106,43 @@ class CatalogController < ApplicationController
     # config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
 
     config.add_facet_field 'dct_spatial_sm', :label => 'Place', :limit => 8, collapse: false
-    config.add_facet_field 'b1g_genre_sm', :label => 'Genre', :limit => 8, collapse: false
-    config.add_facet_field 'solr_year_i', label: 'Year', limit: 10, collapse: false, all: 'Any year', range: {
+    config.add_facet_field 'gbl_resourceClass_sm', :label => 'Resource Class', :limit => 8, collapse: false
+    config.add_facet_field 'gbl_resourceType_sm', label: 'Resource Type', limit: 8, collapse: false
+    config.add_facet_field 'dct_subject_sm', :label => 'Subject', :limit => 8, collapse: false
+
+    config.add_facet_field 'gbl_indexYear_im', label: 'Year', limit: 10, collapse: false, all: 'Any year', range: {
       assumed_boundaries: [1100, 2018]
       # :num_segments => 6,
       # :segments => true
     }
-    config.add_facet_field 'dc_subject_sm', :label => 'Subject', :limit => 8, collapse: false
 
     config.add_facet_field 'time_period', :label => 'Time Period', :query => {
-      '1500s' => { :label => '1500s', :fq => "solr_year_i:[1500 TO 1599]" },
-      '1600s' => { :label => '1600s', :fq => "solr_year_i:[1600 TO 1699]" },
-      '1700s' => { :label => '1700s', :fq => "solr_year_i:[1700 TO 1799]" },
-      '1800-1849' => { :label => '1800-1849', :fq => "solr_year_i:[1800 TO 1849]" },
-      '1850-1899' => { :label => '1850-1899', :fq => "solr_year_i:[1850 TO 1899]" },
-      '1900-1949' => { :label => '1900-1949', :fq => "solr_year_i:[1900 TO 1949]" },
-      '1950-1999' => { :label => '1950-1999', :fq => "solr_year_i:[1950 TO 1999]" },
-      '2000-2004' => { :label => '2000-2004', :fq => "solr_year_i:[2000 TO 2004]" },
-      '2005-2009' => { :label => '2005-2009', :fq => "solr_year_i:[2005 TO 2009]" },
-      '2010-2014' => { :label => '2010-2014', :fq => "solr_year_i:[2010 TO 2014]" },
-      '2015-present' => { :label => '2015-present', :fq => "solr_year_i:[2015 TO #{Time.now.year}]"}
+      '1500s' => { :label => '1500s', :fq => "gbl_indexYear_im:[1500 TO 1599]" },
+      '1600s' => { :label => '1600s', :fq => "gbl_indexYear_im:[1600 TO 1699]" },
+      '1700s' => { :label => '1700s', :fq => "gbl_indexYear_im:[1700 TO 1799]" },
+      '1800-1849' => { :label => '1800-1849', :fq => "gbl_indexYear_im:[1800 TO 1849]" },
+      '1850-1899' => { :label => '1850-1899', :fq => "gbl_indexYear_im:[1850 TO 1899]" },
+      '1900-1949' => { :label => '1900-1949', :fq => "gbl_indexYear_im:[1900 TO 1949]" },
+      '1950-1999' => { :label => '1950-1999', :fq => "gbl_indexYear_im:[1950 TO 1999]" },
+      '2000-2004' => { :label => '2000-2004', :fq => "gbl_indexYear_im:[2000 TO 2004]" },
+      '2005-2009' => { :label => '2005-2009', :fq => "gbl_indexYear_im:[2005 TO 2009]" },
+      '2010-2014' => { :label => '2010-2014', :fq => "gbl_indexYear_im:[2010 TO 2014]" },
+      '2015-present' => { :label => '2015-present', :fq => "gbl_indexYear_im:[2015 TO #{Time.now.year}]"}
     }, collapse: false
 
     # Trying range facet
     #config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
 
-    config.add_facet_field 'dc_publisher_sm', :label => 'Publisher', :limit => 8
-    config.add_facet_field 'dc_creator_sm', :label => 'Creator', :limit => 8
+    config.add_facet_field 'dct_publisher_sm', :label => 'Publisher', :limit => 8
+    config.add_facet_field 'dct_creator_sm', :label => 'Creator', :limit => 8
 
     #config.add_facet_field 'b1g_geom_type_sm', label: 'Geometry', limit: 8, partial: "icon_facet", collapse: false
     #config.add_facet_field 'dc_format_s', :label => 'Format', :limit => 8
-    config.add_facet_field 'dct_provenance_s', label: 'Contributor', limit: 15
-    config.add_facet_field 'dc_type_sm', label: 'Type', limit: 8
-    config.add_facet_field 'dc_rights_s', :label => 'Public/Restricted'
-    config.add_facet_field 'dct_mediator_sm', label: 'Institutional Access', limit: 15
+    config.add_facet_field 'schema_provider_s', label: 'Provider', limit: 15
+
+    config.add_facet_field 'dct_accessRights_s', :label => 'Public/Restricted'
+    config.add_facet_field 'b1g_dct_mediator_sm', label: 'Institutional Access', limit: 15
+
     # Remove access facet until data is available - EWL
     # config.add_facet_field 'dc_rights_s', label: 'Access', limit: 8, partial: "icon_facet"
 
@@ -171,16 +174,16 @@ class CatalogController < ApplicationController
     # item_prop: [String] property given to span with Schema.org item property
     # link_to_facet: [Boolean] that can be passed to link to a facet search
     # helper_method: [Symbol] method that can be used to render the value
-    config.add_show_field 'dc_creator_sm', label: 'Creator', itemprop: 'creator'
-    config.add_show_field 'dc_description_s', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
-    config.add_show_field 'dc_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_facet: true
+    config.add_show_field 'dct_creator_sm', label: 'Creator', itemprop: 'creator'
+    config.add_show_field 'dct_description_sm', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
+    config.add_show_field 'dct_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_facet: true
     config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
-    config.add_show_field 'dc_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
-    config.add_show_field 'dc_type_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
+    config.add_show_field 'dct_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
+    config.add_show_field 'gbl_resourceType_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dct_issued_s', label: 'Date Published', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dct_temporal_sm', label: 'Temporal Coverage', itemprop: 'temporal'
-    config.add_show_field 'dct_provenance_s', label: 'Contributed by', link_to_facet: true
-    config.add_show_field 'dct_accessRights_sm', label: 'Access Rights'
+    config.add_show_field 'schema_provider_s', label: 'Contributed by', link_to_facet: true
+    config.add_show_field 'dct_rights_sm', label: 'Access Rights'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -249,10 +252,9 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc, dc_title_sort asc', :label => 'relevance'
-    config.add_sort_field 'solr_year_i desc, dc_title_sort asc', :label => 'year'
-    config.add_sort_field 'dc_publisher_sort asc, dc_title_sort asc', :label => 'publisher'
-    config.add_sort_field 'dc_title_sort asc', :label => 'title'
+    config.add_sort_field 'score desc, dct_title_sort asc', :label => 'relevance'
+    config.add_sort_field 'gbl_indexYear_im desc, dct_title_sort asc', :label => 'year'
+    config.add_sort_field 'dct_title_sort asc', :label => 'title'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.

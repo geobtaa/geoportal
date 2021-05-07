@@ -92,10 +92,10 @@ namespace :geoportal do
             uri.document_id,
             uri.uri_key,
             uri.uri_value,
-            doc._source['layer_geom_type_s'],
-            doc._source['dc_title_s'],
+            doc._source['gbl_resourceType_sm'],
+            doc._source['dct_title_s'],
             doc._source['dct_isPartOf_sm'].to_s,
-            doc._source['dct_provenance_s'],
+            doc._source['schema_provider_s'],
             doc._source['b1g_status_s'],
             uri.state_machine.last_transition.metadata['exception']
           ]

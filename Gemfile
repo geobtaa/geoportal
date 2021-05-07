@@ -68,7 +68,7 @@ gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
 
 # Image migration
-gem 'geoblacklight_sidecar_images', '~> 0.7.0'
+gem 'geoblacklight_sidecar_images', '~> 0.8.0'
 gem 'carrierwave', '~> 1.2'
 gem 'mini_magick', '~> 4.9.4'
 
