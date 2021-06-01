@@ -38,3 +38,10 @@ h3.h6 svg>path {
   bottom: .125em;
   position: relative;
 }
+
+.media-body {
+  .blacklight-icons {
+    min-width: 1.25rem;
+    max-width: 1.25rem;
+  }
+}

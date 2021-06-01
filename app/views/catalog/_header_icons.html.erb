@@ -1,3 +1,7 @@
+<% geom_types(document[Settings.FIELDS.GEOM_TYPE]).each do |geom_type| %>
+  <%= geoblacklight_icon(geom_type, classes: 'svg_tooltip') %>
+<% end %>
+
 <%- unless document[Settings.FIELDS.PROVENANCE] == "[none]" %>
   <%= geoblacklight_icon(document[Settings.FIELDS.PROVENANCE]) %>
 <% end %>
