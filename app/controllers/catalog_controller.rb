@@ -179,11 +179,18 @@ class CatalogController < ApplicationController
     config.add_show_field 'dct_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_facet: true
     config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
     config.add_show_field 'dct_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
-    config.add_show_field 'gbl_resourceType_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
+    config.add_show_field 'gbl_resourceClass_sm', label: 'Resource Class', itemprop: 'keywords', link_to_facet: true
+    config.add_show_field 'gbl_resourceType_sm', label: 'Resource Type', itemprop: 'keywords', link_to_facet: true
+    config.add_show_field 'dcat_theme_sm', label: 'ISO Topic Category', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dct_issued_s', label: 'Date Published', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dct_temporal_sm', label: 'Temporal Coverage', itemprop: 'temporal'
-    config.add_show_field 'schema_provider_s', label: 'Contributed by', link_to_facet: true
+    config.add_show_field 'schema_provider_s', label: 'Provider', link_to_facet: true
     config.add_show_field 'dct_rights_sm', label: 'Access Rights'
+    config.add_show_field 'dct_rightsHolder_sm', label: 'Rights Holder'
+    config.add_show_field 'dct_license_sm', label: 'License'
+    config.add_show_field 'dct_format_s', label: 'Format'
+    config.add_show_field 'gbl_fileSize_s', label: 'File Size'
+
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
