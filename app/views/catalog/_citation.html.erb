@@ -1,19 +1,21 @@
 <div class="modal-header">
-  <button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h1 class="modal-title"><%= t('blacklight.tools.citation') %></h1>
 
-  <h3 class="modal-title"><%= t('blacklight.tools.citation') %></h3>
+  <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 <div class="modal-body">
   <% @documents.each do |document| %>
-    <% case document["dc_type_sm"].present? && document["dc_type_sm"].join(",").downcase %>
-    <% when "collection" %>
+    <% case document["gbl_resourceClass_sm"].present? && document["gbl_resourceClass_sm"].join(",").downcase %>
+    <% when "collections" %>
       <p>
-        <% if document["dc_title_s"].present? %>
-          <i><%= document["dc_title_s"] %></i>.
+        <% if document["dct_title_s"].present? %>
+          <i><%= document["dct_title_s"] %></i>.
         <% end %>
 
-        <% if document["dc_publisher_sm"].present? %>
-          <%= document["dc_publisher_sm"].join(', ') %>.
+        <% if document["dct_publisher_sm"].present? %>
+          <%= document["dct_publisher_sm"].join(', ') %>.
         <% end %>
 
         <% if document.references.url.present? %>
@@ -22,8 +24,8 @@
       </p>
     <% else %>
       <p>
-        <% if document["dc_creator_sm"].present? %>
-          <%= document["dc_creator_sm"].join(', ') %>.
+        <% if document["dct_creator_sm"].present? %>
+          <%= document["dct_creator_sm"].join(', ') %>.
         <% else %>
            [creator not found],
         <% end %>
@@ -34,12 +36,12 @@
           (n.d.).
         <%- end %>
 
-        <% if document["dc_title_s"].present? %>
-          <i><%= document["dc_title_s"] %></i>.
+        <% if document["dct_title_s"].present? %>
+          <i><%= document["dct_title_s"] %></i>.
         <% end %>
 
-        <% if document["dc_publisher_sm"].present? %>
-          <%= document["dc_publisher_sm"].join(', ') %>.
+        <% if document["dct_publisher_sm"].present? %>
+          <%= document["dct_publisher_sm"].join(', ') %>.
         <% end %>
 
         <% if document.references.url.present? %>
