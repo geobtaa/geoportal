@@ -11,8 +11,8 @@ class HomePageTest < ApplicationSystemTestCase
     assert page.has_selector?("header")
     assert page.has_selector?("header #btaa-header")
     assert page.has_selector?("header #application-header")
+    assert page.has_selector?("#home-content")
     assert page.has_selector?("#wrapper-map")
-    assert page.has_selector?("#wrapper-search")
   end
 
   def test_homepage_highlight_links
@@ -40,7 +40,7 @@ class HomePageTest < ApplicationSystemTestCase
   end
 
   def test_search
-    within("div#wrapper-search") do
+    within("div#home-content") do
       fill_in("q", with: 'water')
       click_button 'Search'
     end
@@ -49,7 +49,7 @@ class HomePageTest < ApplicationSystemTestCase
   end
 
   def test_blank_search
-    within("div#wrapper-search") do
+    within("div#home-content") do
       fill_in("q", with: '')
       click_button 'Search'
     end
