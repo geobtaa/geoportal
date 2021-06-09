@@ -33,7 +33,6 @@ section#map {
 }
 
 div#search-bar {
-  background-color:rgba($black,0.8);
   padding:2rem;
 }
 
@@ -177,15 +176,12 @@ span.list-view.document-counter {
 
 // Feedback
 #feedback {
-  position:absolute;
-  top:0;
-  right:0;
   margin-top:2rem;
 }
 
 
 #home-search {
-  background:lighten(#CCC, 12%) asset_url('aerial_photo.jpg') repeat;
+  background:lighten(#CCC, 12%) asset_url('aerial_photo_dark.jpg') repeat;
 }
 
 #home-search .navbar-form {

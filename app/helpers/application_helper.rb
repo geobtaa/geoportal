@@ -1,6 +1,12 @@
 require 'chronic'
 
 module ApplicationHelper
+
+  # Always return an array of geom type values
+  def geom_types(types)
+    types = [*types]
+  end
+
   def localized_image_path(url_hash)
     Rails.root.join("public/uploads/localized/#{url_hash}")
   end

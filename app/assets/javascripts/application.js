@@ -66,7 +66,7 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     if (this.data.mapGeom) {
       this.options.bbox = L.geoJSONToBounds(this.data.mapGeom);
     }
-    this.map = L.map(this.element, {scrollWheelZoom:false, noWrap: true}).fitBounds(this.options.bbox);
+    this.map = L.map(this.element, { noWrap: true }).fitBounds(this.options.bbox);
     this.map.addLayer(this.selectBasemap());
     this.map.addLayer(this.overlay);
     if (this.data.map !== 'index') {

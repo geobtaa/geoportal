@@ -5,9 +5,16 @@ $black: #000000; // 0%
 $btaa-blue: #0088ce;
 $radius: 4px;
 
-div#home-content{
-  background:lighten($gray, 12%) asset_url('aerial_photo.jpg') repeat;
+main {
+  background:lighten($gray, 12%) asset_url('aerial_photo_dark.jpg') repeat;
   padding:0px;
+
+  #home-content {
+    margin-top:10rem;
+    h2 {
+      margin-top:1rem;
+    }
+  }
 
   #wrapper-map {
     div#map-container {
@@ -20,10 +27,11 @@ div#home-content{
         height: 100% !important;
         background-color:#b8e6fe;
 
+        .leaflet-right .leaflet-control {
+          margin-right: 2rem;
+        }
+
         #map-search-btn {
-          position:fixed;
-          bottom:20px;
-          left:11px;
           z-index:4000;
           color:$white;
         }
@@ -32,10 +40,7 @@ div#home-content{
   }
 
   #wrapper-search {
-    background-color:rgba($black,0.8);
-    padding:2rem;
-    padding-right:4rem;
-    margin-top:10rem;
+    margin-top:12rem;
     height:100%;
     overflow-y:scroll;
   }
