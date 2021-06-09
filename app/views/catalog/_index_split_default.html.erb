@@ -14,9 +14,9 @@
             <%= image_tag document.sidecar.image, {class: 'mr-3'} %>
           <%- end %>
         <%- else %>
-            <span class="icon square mr-3" title="<%=document[Settings.FIELDS.GEOM_TYPE]%>">
-              <%= geoblacklight_icon(document[Settings.FIELDS.GEOM_TYPE], classes: 'svg_tooltip') %>
-            </span>
+          <span class="icon square mr-3">
+            <%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS], classes: 'svg_tooltip') %>
+          </span>
         <%- end %>
         <div class='media-body'>
           <p class='mt-0'><%= link_to_document document, counter: counter, title: document[blacklight_config.index.title_field] %>
