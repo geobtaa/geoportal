@@ -46,6 +46,12 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.5'
   gem 'spring'
+
+  # Profiling stuff
+  gem 'rack-mini-profiler', '~> 2.3.1'
+  gem 'flamegraph', '~> 0.9.5'
+  gem 'stackprof', '~> 0.2.12' # ruby 2.1+ only
+  gem 'memory_profiler', '~> 0.9.12'
 end
 
 group :development do
