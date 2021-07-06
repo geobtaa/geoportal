@@ -175,7 +175,7 @@ class CatalogController < ApplicationController
     # link_to_facet: [Boolean] that can be passed to link to a facet search
     # helper_method: [Symbol] method that can be used to render the value
     config.add_show_field 'dct_creator_sm', label: 'Creator', itemprop: 'creator'
-    config.add_show_field 'dct_description_sm', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
+    config.add_show_field 'dct_description_sm', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract_new_lines
     config.add_show_field 'dct_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_facet: true
     config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
     config.add_show_field 'dct_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
