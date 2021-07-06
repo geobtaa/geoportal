@@ -355,7 +355,7 @@ class ShowPageTest < ApplicationSystemTestCase
   def test_multiline_description
     visit '/catalog/18bed919-fc86-4e02-a909-15f8bb9899bb'
     within('dd.blacklight-dct_description_sm') do
-      assert page.has_selector("span[itemprop='description']")
+      assert page.has_selector?("span[itemprop='description']")
       assert page.has_content?("\n")
     end
   end
