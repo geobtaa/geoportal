@@ -72,9 +72,9 @@ namespace :geoportal do
         "URI Document UUID",
         "URI Key",
         "URI Value",
-        "Doc Data Type",
+        "Doc Resource Class",
         "Doc Title",
-        "Doc Collection",
+        "Doc Code",
         "Doc Institution",
         "B1G Status",
         "Error"
@@ -92,9 +92,9 @@ namespace :geoportal do
             uri.document_id,
             uri.uri_key,
             uri.uri_value,
-            doc._source['gbl_resourceType_sm'],
+            doc._source['gbl_resourceClass_sm'],
             doc._source['dct_title_s'],
-            doc._source['dct_isPartOf_sm'].to_s,
+            doc._source['b1g_code_s'].to_s,
             doc._source['schema_provider_s'],
             doc._source['b1g_status_s'],
             uri.state_machine.last_transition.metadata['exception']
