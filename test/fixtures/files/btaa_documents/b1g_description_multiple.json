@@ -1,0 +1,70 @@
+{
+  "id": "18bed919-fc86-4e02-a909-15f8bb9899bb",
+  "model_name_ssi": "Document",
+  "model_pk_ssi": "6ecf0720-52f4-49d3-b44e-32335e0c6dac",
+  "gbl_mdVersion_s": "Aardvark",
+  "dct_title_s": "Map of Part of the Province of Manitoba",
+  "dct_alternative_sm": [
+    "Map of part of the province of Manitoba shewing Dominion lands surveyed and lands disposed of."
+  ],
+  "dct_description_sm": [
+    "1 map : col. ; 61 x 97 cm.",
+    "Has table of distances from Winnipeg and Emerson.",
+    "Shows lands owned by Canadian Pacific Railway, schools and Hudson Bay Company."
+  ],
+  "dct_language_sm": [
+    "eng"
+  ],
+  "gbl_resourceClass_sm": [
+    "Maps"
+  ],
+  "dct_subject_sm": [
+    "Railroads"
+  ],
+  "dcat_keyword_sm": [
+    "Real property Manitoba Maps."
+  ],
+  "dct_issued_s": "1881",
+  "gbl_dateRange_drsim": [
+    "[1881 TO 1881]"
+  ],
+  "gbl_indexYear_im": [
+    1881
+  ],
+  "dct_spatial_sm": [
+    "Manitoba,  Canada",
+    "Canada",
+    "Canada"
+  ],
+  "b1g_geonames_sm": [
+    "http://sws.geonames.org/6065171"
+  ],
+  "locn_geometry": "ENVELOPE(-101.63,-94.87,51.07,49)",
+  "dcat_centroid_ss": "50.035,-98.25",
+  "pcdm_memberOf_sm": [
+    "07d-01"
+  ],
+  "dct_format_s": "JPEG",
+  "dct_references_s": "{\"http://schema.org/url\":\"https://quod.lib.umich.edu/c/clark1ic/x-003280519/39015091910987\",\"http://iiif.io/api/presentation#manifest\":\"https://quod.lib.umich.edu/cgi/i/image/api/search/clark1ic:003280519\"}",
+  "b1g_image_ss": "https://quod.lib.umich.edu/cgi/i/image/api/image/clark1ic:003280519:39015091910987/full/res:1/0/native.jpg",
+  "b1g_access_s": "{}",
+  "dct_identifier_sm": [
+    "G 3481 .G46 1881 .C3",
+    "003280519",
+    "39015091910987"
+  ],
+  "geomg_id_s": "18bed919-fc86-4e02-a909-15f8bb9899bb",
+  "schema_provider_s": "University of Michigan",
+  "b1g_code_s": "07d-01",
+  "b1g_status_s": "Active",
+  "b1g_dct_accrualMethod_s": "MARC",
+  "b1g_dateAccessioned_sm": [
+    "2021-04-16"
+  ],
+  "b1g_publication_state_s": "published",
+  "dct_accessRights_s": "Public",
+  "gbl_mdModified_dt": "2021-05-08T17:18:30Z",
+  "date_created_dtsi": "2021-04-16T19:03:14Z",
+  "date_modified_dtsi": "2021-05-08T17:18:30Z",
+  "b1g_geom_import_id_ssi": "260"
+}

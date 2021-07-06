@@ -80,4 +80,21 @@ module ApplicationHelper
 
     links.sort.to_h
   end
+
+  ##
+  # Render value for a document's field as a truncate abstract
+  # div. Arguments come from Blacklight::DocumentPresenter's
+  # get_field_values method
+  # @param [Hash] args from get_field_values
+  def render_value_as_truncate_abstract_new_lines(args)
+    tag.div class: 'truncate-abstract' do
+      if args[:config].itemprop
+        tag.span itemprop: args[:config].itemprop do
+          Array(args[:value]).flatten.join("\n")
+        end
+      else
+        Array(args[:value]).flatten.join("\n")
+      end
+    end
+  end
 end
