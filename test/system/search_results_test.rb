@@ -27,6 +27,18 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     assert page.has_content?("Search Results")
   end
 
+  def test_sort_options
+    visit '/?q=water'
+    click_button("Sort by Relevance")
+    within("#sort-dropdown") do
+      assert page.has_content?("Relevance")
+      assert page.has_content?("Year (Newest first)")
+      assert page.has_content?("Year (Oldest first)")
+      assert page.has_content?("Title (A-Z)")
+      assert page.has_content?("Title (Z-A)")
+    end
+  end
+
   def test_map_clustering
     # Map centered on USA. B1G records have cluster centroid values.
     visit '/?utf8=✓&view=mapview&q=&search_field=all_fields&bbox=-177.129822%20-36.81918%20-28.067322%2074.70319'
