@@ -9,6 +9,10 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
     this.map = L.map(this.element).fitBounds(this.options.bbox);
     this.map.addLayer(this.selectBasemap());
     this.map.addLayer(this.overlay);
+
+    // B1G Customizations
+    this.addFullscreenControl();
+    this.addBasemapSwitcher();
     this.testNetwork();
 
     if (this.data.available) {

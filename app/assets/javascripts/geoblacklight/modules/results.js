@@ -80,11 +80,6 @@ Blacklight.onLoad(function() {
 
     // add geosearch control to map
     geoblacklight.map.addControl(L.control.geosearch(opts));
-
-    // fullscreen control
-    geoblacklight.map.addControl(new L.Control.Fullscreen({
-      position: 'topleft'
-    }));
   });
 
   function updatePage(url) {

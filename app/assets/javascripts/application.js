@@ -15,13 +15,14 @@
 //
 
 //= require jquery/dist/jquery
+
+// Required by Advanced Search
 //= require 'blacklight_advanced_search'
 //= require chosen-jquery
 //= require modules/advanced_chosen
 
 // Required by Blacklight
 //= require popper
-// Twitter Typeahead for autocomplete
 //= require twitter/typeahead
 //= require bootstrap
 //= require blacklight/blacklight
@@ -42,93 +43,9 @@
 //= require Leaflet/leaflet.esri_leaflet_cluster/esri_leaflet_cluster.js
 //= require oboe/oboe-browser.js
 //= require screenfull/screenfull.min.js
+
+//= require geoblacklight
+//= require js-cookie/src/js.cookie.js
 //= require geoportal
 
 //= require_tree .
-
-// @CUSTOMIZED
-// - disabled scroll wheel zoom
-// - set initial bbox
-GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
-
-  options: {
-    /**
-    * Initial bounds of map
-    * @type {L.LatLngBounds}
-    */
-    bbox: [[-20, -179], [64, 134]],
-    opacity: 0.75
-  },
-
-  overlay: L.layerGroup(),
-
-  load: function() {
-    if (this.data.mapGeom) {
-      this.options.bbox = L.geoJSONToBounds(this.data.mapGeom);
-    }
-    this.map = L.map(this.element, { noWrap: true }).fitBounds(this.options.bbox);
-    this.map.addLayer(this.selectBasemap());
-    this.map.addLayer(this.overlay);
-    if (this.data.map !== 'index') {
-      this.addBoundsOverlay(this.options.bbox);
-    }
-  },
-
-  /**
-   * Add a bounding box overlay to map.
-   * @param {L.LatLngBounds} bounds Leaflet LatLngBounds
-   */
-  addBoundsOverlay: function(bounds) {
-    if (bounds instanceof L.LatLngBounds) {
-      this.overlay.addLayer(L.polygon([
-        bounds.getSouthWest(),
-        bounds.getSouthEast(),
-        bounds.getNorthEast(),
-        bounds.getNorthWest()
-      ]));
-    }
-  },
-
-  /**
-   * Remove bounding box overlay from map.
-   */
-  removeBoundsOverlay: function() {
-    this.overlay.clearLayers();
-  },
-
-  /**
-   * Add an opacity control to map.
-   */
-  addOpacityControl: function() {
-    this.map.addControl(new L.Control.LayerOpacity(this.overlay));
-  },
-
-  /**
-   * Add a GeoJSON overlay to map.
-   * @param {string} geojson GeoJSON string
-   */
-  addGeoJsonOverlay: function(geojson) {
-    var layer = L.geoJSON();
-    layer.addData(geojson);
-    this.overlay.addLayer(layer);
-  },
-
-  /**
-  * Selects basemap if specified in data options, if not return mapquest
-  */
-  selectBasemap: function() {
-    var _this = this;
-    if (_this.data.basemap) {
-      return GeoBlacklight.Basemaps[_this.data.basemap];
-    } else {
-      return _this.basemap.mapquest;
-    }
-  }
-});
-
-// Leaflet layer visibility control.
-GeoBlacklight.Controls.Fullscreen = function() {
-  this.map.addControl(new L.Control.Fullscreen({
-    position: 'topright'
-  }));
-};
