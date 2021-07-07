@@ -14,6 +14,11 @@ Blacklight.onLoad(function() {
       staticButton: '<a href="#" id="map-search-btn" class="btn btn-primary hidden-xs hidden-sm">Search here</a>'
     }));
 
+    // fullscreen control
+    geoblacklight.map.addControl(new L.Control.Fullscreen({
+      position: 'topleft'
+    }));
+
     var progress = document.getElementById('progress');
     var progressBar = document.getElementById('progress-bar');
 
