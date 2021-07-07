@@ -14,6 +14,15 @@ Blacklight.onLoad(function() {
       staticButton: '<a href="#" id="map-search-btn" class="btn btn-primary hidden-xs hidden-sm">Search here</a>'
     }));
 
+    // leaflet-geosearch
+    var GeoSearchControl = window.GeoSearch.GeoSearchControl;
+    var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
+    var provider = new OpenStreetMapProvider();
+    var searchControl = new GeoSearchControl({
+      provider: provider,
+    });
+    geoblacklight.map.addControl(searchControl);
+
     var progress = document.getElementById('progress');
     var progressBar = document.getElementById('progress-bar');
 

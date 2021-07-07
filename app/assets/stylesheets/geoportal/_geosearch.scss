@@ -1,0 +1,25 @@
+.leaflet-control-geosearch {
+  input.glass {
+    height:30px;
+  }
+
+  a.leaflet-bar-part:before {
+    display: none !important;
+  }
+
+  a.leaflet-bar-part::after {
+    background-image: asset_url('search-solid.svg') !important;
+    top: 9px !important;
+    left: 8px !important;
+    height: 13px !important;
+    width: 13px !important;
+    border-radius: 0px !important;
+    border: none !important;
+  }
+
+
+
+  .leaflet-bar-part::before {
+    background-image: none !important;
+  }
+}

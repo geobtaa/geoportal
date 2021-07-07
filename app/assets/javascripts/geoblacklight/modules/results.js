@@ -80,6 +80,15 @@ Blacklight.onLoad(function() {
 
     // add geosearch control to map
     geoblacklight.map.addControl(L.control.geosearch(opts));
+
+    // leaflet-geosearch
+    var GeoSearchControl = window.GeoSearch.GeoSearchControl;
+    var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
+    var provider = new OpenStreetMapProvider();
+    var searchControl = new GeoSearchControl({
+      provider: provider,
+    });
+    geoblacklight.map.addControl(searchControl);
   });
 
   function updatePage(url) {
