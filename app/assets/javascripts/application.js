@@ -33,8 +33,13 @@
 //= require geoblacklight/viewers/viewer
 //= require leaflet-iiif
 //= require esri-leaflet
+//= require geoblacklight
+
+//= require_tree .
 
 // Geoportal
+
+
 //= require linkifyjs/dist/linkify
 //= require linkifyjs/dist/linkify-jquery
 //= require Leaflet/Leaflet.fullscreen/Leaflet.fullscreen.js
@@ -43,9 +48,7 @@
 //= require Leaflet/leaflet.esri_leaflet_cluster/esri_leaflet_cluster.js
 //= require oboe/oboe-browser.js
 //= require screenfull/screenfull.min.js
-
-//= require geoblacklight
 //= require js-cookie/src/js.cookie.js
-//= require geoportal
 
-//= require_tree .
+//= require geoportal/viewers/map
+//= require geoportal

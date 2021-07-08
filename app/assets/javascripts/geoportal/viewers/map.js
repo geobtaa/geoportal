@@ -2,7 +2,7 @@
 
 // @CUSTOMIZED
 // - set initial bbox
-GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
+GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.Map.extend({
 
   options: {
     /**

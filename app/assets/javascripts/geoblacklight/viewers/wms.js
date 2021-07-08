@@ -18,8 +18,8 @@ GeoBlacklight.Viewer.Wms = GeoBlacklight.Viewer.Map.extend({
     }
 
     // B1G Customizations
-    this.addFullscreenControl();
-    this.addBasemapSwitcher();
+    // this.addFullscreenControl();
+    // this.addBasemapSwitcher();
   },
 
   addPreviewLayer: function() {
