@@ -17,7 +17,7 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
 
   load: function() {
     console.log('MAP: local and customized');
-    
+
     if (this.data.mapGeom) {
       this.options.bbox = L.geoJSONToBounds(this.data.mapGeom);
     }
@@ -106,7 +106,7 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
       "World Imagery (Esri)": GeoBlacklight.Basemaps.esri_world_imagery
     };
 
-    L.control.layers(baseLayers).addTo(this.map);
+    L.control.layers(null, baseLayers, { position: 'topleft' }).addTo(this.map);
 
     // Event listener for layer switcher
     this.map.on('baselayerchange', function (e) {
