@@ -14,6 +14,28 @@ Blacklight.onLoad(function() {
       staticButton: '<a href="#" id="map-search-btn" class="btn btn-primary hidden-xs hidden-sm">Search here</a>'
     }));
 
+    // B1G Customizations
+    // fullscreen control
+    console.log('Control: Fullscreen');
+    geoblacklight.map.addControl(new L.Control.Fullscreen({
+      position: 'topleft'
+    }));
+
+    // basemaps control
+    console.log('Control: Base Layer');
+    var baseLayers = {
+      "Default (Esri)": GeoBlacklight.Basemaps.esri,
+      "OpenStreetMaps": GeoBlacklight.Basemaps.openstreetmapStandard,
+      "World Imagery (Esri)": GeoBlacklight.Basemaps.esri_world_imagery
+    };
+
+    L.control.layers(null, baseLayers, { position: 'topleft' }).addTo(geoblacklight.map);
+
+    // Event listener for layer switcher
+    geoblacklight.map.on('baselayerchange', function (e) {
+      Cookies.set('basemap', e.name)
+    });
+
     // leaflet-geosearch
     var GeoSearchControl = window.GeoSearch.GeoSearchControl;
     var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;

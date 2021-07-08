@@ -27,10 +27,6 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     if (this.data.map !== 'index') {
       this.addBoundsOverlay(this.options.bbox);
     }
-
-    // B1G Customizations
-    this.addFullscreenControl();
-    this.addBasemapSwitcher();
   },
 
   /**
@@ -87,30 +83,5 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     } else {
       return _this.basemap.mapquest;
     }
-  },
-
-  addFullscreenControl: function() {
-    // fullscreen control
-    console.log('Control: Fullscreen');
-    this.map.addControl(new L.Control.Fullscreen({
-      position: 'topleft'
-    }));
-  },
-
-  addBasemapSwitcher: function() {
-    // basemaps control
-    console.log('Control: Base Layer');
-    var baseLayers = {
-      "Default (Esri)": GeoBlacklight.Basemaps.esri,
-      "OpenStreetMaps": GeoBlacklight.Basemaps.openstreetmapStandard,
-      "World Imagery (Esri)": GeoBlacklight.Basemaps.esri_world_imagery
-    };
-
-    L.control.layers(null, baseLayers, { position: 'topleft' }).addTo(this.map);
-
-    // Event listener for layer switcher
-    this.map.on('baselayerchange', function (e) {
-      Cookies.set('basemap', e.name)
-    });
   }
 });
