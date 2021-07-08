@@ -1,9 +1,10 @@
-//= require geoblacklight/viewers/map
-
-GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
+// @CUSTOMIZED
+GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Esri.extend({
   layerInfo: {},
 
   load: function() {
+    console.log('ESRI: local and customized');
+
     this.displayLayerLoading();
     this.options.bbox = L.geoJSONToBounds(this.data.mapGeom);
     this.map = L.map(this.element).fitBounds(this.options.bbox);
@@ -11,8 +12,8 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
     this.map.addLayer(this.overlay);
 
     // B1G Customizations
-    // this.addFullscreenControl();
-    // this.addBasemapSwitcher();
+    this.addFullscreenControl();
+    this.addBasemapSwitcher();
     this.testNetwork();
 
     if (this.data.available) {

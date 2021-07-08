@@ -1,5 +1,3 @@
-//= require geoblacklight/viewers/esri
-
 // populates attribute table with feature properties
 var populateAttributeTable = function(feature) {
   var html = $('<tbody class="attribute-table-body"></tbody>');

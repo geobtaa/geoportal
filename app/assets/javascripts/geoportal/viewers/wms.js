@@ -1,5 +1,4 @@
-//= require geoblacklight/viewers/map
-
+// @CUSTOMIZED
 GeoBlacklight.Viewer.Wms = GeoBlacklight.Viewer.Map.extend({
 
   load: function() {
@@ -10,16 +9,16 @@ GeoBlacklight.Viewer.Wms = GeoBlacklight.Viewer.Map.extend({
     this.map.addLayer(this.selectBasemap());
     this.map.addLayer(this.overlay);
 
+    // B1G Customizations
+    this.addFullscreenControl();
+    this.addBasemapSwitcher();
+
     if (this.data.available) {
       this.addPreviewLayer();
       this.loadControls();
     } else {
       this.addBoundsOverlay(this.options.bbox);
     }
-
-    // B1G Customizations
-    // this.addFullscreenControl();
-    // this.addBasemapSwitcher();
   },
 
   addPreviewLayer: function() {

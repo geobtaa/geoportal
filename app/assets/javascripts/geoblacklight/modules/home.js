@@ -4,6 +4,8 @@ Blacklight.onLoad(function() {
     var geoblacklight = new GeoBlacklight.Viewer.Map(this),
         data = $(this).data();
 
+    console.log('Map: Home')
+
     geoblacklight.map.setZoom(2);
     geoblacklight.map.addControl(L.control.geosearch({
       baseUrl: data.catalogPath,
@@ -15,27 +17,7 @@ Blacklight.onLoad(function() {
     }));
 
     // B1G Customizations
-    // fullscreen control
-    console.log('Control: Fullscreen');
-    geoblacklight.map.addControl(new L.Control.Fullscreen({
-      position: 'topleft'
-    }));
-
-    // basemaps control
-    console.log('Control: Base Layer');
-    var baseLayers = {
-      "Default (Esri)": GeoBlacklight.Basemaps.esri,
-      "OpenStreetMaps": GeoBlacklight.Basemaps.openstreetmapStandard,
-      "World Imagery (Esri)": GeoBlacklight.Basemaps.esri_world_imagery
-    };
-
-    L.control.layers(baseLayers, null, { position: 'topleft' }).addTo(geoblacklight.map);
-
-    // Event listener for layer switcher
-    geoblacklight.map.on('baselayerchange', function (e) {
-      Cookies.set('basemap', e.name)
-    });
-
+    // B1G Controls
     // leaflet-geosearch
     var GeoSearchControl = window.GeoSearch.GeoSearchControl;
     var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;

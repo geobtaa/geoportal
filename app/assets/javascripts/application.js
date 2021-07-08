@@ -39,7 +39,6 @@
 
 // Geoportal
 
-
 //= require linkifyjs/dist/linkify
 //= require linkifyjs/dist/linkify-jquery
 //= require Leaflet/Leaflet.fullscreen/Leaflet.fullscreen.js
@@ -50,5 +49,10 @@
 //= require screenfull/screenfull.min.js
 //= require js-cookie/src/js.cookie.js
 
-//= require geoportal/viewers/map
+//= require ./geoblacklight/viewers/map
+//= require ./geoportal/viewers/esri
+//= require ./geoportal/viewers/esri/image_map_layer
+//= require ./geoportal/viewers/esri/feature_layer
+//= require ./geoblacklight/modules/home.js
+//= require ./geoportal/viewers/wms.js
 //= require geoportal
