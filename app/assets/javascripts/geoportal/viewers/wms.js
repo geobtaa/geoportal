@@ -1,4 +1,3 @@
-// @CUSTOMIZED
 GeoBlacklight.Viewer.Wms = GeoBlacklight.Viewer.Map.extend({
 
   load: function() {

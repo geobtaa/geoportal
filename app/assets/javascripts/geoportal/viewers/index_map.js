@@ -1,5 +1,3 @@
-//= require geoblacklight/viewers/map
-
 GeoBlacklight.Viewer.IndexMap = GeoBlacklight.Viewer.Map.extend({
   load: function() {
     this.map = L.map(this.element).fitBounds(this.options.bbox);

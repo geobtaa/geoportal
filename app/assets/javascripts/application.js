@@ -11,10 +11,9 @@
 // about supported directives.
 //
 
+//= require jquery
+//= require jquery3
 //= require rails-ujs
-//
-
-//= require jquery/dist/jquery
 
 // Required by Advanced Search
 //= require 'blacklight_advanced_search'
@@ -27,18 +26,51 @@
 //= require bootstrap
 //= require blacklight/blacklight
 
+// Geoportal
 // Required by GeoBlacklight
 //= require handlebars.runtime
 //= require geoblacklight/geoblacklight
+//= require geoblacklight/basemaps
+//= require geoblacklight/controls
+
+// Custom list of viewers
 //= require geoblacklight/viewers/viewer
+//= require ./geoportal/viewers/map
+//= require ./geoportal/viewers/b1g_image
+//= require ./geoportal/viewers/download
+//= require ./geoportal/viewers/esri
+//= require ./geoportal/viewers/esri/dynamic_map_layer
+//= require ./geoportal/viewers/esri/feature_layer
+//= require ./geoportal/viewers/esri/image_map_layer
+//= require ./geoportal/viewers/esri/tiled_map_layer
+//= require geoblacklight/viewers/iiif
+//= require ./geoportal/viewers/iiif_manifest
+//= require ./geoportal/viewers/index_map
+//= require geoblacklight/viewers/oembed
+//= require ./geoportal/viewers/wms
+// require ./geoportal/viewers/tms
+
+// Custom list of modules
+//= require geoblacklight/modules/bookmarks
+//= require geoblacklight/modules/download
+//= require ./geoportal/modules/geosearch
+//= require geoblacklight/modules/help_text
+//= require ./geoportal/modules/home
+//= require ./geoportal/modules/item
+//= require geoblacklight/modules/layer_opacity
+//= require geoblacklight/modules/metadata_download_button
+//= require geoblacklight/modules/metadata
+//= require ./geoportal/modules/relations
+//= require ./geoportal/modules/results
+//= require geoblacklight/modules/svg_tooltips
+//= require geoblacklight/modules/util
+
+//= require geoblacklight/downloaders
+//= require geoblacklight
 //= require leaflet-iiif
 //= require esri-leaflet
-//= require geoblacklight
 
-//= require_tree .
-
-// Geoportal
-
+// Geoportal Libraries
 //= require linkifyjs/dist/linkify
 //= require linkifyjs/dist/linkify-jquery
 //= require Leaflet/Leaflet.fullscreen/Leaflet.fullscreen.js
@@ -49,10 +81,4 @@
 //= require screenfull/screenfull.min.js
 //= require js-cookie/src/js.cookie.js
 
-//= require ./geoblacklight/viewers/map
-//= require ./geoportal/viewers/esri
-//= require ./geoportal/viewers/esri/image_map_layer
-//= require ./geoportal/viewers/esri/feature_layer
-//= require ./geoblacklight/modules/home.js
-//= require ./geoportal/viewers/wms.js
 //= require geoportal

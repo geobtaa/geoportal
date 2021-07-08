@@ -1,5 +1,5 @@
 // @CUSTOMIZED
-GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Esri.extend({
+GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
   layerInfo: {},
 
   load: function() {
