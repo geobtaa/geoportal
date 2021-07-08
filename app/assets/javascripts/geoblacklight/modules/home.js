@@ -29,7 +29,7 @@ Blacklight.onLoad(function() {
       "World Imagery (Esri)": GeoBlacklight.Basemaps.esri_world_imagery
     };
 
-    L.control.layers(null, baseLayers, { position: 'topleft' }).addTo(geoblacklight.map);
+    L.control.layers(baseLayers, null, { position: 'topleft' }).addTo(geoblacklight.map);
 
     // Event listener for layer switcher
     geoblacklight.map.on('baselayerchange', function (e) {
