@@ -4,6 +4,8 @@ Blacklight.onLoad(function() {
     var geoblacklight = new GeoBlacklight.Viewer.Map(this),
         data = $(this).data();
 
+    console.log('Map: Home')
+
     geoblacklight.map.setZoom(2);
     geoblacklight.map.addControl(L.control.geosearch({
       baseUrl: data.catalogPath,
@@ -13,6 +15,17 @@ Blacklight.onLoad(function() {
       },
       staticButton: '<a href="#" id="map-search-btn" class="btn btn-primary hidden-xs hidden-sm">Search here</a>'
     }));
+
+    // B1G Customizations
+    // B1G Controls
+    // leaflet-geosearch
+    var GeoSearchControl = window.GeoSearch.GeoSearchControl;
+    var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
+    var provider = new OpenStreetMapProvider();
+    var searchControl = new GeoSearchControl({
+      provider: provider,
+    });
+    geoblacklight.map.addControl(searchControl);
 
     var progress = document.getElementById('progress');
     var progressBar = document.getElementById('progress-bar');
