@@ -27,6 +27,18 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     assert page.has_content?("Search Results")
   end
 
+  def test_sort_options
+    visit '/?q=water'
+    click_button("Sort by Relevance")
+    within("#sort-dropdown") do
+      assert page.has_content?("Relevance")
+      assert page.has_content?("Year (Newest first)")
+      assert page.has_content?("Year (Oldest first)")
+      assert page.has_content?("Title (A-Z)")
+      assert page.has_content?("Title (Z-A)")
+    end
+  end
+
   def test_map_clustering
     # Map centered on USA. B1G records have cluster centroid values.
     visit '/?utf8=✓&view=mapview&q=&search_field=all_fields&bbox=-177.129822%20-36.81918%20-28.067322%2074.70319'
@@ -93,7 +105,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     # Search 1874 - 1912
     # Expect 4 results
     visit '/?utf8=✓&search_field=all_fields&q=&range%5Bgbl_indexYear_im%5D%5Bbegin%5D=1874&range%5Bgbl_indexYear_im%5D%5Bend%5D=1912&commit=Limit'
-    assert page.assert_selector('article.document', :count => 4)
+    assert page.assert_selector('article.document', :count => 5)
     assert page.assert_selector('div[data-layer-id="VAC9619-001735"]')
     assert page.assert_selector('div[data-layer-id="VAC9619-001727"]')
   end
@@ -122,7 +134,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     # Search 1874 -
     # Expect 7 results
     visit '/?utf8=✓&q=&search_field=all_fields&range%5Bgbl_indexYear_im%5D%5Bbegin%5D=1874&range%5Bgbl_indexYear_im%5D%5Bend%5D=&commit=Limit'
-    assert page.assert_selector('article.document', :count => 10)
+    assert page.assert_selector('article.document', :count => 11)
     assert page.assert_selector('div[data-layer-id="VAC9619-001735"]')
     assert page.assert_selector('div[data-layer-id="VAC9619-001727"]')
     assert page.assert_selector('div[data-layer-id="d6efb1e4d0ca491db8c79e5b18c4dee9_3"]')

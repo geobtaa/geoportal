@@ -175,7 +175,7 @@ class CatalogController < ApplicationController
     # link_to_facet: [Boolean] that can be passed to link to a facet search
     # helper_method: [Symbol] method that can be used to render the value
     config.add_show_field 'dct_creator_sm', label: 'Creator', itemprop: 'creator'
-    config.add_show_field 'dct_description_sm', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
+    config.add_show_field 'dct_description_sm', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract_new_lines
     config.add_show_field 'dct_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_facet: true
     config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
     config.add_show_field 'dct_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
@@ -259,9 +259,11 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc, dct_title_sort asc', :label => 'relevance'
-    config.add_sort_field 'gbl_indexYear_im desc, dct_title_sort asc', :label => 'year'
-    config.add_sort_field 'dct_title_sort asc', :label => 'title'
+    config.add_sort_field 'score desc, dct_title_sort asc', :label => 'Relevance'
+    config.add_sort_field "#{Settings.FIELDS.YEAR} desc, dct_title_sort asc", :label => 'Year (Newest first)'
+    config.add_sort_field "#{Settings.FIELDS.YEAR} asc, dct_title_sort asc", :label => 'Year (Oldest first)'
+    config.add_sort_field 'dct_title_sort asc', :label => 'Title (A-Z)'
+    config.add_sort_field 'dct_title_sort desc', :label => 'Title (Z-A)'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
