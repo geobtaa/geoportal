@@ -133,7 +133,6 @@ class CatalogController < ApplicationController
     # Trying range facet
     #config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
 
-    config.add_facet_field 'dct_publisher_sm', :label => 'Publisher', :limit => 8
     config.add_facet_field 'dct_creator_sm', :label => 'Creator', :limit => 8
 
     #config.add_facet_field 'b1g_geom_type_sm', label: 'Geometry', limit: 8, partial: "icon_facet", collapse: false

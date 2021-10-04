@@ -61,7 +61,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
       assert page.has_content?("Subject")
       assert page.has_content?("Year")
       assert page.has_content?("Time Period")
-      assert page.has_content?("Publisher")
+      assert page.has_no_content?("Publisher")
       assert page.has_content?("Creator")
       assert page.has_content?("Provider")
       assert page.has_content?("Public/Restricted")
