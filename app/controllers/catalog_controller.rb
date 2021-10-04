@@ -185,7 +185,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'dct_issued_s', label: 'Date Published', itemprop: 'keywords', link_to_facet: true
     config.add_show_field 'dct_temporal_sm', label: 'Temporal Coverage', itemprop: 'temporal'
     config.add_show_field 'schema_provider_s', label: 'Provider', link_to_facet: true
-    config.add_show_field 'dct_rights_sm', label: 'Access Rights'
+    config.add_show_field 'dct_rights_sm', label: 'Rights'
     config.add_show_field 'dct_rightsHolder_sm', label: 'Rights Holder'
     config.add_show_field 'dct_license_sm', label: 'License'
     config.add_show_field 'dct_format_s', label: 'Format'
