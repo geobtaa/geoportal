@@ -4,6 +4,11 @@ class SearchResultsPageTest < ApplicationSystemTestCase
   def setup
   end
 
+  def test_icon_rollover_text
+    visit '/?q=water'
+    assert page.has_selector?("span[aria-label='Datasets']")
+  end
+
   def test_footer_nav
     visit '/?q=water'
     within("section#footer-app") do
