@@ -162,7 +162,7 @@ class CatalogController < ApplicationController
     # config.add_index_field 'published_vern_display', :label => 'Published:'
     # config.add_index_field 'lc_callnum_display', :label => 'Call number:'
 
-    config.add_index_field Settings.FIELDS.YEAR
+    config.add_index_field Settings.FIELDS.INDEX_YEAR
     config.add_index_field Settings.FIELDS.CREATOR
     config.add_index_field Settings.FIELDS.DESCRIPTION, helper_method: :snippit
     config.add_index_field Settings.FIELDS.PUBLISHER
@@ -259,8 +259,8 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
     config.add_sort_field 'score desc, dct_title_sort asc', :label => 'Relevance'
-    config.add_sort_field "#{Settings.FIELDS.YEAR} desc, dct_title_sort asc", :label => 'Year (Newest first)'
-    config.add_sort_field "#{Settings.FIELDS.YEAR} asc, dct_title_sort asc", :label => 'Year (Oldest first)'
+    config.add_sort_field "#{Settings.FIELDS.INDEX_YEAR} desc, dct_title_sort asc", :label => 'Year (Newest first)'
+    config.add_sort_field "#{Settings.FIELDS.INDEX_YEAR} asc, dct_title_sort asc", :label => 'Year (Oldest first)'
     config.add_sort_field 'dct_title_sort asc', :label => 'Title (A-Z)'
     config.add_sort_field 'dct_title_sort desc', :label => 'Title (Z-A)'
 

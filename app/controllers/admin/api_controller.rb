@@ -177,7 +177,7 @@ module Admin
       config.add_index_field 'dct_accessRights_s', :label => 'Access:'
       config.add_index_field 'dct_subject_sm', :label => 'Keywords:'
       config.add_index_field 'dcat_centroid_ss', :label => 'Centroid:'
-      config.add_index_field Settings.FIELDS.YEAR
+      config.add_index_field Settings.FIELDS.INDEX_YEAR
       config.add_index_field Settings.FIELDS.CREATOR
       config.add_index_field Settings.FIELDS.DESCRIPTION, helper_method: :snippit
       config.add_index_field Settings.FIELDS.PUBLISHER
