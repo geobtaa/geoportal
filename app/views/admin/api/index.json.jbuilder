@@ -12,7 +12,7 @@ end
 
 json.data do
   json.array! @presenter.documents do |document|
-    document_url = polymorphic_url(url_for_document(document))
+    document_url = polymorphic_url(search_state.url_for_document(document))
     json.id document.id
     json.type document[blacklight_config.view_config(:index).display_type_field]
     json.attributes do
