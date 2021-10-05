@@ -1,5 +1,7 @@
 <%= form_tag search_action_url, method: :get, class: 'search-query-form', role: 'search' do %>
-  <%= render_hash_as_hidden_fields(search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8)) %>
+
+  <%= render Blacklight::HiddenSearchStateComponent.new(params: search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8).to_h) %>
+
   <% if search_fields.length > 1 %>
     <label for="search_field" class="sr-only"><%= t('blacklight.search.form.search_field.label') %></label>
   <% end %>
@@ -20,7 +22,6 @@
     <span class="input-group-append">
       <button type="submit" class="btn btn-primary search-btn" id="search">
         <span class="submit-search-text"><%= t('blacklight.search.form.submit') %></span>
-        
       </button>
       <%= link_to 'Advanced', blacklight_advanced_search_engine.advanced_search_path(search_state.to_h), class: 'advanced_search btn btn-link', style:'color:#FFFFFF;'%>
     </span>
