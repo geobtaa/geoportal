@@ -58,11 +58,11 @@
             <div class="row" style="margin-top:2rem;">
               <div class='col-xs-12 col-sm-6'>
                 <h4 class='sr-only'>Place</h4>
-                <%= render_facet_partials [:dct_spatial_sm], {class:'active'} %>
+                <%= render_facet_partials [Settings.FIELDS.SPATIAL_COVERAGE], {class:'active'} %>
               </div>
               <div class='col-xs-12 col-sm-6'>
                 <h4 class='sr-only'>Resource Type</h4>
-                <%= render_facet_partials [:gbl_resourceType_sm] %>
+                <%= render_facet_partials [Settings.FIELDS.RESOURCE_TYPE] %>
               </div>
             </div>
 

@@ -5,9 +5,9 @@ module B1gLicensedDataConcern
 
   # Parse stringified JSON values
   #
-  # Return Hash of university code keyed proxy hyperlink values 
+  # Return Hash of university code keyed proxy hyperlink values
   def access_links
-    JSON.parse(fetch(:b1g_access_s, ''))
+    JSON.parse(fetch(Settings.FIELDS.B1G_ACCESS, ''))
   rescue
     return {}
   end

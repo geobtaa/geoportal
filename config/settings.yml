@@ -72,6 +72,15 @@ FIELDS:
   :TITLE: 'dct_title_s'
   :VERSION: 'dct_isVersionOf_sm'
   :WXS_IDENTIFIER: 'gbl_wxsIdentifier_s'
+  # B1G Custom Fields Geoportal / GEOMG
+  :B1G_ACCESS: 'b1g_access_s'
+  :B1G_ACCRUAL_METHOD: 'b1g_dct_accrualMethod_s'
+  :B1G_CHILD_RECORD: 'b1g_child_record_b'
+  :B1G_CODE: 'b1g_code_s'
+  :B1G_GEOMG_ID: 'geomg_id_s'
+  :B1G_IMAGE: 'b1g_image_ss'
+  :B1G_MEDIATOR: 'b1g_dct_mediator_sm'
+  :B1G_PUBLICATION_STATE: 'b1g_publication_state_s'
 
 GEOMONITOR_TOLERANCE: 0.8
 #GOOGLE_ANALYTICS_ID: 'UA-XXXXX-X'
