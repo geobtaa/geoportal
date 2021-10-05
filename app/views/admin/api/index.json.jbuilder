@@ -16,7 +16,7 @@ json.data do
     json.id document.id
     json.type document[blacklight_config.view_config(:index).display_type_field]
     json.attributes do
-      doc_presenter = index_presenter(document)
+      doc_presenter = document_presenter(document)
 
       doc_presenter.fields_to_render.each do |field_name, field|
         json.partial! 'field', field: field,
