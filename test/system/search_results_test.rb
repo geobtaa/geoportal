@@ -6,7 +6,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
 
   def test_icon_rollover_text
     visit '/?q=water'
-    assert page.has_selector?("span[aria-label='Datasets']")
+    assert page.has_selector?("svg[aria-label='Datasets']")
   end
 
   def test_footer_nav

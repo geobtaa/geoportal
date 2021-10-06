@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.0'
 gem 'bootsnap', require: false
 gem 'listen', '~> 3.0'
 
@@ -11,7 +11,7 @@ gem 'rack-cors', :require => 'rack/cors'
 # Webpacker
 gem 'webpacker', '~> 4.x'
 
-gem 'sqlite3', '~> 1.3', '< 1.4'
+gem 'sqlite3', '~> 1.4'
 gem 'mysql2', '~> 0.5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -102,7 +102,7 @@ gem 'dotenv-rails'
 gem 'pointless_feedback'
 gem 'whenever', '~> 0.9.0', require: false
 gem 'sitemap_generator', '~> 6.0.2'
-gem 'exception_notification', '~> 4.3.0'
+gem 'exception_notification', '~> 4.4.0'
 
 group :test do
   gem 'webdrivers'
