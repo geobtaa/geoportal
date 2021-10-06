@@ -61,8 +61,6 @@ class CatalogController < ApplicationController
      :q => "{!raw f=#{Settings.FIELDS.B1G_GEOMG_ID} v=$id}"
     }
 
-    config.search_builder_class = Geoblacklight::SearchBuilder
-
     # solr field configuration for search results/index views
     # config.index.show_link = 'title_display'
     # config.index.record_display_type = 'format'
