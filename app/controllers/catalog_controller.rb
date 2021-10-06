@@ -8,7 +8,9 @@ class CatalogController < ApplicationController
 
   configure_blacklight do |config|
     # default advanced config values
+    config.advanced_search.enabled = true
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
+
 
     # Blacklight update to 7.0.0
     config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
