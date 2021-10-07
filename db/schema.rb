@@ -146,4 +146,6 @@ ActiveRecord::Schema.define(version: 2021_10_06_201348) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "image_upload_transitions", "solr_document_sidecars"
+  add_foreign_key "uri_transitions", "solr_document_uris"
 end
