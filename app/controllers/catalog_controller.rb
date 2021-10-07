@@ -36,6 +36,11 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.sort'] ||= 'index'
 
+    # GeoBlacklight Defaults
+    # * Adds the "map" split view for catalog#index
+    config.view.split(partials: ['index'])
+    config.view.delete_field('list')
+
     # Map views
     config.view.mapview.partials = [:index]
     config.view['split'].title = "List view"
