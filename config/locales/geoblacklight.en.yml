@@ -60,14 +60,14 @@ en:
       services: 'Web services'
       services_close: 'Close'
     relations:
-      ancestor: 'Source'
-      descendant: 'Derived'
+      ancestor: 'Is derived from...'
+      descendant: 'Has derivatives...'
       browse_all: "Browse all %{count} records..."
-      title: 'Related Items'
-      member_of_ancestors: 'Member of Ancestors'
-      member_of_descendants: 'Member of Descendants'
-      part_of_ancestors: 'Part of Ancestors'
-      part_of_descendants: 'Part of Descendants' 
+      title: 'Related items...'
+      member_of_ancestors: 'Belongs to collection...'
+      member_of_descendants: 'Collection records...'
+      part_of_ancestors: 'Is part of...'
+      part_of_descendants: 'Has part...'
     metadata:
       view_metadata: 'View Metadata'
       more_details: 'Visit Source'
