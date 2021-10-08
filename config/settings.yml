@@ -136,10 +136,15 @@ WEBSERVICES_SHOWN:
 
 # Relationships to display
 RELATIONSHIPS_SHOWN:
-  MEMBER_OF:
+  MEMBER_OF_ANCESTORS:
     field: pcdm_memberOf_sm
     query_type: ancestors
     icon: nil
+    label: geoblacklight.relations.member_of
+  MEMBER_OF_DESCENDANTS:
+    field: pcdm_memberOf_sm
+    query_type: descendants
+    icon: leaf
     label: geoblacklight.relations.member_of
   PART_OF:
     field: dct_isPartOf_sm
