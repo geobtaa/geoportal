@@ -12,11 +12,11 @@ end
 
 json.data do
   json.array! @presenter.documents do |document|
-    document_url = polymorphic_url(url_for_document(document))
+    document_url = polymorphic_url(search_state.url_for_document(document))
     json.id document.id
     json.type document[blacklight_config.view_config(:index).display_type_field]
     json.attributes do
-      doc_presenter = index_presenter(document)
+      doc_presenter = document_presenter(document)
 
       doc_presenter.fields_to_render.each do |field_name, field|
         json.partial! 'field', field: field,
@@ -48,10 +48,14 @@ json.included do
             json.hits item.hits
           end
           json.links do
-            if facet_in_params?(facet.name, item.value)
-              json.remove search_action_path(search_state.remove_facet_params(facet.name, item.value))
-            else
-              json.self path_for_facet(facet.name, item.value, only_path: false)
+            Deprecation.silence(Blacklight::FacetsHelperBehavior) do
+              if facet_in_params?(facet.name, item.value)
+                Deprecation.silence(Blacklight::SearchState) do
+                  json.remove search_action_path(search_state.remove_facet_params(facet.name, item.value))
+                end
+              else
+                json.self path_for_facet(facet.name, item.value, only_path: false)
+              end
             end
           end
         end

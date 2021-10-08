@@ -4,6 +4,11 @@ class SearchResultsPageTest < ApplicationSystemTestCase
   def setup
   end
 
+  def test_icon_rollover_text
+    visit '/?q=water'
+    assert page.has_selector?("svg[aria-label='Datasets']")
+  end
+
   def test_footer_nav
     visit '/?q=water'
     within("section#footer-app") do
@@ -61,7 +66,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
       assert page.has_content?("Subject")
       assert page.has_content?("Year")
       assert page.has_content?("Time Period")
-      assert page.has_content?("Publisher")
+      assert page.has_no_content?("Publisher")
       assert page.has_content?("Creator")
       assert page.has_content?("Provider")
       assert page.has_content?("Public/Restricted")

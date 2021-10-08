@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'blacklight/catalog'
+
 module Admin
   class ApiController < ApplicationController
     include BlacklightAdvancedSearch::Controller
@@ -29,7 +30,7 @@ module Admin
       config.advanced_search[:url_key] ||= 'advanced'
       config.advanced_search[:query_parser] ||= 'edismax'
       config.advanced_search[:form_solr_parameters] ||= {}
-      config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[schema_provider_s b1g_code_s pcdm_memberOf_sm dct_isPartOf_sm gbl_resourceClass_sm gbl_resourceType_sm dct_subject_sm dcat_theme_sm dct_format_s gbl_suppressed_b b1g_child_record_b gbl_georeferenced_b]
+      config.advanced_search[:form_solr_parameters]['facet.field'] ||= [Settings.FIELDS.PROVIDER, Settings.FIELDS.B1G_CODE, Settings.FIELDS.MEMBER_OF, Settings.FIELDS.IS_PART_OF, Settings.FIELDS.RESOURCE_CLASS, Settings.FIELDS.RESOURCE_TYPE, Settings.FIELDS.SUBJECT, Settings.FIELDS.ISO_TOPIC_CATEGORY, Settings.FIELDS.FORMAT, Settings.FIELDS.SUPPRESSED, Settings.FIELDS.B1G_CHILD_RECORD, Settings.FIELDS.GEOREFERENCED]
       config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
       config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
       config.advanced_search[:form_solr_parameters]['facet.sort'] ||= 'index'
@@ -45,7 +46,7 @@ module Admin
       config.default_solr_params = {
         :start => 0,
         'q.alt' => '*:*',
-        'bf' => ['if(exists(b1g_child_record_b),0,100)^0.5'],
+        'bf' => ["if(exists(#{Settings.FIELDS.B1G_CHILD_RECORD}),0,100)^0.5"],
         'admin.api' => true
       }
 
@@ -56,7 +57,7 @@ module Admin
       #
       config.default_document_solr_params = {
        :qt => 'document',
-       :q => '{!raw f=geomg_id_s v=$id}'
+       :q => "{!raw f=#{Settings.FIELDS.B1G_GEOMG_ID} v=$id}"
       }
 
       # config.search_builder_class = Geoblacklight::SearchBuilder
@@ -65,7 +66,7 @@ module Admin
       # config.index.show_link = 'title_display'
       # config.index.record_display_type = 'format'
 
-      config.index.title_field = 'dct_title_s'
+      config.index.title_field = Settings.FIELDS.TITLE
       config.index.document_presenter_class = Geoblacklight::DocumentPresenter
 
       # solr field configuration for document/show views
@@ -74,7 +75,7 @@ module Admin
 
       # Custom GeoBlacklight fields which currently map to GeoBlacklight-Schema
       # v0.3.2
-      config.wxs_identifier_field = 'gbl_wxsIdentifier_s'
+      config.wxs_identifier_field = Settings.FIELDS.WXS_IDENTIFIER
 
       # solr fields that will be treated as facets by the blacklight application
       #   The ordering of the field names is the order of the display
@@ -108,51 +109,51 @@ module Admin
       ## FACETS
       #
       # Publication State
-      config.add_facet_field 'b1g_publication_state_s', :label => 'Publication State', :limit => 8, collapse: false
+      config.add_facet_field Settings.FIELDS.B1G_PUBLICATION_STATE, :label => 'Publication State', :limit => 8, collapse: false
 
       # Resouce Class
-      config.add_facet_field 'gbl_resourceClass_sm', label: 'Resource Class', limit: 8
+      config.add_facet_field Settings.FIELDS.RESOURCE_CLASS, label: 'Resource Class', limit: 8
 
       # Contributor
-      config.add_facet_field 'schema_provider_s', label: 'Provider', limit: 15
+      config.add_facet_field Settings.FIELDS.PROVIDER, label: 'Provider', limit: 15
 
       # Accrual Method
-      config.add_facet_field 'b1g_dct_accrualMethod_s', :label => 'Accrual Method'
+      config.add_facet_field Settings.FIELDS.B1G_ACCRUAL_METHOD, :label => 'Accrual Method'
 
       # Public/Restricted
-      config.add_facet_field 'dct_accessRights_s', :label => 'Public/Restricted'
+      config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
 
       # ADVANCED SEARCH
       #
       # Code
-      config.add_facet_field 'b1g_code_s', label: 'Code', limit: 1000
+      config.add_facet_field Settings.FIELDS.B1G_CODE, label: 'Code', limit: 1000
 
       # Is Part Of
-      config.add_facet_field 'dct_isPartOf_sm', label: 'Is Part Of', limit: 1000
+      config.add_facet_field Settings.FIELDS.IS_PART_OF, label: 'Is Part Of', limit: 1000
 
       # Member Of
-      config.add_facet_field 'pcdm_memberOf_sm', label: 'Member Of', limit: 1000
+      config.add_facet_field Settings.FIELDS.MEMBER_OF, label: 'Member Of', limit: 1000
 
       # Resource Type
-      config.add_facet_field 'gbl_resourceType_sm', label: 'Resource Type', limit: 1000
+      config.add_facet_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', limit: 1000
 
       # Subject
-      config.add_facet_field 'dct_subject_sm', label: 'Subject', limit: 1000
+      config.add_facet_field Settings.FIELDS.SUBJECT, label: 'Subject', limit: 1000
 
       # ISO Topic Category
-      config.add_facet_field 'dcat_theme_sm', label: 'ISO Topic Category', limit: 1000
+      config.add_facet_field Settings.FIELDS.ISO_TOPIC_CATEGORY, label: 'ISO Topic Category', limit: 1000
 
       # Format
-      config.add_facet_field 'dct_format_s', label: 'Format', limit: 1000
+      config.add_facet_field Settings.FIELDS.FORMAT, label: 'Format', limit: 1000
 
       # Suppressed
-      config.add_facet_field 'gbl_suppressed_b', label: 'Suppressed'
+      config.add_facet_field Settings.FIELDS.SUPPRESSED, label: 'Suppressed'
 
       # Child Record
-      config.add_facet_field 'b1g_child_record_b', label: 'Child Record'
+      config.add_facet_field Settings.FIELDS.B1G_CHILD_RECORD, label: 'Child Record'
 
       # Georeferenced
-      config.add_facet_field 'gbl_georeferenced_b', label: 'Georeferenced'
+      config.add_facet_field Settings.FIELDS.GEOREFERENCED, label: 'Georeferenced'
 
       # Have BL send all facet field names to Solr, which has been the default
       # previously. Simply remove these lines if you'd rather use Solr request
@@ -171,13 +172,13 @@ module Admin
       # config.add_index_field 'published_vern_display', :label => 'Published:'
       # config.add_index_field 'lc_callnum_display', :label => 'Call number:'
 
-      config.add_index_field 'dct_title_s', :label => 'Title:'
-      config.add_index_field 'geomg_id_s', :label => 'Identifier:'
-      config.add_index_field 'schema_provider_s', :label => 'Institution:'
-      config.add_index_field 'dct_accessRights_s', :label => 'Access:'
-      config.add_index_field 'dct_subject_sm', :label => 'Keywords:'
-      config.add_index_field 'dcat_centroid_ss', :label => 'Centroid:'
-      config.add_index_field Settings.FIELDS.YEAR
+      config.add_index_field Settings.FIELDS.TITLE, :label => 'Title:'
+      config.add_index_field Settings.FIELDS.B1G_GEOMG_ID, :label => 'Identifier:'
+      config.add_index_field Settings.FIELDS.PROVIDER, :label => 'Institution:'
+      config.add_index_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Access:'
+      config.add_index_field Settings.FIELDS.SUBJECT, :label => 'Keywords:'
+      config.add_index_field Settings.FIELDS.CENTROID, :label => 'Centroid:'
+      config.add_index_field Settings.FIELDS.INDEX_YEAR
       config.add_index_field Settings.FIELDS.CREATOR
       config.add_index_field Settings.FIELDS.DESCRIPTION, helper_method: :snippit
       config.add_index_field Settings.FIELDS.PUBLISHER
@@ -188,16 +189,16 @@ module Admin
       # item_prop: [String] property given to span with Schema.org item property
       # link_to_facet: [Boolean] that can be passed to link to a facet search
       # helper_method: [Symbol] method that can be used to render the value
-      config.add_show_field 'dct_creator_sm', label: 'Creator', itemprop: 'creator'
-      config.add_show_field 'dct_description_sm', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
-      config.add_show_field 'dct_publisher_sm', label: 'Publisher', itemprop: 'publisher', link_to_facet: true
-      config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
-      config.add_show_field 'dct_subject_sm', label: 'Subject', itemprop: 'keywords', link_to_facet: true
-      config.add_show_field 'gbl_resourceType_sm', label: 'Type', itemprop: 'keywords', link_to_facet: true
-      config.add_show_field 'dct_issued_s', label: 'Date Published', itemprop: 'keywords', link_to_facet: true
-      config.add_show_field 'dct_temporal_sm', label: 'Temporal Coverage', itemprop: 'temporal'
-      config.add_show_field 'schema_provider_s', label: 'Contributed by', link_to_facet: true
-      config.add_show_field 'dct_rights_sm', label: 'Access Rights'
+      config.add_show_field Settings.FIELDS.CREATOR, label: 'Creator', itemprop: 'creator'
+      config.add_show_field Settings.FIELDS.DESCRIPTION, label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract
+      config.add_show_field Settings.FIELDS.PUBLISHER, label: 'Publisher', itemprop: 'publisher', link_to_facet: true
+      config.add_show_field Settings.FIELDS.SPATIAL_COVERAGE, label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
+      config.add_show_field Settings.FIELDS.SUBJECT, label: 'Subject', itemprop: 'keywords', link_to_facet: true
+      config.add_show_field Settings.FIELDS.RESOURCE_TYPE, label: 'Type', itemprop: 'keywords', link_to_facet: true
+      config.add_show_field Settings.FIELDS.DATE_ISSUED, label: 'Date Published', itemprop: 'keywords', link_to_facet: true
+      config.add_show_field Settings.FIELDS.TEMPORAL_COVERAGE, label: 'Temporal Coverage', itemprop: 'temporal'
+      config.add_show_field Settings.FIELDS.PROVIDER, label: 'Contributed by', link_to_facet: true
+      config.add_show_field Settings.FIELDS.RIGHTS, label: 'Access Rights'
 
       # "fielded" search configuration. Used by pulldown among other places.
       # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -267,7 +268,7 @@ module Admin
       # whether the sort is ascending or descending (it must be asc or desc
       # except in the relevancy case).
       config.add_sort_field 'score desc, dct_title_sort asc', :label => 'relevance'
-      config.add_sort_field 'gbl_indexYear_im desc, dct_title_sort asc', :label => 'year'
+      config.add_sort_field "#{Settings.FIELDS.INDEX_YEAR} desc, dct_title_sort asc", :label => 'year'
       config.add_sort_field 'dct_title_sort asc', :label => 'title'
 
       # If there are more than this many search results, no spelling ("did you

@@ -1,7 +1,9 @@
+require 'rake'
 require "application_system_test_case"
 
 class HomePageTest < ApplicationSystemTestCase
   def setup
+    Rails.application.load_tasks
     Rake::Task["geoportal:generate_centroids_json"].invoke
     visit '/'
   end

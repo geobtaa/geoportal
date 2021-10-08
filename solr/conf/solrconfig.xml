@@ -181,6 +181,7 @@
       <int name="facet.mincount">1</int>
       <int name="facet.limit">10</int>
       <str name="facet.field">b1g_publication_state_s</str>
+      <str name="facet.field">gbl_resourceClass_sm</str>
       <str name="facet.field">schema_provider_s</str>
       <str name="facet.field">b1g_dct_accrualMethod_s</str>
       <str name="facet.field">dct_accessRights_s</str>

@@ -57,12 +57,12 @@
 
             <div class="row" style="margin-top:2rem;">
               <div class='col-xs-12 col-sm-6'>
-                <h4 class='sr-only'>Place</h4>
-                <%= render_facet_partials [:dct_spatial_sm], {class:'active'} %>
+                <%= render(Blacklight::FacetFieldListComponent.new(
+                      facet_field: facet_field_presenter(facet_configuration_for_field(Settings.FIELDS.SPATIAL_COVERAGE), @response.aggregations[Settings.FIELDS.SPATIAL_COVERAGE]))) %>
               </div>
               <div class='col-xs-12 col-sm-6'>
-                <h4 class='sr-only'>Resource Type</h4>
-                <%= render_facet_partials [:gbl_resourceType_sm] %>
+                <%= render(Blacklight::FacetFieldListComponent.new(
+                      facet_field: facet_field_presenter(facet_configuration_for_field(Settings.FIELDS.RESOURCE_TYPE), @response.aggregations[Settings.FIELDS.RESOURCE_TYPE]))) %>
               </div>
             </div>
 

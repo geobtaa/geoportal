@@ -9,6 +9,9 @@ CARTO_ONECLICK_LINK: 'http://oneclick.carto.com/'
 # ArcGIS Online Base URL
 ARCGIS_BASE_URL: 'https://www.arcgis.com/home/webmap/viewer.html'
 
+# Download path can be configured using this setting
+#DOWNLOAD_PATH: "./tmp/cache/downloads"
+
 EMAIL_TO: 'fake-email@example.com'
 
 #Main Solr geometry field used for spatial search and bounding box. Should be type 'rpt'
@@ -20,35 +23,64 @@ BBOX_WITHIN_BOOST: '10'
 # The bf boost value for overlap ratio
 OVERLAP_RATIO_BOOST: '10'
 
-#Solr field mappings
+# Homepage Map Geometry
+# Leave null to default to entire world
+# Add a stringified GeoJSON object to scope initial render (example from UMass)
+HOMEPAGE_MAP_GEOM: null
+# HOMEPAGE_MAP_GEOM: '{"type":"Polygon","coordinates":[[[-73.58,42.93],[-73.58,41.20],[-69.90,41.20],[-69.90,42.93]]]}'
+
+# Solr field mappings
 FIELDS:
+  :ACCESS_RIGHTS: 'dct_accessRights_s'
+  :ALTERNATIVE_TITLE: 'dct_alternative_sm'
+  :CENTROID: 'dcat_centroid_ss'
   :CREATOR: 'dct_creator_sm'
+  :DATE_ISSUED: 'dct_issued_s'
   :DATE_RANGE: 'gbl_dateRange_drsim'
   :DESCRIPTION: 'dct_description_sm'
-  :FILE_FORMAT: 'dct_format_s'
-  :GEOM_TYPE: 'gbl_resourceType_sm'
-  :GEOMETRY: 'locn_geometry'
+  :FORMAT: 'dct_format_s'
+  :FILE_SIZE: 'gbl_fileSize_s'
+  :GEOREFERENCED: 'gbl_georeferenced_b'
+  :ID: 'id'
   :IDENTIFIER: 'dct_identifier_sm'
-  :ISSUED: 'dct_issued_s'
+  :INDEX_YEAR: 'gbl_indexYear_im'
+  :IS_PART_OF: 'dct_isPartOf_sm'
+  :IS_REPLACED_BY: 'dct_isReplacedBy_sm'
+  :ISO_TOPIC_CATEGORY: 'dcat_theme_sm'
+  :KEYWORD: 'dcat_keyword_sm'
   :LANGUAGE: 'dct_language_sm'
-  :LAYER_MODIFIED: 'gbl_mdModified_dt'
+  :LICENSE: 'dct_license_sm'
+  :MEMBER_OF: 'pcdm_memberOf_sm'
+  :METADATA_VERSION: 'gbl_mdVersion_s'
+  :MODIFIED: 'gbl_mdModified_dt'
   :OVERLAP_FIELD: 'solr_bboxtype'
-  :PART_OF: 'dct_isPartOf_sm'
   :PUBLISHER: 'dct_publisher_sm'
-  :PROVENANCE: 'schema_provider_s'
+  :PROVIDER: 'schema_provider_s'
   :REFERENCES: 'dct_references_s'
+  :RELATION: 'dct_relation_sm'
+  :REPLACES: 'dct_replaces_sm'
   :RESOURCE_CLASS: 'gbl_resourceClass_sm'
-  :RIGHTS: 'dct_accessRights_s'
+  :RESOURCE_TYPE: 'gbl_resourceType_sm'
+  :RIGHTS: 'dct_rights_sm'
+  :RIGHTS_HOLDER: 'dct_rightsHolder_sm'
+  :SOURCE: 'dct_source_sm'
   :SPATIAL_COVERAGE: 'dct_spatial_sm'
+  :SPATIAL_EXTENT: 'locn_geometry'
   :SUBJECT: 'dct_subject_sm'
-  :SOURCE: 'pcdm_memberOf_sm'
   :SUPPRESSED: 'gbl_suppressed_b'
-  :TEMPORAL: 'dct_temporal_sm'
+  :TEMPORAL_COVERAGE: 'dct_temporal_sm'
   :TITLE: 'dct_title_s'
-  :TYPE: 'dct_type_s'
-  :UNIQUE_KEY: 'geomg_id_s'
+  :VERSION: 'dct_isVersionOf_sm'
   :WXS_IDENTIFIER: 'gbl_wxsIdentifier_s'
-  :YEAR: 'gbl_indexYear_im'
+  # B1G Custom Fields Geoportal / GEOMG
+  :B1G_ACCESS: 'b1g_access_s'
+  :B1G_ACCRUAL_METHOD: 'b1g_dct_accrualMethod_s'
+  :B1G_CHILD_RECORD: 'b1g_child_record_b'
+  :B1G_CODE: 'b1g_code_s'
+  :B1G_GEOMG_ID: 'geomg_id_s'
+  :B1G_IMAGE: 'b1g_image_ss'
+  :B1G_MEDIATOR: 'b1g_dct_mediator_sm'
+  :B1G_PUBLICATION_STATE: 'b1g_publication_state_s'
 
 GEOMONITOR_TOLERANCE: 0.8
 #GOOGLE_ANALYTICS_ID: 'UA-XXXXX-X'
@@ -88,15 +120,72 @@ TIMEOUT_DOWNLOAD: 16
 # (For WMS inspection) timeout and open_timeout parameters for Faraday
 TIMEOUT_WMS: 4
 
+# Use the geometry type for the data relations icon
+USE_GEOM_FOR_RELATIONS_ICON: false
+
 # Web services shown in tool panel
 WEBSERVICES_SHOWN:
   - 'wms'
+  - 'tms'
   - 'wfs'
   - 'iiif'
   - 'feature_layer'
   - 'tiled_map_layer'
   - 'dynamic_map_layer'
   - 'image_map_layer'
+
+# Relationships to display
+RELATIONSHIPS_SHOWN:
+  MEMBER_OF_ANCESTORS:
+    field: pcdm_memberOf_sm
+    query_type: ancestors
+    icon: nil
+    label: geoblacklight.relations.member_of_ancestors
+  MEMBER_OF_DESCENDANTS:
+    field: pcdm_memberOf_sm
+    query_type: descendants
+    icon: leaf
+    label: geoblacklight.relations.member_of_descendants
+  PART_OF_ANCESTORS:
+    field: dct_isPartOf_sm
+    query_type: ancestors
+    icon: nil
+    label: geoblacklight.relations.part_of_ancestors
+  PART_OF_DESCENDANTS:
+    field: dct_isPartOf_sm
+    query_type: descendants
+    icon: leaf
+    label: geoblacklight.relations.part_of_descendants
+  RELATION:
+    field: dct_relation_sm
+    query_type: ancestors
+    icon: nil
+    label: geoblacklight.relations.relation
+  REPLACES:
+    field: dct_replaces_sm
+    query_type: ancestors
+    icon: nil
+    label: geoblacklight.relations.replaces
+  REPLACED_BY:
+    field: dct_isReplacedBy_sm
+    query_type: descendants
+    icon: nil
+    label: geoblacklight.relations.replaced_by
+  SOURCE_ANCESTORS:
+    field: dct_source_sm
+    query_type: ancestors
+    icon: pagelines-brands
+    label: geoblacklight.relations.ancestor
+  SOURCE_DESCENDANTS:
+    field: dct_source_sm
+    query_type: descendants
+    icon: leaf
+    label: geoblacklight.relations.descendant
+  VERSION_OF:
+    field: dct_isVersionOf_sm
+    query_type: descendants
+    icon: nil
+    label: geoblacklight.relations.version_of
 
 WMS_PARAMS:
   :SERVICE: 'WMS'
@@ -172,4 +261,5 @@ HELP_TEXT:
       - 'index_map'
       - 'tiled_map_layer'
       - 'wms'
+      - 'tms'
       - 'oembed'

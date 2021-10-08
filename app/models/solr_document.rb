@@ -7,7 +7,7 @@ class SolrDocument
   include B1gLicensedDataConcern
 
   # self.unique_key = 'id'
-  self.unique_key = 'geomg_id_s'
+  self.unique_key = Settings.FIELDS.B1G_GEOMG_ID
 
   # Email uses the semantic field mappings below to generate the body of an email.
   SolrDocument.use_extension( Blacklight::Document::Email )
@@ -24,31 +24,31 @@ class SolrDocument
 
   # @TODO: flush out proper DC record
   self.field_semantics.merge!(
-    :creator => "dct_creator_sm",
-    :description => "dct_description_sm",
-    :format => "dct_format_s",
-    :identifier => "dct_identifier_sm",
-    :language => "dct_language_sm",
+    :creator => Settings.FIELDS.CREATOR,
+    :description => Settings.FIELDS.DESCRIPTION,
+    :format => Settings.FIELDS.FORMAT,
+    :identifier => Settings.FIELDS.IDENTIFIER,
+    :language => Settings.FIELDS.LANGUAGE,
 
     # @TODO: multiple publisher fields
     #:publisher => "dc_publisher_s",
-    :publisher => "dct_publisher_sm",
-    :relation => "dct_relation_sm",
-    :rights => "dct_accessRights_s",
-    :source => "dct_source_sm",
-    :subject => "dct_subject_sm",
-    :title => "dct_title_s",
-    :type => "gbl_resourceClass_sm",
+    :publisher => Settings.FIELDS.PUBLISHER,
+    :relation => Settings.FIELDS.RELATION,
+    :rights => Settings.FIELDS.ACCESS_RIGHTS,
+    :source => Settings.FIELDS.SOURCE,
+    :subject => Settings.FIELDS.SUBJECT,
+    :title => Settings.FIELDS.TITLE,
+    :type => Settings.FIELDS.RESOURCE_CLASS,
 
     # @TODO: multiple relation fields
     #:relation => "dct_isPartOf_sm",
 
-    :coverage => "dct_spatial_sm",
-    :date => "dct_temporal_sm",
+    :coverage => Settings.FIELDS.SPATIAL_COVERAGE,
+    :date => Settings.FIELDS.TEMPORAL_COVERAGE,
 
     # @TODO: contributor or provenance?
     # @TODO: provenance isn't supported out of the box by BL
-    :contributor => "schema_provider_s"
+    :contributor => Settings.FIELDS.PROVIDER
   )
 
   def sidecar
@@ -87,6 +87,6 @@ class SolrDocument
   end
 
   def b1g_image
-    self._source["b1g_image_ss"]
+    self._source["#{Settings.FIELDS.B1G_IMAGE}"]
   end
 end

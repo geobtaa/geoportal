@@ -1,7 +1,6 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
-require 'carrierwave'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -10,9 +9,16 @@ Bundler.require(*Rails.groups)
 module Geoblacklight
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.0
+    config.load_defaults 6.1
 
-    # @TODO: needed?
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
+
     config.to_prepare do
       # Load application's model / class decorators
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
@@ -25,11 +31,6 @@ module Geoblacklight
     # Exception Handling
     config.exceptions_app = self.routes
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
-
     # Rack::Cors / Access-Control-Allow-Origin
     config.middleware.insert_before 0, Rack::Cors do
       allow do
@@ -37,9 +38,5 @@ module Geoblacklight
         resource '*', :headers => :any, :methods => [:get, :options]
       end
     end
-
-    
-    Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
-
   end
 end

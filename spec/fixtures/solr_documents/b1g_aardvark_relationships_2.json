@@ -1,0 +1,50 @@
+{
+  "id": "8888-002",
+  "model_name_ssi": "Document",
+  "model_pk_ssi": "3bd2b0c2-ae37-485e-900c-1e0621ea0643",
+  "gbl_mdVersion_s": "Aardvark",
+  "dct_title_s": "Research Guide to Sanborn Fire Insurance Maps",
+  "dct_description_sm": [
+    "This guide describes fire insurance maps, how to interpret them, and how to find them in the BTAA Geoportal"
+  ],
+  "dct_language_sm": [
+    "eng"
+  ],
+  "dct_creator_sm": [
+    "Big Ten Academic Alliance Geospatial Data Project Task Force"
+  ],
+  "gbl_resourceClass_sm": [
+    "Other"
+  ],
+  "gbl_dateRange_drsim": [
+    "[* TO *]"
+  ],
+  "dct_spatial_sm": [
+    "United States"
+  ],
+  "locn_geometry": "ENVELOPE(144.4,-64.4,71.6,-14.8)",
+  "dcat_centroid_ss": "28.4,40.0",
+  "gbl_resourceType_sm": [
+    "Research Guides",
+    "Fire insurance maps"
+  ],
+  "dct_format_s": "PDF",
+  "gbl_georeferenced_b": false,
+  "dct_references_s": "{\"http://schema.org/downloadUrl\":\"https://docs.google.com/document/d/1oYeASyPR_d-9zLpdc9KojQZxjlDTPH6SGDbQWSMltec/export?format=pdf\",\"http://schema.org/url\":\"https://docs.google.com/document/d/e/2PACX-1vRJna_AXbcn42nSbqWSAWNOXUSici9oG-5uukusZD8bUV8LtCMeN_zYcOR1_2d05FRg_101ODLzDit0/pub\"}",
+  "b1g_access_s": "{}",
+  "geomg_id_s": "8888-002",
+  "b1g_code_s": "8888",
+  "b1g_status_s": "Active",
+  "b1g_dct_accrualMethod_s": "Manual",
+  "b1g_dateAccessioned_sm": [
+    "2021-05-06"
+  ],
+  "b1g_publication_state_s": "published",
+  "dct_accessRights_s": "Public",
+  "gbl_suppressed_b": false,
+  "b1g_child_record_b": false,
+  "gbl_mdModified_dt": "2021-05-07T20:51:29Z",
+  "date_created_dtsi": "2021-05-07T20:45:54Z",
+  "date_modified_dtsi": "2021-05-07T20:51:29Z",
+  "b1g_geom_import_id_ssi": "247"
+}

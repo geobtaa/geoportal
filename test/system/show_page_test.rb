@@ -176,12 +176,26 @@ class ShowPageTest < ApplicationSystemTestCase
 
   def test_metadata_links
     visit "/catalog/2eddde2f-c222-41ca-bd07-2fd74a21f4de"
-    assert page.has_link?("Minnesota Department of Natural Resources (DNR)")
-    assert page.has_no_link?("Minnesota Geospatial Commons") # Collection
+
+    # No Links
+    # * Subject
+    # * Date Published
+    # * Provider
+    # * Publisher
+    assert page.has_no_link?("Imagery and Base Maps")
+    assert page.has_no_link?("2015-11-18T11:02:15.705119")
+    assert page.has_no_link?("Minnesota", { exact: true })
+    assert page.has_no_link?("Minnesota Department of Natural Resources (DNR)")
+
+    # Yes Links
+    # * Place
+    # * Resource Class (missing on this doc)
+    # * Resource Type
+    # * ISO Topic Category (missing on this doc)
     assert page.has_link?("Minnesota, United States")
-    assert page.has_link?("Imagery and Base Maps")
     assert page.has_link?("Raster")
-    assert page.has_link?("Minnesota")
+
+    assert page.has_no_link?("Minnesota Geospatial Commons") # Collection
   end
 
   def test_b1g_show_index_map
@@ -305,7 +319,7 @@ class ShowPageTest < ApplicationSystemTestCase
   def test_access_links_restricted_document
     visit '/catalog/99-0001-test'
     within('dl.document-metadata') do
-      assert page.has_content?("Access Rights")
+      assert page.has_content?("Rights")
     end
     within('div.show-tools') do
       assert page.has_content?("Licensed Resource")

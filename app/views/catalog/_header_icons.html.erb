@@ -1,9 +1,11 @@
-<%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS], classes: 'svg_tooltip') %>
+<%- if document[Settings.FIELDS.RESOURCE_CLASS] %>
+  <%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS], classes: 'svg_tooltip') %>
+<% end %>
 
-<%- unless document[Settings.FIELDS.PROVENANCE] == "[none]" %>
-  <%= geoblacklight_icon(document[Settings.FIELDS.PROVENANCE]) %>
+<%- unless document[Settings.FIELDS.PROVIDER] == "[none]" %>
+  <%= geoblacklight_icon(document[Settings.FIELDS.PROVIDER], classes: 'svg_tooltip') %>
 <% end %>
 
 <%- if document[Settings.FIELDS.RIGHTS] == "Restricted" %>
-  <%= geoblacklight_icon(document[Settings.FIELDS.RIGHTS]) %>
+  <%= geoblacklight_icon(document[Settings.FIELDS.RIGHTS], classes: 'svg_tooltip') %>
 <% end %>
