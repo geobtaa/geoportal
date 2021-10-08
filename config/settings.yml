@@ -146,10 +146,15 @@ RELATIONSHIPS_SHOWN:
     query_type: descendants
     icon: leaf
     label: geoblacklight.relations.member_of
-  PART_OF:
+  PART_OF_ANCESTORS:
     field: dct_isPartOf_sm
     query_type: ancestors
     icon: nil
+    label: geoblacklight.relations.part_of
+  PART_OF_DESCENDANTS:
+    field: dct_isPartOf_sm
+    query_type: descendants
+    icon: leaf
     label: geoblacklight.relations.part_of
   RELATION:
     field: dct_relation_sm
