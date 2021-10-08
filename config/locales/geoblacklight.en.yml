@@ -60,8 +60,8 @@ en:
       services: 'Web services'
       services_close: 'Close'
     relations:
-      ancestor: 'Source Datasets'
-      descendant: 'Derived Datasets'
+      ancestor: 'Source'
+      descendant: 'Derived'
       browse_all: "Browse all %{count} records..."
       title: 'Related Items'
     metadata:
