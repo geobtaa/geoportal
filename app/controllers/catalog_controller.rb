@@ -110,8 +110,6 @@ class CatalogController < ApplicationController
 
     # config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
 
-    config.add_facet_field Settings.FIELDS.MEMBER_OF, :label => 'Member of', :limit => 8, collapse: false, show: false
-
     config.add_facet_field Settings.FIELDS.SPATIAL_COVERAGE, :label => 'Place', :limit => 8, collapse: false
     config.add_facet_field Settings.FIELDS.RESOURCE_CLASS, :label => 'Resource Class', :limit => 8, collapse: false
     config.add_facet_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', limit: 8, collapse: false
@@ -142,6 +140,17 @@ class CatalogController < ApplicationController
 
     config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
     config.add_facet_field Settings.FIELDS.B1G_MEDIATOR, label: 'Institutional Access', limit: 15
+
+    # Item Relationship Facets
+    # * Not displayed to end user (show: false)
+    # * Must be present for facet filter queries to work
+    config.add_facet_field Settings.FIELDS.MEMBER_OF, :label => 'Member Of', :limit => 8, collapse: false, show: false
+    config.add_facet_field Settings.FIELDS.IS_PART_OF, :label => 'Is Part Of', :limit => 8, collapse: false, show: false
+    config.add_facet_field Settings.FIELDS.RELATION, :label => 'Related', :limit => 8, collapse: false, show: false
+    config.add_facet_field Settings.FIELDS.REPLACES, :label => 'Replaces', :limit => 8, collapse: false, show: false
+    config.add_facet_field Settings.FIELDS.IS_REPLACED_BY, :label => 'Is Replaced By', :limit => 8, collapse: false, show: false
+    config.add_facet_field Settings.FIELDS.SOURCE, :label => 'Source', :limit => 8, collapse: false, show: false
+    config.add_facet_field Settings.FIELDS.VERSION, :label => 'Is Version Of', :limit => 8, collapse: false, show: false
 
     # Remove access facet until data is available - EWL
     # config.add_facet_field 'dc_rights_s', label: 'Access', limit: 8, partial: "icon_facet"
