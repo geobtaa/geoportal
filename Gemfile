@@ -68,7 +68,7 @@ gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '~> 4.0.0.pre.alpha.1'
+gem 'geoblacklight', git: 'https://github.com/geoblacklight/geoblacklight.git', :branch => '1099-aardvark-relationship-browse-links'
 
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
