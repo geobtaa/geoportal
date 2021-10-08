@@ -140,22 +140,22 @@ RELATIONSHIPS_SHOWN:
     field: pcdm_memberOf_sm
     query_type: ancestors
     icon: nil
-    label: geoblacklight.relations.member_of
+    label: geoblacklight.relations.member_of_ancestors
   MEMBER_OF_DESCENDANTS:
     field: pcdm_memberOf_sm
     query_type: descendants
     icon: leaf
-    label: geoblacklight.relations.member_of
+    label: geoblacklight.relations.member_of_descendants
   PART_OF_ANCESTORS:
     field: dct_isPartOf_sm
     query_type: ancestors
     icon: nil
-    label: geoblacklight.relations.part_of
+    label: geoblacklight.relations.part_of_ancestors
   PART_OF_DESCENDANTS:
     field: dct_isPartOf_sm
     query_type: descendants
     icon: leaf
-    label: geoblacklight.relations.part_of
+    label: geoblacklight.relations.part_of_descendants
   RELATION:
     field: dct_relation_sm
     query_type: ancestors

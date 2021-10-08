@@ -64,6 +64,10 @@ en:
       descendant: 'Derived'
       browse_all: "Browse all %{count} records..."
       title: 'Related Items'
+      member_of_ancestors: 'Member of Ancestors'
+      member_of_descendants: 'Member of Descendants'
+      part_of_ancestors: 'Part of Ancestors'
+      part_of_descendants: 'Part of Descendants' 
     metadata:
       view_metadata: 'View Metadata'
       more_details: 'Visit Source'
