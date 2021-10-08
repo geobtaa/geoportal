@@ -7,15 +7,15 @@
 </div>
 <div class="modal-body">
   <% @documents.each do |document| %>
-    <% case document["gbl_resourceClass_sm"].present? && document["gbl_resourceClass_sm"].join(",").downcase %>
+    <% case document[Settings.FIELDS.RESOURCE_CLASS].present? && document[Settings.FIELDS.RESOURCE_CLASS].join(",").downcase %>
     <% when "collections" %>
       <p>
-        <% if document["dct_title_s"].present? %>
-          <i><%= document["dct_title_s"] %></i>.
+        <% if document[Settings.FIELDS.TITLE].present? %>
+          <i><%= document[Settings.FIELDS.TITLE] %></i>.
         <% end %>
 
-        <% if document["dct_publisher_sm"].present? %>
-          <%= document["dct_publisher_sm"].join(', ') %>.
+        <% if document[Settings.FIELDS.PUBLISHER].present? %>
+          <%= document[Settings.FIELDS.PUBLISHER].join(', ') %>.
         <% end %>
 
         <% if document.references.url.present? %>
@@ -24,24 +24,24 @@
       </p>
     <% else %>
       <p>
-        <% if document["dct_creator_sm"].present? %>
-          <%= document["dct_creator_sm"].join(', ') %>.
+        <% if document[Settings.FIELDS.CREATOR].present? %>
+          <%= document[Settings.FIELDS.CREATOR].join(', ') %>.
         <% else %>
            [creator not found],
         <% end %>
 
-        <% if document["dct_issued_s"].present? %>
-          (<%= citation_dct_issued_s(document["dct_issued_s"]) %>).
+        <% if document[Settings.FIELDS.DATE_ISSUED].present? %>
+          (<%= citation_date(document[Settings.FIELDS.DATE_ISSUED]) %>).
         <% else %>
           (n.d.).
         <%- end %>
 
-        <% if document["dct_title_s"].present? %>
-          <i><%= document["dct_title_s"] %></i>.
+        <% if document[Settings.FIELDS.TITLE].present? %>
+          <i><%= document[Settings.FIELDS.TITLE] %></i>.
         <% end %>
 
-        <% if document["dct_publisher_sm"].present? %>
-          <%= document["dct_publisher_sm"].join(', ') %>.
+        <% if document[Settings.FIELDS.PUBLISHER].present? %>
+          <%= document[Settings.FIELDS.PUBLISHER].join(', ') %>.
         <% end %>
 
         <% if document.references.url.present? %>

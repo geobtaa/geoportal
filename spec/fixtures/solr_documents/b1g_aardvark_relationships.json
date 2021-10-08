@@ -1,0 +1,130 @@
+{
+  "id": "999-0011",
+  "model_name_ssi": "Document",
+  "model_pk_ssi": "51fb6c50-36cb-4f4e-b0fe-02934aebacc6",
+  "gbl_mdVersion_s": "Aardvark",
+  "dct_title_s": "Digital Sanborn Maps (Black & White): All States, 1867-1970",
+  "dct_alternative_sm": [
+    "Digital Sanborn Maps, 1867-1970"
+  ],
+  "dct_description_sm": [
+    "Digital Sanborn® Maps (1867-1970) delivers detailed property and land-use records that depict the grid of everyday life in more than 12,000 U.S. towns and cities across a century of change. Contains large-scale plans with information such as the outline of each building, the size, shape, height, and the structure’s purpose. The maps also give addresses, street names, property boundaries, and block numbers."
+  ],
+  "dct_language_sm": [
+    "eng"
+  ],
+  "dct_creator_sm": [
+    "Sanborn Map Company"
+  ],
+  "dct_publisher_sm": [
+    "ProQuest Information and Learning"
+  ],
+  "gbl_resourceClass_sm": [
+    "Maps",
+    "Collections"
+  ],
+  "dcat_keyword_sm": [
+    "Sanborn"
+  ],
+  "dct_temporal_sm": [
+    "1867-1970"
+  ],
+  "gbl_dateRange_drsim": [
+    "[1867 TO 1970]"
+  ],
+  "gbl_indexYear_im": [
+    1867
+  ],
+  "dct_spatial_sm": [
+    "Alabama",
+    "Alaska",
+    "Arizona",
+    "Arkansas",
+    "California",
+    "Colorado",
+    "Connecticut",
+    "Delaware",
+    "Florida",
+    "Georgia",
+    "Hawaii",
+    "Idaho",
+    "Illinois",
+    "Indiana",
+    "Iowa",
+    "Kansas",
+    "Kentucky",
+    "Louisiana",
+    "Maine",
+    "Maryland",
+    "Massachusetts",
+    "Michigan",
+    "Minnesota",
+    "Mississippi",
+    "Missouri",
+    "Montana",
+    "Nebraska",
+    "Nevada",
+    "New Hampshire",
+    "New Jersey",
+    "New Mexico",
+    "New York",
+    "North Carolina",
+    "North Dakota",
+    "Ohio",
+    "Oklahoma",
+    "Oregon",
+    "Pennsylvania",
+    "Rhode Island",
+    "South Carolina",
+    "South Dakota",
+    "Tennessee",
+    "Texas",
+    "Utah",
+    "Vermont",
+    "Virginia",
+    "Washington",
+    "West Virginia",
+    "Wisconsin",
+    "Wyoming"
+  ],
+  "locn_geometry": "ENVELOPE(-179.9,-64.4,71.6,-14.8)",
+  "dcat_centroid_ss": "28.4,-122.15",
+  "dct_relation_sm": [
+    "8888-001",
+    "8888-002"
+  ],
+  "gbl_resourceType_sm": [
+    "Fire insurance maps"
+  ],
+  "dct_format_s": "Mixed",
+  "gbl_georeferenced_b": false,
+  "dct_references_s": "{\"http://lccn.loc.gov/sh85035852\":\"https://www.proquest.com/products-services/databases/sanborn.html\"}",
+  "b1g_access_s": "{\"01\":\"https://iucat.iu.edu/catalog/4869452\",\"02\":\"https://vufind.carli.illinois.edu/vf-uiu/Record/uiu_8895076\",\"03\":\"https://search.lib.uiowa.edu/permalink/f/9i2ftm/AZ_GUIDESaz/4684636\",\"04\":\"https://catalog.umd.edu/docno=003850234\",\"07\":\"https://search.lib.umich.edu/databases/record/9549\"}",
+  "dct_identifier_sm": [
+    "999-0011"
+  ],
+  "geomg_id_s": "999-0011",
+  "b1g_code_s": "999-0011",
+  "b1g_status_s": "Active",
+  "b1g_dateAccessioned_sm": [
+    "2020-04-29"
+  ],
+  "b1g_publication_state_s": "published",
+  "dct_rights_sm": [
+    "Requires logging in through an organization with licensed access. Different institutions may have licenses for different years or locations. For more information on accessing licensed resources, visit our Research Guide at https://geo.btaa.org/catalog/8888-001"
+  ],
+  "dct_accessRights_s": "Restricted",
+  "gbl_suppressed_b": false,
+  "b1g_child_record_b": false,
+  "b1g_dct_mediator_sm": [
+    "University of Illinois Urbana-Champaign",
+    "Indiana University",
+    "University of Iowa",
+    "University of Maryland",
+    "University of Michigan"
+  ],
+  "gbl_mdModified_dt": "2021-10-06T22:23:11Z",
+  "date_created_dtsi": "2021-04-27T20:42:21Z",
+  "date_modified_dtsi": "2021-10-06T22:23:11Z",
+  "b1g_geom_import_id_ssi": "367"
+}

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.1.0'
 gem 'bootsnap', require: false
 gem 'listen', '~> 3.0'
 
@@ -11,7 +11,7 @@ gem 'rack-cors', :require => 'rack/cors'
 # Webpacker
 gem 'webpacker', '~> 4.x'
 
-gem 'sqlite3', '~> 1.3', '< 1.4'
+gem 'sqlite3', '~> 1.4'
 gem 'mysql2', '~> 0.5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -61,14 +61,14 @@ group :development do
   gem 'letter_opener'
 end
 
-gem 'blacklight', '7.9.0'
+gem 'blacklight', '~> 7.19.0'
 gem 'blacklight_advanced_search', git: 'https://github.com/projectblacklight/blacklight_advanced_search.git', :branch => 'master'
 gem 'blacklight_range_limit', '~> 7.0.0'
 gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '~> 3.3.0'
+gem 'geoblacklight', '~> 4.0.0.pre.alpha.2'
 
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
@@ -79,7 +79,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'mini_magick', '~> 4.9.4'
 
 gem 'statesman', '~> 3.4.1'
-gem 'sidekiq', '~> 5.1.3'
+gem 'sidekiq', '~> 5.2.0'
 gem 'sidekiq-failures', '~> 1.0.0'
 gem 'down', '~> 4.4'
 gem 'addressable', '~> 2.5.0'
@@ -102,7 +102,7 @@ gem 'dotenv-rails'
 gem 'pointless_feedback'
 gem 'whenever', '~> 0.9.0', require: false
 gem 'sitemap_generator', '~> 6.0.2'
-gem 'exception_notification', '~> 4.3.0'
+gem 'exception_notification', '~> 4.4.0'
 
 group :test do
   gem 'webdrivers'

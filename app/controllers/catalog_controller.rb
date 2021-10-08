@@ -8,7 +8,9 @@ class CatalogController < ApplicationController
 
   configure_blacklight do |config|
     # default advanced config values
+    config.advanced_search.enabled = true
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
+
 
     # Blacklight update to 7.0.0
     config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
@@ -29,10 +31,15 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %W[schema_provider_s gbl_resourceType_sm gbl_resourceClass_sm]
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= [Settings.FIELDS.PROVIDER, Settings.FIELDS.RESOURCE_TYPE, Settings.FIELDS.RESOURCE_CLASS]
     config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.sort'] ||= 'index'
+
+    # GeoBlacklight Defaults
+    # * Adds the "map" split view for catalog#index
+    config.view.split(partials: ['index'])
+    config.view.delete_field('list')
 
     # Map views
     config.view.mapview.partials = [:index]
@@ -45,8 +52,8 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       :start => 0,
       'q.alt' => '*:*',
-      'bf' => ['if(exists(b1g_child_record_b),0,100)^0.5'],
-      'fq' => ['b1g_publication_state_s:published']
+      'bf' => ["if(exists(#{Settings.FIELDS.B1G_CHILD_RECORD}),0,100)^0.5"],
+      'fq' => ["#{Settings.FIELDS.B1G_PUBLICATION_STATE}:published"]
     }
 
     config.default_per_page = 20 # Works!
@@ -56,16 +63,14 @@ class CatalogController < ApplicationController
     #
     config.default_document_solr_params = {
      :qt => 'document',
-     :q => '{!raw f=geomg_id_s v=$id}'
+     :q => "{!raw f=#{Settings.FIELDS.B1G_GEOMG_ID} v=$id}"
     }
-
-    config.search_builder_class = Geoblacklight::SearchBuilder
 
     # solr field configuration for search results/index views
     # config.index.show_link = 'title_display'
     # config.index.record_display_type = 'format'
 
-    config.index.title_field = 'dct_title_s'
+    config.index.title_field = Settings.FIELDS.TITLE
     config.index.document_presenter_class = Geoblacklight::DocumentPresenter
 
     # solr field configuration for document/show views
@@ -74,7 +79,7 @@ class CatalogController < ApplicationController
 
     # Custom GeoBlacklight fields which currently map to GeoBlacklight-Schema
     # v0.3.2
-    config.wxs_identifier_field = 'gbl_wxsIdentifier_s'
+    config.wxs_identifier_field = Settings.FIELDS.WXS_IDENTIFIER
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -105,42 +110,47 @@ class CatalogController < ApplicationController
 
     # config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
 
-    config.add_facet_field 'dct_spatial_sm', :label => 'Place', :limit => 8, collapse: false
-    config.add_facet_field 'gbl_resourceClass_sm', :label => 'Resource Class', :limit => 8, collapse: false
-    config.add_facet_field 'gbl_resourceType_sm', label: 'Resource Type', limit: 8, collapse: false
-    config.add_facet_field 'dct_subject_sm', :label => 'Subject', :limit => 8, collapse: false
+    config.add_facet_field Settings.FIELDS.SPATIAL_COVERAGE, :label => 'Place', :limit => 8, collapse: false
+    config.add_facet_field Settings.FIELDS.RESOURCE_CLASS, :label => 'Resource Class', :limit => 8, collapse: false
+    config.add_facet_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', limit: 8, collapse: false
+    config.add_facet_field Settings.FIELDS.SUBJECT, :label => 'Subject', :limit => 8, collapse: false
 
-    config.add_facet_field 'gbl_indexYear_im', label: 'Year', limit: 10, collapse: false, all: 'Any year', range: {
+    config.add_facet_field Settings.FIELDS.INDEX_YEAR, label: 'Year', limit: 10, collapse: false, all: 'Any year', range: {
       assumed_boundaries: [1100, 2018]
       # :num_segments => 6,
       # :segments => true
     }
 
     config.add_facet_field 'time_period', :label => 'Time Period', :query => {
-      '1500s' => { :label => '1500s', :fq => "gbl_indexYear_im:[1500 TO 1599]" },
-      '1600s' => { :label => '1600s', :fq => "gbl_indexYear_im:[1600 TO 1699]" },
-      '1700s' => { :label => '1700s', :fq => "gbl_indexYear_im:[1700 TO 1799]" },
-      '1800-1849' => { :label => '1800-1849', :fq => "gbl_indexYear_im:[1800 TO 1849]" },
-      '1850-1899' => { :label => '1850-1899', :fq => "gbl_indexYear_im:[1850 TO 1899]" },
-      '1900-1949' => { :label => '1900-1949', :fq => "gbl_indexYear_im:[1900 TO 1949]" },
-      '1950-1999' => { :label => '1950-1999', :fq => "gbl_indexYear_im:[1950 TO 1999]" },
-      '2000-2004' => { :label => '2000-2004', :fq => "gbl_indexYear_im:[2000 TO 2004]" },
-      '2005-2009' => { :label => '2005-2009', :fq => "gbl_indexYear_im:[2005 TO 2009]" },
-      '2010-2014' => { :label => '2010-2014', :fq => "gbl_indexYear_im:[2010 TO 2014]" },
-      '2015-present' => { :label => '2015-present', :fq => "gbl_indexYear_im:[2015 TO #{Time.now.year}]"}
+      '1500s' => { :label => '1500s', :fq => "#{Settings.FIELDS.INDEX_YEAR}:[1500 TO 1599]" },
+      '1600s' => { :label => '1600s', :fq => "#{Settings.FIELDS.INDEX_YEAR}:[1600 TO 1699]" },
+      '1700s' => { :label => '1700s', :fq => "#{Settings.FIELDS.INDEX_YEAR}:[1700 TO 1799]" },
+      '1800-1849' => { :label => '1800-1849', :fq => "#{Settings.FIELDS.INDEX_YEAR}:[1800 TO 1849]" },
+      '1850-1899' => { :label => '1850-1899', :fq => "#{Settings.FIELDS.INDEX_YEAR}:[1850 TO 1899]" },
+      '1900-1949' => { :label => '1900-1949', :fq => "#{Settings.FIELDS.INDEX_YEAR}:[1900 TO 1949]" },
+      '1950-1999' => { :label => '1950-1999', :fq => "#{Settings.FIELDS.INDEX_YEAR}:[1950 TO 1999]" },
+      '2000-2004' => { :label => '2000-2004', :fq => "#{Settings.FIELDS.INDEX_YEAR}:[2000 TO 2004]" },
+      '2005-2009' => { :label => '2005-2009', :fq => "#{Settings.FIELDS.INDEX_YEAR}:[2005 TO 2009]" },
+      '2010-2014' => { :label => '2010-2014', :fq => "#{Settings.FIELDS.INDEX_YEAR}:[2010 TO 2014]" },
+      '2015-present' => { :label => '2015-present', :fq => "#{Settings.FIELDS.INDEX_YEAR}:[2015 TO #{Time.now.year}]"}
     }, collapse: false
 
-    # Trying range facet
-    #config.add_facet_field 'solr_year_i', :label => 'Year', :limit => 10
+    config.add_facet_field Settings.FIELDS.CREATOR, :label => 'Creator', :limit => 8
+    config.add_facet_field Settings.FIELDS.PROVIDER, label: 'Provider', limit: 15
 
-    config.add_facet_field 'dct_creator_sm', :label => 'Creator', :limit => 8
+    config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
+    config.add_facet_field Settings.FIELDS.B1G_MEDIATOR, label: 'Institutional Access', limit: 15
 
-    #config.add_facet_field 'b1g_geom_type_sm', label: 'Geometry', limit: 8, partial: "icon_facet", collapse: false
-    #config.add_facet_field 'dc_format_s', :label => 'Format', :limit => 8
-    config.add_facet_field 'schema_provider_s', label: 'Provider', limit: 15
-
-    config.add_facet_field 'dct_accessRights_s', :label => 'Public/Restricted'
-    config.add_facet_field 'b1g_dct_mediator_sm', label: 'Institutional Access', limit: 15
+    # Item Relationship Facets
+    # * Not displayed to end user (show: false)
+    # * Must be present for facet filter queries to work
+    config.add_facet_field Settings.FIELDS.MEMBER_OF, :label => 'Member Of', :limit => 8, collapse: false, show: false
+    config.add_facet_field Settings.FIELDS.IS_PART_OF, :label => 'Is Part Of', :limit => 8, collapse: false, show: false
+    config.add_facet_field Settings.FIELDS.RELATION, :label => 'Related', :limit => 8, collapse: false, show: false
+    config.add_facet_field Settings.FIELDS.REPLACES, :label => 'Replaces', :limit => 8, collapse: false, show: false
+    config.add_facet_field Settings.FIELDS.IS_REPLACED_BY, :label => 'Is Replaced By', :limit => 8, collapse: false, show: false
+    config.add_facet_field Settings.FIELDS.SOURCE, :label => 'Source', :limit => 8, collapse: false, show: false
+    config.add_facet_field Settings.FIELDS.VERSION, :label => 'Is Version Of', :limit => 8, collapse: false, show: false
 
     # Remove access facet until data is available - EWL
     # config.add_facet_field 'dc_rights_s', label: 'Access', limit: 8, partial: "icon_facet"
@@ -162,7 +172,7 @@ class CatalogController < ApplicationController
     # config.add_index_field 'published_vern_display', :label => 'Published:'
     # config.add_index_field 'lc_callnum_display', :label => 'Call number:'
 
-    config.add_index_field Settings.FIELDS.YEAR
+    config.add_index_field Settings.FIELDS.INDEX_YEAR
     config.add_index_field Settings.FIELDS.CREATOR
     config.add_index_field Settings.FIELDS.DESCRIPTION, helper_method: :snippit
     config.add_index_field Settings.FIELDS.PUBLISHER
@@ -173,23 +183,22 @@ class CatalogController < ApplicationController
     # item_prop: [String] property given to span with Schema.org item property
     # link_to_facet: [Boolean] that can be passed to link to a facet search
     # helper_method: [Symbol] method that can be used to render the value
-    config.add_show_field 'dct_creator_sm', label: 'Creator', itemprop: 'creator'
-    config.add_show_field 'dct_description_sm', label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract_new_lines
-    config.add_show_field 'dct_publisher_sm', label: 'Publisher', itemprop: 'publisher'
-    config.add_show_field 'dct_spatial_sm', label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
-    config.add_show_field 'dct_subject_sm', label: 'Subject', itemprop: 'keywords'
-    config.add_show_field 'gbl_resourceClass_sm', label: 'Resource Class', itemprop: 'keywords', link_to_facet: true
-    config.add_show_field 'gbl_resourceType_sm', label: 'Resource Type', itemprop: 'keywords', link_to_facet: true
-    config.add_show_field 'dcat_theme_sm', label: 'ISO Topic Category', itemprop: 'keywords', link_to_facet: true
-    config.add_show_field 'dct_issued_s', label: 'Date Published', itemprop: 'keywords'
-    config.add_show_field 'dct_temporal_sm', label: 'Temporal Coverage', itemprop: 'temporal'
-    config.add_show_field 'schema_provider_s', label: 'Provider'
-    config.add_show_field 'dct_rights_sm', label: 'Rights'
-    config.add_show_field 'dct_rightsHolder_sm', label: 'Rights Holder'
-    config.add_show_field 'dct_license_sm', label: 'License'
-    config.add_show_field 'dct_format_s', label: 'Format'
-    config.add_show_field 'gbl_fileSize_s', label: 'File Size'
-
+    config.add_show_field Settings.FIELDS.CREATOR, label: 'Creator', itemprop: 'creator'
+    config.add_show_field Settings.FIELDS.DESCRIPTION, label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract_new_lines
+    config.add_show_field Settings.FIELDS.PUBLISHER, label: 'Publisher', itemprop: 'publisher'
+    config.add_show_field Settings.FIELDS.SPATIAL_COVERAGE, label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
+    config.add_show_field Settings.FIELDS.SUBJECT, label: 'Subject', itemprop: 'keywords'
+    config.add_show_field Settings.FIELDS.RESOURCE_CLASS, label: 'Resource Class', itemprop: 'keywords', link_to_facet: true
+    config.add_show_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', itemprop: 'keywords', link_to_facet: true
+    config.add_show_field Settings.FIELDS.ISO_TOPIC_CATEGORY, label: 'ISO Topic Category', itemprop: 'keywords', link_to_facet: true
+    config.add_show_field Settings.FIELDS.DATE_ISSUED, label: 'Date Published', itemprop: 'keywords'
+    config.add_show_field Settings.FIELDS.TEMPORAL_COVERAGE, label: 'Temporal Coverage', itemprop: 'temporal'
+    config.add_show_field Settings.FIELDS.PROVIDER, label: 'Provider'
+    config.add_show_field Settings.FIELDS.RIGHTS, label: 'Rights'
+    config.add_show_field Settings.FIELDS.RIGHTS_HOLDER, label: 'Rights Holder'
+    config.add_show_field Settings.FIELDS.LICENSE, label: 'License'
+    config.add_show_field Settings.FIELDS.FORMAT, label: 'Format'
+    config.add_show_field Settings.FIELDS.FILE_SIZE, label: 'File Size'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -259,8 +268,8 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
     config.add_sort_field 'score desc, dct_title_sort asc', :label => 'Relevance'
-    config.add_sort_field "#{Settings.FIELDS.YEAR} desc, dct_title_sort asc", :label => 'Year (Newest first)'
-    config.add_sort_field "#{Settings.FIELDS.YEAR} asc, dct_title_sort asc", :label => 'Year (Oldest first)'
+    config.add_sort_field "#{Settings.FIELDS.INDEX_YEAR} desc, dct_title_sort asc", :label => 'Year (Newest first)'
+    config.add_sort_field "#{Settings.FIELDS.INDEX_YEAR} asc, dct_title_sort asc", :label => 'Year (Oldest first)'
     config.add_sort_field 'dct_title_sort asc', :label => 'Title (A-Z)'
     config.add_sort_field 'dct_title_sort desc', :label => 'Title (Z-A)'
 

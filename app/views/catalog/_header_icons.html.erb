@@ -2,8 +2,8 @@
   <%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS], classes: 'svg_tooltip') %>
 <% end %>
 
-<%- unless document[Settings.FIELDS.PROVENANCE] == "[none]" %>
-  <%= geoblacklight_icon(document[Settings.FIELDS.PROVENANCE], classes: 'svg_tooltip') %>
+<%- unless document[Settings.FIELDS.PROVIDER] == "[none]" %>
+  <%= geoblacklight_icon(document[Settings.FIELDS.PROVIDER], classes: 'svg_tooltip') %>
 <% end %>
 
 <%- if document[Settings.FIELDS.RIGHTS] == "Restricted" %>

@@ -26,32 +26,32 @@ module ApplicationHelper
     current_page?(root_url) && has_search_parameters? == false
   end
 
-  def citation_dct_issued_s(dct_issued_s)
-    date_string = ""
+  def citation_date(date_string)
+    date_value = ""
 
-    if dct_issued_s.size == 4
-      date_string = dct_issued_s
-    elsif dct_issued_s.match?(/[-|:|\/]/)
+    if date_string.size == 4
+      date_value = date_string
+    elsif date_string.match?(/[-|:|\/]/)
       begin
-        date_string = Chronic.parse(dct_issued_s).to_date.strftime('%Y')
+        date_value = Chronic.parse(date_string).to_date.strftime('%Y')
       rescue
         begin
           # Capture YYYY from '2004-01-00' / the '00' day value breaks Chronic
-          date_string = dct_issued_s.split("-")[0]
+          date_value = date_string.split("-")[0]
         rescue
-          date_string = dct_issued_s
+          date_value = date_string
         end
       end
     else
-      date_string = dct_issued_s
+      date_value = date_string
     end
 
     # Guard against unknown dates
-    if date_string == '9999'
-      date_string = 'n.d.'
+    if date_value == '9999'
+      date_value = 'n.d.'
     end
 
-    date_string
+    date_value
   end
 
   def b1g_institution_codes
