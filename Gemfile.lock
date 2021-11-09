@@ -264,7 +264,7 @@ GEM
       rsolr
       sanitize
       thor
-    geoblacklight (4.0.0.pre.alpha.2)
+    geoblacklight (4.0.0.pre.alpha.3)
       blacklight (~> 7.8)
       coderay
       config
@@ -581,7 +581,7 @@ DEPENDENCIES
   factory_bot_rails
   flamegraph (~> 0.9.5)
   foreman
-  geoblacklight (~> 4.0.0.pre.alpha.2)
+  geoblacklight (~> 4.0.0.pre.alpha.3)
   geoblacklight-icons!
   geoblacklight_sidecar_images (~> 0.8.0)
   haml
