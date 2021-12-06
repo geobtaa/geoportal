@@ -181,11 +181,16 @@ RELATIONSHIPS_SHOWN:
     query_type: descendants
     icon: leaf
     label: geoblacklight.relations.descendant
-  VERSION_OF:
+  VERSION_OF_ANCESTORS:
+    field: dct_isVersionOf_sm
+    query_type: ancestors
+    icon: pagelines-brands
+    label: geoblacklight.relations.version_of_ancestors
+  VERSION_OF_DESCENDANTS:
     field: dct_isVersionOf_sm
     query_type: descendants
-    icon: nil
-    label: geoblacklight.relations.version_of
+    icon: leaf
+    label: geoblacklight.relations.version_of_descendants
 
 WMS_PARAMS:
   :SERVICE: 'WMS'

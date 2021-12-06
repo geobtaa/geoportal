@@ -68,6 +68,8 @@ en:
       member_of_descendants: 'Collection records...'
       part_of_ancestors: 'Is part of...'
       part_of_descendants: 'Has part...'
+      version_of_ancestors: 'Is version of...'
+      version_of_descendants: 'Has version...'
     metadata:
       view_metadata: 'View Metadata'
       more_details: 'Visit Source'
