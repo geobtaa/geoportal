@@ -139,7 +139,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     # Search 1874 -
     # Expect 7 results
     visit '/?utf8=✓&q=&search_field=all_fields&range%5Bgbl_indexYear_im%5D%5Bbegin%5D=1874&range%5Bgbl_indexYear_im%5D%5Bend%5D=&commit=Limit'
-    assert page.assert_selector('article.document', :count => 11)
+    assert page.assert_selector('article.document', :count => 12)
     assert page.assert_selector('div[data-layer-id="VAC9619-001735"]')
     assert page.assert_selector('div[data-layer-id="VAC9619-001727"]')
     assert page.assert_selector('div[data-layer-id="d6efb1e4d0ca491db8c79e5b18c4dee9_3"]')
