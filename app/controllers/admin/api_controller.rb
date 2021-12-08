@@ -8,6 +8,9 @@ module Admin
     include Blacklight::Catalog
 
     configure_blacklight do |config|
+      # special search builder / fails
+      config.search_builder_class = ApiSearchBuilder
+
       # default advanced config values
       config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
 
