@@ -185,6 +185,7 @@ module Admin
       config.add_index_field Settings.FIELDS.CREATOR
       config.add_index_field Settings.FIELDS.DESCRIPTION, helper_method: :snippit
       config.add_index_field Settings.FIELDS.PUBLISHER
+      config.add_index_field Settings.FIELDS.SUPPRESSED, :label => 'Suppressed:'
 
       # solr fields to be displayed in the show (single result) view
       #  The ordering of the field names is the order of the display
