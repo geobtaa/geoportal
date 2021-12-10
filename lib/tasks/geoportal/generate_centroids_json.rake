@@ -4,7 +4,7 @@ namespace :geoportal do
   desc 'Generate homepage centroids for map clustering'
   task generate_centroids_json: :environment do
     # Search request
-    response = Blacklight.default_index.connection.get 'select', :params => {:q => '!suppressed_b:true', :rows => '100000'}
+    response = Blacklight.default_index.connection.get 'select', :params => {:q => "*:*", :rows => '100000', :fq => ["!#{Settings.FIELDS.SUPPRESSED}:true", "#{Settings.FIELDS.B1G_PUBLICATION_STATE}:published"]}
 
     docs = []
     response["response"]["docs"].each_with_index do |doc, index|

@@ -172,7 +172,7 @@ class CatalogController < ApplicationController
     # config.add_index_field 'published_vern_display', :label => 'Published:'
     # config.add_index_field 'lc_callnum_display', :label => 'Call number:'
 
-    config.add_index_field Settings.FIELDS.INDEX_YEAR
+    config.add_index_field Settings.FIELDS.TEMPORAL_COVERAGE
     config.add_index_field Settings.FIELDS.CREATOR
     config.add_index_field Settings.FIELDS.DESCRIPTION, helper_method: :snippit
     config.add_index_field Settings.FIELDS.PUBLISHER
@@ -193,7 +193,7 @@ class CatalogController < ApplicationController
     config.add_show_field Settings.FIELDS.ISO_TOPIC_CATEGORY, label: 'ISO Topic Category', itemprop: 'keywords', link_to_facet: true
     config.add_show_field Settings.FIELDS.DATE_ISSUED, label: 'Date Published', itemprop: 'keywords'
     config.add_show_field Settings.FIELDS.TEMPORAL_COVERAGE, label: 'Temporal Coverage', itemprop: 'temporal'
-    config.add_show_field Settings.FIELDS.PROVIDER, label: 'Provider'
+    config.add_show_field Settings.FIELDS.PROVIDER, label: 'Provider', itemprop: 'keywords', link_to_facet: true
     config.add_show_field Settings.FIELDS.RIGHTS, label: 'Rights'
     config.add_show_field Settings.FIELDS.RIGHTS_HOLDER, label: 'Rights Holder'
     config.add_show_field Settings.FIELDS.LICENSE, label: 'License'
