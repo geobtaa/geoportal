@@ -1,0 +1,56 @@
+{
+  "id": "27001-road-centerlines",
+  "model_name_ssi": "Document",
+  "model_pk_ssi": "25b75250-69f8-4c22-a9a6-acc7d80745c9",
+  "gbl_mdVersion_s": "Aardvark",
+  "dct_title_s": "Road Centerlines [Aitkin County]",
+  "dct_description_sm": [
+    "This collection of annual layers features all roads that were mapped for Enhanced 911 purposes."
+  ],
+  "dct_creator_sm": [
+    "Aitkin County GIS"
+  ],
+  "gbl_resourceClass_sm": [
+    "Collections"
+  ],
+  "dcat_theme_sm": [
+    "Transportation"
+  ],
+  "dct_temporal_sm": [
+    "2015-2021"
+  ],
+  "gbl_dateRange_drsim": [
+    "[2015 TO 2021]"
+  ],
+  "gbl_indexYear_im": [
+    2015
+  ],
+  "dct_spatial_sm": [
+    "Aitkin County, Minnesota",
+    "Minnesota"
+  ],
+  "locn_geometry": "ENVELOPE(-93.810,-93.050,47.160,46.150)",
+  "dcat_centroid_ss": "46.655,-93.43",
+  "gbl_resourceType_sm": [
+    "Vector data"
+  ],
+  "gbl_georeferenced_b": false,
+  "dct_references_s": "{}",
+  "b1g_access_s": "{}",
+  "geomg_id_s": "27001-road-centerlines",
+  "schema_provider_s": "Aitkin County, Minnesota",
+  "b1g_code_s": "27001",
+  "b1g_status_s": "Active",
+  "b1g_dct_accrualMethod_s": "MGMG",
+  "b1g_dateAccessioned_sm": [
+    "2021-12-06"
+  ],
+  "b1g_publication_state_s": "published",
+  "dct_accessRights_s": "Public",
+  "gbl_suppressed_b": false,
+  "b1g_child_record_b": false,
+  "gbl_mdModified_dt": "2021-12-09T19:58:15Z",
+  "date_created_dtsi": "2021-12-09T18:53:22Z",
+  "date_modified_dtsi": "2021-12-09T19:58:15Z",
+  "b1g_geom_import_id_ssi": "280"
+}
