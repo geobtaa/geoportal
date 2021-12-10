@@ -28,7 +28,7 @@
     <dynamicField name="*_dt"   type="date"    stored="true"  indexed="true"/>
     <dynamicField name="*_f"    type="float"   stored="true"  indexed="true"/>
     <dynamicField name="*_i"    type="int"     stored="true"  indexed="true"/>
-    <dynamicField name="*_im"   type="int"     stored="true"  indexed="true" multiValued="true" />
+    <dynamicField name="*_im"   type="int"     stored="true"  indexed="true" multiValued="true" sortMissingLast="true" />
     <dynamicField name="*_l"    type="long"    stored="true"  indexed="true"/>
     <dynamicField name="*_s"    type="string"  stored="true"  indexed="true"/>
     <dynamicField name="*_sdv"    type="string"  stored="true"  indexed="true" docValues="true"/>
@@ -205,7 +205,6 @@
 
   <!-- for sorting text fields -->
   <copyField source="schema_provider_s"   dest="schema_provider_sort"/>
-  <copyField source="dct_publisher_sm"     dest="dc_publisher_sort"/>
   <copyField source="dct_title_s"         dest="dct_title_sort"/>
 
   <!-- for spell checking -->
