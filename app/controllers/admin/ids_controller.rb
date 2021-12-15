@@ -129,34 +129,34 @@ module Admin
       # ADVANCED SEARCH
       #
       # Code
-      # config.add_facet_field Settings.FIELDS.B1G_CODE, label: 'Code', limit: 1000
+      config.add_facet_field Settings.FIELDS.B1G_CODE, label: 'Code', limit: 1000
 
       # Is Part Of
-      # config.add_facet_field Settings.FIELDS.IS_PART_OF, label: 'Is Part Of', limit: 1000
+      config.add_facet_field Settings.FIELDS.IS_PART_OF, label: 'Is Part Of', limit: 1000
 
       # Member Of
-      # config.add_facet_field Settings.FIELDS.MEMBER_OF, label: 'Member Of', limit: 1000
+      config.add_facet_field Settings.FIELDS.MEMBER_OF, label: 'Member Of', limit: 1000
 
       # Resource Type
-      # config.add_facet_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', limit: 1000
+      config.add_facet_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', limit: 1000
 
       # Subject
-      # config.add_facet_field Settings.FIELDS.SUBJECT, label: 'Subject', limit: 1000
+      config.add_facet_field Settings.FIELDS.SUBJECT, label: 'Subject', limit: 1000
 
       # ISO Topic Category
-      # config.add_facet_field Settings.FIELDS.ISO_TOPIC_CATEGORY, label: 'ISO Topic Category', limit: 1000
+      config.add_facet_field Settings.FIELDS.ISO_TOPIC_CATEGORY, label: 'ISO Topic Category', limit: 1000
 
       # Format
-      # config.add_facet_field Settings.FIELDS.FORMAT, label: 'Format', limit: 1000
+      config.add_facet_field Settings.FIELDS.FORMAT, label: 'Format', limit: 1000
 
       # Suppressed
-      # config.add_facet_field Settings.FIELDS.SUPPRESSED, label: 'Suppressed'
+      config.add_facet_field Settings.FIELDS.SUPPRESSED, label: 'Suppressed'
 
       # Child Record
-      # config.add_facet_field Settings.FIELDS.B1G_CHILD_RECORD, label: 'Child Record'
+      config.add_facet_field Settings.FIELDS.B1G_CHILD_RECORD, label: 'Child Record'
 
       # Georeferenced
-      # config.add_facet_field Settings.FIELDS.GEOREFERENCED, label: 'Georeferenced'
+      config.add_facet_field Settings.FIELDS.GEOREFERENCED, label: 'Georeferenced'
 
       # Have BL send all facet field names to Solr, which has been the default
       # previously. Simply remove these lines if you'd rather use Solr request
