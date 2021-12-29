@@ -33,7 +33,7 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   reconnect: false
   host: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_HOST'] %>

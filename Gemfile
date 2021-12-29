@@ -12,7 +12,8 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'webpacker', '~> 4.x'
 
 gem 'sqlite3', '~> 1.4'
-gem 'mysql2', '~> 0.5.0'
+#gem 'mysql2', '~> 0.5.0'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
