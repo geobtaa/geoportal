@@ -599,7 +599,7 @@ DEPENDENCIES
   pg
   pointless_feedback
   popper_js
-  puma (>= 4.3.5)
+  puma (~> 5.1)
   rack-cors
   rack-mini-profiler (~> 2.3.1)
   rails (~> 6.1.0)

@@ -8,6 +8,8 @@ gem 'listen', '~> 3.0'
 
 gem 'rack-cors', :require => 'rack/cors'
 
+gem "puma", "~> 5.1"
+
 # Webpacker
 gem 'webpacker', '~> 4.x'
 
@@ -57,7 +59,6 @@ end
 
 group :development do
   gem 'web-console'
-  gem "puma", ">= 4.3.5"
   gem 'foreman'
   gem 'letter_opener'
 end
