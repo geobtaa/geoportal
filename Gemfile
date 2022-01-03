@@ -12,7 +12,11 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'webpacker', '~> 4.x'
 
 gem 'sqlite3', '~> 1.4'
-gem 'mysql2', '~> 0.5.0'
+
+group :production do
+  gem 'mysql2', '~> 0.5.0'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -111,3 +115,5 @@ group :test do
   gem 'minitest-ci', '~> 3.4.0'
   gem 'minitest-reporters'
 end
+
+gem "rexml", "~> 3.2"
