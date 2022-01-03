@@ -104,6 +104,9 @@ gem 'whenever', '~> 0.9.0', require: false
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'exception_notification', '~> 4.4.0'
 
+# Appsignal
+gem 'appsignal'
+
 group :test do
   gem 'webdrivers'
   gem 'm', '~> 1.5.0'
