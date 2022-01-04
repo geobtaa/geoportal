@@ -9,6 +9,8 @@ gem 'listen', '~> 3.0'
 gem 'rack-cors', :require => 'rack/cors'
 
 gem "puma", "~> 5.1"
+# Run puma with systemd integration
+gem 'sd_notify', '>= 0.1.0'
 
 # Webpacker
 gem 'webpacker', '~> 4.x'
