@@ -104,7 +104,7 @@ gem 'dotenv-rails'
 
 # Feedback
 gem 'pointless_feedback'
-gem 'whenever', '~> 0.9.0', require: false
+gem 'whenever', '~> 1.0.0', require: false
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'exception_notification', '~> 4.4.0'
 
