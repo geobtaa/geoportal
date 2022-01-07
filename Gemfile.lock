@@ -93,6 +93,8 @@ GEM
       faraday (>= 0.10, < 2.0)
       net-http-persistent
     ansi (1.5.0)
+    appsignal (3.0.17)
+      rack
     autoprefixer-rails (10.3.3.0)
       execjs (~> 2)
     awesome_print (1.9.2)
@@ -558,6 +560,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable (~> 2.5.0)
+  appsignal
   awesome_print
   blacklight (~> 7.19.0)
   blacklight_advanced_search!
