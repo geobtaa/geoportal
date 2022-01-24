@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
-gem 'bootsnap', require: false
+gem 'bootsnap', '~> 1.9.3', require: false
 gem 'listen', '~> 3.0'
 
 gem 'rack-cors', :require => 'rack/cors'

@@ -114,7 +114,7 @@ GEM
       jquery-rails
       rails (>= 3.0)
       tether-rails
-    bootsnap (1.9.1)
+    bootsnap (1.9.4)
       msgpack (~> 1.0)
     bootstrap (4.6.0)
       autoprefixer-rails (>= 9.1.0)
@@ -365,7 +365,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    msgpack (1.4.2)
+    msgpack (1.4.3)
     multipart-post (2.1.1)
     net-http-persistent (2.9.4)
     nio4r (2.5.8)
@@ -566,7 +566,7 @@ DEPENDENCIES
   blacklight (~> 7.19.0)
   blacklight_advanced_search!
   blacklight_range_limit (~> 7.0.0)
-  bootsnap
+  bootsnap (~> 1.9.3)
   bootstrap (~> 4.0)
   byebug
   capybara
@@ -630,4 +630,4 @@ DEPENDENCIES
   whenever (~> 1.0.0)
 
 BUNDLED WITH
-   2.2.17
+   2.3.5
