@@ -83,7 +83,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'mini_magick', '~> 4.9.4'
 
 gem 'statesman', '~> 3.4.1'
-gem 'sidekiq', '~> 5.2.0'
+gem 'sidekiq', '~> 6.3.0'
 gem 'sidekiq-failures', '~> 1.0.0'
 gem 'down', '~> 4.4'
 gem 'addressable', '~> 2.5.0'
