@@ -26,6 +26,6 @@ production:
   encoding: utf8
   reconnect: false
   host: "<%= ENV['GEOBLACKLIGHT_DB_HOST'] %>"
-  database: "<%= ENV['GEOBLACKLIGHT_DB_NAME'] %>"
+  database: "<%= ENV['GEOBLACKLIGHT_DB_DATABASE'] %>"
   username: "<%= ENV['GEOBLACKLIGHT_DB_USER'] %>"
   password: "<%= ENV['GEOBLACKLIGHT_DB_PASSWORD'] %>"
