@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2021_10_06_201348) do
     t.string "to_state", null: false
     t.text "metadata"
     t.integer "sort_key", null: false
-    t.bigint "solr_document_sidecar_id", null: false
+    t.integer "solr_document_sidecar_id", null: false
     t.boolean "most_recent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -147,5 +147,6 @@ ActiveRecord::Schema.define(version: 2021_10_06_201348) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "image_upload_transitions", "solr_document_sidecars"
+  add_foreign_key "sidecar_image_transitions", "solr_document_sidecars"
   add_foreign_key "uri_transitions", "solr_document_uris"
 end
