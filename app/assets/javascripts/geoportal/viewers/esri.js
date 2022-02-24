@@ -12,7 +12,6 @@ GeoBlacklight.Viewer.Esri = GeoBlacklight.Viewer.Map.extend({
     this.map.addLayer(this.overlay);
 
     // B1G Customizations
-    this.addFullscreenControl();
     this.addBasemapSwitcher();
     this.testNetwork();
 

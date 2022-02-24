@@ -10,7 +10,6 @@ GeoBlacklight.Viewer.IndexMap = GeoBlacklight.Viewer.Map.extend({
     }
 
     // B1G Customizations
-    this.addFullscreenControl();
     this.addBasemapSwitcher();
   },
   availabilityStyle: function(availability) {

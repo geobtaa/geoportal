@@ -9,7 +9,6 @@ GeoBlacklight.Viewer.Wms = GeoBlacklight.Viewer.Map.extend({
     this.map.addLayer(this.overlay);
 
     // B1G Customizations
-    this.addFullscreenControl();
     this.addBasemapSwitcher();
 
     if (this.data.available) {

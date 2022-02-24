@@ -29,7 +29,6 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     }
 
     // B1G Controls
-    this.addFullscreenControl();
     this.addBasemapSwitcher();
   },
 
@@ -87,14 +86,6 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     } else {
       return _this.basemap.mapquest;
     }
-  },
-
-  addFullscreenControl: function() {
-    // fullscreen control
-    console.log('Control: Fullscreen');
-    this.map.addControl(new L.Control.Fullscreen({
-      position: 'topleft'
-    }));
   },
 
   addBasemapSwitcher: function() {
