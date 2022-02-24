@@ -54,7 +54,7 @@ Blacklight.onLoad(function() {
     url.href = window.location.href;
     url.pathname = '/admin/api.json'
     // Oboe - Re-query Solr for JSON results
-    oboe(url.toString() + '&format=json&per_page=1000&rows=10000')
+    oboe(url.toString() + '&format=json&per_page=500&rows=500')
       .node('data.*', function( doc ){
           if(typeof doc['attributes']['dcat_centroid_ss'] != 'undefined'){
             var latlng = doc['attributes']['dcat_centroid_ss']['attributes']['value'].split(",")
