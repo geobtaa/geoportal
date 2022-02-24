@@ -18,6 +18,23 @@
     <!-- GeoBlacklight -->
     <field name="geomg_id_s" type="string" stored="true" indexed="true" required="true"/>
 
+    <!-- Spatial Field Type: Represents the exent of the resource and powers map search functionality.
+      Value can be any valid WKT or ENVELOPE String:
+        <field name="locn_geometry">POLYGON((1 8, 1 9, 2 9, 2 8, 1 8))</field>
+        <field name="locn_geometry">ENVELOPE(-117.312, -115.39, 84.31, 83.1)</field> -->
+    <field name="locn_geometry" type="location_geo3d" stored="true" indexed="true"/>
+
+    <!-- Spatial Field Type: The bounding box of the resource. Used in overlap ratio boosting.
+      Value must be an ENVELOPE String:
+        <field name="dcat_bbox">ENVELOPE(-117.312, -115.39, 84.31, 83.1)</field> -->
+    <field name="dcat_bbox" type="location_rpt" stored="true" indexed="true"/>
+
+    <!-- Spatial Field Type: Used to display the center point of a resource. -->
+    <field name="dcat_centroid" type="location" stored="true" indexed="true"/>
+
+    <!-- Spatial Field Type: Internal field used for overlap ratio boosting. -->
+    <field name="solr_bboxtype" type="bbox" stored="true" indexed="true"/>
+
     <!-- core generated fields -->
     <field name="text" type="text_en" stored="false" indexed="true" multiValued="true"
                        termVectors="true" termPositions="true" termOffsets="true" />
@@ -55,11 +72,6 @@
     <dynamicField name="*suggest" type="textSuggest" indexed="true" stored="false" multiValued="true" />
 
     <!-- date range (_dr...) (for faster AND better range queries) -->
-    <dynamicField name="*_dri" type="dateRange" stored="false" indexed="true" multiValued="false"/>
-    <dynamicField name="*_drim" type="dateRange" stored="false" indexed="true" multiValued="true"/>
-    <dynamicField name="*_drs" type="dateRange" stored="true" indexed="false" multiValued="false"/>
-    <dynamicField name="*_drsm" type="dateRange" stored="true" indexed="false" multiValued="true"/>
-    <dynamicField name="*_drsi" type="dateRange" stored="true" indexed="true" multiValued="false"/>
     <dynamicField name="*_drsim" type="dateRange" stored="true" indexed="true" multiValued="true"/>
 
     <!-- Spatial field types:
@@ -151,7 +163,6 @@
       <analyzer>
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_en.txt"/>
-        <filter class="solr.StandardFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
       </analyzer>
@@ -161,23 +172,27 @@
     <fieldType class="solr.TextField" name="textSuggest" positionIncrementGap="100">
       <analyzer>
         <tokenizer class="solr.KeywordTokenizerFactory"/>
-        <filter class="solr.StandardFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
       </analyzer>
     </fieldType>
 
     <!-- Spatial field types -->
-    <fieldType name="location" class="solr.LatLonType" subFieldSuffix="_d"/>
-
+    <fieldType name="location" class="solr.LatLonPointSpatialField" docValues="true"/>
     <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType"
                geo="true" distErrPct="0.025" maxDistErr="0.001" distanceUnits="kilometers"/>
+    <fieldType name="location_geo3d"
+      class="solr.SpatialRecursivePrefixTreeFieldType"
+      spatialContextFactory="Geo3D"
+      prefixTree="s2"
+      geo="true"
+      maxDistErr="0.001"
+      planetModel="WGS84"/>
+
     <!-- Adding field type for bboxField that enables, among other things, overlap ratio calculations -->
     <fieldType name="bbox" class="solr.BBoxField"
            geo="true" distanceUnits="kilometers" numberType="pdouble" />
     <fieldType name="pdouble" class="solr.DoublePointField" docValues="true"/>
-
-
   </types>
 
   <!-- for scoring formula -->
@@ -224,5 +239,8 @@
   <copyField source="dct_spatial_sm" dest="suggest"/>
 
   <!-- for bbox value -->
-  <copyField source="locn_geometry" dest="solr_bboxtype"/>
+  <copyField source="dcat_bbox" dest="solr_bboxtype"/>
+
+  <!-- for GEOMG reporting -->
+  <copyField source="date_created_dtsi" dest="date_created_drsim"/>
 </schema>
