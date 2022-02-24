@@ -48,6 +48,8 @@
   "dct_accessRights_s": "Public",
   "dct_format_s": "GeoTIFF",
   "dct_references_s": "{\"http://schema.org/downloadUrl\":\"https://mapsweb.lib.purdue.edu/datasets/Wabash1929/wabash_topo_27.tif.zip\",\"urn:x-esri:serviceType:ArcGIS#ImageMapLayer\":\"https://mapsweb.lib.purdue.edu/arcgis/rest/services/Purdue/wabashtopo/ImageServer\",\"http://schema.org/url\":\"https://mapsweb.lib.purdue.edu/wabashriver/\"}",
+  "b1g_publication_state_s": "published",
+  "geomg_id_s": "32653ed6-8d83-4692-8a06-bf13ffe2c018",
   "id": "32653ed6-8d83-4692-8a06-bf13ffe2c018",
   "dct_identifier_sm": [
     "32653ed6-8d83-4692-8a06-bf13ffe2c018"

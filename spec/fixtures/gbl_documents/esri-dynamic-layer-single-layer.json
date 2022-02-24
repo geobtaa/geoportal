@@ -49,6 +49,8 @@
   "dct_accessRights_s": "Public",
   "dct_format_s": "Shapefile",
   "dct_references_s": "{\"http://schema.org/downloadUrl\":\"https://maps.indiana.edu/download/Geology/Industrial_Minerals_Quarries_Abandoned.zip\",\"http://www.opengis.net/cat/csw/csdgm\":\"https://maps.indiana.edu/metadata/Geology/Industrial_Minerals_Quarries_Abandoned.xml\",\"http://schema.org/url\":\"http://maps.indiana.edu/previewMaps/Geology/Industrial_Minerals_Quarries_Abandoned.html\",\"urn:x-esri:serviceType:ArcGIS#DynamicMapLayer\":\"https://maps.indiana.edu/arcgis/rest/services/Geology/Industrial_Minerals_Quarries_Abandoned/MapServer/0\"}",
+  "b1g_publication_state_s": "published",
+  "geomg_id_s": "4669301e-b4b2-4c8b-bf40-01b968a2865b",
   "id": "4669301e-b4b2-4c8b-bf40-01b968a2865b",
   "dct_identifier_sm": [
     "4669301e-b4b2-4c8b-bf40-01b968a2865b"

@@ -50,6 +50,8 @@
   "dct_format_s": "GeoTIFF",
   "gbl_wxsIdentifier_s": "cugir008186",
   "dct_references_s": "{\"http://schema.org/downloadUrl\":\"https://s3.amazonaws.com/cugir-data/00/81/86/cugir-008186-index.geojson\",\"http://www.opengis.net/cat/csw/csdgm\":\"https://s3.amazonaws.com/cugir-data/00/81/86/fgdc.xml\",\"http://www.w3.org/1999/xhtml\":\"https://s3.amazonaws.com/cugir-data/00/81/86/fgdc.html\",\"https://openindexmaps.org\":\"https://s3.amazonaws.com/cugir-data/00/81/86/cugir-008186-index.geojson\"}",
+  "b1g_publication_state_s": "published",
+  "geomg_id_s": "cugir-008186",
   "id": "cugir-008186",
   "dct_identifier_sm": [
     "http://cugir.library.cornell.edu/catalog/cugir-008186"

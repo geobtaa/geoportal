@@ -38,6 +38,8 @@
   "dct_format_s": "Shapefile",
   "gbl_wxsIdentifier_s": "mit:SDE_DATA_US_MA_E25ZCTA5DCT_2000",
   "dct_references_s": "{\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"https://geodata.mit.edu/geoserver/wfs\",\"http://www.opengis.net/def/serviceType/ogc/wms\":\"https://geodata.mit.edu/geoserver/wms\"}",
+  "b1g_publication_state_s": "published",
+  "geomg_id_s": "mit-f6rqs4ucovjk2",
   "id": "mit-f6rqs4ucovjk2",
   "gbl_mdModified_dt": "2021-06-11T18:42:45Z",
   "gbl_mdVersion_s": "Aardvark"

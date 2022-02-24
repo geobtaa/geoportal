@@ -1,5 +1,7 @@
 {
   "id": "all-relationships",
+  "b1g_publication_state_s": "published",
+  "geomg_id_s": "all-relationships",
   "gbl_mdVersion_s": "Aardvark",
   "dct_title_s": "All Relationships",
   "dct_description_sm": [

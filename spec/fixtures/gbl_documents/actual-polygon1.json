@@ -40,6 +40,8 @@
   "dct_format_s": "Shapefile",
   "gbl_wxsIdentifier_s": "sde:GISPORTAL.GISOWNER01.CAMBRIDGEGRID100_04",
   "dct_references_s": "{\"http://www.opengis.net/cat/csw/csdgm\":\"https://raw.githubusercontent.com/OpenGeoMetadata/edu.tufts/master/165/242/110/132/fgdc.xml\",\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"http://geoserver01.uit.tufts.edu/wfs\",\"http://www.opengis.net/def/serviceType/ogc/wms\":\"http://geoserver01.uit.tufts.edu/wms\"}",
+  "b1g_publication_state_s": "published",
+  "geomg_id_s": "tufts-cambridgegrid100-04",
   "id": "tufts-cambridgegrid100-04",
   "dct_identifier_sm": [
     "urn:geodata.tufts.edu:Tufts.CambridgeGrid100_04"
