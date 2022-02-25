@@ -65,7 +65,7 @@ FIELDS:
   :RIGHTS_HOLDER: 'dct_rightsHolder_sm'
   :SOURCE: 'dct_source_sm'
   :SPATIAL_COVERAGE: 'dct_spatial_sm'
-  :SPATIAL_EXTENT: 'locn_geometry'
+  :GEOMETRY: 'locn_geometry'
   :SUBJECT: 'dct_subject_sm'
   :SUPPRESSED: 'gbl_suppressed_b'
   :TEMPORAL_COVERAGE: 'dct_temporal_sm'
@@ -212,15 +212,15 @@ LEAFLET:
     DETECT_RETINA: true
     INDEX:
       DEFAULT: &default
-        color: "#1eb300"
+        color: "#7FCDBB"
         weight: "1"
         radius: "4"
       UNAVAILABLE:
         <<: *default
-        color: "#b3001e"
+        color: "#EDF8B1"
       SELECTED:
         <<: *default
-        color: "#006bde"
+        color: "#2C7FB8"
   VIEWERS:
     DOWNLOAD:
       CONTROLS:
