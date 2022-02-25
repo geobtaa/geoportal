@@ -5,6 +5,10 @@
     <field name="_version_" type="long"   stored="true" indexed="true"/>
     <field name="timestamp" type="date"   stored="true" indexed="true" default="NOW"/>
 
+    <!-- core generated fields -->
+    <field name="text" type="text_en" stored="false" indexed="true" multiValued="true"
+                       termVectors="true" termPositions="true" termOffsets="true" />
+
     <!-- Kithe -->
     <!-- id is the unique key -->
     <field name="id" type="string" stored="true" indexed="true" multiValued="false" required="true"/>
@@ -12,12 +16,13 @@
     <dynamicField name="*_ssi" type="string" stored="true" indexed="true" multiValued="false"/>
     <!-- date_created_dtsi -->
     <dynamicField name="*_dtsi" type="pdate" stored="true" indexed="true" multiValued="false"/>
-
     <!-- END Kithe -->
 
-    <!-- GeoBlacklight -->
+    <!-- GEOMG -->
     <field name="geomg_id_s" type="string" stored="true" indexed="true" required="true"/>
+    <!-- END GEOMG -->
 
+    <!-- GeoBlacklight -->
     <!-- Spatial Field Type: Represents the exent of the resource and powers map search functionality.
       Value can be any valid WKT or ENVELOPE String:
         <field name="locn_geometry">POLYGON((1 8, 1 9, 2 9, 2 8, 1 8))</field>
@@ -34,10 +39,6 @@
 
     <!-- Spatial Field Type: Internal field used for overlap ratio boosting. -->
     <field name="solr_bboxtype" type="bbox" stored="true" indexed="true"/>
-
-    <!-- core generated fields -->
-    <field name="text" type="text_en" stored="false" indexed="true" multiValued="true"
-                       termVectors="true" termPositions="true" termOffsets="true" />
 
     <!-- dynamic field with simple types by suffix -->
     <dynamicField name="*_b"    type="boolean" stored="true"  indexed="true"/>
