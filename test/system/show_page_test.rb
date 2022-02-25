@@ -66,8 +66,8 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_no_selector?("div[data-protocol='Iiif']")
 
     # Download
-    assert page.has_content?("Downloads")
-    assert page.has_link?("Original Shapefile")
+    assert page.has_content?("Download")
+    assert page.has_link?("Original Shapefile", visible: false)
 
     # Export
     assert page.has_link?("Open in ArcGIS")
@@ -90,8 +90,8 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_no_selector?("div[data-protocol='Iiif']")
 
     # Download
-    assert page.has_content?("Downloads")
-    assert page.has_link?("Original Shapefile")
+    assert page.has_content?("Download")
+    assert page.has_link?("Original Shapefile", visible: false)
 
     # Provenance
     assert page.has_link?("Minnesota")
@@ -154,8 +154,8 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_link?("Metadata")
 
     # Download
-    assert page.has_content?("Downloads")
-    assert page.has_link?("Original GeoTIFF")
+    assert page.has_content?("Download")
+    assert page.has_link?("Original GeoTIFF", visible: false)
 
     # Data Relations
     # assert page.has_content?("Related Items")
@@ -188,11 +188,12 @@ class ShowPageTest < ApplicationSystemTestCase
 
     # Yes Links
     # * Place
-    # * Resource Class (missing on this doc)
+    # * Resource Class
     # * Resource Type
     # * ISO Topic Category (missing on this doc)
-    assert page.has_link?("Minnesota, United States")
-    assert page.has_link?("Raster")
+    assert page.has_link?("Minnesota")
+    assert page.has_link?("Datasets")
+    assert page.has_link?("Raster data")
 
     assert page.has_no_link?("Minnesota Geospatial Commons") # Collection
   end
