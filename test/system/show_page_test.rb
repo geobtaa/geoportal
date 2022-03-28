@@ -184,7 +184,7 @@ class ShowPageTest < ApplicationSystemTestCase
     # * Publisher
     assert page.has_no_link?("Imagery and Base Maps")
     assert page.has_no_link?("2015-11-18T11:02:15.705119")
-    assert page.has_no_link?("Minnesota", { exact: true })
+    # assert page.has_no_link?("Minnesota", { exact: true })
     assert page.has_no_link?("Minnesota Department of Natural Resources (DNR)")
 
     # Yes Links
