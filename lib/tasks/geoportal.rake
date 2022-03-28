@@ -30,7 +30,7 @@ namespace :geoportal do
         puts ' '
         begin
           Rake::Task['geoportal:index:seed'].invoke
-          system "bundle exec rails s --binding=#{ENV.fetch('GEOPORTAL_SERVER_BIND_INTERFACE', '0.0.0.0')} --port=#{ENV.fetch('GEOPORTAL_SERVER_PORT', '3000')}"
+          system "bundle exec rails s --binding=#{ENV.fetch('GEOPORTAL_SERVER_BIND_INTERFACE', '127.0.0.1')} --port=#{ENV.fetch('GEOPORTAL_SERVER_PORT', '3000')}"
           sleep
         rescue Interrupt
           puts "\nShutting down..."
