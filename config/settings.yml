@@ -136,41 +136,18 @@ WEBSERVICES_SHOWN:
 
 # Relationships to display
 RELATIONSHIPS_SHOWN:
-  MEMBER_OF_ANCESTORS:
-    field: pcdm_memberOf_sm
-    query_type: ancestors
-    icon: nil
-    label: geoblacklight.relations.member_of_ancestors
-  MEMBER_OF_DESCENDANTS:
-    field: pcdm_memberOf_sm
-    query_type: descendants
-    icon: leaf
-    label: geoblacklight.relations.member_of_descendants
-  PART_OF_ANCESTORS:
-    field: dct_isPartOf_sm
-    query_type: ancestors
-    icon: nil
-    label: geoblacklight.relations.part_of_ancestors
-  PART_OF_DESCENDANTS:
-    field: dct_isPartOf_sm
-    query_type: descendants
-    icon: leaf
-    label: geoblacklight.relations.part_of_descendants
-  RELATION:
-    field: dct_relation_sm
-    query_type: ancestors
-    icon: nil
-    label: geoblacklight.relations.relation
-  REPLACES:
-    field: dct_replaces_sm
-    query_type: ancestors
-    icon: nil
-    label: geoblacklight.relations.replaces
+
   REPLACED_BY:
     field: dct_isReplacedBy_sm
     query_type: descendants
     icon: nil
     label: geoblacklight.relations.replaced_by
+  REPLACES:
+    field: dct_replaces_sm
+    query_type: ancestors
+    icon: nil
+    label: geoblacklight.relations.replaces
+    
   SOURCE_ANCESTORS:
     field: dct_source_sm
     query_type: ancestors
@@ -181,6 +158,7 @@ RELATIONSHIPS_SHOWN:
     query_type: descendants
     icon: leaf
     label: geoblacklight.relations.descendant
+    
   VERSION_OF_ANCESTORS:
     field: dct_isVersionOf_sm
     query_type: ancestors
@@ -191,6 +169,35 @@ RELATIONSHIPS_SHOWN:
     query_type: descendants
     icon: leaf
     label: geoblacklight.relations.version_of_descendants
+    
+  PART_OF_ANCESTORS:
+    field: dct_isPartOf_sm
+    query_type: ancestors
+    icon: nil
+    label: geoblacklight.relations.part_of_ancestors
+  PART_OF_DESCENDANTS:
+    field: dct_isPartOf_sm
+    query_type: descendants
+    icon: leaf
+    label: geoblacklight.relations.part_of_descendants
+    
+  MEMBER_OF_ANCESTORS:
+    field: pcdm_memberOf_sm
+    query_type: ancestors
+    icon: nil
+    label: geoblacklight.relations.member_of_ancestors
+  MEMBER_OF_DESCENDANTS:
+    field: pcdm_memberOf_sm
+    query_type: descendants
+    icon: leaf
+    label: geoblacklight.relations.member_of_descendants
+    
+  RELATION:
+    field: dct_relation_sm
+    query_type: ancestors
+    icon: nil
+    label: geoblacklight.relations.relation
+   
 
 WMS_PARAMS:
   :SERVICE: 'WMS'
