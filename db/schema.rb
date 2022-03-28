@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2021_10_06_201348) do
     t.string "to_state", null: false
     t.text "metadata"
     t.integer "sort_key", null: false
-    t.integer "solr_document_sidecar_id", null: false
+    t.bigint "solr_document_sidecar_id", null: false
     t.boolean "most_recent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
