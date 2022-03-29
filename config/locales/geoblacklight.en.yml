@@ -61,13 +61,16 @@ en:
       services_close: 'Close'
     relations:
       ancestor: 'Is derived from...'
-      descendant: 'Has derivatives...'
       browse_all: "Browse all %{count} records..."
-      title: 'Related items...'
+      descendant: 'Has derivatives...'
       member_of_ancestors: 'Belongs to collection...'
       member_of_descendants: 'Collection records...'
       part_of_ancestors: 'Is part of...'
       part_of_descendants: 'Has part...'
+      relation: 'Related Records'
+      replaces: 'Item replaces...'
+      source: 'Source Datasets'
+      title: 'Related items...'
       version_of_ancestors: 'Is version of...'
       version_of_descendants: 'Has version...'
     metadata:
