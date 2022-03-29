@@ -141,9 +141,19 @@ class CatalogController < ApplicationController
     config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
     config.add_facet_field Settings.FIELDS.B1G_MEDIATOR, label: 'Institutional Access', limit: 15
 
+    # GEOBLACKLIGHT APPLICATION FACETS
+
+    # Map-Based "Search Here" Feature
+    # item_presenter       - Defines how the facet appears in the GBL UI
+    # filter_query_builder - Defines the query generated for Solr
+    # filter_class         - Defines how to add/remove facet from query
+    # label                - Defines the label used in contstraints container
+    config.add_facet_field Settings.FIELDS.GEOMETRY, item_presenter: Geoblacklight::BboxItemPresenter, filter_class: Geoblacklight::BboxFilterField, filter_query_builder: Geoblacklight::BboxFilterQuery, within_boost: Settings.BBOX_WITHIN_BOOST, overlap_boost: Settings.OVERLAP_RATIO_BOOST, overlap_field: Settings.FIELDS.OVERLAP_FIELD, label: 'Bounding Box'
+
     # Item Relationship Facets
     # * Not displayed to end user (show: false)
     # * Must be present for facet filter queries to work
+    # * Must be present for "Browse all 4 records..." links to work
     config.add_facet_field Settings.FIELDS.MEMBER_OF, :label => 'Member Of', :limit => 8, collapse: false, show: false
     config.add_facet_field Settings.FIELDS.IS_PART_OF, :label => 'Is Part Of', :limit => 8, collapse: false, show: false
     config.add_facet_field Settings.FIELDS.RELATION, :label => 'Related', :limit => 8, collapse: false, show: false
@@ -190,7 +200,7 @@ class CatalogController < ApplicationController
     config.add_show_field Settings.FIELDS.SUBJECT, label: 'Subject', itemprop: 'keywords'
     config.add_show_field Settings.FIELDS.RESOURCE_CLASS, label: 'Resource Class', itemprop: 'keywords', link_to_facet: true
     config.add_show_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', itemprop: 'keywords', link_to_facet: true
-    config.add_show_field Settings.FIELDS.ISO_TOPIC_CATEGORY, label: 'ISO Topic Category', itemprop: 'keywords', link_to_facet: true
+    config.add_show_field Settings.FIELDS.THEME, label: 'ISO Topic Category', itemprop: 'keywords', link_to_facet: true
     config.add_show_field Settings.FIELDS.DATE_ISSUED, label: 'Date Published', itemprop: 'keywords'
     config.add_show_field Settings.FIELDS.TEMPORAL_COVERAGE, label: 'Temporal Coverage', itemprop: 'temporal'
     config.add_show_field Settings.FIELDS.PROVIDER, label: 'Provider', itemprop: 'keywords', link_to_facet: true
@@ -280,7 +290,6 @@ class CatalogController < ApplicationController
     # Custom tools for GeoBlacklight
     config.add_show_tools_partial :more_details, partial: 'more_details', if: proc { |_context, _config, options| options[:document] && (!options[:document].references.nil? & !options[:document].references.url.nil?)}
     config.add_show_tools_partial :metadata, if: proc { |_context, _config, options| options[:document] && (Settings.METADATA_SHOWN & options[:document].references.refs.map(&:type).map(&:to_s)).any? }
-    config.add_show_tools_partial :web_services, if: proc { |_context, _config, options| options[:document] && (Settings.WEBSERVICES_SHOWN & options[:document].references.refs.map(&:type).map(&:to_s)).any? }
     config.add_show_tools_partial :carto, partial: 'carto', if: proc { |_context, _config, options| options[:document] && options[:document].carto_reference.present? }
     config.add_show_tools_partial :arcgis, partial: 'arcgis', if: proc { |_context, _config, options| options[:document] && options[:document].arcgis_urls.present? }
     config.add_show_tools_partial :data_dictionary, partial: 'data_dictionary', if: proc { |_context, _config, options| options[:document] && options[:document].data_dictionary_download.present? }
@@ -321,11 +330,21 @@ class CatalogController < ApplicationController
     config.autocomplete_path = 'suggest'
   end
 
+  def web_services
+    @response, @documents = action_documents
+
+    respond_to do |format|
+      format.html do
+        return render layout: false if request.xhr?
+        # Otherwise draw the full page
+      end
+    end
+  end
+
   # Administrative view of document
   # - Sidecar Image
   # - URIs
   def admin
     deprecated_response, @document = search_service.fetch(params[:id])
   end
-
 end
