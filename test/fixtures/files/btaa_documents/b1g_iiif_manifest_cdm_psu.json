@@ -46,7 +46,8 @@
     "Pennsylvania"
   ],
   "locn_geometry": "ENVELOPE(-80.3749989,-80.3530519,41.897332,41.883214)",
-  "dcat_centroid_ss": "41.890273,-80.3640254",
+  "dcat_bbox": "ENVELOPE(-80.3749989,-80.3530519,41.897332,41.883214)",
+  "dcat_centroid": "41.890273,-80.3640254",
   "pcdm_memberOf_sm": [
     "08d-02"
   ],

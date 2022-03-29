@@ -30,7 +30,8 @@
     "Minnesota"
   ],
   "locn_geometry": "ENVELOPE(-93.810,-93.050,47.160,46.150)",
-  "dcat_centroid_ss": "46.655,-93.43",
+  "dcat_bbox": "ENVELOPE(-93.810,-93.050,47.160,46.150)",
+  "dcat_centroid": "46.655,-93.43",
   "gbl_resourceType_sm": [
     "Vector data"
   ],

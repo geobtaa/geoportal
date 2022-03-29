@@ -68,7 +68,8 @@
     "United States"
   ],
   "locn_geometry": "ENVELOPE(-179.1474,179.7785,71.3526,17.8848)",
-  "dcat_centroid_ss": "44.6187,0.3156",
+  "dcat_bbox": "ENVELOPE(-179.1474,179.7785,71.3526,17.8848)",
+  "dcat_centroid": "44.6187,0.3156",
   "pcdm_memberOf_sm": [
     "99-1100"
   ],

@@ -9,11 +9,11 @@ namespace :geoportal do
     docs = []
     response["response"]["docs"].each_with_index do |doc, index|
       begin
-        if doc.key?('dcat_centroid_ss') && !doc['dcat_centroid_ss'].empty?
+        if doc.key?('dcat_centroid') && !doc['dcat_centroid'].empty?
           entry = {}
           entry['l'] = doc['geomg_id_s']
           entry['t'] = ActionController::Base.helpers.truncate(doc['dct_title_s'], length: 50)
-          lat,lng    = doc['dcat_centroid_ss'].split(",")
+          lat,lng    = doc['dcat_centroid'].split(",")
           lat = lat.to_f.round(4) # Truncate long values
           lng = lng.to_f.round(4) # Truncate long values
           entry['c'] = "#{lat},#{lng}"

@@ -41,7 +41,8 @@
     "Indiana"
   ],
   "locn_geometry": "ENVELOPE(-87.4665,-87.3179,39.6748,39.5982)",
-  "dcat_centroid_ss": "39.6365,-87.3922",
+  "dcat_bbox": "ENVELOPE(-87.4665,-87.3179,39.6748,39.5982)",
+  "dcat_centroid": "39.6365,-87.3922",
   "pcdm_memberOf_sm": [
     "09d-01"
   ],

@@ -49,7 +49,8 @@
     "Minnesota"
   ],
   "locn_geometry": "ENVELOPE(-93.04126601,-92.7581332,45.29691953,44.7467814)",
-  "dcat_centroid_ss": "45.021850465,-92.899699605",
+  "dcat_bbox": "ENVELOPE(-93.04126601,-92.7581332,45.29691953,44.7467814)",
+  "dcat_centroid": "45.021850465,-92.899699605",
   "dct_accessRights_s": "Public",
   "dct_format_s": "Shapefile",
   "dct_references_s": "{\"http://schema.org/url\":\"http://data-wcmn.opendata.arcgis.com/datasets/4d2053c593cc4f7685f2823f9e2061b8_1\",\"http://schema.org/downloadUrl\":\"http://data-wcmn.opendata.arcgis.com/datasets/4d2053c593cc4f7685f2823f9e2061b8_1.zip\",\"urn:x-esri:serviceType:ArcGIS#FeatureLayer\":\"https://services1.arcgis.com/3fjYPqJf7qalQMlb/arcgis/rest/services/Map_WFL1/FeatureServer/1\"}",

@@ -54,10 +54,10 @@ Blacklight.onLoad(function() {
     url.href = window.location.href;
     url.pathname = '/admin/api.json'
     // Oboe - Re-query Solr for JSON results
-    oboe(url.toString() + '&format=json&per_page=1000&rows=10000')
+    oboe(url.toString() + '&format=json&per_page=100&rows=1000')
       .node('data.*', function( doc ){
-          if(typeof doc['attributes']['dcat_centroid_ss'] != 'undefined'){
-            var latlng = doc['attributes']['dcat_centroid_ss']['attributes']['value'].split(",")
+          if(typeof doc['attributes']['dcat_centroid'] != 'undefined'){
+            var latlng = doc['attributes']['dcat_centroid']['attributes']['value'].split(",")
             markers.addLayer(L.marker([latlng[0],latlng[1]]).bindPopup("<a href='/catalog/" + doc['attributes']['geomg_id_s']['attributes']['value'] + "'>" + doc['attributes']['dct_title_s']['attributes']['value'] + "</a>"));
           }
         }

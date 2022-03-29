@@ -65,14 +65,14 @@ group :development do
   gem 'letter_opener'
 end
 
-gem 'blacklight', '~> 7.19.0'
+gem 'blacklight', '~> 7.24.0'
 gem 'blacklight_advanced_search', git: 'https://github.com/projectblacklight/blacklight_advanced_search.git', :branch => 'master'
 gem 'blacklight_range_limit', '~> 7.0.0'
 gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '~> 4.0.0.pre.alpha.3'
+gem 'geoblacklight', '~> 4.0.0.pre.rc1'
 
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
@@ -118,3 +118,6 @@ group :test do
   gem 'minitest-ci', '~> 3.4.0'
   gem 'minitest-reporters'
 end
+
+gem 'rexml'
+gem 'faraday_middleware', '1.2.0'

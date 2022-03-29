@@ -49,7 +49,8 @@
     "Indiana, United States"
   ],
   "locn_geometry": "ENVELOPE(-87, -85.76, 39.78, 37.96)",
-  "dcat_centroid_ss": "38.87,-86.38",
+  "dcat_bbox": "ENVELOPE(-87, -85.76, 39.78, 37.96)",
+  "dcat_centroid": "38.87,-86.38",
   "pcdm_memberOf_sm": [
     "Indiana Historic Maps"
   ],

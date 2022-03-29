@@ -34,7 +34,8 @@
     "World"
   ],
   "locn_geometry": "ENVELOPE(-180, 180, 80, -68)",
-  "dcat_centroid_ss": "6,0",
+  "dcat_bbox": "ENVELOPE(-180, 180, 80, -68)",
+  "dcat_centroid": "6,0",
   "pcdm_memberOf_sm": [
     "Clark Library Map Collections"
   ],
