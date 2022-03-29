@@ -120,3 +120,4 @@ group :test do
 end
 
 gem 'rexml'
+gem 'faraday_middleware', '1.2.0'
