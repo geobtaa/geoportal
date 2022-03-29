@@ -185,7 +185,7 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_no_link?("2015-11-18")
 
     # Yes Links
-    assert page.has_link?("Minnesota", { exact: true })
+    assert page.has_link?("Minnesota")
     assert page.has_link?("Datasets")
     assert page.has_link?("Raster data")
     assert page.has_link?("Imagery")
