@@ -3,16 +3,21 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
-gem 'bootsnap', require: false
+gem 'bootsnap', '~> 1.9.3', require: false
 gem 'listen', '~> 3.0'
 
 gem 'rack-cors', :require => 'rack/cors'
+
+gem "puma", "~> 5.1"
+# Run puma with systemd integration
+gem 'sd_notify', '>= 0.1.0'
 
 # Webpacker
 gem 'webpacker', '~> 4.x'
 
 gem 'sqlite3', '~> 1.4'
-gem 'mysql2', '~> 0.5.0'
+#gem 'mysql2', '~> 0.5.0'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -56,7 +61,6 @@ end
 
 group :development do
   gem 'web-console'
-  gem "puma", ">= 4.3.5"
   gem 'foreman'
   gem 'letter_opener'
 end
@@ -79,7 +83,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'mini_magick', '~> 4.9.4'
 
 gem 'statesman', '~> 3.4.1'
-gem 'sidekiq', '~> 5.2.0'
+gem 'sidekiq', '~> 6.3.0'
 gem 'sidekiq-failures', '~> 1.0.0'
 gem 'down', '~> 4.4'
 gem 'addressable', '~> 2.5.0'
@@ -100,7 +104,7 @@ gem 'dotenv-rails'
 
 # Feedback
 gem 'pointless_feedback'
-gem 'whenever', '~> 0.9.0', require: false
+gem 'whenever', '~> 1.0.0', require: false
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'exception_notification', '~> 4.4.0'
 

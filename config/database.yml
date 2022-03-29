@@ -14,17 +14,6 @@ development:
   <<: *default
   database: db/development.sqlite3
 
-# MySQL setup (hosted server development)
-#development:
-#  adapter: mysql2
-#  encoding: utf8
-#  reconnect: false
-#  host: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_HOST'] %>
-#  database: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_NAME'] %>
-#  username: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_USER'] %>
-#  password: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_PASSWORD'] %>
-
-
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
@@ -33,10 +22,12 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: mysql2
+  # Puma is given a lot of threads
+  pool: 10
+  adapter: postgresql
   encoding: utf8
   reconnect: false
-  host: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_HOST'] %>
-  database: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_NAME'] %>
-  username: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_USER'] %>
-  password: <%= ENV['GEOBLACKLIGHT_MYSQL_DB_PASSWORD'] %>
+  host: "<%= ENV['GEOBLACKLIGHT_DB_HOST'] %>"
+  database: "<%= ENV['GEOBLACKLIGHT_DB_DATABASE'] %>"
+  username: "<%= ENV['GEOBLACKLIGHT_DB_USER'] %>"
+  password: "<%= ENV['GEOBLACKLIGHT_DB_PASSWORD'] %>"
