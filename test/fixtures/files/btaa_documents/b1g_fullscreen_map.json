@@ -27,7 +27,8 @@
     "South Carolina, United States"
   ],
   "locn_geometry": "ENVELOPE(-92, -74, 39, 33)",
-  "dcat_centroid_ss": "36,-83",
+  "dcat_bbox": "ENVELOPE(-92, -74, 39, 33)",
+  "dcat_centroid": "36,-83",
   "pcdm_memberOf_sm": [
     "Penn State Rare Maps"
   ],

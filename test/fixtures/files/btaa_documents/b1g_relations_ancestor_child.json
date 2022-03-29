@@ -39,7 +39,8 @@
     "Minnesota, United States"
   ],
   "locn_geometry": "ENVELOPE(-97.23926544, -89.48338318, 49.23105053, 43.4994278)",
-  "dcat_centroid_ss": "46.365239165,-93.36132431",
+  "dcat_bbox": "ENVELOPE(-97.23926544, -89.48338318, 49.23105053, 43.4994278)",
+  "dcat_centroid": "46.365239165,-93.36132431",
   "pcdm_memberOf_sm": [
     "05d-01"
   ],

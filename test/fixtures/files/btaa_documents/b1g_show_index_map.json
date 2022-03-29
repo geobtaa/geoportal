@@ -47,7 +47,8 @@
     "Minnesota, United States"
   ],
   "locn_geometry": "ENVELOPE(-93.3287, -92.7339, 44.9233, 44.4729)",
-  "dcat_centroid_ss": "44.6981,-93.0313",
+  "dcat_bbox": "ENVELOPE(-93.3287, -92.7339, 44.9233, 44.4729)",
+  "dcat_centroid": "44.6981,-93.0313",
   "pcdm_memberOf_sm": [
     "John R. Borchert Map Library"
   ],

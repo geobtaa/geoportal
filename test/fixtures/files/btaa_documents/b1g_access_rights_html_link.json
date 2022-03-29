@@ -188,7 +188,8 @@
     "Minnesota"
   ],
   "locn_geometry": "ENVELOPE(-97.239209,-89.491739,49.384358,43.499356)",
-  "dcat_centroid_ss": "46.441857,-93.365474",
+  "dcat_bbox": "ENVELOPE(-97.239209,-89.491739,49.384358,43.499356)",
+  "dcat_centroid": "46.441857,-93.365474",
   "pcdm_memberOf_sm": [
     "99-0011"
   ],

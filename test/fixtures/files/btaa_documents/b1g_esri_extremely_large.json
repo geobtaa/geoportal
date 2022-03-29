@@ -47,7 +47,8 @@
     "Ohio"
   ],
   "locn_geometry": "ENVELOPE(-81.9761,-81.3671,41.6327,41.2698)",
-  "dcat_centroid_ss": "41.45125,-81.6716",
+  "dcat_bbox": "ENVELOPE(-81.9761,-81.3671,41.6327,41.2698)",
+  "dcat_centroid": "41.45125,-81.6716",
   "pcdm_memberOf_sm": [
     "11a-01"
   ],

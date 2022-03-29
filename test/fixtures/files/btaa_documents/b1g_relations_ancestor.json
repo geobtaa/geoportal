@@ -32,7 +32,8 @@
     "World"
   ],
   "locn_geometry": "ENVELOPE(-180, 180, 90, -90)",
-  "dcat_centroid_ss": "0,0",
+  "dcat_bbox": "ENVELOPE(-180, 180, 90, -90)",
+  "dcat_centroid": "0,0",
   "pcdm_memberOf_sm": [
     "Academic Institutions Maps"
   ],

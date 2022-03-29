@@ -27,7 +27,7 @@
        that you fully re-index after changing this setting as it can
        affect both how text is indexed and queried.
   -->
-  <luceneMatchVersion>6.1</luceneMatchVersion>
+  <luceneMatchVersion>7.6</luceneMatchVersion>
 
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
@@ -83,9 +83,9 @@
        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <query>
     <maxBooleanClauses>1024</maxBooleanClauses>
-    <filterCache class="solr.FastLRUCache" size="512" initialSize="512" autowarmCount="0"/>
-    <queryResultCache class="solr.LRUCache" size="512" initialSize="512" autowarmCount="0"/>
-    <documentCache class="solr.LRUCache" size="512" initialSize="512" autowarmCount="0"/>
+    <filterCache class="solr.CaffeineCache" size="512" initialSize="512" autowarmCount="0" async="true"/>
+    <queryResultCache class="solr.CaffeineCache" size="512" initialSize="512" autowarmCount="0" async="true"/>
+    <documentCache class="solr.CaffeineCache" size="512" initialSize="512" autowarmCount="0" async="true"/>
     <enableLazyFieldLoading>true</enableLazyFieldLoading>
     <queryResultWindowSize>20</queryResultWindowSize>
     <queryResultMaxDocsCached>200</queryResultMaxDocsCached>

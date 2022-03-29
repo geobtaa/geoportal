@@ -38,7 +38,8 @@
     "Illinois"
   ],
   "locn_geometry": "ENVELOPE(-91.51308, -87.49520, 42.50848, 36.97030)",
-  "dcat_centroid_ss": "39.73939,-89.50414",
+  "dcat_bbox": "ENVELOPE(-91.51308, -87.49520, 42.50848, 36.97030)",
+  "dcat_centroid": "39.73939,-89.50414",
   "dct_accessRights_s": "Public",
   "dct_references_s": "{\"http://schema.org/url\":\"https://illinoisepaopendata-illinois-epa.opendata.arcgis.com\"}",
   "id": "02a-02",

@@ -39,7 +39,8 @@
     "Indiana, United States"
   ],
   "locn_geometry": "ENVELOPE(-87.553398, -87.405697, 39.471203, 39.394206)",
-  "dcat_centroid_ss": "39.4327045,-87.4795475",
+  "dcat_bbox": "ENVELOPE(-87.553398, -87.405697, 39.471203, 39.394206)",
+  "dcat_centroid": "39.4327045,-87.4795475",
   "pcdm_memberOf_sm": [
     "Purdue Georeferenced Imagery"
   ],
