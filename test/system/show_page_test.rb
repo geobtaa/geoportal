@@ -66,7 +66,8 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_no_selector?("div[data-protocol='Iiif']")
 
     # Download
-    assert page.has_content?("Downloads")
+    assert page.has_content?("Download")
+    click_on("Download")
     assert page.has_link?("Original Shapefile")
 
     # Export
@@ -90,7 +91,8 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_no_selector?("div[data-protocol='Iiif']")
 
     # Download
-    assert page.has_content?("Downloads")
+    assert page.has_content?("Download")
+    click_on("Download")
     assert page.has_link?("Original Shapefile")
 
     # Provenance
@@ -154,7 +156,8 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_link?("Metadata")
 
     # Download
-    assert page.has_content?("Downloads")
+    assert page.has_content?("Download")
+    click_on("Download")
     assert page.has_link?("Original GeoTIFF")
 
     # Data Relations
@@ -178,22 +181,14 @@ class ShowPageTest < ApplicationSystemTestCase
     visit "/catalog/2eddde2f-c222-41ca-bd07-2fd74a21f4de"
 
     # No Links
-    # * Subject
-    # * Date Published
-    # * Provider
-    # * Publisher
-    assert page.has_no_link?("Imagery and Base Maps")
-    assert page.has_no_link?("2015-11-18T11:02:15.705119")
-    assert page.has_link?("Minnesota", { exact: true })
     assert page.has_no_link?("Minnesota Department of Natural Resources (DNR)")
+    assert page.has_no_link?("2015-11-18")
 
     # Yes Links
-    # * Place
-    # * Resource Class (missing on this doc)
-    # * Resource Type
-    # * ISO Topic Category (missing on this doc)
-    assert page.has_link?("Minnesota, United States")
-    assert page.has_link?("Raster")
+    assert page.has_link?("Minnesota", { exact: true })
+    assert page.has_link?("Datasets")
+    assert page.has_link?("Raster data")
+    assert page.has_link?("Imagery")
 
     assert page.has_no_link?("Minnesota Geospatial Commons") # Collection
   end
