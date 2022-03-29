@@ -23,7 +23,7 @@ jobs:
       run: gem install bundler -v 2.3.5
 
     - name: Bundler - Install dependencies
-      run: bundle _2.1.1_ install
+      run: bundle _2.3.5_ install
       env:
         rails_version: 6.1.5
 
