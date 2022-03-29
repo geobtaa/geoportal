@@ -20,7 +20,7 @@ jobs:
       run: docker run -d -p 8983:8983 geoblacklight/solr:8.9-v1.0.0 server/scripts/ci-start.sh
 
     - name: Bundler - Install
-      run: gem install bundler -v 2.1.1
+      run: gem install bundler -v 2.3.5
 
     - name: Bundler - Install dependencies
       run: bundle _2.1.1_ install
