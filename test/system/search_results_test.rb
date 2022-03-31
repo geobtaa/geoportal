@@ -68,7 +68,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
       assert page.has_content?("Creator")
       assert page.has_content?("Provider")
       assert page.has_content?("Public/Restricted")
-      assert page.has_content?("Institutional Access")
+      # assert page.has_content?("Institutional Access")
       assert page.has_content?("Language")
     end
   end
