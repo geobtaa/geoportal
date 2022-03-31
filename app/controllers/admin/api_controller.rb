@@ -143,8 +143,8 @@ module Admin
       # Subject
       config.add_facet_field Settings.FIELDS.SUBJECT, label: 'Subject', limit: 1000
 
-      # ISO Topic Category
-      config.add_facet_field Settings.FIELDS.THEME, label: 'ISO Topic Category', limit: 1000
+      # Theme
+      config.add_facet_field Settings.FIELDS.THEME, label: 'Theme', limit: 1000
 
       # Format
       config.add_facet_field Settings.FIELDS.FORMAT, label: 'Format', limit: 1000

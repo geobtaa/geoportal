@@ -200,7 +200,7 @@ class CatalogController < ApplicationController
     config.add_show_field Settings.FIELDS.SUBJECT, label: 'Subject', itemprop: 'keywords'
     config.add_show_field Settings.FIELDS.RESOURCE_CLASS, label: 'Resource Class', itemprop: 'keywords', link_to_facet: true
     config.add_show_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', itemprop: 'keywords', link_to_facet: true
-    config.add_show_field Settings.FIELDS.THEME, label: 'ISO Topic Category', itemprop: 'keywords', link_to_facet: true
+    config.add_show_field Settings.FIELDS.THEME, label: 'Theme', itemprop: 'keywords', link_to_facet: true
     config.add_show_field Settings.FIELDS.DATE_ISSUED, label: 'Date Published', itemprop: 'keywords'
     config.add_show_field Settings.FIELDS.TEMPORAL_COVERAGE, label: 'Temporal Coverage', itemprop: 'temporal'
     config.add_show_field Settings.FIELDS.PROVIDER, label: 'Provider', itemprop: 'keywords', link_to_facet: true
