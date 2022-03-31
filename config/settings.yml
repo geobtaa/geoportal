@@ -77,6 +77,7 @@ FIELDS:
   :B1G_CODE: 'b1g_code_s'
   :B1G_GEOMG_ID: 'geomg_id_s'
   :B1G_IMAGE: 'b1g_image_ss'
+  :B1G_LANGUAGE: 'b1g_language_sm'
   :B1G_MEDIATOR: 'b1g_dct_mediator_sm'
   :B1G_PUBLICATION_STATE: 'b1g_publication_state_s'
 

@@ -113,7 +113,6 @@ class CatalogController < ApplicationController
     config.add_facet_field Settings.FIELDS.SPATIAL_COVERAGE, :label => 'Place', :limit => 8, collapse: false
     config.add_facet_field Settings.FIELDS.RESOURCE_CLASS, :label => 'Resource Class', :limit => 8, collapse: false
     config.add_facet_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', limit: 8, collapse: false
-    config.add_facet_field Settings.FIELDS.SUBJECT, :label => 'Subject', :limit => 8, collapse: false
 
     config.add_facet_field Settings.FIELDS.INDEX_YEAR, label: 'Year', limit: 10, collapse: false, all: 'Any year', range: {
       assumed_boundaries: [1100, 2018]
@@ -140,6 +139,7 @@ class CatalogController < ApplicationController
 
     config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
     config.add_facet_field Settings.FIELDS.B1G_MEDIATOR, label: 'Institutional Access', limit: 15
+    config.add_facet_field Settings.FIELDS.B1G_LANGUAGE, label: 'Language', limit: 15
 
     # GEOBLACKLIGHT APPLICATION FACETS
 
