@@ -134,12 +134,12 @@ class CatalogController < ApplicationController
       '2015-present' => { :label => '2015-present', :fq => "#{Settings.FIELDS.INDEX_YEAR}:[2015 TO #{Time.now.year}]"}
     }, collapse: false
 
+    config.add_facet_field Settings.FIELDS.B1G_LANGUAGE, label: 'Language', limit: 15
     config.add_facet_field Settings.FIELDS.CREATOR, :label => 'Creator', :limit => 8
     config.add_facet_field Settings.FIELDS.PROVIDER, label: 'Provider', limit: 15
 
     config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
     config.add_facet_field Settings.FIELDS.B1G_MEDIATOR, label: 'Institutional Access', limit: 15
-    config.add_facet_field Settings.FIELDS.B1G_LANGUAGE, label: 'Language', limit: 15
 
     # GEOBLACKLIGHT APPLICATION FACETS
 
