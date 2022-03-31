@@ -193,22 +193,23 @@ class CatalogController < ApplicationController
     # item_prop: [String] property given to span with Schema.org item property
     # link_to_facet: [Boolean] that can be passed to link to a facet search
     # helper_method: [Symbol] method that can be used to render the value
-    config.add_show_field Settings.FIELDS.CREATOR, label: 'Creator', itemprop: 'creator'
     config.add_show_field Settings.FIELDS.DESCRIPTION, label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract_new_lines
+    config.add_show_field Settings.FIELDS.CREATOR, label: 'Creator', itemprop: 'creator'
     config.add_show_field Settings.FIELDS.PUBLISHER, label: 'Publisher', itemprop: 'publisher'
-    config.add_show_field Settings.FIELDS.SPATIAL_COVERAGE, label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
+    config.add_show_field Settings.FIELDS.PROVIDER, label: 'Provider', link_to_facet: true
+	  config.add_show_field Settings.FIELDS.RESOURCE_CLASS, label: 'Resource Class', itemprop: 'class', link_to_facet: true
+    config.add_show_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', itemprop: 'type', link_to_facet: true
     config.add_show_field Settings.FIELDS.SUBJECT, label: 'Subject', itemprop: 'keywords'
-    config.add_show_field Settings.FIELDS.RESOURCE_CLASS, label: 'Resource Class', itemprop: 'keywords', link_to_facet: true
-    config.add_show_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', itemprop: 'keywords', link_to_facet: true
-    config.add_show_field Settings.FIELDS.THEME, label: 'Theme', itemprop: 'keywords', link_to_facet: true
-    config.add_show_field Settings.FIELDS.DATE_ISSUED, label: 'Date Published', itemprop: 'keywords'
+    config.add_show_field Settings.FIELDS.THEME, label: 'Theme', itemprop: 'theme', link_to_facet: true
     config.add_show_field Settings.FIELDS.TEMPORAL_COVERAGE, label: 'Temporal Coverage', itemprop: 'temporal'
-    config.add_show_field Settings.FIELDS.PROVIDER, label: 'Provider', itemprop: 'keywords', link_to_facet: true
-    config.add_show_field Settings.FIELDS.RIGHTS, label: 'Rights'
-    config.add_show_field Settings.FIELDS.RIGHTS_HOLDER, label: 'Rights Holder'
-    config.add_show_field Settings.FIELDS.LICENSE, label: 'License'
-    config.add_show_field Settings.FIELDS.FORMAT, label: 'Format'
-    config.add_show_field Settings.FIELDS.FILE_SIZE, label: 'File Size'
+    config.add_show_field Settings.FIELDS.DATE_ISSUED, label: 'Date Issued', itemprop: 'issued'
+    config.add_show_field Settings.FIELDS.SPATIAL_COVERAGE, label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
+    config.add_show_field Settings.FIELDS.RIGHTS, label: 'Rights', itemprop: 'rights'
+    config.add_show_field Settings.FIELDS.RIGHTS_HOLDER, label: 'Rights Holder', itemprop: 'rights_holder'
+    config.add_show_field Settings.FIELDS.LICENSE, label: 'License', itemprop: 'license'
+    config.add_show_field Settings.FIELDS.ACCESS_RIGHTS, label: 'Access Rights', itemprop: 'access_rights'
+    config.add_show_field Settings.FIELDS.FORMAT, label: 'Format', itemprop: 'format'
+    config.add_show_field Settings.FIELDS.FILE_SIZE, label: 'File Size', itemprop: 'file_size'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
