@@ -12,8 +12,11 @@
     "The State of Ohio Location Based Response System address points depict the access points to addressable structures along public and private roads within participating Ohio Counties. Address point data was developed from data collected by field observation of existing address locations at the time of collection. View Full Metadata"
   ],
   "dct_language_sm": [
-    "English"
+    "eng"
   ],
+  "b1g_language_sm": [
+    "English"
+  ],  
   "dct_creator_sm": [
     "Ohio Geographically Referenced Information Program"
   ],
@@ -47,7 +50,8 @@
     "Ohio"
   ],
   "locn_geometry": "ENVELOPE(-81.9761,-81.3671,41.6327,41.2698)",
-  "dcat_centroid_ss": "41.45125,-81.6716",
+  "dcat_bbox": "ENVELOPE(-81.9761,-81.3671,41.6327,41.2698)",
+  "dcat_centroid": "41.45125,-81.6716",
   "pcdm_memberOf_sm": [
     "11a-01"
   ],

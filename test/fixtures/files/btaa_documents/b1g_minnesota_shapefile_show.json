@@ -12,6 +12,9 @@
     "High-quality GIS land use maps for the Twin Cities Metropolitan Area for 1958 that were developed from paper maps (no GIS version existed previously)."
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -46,7 +49,8 @@
     "Minnesota, United States"
   ],
   "locn_geometry": "ENVELOPE(-93.890996, -92.744289, 45.220692, 44.736642)",
-  "dcat_centroid_ss": "44.978667,-93.3176425",
+  "dcat_bbox": "ENVELOPE(-93.890996, -92.744289, 45.220692, 44.736642)",
+  "dcat_centroid": "44.978667,-93.3176425",
   "pcdm_memberOf_sm": [
     "Academic Institutions Geospatial Data"
   ],

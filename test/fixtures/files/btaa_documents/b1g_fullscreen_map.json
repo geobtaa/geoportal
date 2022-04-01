@@ -9,6 +9,9 @@
     "Scale approximately 1:3,000,000; 1 map; 27 x 53 cm. Maps"
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "schema_provider_s": "Penn State",
@@ -27,7 +30,8 @@
     "South Carolina, United States"
   ],
   "locn_geometry": "ENVELOPE(-92, -74, 39, 33)",
-  "dcat_centroid_ss": "36,-83",
+  "dcat_bbox": "ENVELOPE(-92, -74, 39, 33)",
+  "dcat_centroid": "36,-83",
   "pcdm_memberOf_sm": [
     "Penn State Rare Maps"
   ],

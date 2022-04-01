@@ -10,6 +10,9 @@
   "dct_language_sm": [
     "eng"
   ],
+  "b1g_language_sm": [
+    "English"
+  ],
   "dct_creator_sm": [
     "Brock & Weymouth Inc.",
     "United States Engineer Office"
@@ -41,7 +44,8 @@
     "Indiana"
   ],
   "locn_geometry": "ENVELOPE(-87.4407,-87.2936,39.7429,39.6653)",
-  "dcat_centroid_ss": "39.7041,-87.36715000000001",
+  "dcat_bbox": "ENVELOPE(-87.4407,-87.2936,39.7429,39.6653)",
+  "dcat_centroid": "39.7041,-87.36715000000001",
   "pcdm_memberOf_sm": [
     "09d-01"
   ],

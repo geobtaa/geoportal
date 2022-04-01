@@ -13,6 +13,9 @@
     "Cover title: Adams' synchronological chart or map of history. Includes illus., port., etc. 3rd ed., carefully and critically rev. and brought down to 1878. 20 x 17 inches"
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_publisher_sm": [
@@ -39,7 +42,8 @@
     "Minnesota, United States"
   ],
   "locn_geometry": "ENVELOPE(-97.23926544, -89.48338318, 49.23105053, 43.4994278)",
-  "dcat_centroid_ss": "46.365239165,-93.36132431",
+  "dcat_bbox": "ENVELOPE(-97.23926544, -89.48338318, 49.23105053, 43.4994278)",
+  "dcat_centroid": "46.365239165,-93.36132431",
   "pcdm_memberOf_sm": [
     "05d-01"
   ],

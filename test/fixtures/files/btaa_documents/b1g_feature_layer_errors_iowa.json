@@ -9,6 +9,9 @@
   "b1g_dateAccessioned_s": "2019-07-23",
   "dct_title_s": "511: Illinois Flooding: Iowa",
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -35,7 +38,8 @@
     "Iowa"
   ],
   "locn_geometry": "ENVELOPE(-91.0931,-87.539,42.4943,36.9809)",
-  "dcat_centroid_ss": "39.7376,-89.31605",
+  "dcat_bbox": "ENVELOPE(-91.0931,-87.539,42.4943,36.9809)",
+  "dcat_centroid": "39.7376,-89.31605",
   "pcdm_memberOf_sm": [
     "03a-02"
   ],

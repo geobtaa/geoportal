@@ -33,7 +33,7 @@ module Admin
       config.advanced_search[:url_key] ||= 'advanced'
       config.advanced_search[:query_parser] ||= 'edismax'
       config.advanced_search[:form_solr_parameters] ||= {}
-      config.advanced_search[:form_solr_parameters]['facet.field'] ||= [Settings.FIELDS.PROVIDER, Settings.FIELDS.B1G_CODE, Settings.FIELDS.MEMBER_OF, Settings.FIELDS.IS_PART_OF, Settings.FIELDS.RESOURCE_CLASS, Settings.FIELDS.RESOURCE_TYPE, Settings.FIELDS.SUBJECT, Settings.FIELDS.ISO_TOPIC_CATEGORY, Settings.FIELDS.FORMAT, Settings.FIELDS.SUPPRESSED, Settings.FIELDS.B1G_CHILD_RECORD, Settings.FIELDS.GEOREFERENCED]
+      config.advanced_search[:form_solr_parameters]['facet.field'] ||= [Settings.FIELDS.PROVIDER, Settings.FIELDS.B1G_CODE, Settings.FIELDS.MEMBER_OF, Settings.FIELDS.IS_PART_OF, Settings.FIELDS.RESOURCE_CLASS, Settings.FIELDS.RESOURCE_TYPE, Settings.FIELDS.SUBJECT, Settings.FIELDS.THEME, Settings.FIELDS.FORMAT, Settings.FIELDS.SUPPRESSED, Settings.FIELDS.B1G_CHILD_RECORD, Settings.FIELDS.GEOREFERENCED]
       config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
       config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
       config.advanced_search[:form_solr_parameters]['facet.sort'] ||= 'index'
@@ -143,8 +143,8 @@ module Admin
       # Subject
       config.add_facet_field Settings.FIELDS.SUBJECT, label: 'Subject', limit: 1000
 
-      # ISO Topic Category
-      config.add_facet_field Settings.FIELDS.ISO_TOPIC_CATEGORY, label: 'ISO Topic Category', limit: 1000
+      # Theme
+      config.add_facet_field Settings.FIELDS.THEME, label: 'Theme', limit: 1000
 
       # Format
       config.add_facet_field Settings.FIELDS.FORMAT, label: 'Format', limit: 1000

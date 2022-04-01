@@ -16,6 +16,9 @@
     "Scott County Zoning"
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -51,7 +54,8 @@
     "Minnesota"
   ],
   "locn_geometry": "ENVELOPE(-93.9126,-93.2778,44.7997,44.5423)",
-  "dcat_centroid_ss": "44.671,-93.5952",
+  "dcat_bbox": "ENVELOPE(-93.9126,-93.2778,44.7997,44.5423)",
+  "dcat_centroid": "44.671,-93.5952",
   "pcdm_memberOf_sm": [
     "05b-27139"
   ],

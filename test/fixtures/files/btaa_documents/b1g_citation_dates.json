@@ -15,6 +15,9 @@
     "SEDIMENT_INVENTORY_EPA_IN is a point shapefile from the National Sediment Inventory developed by the USEPA BASINS 3.0 program and edited by Bernardin, Lochmueller and Associates. Points represent monitoring stations attributed as occuring within the state of Indiana or along the Ohio River in Kentucky, or in Illinois along Lake Michigan. Joinable tables must be utilized to access data at specific stations for specific parameters. Five tables are available - tissue residue data (tischem.dbf), sediment chemistry data (sedichem.dbf), screening value, cancer slope factors, and noncancer reference doses for chemicals (reftabl.dbf), watershed summary data (watersh.dbf), biotoxicity data (biotox.dbf).  US Environmental Protection Agency BASINS metadata reports -  \"This dataset describes the accumulation of chemical contaminants in river, lake, ocean, and estuary bottoms and includes a screening assessment of the potential for associated adverse effects on human and environmental health. EPA evaluated more than 21,000 sampling stations nationwide using sediment chemistry data, chemical residue levels in edible tissue of aquatic organisms, and sediment toxicity data. Of the sampling stations evaluated, 5,521 stations were classified as Tier 1 (associated adverse effects are probable), 10,401 stations were classified as Tier 2 (associated adverse effects are possible, but expected infrequently), and 5,174 stations were classified as Tier 3 (no indication of associated adverse effects). Ninety-six watersheds were identified as areas of probable concern for sediment contamination. EPA believes that these watersheds represent the highest priority for further ecotoxicological assessments, risk analysis, temporal and spatial trend assessments, contaminant source evaluation, and management action because of the preponderance of evidence in these areas (although further evaluation is necessary). Also see the related report entitled The Incidence And Severity Of Sediment Contamination In Surface Waters of the United States, Volume 1, National Sediment Quality Survey (EPA 823-R-97-006, <http://www.epa.gov/OST>) that was published in September 1997. For distribution with BASINS v.2.0, the spatial attributes of the database were prepared in Arcview shape file format while selected relational attributes were prepared in Arcview DBF file format.\" \"This data set provides individuals with observation level data that were used in the most geographically extensive investigation of sediment contamination ever performed in the United States. Based on this evaluation, sediment contamination exists at levels where associated adverse effects are probable in some locations within each State of the country.\""
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -48,7 +51,8 @@
     "Indiana"
   ],
   "locn_geometry": "ENVELOPE(-88.0157,-86.8562,38.5276,37.3724)",
-  "dcat_centroid_ss": "37.95,-87.43595",
+  "dcat_bbox": "ENVELOPE(-88.0157,-86.8562,38.5276,37.3724)",
+  "dcat_centroid": "37.95,-87.43595",
   "pcdm_memberOf_sm": [
     "09a-01"
   ],

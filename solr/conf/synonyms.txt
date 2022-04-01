@@ -29,86 +29,15 @@ Television, Televisions, TV, TVs
 # Synonym mappings can be used for spelling correction too
 pixima => pixma
 
-# States
-Alabama, AL, Ala
-Alaska, AK, Alas
-Arizona, AZ, Ariz
-Arkansas, AR, Ark
-California, CA, Calif
-Colorado, CO, Colo
-Connecticut, CT, Conn
-Delaware, DE, Del
-District of Columbia, DC, D.C.
-Florida, FL, Fla
-Georgia, GA, Ga
-Hawaii, HI
-Idaho, ID
-Illinois, IL, Ill
-Indiana, IN, Ind
-Iowa, IA
-Kansas, KS, Kans, Kan
-Kentucky, KY, Ky
-Louisiana, LA, La
-Maine, ME
-Maryland, MD, Md
-Massachusetts, MA, Mass
-Michigan, MI, Mich
-Minnesota, MN, Minn
-Mississippi, MS, Miss
-Missouri, MO, Mo
-Montana, MT, Mont
-Nebraska, NE, Nebr, Neb
-Nevada, NV, Nev
-New Hampshire, NH
-New Jersey, NJ
-New Mexico, NM, N Mex
+# Places
 New York, NY
-North Carolina, NC, N Car
-North Dakota, ND, N Dak
-Ohio, OH
-Oklahoma, OK, Okla
-Oregon, OR, Oreg, Ore
-Pennsylvania, PA, Pa, Penn
-Rhode Island, RI
-South Carolina, SC, S Car
-South Dakota, SD,S Dak
-Tennessee, TN, Tenn
-Texas, TX, Tex
-Utah, UT
-Vermont, VT, Vt
-Virginia, VA, Va, Virg
-Washington, WA, Wash
-West Virginia, WV, W Va, WVa
-Wisconsin, WI, Wis, Wisc
-Wyoming, WY, Wyo
-Puerto Rico, PR
-United States, USA, US, U.S., U.S.A.
-World, Earth, Global, Globe, Planet
+United States, USA,  U.S., U.S.A.
+world, earth, global, globe, planet
 
 # Collected Synonyms
-St., Saint, St
 bicycle, bike, biking, bicycles, bikes, cycling
-Arbor, Arbour
-Wisconsin, Ouisconsin
-MDOT, Michigan
-DNR, Department
-PLSS, Public
+arbor, arbour
 road, street, roads, streets
-districts, dists
-quads, quadrangles
+quads, quadrangle, quadrangles
 ortho, orthos, orthographic
-Rec. Recreation
 railroads, railroad, railway, railways
-Pennsylvania, Penna., Pa., PA, Pensylvania, Penfylvania, Pennsilvania, Pensilvania
-Pennsylvania, PennDOT, PADEP, PADCNR
-Illinois, IL, Ill, Illlinois, Illinios, Ilinois, Illini, Illinis, Illinos
-midwest, midwestern, middle-west, mid-west
-Chicago, Chicagoland
-Prairie, PRI
-Illinois, ISWS, ISGS, INHS, ISAS, ISTI, IDNR
-Bloomington, Btown, Bton
-Indiana, INDOT
-Interstate, I69, I-69
-Indiana, IGS
-IU, IUB, Indiana
-county, coty, co, cty

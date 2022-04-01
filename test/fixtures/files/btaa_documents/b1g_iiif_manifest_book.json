@@ -11,6 +11,9 @@
     "Standard atlas of Kittson County, Minnesota : including a plat book of the villages, cities, and townships ... / compiled and published by Geo. A. Ogle & Co. Chicago : Geo. A. Ogle & Co, 1912."
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -41,7 +44,8 @@
     "Minnesota, United States"
   ],
   "locn_geometry": "ENVELOPE(-97.2393, -96.387, 49.0005, 48.5438)",
-  "dcat_centroid_ss": "48.77215,-96.81315",
+  "dcat_bbox": "ENVELOPE(-97.2393, -96.387, 49.0005, 48.5438)",
+  "dcat_centroid": "48.77215,-96.81315",
   "pcdm_memberOf_sm": [
     "John R. Borchert Map Library"
   ],

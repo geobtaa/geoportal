@@ -12,6 +12,9 @@
     "Polygon file representing parcel boundaries in Indianapolis and Marion County, Indiana with address attributes.Data projection: NAD 1983 StatePlane Indiana East FIPS 1301 (US Feet)"
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -49,7 +52,8 @@
     "Indiana"
   ],
   "locn_geometry": "ENVELOPE(-86.3291,-85.9369,39.9278,39.6322)",
-  "dcat_centroid_ss": "39.78,-86.133",
+  "dcat_bbox": "ENVELOPE(-86.3291,-85.9369,39.9278,39.6322)",
+  "dcat_centroid": "39.78,-86.133",
   "pcdm_memberOf_sm": [
     "01c-02"
   ],

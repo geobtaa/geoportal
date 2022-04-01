@@ -13,6 +13,9 @@
     "1 atlas (94 p.): ill., hand col. maps; 44 cm. Material in the public domain. No restrictions on use. State Historical Society of Iowa (Iowa City)"
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -47,7 +50,8 @@
     "Iowa, United States"
   ],
   "locn_geometry": "ENVELOPE(-91.40950775, -90.94489288, 41.07407379, 40.69557953)",
-  "dcat_centroid_ss": "40.88482666,-91.177200315",
+  "dcat_bbox": "ENVELOPE(-91.40950775, -90.94489288, 41.07407379, 40.69557953)",
+  "dcat_centroid": "40.88482666,-91.177200315",
   "pcdm_memberOf_sm": [
     "Iowa Counties Historic Atlases"
   ],

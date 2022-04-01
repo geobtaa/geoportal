@@ -16,6 +16,9 @@
     "Data layer showing deer antlerless only season choice (AOSC) hunting unit boundaries in Nebraska. For additional information on regulations, permitting, season dates, visit thebig game deerpageon the NGPC website"
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -48,7 +51,8 @@
     "Nebraska"
   ],
   "locn_geometry": "ENVELOPE(-104.0535,-95.3083,43.0017,39.9999)",
-  "dcat_centroid_ss": "41.5008,-99.68090000000001",
+  "dcat_bbox": "ENVELOPE(-104.0535,-95.3083,43.0017,39.9999)",
+  "dcat_centroid": "41.5008,-99.68090000000001",
   "pcdm_memberOf_sm": [
     "13a-01"
   ],

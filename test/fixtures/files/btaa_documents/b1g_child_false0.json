@@ -16,6 +16,9 @@
     "Downloads are available for individual metropolitan regions, as well as states, in Geopackage format. A combined ZIP file containing the data for all metropolitan regions is available, and is labeled as \"All Metropolitan Regions.\""
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -54,7 +57,8 @@
     "United States"
   ],
   "locn_geometry": "ENVELOPE(-179.9,-64.4,71.6,-14.8)",
-  "dcat_centroid_ss": "28.4,-122.15",
+  "dcat_bbox": "ENVELOPE(-179.9,-64.4,71.6,-14.8)",
+  "dcat_centroid": "28.4,-122.15",
   "pcdm_memberOf_sm": [
     "05d-03"
   ],

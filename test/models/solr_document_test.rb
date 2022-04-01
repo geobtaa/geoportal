@@ -15,4 +15,8 @@ class SolrDocumentTest < ActiveSupport::TestCase
   test 'supports B1G image attribute' do
     assert @document.respond_to? :b1g_image
   end
+
+  test 'supports resource_class' do
+    assert @document.respond_to? :resource_class
+  end
 end

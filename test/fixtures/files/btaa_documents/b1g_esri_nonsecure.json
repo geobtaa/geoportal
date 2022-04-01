@@ -12,6 +12,9 @@
     "The county boundary for Clay County, MN."
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -46,7 +49,8 @@
     "Minnesota"
   ],
   "locn_geometry": "ENVELOPE(-96.8403,-96.1674,47.1523,46.6275)",
-  "dcat_centroid_ss": "46.8899,-96.50385",
+  "dcat_bbox": "ENVELOPE(-96.8403,-96.1674,47.1523,46.6275)",
+  "dcat_centroid": "46.8899,-96.50385",
   "pcdm_memberOf_sm": [
     "05b-27027"
   ],

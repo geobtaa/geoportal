@@ -12,6 +12,9 @@
     "Greenwich prime meridian. \"By authority of Commo: Charles Morris U.S.N., Chief of Bureau of Ordnance and Hydrography, 1853.\" \"Lith of Endicott & Co. N.Y.\" 1 map: col., encapsulated in Mylar; 60 x 93 cm. This map is in the public domain. Please attribute access and use of this digitized map to the Stephen S. Clark Library, University of Michigan Library."
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -34,7 +37,8 @@
     "World"
   ],
   "locn_geometry": "ENVELOPE(-180, 180, 80, -68)",
-  "dcat_centroid_ss": "6,0",
+  "dcat_bbox": "ENVELOPE(-180, 180, 80, -68)",
+  "dcat_centroid": "6,0",
   "pcdm_memberOf_sm": [
     "Clark Library Map Collections"
   ],

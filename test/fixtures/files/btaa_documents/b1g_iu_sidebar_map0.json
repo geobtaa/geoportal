@@ -13,6 +13,9 @@
     "Modern area represented: Liep\u0101ja, Latvia; Scale =1:50,000"
   ],
   "dct_language_sm": [
+    "rus"
+  ],
+  "b1g_language_sm": [
     "Russian"
   ],
   "dct_publisher_sm": [
@@ -47,7 +50,8 @@
     "Latvia"
   ],
   "locn_geometry": "ENVELOPE(21.25,20.959,56.667,56.5)",
-  "dcat_centroid_ss": "56.5835,21.1045",
+  "dcat_bbox": "ENVELOPE(21.25,20.959,56.667,56.5)",
+  "dcat_centroid": "56.5835,21.1045",
   "pcdm_memberOf_sm": [
     "01d-03",
     "01d-03-50k"

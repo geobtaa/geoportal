@@ -1,40 +1,59 @@
 {
-  "dct_language_sm": "English",
-  "dc_type_sm": [
-    "Dataset"
+  "dct_title_s": "Glacial Boundaries: Illinois, 1998",
+  "dct_alternative_sm": [
+    "esri-dynamic-layer-all-layers"
+  ],
+  "dct_description_sm": [
+    "This record points to an the top level of an Esri Rest Web Map Service. It does not specify a layer.. ",
+    "Glacial boundary lines representing the extent of glaciation for major glacial episodes in Illinois. Data originally from Quaternary Deposits in Illinois map by Lineback (1979) and modified according to the reclassification by Hansel and Johnson, ISGS Bulletin 104 (1996). Attribute items include glacial episode identifier. ISGS, 1984 (revised 1998)."
+  ],
+  "dct_language_sm": [
+    "eng"
+  ],
+  "dct_creator_sm": [
+    "Illinois State Geological Survey"
   ],
   "dct_publisher_sm": [
     "Illinois State Geological Survey"
   ],
-  "pcdm_memberOf_sm": [
-    "Illinois Geospatial Data Clearinghouse"
+  "schema_provider_s": "University of Illinois Urbana-Champaign",
+  "gbl_resourceClass_sm": [
+    "Datasets"
   ],
-  "gbl_mdVersion_s": "Aardvark",
-  "dct_creator_sm": [
-    "Illinois State Geological Survey"
+  "gbl_resourceType_sm": [
+    "Polygon data"
   ],
-  "dct_description_sm": "Glacial boundary lines representing the extent of glaciation for major glacial episodes in Illinois. Data originally from Quaternary Deposits in Illinois map by Lineback (1979) and modified according to the reclassification by Hansel and Johnson, ISGS Bulletin 104 (1996). Attribute items include glacial episode identifier. ISGS, 1984 (revised 1998).",
-  "dct_format_s": "Shapefile",
-  "dct_identifier_sm": "90f14ff4-1359-4beb-b931-5cb41d20ab90",
-  "dct_accessRights_s": "Public",
-  "dct_title_s": "Glacial Boundaries: Illinois, 1998",
-  "gbl_mdModified_dt": "2018-08-02T17:00:40Z",
-  "locn_geometry": "ENVELOPE(-91.513518, -87.495214, 42.508348,  36.969972)",
-  "gbl_indexYear_i": 1998,
-  "dct_issued_s": "1998",
-  "schema_provider_s": "Illinois",
-  "dct_references_s": "{\"urn:x-esri:serviceType:ArcGIS#DynamicMapLayer\":\"http://data.isgs.illinois.edu/arcgis/rest/services/Geology/Glacial_Boundaries/MapServer\",\"http://schema.org/url\":\"https://clearinghouse.isgs.illinois.edu/data/geology/glacial-boundaries\",\"http://schema.org/downloadUrl\":\"https://clearinghouse.isgs.illinois.edu/sites/clearinghouse.isgs/files/Clearinghouse/data/ISGS/Geology/zips/IL_Glacial_Bndys_Py.zip\"}",
-  "dct_spatial_sm": [
-    "Illinois, United States"
+  "dcat_theme_sm": [
+    "Geology"
   ],
-  "dct_subject_sm": [
-    "Geoscientific Information"
+  "dcat_keyword_sm": [
+    "GBL Fixture records"
   ],
   "dct_temporal_sm": [
     "1998"
   ],
-  "geomg_id_s": "90f14ff4-1359-4beb-b931-5cb41d20ab90",
+  "dct_issued_s": "1905-06-20",
+  "gbl_indexYear_im": [
+    "1998"
+  ],
+  "gbl_dateRange_drsim": [
+    "[1998 TO 1998]"
+  ],
+  "dct_spatial_sm": [
+    "Illinois"
+  ],
+  "locn_geometry": "ENVELOPE(-91.513518,-87.495214,42.508348,36.969972)",
+  "dcat_bbox": "ENVELOPE(-91.513518,-87.495214,42.508348,36.969972)",
+  "dcat_centroid": "39.73916,-89.504366",
+  "dct_accessRights_s": "Public",
+  "dct_format_s": "Shapefile",
+  "dct_references_s": "{\"http://schema.org/downloadUrl\":\"https://clearinghouse.isgs.illinois.edu/sites/clearinghouse.isgs/files/Clearinghouse/data/ISGS/Geology/zips/IL_Glacial_Bndys_Py.zip\",\"http://schema.org/url\":\"https://clearinghouse.isgs.illinois.edu/data/geology/glacial-boundaries\",\"urn:x-esri:serviceType:ArcGIS#DynamicMapLayer\":\"https://data.isgs.illinois.edu/arcgis/rest/services/Geology/Glacial_Boundaries/MapServer\"}",
   "id": "90f14ff4-1359-4beb-b931-5cb41d20ab90",
-  "gbl_resourceType_sm": "Polygon",
+  "dct_identifier_sm": [
+    "90f14ff4-1359-4beb-b931-5cb41d20ab90"
+  ],
+  "gbl_mdModified_dt": "2021-06-01T22:14:15Z",
+  "gbl_mdVersion_s": "Aardvark",
+  "geomg_id_s": "90f14ff4-1359-4beb-b931-5cb41d20ab90",
   "b1g_publication_state_s": "published"
 }

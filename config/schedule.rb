@@ -1,6 +1,10 @@
 # Use this file to easily define all of your cron jobs.
 # Learn more: http://github.com/javan/whenever
 
+# Running with a specified Ruby path
+job_type :rake,    "cd :path && PATH=\":ruby:$PATH\" :environment_variable=:environment bundle exec rake :task --silent :output"
+job_type :runner,  "cd :path && PATH=\":ruby:$PATH\" bin/rails runner -e :environment ':task' :output"
+
 # Generate Homepage Centroids for Map Clustering
 every :day, at: '11:45pm', roles: [:app] do
   rake 'geoportal:generate_centroids_json'
@@ -21,7 +25,7 @@ every :day, at: '2:30am', roles: [:app] do
   rake 'blacklight:delete_old_searches[7]'
 end
 # Exports SOLR data to public/data.json
-every :day, at: '3:30am', roles: [:app] do
+every '30 3 1 * *', roles: [:app] do
   rake 'geoportal:export_data'
 end
 # Clean Carrierwave tmp file directory

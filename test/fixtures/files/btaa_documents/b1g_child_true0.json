@@ -16,6 +16,9 @@
     "Access Across America Auto Data: Baltimore-Towson, MD, 2018. 247.7Mb shapefile download"
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -56,7 +59,8 @@
     "Maryland"
   ],
   "locn_geometry": "ENVELOPE(-77.3,-75.7,39.7,38.7)",
-  "dcat_centroid_ss": "39.2,-76.5",
+  "dcat_bbox": "ENVELOPE(-77.3,-75.7,39.7,38.7)",
+  "dcat_centroid": "39.2,-76.5",
   "pcdm_memberOf_sm": [
     "f397d257-3587-4b8a-ab40-fdd06f865862",
     "05d-03"

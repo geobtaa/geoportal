@@ -3,16 +3,21 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
-gem 'bootsnap', require: false
+gem 'bootsnap', '~> 1.9.3', require: false
 gem 'listen', '~> 3.0'
 
 gem 'rack-cors', :require => 'rack/cors'
+
+gem "puma", "~> 5.1"
+# Run puma with systemd integration
+gem 'sd_notify', '>= 0.1.0'
 
 # Webpacker
 gem 'webpacker', '~> 4.x'
 
 gem 'sqlite3', '~> 1.4'
-gem 'mysql2', '~> 0.5.0'
+#gem 'mysql2', '~> 0.5.0'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -56,19 +61,18 @@ end
 
 group :development do
   gem 'web-console'
-  gem "puma", ">= 4.3.5"
   gem 'foreman'
   gem 'letter_opener'
 end
 
-gem 'blacklight', '~> 7.19.0'
+gem 'blacklight', '~> 7.24.0'
 gem 'blacklight_advanced_search', git: 'https://github.com/projectblacklight/blacklight_advanced_search.git', :branch => 'master'
 gem 'blacklight_range_limit', '~> 7.0.0'
 gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '~> 4.0.0.pre.alpha.3'
+gem 'geoblacklight', '~> 4.0.0.pre.rc1'
 
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
@@ -79,7 +83,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'mini_magick', '~> 4.9.4'
 
 gem 'statesman', '~> 3.4.1'
-gem 'sidekiq', '~> 5.2.0'
+gem 'sidekiq', '~> 6.3.0'
 gem 'sidekiq-failures', '~> 1.0.0'
 gem 'down', '~> 4.4'
 gem 'addressable', '~> 2.5.0'
@@ -100,7 +104,7 @@ gem 'dotenv-rails'
 
 # Feedback
 gem 'pointless_feedback'
-gem 'whenever', '~> 0.9.0', require: false
+gem 'whenever', '~> 1.0.0', require: false
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'exception_notification', '~> 4.4.0'
 
@@ -114,3 +118,6 @@ group :test do
   gem 'minitest-ci', '~> 3.4.0'
   gem 'minitest-reporters'
 end
+
+gem 'rexml'
+gem 'faraday_middleware', '1.2.0'

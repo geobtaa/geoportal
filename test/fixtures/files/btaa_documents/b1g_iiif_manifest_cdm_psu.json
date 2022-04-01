@@ -11,6 +11,9 @@
     "Albion, Erie County, Pennsylvania : April 1911. 1 map on 4 sheets : col. ; on sheets 65 x 54 cm.  Scale approximately 1:600. 50 ft. to an in."
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -46,7 +49,8 @@
     "Pennsylvania"
   ],
   "locn_geometry": "ENVELOPE(-80.3749989,-80.3530519,41.897332,41.883214)",
-  "dcat_centroid_ss": "41.890273,-80.3640254",
+  "dcat_bbox": "ENVELOPE(-80.3749989,-80.3530519,41.897332,41.883214)",
+  "dcat_centroid": "41.890273,-80.3640254",
   "pcdm_memberOf_sm": [
     "08d-02"
   ],

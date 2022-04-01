@@ -12,6 +12,9 @@
     "Cartographic Details: Scale [1:760,320]. 1 in. = 12 miles (W 97\u207014\u02b9--W 89\u207036\u02b9/N 49\u207000\u02b9--N 43\u207030\u02b9). Includes inset of \"North east corner of Minnesota.\" 99 x 66 cm"
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -41,7 +44,8 @@
     "Minnesota, United States"
   ],
   "locn_geometry": "ENVELOPE(-97.23, -89.6, 49, 43.5)",
-  "dcat_centroid_ss": "46.25,-93.415",
+  "dcat_bbox": "ENVELOPE(-97.23, -89.6, 49, 43.5)",
+  "dcat_centroid": "46.25,-93.415",
   "pcdm_memberOf_sm": [
     "John R. Borchert Map Library"
   ],

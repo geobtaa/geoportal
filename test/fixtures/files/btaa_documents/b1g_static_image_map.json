@@ -12,6 +12,9 @@
     "This map data was compiled in 1997 from information available at the time, but was unpublished until 2002; the map does not reflect any changes in data since 1997.; Includes location map and text. Scale 1:250,000."
   ],
   "dct_language_sm": [
+    "eng"
+  ],
+  "b1g_language_sm": [
     "English"
   ],
   "dct_creator_sm": [
@@ -49,7 +52,8 @@
     "Indiana, United States"
   ],
   "locn_geometry": "ENVELOPE(-87, -85.76, 39.78, 37.96)",
-  "dcat_centroid_ss": "38.87,-86.38",
+  "dcat_bbox": "ENVELOPE(-87, -85.76, 39.78, 37.96)",
+  "dcat_centroid": "38.87,-86.38",
   "pcdm_memberOf_sm": [
     "Indiana Historic Maps"
   ],
