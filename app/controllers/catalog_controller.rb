@@ -162,6 +162,9 @@ class CatalogController < ApplicationController
     config.add_facet_field Settings.FIELDS.SOURCE, :label => 'Source', :limit => 8, collapse: false, show: false
     config.add_facet_field Settings.FIELDS.VERSION, :label => 'Is Version Of', :limit => 8, collapse: false, show: false
 
+    # Other hidden Facets
+    config.add_facet_field Settings.FIELDS.THEME, :label => 'Theme', :limit => 8, collapse: false, show: false
+
     # Remove access facet until data is available - EWL
     # config.add_facet_field 'dc_rights_s', label: 'Access', limit: 8, partial: "icon_facet"
 
