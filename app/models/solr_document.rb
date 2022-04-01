@@ -89,4 +89,8 @@ class SolrDocument
   def b1g_image
     self._source["#{Settings.FIELDS.B1G_IMAGE}"]
   end
+
+  def resource_class
+    self._source["#{Settings.FIELDS.RESOURCE_CLASS}"].first
+  end
 end

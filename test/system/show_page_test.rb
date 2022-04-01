@@ -217,8 +217,6 @@ class ShowPageTest < ApplicationSystemTestCase
     end
   end
 
-
-
   def test_browse_descendants
     skip('Moving to dct_isPartOf_sm for relations')
     visit "/catalog/princeton-1r66j405w"
@@ -287,6 +285,13 @@ class ShowPageTest < ApplicationSystemTestCase
 
     # Available from link should include slug
     assert page.has_content?("b06d96e4-c917-4afc-a3df-adbbc9a2273c")
+  end
+
+  def test_no_citation_tool_for_collections
+    visit '/catalog/05d-03-noGeomType'
+
+    # Citation
+    assert page.has_no_link?("Cite")
   end
 
   def test_crawford_county_403_error

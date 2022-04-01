@@ -293,7 +293,7 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial :carto, partial: 'carto', if: proc { |_context, _config, options| options[:document] && options[:document].carto_reference.present? }
     config.add_show_tools_partial :arcgis, partial: 'arcgis', if: proc { |_context, _config, options| options[:document] && options[:document].arcgis_urls.present? }
     config.add_show_tools_partial :data_dictionary, partial: 'data_dictionary', if: proc { |_context, _config, options| options[:document] && options[:document].data_dictionary_download.present? }
-    config.add_show_tools_partial(:citation)
+    config.add_show_tools_partial(:citation, if: proc { |_context, _config, options| options[:document] && (options[:document].resource_class != 'Collections')})
     config.add_show_tools_partial(:access_links, partial: 'access_links', if: proc { |_context, _config, options| options[:document] && options[:document].access_links.present?})
 
 
