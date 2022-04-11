@@ -49,7 +49,7 @@
       </div>
 
       <%= f.hidden_field :previous_url, value: ERB::Util.url_encode(request.referrer) unless request.referrer.blank? %>
-      
+
       <!-- This is a honeypot field to keep the spammers away. Do not remove. -->
       <!-- If this field is filled in, feedback will not be emailed -->
       <div class="contact-input" style="position: absolute; left: -9999px;">
@@ -63,6 +63,6 @@
       <div class="g-recaptcha" data-sitekey="<%= PointlessFeedback.google_captcha_site_key %>"></div>
     <% end %>
 
-    <button type="submit" class="btn btn-default">Send Feedback</button>
+    <button type="submit" class="btn btn-primary">Send Feedback</button>
   <% end %>
 </div>
