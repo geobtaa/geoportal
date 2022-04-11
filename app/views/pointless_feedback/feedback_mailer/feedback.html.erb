@@ -4,4 +4,4 @@ You've got feedback!
 <p>Email Address: <%= @message.email_address %></p>
 <p>Topic: <%= @message.topic %></p>
 <p>Description: <%= @message.description %></p>
-<p>Previous URL: <%= URI.decode(@message.previous_url) unless @message.previous_url.blank? %></p>
+<p>Previous URL: <%= CGI.unescape(@message.previous_url) unless @message.previous_url.blank? %></p>
