@@ -2,7 +2,7 @@
 require 'blacklight/catalog'
 
 module Admin
-  class AdvancedsearchController < ApplicationController
+  class AdvancedSearchController < ApplicationController
     include BlacklightAdvancedSearch::Controller
     include BlacklightRangeLimit::ControllerOverride
     include Blacklight::Catalog
