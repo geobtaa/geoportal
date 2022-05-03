@@ -344,7 +344,7 @@ module Admin
     end
 
     # Administrative view of adv search facets
-    def advanced_search_facets
+    def facets
       # We want to find the facets available for the current search, but:
       # * IGNORING current query (add in facets_for_advanced_search_form filter)
       # * IGNORING current advanced search facets (remove add_advanced_search_to_solr filter)

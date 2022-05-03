@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   # - Only JSON GET requests
   namespace :admin do
     # AdvancedSearch controller
-    get '/advanced_search/advanced_search_facets' => 'advanced_search#advanced_search_facets', constraints: lambda { |req| req.format == :json }
+    get '/advanced_search' => 'advanced_search#index', constraints: lambda { |req| req.format == :json }
+    get '/advanced_search/facets' => 'advanced_search#facets', constraints: lambda { |req| req.format == :json }
+    get '/advanced_search/facet/:id' => 'advanced_search#facet', constraints: lambda { |req| req.format == :json }, as: 'advanced_search_facet'
 
     # Ids controller
     get '/api/ids' => 'ids#index', constraints: lambda { |req| req.format == :json }
