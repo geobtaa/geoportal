@@ -19,12 +19,13 @@ Rails.application.routes.draw do
   # GEOMG // Metadata Toolkit JSON-API
   # - Only JSON GET requests
   namespace :admin do
+    # AdvancedSearch controller
+    get '/advanced_search/advanced_search_facets' => 'advanced_search#advanced_search_facets', constraints: lambda { |req| req.format == :json }
+
     # Ids controller
     get '/api/ids' => 'ids#index', constraints: lambda { |req| req.format == :json }
-
     get '/api' => 'api#index', constraints: lambda { |req| req.format == :json }
     get '/api/fetch' => 'api#fetch', constraints: lambda { |req| req.format == :json }
-    get '/api/advanced_search_facets' => 'api#advanced_search_facets', constraints: lambda { |req| req.format == :json }
     get '/api/facet/:id' => 'api#facet', constraints: lambda { |req| req.format == :json }
   end
 

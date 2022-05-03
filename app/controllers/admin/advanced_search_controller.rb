@@ -2,7 +2,7 @@
 require 'blacklight/catalog'
 
 module Admin
-  class ApiController < ApplicationController
+  class AdvancedsearchController < ApplicationController
     include BlacklightAdvancedSearch::Controller
     include BlacklightRangeLimit::ControllerOverride
     include Blacklight::Catalog
@@ -111,16 +111,6 @@ module Admin
 
       ## FACETS
       #
-      # By Time
-      config.add_facet_field 'time_period', label: 'Date Created', query: {
-        'today' => { label: 'Today', fq: "date_created_drsim:[#{Date.today.beginning_of_day.to_time.strftime('%Y-%m-%dT%H:%M:%S')} TO #{Date.today.end_of_day.to_time.strftime('%Y-%m-%dT%H:%M:%S')}]"},
-        'this_week' => { label: 'This week', fq: "date_created_drsim:[#{(Date.today.end_of_day - 1.week).to_time.strftime('%Y-%m-%dT%H:%M:%S')} TO  #{Date.today.end_of_day.to_time.strftime('%Y-%m-%dT%H:%M:%S')}]"},
-        'this_month' => { label: 'This month', fq: "date_created_drsim:[#{(Date.today.end_of_day - 1.month).to_time.strftime('%Y-%m-%dT%H:%M:%S')} TO  #{Date.today.end_of_day.to_time.strftime('%Y-%m-%dT%H:%M:%S')}]"},
-        'last_month' => { label: 'Last month', fq: "date_created_drsim:[#{(Date.today.end_of_day - 2.months).to_time.strftime('%Y-%m-%dT%H:%M:%S')} TO  #{(Date.today.end_of_day - 1.month).to_time.strftime('%Y-%m-%dT%H:%M:%S')}]"},
-        'this_quarter' => { label: 'This quarter', fq: "date_created_drsim:[#{(Date.today.end_of_day - 3.months).to_time.strftime('%Y-%m-%dT%H:%M:%S')} TO  #{(Date.today.end_of_day).to_time.strftime('%Y-%m-%dT%H:%M:%S')}]"},
-        'this_year' => { label: 'This year', fq: "date_created_drsim:[#{(Date.today.end_of_day - 1.year).to_time.strftime('%Y-%m-%dT%H:%M:%S')} TO  #{(Date.today.end_of_day).to_time.strftime('%Y-%m-%dT%H:%M:%S')}]"}
-      }
-
       # Publication State
       config.add_facet_field Settings.FIELDS.B1G_PUBLICATION_STATE, :label => 'Publication State', :limit => 8, collapse: false
 
@@ -135,6 +125,38 @@ module Admin
 
       # Public/Restricted
       config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
+
+      # ADVANCED SEARCH
+      #
+      # Code
+      config.add_facet_field Settings.FIELDS.B1G_CODE, label: 'Code', limit: 1000
+
+      # Is Part Of
+      config.add_facet_field Settings.FIELDS.IS_PART_OF, label: 'Is Part Of', limit: 1000
+
+      # Member Of
+      config.add_facet_field Settings.FIELDS.MEMBER_OF, label: 'Member Of', limit: 1000
+
+      # Resource Type
+      config.add_facet_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', limit: 1000
+
+      # Subject
+      config.add_facet_field Settings.FIELDS.SUBJECT, label: 'Subject', limit: 1000
+
+      # Theme
+      config.add_facet_field Settings.FIELDS.THEME, label: 'Theme', limit: 1000
+
+      # Format
+      config.add_facet_field Settings.FIELDS.FORMAT, label: 'Format', limit: 1000
+
+      # Suppressed
+      config.add_facet_field Settings.FIELDS.SUPPRESSED, label: 'Suppressed'
+
+      # Child Record
+      config.add_facet_field Settings.FIELDS.B1G_CHILD_RECORD, label: 'Child Record'
+
+      # Georeferenced
+      config.add_facet_field Settings.FIELDS.GEOREFERENCED, label: 'Georeferenced'
 
       # Have BL send all facet field names to Solr, which has been the default
       # previously. Simply remove these lines if you'd rather use Solr request
