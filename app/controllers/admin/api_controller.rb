@@ -111,7 +111,10 @@ module Admin
 
       ## FACETS
       #
-      # By Time
+      # Date Range Filter
+      config.add_facet_field 'date_created_drsim', :label => 'Date Created', :show => false
+
+      # Date Created
       config.add_facet_field 'time_period', label: 'Date Created', query: {
         'today' => { label: 'Today', fq: "date_created_drsim:[#{Date.today.beginning_of_day.to_time.strftime('%Y-%m-%dT%H:%M:%S')} TO #{Date.today.end_of_day.to_time.strftime('%Y-%m-%dT%H:%M:%S')}]"},
         'this_week' => { label: 'This week', fq: "date_created_drsim:[#{(Date.today.end_of_day - 1.week).to_time.strftime('%Y-%m-%dT%H:%M:%S')} TO  #{Date.today.end_of_day.to_time.strftime('%Y-%m-%dT%H:%M:%S')}]"},
