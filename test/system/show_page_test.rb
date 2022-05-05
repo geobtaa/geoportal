@@ -198,6 +198,7 @@ class ShowPageTest < ApplicationSystemTestCase
 
     # Help
     assert page.has_content?("Index Map")
+    assert page.has_content?("Map held by collection")
 
     within('#map') do
       assert page.has_selector?("svg.leaflet-zoom-animated")
