@@ -44,12 +44,12 @@ GeoBlacklight.Viewer.IndexMap = GeoBlacklight.Viewer.Map.extend({
             // If it is available add clickable info
             if (feature.properties.available !== null) {
               layer.on('click', function(e) {
-                // Change currently selected layer color
-                layer.setStyle(options.LAYERS.INDEX.SELECTED);
                 // Change previously selected layer color to original color
                 if (prevLayer !== null) {
                   geoJSONLayer.resetStyle(prevLayer);
                 }
+                // Change currently selected layer color
+                layer.setStyle(options.LAYERS.INDEX.SELECTED);
                 prevLayer = layer;
                 GeoBlacklight.Util.indexMapTemplate(feature.properties, function(html) {
                   $('.viewer-information').html(html);

@@ -71,16 +71,23 @@ class SolrDocument
     uris = Array.new
 
     self.references.refs.each do |ref|
-      uri = SolrDocumentUri.where(
-        document_id: id,
-        document_type: self.class.to_s,
-        uri_key: ref.reference[0],
-        uri_value: ref.reference[1]
-      ).first_or_create do |sc|
-        sc.version = self._source["_version_"]
+      # Handle string or array
+      [ref.reference[1]].flatten.each do |value|
+        # Handle multiple download hashes
+        if value.is_a?(Hash)
+          value = value['url']
+        end
+        # Create URI
+        uri = SolrDocumentUri.where(
+          document_id: id,
+          document_type: self.class.to_s,
+          uri_key: ref.reference[0],
+          uri_value: value
+        ).first_or_create do |sc|
+          sc.version = self._source["_version_"]
+        end
+        uris << uri
       end
-
-      uris << uri
     end
 
     return uris
