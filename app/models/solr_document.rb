@@ -75,7 +75,7 @@ class SolrDocument
       [ref.reference[1]].flatten.each do |value|
         # Handle multiple download hashes
         if value.is_a?(Hash)
-          value = value[:url]
+          value = value['url']
         end
         # Create URI
         uri = SolrDocumentUri.where(
