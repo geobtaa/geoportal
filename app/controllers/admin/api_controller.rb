@@ -139,6 +139,38 @@ module Admin
       # Public/Restricted
       config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
 
+      # ADVANCED SEARCH
+      #
+      # Code
+      config.add_facet_field Settings.FIELDS.B1G_CODE, label: 'Code', show: false
+
+      # Is Part Of
+      config.add_facet_field Settings.FIELDS.IS_PART_OF, label: 'Is Part Of', show: false
+
+      # Member Of
+      config.add_facet_field Settings.FIELDS.MEMBER_OF, label: 'Member Of', show: false
+
+      # Resource Type
+      config.add_facet_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', show: false
+
+      # Subject
+      config.add_facet_field Settings.FIELDS.SUBJECT, label: 'Subject', show: false
+
+      # Theme
+      config.add_facet_field Settings.FIELDS.THEME, label: 'Theme', show: false
+
+      # Format
+      config.add_facet_field Settings.FIELDS.FORMAT, label: 'Format', show: false
+
+      # Suppressed
+      config.add_facet_field Settings.FIELDS.SUPPRESSED, label: 'Suppressed', show: false
+
+      # Child Record
+      config.add_facet_field Settings.FIELDS.B1G_CHILD_RECORD, label: 'Child Record', show: false
+
+      # Georeferenced
+      config.add_facet_field Settings.FIELDS.GEOREFERENCED, label: 'Georeferenced', show: false
+
       # Have BL send all facet field names to Solr, which has been the default
       # previously. Simply remove these lines if you'd rather use Solr request
       # handler defaults, or have no facets.
