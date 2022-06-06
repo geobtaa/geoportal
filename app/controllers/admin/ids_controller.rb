@@ -111,6 +111,9 @@ module Admin
 
       ## FACETS
       #
+      # Date Range Filter
+      config.add_facet_field 'date_created_drsim', :label => 'Date Created', :show => false
+      
       # Publication State
       config.add_facet_field Settings.FIELDS.B1G_PUBLICATION_STATE, show: false
 
