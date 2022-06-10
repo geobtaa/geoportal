@@ -87,7 +87,7 @@ namespace :geoportal do
       Blacklight.default_index.connection.commit
     end
 
-    desc 'Put umass sample data into solr'
+    desc 'Put btaa sample data into solr'
     task :btaa => :environment do
       docs = Dir['test/fixtures/files/btaa_documents/*.json'].map { |f| JSON.parse File.read(f) }.flatten
       Blacklight.default_index.connection.add docs

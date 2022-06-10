@@ -289,6 +289,8 @@ module Admin
       config.add_sort_field "#{Settings.FIELDS.INDEX_YEAR} asc, dct_title_sort asc", :label => 'Year (Oldest first)'
       config.add_sort_field 'dct_title_sort asc', :label => 'Title (A-Z)'
       config.add_sort_field 'dct_title_sort desc', :label => 'Title (Z-A)'
+      config.add_sort_field 'date_modified_dtsi desc', :label => 'Updated At (Newest first)'
+      config.add_sort_field 'date_modified_dtsi asc', :label => 'Updated At (Oldest first)'
 
       # If there are more than this many search results, no spelling ("did you
       # mean") suggestion is offered.

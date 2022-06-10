@@ -23,6 +23,7 @@ Blacklight.onLoad(function() {
     var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
     var provider = new OpenStreetMapProvider();
     var searchControl = new GeoSearchControl({
+      position: 'topleft',
       provider: provider,
     });
     geoblacklight.map.addControl(searchControl);
