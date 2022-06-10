@@ -17,23 +17,6 @@ GIT
     geoblacklight-icons (1.3.1)
 
 GIT
-  remote: https://github.com/geoblacklight/geoblacklight.git
-  revision: d110af897f71f1b9ad3c012d65cad2f75c21b7f5
-  branch: feature/leaflet-1.8.0
-  specs:
-    geoblacklight (4.0.0.pre.rc1)
-      blacklight (~> 7.12)
-      coderay
-      config
-      deprecation
-      faraday (>= 1.0)
-      geo_combine (~> 0.4)
-      handlebars_assets
-      mime-types
-      rails (>= 6.1, < 7)
-      rgeo-geojson
-
-GIT
   remote: https://github.com/projectblacklight/blacklight_advanced_search.git
   revision: 9c04e3770c137d1958f43aa260bc302ab5cfb63b
   branch: master
