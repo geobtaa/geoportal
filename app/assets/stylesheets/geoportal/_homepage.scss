@@ -6,7 +6,7 @@ $btaa-blue: #005E8E;
 $radius: 4px;
 
 main {
-  background:lighten($gray, 12%) asset_url('aerial_photo_dark.jpg') repeat;
+  background:lighten($black, 12%) asset_url('aerial_photo_dark.jpg') repeat;
   padding:0px;
 
   #home-content {
