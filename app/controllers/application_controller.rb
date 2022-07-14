@@ -10,8 +10,9 @@ class ApplicationController < ActionController::Base
   before_action :allow_geoblacklight_params
 
   def allow_geoblacklight_params
+
     # Blacklight::Parameters will pass these to params.permit
-    blacklight_config.search_state_fields.append(Settings.GBL_PARAMS)
+    CatalogController.blacklight_config.search_state_fields.append(Settings.GBL_PARAMS)
   end
 
   protected
