@@ -1,6 +1,8 @@
 en:
   geoblacklight:
     bbox_label: 'Bounding Box'
+    citation:
+      retrieved_from: 'Retrieved from %{document_url}'
     download:
       download: 'Download'
       download_link: 'Original %{download_format}'
@@ -14,10 +16,11 @@ en:
       error: 'Sorry, the requested file could not be downloaded'
       error_with_url: 'Sorry, the requested file could not be downloaded. Try downloading it directly from: %{link}'
       export_formats: 'Export Formats'
-      export_link: 'Export'
+      export_link: 'Export %{download_format}'
       export_shapefile_link: 'EPSG:4326 Shapefile'
       export_kmz_link: 'KMZ'
       export_geojson_link: 'GeoJSON'
+      export_geotiff_link: 'GeoTIFF'
     home:
       headline: 'Explore and discover...'
       search_heading: 'Find the maps and data you need'
@@ -27,10 +30,11 @@ en:
       data_type: 'Data type'
       placename: 'Placename'
       subject: 'Subject'
+      version: 'GeoBlacklight version %{version}'
     tools:
-      login_to_view: 'Login to view and download'
+      login_to_view: 'Login to View and Download'
       open_carto: 'Open in Carto'
-      open_arcgis: 'Open in ArcGIS'
+      open_arcgis: 'Open in ArcGIS Online'
     formats:
       arcgrid: 'ArcGRID'
       geojson: 'GeoJSON'
@@ -40,6 +44,8 @@ en:
       jpg: 'JPG'
       esri_geodatabase: 'ESRI Geodatabase'
       sqlite_database: 'SQLite Database'
+    map:
+      label: 'Zoomable map'
     references:
       wms: 'Web Mapping Service (WMS)'
       wms_abv: 'WMS'
@@ -59,9 +65,12 @@ en:
       data_dictionary: 'Documentation'
       services: 'Web services'
       services_close: 'Close'
+      tms: 'Tile Map Service'
+      tilejson: 'TileJSON Document'
+      xyz: 'XYZ Tiles'
+      wmts: 'Web Map Tile Service'
     relations:
       ancestor: 'Is derived from...'
-      browse_all: "Browse all %{count} records..."
       descendant: 'Has derivatives...'
       member_of_ancestors: 'Belongs to collection...'
       member_of_descendants: 'Collection records...'
@@ -73,6 +82,7 @@ en:
       title: 'Related items...'
       version_of_ancestors: 'Is version of...'
       version_of_descendants: 'Has version...'
+      browse_all: "Browse all %{count} records..."
     metadata:
       view_metadata: 'View Metadata'
       more_details: 'Visit Source'
@@ -114,6 +124,9 @@ en:
         tiled_map_layer:
           title: ArcGIS Tiled Map Layer
           content: An ArcGIS Tiled Map Layer Service displays set of web-accessible tiles that reside on a server.
+        tms:
+          title: Tile Map Service
+          content: A Tile Map Service displays georeferenced map tiles as an image on a map.
         wms:
           title: Web Map Service (WMS)
           content: A Web Map Service displays a geospatial dataset as map images.
@@ -176,3 +189,42 @@ en:
       uva: University of Virginia (logo)
       web_services: Web services (icon)
       wisconsin: University of Wisconsin (logo)
+  blacklight:
+    icon:
+      arrow-circle-down: Arrow within a circle, pointing down
+      baruch-cuny: Baruch College
+      berkeley: University of California, Berkeley
+      cd-rom: CD-Rom
+      chicago: The University of Chicago
+      columbia: Columbia University
+      cornell: Cornell University
+      dvd-rom: DVD-Rom
+      esri-globe: Esri Global
+      harvard: Harvard University
+      illinois: University of Illinois
+      indiana: Indiana University
+      iowa: University of Iowa
+      lewis-clark: Lewis & Clark
+      maryland: University of Maryland
+      massgis: MassGIS
+      michigan-state: Michigan State University
+      michigan: University of Michigan
+      minnesota: University of Minnesota
+      mit: Massachusetts Institute of Technology
+      multilinestring: Multi-line string
+      multipoint: Multi-point
+      multipolygon: Multi-polygon
+      nyu: New York University
+      ohio-state: The Ohio State University
+      penn-state: Penn State University
+      princeton: Princeton University
+      public: Public content
+      purdue: Purdue University
+      restricted: Restricted content
+      sms: SMS
+      stanford: Stanford University
+      texas: The University of Texas at Austin
+      tufts: Tufts University
+      ucla: University of California, Los Angeles
+      uva: University of Virginia
+      wisconsin: University of Wisconsin
