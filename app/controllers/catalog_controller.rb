@@ -52,6 +52,7 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       :start => 0,
       'q.alt' => '*:*',
+      'fl' => '*,score,[explain]',
       'bf' => ["if(exists(#{Settings.FIELDS.B1G_CHILD_RECORD}),0,100)^0.5"],
       'fq' => ["#{Settings.FIELDS.B1G_PUBLICATION_STATE}:published"]
     }
