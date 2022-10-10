@@ -113,4 +113,16 @@ module ApplicationHelper
       links.flatten.join(', ').html_safe
     end
   end
+
+  def debug_output(args)
+    if params[:explain].present?
+      content_tag(:pre, Array(args[:value]).flatten.first, class: 'debug')
+    end
+  end
+
+  def score_output(args)
+    if params[:score].present?
+      content_tag(:strong, "Score: #{Array(args[:value]).flatten.first}", class: 'debug')
+    end
+  end
 end

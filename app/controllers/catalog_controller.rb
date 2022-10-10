@@ -192,6 +192,10 @@ class CatalogController < ApplicationController
     config.add_index_field Settings.FIELDS.DESCRIPTION, helper_method: :snippit
     config.add_index_field Settings.FIELDS.PUBLISHER
 
+    # Relevancy Debugging
+    config.add_index_field 'score', helper_method: :score_output
+    config.add_index_field '[explain]', helper_method: :debug_output
+
     # solr fields to be displayed in the show (single result) view
     #  The ordering of the field names is the order of the display
     #
