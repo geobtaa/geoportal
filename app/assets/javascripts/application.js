@@ -77,6 +77,7 @@
 //= require Leaflet/leaflet.markercluster/leaflet.markercluster.js
 //= require Leaflet/leaflet.prunecluster/PruneCluster.js
 //= require Leaflet/leaflet.esri_leaflet_cluster/esri_leaflet_cluster.js
+//= require Leaflet/leaflet.extra-markers/leaflet.extra-markers.js
 //= require oboe/oboe-browser.js
 //= require screenfull/screenfull.min.js
 //= require js-cookie/src/js.cookie.js

@@ -14,6 +14,7 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
   },
 
   overlay: L.layerGroup(),
+  markers: L.layerGroup(),
 
   load: function() {
     console.log('MAP: local and customized');
@@ -24,6 +25,7 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     this.map = L.map(this.element, { noWrap: true }).fitBounds(this.options.bbox);
     this.map.addLayer(this.selectBasemap());
     this.map.addLayer(this.overlay);
+    this.map.addLayer(this.markers);
     if (this.data.map !== 'index') {
       this.addBoundsOverlay(this.options.bbox);
     }
@@ -112,5 +114,9 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     this.map.on('baselayerchange', function (e) {
       Cookies.set('basemap', e.name)
     });
+  },
+
+  removeMarkers: function() {
+    this.markers.clearLayers();
   }
 });

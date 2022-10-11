@@ -1,5 +1,7 @@
 <% # header bar for doc items in index view -%>
-<%= content_tag :div, class: 'documentHeader index-split row', data: { layer_id: document.id, geom: document.geometry.geojson } do %>
+<% counter = document_counter_with_offset(document_counter) %>
+<%= content_tag :div, class: 'documentHeader index-split row', data: { layer_id: document.id, geom: document.geometry.geojson, counter: counter } do %>
+
   <h3 class="index_title col">
     <% counter = document_counter_with_offset(document_counter) %>
     <span class="document-counter">
