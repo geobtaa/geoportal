@@ -52,6 +52,7 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       :start => 0,
       'q.alt' => '*:*',
+      'fl' => '*,score,[explain]',
       'bf' => ["if(exists(#{Settings.FIELDS.B1G_CHILD_RECORD}),0,100)^0.5"],
       'fq' => ["#{Settings.FIELDS.B1G_PUBLICATION_STATE}:published"]
     }
@@ -191,6 +192,10 @@ class CatalogController < ApplicationController
     config.add_index_field Settings.FIELDS.CREATOR
     config.add_index_field Settings.FIELDS.DESCRIPTION, helper_method: :snippit
     config.add_index_field Settings.FIELDS.PUBLISHER
+
+    # Relevancy Debugging
+    config.add_index_field 'score', helper_method: :score_output
+    config.add_index_field '[explain]', helper_method: :debug_output
 
     # solr fields to be displayed in the show (single result) view
     #  The ordering of the field names is the order of the display
