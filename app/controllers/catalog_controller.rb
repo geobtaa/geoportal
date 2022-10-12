@@ -38,13 +38,13 @@ class CatalogController < ApplicationController
 
     # GeoBlacklight Defaults
     # * Adds the "map" split view for catalog#index
-    config.view.split(partials: ['index'])
+    # config.view.split(partials: ['index'])
     config.view.delete_field('list')
 
     # Map views
     config.view.mapview.partials = [:index]
-    config.view['split'].title = "List view"
-    config.view['mapview'].title = "Map view"
+    # config.view['split'].title = "List view"
+    # config.view['mapview'].title = "Map view"
 
     config.raw_endpoint.enabled = true
 
@@ -57,7 +57,7 @@ class CatalogController < ApplicationController
       'fq' => ["#{Settings.FIELDS.B1G_PUBLICATION_STATE}:published"]
     }
 
-    config.default_per_page = 20 # Works!
+    config.default_per_page = 10 # Works!
 
     ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SolrHelper#solr_doc_params) or
     ## parameters included in the Blacklight-jetty document requestHandler.
