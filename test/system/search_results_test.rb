@@ -44,11 +44,11 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     end
   end
 
-  def test_map_clustering
+  def test_map_markers
     # Map centered on USA. B1G records have cluster centroid values.
     visit '/?utf8=✓&view=mapview&q=&search_field=all_fields&bbox=-177.129822%20-36.81918%20-28.067322%2074.70319'
     sleep(3)
-    assert page.has_selector?("div.marker-cluster")
+    assert page.has_selector?("div.leaflet-marker-icon")
   end
 
   def test_empty_search
