@@ -15,7 +15,7 @@ ARCGIS_BASE_URL: 'https://www.arcgis.com/home/webmap/viewer.html'
 EMAIL_TO: 'fake-email@example.com'
 
 # The bq boost value for spatial search matches within a bounding box
-BBOX_WITHIN_BOOST: '10'
+BBOX_WITHIN_BOOST: '50'
 
 # The bf boost value for overlap ratio
 OVERLAP_RATIO_BOOST: '10'
