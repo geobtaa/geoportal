@@ -12,7 +12,7 @@ Blacklight.onLoad(function() {
       try {
         var geom = $(element).data('map-geom');
         viewer.addGeoJsonOverlay(geom);
-      } catch { };
+      } catch (error) { };
     }
   });
 
