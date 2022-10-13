@@ -10,28 +10,25 @@
   </h3>
 <% end %>
 
-<div class='more-info-area'>
-  <%= content_tag :div, class: 'row' do %>
-    <div class="document-wrapper">
-      <div class='col-xs-11'>
-        <div class='media'>
-          <%- if document.sidecar.image.attached? %>
-            <%- if document.sidecar.image.variable? %>
-              <%= image_tag document.sidecar.image.variant(resize: "200"), {class: 'mr-3'} %>
-            <%- else %>
-              <%= image_tag document.sidecar.image, {class: 'mr-3'} %>
-            <%- end %>
+<%= content_tag :div, class: 'row' do %>
+  <div class="document-wrapper">
+    <div class='col-xs-11'>
+      <div class='media'>
+        <%- if document.sidecar.image.attached? %>
+          <%- if document.sidecar.image.variable? %>
+            <%= image_tag document.sidecar.image.variant(resize: "200"), {class: 'mr-3'} %>
           <%- else %>
-            <span class="icon square mr-3">
-              <%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS]&.first, classes: 'svg_tooltip') %>
-            </span>
+            <%= image_tag document.sidecar.image, {class: 'mr-3'} %>
           <%- end %>
-          <div class='media-body'>
-            <p><%= geoblacklight_present(:index_fields_display, document) %></p>
-          </div>
+        <%- else %>
+          <span class="icon square mr-3">
+            <%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS]&.first, classes: 'svg_tooltip') %>
+          </span>
+        <%- end %>
+        <div class='media-body'>
+          <p><%= geoblacklight_present(:index_fields_display, document) %></p>
         </div>
       </div>
     </div>
-  <% end %>
-
-</div>
+  </div>
+<% end %>
