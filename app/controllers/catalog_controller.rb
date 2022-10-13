@@ -36,6 +36,10 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.sort'] ||= 'index'
 
+    # @See: https://github.com/geobtaa/geoportal/issues/471
+    # The 'facet.limit' -1 value is not respected here, filter facets limits are still passed along to Solr. This manually adjusts the facet count to -1 for schema_provider_s, overriding the catalog_controller.rb limit.
+    config.advanced_search[:form_solr_parameters]['f.schema_provider_s.facet.limit'] ||= -1
+
     # GeoBlacklight Defaults
     # * Adds the "map" split view for catalog#index
     # config.view.split(partials: ['index'])
