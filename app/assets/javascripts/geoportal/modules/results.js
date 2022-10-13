@@ -46,6 +46,9 @@ Blacklight.onLoad(function() {
     // instantiate new map
     GeoBlacklight.Home = new GeoBlacklight.Viewer.Map(this, { bbox: bbox });
 
+    // instantiate spiderfy
+    GeoBlacklight.Oms = new OverlappingMarkerSpiderfier(GeoBlacklight.Home.map);
+
     // set hover listeners on map
     $('#content')
       .on('mouseenter', '#documents [data-layer-id]', function() {
@@ -81,6 +84,7 @@ Blacklight.onLoad(function() {
   function placeMarkers() {
     // Clear existing markers
     GeoBlacklight.Home.removeMarkers();
+    GeoBlacklight.Oms.clearMarkers();
 
     $('.document [data-geom]').each(function() {
       var _this = $(this),
@@ -98,16 +102,16 @@ Blacklight.onLoad(function() {
         var bounds = L.geoJSONToBounds(currentBbox);
         var marker = L.marker(bounds.getCenter(), {icon: redMarker});
 
-        // Add marker to map
-        marker.addTo(GeoBlacklight.Home.markers);
-
         // Set scroll click event on marker
-        marker.on('click', function() {
-          console.log("Clicked - " + JSON.stringify(_this.offset()));
+        GeoBlacklight.Oms.addListener('click', function(marker) {
           $( ".document .selected" ).removeClass( "selected" );
           $('html, body').animate({scrollTop: _this.offset().top - 120}, 200);
           $( _this ).addClass( "selected" );
         });
+
+        // Add markers to the map and Oms
+        GeoBlacklight.Home.map.addLayer(marker);
+        GeoBlacklight.Oms.addMarker(marker);
       }
     });
   }
@@ -130,6 +134,5 @@ Blacklight.onLoad(function() {
 
     // Reload markers and listeners
     placeMarkers();
-
   }
 });
