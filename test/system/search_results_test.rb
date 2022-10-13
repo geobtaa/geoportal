@@ -44,16 +44,16 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     end
   end
 
-  def test_map_clustering
+  def test_map_markers
     # Map centered on USA. B1G records have cluster centroid values.
     visit '/?utf8=✓&view=mapview&q=&search_field=all_fields&bbox=-177.129822%20-36.81918%20-28.067322%2074.70319'
     sleep(3)
-    assert page.has_selector?("div.marker-cluster")
+    assert page.has_selector?("div.leaflet-marker-icon")
   end
 
   def test_empty_search
     visit '/?utf8=✓&q=&search_field=all_fields'
-    assert page.assert_selector('article.document', :count => 20)
+    assert page.assert_selector('article.document', :count => 10)
   end
 
   def test_facets
@@ -138,7 +138,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     # Search 1874 -
     # Expect 38 results
     visit '/?utf8=✓&q=&search_field=all_fields&range%5Bgbl_indexYear_im%5D%5Bbegin%5D=1874&range%5Bgbl_indexYear_im%5D%5Bend%5D=&commit=Limit'
-    assert page.assert_selector('article.document', :count => 20)
+    assert page.assert_selector('article.document', :count => 10)
   end
 
   def test_child_negative_boost

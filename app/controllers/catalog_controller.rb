@@ -36,15 +36,20 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.sort'] ||= 'index'
 
+    # @See: https://github.com/geobtaa/geoportal/issues/471
+    # The 'facet.limit' -1 value is not respected here, catalog_controller.rb configuration facet limits are still passed along to Solr. This manually adjusts the facet count to -1 for schema_provider_s and gbl_resourceType_sm
+    config.advanced_search[:form_solr_parameters]['f.schema_provider_s.facet.limit'] ||= -1
+    config.advanced_search[:form_solr_parameters]['f.gbl_resourceType_sm.facet.limit'] ||= -1
+
     # GeoBlacklight Defaults
     # * Adds the "map" split view for catalog#index
-    config.view.split(partials: ['index'])
+    # config.view.split(partials: ['index'])
     config.view.delete_field('list')
 
     # Map views
     config.view.mapview.partials = [:index]
-    config.view['split'].title = "List view"
-    config.view['mapview'].title = "Map view"
+    # config.view['split'].title = "List view"
+    # config.view['mapview'].title = "Map view"
 
     config.raw_endpoint.enabled = true
 
@@ -57,7 +62,7 @@ class CatalogController < ApplicationController
       'fq' => ["#{Settings.FIELDS.B1G_PUBLICATION_STATE}:published"]
     }
 
-    config.default_per_page = 20 # Works!
+    config.default_per_page = 10 # Works!
 
     ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SolrHelper#solr_doc_params) or
     ## parameters included in the Blacklight-jetty document requestHandler.
@@ -151,7 +156,7 @@ class CatalogController < ApplicationController
     # filter_query_builder - Defines the query generated for Solr
     # filter_class         - Defines how to add/remove facet from query
     # label                - Defines the label used in contstraints container
-    config.add_facet_field Settings.FIELDS.GEOMETRY, item_presenter: Geoblacklight::BboxItemPresenter, filter_class: Geoblacklight::BboxFilterField, filter_query_builder: Geoblacklight::BboxFilterQuery, within_boost: Settings.BBOX_WITHIN_BOOST, overlap_boost: Settings.OVERLAP_RATIO_BOOST, overlap_field: Settings.FIELDS.OVERLAP_FIELD, label: 'Bounding Box'
+    config.add_facet_field 'solr_bboxtype', item_presenter: Geoblacklight::BboxItemPresenter, filter_class: Geoblacklight::BboxFilterField, filter_query_builder: Geoblacklight::BboxFilterQuery, within_boost: Settings.BBOX_WITHIN_BOOST, overlap_boost: Settings.OVERLAP_RATIO_BOOST, overlap_field: Settings.FIELDS.OVERLAP_FIELD, label: 'Bounding Box'
 
     # Item Relationship Facets
     # * Not displayed to end user (show: false)

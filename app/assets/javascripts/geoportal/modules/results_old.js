@@ -44,22 +44,42 @@ Blacklight.onLoad(function() {
     }
 
     // instantiate new map
-    GeoBlacklight.Home = new GeoBlacklight.Viewer.Map(this, { bbox: bbox });
+    geoblacklight = new GeoBlacklight.Viewer.Map(this, { bbox: bbox });
+
+    var markers = L.markerClusterGroup();
+
+    // Send Oboe to admin/api for non-web-ui attributes like centroid
+    // Not usingURL() to maintain legacy IE support
+    url = document.createElement('a');
+    url.href = window.location.href;
+    url.pathname = '/admin/api.json'
+    // Oboe - Re-query Solr for JSON results
+    oboe(url.toString() + '&format=json&per_page=100&rows=100')
+      .node('data.*', function( doc ){
+          if(typeof doc['attributes']['dcat_centroid'] != 'undefined'){
+            var latlng = doc['attributes']['dcat_centroid']['attributes']['value'].split(",")
+            markers.addLayer(L.marker([latlng[0],latlng[1]]).bindPopup("<a href='/catalog/" + doc['attributes']['geomg_id_s']['attributes']['value'] + "'>" + doc['attributes']['dct_title_s']['attributes']['value'] + "</a>"));
+          }
+        }
+      )
+      .done(function(){
+        geoblacklight.map.addLayer(markers);
+      })
 
     // set hover listeners on map
     $('#content')
       .on('mouseenter', '#documents [data-layer-id]', function() {
         if($(this).data('bbox') !== "") {
           var geom = $(this).data('geom')
-          GeoBlacklight.Home.addGeoJsonOverlay(geom)
+          geoblacklight.addGeoJsonOverlay(geom)
         }
       })
       .on('mouseleave', '#documents [data-layer-id]', function() {
-        GeoBlacklight.Home.removeBoundsOverlay();
+        geoblacklight.removeBoundsOverlay();
       });
 
     // add geosearch control to map
-    GeoBlacklight.Home.map.addControl(L.control.geosearch(opts));
+    geoblacklight.map.addControl(L.control.geosearch(opts));
 
     // B1G Customizations
     // fullscreen control
@@ -72,25 +92,8 @@ Blacklight.onLoad(function() {
     var searchControl = new GeoSearchControl({
       provider: provider,
     });
-    GeoBlacklight.Home.map.addControl(searchControl);
-
-    // Set document markers
-    GeoBlacklight.Home.placeMarkers();
-    GeoBlacklight.Home.setHoverListeners();
+    geoblacklight.map.addControl(searchControl);
   });
-
-  function setHoverListeners() {
-    $('[data-map="index"]').each(function(i, element) {
-      $('#content')
-        .on('mouseenter', '#documents [data-layer-id]', function() {
-          var geom = $(this).data('geom')
-          GeoBlacklight.Home.addGeoJsonOverlay(geom);
-        })
-        .on('mouseleave', '#documents [data-layer-id]', function() {
-          GeoBlacklight.Home.removeBoundsOverlay();
-      });
-    });
-  }
 
   function updatePage(url) {
     $.get(url).done(function(data) {
@@ -106,10 +109,6 @@ Blacklight.onLoad(function() {
       } else {
         $('#map').after($doc.find('#map').next());
       }
-
-      // Reload markers and listeners
-      GeoBlacklight.Home.placeMarkers();
-      GeoBlacklight.Home.setHoverListeners()
     });
   }
 });
