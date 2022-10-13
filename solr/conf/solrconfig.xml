@@ -139,7 +139,7 @@
         dct_subject_tmi^6
         gbl_resourceClass_tmi^6
         dct_spatial_tmi^8
-        dct_title_ti^9
+        dct_title_ti^70
         geomg_s_ti^10
       </str>
       <str name="pf"><!-- phrase boost within result set -->
@@ -152,15 +152,15 @@
         dct_subject_tmi^6
         gbl_resourceClass_tmi^6
         dct_spatial_tmi^8
-        dct_title_ti^9
+        dct_title_ti^70
         geomg_s_ti^10
       </str>
       <str name="title_qf">
-        dct_title_ti^10
+        dct_title_ti^70
         dct_isPartOf_tmi
       </str>
       <str name="title_pf">
-        dct_title_ti^10
+        dct_title_ti^70
         dct_isPartOf_tmi
       </str>
       <str name="publisher_qf">
