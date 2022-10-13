@@ -7,6 +7,13 @@ Blacklight.onLoad(function() {
 
     // get new viewer instance and pass in element
     viewer = new window['GeoBlacklight']['Viewer'][viewerName](element);
+
+    if($('section.page-sidebar').has('div#static-map').length) {
+      try {
+        var geom = $(element).data('map-geom');
+        viewer.addGeoJsonOverlay(geom);
+      } catch { };
+    }
   });
 
   $('.truncate-abstract').each(function(i, element) {
