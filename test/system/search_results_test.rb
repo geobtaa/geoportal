@@ -53,7 +53,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
 
   def test_empty_search
     visit '/?utf8=✓&q=&search_field=all_fields'
-    assert page.assert_selector('article.document', :count => 20)
+    assert page.assert_selector('article.document', :count => 10)
   end
 
   def test_facets
@@ -138,7 +138,7 @@ class SearchResultsPageTest < ApplicationSystemTestCase
     # Search 1874 -
     # Expect 38 results
     visit '/?utf8=✓&q=&search_field=all_fields&range%5Bgbl_indexYear_im%5D%5Bbegin%5D=1874&range%5Bgbl_indexYear_im%5D%5Bend%5D=&commit=Limit'
-    assert page.assert_selector('article.document', :count => 20)
+    assert page.assert_selector('article.document', :count => 10)
   end
 
   def test_child_negative_boost
