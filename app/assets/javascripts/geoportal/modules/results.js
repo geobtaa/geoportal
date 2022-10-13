@@ -75,40 +75,20 @@ Blacklight.onLoad(function() {
     GeoBlacklight.Home.map.addControl(searchControl);
 
     // Set document markers
-    placeMarkers();
+    GeoBlacklight.Home.placeMarkers();
+    GeoBlacklight.Home.setHoverListeners();
   });
 
-  function placeMarkers() {
-    // Clear existing markers
-    GeoBlacklight.Home.removeMarkers();
-
-    $('.document [data-geom]').each(function() {
-      var _this = $(this),
-          currentBbox = _this.data().geom,
-          layerId = _this.data().layerId;
-          counter = _this.data().counter,
-          redMarker = L.ExtraMarkers.icon({
-            innerHTML: '<p style="color: white; margin-top: 8px;">' + counter + '</p>',
-            markerColor: 'blue',
-            shape: 'square',
-            prefix: 'fa'
-          });
-
-      if (currentBbox) {
-        var bounds = L.geoJSONToBounds(currentBbox);
-        var marker = L.marker(bounds.getCenter(), {icon: redMarker});
-
-        // Add marker to map
-        marker.addTo(GeoBlacklight.Home.markers);
-
-        // Set scroll click event on marker
-        marker.on('click', function() {
-          console.log("Clicked - " + JSON.stringify(_this.offset()));
-          $( ".document .selected" ).removeClass( "selected" );
-          $('html, body').animate({scrollTop: _this.offset().top - 120}, 200);
-          $( _this ).addClass( "selected" );
-        });
-      }
+  function setHoverListeners() {
+    $('[data-map="index"]').each(function(i, element) {
+      $('#content')
+        .on('mouseenter', '#documents [data-layer-id]', function() {
+          var geom = $(this).data('geom')
+          GeoBlacklight.Home.addGeoJsonOverlay(geom);
+        })
+        .on('mouseleave', '#documents [data-layer-id]', function() {
+          GeoBlacklight.Home.removeBoundsOverlay();
+      });
     });
   }
 
@@ -126,10 +106,10 @@ Blacklight.onLoad(function() {
       } else {
         $('#map').after($doc.find('#map').next());
       }
+
+      // Reload markers and listeners
+      GeoBlacklight.Home.placeMarkers();
+      GeoBlacklight.Home.setHoverListeners()
     });
-
-    // Reload markers and listeners
-    placeMarkers();
-
   }
 });
