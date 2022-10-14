@@ -14,6 +14,7 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
   },
 
   overlay: L.layerGroup(),
+  markers: L.layerGroup(),
 
   load: function() {
     console.log('MAP: local and customized');
@@ -24,6 +25,7 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     this.map = L.map(this.element, { noWrap: true }).fitBounds(this.options.bbox);
     this.map.addLayer(this.selectBasemap());
     this.map.addLayer(this.overlay);
+    this.map.addLayer(this.markers);
     if (this.data.map !== 'index') {
       this.addBoundsOverlay(this.options.bbox);
     }
@@ -111,6 +113,57 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     // Event listener for layer switcher
     this.map.on('baselayerchange', function (e) {
       Cookies.set('basemap', e.name)
+    });
+  },
+
+  removeMarkers: function() {
+    this.markers.clearLayers();
+  },
+
+  setHoverListeners: function() {
+    $('[data-map="index"]').each(function(i, element) {
+      $('#content')
+        .on('mouseenter', '#documents [data-layer-id]', function() {
+          var geom = $(this).data('geom')
+          GeoBlacklight.Home.addGeoJsonOverlay(geom);
+        })
+        .on('mouseleave', '#documents [data-layer-id]', function() {
+          GeoBlacklight.Home.removeBoundsOverlay();
+      });
+    });
+  },
+
+  placeMarkers: function() {
+    // Clear existing markers
+    GeoBlacklight.Home.removeMarkers();
+
+    $('.document [data-geom]').each(function() {
+      var _this = $(this),
+          currentBbox = _this.data().geom,
+          layerId = _this.data().layerId;
+          counter = _this.data().counter,
+          redMarker = L.ExtraMarkers.icon({
+            innerHTML: '<p style="color: white; margin-top: 8px;">' + counter + '</p>',
+            markerColor: 'blue',
+            shape: 'square',
+            prefix: 'fa'
+          });
+
+      if (currentBbox) {
+        var bounds = L.geoJSONToBounds(currentBbox);
+        var marker = L.marker(bounds.getCenter(), {icon: redMarker});
+
+        // Add marker to map
+        marker.addTo(GeoBlacklight.Home.markers);
+
+        // Set scroll click event on marker
+        marker.on('click', function() {
+          console.log("Clicked - " + JSON.stringify(_this.offset()));
+          $( ".document .selected" ).removeClass( "selected" );
+          $('html, body').animate({scrollTop: _this.offset().top - 120}, 200);
+          $( _this ).addClass( "selected" );
+        });
+      }
     });
   }
 });

@@ -1,5 +1,6 @@
 <% # header bar for doc items in index view -%>
-<%= content_tag :div, class: 'documentHeader index-split row', data: { layer_id: document.id, geom: document.geometry.geojson } do %>
+<% counter = document_counter_with_offset(document_counter) %>
+<%= content_tag :div, class: 'documentHeader index-split row', data: { layer_id: document.id, geom: document.geometry.geojson, counter: counter } do %>
   <h3 class="index_title col">
     <% counter = document_counter_with_offset(document_counter) %>
     <span class="document-counter">
@@ -7,22 +8,24 @@
     </span>
     <%= link_to_document document, counter: counter %>
   </h3>
-  <span class='status-icons'>
-    <button
-      class="caret-toggle btn"
-      data-toggle="collapse"
-      data-target="#doc-<%= document.id %>-fields-collapse"
-      aria-label="<%= t('geoblacklight.metadata.toggle_summary') %>"
-      aria-expanded="false"
-      aria-controls="doc-<%= document.id %>-fields-collapse">
-    </button>
-  </span>
-<% end %>
-
-<div class='more-info-area'>
-  <div id="doc-<%= document.id %>-fields-collapse" class='collapse'>
-    <small>
-      <%= geoblacklight_present(:index_fields_display, document) %>
-    </small>
+  <div class="document-wrapper">
+    <div class='col-xs-11'>
+      <div class='media'>
+        <%- if document.sidecar.image.attached? %>
+          <%- if document.sidecar.image.variable? %>
+            <%= image_tag document.sidecar.image.variant(resize: "200"), {class: 'mr-3'} %>
+          <%- else %>
+            <%= image_tag document.sidecar.image, {class: 'mr-3'} %>
+          <%- end %>
+        <%- else %>
+          <span class="icon square mr-3">
+            <%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS]&.first, classes: 'svg_tooltip') %>
+          </span>
+        <%- end %>
+        <div class='media-body'>
+          <p><%= geoblacklight_present(:index_fields_display, document) %></p>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+<% end %>
