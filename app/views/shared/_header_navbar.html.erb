@@ -1,19 +1,10 @@
 <%- header_classes = homepage? ? 'fixed-top' : nil %>
 <header aria-label='Primary' class="<%= header_classes %>">
-  <div id="btaa-header" class='container-fluid'>
-    <div class='row'>
-      <div id="cic-header-navbar" class="col-12">
-        <%= link_to image_tag('big-ten-academic-alliance-logo.png', {height: '100px', alt: 'Big Ten Academic Alliance', style:'margin:0.25rem 0px'}), root_path %>
-        <a id="feedback" href="/feedback" class="pull-right btn btn-light">
-          Feedback
-          <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-        </a>
-      </div>
-    </div>
-  </div>
-
   <div id='application-header' class='container-fluid'>
     <nav id="header-navbar" class="navbar navbar-expand-md navbar-dark topbar" role="navigation">
+      <div id="cic-header-navbar">
+        <%= link_to image_tag('btaa-logo-white.png', {height: '80px', alt: 'Big Ten Academic Alliance', style:'margin:0.25rem 0px'}), root_path %>
+      </div>
       <%=link_to "Geoportal", root_path, class: "navbar-brand" %>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#user-util-collapse" aria-controls="user-util-collapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
