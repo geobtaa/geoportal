@@ -20,7 +20,7 @@ header {
 }
 
 div#main-container {
-  margin-top:2rem;
+  margin-top:1rem;
   margin-bottom:4rem;
 }
 
@@ -216,4 +216,10 @@ span.list-view.document-counter {
 // * Advanced Search Chosen Fields
 .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
   color: $black !important;
+}
+
+.pagination-search-widgets {
+  text-align: center;
+  padding-top: 1px;
+  padding-bottom: 1rem;
 }
