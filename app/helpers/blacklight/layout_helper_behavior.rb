@@ -30,7 +30,7 @@ module Blacklight
     # Classes used for sizing the main content of a Blacklight page
     # @return [String]
     def main_content_classes
-      'col-lg-9'
+      'col-lg-8'
     end
 
     ##
@@ -45,7 +45,7 @@ module Blacklight
     # overwritten to return 'container-fluid' for Bootstrap full-width layout
     # @return [String]
     def container_classes
-      controller.action_name == "show" ? 'container' : 'container-fluid'
+      'container-fluid'
     end
   end
 end
