@@ -375,6 +375,11 @@ class ShowPageTest < ApplicationSystemTestCase
     end
   end
 
+  def test_suppressed_child_actions_render
+    visit '/catalog/b45275a9-61bd-4d5a-aa1e-ba8d6d1e26aa/citation'
+    assert page.has_content?("Cite")
+  end
+
   # @TODO
   # ESRI - Slow - ImageMapLayer
   # http://localhost:3000/catalog/457dc8bbff9b46848843c8b1bf0ae689

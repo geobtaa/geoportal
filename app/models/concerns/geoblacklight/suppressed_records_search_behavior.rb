@@ -12,6 +12,9 @@ module Geoblacklight
     # @param [Blacklight::Solr::Request]
     # @return [Blacklight::Solr::Request]
     def hide_suppressed_records(solr_params)
+      # Show suppressed child record actions if action is whitelisted here
+      return if ['citation', 'web_services', 'metadata']. include?(blacklight_params.fetch(:action))
+
       # Show suppressed child records if searching for a specific source parent
       Settings.RELATIONSHIPS_SHOWN.map{ |_key,value| value.field }.uniq.each do |field|
         return unless blacklight_params.fetch(:f, {})[field.to_sym].nil?
