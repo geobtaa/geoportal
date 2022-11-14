@@ -53,7 +53,7 @@
 // Custom list of modules
 //= require geoblacklight/modules/bookmarks
 //= require geoblacklight/modules/download
-//= require ./geoportal/modules/geosearch
+//= require geoblacklight/modules/geosearch
 //= require geoblacklight/modules/help_text
 //= require ./geoportal/modules/home
 //= require ./geoportal/modules/item
