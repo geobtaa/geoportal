@@ -226,7 +226,7 @@ class CatalogController < ApplicationController
     config.add_show_field Settings.FIELDS.FORMAT, label: 'Format', itemprop: 'format'
     config.add_show_field Settings.FIELDS.FILE_SIZE, label: 'File Size', itemprop: 'file_size'
     config.add_show_field Settings.FIELDS.B1G_LANGUAGE, label: 'Language', itemprop: 'language'
-    config.add_show_field Settings.FIELDS.B1G_DATE_CREATED, label: 'Date Added'
+    config.add_show_field Settings.FIELDS.B1G_DATE_CREATED, label: 'Date Added', helper_method: :render_date_created
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields

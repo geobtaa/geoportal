@@ -81,6 +81,11 @@ module ApplicationHelper
     links.sort.to_h
   end
 
+  ## Render date_created
+  def render_date_created(args)
+    args[:value]&.first&.to_date&.strftime("%Y-%m-%d")
+  end
+
   ##
   # Render value for a document's field as a truncate abstract
   # div. Arguments come from Blacklight::DocumentPresenter's
