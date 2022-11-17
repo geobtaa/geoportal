@@ -10,7 +10,7 @@ Blacklight.onLoad(function() {
 
   $('[data-map="index"]').each(function() {
     var data = $(this).data(),
-    opts = { baseUrl: data.catalogPath },
+    opts = { baseUrl: '/' },
     world = L.latLngBounds([[-90, -180], [90, 180]]),
     geoblacklight, bbox;
 

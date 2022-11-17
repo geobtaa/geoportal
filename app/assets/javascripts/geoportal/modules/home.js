@@ -8,7 +8,7 @@ Blacklight.onLoad(function() {
 
     geoblacklight.map.setZoom(2);
     geoblacklight.map.addControl(L.control.geosearch({
-      baseUrl: data.catalogPath,
+      baseUrl: '/',
       dynamic: false,
       searcher: function() {
         window.location.href = this.getSearchUrl();
