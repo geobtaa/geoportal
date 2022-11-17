@@ -299,6 +299,8 @@ class CatalogController < ApplicationController
     config.add_sort_field "#{Settings.FIELDS.INDEX_YEAR} asc, dct_title_sort asc", :label => 'Year (Oldest first)'
     config.add_sort_field 'dct_title_sort asc', :label => 'Title (A-Z)'
     config.add_sort_field 'dct_title_sort desc', :label => 'Title (Z-A)'
+    config.add_sort_field 'date_created_dtsi desc', :label => 'Date added (Newest first)'
+    config.add_sort_field 'date_created_dtsi asc', :label => 'Date added (Oldest first)'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
