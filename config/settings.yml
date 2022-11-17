@@ -94,6 +94,7 @@ FIELDS:
   :B1G_ACCRUAL_METHOD: 'b1g_dct_accrualMethod_s'
   :B1G_CHILD_RECORD: 'b1g_child_record_b'
   :B1G_CODE: 'b1g_code_s'
+  :B1G_DATE_CREATED: 'date_created_dtsi'
   :B1G_GEOMG_ID: 'geomg_id_s'
   :B1G_IMAGE: 'b1g_image_ss'
   :B1G_LANGUAGE: 'b1g_language_sm'
