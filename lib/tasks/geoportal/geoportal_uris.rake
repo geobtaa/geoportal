@@ -8,9 +8,9 @@ namespace :geoportal do
     SolrDocumentUri.destroy_all
   end
 
-  desc 'Process all URIs'
+  desc 'Process all Published URIs'
   task :uri_process_all, [:override_existing] => [:environment] do
-    query = '*:*'
+    query = 'b1g_publication_state_s:published'
     index = Geoblacklight::SolrDocument.index
     results = index.send_and_receive(index.blacklight_config.solr_path,
                                      q: query,
