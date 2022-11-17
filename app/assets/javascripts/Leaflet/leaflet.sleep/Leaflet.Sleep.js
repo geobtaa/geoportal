@@ -64,7 +64,7 @@ L.Map.mergeOptions({
   wakeTime: 750,
   wakeMessageTouch: 'Touch to Wake',
   sleepNote: true,
-  hoverToWake: true,
+  hoverToWake: false,
   sleepOpacity:1,
   sleepButton: L.Control.sleepMapControl
 });
