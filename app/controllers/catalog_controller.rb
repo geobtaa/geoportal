@@ -208,6 +208,7 @@ class CatalogController < ApplicationController
     # item_prop: [String] property given to span with Schema.org item property
     # link_to_facet: [Boolean] that can be passed to link to a facet search
     # helper_method: [Symbol] method that can be used to render the value
+    config.add_show_field Settings.FIELDS.TITLE, label: 'Title'
     config.add_show_field Settings.FIELDS.DESCRIPTION, label: 'Description', itemprop: 'description', helper_method: :render_value_as_truncate_abstract_new_lines
     config.add_show_field Settings.FIELDS.CREATOR, label: 'Creator', itemprop: 'creator'
     config.add_show_field Settings.FIELDS.PUBLISHER, label: 'Publisher', itemprop: 'publisher'
@@ -226,6 +227,7 @@ class CatalogController < ApplicationController
     config.add_show_field Settings.FIELDS.FORMAT, label: 'Format', itemprop: 'format'
     config.add_show_field Settings.FIELDS.FILE_SIZE, label: 'File Size', itemprop: 'file_size'
     config.add_show_field Settings.FIELDS.B1G_LANGUAGE, label: 'Language', itemprop: 'language'
+    config.add_show_field Settings.FIELDS.B1G_DATE_CREATED, label: 'Date Added', helper_method: :render_date_created
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -299,6 +301,8 @@ class CatalogController < ApplicationController
     config.add_sort_field "#{Settings.FIELDS.INDEX_YEAR} asc, dct_title_sort asc", :label => 'Year (Oldest first)'
     config.add_sort_field 'dct_title_sort asc', :label => 'Title (A-Z)'
     config.add_sort_field 'dct_title_sort desc', :label => 'Title (Z-A)'
+    config.add_sort_field 'date_created_dtsi desc', :label => 'Date added (Newest first)'
+    config.add_sort_field 'date_created_dtsi asc', :label => 'Date added (Oldest first)'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.

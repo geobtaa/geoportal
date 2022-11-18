@@ -7,15 +7,14 @@ $radius: 4px;
 
 
 div#cic-header-navbar {
-  background-color: $white;
   margin-bottom:0;
+  background-color: darken($btaa-blue, 10%);
+  padding-left:0.5rem;
+  padding-right:0.5rem;
 }
 
 #header-navbar {
-  padding-top:0.5rem;
-  padding-bottom:0.5rem;
-  padding-left:0;
-  padding-right:0;
+  padding:0rem;
 }
 
 .navbar {
@@ -32,9 +31,11 @@ div#application-header {
 
   a {
     color:$white !important;
-    border-top:1px solid $btaa-blue;
   }
-  a:hover{ color: $black !important;}
+
+  a:hover{
+    color: darken($btaa-blue, 10%) !important;
+  }
 
   .navbar-brand {
     margin-top: -1rem;
@@ -45,6 +46,7 @@ div#application-header {
     text-indent:0;
     border:none;
     height: 50px;
+    margin-left:1rem;
   }
   .navbar-brand:hover {
     color: $white !important;

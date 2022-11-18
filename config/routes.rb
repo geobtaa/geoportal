@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   mount BlacklightAdvancedSearch::Engine => '/'
 
   root to: "catalog#index"
+  get '/catalog', to: redirect('/')
   concern :searchable, Blacklight::Routes::Searchable.new
 
   # GEOMG // Metadata Toolkit JSON-API

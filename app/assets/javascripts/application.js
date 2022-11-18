@@ -53,7 +53,7 @@
 // Custom list of modules
 //= require geoblacklight/modules/bookmarks
 //= require geoblacklight/modules/download
-//= require ./geoportal/modules/geosearch
+//= require geoblacklight/modules/geosearch
 //= require geoblacklight/modules/help_text
 //= require ./geoportal/modules/home
 //= require ./geoportal/modules/item
@@ -78,6 +78,7 @@
 //= require Leaflet/leaflet.prunecluster/PruneCluster.js
 //= require Leaflet/leaflet.esri_leaflet_cluster/esri_leaflet_cluster.js
 //= require Leaflet/leaflet.extra-markers/leaflet.extra-markers.js
+//= require Leaflet/leaflet.sleep/Leaflet.Sleep.js
 //= require oboe/oboe-browser.js
 //= require screenfull/screenfull.min.js
 //= require js-cookie/src/js.cookie.js
