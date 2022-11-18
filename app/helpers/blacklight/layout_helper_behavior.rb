@@ -45,7 +45,7 @@ module Blacklight
     # overwritten to return 'container-fluid' for Bootstrap full-width layout
     # @return [String]
     def container_classes
-      controller.action_name == "show" ? 'container' : 'container-fluid'
+      'container-fluid'
     end
   end
 end
