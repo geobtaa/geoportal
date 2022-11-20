@@ -11,7 +11,6 @@ class HomePageTest < ApplicationSystemTestCase
   def test_homepage_dom
     assert page.has_content?("Geoportal")
     assert page.has_selector?("header")
-    assert page.has_selector?("header #btaa-header")
     assert page.has_selector?("header #application-header")
     assert page.has_selector?("#home-content")
     assert page.has_selector?("#wrapper-map")
