@@ -60,3 +60,25 @@ div#application-header {
 form.search-query-form {
   max-width: 704px;
 }
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+  #header-navbar {
+    #cic-header-navbar {
+      img {
+        height: 40px !important;
+      }
+    }
+
+    a.navbar-brand {
+      margin-top: -0.5rem;
+      font-size: 32px;
+    }
+  }
+
+  main {
+    #home-content {
+      margin-top: 2.5rem !important;
+    }
+  }
+}
