@@ -172,7 +172,7 @@ module BlacklightAdvancedSearch
         query = my_params[:q1]
         constraints << render_constraint_element(
           label, query,
-          remove: search_catalog_path(remove_guided_keyword_query(%i[f1 q1], my_params))
+          remove: blacklight_path(remove_guided_keyword_query(%i[f1 q1], my_params))
         )
       end
       if my_params[:q2].present?
@@ -181,7 +181,7 @@ module BlacklightAdvancedSearch
         query = 'NOT ' + my_params[:q2] if my_params[:op2] == 'NOT'
         constraints << render_constraint_element(
           label, query,
-          remove: search_catalog_path(remove_guided_keyword_query(%i[f2 q2 op2], my_params))
+          remove: blacklight_path(remove_guided_keyword_query(%i[f2 q2 op2], my_params))
         )
       end
       if my_params[:q3].present?
@@ -190,7 +190,7 @@ module BlacklightAdvancedSearch
         query = 'NOT ' + my_params[:q3] if my_params[:op3] == 'NOT'
         constraints << render_constraint_element(
           label, query,
-          remove: search_catalog_path(remove_guided_keyword_query(%i[f3 q3 op3], my_params))
+          remove: blacklight_path(remove_guided_keyword_query(%i[f3 q3 op3], my_params))
         )
       end
       if my_params[:q4].present?
@@ -199,7 +199,7 @@ module BlacklightAdvancedSearch
         query = 'NOT ' + my_params[:q4] if my_params[:op4] == 'NOT'
         constraints << render_constraint_element(
           label, query,
-          remove: search_catalog_path(remove_guided_keyword_query(%i[f4 q4 op4], my_params))
+          remove: blacklight_path(remove_guided_keyword_query(%i[f4 q4 op4], my_params))
         )
       end
       constraints
