@@ -16,7 +16,9 @@ class RelationshipsTest < ApplicationSystemTestCase
     assert page.has_link?("Browse all 4 records...")
     click_link("Browse all 4 records...")
 
+    # Ensure we found results
     assert page.has_no_content?("No results found for your search")
+    assert page.has_selector?("article.document")
   end
 
   def test_child_relationships_hide_unpublished_docs
