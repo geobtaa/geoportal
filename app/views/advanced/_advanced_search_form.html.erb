@@ -1,4 +1,4 @@
-<%= form_tag search_catalog_path, :class => 'advanced form-horizontal', :method => :get do  %>
+<%= form_tag blacklight_path, :class => 'advanced form-horizontal', :method => :get do  %>
   <div class="row">
     <div class="col-md-6">
       <% unless (search_context_str = render_search_to_s(advanced_search_context.permit!.to_h)).blank? %>

@@ -13,7 +13,7 @@
   </div>
 
   <div class="card-body">
-    <%= content_tag :div, id: 'static-map', data: { map: 'item', protocol: 'Map', url: @document.viewer_endpoint, 'layer-id' => @document.wxs_identifier, 'map-geom' => @document.geometry.geojson, 'catalog-path'=> search_catalog_path, available: document_available?, inspect: show_attribute_table?, basemap: 'esri', leaflet_options: leaflet_options } do %>
+    <%= content_tag :div, id: 'static-map', data: { map: 'item', protocol: 'Map', url: @document.viewer_endpoint, 'layer-id' => @document.wxs_identifier, 'map-geom' => @document.geometry.geojson, 'catalog-path'=> blacklight_path, available: document_available?, inspect: show_attribute_table?, basemap: 'esri', leaflet_options: leaflet_options } do %>
     <% end %>
   </div>
 </div>
