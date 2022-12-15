@@ -60,5 +60,9 @@
 
     <%= render partial: 'shared/modal' %>
     <%= render partial: 'shared/javascript_behaviors' %>
+    
+    <%- if Rails.env.production? %>
+      <%= render partial: 'shared/matomo_analytics' %>
+    <%- end %>
   </body>
 </html>
