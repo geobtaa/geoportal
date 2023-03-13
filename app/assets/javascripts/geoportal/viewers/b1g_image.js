@@ -6,7 +6,8 @@ GeoBlacklight.Viewer.B1gImage = GeoBlacklight.Viewer.extend({
       center: [0, 0],
       crs: L.CRS.Simple,
       zoom: 0,
-      zoomControl:false
+      zoomControl:false,
+      sleep: false
     });
 
     this.loadControls();
