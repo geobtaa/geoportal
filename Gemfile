@@ -66,7 +66,11 @@ group :development do
 end
 
 gem 'blacklight', '~> 7.30.0'
-gem 'blacklight_advanced_search', '~> 7.0.0'
+
+# BL Advanced Search / Pinned to EWL bug-fix
+# See: https://github.com/projectblacklight/blacklight_advanced_search/issues/127
+gem "blacklight_advanced_search", git: "https://github.com/ewlarson/blacklight_advanced_search.git", branch: "bl7-fix-gentle-hands"
+
 gem 'blacklight_range_limit', '~> 7.0.0'
 gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
@@ -77,7 +81,7 @@ gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
 
 # Image migration
-gem 'geoblacklight_sidecar_images', '~> 0.8.0'
+gem 'geoblacklight_sidecar_images', '~> 1.0'
 gem 'carrierwave', '~> 1.2'
 gem 'mini_magick', '~> 4.9.4'
 
@@ -119,4 +123,3 @@ group :test do
 end
 
 gem 'rexml'
-gem 'faraday_middleware', '1.2.0'
