@@ -29,6 +29,10 @@
       <%= pub_date.label %>
   <% end %>
   <div class="col-sm-8 range_limit">
-    <%= render_range_input(pub_date.field, :begin) %> – <%= render_range_input(pub_date.field, :end) %>
+    <label for="range_gbl_indexYear_im_begin" class="sr-only">Begin</label>
+    <%= render_range_input(pub_date.field, :begin) %> 
+    – 
+    <label for="range_gbl_indexYear_im_end" class="sr-only">End</label>
+    <%= render_range_input(pub_date.field, :end) %>
   </div>
 </div>
