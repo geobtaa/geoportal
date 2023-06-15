@@ -98,6 +98,6 @@ class SolrDocument
   end
 
   def resource_class
-    self._source["#{Settings.FIELDS.RESOURCE_CLASS}"].first
+    self._source["#{Settings.FIELDS.RESOURCE_CLASS}"]&.first
   end
 end

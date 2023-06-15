@@ -7,10 +7,7 @@
 
 <%= render(Blacklight::SearchContextComponent.new(search_context: @search_context, search_session: search_session)) if search_session['document_id'] == @document.id %>
 
-<% if ['map', 'iiif', 'iiif_manifest', 'download', 'b1g_image'].any?{ |vp| @document.viewer_protocol == vp } %>
-  <%= render :partial => 'show_static_map_bbox' %>
-<% end %>
-
+<%= render :partial => 'show_sidebar_static_map' if render_sidebar_map?(@document) %>
 <%= render :partial => 'show_tools' %>
 
 <div class="sidebar-buttons">

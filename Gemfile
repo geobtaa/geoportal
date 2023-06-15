@@ -65,7 +65,7 @@ group :development do
   gem 'letter_opener'
 end
 
-gem 'blacklight', '~> 7.30.0'
+gem 'blacklight', '~> 7.33.0'
 
 # BL Advanced Search / Pinned to EWL bug-fix
 # See: https://github.com/projectblacklight/blacklight_advanced_search/issues/127
@@ -76,7 +76,7 @@ gem 'chosen-rails' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '~> 4.0.0'
+gem 'geoblacklight', '~> 4.1'
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
 
