@@ -104,7 +104,7 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     console.log('Control: Base Layer');
     var baseLayers = {
       "Default (Esri)": GeoBlacklight.Basemaps.esri,
-      "OpenStreetMaps": GeoBlacklight.Basemaps.openstreetmapStandard,
+      "OpenStreetMap": GeoBlacklight.Basemaps.openstreetmapStandard,
       "World Imagery (Esri)": GeoBlacklight.Basemaps.esri_world_imagery
     };
 
