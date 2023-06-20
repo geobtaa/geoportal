@@ -5,3 +5,16 @@
     width:100%;
   }
 }
+
+// a11y active pagination page link 
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #0059B8;
+  border-color: #0059B8;
+}
+
+// a11y - #518 - Facets - Color Contrast 
+.text-success, .facet-values li .selected {
+  color: #186329 !important;
+}
