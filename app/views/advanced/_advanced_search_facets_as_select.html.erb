@@ -25,7 +25,7 @@
 <%# Publication Date is a range input %>
 <% pub_date = facet_configuration_for_field(Settings.FIELDS.INDEX_YEAR) %>
 <div class="form-group advanced-search-facet row">
-  <%= label_tag pub_date.field.parameterize, :class => "col-sm-4 control-label" do %>
+  <%= tag.span pub_date.field.parameterize, :class => "col-sm-4 control-label" do %>
       <%= pub_date.label %>
   <% end %>
   <div class="col-sm-8 range_limit">
