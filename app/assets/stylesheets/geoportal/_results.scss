@@ -7,6 +7,14 @@
 }
 
 // a11y active pagination page link 
+.page-link {
+  text-decoration: underline;
+}
+
+.page-links a {
+  text-decoration: underline;
+}
+
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
