@@ -19,9 +19,11 @@ header {
   background-color: $white;
 }
 
-div#main-container {
+#main-container {
   margin-top:1rem;
   margin-bottom:4rem;
+  background-color: $white;
+  background: none;
 }
 
 section#home-metadata {

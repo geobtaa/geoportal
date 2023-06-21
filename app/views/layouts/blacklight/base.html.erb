@@ -40,7 +40,7 @@
       <%= render 'home' %>
 
     <% else %>
-      <div id="main-container" class="<%= container_classes %>" data-analytics-id="<%= Rails.configuration.google_analytics %>">
+      <main id="main-container" class="<%= container_classes %>" data-analytics-id="<%= Rails.configuration.google_analytics %>">
         <%= content_for(:container_header) %>
 
         <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
