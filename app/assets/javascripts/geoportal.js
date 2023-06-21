@@ -3,7 +3,7 @@ if (!window.B1G){ B1G={}; }
 
 B1G.baseLayerMap = {
   "Default (Esri)": 'esri',
-  "OpenStreetMaps": 'openstreetmapStandard',
+  "OpenStreetMap": 'openstreetmapStandard',
   "World Imagery (Esri)": 'esri_world_imagery'
 }
 

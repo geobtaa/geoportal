@@ -327,6 +327,7 @@ class CatalogController < ApplicationController
 
     config.show.display_type_field = 'format'
     config.show.partials << 'show_header'
+    config.show.partials << "show_default_display_note"
     config.show.partials << 'show_default_viewer_container'
     config.show.partials << 'show_default_viewer_information'
     config.show.partials << 'show_default_attribute_table'

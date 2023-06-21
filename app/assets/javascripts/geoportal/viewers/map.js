@@ -10,7 +10,8 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     * @type {L.LatLngBounds}
     */
     bbox: [[-20, -179], [64, 134]],
-    opacity: 0.75
+    opacity: 0.75,
+    attributionControl: false
   },
 
   overlay: L.layerGroup(),
@@ -104,7 +105,7 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     console.log('Control: Base Layer');
     var baseLayers = {
       "Default (Esri)": GeoBlacklight.Basemaps.esri,
-      "OpenStreetMaps": GeoBlacklight.Basemaps.openstreetmapStandard,
+      "OpenStreetMap": GeoBlacklight.Basemaps.openstreetmapStandard,
       "World Imagery (Esri)": GeoBlacklight.Basemaps.esri_world_imagery
     };
 

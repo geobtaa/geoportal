@@ -1,6 +1,7 @@
 en:
   geoblacklight:
     bbox_label: 'Bounding Box'
+    location: 'Location'
     citation:
       retrieved_from: 'Retrieved from %{document_url}'
     download:
@@ -70,18 +71,19 @@ en:
       xyz: 'XYZ Tiles'
       wmts: 'Web Map Tile Service'
     relations:
-      ancestor: 'Is derived from...'
-      descendant: 'Has derivatives...'
       member_of_ancestors: 'Belongs to collection...'
       member_of_descendants: 'Collection records...'
       part_of_ancestors: 'Is part of...'
       part_of_descendants: 'Has part...'
-      relation: 'Related Records'
-      replaces: 'Item replaces...'
-      source: 'Source Datasets'
-      title: 'Related items...'
+      relation_ancestors: 'Related records...'
+      relation_descendants: 'Related records...'
+      replaces_ancestors: 'Replaces...'
+      replaces_descendants: 'Is replaced by...'
+      source_ancestors: 'Source records...'
+      source_descendants: 'Derived records...'
       version_of_ancestors: 'Is version of...'
       version_of_descendants: 'Has version...'
+      browse_all_no_count: "Browse all records..."
       browse_all: "Browse all %{count} records..."
     metadata:
       view_metadata: 'View Metadata'
@@ -191,6 +193,8 @@ en:
       wisconsin: University of Wisconsin (logo)
   blacklight:
     icon:
+      american-geographical-society-library-uwm-libraries: American Geographical Society Library - UWM Libraries
+      arizona: The University of Arizona
       arrow-circle-down: Arrow within a circle, pointing down
       baruch-cuny: Baruch College
       berkeley: University of California, Berkeley
@@ -214,6 +218,7 @@ en:
       multilinestring: Multi-line string
       multipoint: Multi-point
       multipolygon: Multi-polygon
+      nebraska: University of Nebraska
       nyu: New York University
       ohio-state: The Ohio State University
       penn-state: Penn State University
@@ -221,6 +226,7 @@ en:
       public: Public content
       purdue: Purdue University
       restricted: Restricted content
+      rutgers: Rutgers University
       sms: SMS
       stanford: Stanford University
       texas: The University of Texas at Austin

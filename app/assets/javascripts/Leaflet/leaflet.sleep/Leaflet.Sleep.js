@@ -177,7 +177,7 @@ L.Map.Sleep = L.Handler.extend({
     }
 
     L.DomUtil.setOpacity( this._map._container, this._map.options.sleepOpacity);
-    this.sleepNote.style.opacity = this._map.options.sleepNoteStyle && this._map.options.sleepNoteStyle.opacity ? this._map.options.sleepNoteStyle.opacity : .6;
+    this.sleepNote.style.opacity = this._map.options.sleepNoteStyle && this._map.options.sleepNoteStyle.opacity ? this._map.options.sleepNoteStyle.opacity : .9;
     this._addSleepingListeners();
   },
 
