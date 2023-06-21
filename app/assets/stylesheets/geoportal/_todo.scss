@@ -5,6 +5,10 @@ $black: #000000; // 0%
 $btaa-blue: #005E8E;
 $radius: 4px;
 
+// link 
+a { text-decoration: underline; }
+a.btn { text-decoration: none; }
+a.navbar-brand { text-decoration: none; }
 
 #geoportal-about {
   margin-top:1rem;
