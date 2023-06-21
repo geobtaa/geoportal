@@ -49,6 +49,7 @@ group :development, :test do
   gem 'byebug'
 
   # RSpec/SolrWrapper
+  gem 'axe-core-api'
   gem 'capybara'
   gem 'capybara-selenium'
   gem 'capybara-screenshot'
