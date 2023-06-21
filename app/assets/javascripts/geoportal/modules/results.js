@@ -1,6 +1,7 @@
 Blacklight.onLoad(function() {
   var historySupported = !!(window.history && window.history.pushState);
 
+
   if (historySupported) {
     History.Adapter.bind(window, 'statechange', function() {
       var state = History.getState();
@@ -78,6 +79,9 @@ Blacklight.onLoad(function() {
     GeoBlacklight.Home.placeMarkers();
     GeoBlacklight.Home.setHoverListeners();
   });
+
+  // Remove Leaflet Attribute
+  $('.leaflet-control-attribution').hide()
 
   function setHoverListeners() {
     $('[data-map="index"]').each(function(i, element) {

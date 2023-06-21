@@ -1,8 +1,10 @@
 
 <div class="advanced-search-field">
   <div class="search-field">
+    <label for="f1" class="sr-only">Search Field One</label>
     <%= select_tag('f1', options_for_select(advanced_key_value, guided_field(:f1, 'all_fields')), {class: 'form-control'}) %>
     <div name="row1">
+      <label for="q1" class="sr-only">Text Field One</label>
       <%= text_field_tag "q1", label_tag_default_for(:q1), :class => 'form-control', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
     </div>
   </div>
@@ -12,8 +14,10 @@
     <label><%= radio_button_tag("op2", "NOT", guided_radio(:op2, "NOT")) %> NOT</label>
   </div>
   <div class="search-field">
+    <label for="f2" class="sr-only">Search Field Two</label>
     <%= select_tag('f2', options_for_select(advanced_key_value, guided_field(:f2, 'publisher')), {class: 'form-control'}) %>
     <div name="row2">
+      <label for="q2" class="sr-only">Text Field Two</label>
       <%= text_field_tag "q2", label_tag_default_for(:q2), :class => 'form-control', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
     </div>
   </div>
@@ -23,8 +27,10 @@
     <label><%= radio_button_tag("op3", "NOT", guided_radio(:op3, "NOT")) %> NOT</label>
   </div>
   <div class="search-field">
+    <label for="f3" class="sr-only">Search Field Three</label>
     <%= select_tag('f3', options_for_select(advanced_key_value, guided_field(:f3, 'title')), {class: 'form-control'}) %>
     <div name="row3">
+      <label for="q3" class="sr-only">Text Field Three</label>
       <%= text_field_tag "q3", label_tag_default_for(:q3), :class => 'form-control', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
     </div>
   </div>
@@ -34,8 +40,10 @@
     <label><%= radio_button_tag("op4", "NOT", guided_radio(:op4, "NOT")) %> NOT</label>
   </div>
   <div class="search-field">
+    <label for="f4" class="sr-only">Search Field Four</label>
     <%= select_tag('f4', options_for_select(advanced_key_value, guided_field(:f4, 'placename')), {class: 'form-control'}) %>
     <div name="row4">
+    <label for="q4" class="sr-only">Text Field Four</label>
       <%= text_field_tag "q4", label_tag_default_for(:q4), :class => 'form-control', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
     </div>
   </div>

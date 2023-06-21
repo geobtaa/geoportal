@@ -131,4 +131,12 @@ module ApplicationHelper
       content_tag(:strong, "Score: #{Array(args[:value]).flatten.first}", class: 'debug')
     end
   end
+
+  ##
+  # @TODO: Why isn't this loading from GBL itself?
+  # Determines if item view should render the sidebar static map
+  # @return [Boolean]
+  def render_sidebar_map?(document)
+    Settings.SIDEBAR_STATIC_MAP&.any? { |vp| document.viewer_protocol == vp }
+  end
 end

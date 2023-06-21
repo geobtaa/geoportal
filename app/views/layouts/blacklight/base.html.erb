@@ -38,9 +38,8 @@
     <% if homepage? %>
       <%= render :partial=>'shared/flash_msg', layout: 'shared/flash_messages' %>
       <%= render 'home' %>
-
     <% else %>
-      <div id="main-container" class="<%= container_classes %>" data-analytics-id="<%= Rails.configuration.google_analytics %>">
+      <main id="main-container" class="<%= container_classes %>" data-analytics-id="<%= Rails.configuration.google_analytics %>">
         <%= content_for(:container_header) %>
 
         <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
@@ -48,7 +47,11 @@
         <div class="row">
           <%= content_for?(:content) ? yield(:content) : yield %>
         </div>
-      </div>
+
+        <div id="survey-button">
+          <%= link_to("&plus; Help us improve our site".html_safe, "https://arcg.is/0bmW9z0", class: "btn btn-success btn-lg", target: "_blank") %>
+        </div>
+      </main>
       <section id="footer-app" aria-label='Application Footer'>
         <%= render :partial => 'shared/footer_app' %>
       </section>
@@ -64,9 +67,5 @@
     <%- if Rails.env.production? %>
       <%= render partial: 'shared/matomo_analytics' %>
     <%- end %>
-
-    <div id="survey-button">
-      <%= link_to("&plus; Help us improve our site".html_safe, "https://arcg.is/0bmW9z0", class: "btn btn-success btn-lg", target: "_blank") %>
-    </div>
   </body>
 </html>
