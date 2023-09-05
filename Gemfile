@@ -116,7 +116,6 @@ gem 'exception_notification', '~> 4.4.0'
 gem 'appsignal'
 
 group :test do
-  gem 'webdrivers'
   gem 'm', '~> 1.5.0'
   gem 'minitest'
   gem 'minitest-ci', '~> 3.4.0'
