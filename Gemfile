@@ -78,18 +78,19 @@ gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '~> 4.1'
+gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/statesman-update"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
 
 # Image migration
-gem 'geoblacklight_sidecar_images', '~> 1.0'
+gem 'geoblacklight_sidecar_images', git: "https://github.com/geoblacklight/geoblacklight_sidecar_images.git", branch: "feature/statesman-update"
 gem 'carrierwave', '~> 1.2'
 gem 'mini_magick', '~> 4.9.4'
 
-gem 'statesman', '~> 3.4.1'
+gem 'statesman', '~> 10.0'
 gem 'sidekiq', '~> 6.4'
 gem 'sidekiq-failures', '~> 1.0.0'
-gem 'down', '~> 4.4'
+gem 'down', '~> 5.0'
 gem 'addressable', '~> 2.5.0'
 gem 'handlebars_assets', '~> 0.23.0'
 gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', :ref => '84da81140e7ef93e7241b7753c01d7f709216f2b'
