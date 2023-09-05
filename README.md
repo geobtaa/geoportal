@@ -6,18 +6,19 @@ This geoportal connects users to digital geospatial resources, including GIS dat
 
 This project is collectively managed by librarians and geospatial specialists at 13 research institutions from across the Big Ten Academic Alliance including:
 
-* University of Chicago
-* University of Illinois at Urbana­-Champaign
 * Indiana University Bloomington
-* University of Iowa
-* University of Maryland
-* University of Michigan
 * Michigan State University
-* University of Minnesota (host institution)
-* University of Nebraska-Lincoln
 * Ohio State University
 * Pennsylvania State University
 * Purdue University
+* Rutgers University-New Brunswick
+* University of Chicago
+* University of Illinois at Urbana­-Champaign
+* University of Iowa
+* University of Maryland
+* University of Michigan
+* University of Minnesota (host institution)
+* University of Nebraska-Lincoln
 * University of Wisconsin-­Madison
 
 ### Technology and Hosting
