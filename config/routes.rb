@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'help', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/help')
   get 'robots.:format' => 'robots#robots'
 
+  # Sidekiq - Uncomment and restart app to view sidekiq dashboard
+  # mount Sidekiq::Web => "/sidekiq"
+
   # Feedback
   mount PointlessFeedback::Engine, :at => '/feedback'
 
