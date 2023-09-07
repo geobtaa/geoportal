@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 4ba60f00301067a11cb7ca083a67220fe75e79be
+  revision: aba36748fcdf5e89037ff59e1fe88d442b4ea001
   branch: feature/statesman-update
   specs:
     geoblacklight_admin (0.2.1)
@@ -51,7 +51,7 @@ GIT
       blacklight_advanced_search
       blacklight_range_limit
       bootstrap (~> 4.0)
-      chosen-rails (= 1.0)
+      chosen-rails (~> 1.10)
       cocoon (~> 1.2)
       config (~> 4.0)
       devise (~> 4.7)
@@ -158,7 +158,7 @@ GEM
       rack
     attr_json (2.1.0)
       activerecord (>= 6.0.0, < 7.1)
-    autoprefixer-rails (10.4.13.0)
+    autoprefixer-rails (10.4.15.0)
       execjs (~> 2)
     awesome_print (1.9.2)
     axe-core-api (4.7.0)
@@ -214,13 +214,11 @@ GEM
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
       ssrf_filter (~> 1.0, < 1.1.0)
-    chosen-rails (1.0.0)
+    chosen-rails (1.10.0)
       coffee-rails (>= 3.2)
-      compass-rails (>= 1.0)
       railties (>= 3.0)
-      sass-rails (>= 3.2)
+      sassc-rails (>= 2.1.2)
     chronic (0.10.2)
-    chunky_png (1.4.0)
     cocoon (1.2.15)
     coderay (1.1.3)
     coercible (1.0.0)
@@ -232,12 +230,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    compass (0.12.2)
-      chunky_png (~> 1.2)
-      fssm (>= 0.2.7)
-      sass (~> 3.1)
-    compass-rails (2.0.0)
-      compass (>= 0.12.2)
     concurrent-ruby (1.2.2)
     config (4.2.1)
       deep_merge (~> 1.2, >= 1.2.1)
@@ -257,7 +249,7 @@ GEM
       activesupport
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
-    devise (4.9.2)
+    devise (4.7.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -339,7 +331,6 @@ GEM
       rake
     flamegraph (0.9.5)
     foreman (0.87.2)
-    fssm (0.2.10)
     fx (0.8.0)
       activerecord (>= 6.0.0)
       railties (>= 6.0.0)
@@ -482,7 +473,7 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.4)
     minitar (0.9)
-    minitest (5.19.0)
+    minitest (5.20.0)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     minitest-reporters (1.6.1)
@@ -738,7 +729,7 @@ GEM
       descendants_tracker (~> 0.0, >= 0.0.3)
     warden (1.2.9)
       rack (>= 2.0.9)
-    web-console (4.2.0)
+    web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
@@ -762,6 +753,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_storage_validations
   addressable (~> 2.5.0)
   appsignal
   awesome_print
@@ -776,11 +768,11 @@ DEPENDENCIES
   capybara-screenshot
   capybara-selenium
   carrierwave (~> 1.2)
-  chosen-rails
+  chosen-rails (~> 1.10)
   chronic
   coffee-rails (~> 4.2)
   database_cleaner
-  devise (>= 4.7.1)
+  devise (= 4.7.3)
   devise-guests (~> 0.6)
   dotenv-rails
   down (~> 5.0)
@@ -794,8 +786,10 @@ DEPENDENCIES
   geoblacklight_sidecar_images!
   haml
   handlebars_assets (~> 0.23.0)
+  inline_svg
   jbuilder (~> 2.5)
   jquery-rails
+  kithe (~> 2.0)
   letter_opener
   listen (~> 3.0)
   m (~> 1.5.0)
@@ -804,6 +798,8 @@ DEPENDENCIES
   minitest
   minitest-ci (~> 3.4.0)
   minitest-reporters
+  noticed
+  paper_trail
   pg
   pointless_feedback
   popper_js

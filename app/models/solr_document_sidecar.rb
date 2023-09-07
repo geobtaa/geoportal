@@ -3,7 +3,10 @@
 ##
 # Metadata for indexed documents
 class SolrDocumentSidecar < ApplicationRecord
-  include Statesman::Adapters::ActiveRecordQueries
+  include Statesman::Adapters::ActiveRecordQueries[
+    transition_class: ImageUploadTransition,
+    initial_state: :initialized
+  ]
 
   # Deprecated - Carrierwave
   mount_uploader :cw_image, ImageUploader

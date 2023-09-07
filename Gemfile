@@ -73,7 +73,7 @@ gem 'blacklight', '~> 7.33.0'
 gem "blacklight_advanced_search", git: "https://github.com/ewlarson/blacklight_advanced_search.git", branch: "bl7-fix-gentle-hands"
 
 gem 'blacklight_range_limit', '~> 7.0.0'
-gem 'chosen-rails' #  jquery multiselect plugin for advanced search
+gem 'chosen-rails', '~> 1.10' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
@@ -81,6 +81,17 @@ gem 'geoblacklight', '~> 4.1'
 gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/statesman-update"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
+
+# GBL Admin dependencies _not_ automatically loading...
+gem 'active_storage_validations'
+gem 'awesome_print'
+# gem 'blacklight_advanced_search'
+gem 'dotenv-rails'
+gem 'haml'
+gem 'inline_svg'
+gem 'kithe', '~> 2.0'
+gem 'noticed'
+gem 'paper_trail'
 
 # Image migration
 gem 'geoblacklight_sidecar_images', git: "https://github.com/geoblacklight/geoblacklight_sidecar_images.git", branch: "feature/statesman-update"
@@ -98,7 +109,7 @@ gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'm
 
 gem 'rsolr', '>= 1.0'
 gem 'jquery-rails'
-gem "devise", ">= 4.7.1"
+gem "devise", "4.7.3"
 gem 'devise-guests', '~> 0.6'
 
 gem 'haml'
