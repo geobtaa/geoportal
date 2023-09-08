@@ -21,7 +21,6 @@
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "@babel/register": "^7.7.0",
-    "babel-loader": "^8.0.6",
     "shx": "^0.3.2",
     "webpack-dev-server": "^3.9.0"
   },
@@ -39,6 +38,7 @@
     "@rails/activestorage": "^7.0.7-2",
     "@rails/ujs": "^7.0.7-2",
     "@rails/webpacker": "^5.4.4",
+    "babel-loader": "^8.0.6",
     "bloodhound-js": "^1.2.3",
     "bootstrap": "^4.5.0",
     "bootstrap-datepicker": "^1.10.0",
