@@ -1,0 +1,75 @@
+{
+  "name": "i18n",
+  "description": "lightweight translation module with dynamic json storage",
+  "version": "0.15.1",
+  "homepage": "http://github.com/mashpie/i18n-node",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/mashpie/i18n-node.git"
+  },
+  "author": "Marcus Spiegel <marcus.spiegel@gmail.com>",
+  "funding": {
+    "url": "https://github.com/sponsors/mashpie"
+  },
+  "main": "./index",
+  "files": [
+    "i18n.js",
+    "index.js",
+    "SECURITY.md"
+  ],
+  "keywords": [
+    "template",
+    "i18n",
+    "l10n"
+  ],
+  "directories": {
+    "lib": "."
+  },
+  "dependencies": {
+    "@messageformat/core": "^3.0.0",
+    "debug": "^4.3.3",
+    "fast-printf": "^1.6.9",
+    "make-plural": "^7.0.0",
+    "math-interval-parser": "^2.0.1",
+    "mustache": "^4.2.0"
+  },
+  "devDependencies": {
+    "async": "^3.2.3",
+    "cookie-parser": "^1.4.6",
+    "eslint": "^8.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "express": "^4.17.2",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.3.2",
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.5.1",
+    "should": "^13.2.3",
+    "sinon": "^14.0.0",
+    "yaml": "^2.1.0",
+    "zombie": "^6.1.4"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "test": "mocha --exit",
+    "test-ci": "nyc mocha -- --exit",
+    "coverage": "nyc report --reporter=lcov"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  },
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

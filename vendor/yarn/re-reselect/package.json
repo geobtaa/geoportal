@@ -1,0 +1,97 @@
+{
+  "name": "re-reselect",
+  "version": "3.4.0",
+  "description": "Enhance Reselect selectors with deeper memoization and cache management",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "browser": "dist/index.js",
+  "typings": "src/index.d.ts",
+  "files": [
+    "dist",
+    "es",
+    "lib",
+    "src",
+    "!__tests__",
+    "!__util__"
+  ],
+  "scripts": {
+    "test": "npm run test:typescript && jest ./src",
+    "test:typescript": "typings-tester --config typescript_test/tsconfig.json --dir typescript_test",
+    "test:bundles": "npm run test:bundles:snapshot && npm run test:bundles:unit",
+    "test:bundles:unit": "jest ./src --config ./jest/es.config.js && jest ./src --config ./jest/lib.config.js && jest ./src --config ./jest/dist.config.js",
+    "test:bundles:snapshot": "jest ./jest/bundles-snapshot.test.js",
+    "clean": "rimraf dist es lib",
+    "compile": "npm run clean && rollup -c",
+    "contrib:add": "all-contributors add",
+    "contrib:generate": "all-contributors generate",
+    "preversion": "npm run prepublish",
+    "version": "git add package.json",
+    "postversion": "git push && git push --tags",
+    "prepublish": "npm test -- --coverage && npm run compile && npm run test:bundles",
+    "format": "prettier --write \"**/*.{js,ts,json,md}\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "reselect",
+    "memoize",
+    "cache"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toomuchdesign/re-reselect.git"
+  },
+  "author": "Andrea Carraro <me@andreacarraro.it>",
+  "license": "MIT",
+  "peerDependencies": {
+    "reselect": ">1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "all-contributors-cli": "^6.6.1",
+    "babel-jest": "^24.8.0",
+    "coveralls": "^3.0.4",
+    "husky": "^3.0.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^9.0.0",
+    "prettier": "^1.16.2",
+    "reselect": "^4.0.0",
+    "rimraf": "^2.6.1",
+    "rollup": "^1.16.4",
+    "rollup-plugin-babel": "^4.0.3",
+    "typescript": "^3.2.2",
+    "typings-tester": "^0.3.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ],
+    "coveragePathIgnorePatterns": [
+      "__util__"
+    ],
+    "testEnvironment": "node"
+  },
+  "sideEffects": false,
+  "lint-staged": {
+    "**/*.{js,ts}": [
+      "prettier --write",
+      "npm t -- .",
+      "git add"
+    ],
+    "**/*.md": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

@@ -1,0 +1,211 @@
+var _jsxFileName = "/Users/pjreed/dev/mirador/dist/es/src/components/Workspace.js";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+import React from 'react';
+import classNames from 'classnames';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Window from '../containers/Window';
+import WorkspaceMosaic from '../containers/WorkspaceMosaic';
+import WorkspaceElastic from '../containers/WorkspaceElastic';
+import ns from '../config/css-ns';
+/**
+ * Represents a work area that contains any number of windows
+ * @memberof Workspace
+ * @private
+ */
+
+export var Workspace = /*#__PURE__*/function (_React$Component) {
+  _inherits(Workspace, _React$Component);
+
+  var _super = _createSuper(Workspace);
+
+  function Workspace() {
+    _classCallCheck(this, Workspace);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Workspace, [{
+    key: "workspaceByType",
+
+    /**
+     * Determine which workspace to render by configured type
+     */
+    value: function workspaceByType() {
+      var _this = this;
+
+      var _this$props = this.props,
+          workspaceId = _this$props.workspaceId,
+          workspaceType = _this$props.workspaceType,
+          windowIds = _this$props.windowIds;
+
+      if (this.maximizedWindows()) {
+        return this.maximizedWindows();
+      }
+
+      if (windowIds.length === 0) return this.zeroWindows();
+
+      switch (workspaceType) {
+        case 'elastic':
+          return /*#__PURE__*/React.createElement(WorkspaceElastic, {
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 30,
+              columnNumber: 16
+            }
+          });
+
+        case 'mosaic':
+          return /*#__PURE__*/React.createElement(WorkspaceMosaic, {
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 32,
+              columnNumber: 16
+            }
+          });
+
+        default:
+          return windowIds.map(function (windowId) {
+            return /*#__PURE__*/React.createElement(Window, {
+              key: "".concat(windowId, "-").concat(workspaceId),
+              windowId: windowId,
+              __self: _this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 35,
+                columnNumber: 11
+              }
+            });
+          });
+      }
+    }
+    /** */
+
+  }, {
+    key: "zeroWindows",
+    value: function zeroWindows() {
+      var t = this.props.t;
+      return /*#__PURE__*/React.createElement(Grid, {
+        alignItems: "center",
+        container: true,
+        style: {
+          height: '100%'
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 48,
+          columnNumber: 7
+        }
+      }, /*#__PURE__*/React.createElement(Grid, {
+        xs: 12,
+        item: true,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 55,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/React.createElement(Typography, {
+        variant: "h1",
+        component: "div",
+        align: "center",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 59,
+          columnNumber: 11
+        }
+      }, t('welcome'))));
+    }
+    /**
+     * Determine whether or not there are maximized windows
+     */
+
+  }, {
+    key: "maximizedWindows",
+    value: function maximizedWindows() {
+      var _this2 = this;
+
+      var _this$props2 = this.props,
+          maximizedWindowIds = _this$props2.maximizedWindowIds,
+          workspaceId = _this$props2.workspaceId;
+
+      if (maximizedWindowIds.length > 0) {
+        return maximizedWindowIds.map(function (windowId) {
+          return /*#__PURE__*/React.createElement(Window, {
+            key: "".concat(windowId, "-").concat(workspaceId),
+            windowId: windowId,
+            className: classNames(ns('workspace-maximized-window')),
+            __self: _this2,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 79,
+              columnNumber: 9
+            }
+          });
+        });
+      }
+
+      return false;
+    }
+    /**
+     * render
+     */
+
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props3 = this.props,
+          classes = _this$props3.classes,
+          isWorkspaceControlPanelVisible = _this$props3.isWorkspaceControlPanelVisible,
+          t = _this$props3.t;
+      return /*#__PURE__*/React.createElement("div", {
+        className: classNames(ns('workspace-viewport'), isWorkspaceControlPanelVisible && ns('workspace-with-control-panel'), isWorkspaceControlPanelVisible && classes.workspaceWithControlPanel, classes.workspaceViewport),
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 96,
+          columnNumber: 7
+        }
+      }, /*#__PURE__*/React.createElement(Typography, {
+        variant: "srOnly",
+        component: "h1",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 106,
+          columnNumber: 9
+        }
+      }, t('miradorViewer')), this.workspaceByType());
+    }
+  }]);
+
+  return Workspace;
+}(React.Component);
+Workspace.defaultProps = {
+  maximizedWindowIds: [],
+  windowIds: []
+};

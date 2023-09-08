@@ -32,7 +32,6 @@ public/uploads/*
 # Ignore storage
 storage/*
 
-vendor/*
 node_modules/*
 
 .DS_Store

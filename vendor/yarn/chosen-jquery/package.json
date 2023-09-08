@@ -1,0 +1,17 @@
+{
+  "author": {
+    "name": "chosen-jquery"
+  },
+  "name": "chosen-jquery",
+  "description": "Beautiful Select Boxes",
+  "version": "0.1.1",
+  "repository": {
+    "url": ""
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}

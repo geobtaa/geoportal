@@ -1,0 +1,78 @@
+{
+  "name": "react-dnd-touch-backend",
+  "version": "0.8.3",
+  "description": "Touch backend for react-dnd",
+  "main": "dist/Touch.js",
+  "typings": "dist/Touch.d.ts",
+  "scripts": {
+    "clean": "rimraf dist/**/* examples/*.browserified.js",
+    "js-dev": "browserify ./examples/sortableLists/js/index.jsx -o ./examples/sortableLists/main.browserified.js",
+    "js-dev-drop": "browserify ./examples/dropTarget/js/index.jsx -o ./examples/dropTarget/main.browserified.js",
+    "js-dev-hover": "browserify ./examples/hoverOutside/js/index.jsx -o ./examples/hoverOutside/main.browserified.js",
+    "start": "http-server ./examples -p 7789",
+    "dev": "npm run js-dev && npm run js-dev-drop && npm run js-dev-hover && npm run start",
+    "compile": "tsc",
+    "lint": "eslint --quiet --cache . --ext .js --ext .jsx",
+    "prepublishOnly": "npm run clean && npm run compile",
+    "test": "npm run clean && npm run lint",
+    "prettier": "prettier --write src/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yahoo/react-dnd-touch-backend.git"
+  },
+  "keywords": [
+    "react",
+    "drag",
+    "drop",
+    "touch",
+    "react-dnd"
+  ],
+  "author": "Long Ho <holevietlong@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yahoo/react-dnd-touch-backend/issues"
+  },
+  "homepage": "https://github.com/yahoo/react-dnd-touch-backend#readme",
+  "dependencies": {
+    "dnd-core": "^7.4.4",
+    "invariant": "^2.2.4"
+  },
+  "peerDependencies": {
+    "react-dnd": "^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3",
+    "classnames": "^2.2.6",
+    "eslint": "5.13.0",
+    "eslint-plugin-react": "^7.12.4",
+    "http-server": "^0.11.1",
+    "immutable": "^3.8.2",
+    "lodash": "^4.17.11",
+    "prettier": "^1.17.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.2",
+    "react-dnd": "^7.0.2",
+    "react-dom": "^16.8.2",
+    "rimraf": "2.6.3",
+    "typescript": "^3.4.5"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify"
+      ]
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
+  }
+}
