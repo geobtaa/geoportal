@@ -2,7 +2,7 @@
 
 data_sources:
   main:
-    url: <%= ENV["BLAZER_DATABASE_URL"] %>
+    url: "<%= ENV['BLAZER_DATABASE_URL'] %>"
 
     # statement timeout, in seconds
     # none by default
@@ -70,10 +70,10 @@ check_schedules:
 # forecasting: prophet / trend
 
 # enable map
-mapbox_access_token: <%= ENV["MAPBOX_ACCESS_TOKEN"] %>
+mapbox_access_token: "<%= ENV['MAPBOX_ACCESS_TOKEN'] %>"
 
 # enable uploads
 uploads:
-  url: <%= ENV["BLAZER_DATABASE_URL"] %>
+  url: "<%= ENV['BLAZER_DATABASE_URL'] %>"
   schema: blazer_uploads
   data_source: main

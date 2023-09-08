@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: aba36748fcdf5e89037ff59e1fe88d442b4ea001
+  revision: 8783f3986e02764f8e3c616d3f74881d4f2e1bfd
   branch: feature/statesman-update
   specs:
     geoblacklight_admin (0.2.1)
