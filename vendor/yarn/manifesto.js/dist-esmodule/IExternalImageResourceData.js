@@ -1,1 +1,0 @@
-//# sourceMappingURL=IExternalImageResourceData.js.map
