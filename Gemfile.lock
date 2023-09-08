@@ -186,6 +186,11 @@ GEM
       jquery-rails
       rails (>= 3.0)
       tether-rails
+    blazer (2.6.5)
+      activerecord (>= 5)
+      chartkick (>= 3.2)
+      railties (>= 5)
+      safely_block (>= 0.1.1)
     bootsnap (1.9.4)
       msgpack (~> 1.0)
     bootstrap (4.6.2)
@@ -214,6 +219,7 @@ GEM
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
       ssrf_filter (~> 1.0, < 1.1.0)
+    chartkick (5.0.4)
     chosen-rails (1.10.0)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
@@ -621,6 +627,7 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    safely_block (0.4.0)
     sanitize (6.0.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -761,6 +768,7 @@ DEPENDENCIES
   blacklight (~> 7.33.0)
   blacklight_advanced_search!
   blacklight_range_limit (~> 7.0.0)
+  blazer
   bootsnap (~> 1.9.3)
   bootstrap (~> 4.0)
   byebug
@@ -775,6 +783,7 @@ DEPENDENCIES
   devise (= 4.7.3)
   devise-bootstrap-views (~> 1.0)
   devise-guests (~> 0.6)
+  devise_invitable (~> 2.0.0)
   dotenv-rails
   down (~> 5.0)
   exception_notification (~> 4.4.0)

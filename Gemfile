@@ -114,6 +114,10 @@ gem 'jquery-rails'
 gem "devise", "4.7.3"
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'devise-guests', '~> 0.6'
+gem 'devise_invitable', '~> 2.0.0'
+
+# Reporting
+gem 'blazer'
 
 gem 'haml'
 gem 'chronic'

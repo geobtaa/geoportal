@@ -249,9 +249,9 @@ Rails.application.routes.draw do
     mount ActionCable.server => "/cable"
 
     # @TODO
-    # authenticate :user, ->(user) { user } do
-      # mount Blazer::Engine, at: "blazer"
-    # end
+    authenticate :user, ->(user) { user } do
+      mount Blazer::Engine, at: "blazer"
+    end
   end
 
   # Blog redirects

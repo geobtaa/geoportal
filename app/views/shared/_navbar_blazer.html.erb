@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default" style="border-bottom: 1px solid #CCC; box-shadow: 0 10px 16px 0 rgb(0 0 0 / 10%); margin-bottom: 2rem;">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <strong style="color:black;">GBL♦Admin</strong>
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">
+          <%= link_to "Blazer &middot; Business Intelligence Tools".html_safe, '/blazer', {class: 'nav-link'} if current_user %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
