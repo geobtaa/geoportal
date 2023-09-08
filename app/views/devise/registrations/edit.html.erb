@@ -32,4 +32,6 @@
   </div>
 <% end %>
 
+<p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), user_registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %>.</p>
+
 <%= link_to t('.back'), :back %>
