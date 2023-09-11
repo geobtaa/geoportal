@@ -19,6 +19,8 @@ $radius: 4px;
 main.homepage {
   background:lighten($black, 12%) asset_url('aerial_photo_dark.jpg') repeat;
   padding:0px;
+  padding-left:15px;
+  padding-right:15px;
 
   #home-content {
     margin-top:5.5rem;
