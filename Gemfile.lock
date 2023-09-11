@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 8783f3986e02764f8e3c616d3f74881d4f2e1bfd
+  revision: cf305eea8961eb2779b645bdbd6f4dcdce43081d
   branch: feature/statesman-update
   specs:
     geoblacklight_admin (0.2.1)
@@ -317,7 +317,7 @@ GEM
     exception_notification (4.4.3)
       actionmailer (>= 4.0, < 7)
       activesupport (>= 4.0, < 7)
-    execjs (2.8.1)
+    execjs (2.9.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
