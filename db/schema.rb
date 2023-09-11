@@ -273,6 +273,18 @@ ActiveRecord::Schema.define(version: 2023_09_05_205207) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "image_upload_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.text "metadata"
+    t.integer "sort_key", null: false
+    t.bigint "solr_document_sidecar_id"
+    t.boolean "most_recent", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["solr_document_sidecar_id", "sort_key"], name: "index_image_upload_transitions_parent_sort", unique: true
+    t.index ["solr_document_sidecar_id"], name: "index_image_upload_transitions_on_solr_document_sidecar_id"
+  end
+
   create_table "import_document_transitions", force: :cascade do |t|
     t.string "to_state", null: false
     t.text "metadata", default: "{}"
@@ -395,14 +407,48 @@ ActiveRecord::Schema.define(version: 2023_09_05_205207) do
     t.index ["user_id"], name: "index_searches_on_user_id"
   end
 
+  create_table "sidecar_image_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.text "metadata"
+    t.integer "sort_key", null: false
+    t.bigint "solr_document_sidecar_id", null: false
+    t.boolean "most_recent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["solr_document_sidecar_id", "sort_key"], name: "index_sidecar_image_transitions_parent_sort", unique: true
+  end
+
   create_table "solr_document_sidecars", force: :cascade do |t|
     t.string "document_id"
     t.string "document_type"
-    t.string "image"
+    t.string "cw_image"
     t.bigint "version"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["document_type", "document_id"], name: "solr_document_sidecars_solr_document"
+  end
+
+  create_table "solr_document_uris", force: :cascade do |t|
+    t.string "document_id"
+    t.string "document_type"
+    t.string "uri_key"
+    t.string "uri_value"
+    t.bigint "version"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_type", "document_id"], name: "solr_document_uris_solr_document"
+  end
+
+  create_table "uri_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.text "metadata"
+    t.integer "sort_key", null: false
+    t.bigint "solr_document_uri_id"
+    t.boolean "most_recent", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["solr_document_uri_id", "sort_key"], name: "index_uri_transitions_parent_sort", unique: true
+    t.index ["solr_document_uri_id"], name: "index_uri_transitions_on_solr_document_uri_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -446,6 +492,7 @@ ActiveRecord::Schema.define(version: 2023_09_05_205207) do
   add_foreign_key "bulk_action_document_transitions", "bulk_action_documents"
   add_foreign_key "bulk_action_documents", "bulk_actions"
   add_foreign_key "bulk_action_transitions", "bulk_actions"
+  add_foreign_key "image_upload_transitions", "solr_document_sidecars"
   add_foreign_key "import_document_transitions", "import_documents"
   add_foreign_key "import_documents", "imports"
   add_foreign_key "import_transitions", "imports"
@@ -456,4 +503,6 @@ ActiveRecord::Schema.define(version: 2023_09_05_205207) do
   add_foreign_key "kithe_models", "kithe_models", column: "parent_id"
   add_foreign_key "kithe_models", "kithe_models", column: "representative_id"
   add_foreign_key "mappings", "imports"
+  add_foreign_key "sidecar_image_transitions", "solr_document_sidecars"
+  add_foreign_key "uri_transitions", "solr_document_uris"
 end
