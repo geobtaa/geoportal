@@ -124,7 +124,7 @@ class AddGblAdmin < ActiveRecord::Migration[6.1]
     # * string to binary
     # * index on document_id
     # SKIP change_column :bookmarks, :title, :binary, null: false
-    add_index :bookmarks, :document_id
+    # add_index :bookmarks, :document_id
 
     create_table "bulk_action_document_transitions", force: :cascade do |t|
       t.string "to_state", null: false
