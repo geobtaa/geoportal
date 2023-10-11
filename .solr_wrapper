@@ -1,8 +1,0 @@
-url: https://archive.apache.org/dist/lucene/solr/8.11.1/solr-8.11.1.tgz
-validate: false
-instance_dir: tmp/solr
-download_dir: tmp/solr
-collection:
-  dir: solr/conf/
-  name: geoportal-core-test
-  persist: true
