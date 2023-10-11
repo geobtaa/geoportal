@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: cf305eea8961eb2779b645bdbd6f4dcdce43081d
+  revision: ea2db76eeadf23052a80d3fd7732030c63937ff3
   branch: feature/statesman-update
   specs:
     geoblacklight_admin (0.2.1)
@@ -117,6 +117,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_record_query_trace (1.8.2)
+      activerecord (>= 6.0.0)
     active_storage_validations (1.0.4)
       activejob (>= 5.2.0)
       activemodel (>= 5.2.0)
@@ -156,8 +158,8 @@ GEM
     ansi (1.5.0)
     appsignal (3.4.12)
       rack
-    attr_json (2.1.0)
-      activerecord (>= 6.0.0, < 7.1)
+    attr_json (2.2.0)
+      activerecord (>= 6.0.0, < 7.2)
     autoprefixer-rails (10.4.15.0)
       execjs (~> 2)
     awesome_print (1.9.2)
@@ -168,6 +170,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
+    base64 (0.1.1)
     bcp47_spec (0.2.1)
     bcrypt (3.1.19)
     bindex (0.8.1)
@@ -317,13 +320,14 @@ GEM
     exception_notification (4.4.3)
       actionmailer (>= 4.0, < 7)
       activesupport (>= 4.0, < 7)
-    execjs (2.9.0)
+    execjs (2.9.1)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (2.7.10)
+    faraday (2.7.11)
+      base64
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
@@ -331,7 +335,7 @@ GEM
       faraday (~> 2.5)
       net-http-persistent (~> 4.0)
     fastimage (2.2.7)
-    ffi (1.15.5)
+    ffi (1.16.3)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -417,7 +421,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    kithe (2.10.0)
+    kithe (2.11.0)
       attr_json (< 3.0.0)
       fastimage (~> 2.0)
       fx (>= 0.6.0, < 1)
@@ -471,7 +475,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.5.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.0808)
+    mime-types-data (3.2023.1003)
     mimemagic (0.4.3)
       nokogiri (~> 1)
       rake
@@ -491,14 +495,14 @@ GEM
     multi_xml (0.6.0)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.3.7)
+    net-imap (0.4.0)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
     net-protocol (0.2.1)
       timeout
-    net-smtp (0.3.3)
+    net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.4)
@@ -509,7 +513,7 @@ GEM
       rails (>= 5.2.0)
     orm_adapter (0.5.0)
     ostruct (0.5.5)
-    pagy (6.0.4)
+    pagy (6.1.0)
     paper_trail (14.0.0)
       activerecord (>= 6.0)
       request_store (~> 1.4)
@@ -584,7 +588,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rchardet (1.8.0)
-    rdf (3.3.0)
+    rdf (3.3.1)
       bcp47_spec (~> 0.2)
       link_header (~> 0.0, >= 0.0.8)
     rdf-vocab (3.3.0)
@@ -628,7 +632,7 @@ GEM
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     safely_block (0.4.0)
-    sanitize (6.0.2)
+    sanitize (6.1.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     sass (3.7.4)
@@ -688,12 +692,12 @@ GEM
     ssrf_filter (1.0.8)
     stackprof (0.2.25)
     statesman (10.0.0)
-    temple (0.10.2)
+    temple (0.10.3)
     tether-rails (1.4.0)
       rails (>= 3.1)
     thor (1.2.2)
     thread_safe (0.3.6)
-    tilt (2.2.0)
+    tilt (2.3.0)
     timeout (0.4.0)
     traject (3.8.1)
       concurrent-ruby (>= 0.8.0)
@@ -754,12 +758,13 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.11)
+    zeitwerk (2.6.12)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_record_query_trace
   active_storage_validations
   addressable (~> 2.5.0)
   appsignal

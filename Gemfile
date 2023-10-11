@@ -45,6 +45,8 @@ gem 'stackprof', '~> 0.2.12' # ruby 2.1+ only
 gem 'memory_profiler', '~> 0.9.12'
 
 group :development, :test do
+  gem 'active_record_query_trace'
+  
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
