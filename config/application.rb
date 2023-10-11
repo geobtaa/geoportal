@@ -38,5 +38,8 @@ module Geoblacklight
         resource '*', :headers => :any, :methods => [:get, :options]
       end
     end
+
+    # Image Processing
+    config.active_storage.variant_processor = :vips
   end
 end
