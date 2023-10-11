@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_11_192235) do
+ActiveRecord::Schema.define(version: 2023_10_09_160910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -72,10 +72,10 @@ ActiveRecord::Schema.define(version: 2023_09_11_192235) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -154,11 +154,10 @@ ActiveRecord::Schema.define(version: 2023_09_11_192235) do
     t.integer "user_id", null: false
     t.string "user_type"
     t.string "document_id"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "document_type"
-    t.binary "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["document_id"], name: "index_bookmarks_on_document_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
@@ -277,7 +276,7 @@ ActiveRecord::Schema.define(version: 2023_09_11_192235) do
     t.string "to_state", null: false
     t.text "metadata"
     t.integer "sort_key", null: false
-    t.bigint "solr_document_sidecar_id"
+    t.bigint "solr_document_sidecar_id", null: false
     t.boolean "most_recent", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -398,8 +397,18 @@ ActiveRecord::Schema.define(version: 2023_09_11_192235) do
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
-  create_table "searches", id: :serial, force: :cascade do |t|
-    t.binary "query_params"
+  create_table "pointless_feedback_messages", force: :cascade do |t|
+    t.string "name"
+    t.string "email_address"
+    t.string "topic"
+    t.text "description"
+    t.text "previous_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.text "query_params"
     t.integer "user_id"
     t.string "user_type"
     t.datetime "created_at", null: false
@@ -457,8 +466,14 @@ ActiveRecord::Schema.define(version: 2023_09_11_192235) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "guest", default: false
     t.string "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
@@ -467,7 +482,7 @@ ActiveRecord::Schema.define(version: 2023_09_11_192235) do
     t.string "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
-    t.boolean "admin", default: false, null: false
+    t.boolean "admin", default: true, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"
