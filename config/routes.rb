@@ -99,6 +99,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    devise_for :users, controllers: {invitations: "devise/invitations"}, skip: [:registrations]
     # Root
     root to: "documents#index"
 
