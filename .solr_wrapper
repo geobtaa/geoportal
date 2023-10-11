@@ -5,3 +5,4 @@ download_dir: tmp/solr
 collection:
   dir: solr/conf/
   name: geoportal-core-test
+  persist: true
