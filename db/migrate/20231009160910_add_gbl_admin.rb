@@ -1,8 +1,8 @@
 class AddGblAdmin < ActiveRecord::Migration[6.1]
   def change
     # These are extensions that must be enabled in order to support this database
-    enable_extension "pgcrypto"
-    enable_extension "plpgsql"
+    # enable_extension "pgcrypto"
+    # enable_extension "plpgsql"
 
     create_function :kithe_models_friendlier_id_gen, sql_definition: <<-'SQL'
         CREATE OR REPLACE FUNCTION public.kithe_models_friendlier_id_gen(min_value bigint, max_value bigint)
