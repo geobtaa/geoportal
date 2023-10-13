@@ -7,6 +7,10 @@
 
 <%= render(Blacklight::SearchContextComponent.new(search_context: @search_context, search_session: search_session)) if search_session['document_id'] == @document.id %>
 
+<div class="gbl-admin">
+  <%= render :partial => "show_gbl_admin" %>
+</div>
+
 <%= render :partial => 'show_sidebar_static_map' if render_sidebar_map?(@document) %>
 <%= render :partial => 'show_tools' %>
 

@@ -84,3 +84,6 @@
 //= require js-cookie/src/js.cookie.js
 
 //= require geoportal
+
+// Required by GBL Admin
+//= require activestorage

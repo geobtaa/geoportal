@@ -45,6 +45,8 @@ gem 'stackprof', '~> 0.2.12' # ruby 2.1+ only
 gem 'memory_profiler', '~> 0.9.12'
 
 group :development, :test do
+  gem 'active_record_query_trace'
+  
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
@@ -73,23 +75,35 @@ gem 'blacklight', '~> 7.33.0'
 gem "blacklight_advanced_search", git: "https://github.com/ewlarson/blacklight_advanced_search.git", branch: "bl7-fix-gentle-hands"
 
 gem 'blacklight_range_limit', '~> 7.0.0'
-gem 'chosen-rails' #  jquery multiselect plugin for advanced search
+gem 'chosen-rails', '~> 1.10' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '~> 4.1'
+gem 'geoblacklight_admin', '~> 0.3'
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
 
+# GBL Admin dependencies _not_ automatically loading...
+gem 'active_storage_validations'
+gem 'awesome_print'
+# gem 'blacklight_advanced_search'
+gem 'dotenv-rails'
+gem 'haml'
+gem 'inline_svg'
+gem 'kithe', '~> 2.0'
+gem 'noticed'
+gem 'paper_trail'
+
 # Image migration
-gem 'geoblacklight_sidecar_images', '~> 1.0'
+gem 'geoblacklight_sidecar_images', git: "https://github.com/geoblacklight/geoblacklight_sidecar_images.git", branch: "feature/statesman-update"
 gem 'carrierwave', '~> 1.2'
 gem 'mini_magick', '~> 4.9.4'
 
-gem 'statesman', '~> 3.4.1'
+gem 'statesman', '~> 10.0'
 gem 'sidekiq', '~> 6.4'
 gem 'sidekiq-failures', '~> 1.0.0'
-gem 'down', '~> 4.4'
+gem 'down', '~> 5.0'
 gem 'addressable', '~> 2.5.0'
 gem 'handlebars_assets', '~> 0.23.0'
 gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', :ref => '84da81140e7ef93e7241b7753c01d7f709216f2b'
@@ -97,8 +111,15 @@ gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'm
 
 gem 'rsolr', '>= 1.0'
 gem 'jquery-rails'
-gem "devise", ">= 4.7.1"
+
+# Auth
+gem "devise", "4.7.3"
+gem 'devise-bootstrap-views', '~> 1.0'
 gem 'devise-guests', '~> 0.6'
+gem 'devise_invitable', '~> 2.0.0'
+
+# Reporting
+gem 'blazer'
 
 gem 'haml'
 gem 'chronic'
@@ -116,7 +137,6 @@ gem 'exception_notification', '~> 4.4.0'
 gem 'appsignal'
 
 group :test do
-  gem 'webdrivers'
   gem 'm', '~> 1.5.0'
   gem 'minitest'
   gem 'minitest-ci', '~> 3.4.0'
