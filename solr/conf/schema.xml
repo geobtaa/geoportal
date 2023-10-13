@@ -18,9 +18,9 @@
     <dynamicField name="*_dtsi" type="pdate" stored="true" indexed="true" multiValued="false"/>
     <!-- END Kithe -->
 
-    <!-- GEOMG -->
+    <!-- GBLADMIN -->
     <field name="geomg_id_s" type="string" stored="true" indexed="true" required="true"/>
-    <!-- END GEOMG -->
+    <!-- END GBLADMIN -->
 
     <!-- GeoBlacklight -->
     <!-- Spatial Field Type: Represents the exent of the resource and powers map search functionality.
@@ -224,6 +224,6 @@
   <!-- for bbox value -->
   <copyField source="dcat_bbox" dest="solr_bboxtype"/>
 
-  <!-- for GEOMG reporting -->
+  <!-- for GBLADMIN reporting -->
   <copyField source="date_created_dtsi" dest="date_created_drsim"/>
 </schema>

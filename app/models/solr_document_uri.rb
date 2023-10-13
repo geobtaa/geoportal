@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class SolrDocumentUri < ApplicationRecord
-  include Statesman::Adapters::ActiveRecordQueries
+  include Statesman::Adapters::ActiveRecordQueries[
+    transition_class: UriTransition,
+    initial_state: :initialized
+  ]
 
   belongs_to :document, required: true, polymorphic: true
   has_many :uri_transitions, autosave: false, dependent: :destroy

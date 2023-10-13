@@ -15,3 +15,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.precompile += %w( analytics.js )
 Rails.application.config.assets.precompile += %w( favicon.ico )
+
+# GBL ADMIN
+# Rails.application.config.assets.paths << Rails.root.join('node_modules')
+Rails.application.config.assets.precompile += %w( geoblacklight_admin.js )
+Rails.application.config.assets.precompile += %w[application.js]
