@@ -3,9 +3,6 @@ Rails.application.routes.draw do
   get 'help', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/help')
   get 'robots.:format' => 'robots#robots'
 
-  # Sidekiq - Uncomment and restart app to view sidekiq dashboard
-  # mount Sidekiq::Web => "/sidekiq"
-
   # Feedback
   mount PointlessFeedback::Engine, :at => '/feedback'
 
@@ -99,6 +96,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+
+    authenticate :user, ->(user) { user.admin? } do
+      mount Sidekiq::Web => "/sidekiq"
+    end
+    
     devise_for :users, controllers: {invitations: "devise/invitations"}, skip: [:registrations]
     # Root
     root to: "documents#index"
