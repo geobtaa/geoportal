@@ -2,6 +2,6 @@
 :max_retries: 1
 
 :queues:
-  - [priority, 2]
-  - [devise, 1]
+  - priority
+  - devise
   - default
