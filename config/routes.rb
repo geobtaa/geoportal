@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'robots.:format' => 'robots#robots'
 
   # Sidekiq - Uncomment and restart app to view sidekiq dashboard
-  # mount Sidekiq::Web => "/sidekiq"
+  mount Sidekiq::Web => "/sidekiq"
 
   # Feedback
   mount PointlessFeedback::Engine, :at => '/feedback'

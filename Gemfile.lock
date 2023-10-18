@@ -39,6 +39,42 @@ GIT
       rails (>= 5.2, < 7.1)
       statesman (~> 10.0.0)
 
+GIT
+  remote: https://github.com/geobtaa/geoblacklight_admin.git
+  revision: 11e2af5cb545484cf9db3107a929b75bb3589d49
+  branch: feature/#22-queue-priorities
+  specs:
+    geoblacklight_admin (0.3.0)
+      active_storage_validations (~> 1.0)
+      amazing_print
+      blacklight (~> 7.33)
+      blacklight_advanced_search
+      blacklight_range_limit
+      bootstrap (~> 4.0)
+      chosen-rails (~> 1.10)
+      cocoon (~> 1.2)
+      config (~> 4.0)
+      devise (~> 4.7)
+      devise-bootstrap-views (~> 1.0)
+      devise_invitable (~> 2.0)
+      dotenv-rails (~> 2.8)
+      geoblacklight (~> 4.0)
+      haml (~> 5.2)
+      httparty (~> 0.21)
+      inline_svg (~> 1.9)
+      jquery-rails (~> 4.4)
+      kithe (~> 2.0)
+      noticed (~> 1.6)
+      pagy (~> 6.0)
+      paper_trail (~> 14.0)
+      pg (~> 1.4)
+      qa (~> 5.0)
+      rails (>= 6.1, < 7.1)
+      ruby-progressbar
+      simple_form (~> 5.0)
+      sprockets (< 4)
+      statesman (~> 10.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -328,36 +364,6 @@ GEM
       mime-types
       rails (>= 6.1, < 7.1)
       rgeo-geojson
-    geoblacklight_admin (0.3.0)
-      active_storage_validations (~> 1.0)
-      amazing_print
-      blacklight (~> 7.33)
-      blacklight_advanced_search
-      blacklight_range_limit
-      bootstrap (~> 4.0)
-      chosen-rails (~> 1.10)
-      cocoon (~> 1.2)
-      config (~> 4.0)
-      devise (~> 4.7)
-      devise-bootstrap-views (~> 1.0)
-      devise_invitable (~> 2.0)
-      dotenv-rails (~> 2.8)
-      geoblacklight (~> 4.0)
-      haml (~> 5.2)
-      httparty (~> 0.21)
-      inline_svg (~> 1.9)
-      jquery-rails (~> 4.4)
-      kithe (~> 2.0)
-      noticed (~> 1.6)
-      pagy (~> 6.0)
-      paper_trail (~> 14.0)
-      pg (~> 1.4)
-      qa (~> 5.0)
-      rails (>= 6.1, < 7.1)
-      ruby-progressbar
-      simple_form (~> 5.0)
-      sprockets (< 4)
-      statesman (~> 10.0)
     geocoder (1.8.2)
     git (1.11.0)
       rchardet (~> 1.8)
@@ -446,7 +452,7 @@ GEM
     llhttp-ffi (0.3.1)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    loofah (2.21.3)
+    loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     m (1.5.1)
@@ -489,7 +495,7 @@ GEM
     multi_xml (0.6.0)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.4.0)
+    net-imap (0.4.1)
       date
       net-protocol
     net-pop (0.1.2)
@@ -591,7 +597,7 @@ GEM
     regexp_parser (2.8.1)
     request_store (1.5.1)
       rack (>= 1.4)
-    responders (3.1.0)
+    responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
     retriable (3.1.2)
@@ -667,7 +673,7 @@ GEM
       redis (>= 4.5.0, < 5)
     sidekiq-failures (1.0.4)
       sidekiq (>= 4.0.0)
-    simple_form (5.2.0)
+    simple_form (5.3.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
     sitemap_generator (6.0.2)
@@ -791,7 +797,7 @@ DEPENDENCIES
   foreman
   geoblacklight (~> 4.1)
   geoblacklight-icons!
-  geoblacklight_admin (~> 0.3)
+  geoblacklight_admin!
   geoblacklight_sidecar_images!
   haml
   handlebars_assets (~> 0.23.0)
