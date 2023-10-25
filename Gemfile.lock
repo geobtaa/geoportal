@@ -795,6 +795,7 @@ DEPENDENCIES
   geoblacklight_sidecar_images!
   haml
   handlebars_assets (~> 0.23.0)
+  image_processing (>= 1.2)
   inline_svg
   jbuilder (~> 2.5)
   jquery-rails
