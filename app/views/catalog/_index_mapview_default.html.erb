@@ -13,7 +13,7 @@
       <div class='media'>
         <%- if document.sidecar.image.attached? %>
           <%- if document.sidecar.image.variable? %>
-            <%= image_tag document.sidecar.image.variant(resize: "200"), {class: 'mr-3', alt: document.to_semantic_values[:title]} %>
+            <%= image_tag document.sidecar.image.variant(resize_to_fit: [200, nil]), {class: 'mr-3', alt: document.to_semantic_values[:title]} %>
           <%- else %>
             <%= image_tag document.sidecar.image, {class: 'mr-3'} %>
           <%- end %>
