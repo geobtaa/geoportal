@@ -24,9 +24,9 @@ namespace :geoportal do
     shared_solr_opts = { managed: true, verbose: true, persist: false, download_dir: 'tmp' }
     shared_solr_opts[:version] = ENV['SOLR_VERSION'] if ENV['SOLR_VERSION']
 
-    SolrWrapper.wrap(shared_solr_opts.merge(port: 8983, instance_dir: 'tmp/geoportal-core-development')) do |solr|
-      solr.with_collection(name: "geoportal-core-development", dir: Rails.root.join("solr", "conf").to_s) do
-        puts "Solr running at http://localhost:8983/solr/geoportal-core-development/, ^C to exit"
+    SolrWrapper.wrap(shared_solr_opts.merge(port: 8983, instance_dir: 'tmp/blacklight-core')) do |solr|
+      solr.with_collection(name: "blacklight-core", dir: Rails.root.join("solr", "conf").to_s) do
+        puts "Solr running at http://localhost:8983/solr/blacklight-core/, ^C to exit"
         puts ' '
         begin
           Rake::Task['geoportal:index:seed'].invoke
