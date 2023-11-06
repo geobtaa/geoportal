@@ -1,15 +1,14 @@
 # frozen_string_literal: true
-
-task :ci do
-  if Rails.env.test?    
-    success = true
-    Rake::Task['geoportal:index:seed'].invoke
-    system('RAILS_ENV=test bundle exec rails test:system test') || success = false
-    exit!(1) unless success
-  end
-end
-
 namespace :geoportal do
+  task :ci do
+    if Rails.env.test?    
+      success = true
+      Rake::Task['geoportal:index:seed'].invoke
+      system('RAILS_ENV=test bundle exec rails test:system test') || success = false
+      exit!(1) unless success
+    end
+  end
+
   desc 'Run Solr and GeoBlacklight for interactive development'
   task :server, [:rails_server_args] do
     require 'solr_wrapper'
