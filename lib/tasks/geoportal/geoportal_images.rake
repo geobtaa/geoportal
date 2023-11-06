@@ -27,7 +27,25 @@ namespace :geoportal do
 
   desc 'Harvest images - Queue incomplete states for reprocessing'
   task queue_incomplete_states: :environment do
-    puts "Deprecated / Instead try: bundle exec rake gblsci:images:harvest_retry"
+    # Skipping :failed, :placeheld
+    states = [
+      :initialized,
+      :queued,
+      :processing
+    ]
+
+    states.each do |state|
+      sidecars = SolrDocumentSidecar.in_state(state)
+
+      puts "#{state} - #{sidecars.size}"
+
+      sidecars.each do |sc|
+        document = Geoblacklight::SolrDocument.find(sc.document_id)
+        GeoblacklightSidecarImages::StoreImageJob.perform_later(document.id)
+      rescue
+        puts "orphaned / #{sc.document_id}"
+      end
+    end
   end
 
   desc 'Failed State - Inspect metadata'

@@ -11,7 +11,7 @@ every :day, at: '11:45pm', roles: [:app] do
 end
 # Harvest thumbnail images for search results
 every :day, at: '12:05am', roles: [:app] do
-  rake 'gblsci:images:harvest_retry'
+  rake 'geoportal:queue_incomplete_states'
 end
 every :day, at: '12:30am', roles: [:app] do
   rake 'sitemap:refresh'
