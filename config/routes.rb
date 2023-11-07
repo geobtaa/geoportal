@@ -99,7 +99,7 @@ Rails.application.routes.draw do
   namespace :admin do
 
     authenticate :user, ->(user) { user.admin? } do
-      mount Sidekiq::Web => "/sidekiq"
+      mount GoodJob::Engine => 'good_job'
     end
     
     devise_for :users, controllers: {invitations: "devise/invitations"}, skip: [:registrations]

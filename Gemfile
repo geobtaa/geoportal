@@ -102,8 +102,6 @@ gem 'mini_magick', '~> 4.9.4'
 gem "image_processing", ">= 1.2"
 
 gem 'statesman', '~> 10.0'
-gem 'sidekiq', '~> 6.4'
-gem 'sidekiq-failures', '~> 1.0.0'
 gem 'down', '~> 5.0'
 gem 'addressable', '~> 2.5.0'
 gem 'handlebars_assets', '~> 0.23.0'
@@ -145,3 +143,5 @@ group :test do
 end
 
 gem 'rexml'
+
+gem "good_job", "~> 3.21"

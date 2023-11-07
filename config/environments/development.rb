@@ -71,7 +71,7 @@ Rails.application.configure do
   # Google Analytics - Dev
   config.google_analytics = 'UA-82483267-2'
 
-  config.active_job.queue_adapter = :sidekiq
+  config.active_job.queue_adapter = :good_job
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true

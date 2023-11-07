@@ -107,7 +107,7 @@ Rails.application.configure do
   config.google_analytics = 'UA-82483267-1'
 
   # Background jobs
-  config.active_job.queue_adapter = :sidekiq
+  config.active_job.queue_adapter = :good_job
 
    # Exception email notification
   Rails.application.config.middleware.use ExceptionNotification::Rack,

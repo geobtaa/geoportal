@@ -279,6 +279,8 @@ GEM
       zeitwerk (~> 2.6)
     dumb_delegator (1.0.0)
     erubi (1.12.0)
+    et-orbi (1.2.7)
+      tzinfo
     ethon (0.16.0)
       ffi (>= 1.15.0)
     exception_notification (4.4.3)
@@ -305,6 +307,9 @@ GEM
       rake
     flamegraph (0.9.5)
     foreman (0.87.2)
+    fugit (1.9.0)
+      et-orbi (~> 1, >= 1.2.7)
+      raabro (~> 1.4)
     fx (0.8.0)
       activerecord (>= 6.0.0)
       railties (>= 6.0.0)
@@ -363,6 +368,13 @@ GEM
       rchardet (~> 1.8)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    good_job (3.21.0)
+      activejob (>= 6.0.0)
+      activerecord (>= 6.0.0)
+      concurrent-ruby (>= 1.0.2)
+      fugit (>= 1.1)
+      railties (>= 6.0.0)
+      thor (>= 0.14.1)
     haml (5.2.2)
       temple (>= 0.8.0)
       tilt
@@ -539,6 +551,7 @@ GEM
       nokogiri (~> 1.6)
       rails (>= 5.0, < 7.1)
       rdf
+    raabro (1.4.0)
     racc (1.7.1)
     rack (2.2.8)
     rack-cors (2.0.1)
@@ -587,7 +600,6 @@ GEM
       link_header (~> 0.0, >= 0.0.8)
     rdf-vocab (3.3.0)
       rdf (~> 3.3)
-    redis (4.8.1)
     regexp_parser (2.8.1)
     request_store (1.5.1)
       rack (>= 1.4)
@@ -661,12 +673,6 @@ GEM
       down (~> 5.0)
       http (>= 3.2, < 6)
       shrine (>= 3.0.0.rc, < 4)
-    sidekiq (6.5.9)
-      connection_pool (>= 2.2.5, < 3)
-      rack (~> 2.0)
-      redis (>= 4.5.0, < 5)
-    sidekiq-failures (1.0.4)
-      sidekiq (>= 4.0.0)
     simple_form (5.3.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -793,6 +799,7 @@ DEPENDENCIES
   geoblacklight-icons!
   geoblacklight_admin (~> 0.3)
   geoblacklight_sidecar_images!
+  good_job (~> 3.21)
   haml
   handlebars_assets (~> 0.23.0)
   image_processing (>= 1.2)
@@ -824,8 +831,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sd_notify (>= 0.1.0)
   selenium-webdriver
-  sidekiq (~> 6.4)
-  sidekiq-failures (~> 1.0.0)
   sitemap_generator (~> 6.0.2)
   solr_wrapper!
   spring
