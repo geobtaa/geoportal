@@ -11,7 +11,7 @@ every :day, at: '11:45pm', roles: [:app] do
 end
 # Harvest thumbnail images for search results
 every :day, at: '12:05am', roles: [:app] do
-  rake 'gblsci:images:harvest_retry'
+  rake 'geoportal:queue_incomplete_states'
 end
 every :day, at: '12:30am', roles: [:app] do
   rake 'sitemap:refresh'
@@ -24,10 +24,13 @@ end
 every :day, at: '2:30am', roles: [:app] do
   rake 'blacklight:delete_old_searches[7]'
 end
+
+# No longer required - EWL 11/10/23
 # Exports SOLR data to public/data.json
-every '30 3 1 * *', roles: [:app] do
-  rake 'geoportal:export_data'
-end
+# every '30 3 1 * *', roles: [:app] do
+#  rake 'geoportal:export_data'
+# end
+
 # Clean Carrierwave tmp file directory
 every :day, at: '4:30 am', roles: [:app] do
   runner "CarrierWave.clean_cached_files!"

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'about', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/about')
   get 'help', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/help')
   get 'robots.:format' => 'robots#robots'
+  get '/centroids.json', :to => redirect('/centroids.json')
 
   # Feedback
   mount PointlessFeedback::Engine, :at => '/feedback'
