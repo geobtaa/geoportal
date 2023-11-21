@@ -30,7 +30,7 @@ test:
 
 production:
   # Puma is given a lot of threads
-  pool: 10
+  pool: 16
   adapter: postgresql
   encoding: utf8
   reconnect: false
