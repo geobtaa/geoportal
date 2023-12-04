@@ -14,10 +14,10 @@
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all" %>
 
-    <% if layout_type == "item" %>
+    <% if layout_type == "item" && @document && @document.viewer_protocol == 'iiif_manifest' %>
       <%= javascript_pack_tag 'm3' %>
     <% end %>
-    
+
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "analytics" %>
 
