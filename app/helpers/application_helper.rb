@@ -139,4 +139,19 @@ module ApplicationHelper
   def render_sidebar_map?(document)
     Settings.SIDEBAR_STATIC_MAP&.any? { |vp| document.viewer_protocol == vp }
   end
+
+  ##
+  # Gets current layout for use in rendering partials
+  # @return [String] item, index, home, or default
+  def layout_type
+    if params[:controller] == "catalog"
+      if params[:action] == "show" || params[:action] == "downloads"
+        "item"
+      elsif params[:action] == "index"
+        "index"
+      end
+    else
+      "default"
+    end
+  end
 end
