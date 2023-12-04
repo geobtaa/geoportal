@@ -13,7 +13,11 @@
     <%= opensearch_description_tag application_name, opensearch_catalog_url(format: 'xml') %>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all" %>
-    <%= javascript_pack_tag 'm3' %>
+
+    <% if layout_type == "item" %>
+      <%= javascript_pack_tag 'm3' %>
+    <% end %>
+    
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "analytics" %>
 
