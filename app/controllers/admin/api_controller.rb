@@ -338,6 +338,48 @@ module Admin
       config.autocomplete_path = 'suggest'
     end
 
+    # Admin CSV stream of Database data
+    def tableau_export
+      headers.delete("Content-Length")
+      headers["Cache-Control"] = "no-cache"
+      headers["Content-Type"] = "text/csv"
+      headers["Content-Disposition"] = "attachment; filename=\"geoportal_tableau_export.csv\""
+      headers["X-Accel-Buffering"] = "no"
+      response.status = 200
+      self.response_body = csv_enumerator
+    end
+
+    def csv_enumerator
+      @csv_enumerator ||= Enumerator.new do |yielder|
+        yielder << CSV.generate_line([
+          "Title",
+          "Provider",
+          "Resource Class",
+          "Resource Type",
+          "Index Year",
+          "Spatial Coverage",
+          "B1G Image",
+          "ID",
+          "Download",
+          "Language"
+        ])
+        Document.find_each do |row|
+          yielder << CSV.generate_line([
+            row.title,
+            row.schema_provider_s,
+            row.gbl_resourceClass_sm&.join("|"),
+            row.gbl_resourceType_sm&.join("|"),
+            row.gbl_indexYear_im&.join("|"),
+            row.dct_spatial_sm&.join("|"),
+            row.b1g_image_ss,
+            row.geomg_id_s,
+            row.dct_references_s.find { |ref| ref.category == "download" }&.value,
+            row.dct_language_sm&.join("|")
+          ])
+        end
+      end
+    end
+
     # Administrative view of document
     # - Sidecar Image
     # - URIs
