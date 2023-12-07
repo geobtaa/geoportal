@@ -127,6 +127,9 @@ module Admin
       # Publication State
       config.add_facet_field Settings.FIELDS.B1G_PUBLICATION_STATE, :label => 'Publication State', :limit => 8, collapse: false
 
+      # Accession Date
+      config.add_facet_field Settings.FIELDS.B1G_DATE_ACCESSIONED, :label => 'Date Accessioned', :limit => 8, collapse: false
+
       # Import ID
       config.add_facet_field Settings.FIELDS.B1G_IMPORT_ID, label: "Import ID", show: false
 
@@ -144,8 +147,6 @@ module Admin
 
       # ADVANCED SEARCH
       #
-      # Accession Date
-      config.add_facet_field Settings.FIELDS.B1G_DATE_ACCESSIONED, :label => 'Date Accessioned', :limit => 8, collapse: false, sort: "index"
 
       # Code
       config.add_facet_field Settings.FIELDS.B1G_CODE, label: 'Code', show: false
