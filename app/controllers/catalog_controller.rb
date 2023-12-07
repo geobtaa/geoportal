@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'blacklight/catalog'
+require 'kithe/blacklight_tools/bulk_loading_search_service'
 
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
