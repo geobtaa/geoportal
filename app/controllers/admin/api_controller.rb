@@ -127,6 +127,9 @@ module Admin
       # Publication State
       config.add_facet_field Settings.FIELDS.B1G_PUBLICATION_STATE, :label => 'Publication State', :limit => 8, collapse: false
 
+      # Import ID
+      config.add_facet_field Settings.FIELDS.B1G_IMPORT_ID, label: "Import ID", show: false
+
       # Resouce Class
       config.add_facet_field Settings.FIELDS.RESOURCE_CLASS, label: 'Resource Class', limit: 8
 

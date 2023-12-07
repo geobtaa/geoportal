@@ -39,6 +39,42 @@ GIT
       rails (>= 5.2, < 7.1)
       statesman (~> 10.0.0)
 
+GIT
+  remote: https://github.com/geobtaa/geoblacklight_admin.git
+  revision: d139c5e92480a25c28212dabd5233c7165522dfa
+  branch: feature/bulk-actions-sti
+  specs:
+    geoblacklight_admin (0.3.2)
+      active_storage_validations (~> 1.0)
+      amazing_print
+      blacklight (~> 7.33)
+      blacklight_advanced_search
+      blacklight_range_limit
+      bootstrap (~> 4.0)
+      chosen-rails (~> 1.10)
+      cocoon (~> 1.2)
+      config (~> 4.0)
+      devise (~> 4.7)
+      devise-bootstrap-views (~> 1.0)
+      devise_invitable (~> 2.0)
+      dotenv-rails (~> 2.8)
+      geoblacklight (~> 4.0)
+      haml (~> 5.2)
+      httparty (~> 0.21)
+      inline_svg (~> 1.9)
+      jquery-rails (~> 4.4)
+      kithe (~> 2.0)
+      noticed (~> 1.6)
+      pagy (~> 6.0)
+      paper_trail (~> 14.0)
+      pg (~> 1.4)
+      qa (~> 5.0)
+      rails (>= 6.1, < 7.1)
+      ruby-progressbar
+      simple_form (~> 5.0)
+      sprockets (< 4)
+      statesman (~> 10.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -96,7 +132,7 @@ GEM
     activerecord (6.1.7.6)
       activemodel (= 6.1.7.6)
       activesupport (= 6.1.7.6)
-    activerecord-import (1.5.0)
+    activerecord-import (1.5.1)
       activerecord (>= 4.2)
     activestorage (6.1.7.6)
       actionpack (= 6.1.7.6)
@@ -328,36 +364,6 @@ GEM
       mime-types
       rails (>= 6.1, < 7.1)
       rgeo-geojson
-    geoblacklight_admin (0.3.2)
-      active_storage_validations (~> 1.0)
-      amazing_print
-      blacklight (~> 7.33)
-      blacklight_advanced_search
-      blacklight_range_limit
-      bootstrap (~> 4.0)
-      chosen-rails (~> 1.10)
-      cocoon (~> 1.2)
-      config (~> 4.0)
-      devise (~> 4.7)
-      devise-bootstrap-views (~> 1.0)
-      devise_invitable (~> 2.0)
-      dotenv-rails (~> 2.8)
-      geoblacklight (~> 4.0)
-      haml (~> 5.2)
-      httparty (~> 0.21)
-      inline_svg (~> 1.9)
-      jquery-rails (~> 4.4)
-      kithe (~> 2.0)
-      noticed (~> 1.6)
-      pagy (~> 6.0)
-      paper_trail (~> 14.0)
-      pg (~> 1.4)
-      qa (~> 5.0)
-      rails (>= 6.1, < 7.1)
-      ruby-progressbar
-      simple_form (~> 5.0)
-      sprockets (< 4)
-      statesman (~> 10.0)
     geocoder (1.8.2)
     git (1.11.0)
       rchardet (~> 1.8)
@@ -507,7 +513,7 @@ GEM
       rails (>= 5.2.0)
     orm_adapter (0.5.0)
     ostruct (0.5.5)
-    pagy (6.1.0)
+    pagy (6.2.0)
     paper_trail (14.0.0)
       activerecord (>= 6.0)
       request_store (~> 1.4)
@@ -530,14 +536,14 @@ GEM
     public_suffix (3.1.1)
     puma (5.6.7)
       nio4r (~> 2.0)
-    qa (5.10.0)
+    qa (5.11.0)
       activerecord-import
       deprecation
       faraday (< 3.0, != 2.0.0)
       geocoder
       ldpath
       nokogiri (~> 1.6)
-      rails (>= 5.0, < 7.1)
+      rails (>= 5.0, < 7.2)
       rdf
     racc (1.7.1)
     rack (2.2.8)
@@ -791,7 +797,7 @@ DEPENDENCIES
   foreman
   geoblacklight (~> 4.1)
   geoblacklight-icons!
-  geoblacklight_admin (~> 0.3)
+  geoblacklight_admin!
   geoblacklight_sidecar_images!
   haml
   handlebars_assets (~> 0.23.0)
