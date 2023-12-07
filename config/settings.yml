@@ -92,6 +92,7 @@ FIELDS:
   :WXS_IDENTIFIER: 'gbl_wxsIdentifier_s'
   # B1G Custom Fields Geoportal / GEOMG
   :B1G_ACCESS: 'b1g_access_s'
+  :B1G_DATE_ACCESSIONED: 'b1g_dateAccessioned_sm'
   :B1G_ACCRUAL_METHOD: 'b1g_dct_accrualMethod_s'
   :B1G_CHILD_RECORD: 'b1g_child_record_b'
   :B1G_CODE: 'b1g_code_s'

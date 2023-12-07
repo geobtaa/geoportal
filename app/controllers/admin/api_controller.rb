@@ -141,6 +141,9 @@ module Admin
 
       # ADVANCED SEARCH
       #
+      # Accession Date
+      config.add_facet_field Settings.FIELDS.B1G_DATE_ACCESSIONED, :label => 'Date Accessioned', :limit => 8, collapse: false, sort: "index"
+
       # Code
       config.add_facet_field Settings.FIELDS.B1G_CODE, label: 'Code', show: false
 
