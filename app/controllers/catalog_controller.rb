@@ -5,6 +5,7 @@ class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
+  self.search_service_class = Kithe::BlacklightTools::BulkLoadingSearchService
 
   configure_blacklight do |config|
     # default advanced config values

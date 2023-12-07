@@ -6,6 +6,8 @@ class SolrDocument
   include WmsRewriteConcern
   include B1gLicensedDataConcern
 
+  attr_accessor :model
+
   # self.unique_key = 'id'
   self.unique_key = Settings.FIELDS.B1G_GEOMG_ID
 
