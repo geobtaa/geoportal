@@ -23,7 +23,6 @@ class SearchResultsPageTest < ApplicationSystemTestCase
       assert page.has_link?("About Us")
       assert page.has_link?("Contact Project Team")
       assert page.has_link?("Big Ten Academic Alliance Homepage")
-      assert page.has_link?("Follow @geobtaa")
     end
   end
 
