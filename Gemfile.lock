@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 750eaa3c25379adadbf478494c57bd9b88a50c73
+  revision: 772bf5226c90bbdc1ea0c787e95c7541d02ccc72
   branch: feature/bulk-actions-sti
   specs:
     geoblacklight_admin (0.3.2)
