@@ -127,6 +127,12 @@ module Admin
       # Publication State
       config.add_facet_field Settings.FIELDS.B1G_PUBLICATION_STATE, :label => 'Publication State', :limit => 8, collapse: false
 
+      # Accession Date
+      config.add_facet_field Settings.FIELDS.B1G_DATE_ACCESSIONED, :label => 'Date Accessioned', :limit => 8, collapse: false
+
+      # Import ID
+      config.add_facet_field Settings.FIELDS.B1G_IMPORT_ID, label: "Import ID", show: false
+
       # Resouce Class
       config.add_facet_field Settings.FIELDS.RESOURCE_CLASS, label: 'Resource Class', limit: 8
 
@@ -141,6 +147,7 @@ module Admin
 
       # ADVANCED SEARCH
       #
+
       # Code
       config.add_facet_field Settings.FIELDS.B1G_CODE, label: 'Code', show: false
 
@@ -338,48 +345,6 @@ module Admin
       config.autocomplete_path = 'suggest'
     end
 
-    # Admin CSV stream of Database data
-    def tableau_export
-      headers.delete("Content-Length")
-      headers["Cache-Control"] = "no-cache"
-      headers["Content-Type"] = "text/csv"
-      headers["Content-Disposition"] = "attachment; filename=\"geoportal_tableau_export.csv\""
-      headers["X-Accel-Buffering"] = "no"
-      response.status = 200
-      self.response_body = csv_enumerator
-    end
-
-    def csv_enumerator
-      @csv_enumerator ||= Enumerator.new do |yielder|
-        yielder << CSV.generate_line([
-          "Title",
-          "Provider",
-          "Resource Class",
-          "Resource Type",
-          "Index Year",
-          "Spatial Coverage",
-          "B1G Image",
-          "ID",
-          "Download",
-          "Language"
-        ])
-        Document.find_each do |row|
-          yielder << CSV.generate_line([
-            row.title,
-            row.schema_provider_s,
-            row.gbl_resourceClass_sm&.join("|"),
-            row.gbl_resourceType_sm&.join("|"),
-            row.gbl_indexYear_im&.join("|"),
-            row.dct_spatial_sm&.join("|"),
-            row.b1g_image_ss,
-            row.geomg_id_s,
-            row.dct_references_s.find { |ref| ref.category == "download" }&.value,
-            row.dct_language_sm&.join("|")
-          ])
-        end
-      end
-    end
-
     # Administrative view of document
     # - Sidecar Image
     # - URIs
@@ -417,6 +382,12 @@ module Admin
                                                      blacklight_config)
         end
       end
+    end
+
+    # Tableau Export
+    def tableau_export
+      ExportTableauJob.perform_later(current_user)
+      head :no_content
     end
   end
 end
