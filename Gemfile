@@ -80,7 +80,7 @@ gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '~> 4.1'
-gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/bulk-actions-sti"
+gem 'geoblacklight_admin', "~> 0.4.0"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
 
