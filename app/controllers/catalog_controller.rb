@@ -1,10 +1,12 @@
 # -*- encoding : utf-8 -*-
 require 'blacklight/catalog'
+require 'kithe/blacklight_tools/bulk_loading_search_service'
 
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
+  self.search_service_class = Kithe::BlacklightTools::BulkLoadingSearchService
 
   configure_blacklight do |config|
     # default advanced config values
@@ -58,8 +60,7 @@ class CatalogController < ApplicationController
       :start => 0,
       'q.alt' => '*:*',
       'fl' => '*,score,[explain]',
-      'bf' => ["if(exists(#{Settings.FIELDS.B1G_CHILD_RECORD}),0,100)^0.5"],
-      'fq' => ["#{Settings.FIELDS.B1G_PUBLICATION_STATE}:published"]
+      'bf' => ["if(exists(#{Settings.FIELDS.B1G_CHILD_RECORD}),0,100)^0.5"]
     }
 
     config.default_per_page = 10 # Works!
@@ -157,6 +158,7 @@ class CatalogController < ApplicationController
     # filter_class         - Defines how to add/remove facet from query
     # label                - Defines the label used in contstraints container
     config.add_facet_field 'solr_bboxtype', item_presenter: Geoblacklight::BboxItemPresenter, filter_class: Geoblacklight::BboxFilterField, filter_query_builder: Geoblacklight::BboxFilterQuery, within_boost: Settings.BBOX_WITHIN_BOOST, overlap_boost: Settings.OVERLAP_RATIO_BOOST, overlap_field: Settings.FIELDS.OVERLAP_FIELD, label: 'Bounding Box'
+    config.add_facet_field Settings.FIELDS.B1G_IMPORT_ID, label: "Import ID", show: false
 
     # Item Relationship Facets
     # * Not displayed to end user (show: false)

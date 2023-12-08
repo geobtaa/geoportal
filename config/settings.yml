@@ -92,6 +92,7 @@ FIELDS:
   :WXS_IDENTIFIER: 'gbl_wxsIdentifier_s'
   # B1G Custom Fields Geoportal / GEOMG
   :B1G_ACCESS: 'b1g_access_s'
+  :B1G_DATE_ACCESSIONED: 'b1g_dateAccessioned_sm'
   :B1G_ACCRUAL_METHOD: 'b1g_dct_accrualMethod_s'
   :B1G_CHILD_RECORD: 'b1g_child_record_b'
   :B1G_CODE: 'b1g_code_s'
@@ -101,6 +102,7 @@ FIELDS:
   :B1G_LANGUAGE: 'b1g_language_sm'
   :B1G_MEDIATOR: 'b1g_dct_mediator_sm'
   :B1G_PUBLICATION_STATE: 'b1g_publication_state_s'
+  :B1G_IMPORT_ID: 'b1g_geom_import_id_ssi'
 
 GEOMONITOR_TOLERANCE: 0.8
 #GOOGLE_ANALYTICS_ID: 'UA-XXXXX-X'

@@ -33,7 +33,21 @@ module Admin
       config.advanced_search[:url_key] ||= 'advanced'
       config.advanced_search[:query_parser] ||= 'edismax'
       config.advanced_search[:form_solr_parameters] ||= {}
-      config.advanced_search[:form_solr_parameters]['facet.field'] ||= [Settings.FIELDS.PROVIDER, Settings.FIELDS.B1G_CODE, Settings.FIELDS.MEMBER_OF, Settings.FIELDS.IS_PART_OF, Settings.FIELDS.RESOURCE_CLASS, Settings.FIELDS.RESOURCE_TYPE, Settings.FIELDS.SUBJECT, Settings.FIELDS.THEME, Settings.FIELDS.FORMAT, Settings.FIELDS.SUPPRESSED, Settings.FIELDS.B1G_CHILD_RECORD, Settings.FIELDS.GEOREFERENCED]
+      config.advanced_search[:form_solr_parameters]['facet.field'] ||= [
+        Settings.FIELDS.PROVIDER,
+        Settings.FIELDS.B1G_DATE_ACCESSIONED,
+        Settings.FIELDS.B1G_CODE, 
+        Settings.FIELDS.MEMBER_OF, 
+        Settings.FIELDS.IS_PART_OF, 
+        Settings.FIELDS.RESOURCE_CLASS, 
+        Settings.FIELDS.RESOURCE_TYPE, 
+        Settings.FIELDS.SUBJECT, 
+        Settings.FIELDS.THEME, 
+        Settings.FIELDS.FORMAT, 
+        Settings.FIELDS.SUPPRESSED, 
+        Settings.FIELDS.B1G_CHILD_RECORD, 
+        Settings.FIELDS.GEOREFERENCED
+      ]
       config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
       config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
       config.advanced_search[:form_solr_parameters]['facet.sort'] ||= 'index'
@@ -128,6 +142,9 @@ module Admin
 
       # ADVANCED SEARCH
       #
+      # B1G Date Accessioned
+      config.add_facet_field Settings.FIELDS.B1G_DATE_ACCESSIONED, label: 'Date Accessioned', limit: 1000
+
       # Code
       config.add_facet_field Settings.FIELDS.B1G_CODE, label: 'Code', limit: 1000
 
