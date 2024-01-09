@@ -52,6 +52,7 @@
     "inputmask": "^5.0.8",
     "jquery": "3.5.1",
     "js-cookie": "^2.2.1",
+    "levenary": "^1.1.1",
     "linkifyjs": "^2.1.9",
     "lodash": "^4.17.13",
     "lodash.template": "^4.5.0",
