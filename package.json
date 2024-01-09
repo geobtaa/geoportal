@@ -21,7 +21,7 @@
     "@babel/core": "^7.7.2",
     "@babel/register": "^7.7.0",
     "shx": "^0.3.2",
-    "webpack-dev-server": "^4.0"
+    "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
     "@babel/cli": "^7.5.5",

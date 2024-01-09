@@ -650,7 +650,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    semantic_range (3.0.0)
     shrine (3.5.0)
       content_disposition (~> 1.0)
       down (~> 5.1)
@@ -736,11 +735,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (5.4.4)
-      activesupport (>= 5.2)
+    webpacker (4.3.0)
+      activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
+      railties (>= 4.2)
     websocket (1.2.10)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -834,7 +832,7 @@ DEPENDENCIES
   twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
   uglifier (>= 1.3.0)
   web-console
-  webpacker (~> 5.x)
+  webpacker (~> 4.x)
   whenever (~> 1.0.0)
 
 BUNDLED WITH
