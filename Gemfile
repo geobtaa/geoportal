@@ -81,6 +81,7 @@ gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '~> 4.1'
 gem 'geoblacklight_admin', "~> 0.4.0"
+gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
 
@@ -105,7 +106,7 @@ gem 'statesman', '~> 10.0'
 gem 'sidekiq', '~> 6.4'
 gem 'sidekiq-failures', '~> 1.0.0'
 gem 'down', '~> 5.0'
-gem 'addressable', '~> 2.5.0'
+gem 'addressable', '~> 2.0'
 gem 'handlebars_assets', '~> 0.23.0'
 gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', :ref => '84da81140e7ef93e7241b7753c01d7f709216f2b'
 gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'master'
