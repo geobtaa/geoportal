@@ -98,7 +98,6 @@ gem 'paper_trail'
 
 # Image migration
 gem 'geoblacklight_sidecar_images', git: "https://github.com/geoblacklight/geoblacklight_sidecar_images.git", branch: "feature/statesman-update"
-gem 'carrierwave', '~> 1.2'
 gem 'mini_magick', '~> 4.9.4'
 gem "image_processing", ">= 1.2"
 
