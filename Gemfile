@@ -13,7 +13,7 @@ gem "puma", "~> 5.6"
 gem 'sd_notify', '>= 0.1.0'
 
 # Webpacker
-gem 'webpacker', '~> 4.x'
+gem 'webpacker', '~> 5.x'
 
 gem 'sqlite3', '~> 1.4'
 #gem 'mysql2', '~> 0.5.0'
