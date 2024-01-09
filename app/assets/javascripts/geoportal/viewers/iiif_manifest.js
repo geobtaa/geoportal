@@ -39,7 +39,6 @@ GeoBlacklight.Viewer.IiifManifest = GeoBlacklight.Viewer.extend({
          enabled: false,
        }
      }, [
-       OSDReferencesPlugin,
        miradorDownloadDialogPlugin,
        miradorDownloadPlugin,
        customIconPlugin
