@@ -88,7 +88,7 @@ jobs:
         POSTGRES_PASSWORD: postgres
         BLAZER_UPLOADS_URL: postgresql://127.0.0.1:5432/geoblacklight_test
       run: |
-        bundle exec rails test:system test
+        bundle exec rake geoportal:ci --trace
 
     - name: Artifacts - Upload coverage
       uses: actions/upload-artifact@v2
