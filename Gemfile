@@ -120,7 +120,7 @@ gem 'devise-guests', '~> 0.6'
 gem 'devise_invitable', '~> 2.0.0'
 
 # Reporting
-# gem 'blazer'
+gem 'blazer'
 
 gem 'haml'
 gem 'chronic'
