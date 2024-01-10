@@ -77,7 +77,7 @@ jobs:
         FARADAY_VERSION: ${{ matrix.faraday_version }}
         CI: true
       run: |
-        Rake::Task['geoportal:index:seed'].invoke
+        bundle exec rake geoportal:index:seed
         bundle exec rails test:system test
 
     - name: Artifacts - Upload coverage
