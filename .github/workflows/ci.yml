@@ -80,6 +80,7 @@ jobs:
         POSTGRES_DB: geoblacklight_test
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
+        DISABLE_SPRING: 1
       run: |
         more config/database.yml
         bundle exec rake geoportal:index:seed
