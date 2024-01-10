@@ -8,6 +8,7 @@ jobs:
     strategy:
       matrix:
         ruby: ['3.0']
+        rails_version: [7.0.8]
 
     services:
       postgres:
@@ -44,7 +45,7 @@ jobs:
     - name: Bundler - Install dependencies
       run: bundle _2.3.5_ install
       env:
-        rails_version: 7.0.8
+        RAILS_VERSION: ${{ matrix.rails_version }}
 
     - name: Node - v14
       uses: actions/setup-node@v2
@@ -71,7 +72,7 @@ jobs:
     - name: Rails - Run tests
       env:
         RAILS_ENV: test
-        RAILS_VERSION: 7.0.8
+        RAILS_VERSION: ${{ matrix.rails_version }}
         RUBYOPT: W0
         SOLR_URL: http://solr:SolrRocks@localhost:8983/solr/blacklight-core
         FARADAY_VERSION: ${{ matrix.faraday_version }}          

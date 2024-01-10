@@ -159,11 +159,6 @@ GEM
       jquery-rails
       rails (>= 3.0)
       tether-rails
-    blazer (3.0.2)
-      activerecord (>= 6.1)
-      chartkick (>= 5)
-      railties (>= 6.1)
-      safely_block (>= 0.4)
     bootsnap (1.9.4)
       msgpack (~> 1.0)
     bootstrap (4.6.2)
@@ -187,7 +182,6 @@ GEM
     capybara-selenium (0.0.6)
       capybara
       selenium-webdriver
-    chartkick (5.0.5)
     chosen-rails (1.10.0)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
@@ -627,7 +621,6 @@ GEM
     ruby-vips (2.2.0)
       ffi (~> 1.12)
     rubyzip (2.3.2)
-    safely_block (0.4.0)
     sanitize (6.1.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -773,7 +766,6 @@ DEPENDENCIES
   blacklight (~> 7.33.0)
   blacklight_advanced_search!
   blacklight_range_limit (~> 7.0.0)
-  blazer
   bootsnap (~> 1.9.3)
   bootstrap (~> 4.0)
   byebug
