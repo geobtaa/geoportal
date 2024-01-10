@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0.0'
 gem 'bootsnap', '~> 1.9.3', require: false
 gem 'listen', '~> 3.0'
 
@@ -114,7 +114,7 @@ gem 'rsolr', '>= 1.0'
 gem 'jquery-rails'
 
 # Auth
-gem "devise", "4.7.3"
+gem "devise", "~> 4.0"
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'devise-guests', '~> 0.6'
 gem 'devise_invitable', '~> 2.0.0'
@@ -132,7 +132,6 @@ gem 'dotenv-rails'
 gem 'pointless_feedback'
 gem 'whenever', '~> 1.0.0', require: false
 gem 'sitemap_generator', '~> 6.0.2'
-gem 'exception_notification', '~> 4.4.0'
 
 # Appsignal
 gem 'appsignal'
