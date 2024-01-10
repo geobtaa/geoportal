@@ -86,7 +86,7 @@ jobs:
         POSTGRES_DB: geoblacklight_test
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
-        BLAZER_UPLOADS_URL: postgresql://postgres:postgres@127.0.0.1:5432/geoblacklight_test
+        BLAZER_DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/geoblacklight_test
       run: |
         bundle exec rake geoportal:ci --trace
 
