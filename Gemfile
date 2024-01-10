@@ -143,4 +143,5 @@ group :test do
   gem 'minitest-reporters'
 end
 
+gem 'net-ftp'
 gem 'rexml'
