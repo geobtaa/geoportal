@@ -25,7 +25,7 @@ test:
   <<: *default
   host: "<%= ENV['POSTGRES_HOST'] %>"
   port: "<%= ENV['POSTGRES_PORT'] %>"
-  database: "<%= ENV['POSTGRES_DATABASE'] %>"
+  database: "<%= ENV['POSTGRES_DB'] %>"
   username: "<%= ENV['POSTGRES_USER'] %>"
   password: "<%= ENV['POSTGRES_PASSWORD'] %>"
 
