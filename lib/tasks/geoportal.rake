@@ -3,6 +3,7 @@ namespace :geoportal do
   task :ci do
     if Rails.env.test?    
       success = true
+      `printenv`
       Rake::Task['geoportal:index:seed'].invoke
       system('RAILS_ENV=test bundle exec rails test:system test') || success = false
       exit!(1) unless success
