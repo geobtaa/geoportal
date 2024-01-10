@@ -81,6 +81,7 @@ jobs:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
       run: |
+        more config/database.yml
         bundle exec rake geoportal:index:seed
         bundle exec rails test:system test
 
