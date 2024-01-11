@@ -6,3 +6,9 @@
 #
 staff:
   email: staff@umn.edu
+
+user_001:
+  id: 1
+  email: test@sample.com
+  encrypted_password: <%= User.new.send(:password_digest, '123456') %>
+  admin: true
