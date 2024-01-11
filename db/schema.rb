@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_09_160910) do
-
+ActiveRecord::Schema[7.0].define(version: 2024_01_10_161003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -62,7 +61,7 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -73,8 +72,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "content_type"
     t.text "metadata"
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.string "checksum"
+    t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
@@ -90,7 +89,7 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.bigint "query_id"
     t.text "statement"
     t.string "data_source"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.index ["query_id"], name: "index_blazer_audits_on_query_id"
     t.index ["user_id"], name: "index_blazer_audits_on_user_id"
   end
@@ -104,9 +103,9 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.text "slack_channels"
     t.string "check_type"
     t.text "message"
-    t.datetime "last_run_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "last_run_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_blazer_checks_on_creator_id"
     t.index ["query_id"], name: "index_blazer_checks_on_query_id"
   end
@@ -115,8 +114,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.bigint "dashboard_id"
     t.bigint "query_id"
     t.integer "position"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["dashboard_id"], name: "index_blazer_dashboard_queries_on_dashboard_id"
     t.index ["query_id"], name: "index_blazer_dashboard_queries_on_query_id"
   end
@@ -124,8 +123,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
   create_table "blazer_dashboards", force: :cascade do |t|
     t.bigint "creator_id"
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_blazer_dashboards_on_creator_id"
   end
 
@@ -136,8 +135,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.text "statement"
     t.string "data_source"
     t.string "status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
   end
 
@@ -145,8 +144,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.bigint "creator_id"
     t.string "table"
     t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_blazer_uploads_on_creator_id"
   end
 
@@ -155,8 +154,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "user_type"
     t.string "document_id"
     t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "document_type"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
@@ -167,8 +166,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.integer "sort_key", null: false
     t.integer "bulk_action_document_id", null: false
     t.boolean "most_recent", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["bulk_action_document_id", "most_recent"], name: "index_bulk_action_document_transitions_parent_most_recent", unique: true, where: "most_recent"
     t.index ["bulk_action_document_id", "sort_key"], name: "index_bulk_action_document_transitions_parent_sort", unique: true
   end
@@ -177,8 +176,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "friendlier_id", null: false
     t.integer "version", null: false
     t.bigint "bulk_action_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.uuid "document_id"
     t.index ["bulk_action_id"], name: "index_bulk_action_documents_on_bulk_action_id"
   end
@@ -189,8 +188,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.integer "sort_key", null: false
     t.integer "bulk_action_id", null: false
     t.boolean "most_recent", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["bulk_action_id", "most_recent"], name: "index_bulk_action_transitions_parent_most_recent", unique: true, where: "most_recent"
     t.index ["bulk_action_id", "sort_key"], name: "index_bulk_action_transitions_parent_sort", unique: true
   end
@@ -202,16 +201,16 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "field_name", null: false
     t.string "field_value", null: false
     t.text "notes"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "document_accesses", force: :cascade do |t|
     t.string "friendlier_id", null: false
     t.string "institution_code", null: false
     t.text "access_url", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "document_downloads", force: :cascade do |t|
@@ -219,8 +218,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "label"
     t.string "value"
     t.integer "position"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "document_transitions", force: :cascade do |t|
@@ -229,8 +228,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.integer "sort_key", null: false
     t.uuid "kithe_model_id", null: false
     t.boolean "most_recent", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["kithe_model_id", "most_recent"], name: "index_document_transitions_parent_most_recent", unique: true, where: "most_recent"
     t.index ["kithe_model_id", "sort_key"], name: "index_document_transitions_parent_sort", unique: true
   end
@@ -258,8 +257,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.boolean "indexable", default: true, null: false
     t.string "index_transformation_method"
     t.string "validation_method"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "position"
   end
 
@@ -268,8 +267,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "label"
     t.string "element_solr_field"
     t.integer "position"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "image_upload_transitions", force: :cascade do |t|
@@ -278,8 +277,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.integer "sort_key", null: false
     t.bigint "solr_document_sidecar_id", null: false
     t.boolean "most_recent", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["solr_document_sidecar_id", "sort_key"], name: "index_image_upload_transitions_parent_sort", unique: true
     t.index ["solr_document_sidecar_id"], name: "index_image_upload_transitions_on_solr_document_sidecar_id"
   end
@@ -290,8 +289,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.integer "sort_key", null: false
     t.integer "import_document_id", null: false
     t.boolean "most_recent", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["import_document_id", "most_recent"], name: "index_import_document_transitions_parent_most_recent", unique: true, where: "most_recent"
     t.index ["import_document_id", "sort_key"], name: "index_import_document_transitions_parent_sort", unique: true
   end
@@ -301,8 +300,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "title", null: false
     t.json "json_attributes", default: "{}"
     t.bigint "import_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["import_id"], name: "index_import_documents_on_import_id"
   end
 
@@ -312,8 +311,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.integer "sort_key", null: false
     t.integer "import_id", null: false
     t.boolean "most_recent", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["import_id", "most_recent"], name: "index_import_transitions_parent_most_recent", unique: true, where: "most_recent"
     t.index ["import_id", "sort_key"], name: "index_import_transitions_parent_sort", unique: true
   end
@@ -330,8 +329,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "extension"
     t.boolean "validity", default: false, null: false
     t.text "validation_result"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "type"
   end
 
@@ -339,8 +338,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "key", null: false
     t.jsonb "file_data"
     t.uuid "asset_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["asset_id", "key"], name: "index_kithe_derivatives_on_asset_id_and_key", unique: true
     t.index ["asset_id"], name: "index_kithe_derivatives_on_asset_id"
   end
@@ -357,8 +356,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "type", null: false
     t.integer "position"
     t.jsonb "json_attributes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.uuid "parent_id"
     t.string "friendlier_id", default: -> { "kithe_models_friendlier_id_gen('2821109907456'::bigint, '101559956668415'::bigint)" }, null: false
     t.jsonb "file_data"
@@ -380,8 +379,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.boolean "delimited"
     t.string "transformation_method"
     t.bigint "import_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["import_id"], name: "index_mappings_on_import_id"
   end
 
@@ -390,9 +389,9 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.bigint "recipient_id", null: false
     t.string "type", null: false
     t.jsonb "params"
-    t.datetime "read_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "read_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["read_at"], name: "index_notifications_on_read_at"
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
@@ -403,16 +402,16 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "topic"
     t.text "description"
     t.text "previous_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "searches", force: :cascade do |t|
     t.text "query_params"
     t.integer "user_id"
     t.string "user_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["user_id"], name: "index_searches_on_user_id"
   end
 
@@ -422,8 +421,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.integer "sort_key", null: false
     t.bigint "solr_document_sidecar_id", null: false
     t.boolean "most_recent"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["solr_document_sidecar_id", "sort_key"], name: "index_sidecar_image_transitions_parent_sort", unique: true
   end
 
@@ -432,8 +431,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "document_type"
     t.string "cw_image"
     t.bigint "version"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["document_type", "document_id"], name: "solr_document_sidecars_solr_document"
   end
 
@@ -443,8 +442,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "uri_key"
     t.string "uri_value"
     t.bigint "version"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["document_type", "document_id"], name: "solr_document_uris_solr_document"
   end
 
@@ -454,8 +453,8 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.integer "sort_key", null: false
     t.bigint "solr_document_uri_id"
     t.boolean "most_recent", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["solr_document_uri_id", "sort_key"], name: "index_uri_transitions_parent_sort", unique: true
     t.index ["solr_document_uri_id"], name: "index_uri_transitions_on_solr_document_uri_id"
   end
@@ -464,20 +463,20 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "guest", default: false
     t.string "invitation_token"
-    t.datetime "invitation_created_at"
-    t.datetime "invitation_sent_at"
-    t.datetime "invitation_accepted_at"
+    t.datetime "invitation_created_at", precision: nil
+    t.datetime "invitation_sent_at", precision: nil
+    t.datetime "invitation_accepted_at", precision: nil
     t.integer "invitation_limit"
     t.string "invited_by_type"
     t.bigint "invited_by_id"
@@ -497,7 +496,7 @@ ActiveRecord::Schema.define(version: 2023_10_09_160910) do
     t.string "event", null: false
     t.string "whodunnit"
     t.text "object"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.text "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end

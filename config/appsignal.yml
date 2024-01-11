@@ -40,3 +40,7 @@ development:
 production:
   <<: *defaults
   active: true
+  <% revision = if (defined?(Rails)); Rails.root.join('REVISION'); end %>
+  <% if revision&.exist? %>
+  revision: "<%= revision.read.strip[0, 7] %>"
+  <% end %>

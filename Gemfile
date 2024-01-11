@@ -2,26 +2,26 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0.0'
 gem 'bootsnap', '~> 1.9.3', require: false
 gem 'listen', '~> 3.0'
 
 gem 'rack-cors', :require => 'rack/cors'
 
-gem "puma", "~> 5.1"
+gem "puma", "~> 5.6"
 # Run puma with systemd integration
 gem 'sd_notify', '>= 0.1.0'
 
 # Webpacker
-gem 'webpacker', '~> 4.x'
+gem 'webpacker', '~> 5.x'
 
 gem 'sqlite3', '~> 1.4'
 #gem 'mysql2', '~> 0.5.0'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+# Use Terser as compressor for JavaScript assets
+gem 'terser'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -81,6 +81,7 @@ gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '~> 4.1'
 gem 'geoblacklight_admin', "~> 0.4.0"
+gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
 
@@ -97,7 +98,6 @@ gem 'paper_trail'
 
 # Image migration
 gem 'geoblacklight_sidecar_images', git: "https://github.com/geoblacklight/geoblacklight_sidecar_images.git", branch: "feature/statesman-update"
-gem 'carrierwave', '~> 1.2'
 gem 'mini_magick', '~> 4.9.4'
 gem "image_processing", ">= 1.2"
 
@@ -105,7 +105,7 @@ gem 'statesman', '~> 10.0'
 gem 'sidekiq', '~> 6.4'
 gem 'sidekiq-failures', '~> 1.0.0'
 gem 'down', '~> 5.0'
-gem 'addressable', '~> 2.5.0'
+gem 'addressable', '~> 2.0'
 gem 'handlebars_assets', '~> 0.23.0'
 gem 'geoblacklight-icons', git: 'https://github.com/geoblacklight/geoblacklight-icons.git', :ref => '84da81140e7ef93e7241b7753c01d7f709216f2b'
 gem 'solr_wrapper', git: 'https://github.com/cbeer/solr_wrapper.git', branch: 'master'
@@ -114,7 +114,7 @@ gem 'rsolr', '>= 1.0'
 gem 'jquery-rails'
 
 # Auth
-gem "devise", "4.7.3"
+gem "devise", "~> 4.0"
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'devise-guests', '~> 0.6'
 gem 'devise_invitable', '~> 2.0.0'
@@ -132,7 +132,6 @@ gem 'dotenv-rails'
 gem 'pointless_feedback'
 gem 'whenever', '~> 1.0.0', require: false
 gem 'sitemap_generator', '~> 6.0.2'
-gem 'exception_notification', '~> 4.4.0'
 
 # Appsignal
 gem 'appsignal'
@@ -144,4 +143,5 @@ group :test do
   gem 'minitest-reporters'
 end
 
+gem 'net-ftp'
 gem 'rexml'

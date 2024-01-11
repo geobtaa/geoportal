@@ -63,7 +63,9 @@ class CatalogController < ApplicationController
       'bf' => ["if(exists(#{Settings.FIELDS.B1G_CHILD_RECORD}),0,100)^0.5"]
     }
 
-    config.default_per_page = 10 # Works!
+    config.per_page = [10, 20, 50]
+    config.max_per_page = 50
+    config.default_per_page = 10
 
     ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SolrHelper#solr_doc_params) or
     ## parameters included in the Blacklight-jetty document requestHandler.
@@ -346,7 +348,6 @@ class CatalogController < ApplicationController
     # 'positron' http://cartodb.com/basemaps/
     # 'darkMatter' http://cartodb.com/basemaps/
     config.basemap_provider = 'esri'
-    config.max_per_page = 10000
 
     # Configuration for autocomplete suggestor
     config.autocomplete_enabled = true

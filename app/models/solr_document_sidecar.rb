@@ -13,9 +13,6 @@ class SolrDocumentSidecar < ApplicationRecord
     initial_state: :initialized
   ]
 
-  # Deprecated - Carrierwave
-  mount_uploader :cw_image, ImageUploader
-
   # ActiveStorage
   has_one_attached :image
 
