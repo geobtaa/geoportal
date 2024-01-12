@@ -60,7 +60,8 @@
           <%= content_for?(:content) ? yield(:content) : yield %>
         </div>
 
-        <div id="survey-button">
+        <div id="survey-button" class="d-none">
+          <!-- Removing for now - 1/12/2024 EWL -->
           <%= link_to("&plus; Help us improve our site".html_safe, "https://arcg.is/0bmW9z0", class: "btn btn-success btn-lg", target: "_blank") %>
         </div>
       </main>
@@ -68,7 +69,7 @@
         <%= render :partial => 'shared/footer_app' %>
       </section>
 
-      <footer aria-label='University of Minnesota'>
+      <footer class='mt-0' aria-label='University of Minnesota'>
         <%= render :partial => 'shared/footer_umn' %>
       </footer>
     <% end %>
