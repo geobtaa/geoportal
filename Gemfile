@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.0'
+gem 'rails', '~> 7.0.8'
 gem 'bootsnap', '~> 1.9.3', require: false
 gem 'listen', '~> 3.0'
 
