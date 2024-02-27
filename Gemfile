@@ -12,9 +12,6 @@ gem "puma", "~> 5.6"
 # Run puma with systemd integration
 gem 'sd_notify', '>= 0.1.0'
 
-# Webpacker
-gem 'webpacker', '~> 5.x'
-
 gem 'sqlite3', '~> 1.4'
 #gem 'mysql2', '~> 0.5.0'
 gem 'pg'
@@ -79,7 +76,7 @@ gem 'chosen-rails', '~> 1.10' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '~> 4.1'
+gem 'geoblacklight', '4.1'
 gem 'geoblacklight_admin', "~> 0.4.0"
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
@@ -145,3 +142,4 @@ end
 
 gem 'net-ftp'
 gem 'rexml'
+gem "vite_rails", "~> 3.0"

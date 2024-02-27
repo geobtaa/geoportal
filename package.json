@@ -1,48 +1,12 @@
 {
-  "name": "blacklight-frontend",
-  "version": "7.1.0-alpha",
-  "description": "[![Build Status](https://travis-ci.org/projectblacklight/blacklight.png?branch=master)](https://travis-ci.org/projectblacklight/blacklight) [![Gem Version](https://badge.fury.io/rb/blacklight.png)](http://badge.fury.io/rb/blacklight) [![Coverage Status](https://coveralls.io/repos/github/projectblacklight/blacklight/badge.svg?branch=master)](https://coveralls.io/github/projectblacklight/blacklight?branch=master)",
-  "main": "app/assets/javascripts/blacklight",
-  "scripts": {
-    "js-compile-bundle": "shx cat app/javascript/blacklight/core.js app/javascript/blacklight/autocomplete.js app/javascript/blacklight/bookmark_toggle.js app/javascript/blacklight/checkbox_submit.js app/javascript/blacklight/collapsable.js app/javascript/blacklight/facet_load.js app/javascript/blacklight/modal.js app/javascript/blacklight/search_context.js | shx sed \"s/^(import|export).*//\" | babel --filename app/javascript/blacklight/blacklight.js > app/assets/javascripts/blacklight/blacklight.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/projectblacklight/blacklight.git"
-  },
-  "author": "",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/projectblacklight/blacklight/issues"
-  },
-  "homepage": "https://github.com/projectblacklight/blacklight#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.7.2",
-    "@babel/register": "^7.7.0",
-    "shx": "^0.3.2",
-    "webpack-dev-server": "^4.0"
-  },
+  "name": "geoportal-frontend",
+  "private": "true",
   "dependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/helpers": "^7.22.15",
-    "@babel/plugin-proposal-private-methods": "^7.18.6",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@babel/plugin-transform-runtime": "^7.22.15",
-    "@babel/polyfill": "^7.7.0",
-    "@babel/preset-env": "^7.7.1",
-    "@babel/preset-react": "^7.7.4",
-    "@blueprintjs/core": "^3.26.0",
-    "@kurkle/color": "^0.3.2",
-    "@material-ui/core": "4.11.3",
-    "@material-ui/icons": "^4.9.1",
     "@nathanvda/cocoon": "^1.2.14",
     "@rails/actioncable": "^7.0.7-2",
     "@rails/activestorage": "^7.0.7-2",
     "@rails/ujs": "^7.0.7-2",
-    "@rails/webpacker": "^5.4.4",
-    "babel-loader": "^8.0.6",
-    "bloodhound-js": "^1.2.3",
+    "blacklight-frontend": "^7.32.0",
     "bootstrap": "^4.5.0",
     "bootstrap-datepicker": "^1.10.0",
     "chosen-jquery": "^0.1.1",
@@ -57,8 +21,6 @@
     "linkifyjs": "^2.1.9",
     "lodash": "^4.17.13",
     "lodash.template": "^4.5.0",
-    "mirador": "^3.3.0",
-    "mirador-dl-plugin": "^0.13.0",
     "moment": "^2.29.4",
     "node-forge": "^1.3.1",
     "popper.js": "^1.16.1",
@@ -72,8 +34,21 @@
     "typeahead.js": "^0.11.1",
     "unfetch": "^4.1.0",
     "url-polyfill": "^1.1.7",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12",
     "yargs-parser": "^21.1.1"
-  }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.7.2",
+    "@babel/register": "^7.7.0",
+    "shx": "^0.3.2",
+    "vite": "^5.0.0",
+    "vite-plugin-ruby": "^5.0.0",
+    "webpack-dev-server": "^4.0"
+  },
+  "resolutions": {
+    "blacklight-frontend/bootstrap": "^4.6.2"
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }
