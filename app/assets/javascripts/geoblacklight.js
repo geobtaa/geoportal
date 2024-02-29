@@ -1,6 +1,6 @@
 // additional leaflet base layers
 GeoBlacklight.Basemaps.esri =  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  attribution: 'Esri, USGS | Esri, TomTom, FAO, NOAA, USGS',
   maxZoom: 18,
   worldCopyJump: true,
   detectRetina: true,
