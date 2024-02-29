@@ -545,7 +545,7 @@ GEM
       rails (>= 5.0, < 7.2)
       rdf
     racc (1.7.3)
-    rack (2.2.8)
+    rack (2.2.8.1)
     rack-cors (2.0.1)
       rack (>= 2.0.0)
     rack-mini-profiler (2.3.4)
