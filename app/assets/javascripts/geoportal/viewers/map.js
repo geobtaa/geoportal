@@ -11,7 +11,7 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     */
     bbox: [[-20, -179], [64, 134]],
     opacity: 0.75,
-    attributionControl: false
+    attributionControl: true
   },
 
   overlay: L.layerGroup(),
