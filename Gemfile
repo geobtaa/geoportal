@@ -79,8 +79,8 @@ gem 'chosen-rails', '~> 1.10' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '~> 4.1'
-gem 'geoblacklight_admin', "~> 0.4.0"
+gem 'geoblacklight', '4.1'
+gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", ref: "096c929"
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
