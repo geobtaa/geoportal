@@ -47,7 +47,15 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
         bounds.getSouthEast(),
         bounds.getNorthEast(),
         bounds.getNorthWest()
-      ]));
+      ],
+        {
+          color: '#3388ff',
+          dashArray: "5 5",
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0
+        }
+      ));
     }
   },
 
