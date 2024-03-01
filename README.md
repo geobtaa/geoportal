@@ -30,4 +30,4 @@ Visit the [project wiki](https://github.com/BTAA-Geospatial-Data-Project/geoport
 
 #### Release Version
 
-B1G Geoportal Version v5.4.1 / GeoBlacklight v4.1.0 / GeoBlacklight Admin v0.4.0
+B1G Geoportal Version v5.5.0 / GeoBlacklight v4.1.0 / GeoBlacklight Admin v0.4.0
