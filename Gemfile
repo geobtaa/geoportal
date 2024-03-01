@@ -80,7 +80,9 @@ gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '4.1'
-gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", ref: "096c929"
+
+# GBL Admin - Pinned to EWL bug-fix; Not ready for GBL v4.2/Vite yet
+gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", ref: "4ecac7b"
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
