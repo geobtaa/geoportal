@@ -80,9 +80,6 @@ Blacklight.onLoad(function() {
     GeoBlacklight.Home.setHoverListeners();
   });
 
-  // Remove Leaflet Attribute
-  $('.leaflet-control-attribution').hide()
-
   function setHoverListeners() {
     $('[data-map="index"]').each(function(i, element) {
       $('#content')

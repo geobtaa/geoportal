@@ -2,6 +2,12 @@
   height: 280px;
 }
 
+// @Customized
+// Overrides the default display: none rule from GeoBlacklight
+.page-sidebar [data-map="item"] .leaflet-control-attribution {
+  display: block !important
+}
+
 #static-map {
   .sleep-note {display: none;}
 }

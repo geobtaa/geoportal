@@ -151,6 +151,7 @@ class CatalogController < ApplicationController
 
     config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
     config.add_facet_field Settings.FIELDS.B1G_MEDIATOR, label: 'Institutional Access', limit: 15
+    config.add_facet_field Settings.FIELDS.GEOREFERENCED, label: 'Georeferenced'
 
     # GEOBLACKLIGHT APPLICATION FACETS
 

@@ -59,11 +59,6 @@
         <div class="row">
           <%= content_for?(:content) ? yield(:content) : yield %>
         </div>
-
-        <div id="survey-button" class="d-none">
-          <!-- Removing for now - 1/12/2024 EWL -->
-          <%= link_to("&plus; Help us improve our site".html_safe, "https://arcg.is/0bmW9z0", class: "btn btn-success btn-lg", target: "_blank") %>
-        </div>
       </main>
       <section id="footer-app" aria-label='Application Footer'>
         <%= render :partial => 'shared/footer_app' %>

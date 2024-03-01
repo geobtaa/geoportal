@@ -25,13 +25,13 @@
       <legend>About You</legend>
 
       <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, {:class=> "form-control", :required => true} %>
+        <%= f.label :name, "Name (optional)" %>
+        <%= f.text_field :name, {:class=> "form-control"} %>
       </div>
 
       <div class="form-group">
-        <%= f.label :email_address %>
-        <%= f.text_field :email_address, {:class=> "form-control", :required => true} %>
+        <%= f.label :email_address, "Email Address (optional)" %>
+        <%= f.text_field :email_address, {:class=> "form-control"} %>
       </div>
     </fieldset>
 
