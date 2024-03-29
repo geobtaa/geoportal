@@ -1,44 +1,52 @@
 <% document ||= @document %>
+<div class='row'>
+  <div id='viewer-container' class="col-md-12">
 
-  <% return if document.viewer_protocol == 'map' %>
+    <span class="sr-only">Georeferenced: <%= document.sidecar_allmaps.georeferenced? %></span>
 
-  <% if show_attribute_table? %>
-    <div id='viewer-container' class="col-md-12">
-  <% else %>
-    <div id='viewer-container' class="col-md-12 spinner">
-  <% end %>
+    <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="item-viewer" data-toggle="tab" data-target="#item-viewer-tab" type="button" role="tab" aria-controls="home" aria-selected="true">Item Viewer</button>
+      </li>
+      <% if document.sidecar_allmaps.georeferenced? %>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="georeferenced-viewer" data-toggle="tab" data-target="#georeferenced-tab" type="button" role="tab" aria-controls="profile" aria-selected="false">Georeferenced Map</button>
+        </li>
+      <% end %>
+    </ul>
 
-  <% if show_help_text?('viewer_protocol', document.viewer_protocol) %>
-    <%= render_help_text_entry('viewer_protocol', document.viewer_protocol) %>
-  <% end %>
+    <div class="tab-content mt-3">
+      <div class="tab-pane fade show active" id="item-viewer-tab" role="tabpanel" aria-labelledby="item-viewer-tab">
+        <% if show_help_text?('viewer_protocol', document.viewer_protocol) %>
+          <%= render_help_text_entry('viewer_protocol', document.viewer_protocol) %>
+        <% end %>
 
-  <% if document.item_viewer.index_map %>
-    <div class="index-map-legend">
-      <div class="index-map-legend-info">
-        <span class="index-map-legend-default"></span>
-        <p><span class="sr-only">Green tile indicates </span>Map held by collection</p>
+        <% if document.item_viewer.index_map %>
+          <div class="index-map-legend">
+            <div class="index-map-legend-info">
+              <span class="index-map-legend-default"></span>
+              <p><span class="sr-only">Green tile indicates </span>Map held by collection</p>
+            </div>
+            <div class="index-map-legend-info">
+              <span class="index-map-legend-unavailable"></span>
+              <p><span class="sr-only">Yellow tile indicates </span>Map not held by collection</p>
+            </div>
+            <div class="index-map-legend-info">
+              <span class="index-map-legend-selected"></span>
+              <p><span class="sr-only">Blue tile indicates </span>Selected map tile</p>
+            </div>
+          </div>
+        <% end %>
+
+        <%= content_tag :div, id: 'map', aria: { label: t('geoblacklight.map.label') }, data: { map: 'item', protocol: document.viewer_protocol.camelize, url: document.viewer_endpoint, 'layer-id' => document.wxs_identifier, 'map-geom' => document.geometry.geojson, 'catalog-path'=> search_catalog_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
+        <% end %>
       </div>
-      <div class="index-map-legend-info">
-        <span class="index-map-legend-unavailable"></span>
-        <p><span class="sr-only">Yellow tile indicates </span>Map not held by collection</p>
-      </div>
-      <div class="index-map-legend-info">
-        <span class="index-map-legend-selected"></span>
-        <p><span class="sr-only">Blue tile indicates </span>Selected map tile</p>
-      </div>
+      
+      <% if document.sidecar_allmaps.georeferenced? %>
+        <div class="tab-pane fade" id="georeferenced-tab" role="tabpanel" aria-labelledby="georeferenced-tab">
+          <%= render partial: 'allmaps/show/geoblacklight', locals: { document: document } %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <% if document.viewer_protocol == "b1g_image" %>
-    <%= content_tag :div, id: 'map', class: "b1g_image", data: { map: 'item', protocol: "B1gImage", url: "#{remote_image_link(document.b1g_image)}", 'layer-id' => document.wxs_identifier, 'map-geom' => document.geometry.geojson, 'catalog-path'=> blacklight_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
-    <% end %>
-
-  <% elsif document.viewer_protocol != "download" %>
-    <%= content_tag :div, id: 'map', data: { map: 'item', protocol: document.viewer_protocol.camelize, url: document.viewer_endpoint, 'layer-id' => document.wxs_identifier, 'map-geom' => document.geometry.geojson, 'catalog-path'=> blacklight_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
-    <% end %>
-
-  <% else %>
-    <%= content_tag :div, id: 'map', class: "", data: { map: 'item', protocol: document.viewer_protocol.camelize, url: "#{remote_image_link(document.viewer_endpoint)}", 'layer-id' => document.wxs_identifier, 'map-geom' => document.geometry.geojson, 'catalog-path'=> blacklight_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
-    <% end %>
-  <% end %>
+  </div>
 </div>
