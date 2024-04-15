@@ -55,3 +55,6 @@ public/data.json
 yarn-debug.log*
 .yarn-integrity
 .byebug_history
+
+public/vite-dev/
+public/vite-test/
