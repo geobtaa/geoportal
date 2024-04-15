@@ -79,7 +79,7 @@ gem 'chosen-rails', '~> 1.10' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '4.1'
+gem 'geoblacklight', '4.4'
 
 # GBL Admin - Not ready for GBL v4.2/Vite yet
 gem 'geoblacklight_admin', '0.4.1'
@@ -147,3 +147,5 @@ end
 
 gem 'net-ftp'
 gem 'rexml'
+
+gem "vite_rails", "~> 3.0"
