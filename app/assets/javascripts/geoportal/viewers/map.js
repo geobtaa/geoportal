@@ -34,6 +34,9 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     // B1G Controls
     this.addFullscreenControl();
     this.addBasemapSwitcher();
+
+    // Attribution Prefix
+    this.map.attributionControl.setPrefix('Leaflet');
   },
 
   /**

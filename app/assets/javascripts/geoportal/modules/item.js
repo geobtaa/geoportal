@@ -8,6 +8,9 @@ Blacklight.onLoad(function() {
     // get new viewer instance and pass in element
     viewer = new window['GeoBlacklight']['Viewer'][viewerName](element);
 
+    // Attribution Prefix
+    viewer.map.attributionControl.setPrefix('Leaflet');
+
     if($('section.page-sidebar').has('div#static-map').length) {
       try {
         var geom = $(element).data('map-geom');
