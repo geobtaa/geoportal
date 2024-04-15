@@ -30,8 +30,6 @@
     <%= vite_client_tag %>
     <% if openlayers_container? %>
       <%= vite_javascript_tag 'ol' %>
-    <% elsif iiif_manifest_container? %>
-      <%= vite_javascript_tag 'clover' %>
     <% end %>
 
     <%= javascript_include_tag "application" %>
