@@ -68,6 +68,7 @@
     "popper.js": "^1.16.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-scripts": "^5.0.1",
     "serialize-javascript": "^6.0.1",
     "shave": "^5.0.3",
     "stimulus": "^1.1.1",
