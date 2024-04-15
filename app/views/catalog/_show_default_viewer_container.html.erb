@@ -34,11 +34,8 @@
     <% end %>
 
   <% elsif document.viewer_protocol != "download" %>
-    <%= content_tag :div, id: 'map', data: { map: 'item', protocol: document.viewer_protocol.camelize, url: document.viewer_endpoint, 'layer-id' => document.wxs_identifier, 'map-geom' => document.geometry.geojson, 'catalog-path'=> blacklight_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
-    <% end %>
-
+    <%= viewer_container %>
   <% else %>
-    <%= content_tag :div, id: 'map', class: "", data: { map: 'item', protocol: document.viewer_protocol.camelize, url: "#{remote_image_link(document.viewer_endpoint)}", 'layer-id' => document.wxs_identifier, 'map-geom' => document.geometry.geojson, 'catalog-path'=> blacklight_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
-    <% end %>
+    <%= viewer_container %>
   <% end %>
 </div>

@@ -81,10 +81,48 @@ module Geoblacklight
       @references.oembed
     end
 
+    def tms
+      @references.tms
+    end
+
+    def xyz
+      @references.xyz
+    end
+
+    def tilejson
+      @references.tilejson
+    end
+    
+    def wmts
+      @references.wmts
+    end
+
+    def cog
+      @references.cog
+    end
+
+    def pmtiles
+      @references.pmtiles
+    end
+
+    def cog
+      @references.cog
+    end
+
+    def pmtiles
+      @references.pmtiles
+    end
+
     def viewer_preference
       [
+        cog,
+        pmtiles,
         oembed,
         index_map,
+        tilejson,
+        xyz,
+        wmts,
+        tms,
         wms,
         iiif_manifest,
         iiif,
