@@ -47,10 +47,10 @@ jobs:
       env:
         RAILS_VERSION: ${{ matrix.rails_version }}
 
-    - name: Node - v14
-      uses: actions/setup-node@v2
+    - name: Set up Node
+      uses: actions/setup-node@v4
       with:
-        node-version: '14'
+        node-version: '20.x'
 
     - name: Yarn - Setup
       run: exec "yarnpkg"
