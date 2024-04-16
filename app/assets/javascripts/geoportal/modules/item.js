@@ -9,7 +9,9 @@ Blacklight.onLoad(function() {
     viewer = new window['GeoBlacklight']['Viewer'][viewerName](element);
 
     // Attribution Prefix
-    viewer.map.attributionControl.setPrefix('Leaflet');
+    if (viewer.map) {
+      viewer.map.attributionControl.setPrefix('Leaflet');
+    }
 
     if($('section.page-sidebar').has('div#static-map').length) {
       try {
