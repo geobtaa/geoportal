@@ -2,9 +2,8 @@
 if (!window.B1G){ B1G={}; }
 
 B1G.baseLayerMap = {
-  "Default (Esri)": 'esri',
   "OpenStreetMap": 'openstreetmapStandard',
-  "World Imagery (Esri)": 'esri_world_imagery'
+  "World Eco (Carto)": 'worldEco'
 }
 
 // B1G Geoportal Behaviors
