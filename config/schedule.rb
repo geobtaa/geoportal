@@ -53,3 +53,14 @@ end
 # every '0 8 2 * *', roles: [:prodcron] do
 #   rake 'geoportal:uri_report'
 # end
+
+# Blacklight::Allmaps
+# Harvest Maps
+every :day, at: '3:30am', roles: [:app] do
+  rake blacklight_allmaps:sidecars:harvest:allmaps
+end
+
+# Populate the Georeferenced Facet
+every :day, at: '5:30am', roles: [:app] do
+  rake blacklight_allmaps:index:gbl_georeferenced_facet
+end
