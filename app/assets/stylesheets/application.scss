@@ -9,6 +9,12 @@
 @import 'geoblacklight_admin/core';
 @import 'geoportal';
 @import 'gblsci';
+@import 'blacklight/allmaps/base';
+
+// Blacklight::Allmaps - override defaults
+#geoblacklight-allmaps-map {
+  height: 600px;
+}
 
 // GBL Admin - override defaults
 div.container-fluid {

@@ -102,4 +102,18 @@ class SolrDocument
   def resource_class
     self._source["#{Settings.FIELDS.RESOURCE_CLASS}"]&.first
   end
+  
+  def sidecar_allmaps
+    # Find or create, and set version
+    sidecar = Blacklight::Allmaps::Sidecar.where(
+      solr_document_id: id,
+    ).first_or_create do |sc|
+      sc.solr_version = self._source["_version_"]
+    end
+
+    sidecar.solr_version = self._source["_version_"]
+    sidecar.save
+
+    sidecar
+  end
 end
