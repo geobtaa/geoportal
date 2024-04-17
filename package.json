@@ -1,6 +1,6 @@
 {
-  "name": "blacklight-frontend",
-  "version": "7.1.0-alpha",
+  "name": "geoportal-frontend",
+  "version": "5.5.0",
   "description": "[![Build Status](https://travis-ci.org/projectblacklight/blacklight.png?branch=master)](https://travis-ci.org/projectblacklight/blacklight) [![Gem Version](https://badge.fury.io/rb/blacklight.png)](http://badge.fury.io/rb/blacklight) [![Coverage Status](https://coveralls.io/repos/github/projectblacklight/blacklight/badge.svg?branch=master)](https://coveralls.io/github/projectblacklight/blacklight?branch=master)",
   "main": "app/assets/javascripts/blacklight",
   "scripts": {
@@ -21,6 +21,9 @@
     "@babel/core": "^7.7.2",
     "@babel/register": "^7.7.0",
     "shx": "^0.3.2",
+    "vite": "^5.0.0",
+    "vite-plugin-rails": "^0.5.0",
+    "vite-plugin-ruby": "^5.0.0",
     "webpack-dev-server": "^4.0"
   },
   "dependencies": {
@@ -33,6 +36,7 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.4",
     "@blueprintjs/core": "^3.26.0",
+    "@geoblacklight/frontend": "^4.4",
     "@kurkle/color": "^0.3.2",
     "@material-ui/core": "4.11.3",
     "@material-ui/icons": "^4.9.1",
@@ -64,6 +68,7 @@
     "popper.js": "^1.16.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-scripts": "^5.0.1",
     "serialize-javascript": "^6.0.1",
     "shave": "^5.0.3",
     "stimulus": "^1.1.1",

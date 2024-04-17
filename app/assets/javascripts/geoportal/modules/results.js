@@ -78,6 +78,9 @@ Blacklight.onLoad(function() {
     // Set document markers
     GeoBlacklight.Home.placeMarkers();
     GeoBlacklight.Home.setHoverListeners();
+
+    // Attribution Prefix
+    GeoBlacklight.Home.map.attributionControl.setPrefix('Leaflet');
   });
 
   function setHoverListeners() {

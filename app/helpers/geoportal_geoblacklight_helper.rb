@@ -9,4 +9,12 @@ module GeoportalGeoblacklightHelper
 
     end
   end
+
+  def viewer_container
+    if openlayers_container?
+      ol_viewer
+    else
+      leaflet_viewer
+    end
+  end
 end
