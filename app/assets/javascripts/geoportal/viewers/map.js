@@ -34,6 +34,9 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     // B1G Controls
     this.addFullscreenControl();
     this.addBasemapSwitcher();
+
+    // Attribution Prefix
+    this.map.attributionControl.setPrefix('Leaflet');
   },
 
   /**
@@ -112,9 +115,8 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     // basemaps control
     console.log('Control: Base Layer');
     var baseLayers = {
-      "Default (Esri)": GeoBlacklight.Basemaps.esri,
       "OpenStreetMap": GeoBlacklight.Basemaps.openstreetmapStandard,
-      "World Imagery (Esri)": GeoBlacklight.Basemaps.esri_world_imagery
+      "World Eco (Carto)": GeoBlacklight.Basemaps.worldEco
     };
 
     L.control.layers(baseLayers, null, { position: 'topleft' }).addTo(this.map);
