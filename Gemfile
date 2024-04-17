@@ -81,8 +81,8 @@ gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '4.4'
 
-# GBL Admin - Not ready for GBL v4.2/Vite yet
-gem 'geoblacklight_admin', '0.4.1'
+# GBL Admin
+gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/vite"
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
