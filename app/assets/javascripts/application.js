@@ -26,6 +26,9 @@
 //= require bootstrap
 //= require blacklight/blacklight
 
+// Required by Blacklight::Allmaps
+//= require blacklight/allmaps/blacklight-allmaps
+
 // Geoportal
 // Required by GeoBlacklight
 //= require handlebars.runtime
@@ -82,8 +85,8 @@
 //= require oboe/oboe-browser.js
 //= require screenfull/screenfull.min.js
 //= require js-cookie/src/js.cookie.js
-
 //= require geoportal
 
 // Required by GBL Admin
 //= require activestorage
+
