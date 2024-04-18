@@ -57,7 +57,7 @@ end
 # Blacklight::Allmaps
 # Harvest Maps
 every :day, at: '3:30am', roles: [:app] do
-  rake 'blacklight_allmaps:sidecars:harvest:allmaps'
+  rake 'rake geoportal:allmaps:harvest'
 end
 
 # Populate the Georeferenced Facet
