@@ -151,4 +151,5 @@ end
 gem 'net-ftp'
 gem 'rexml'
 
+gem "stimulus-rails"
 gem "vite_rails", "~> 3.0"

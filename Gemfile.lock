@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 8e4b73e3a26758662dea2023943b77e3b7a42e4e
+  revision: 73b175f1f28d70ec3fe6c3ff6f04fe192e6baa91
   branch: feature/vite
   specs:
     geoblacklight_admin (0.4.0)
@@ -713,6 +713,8 @@ GEM
       mini_portile2 (~> 2.8.0)
     stackprof (0.2.26)
     statesman (10.0.0)
+    stimulus-rails (1.3.3)
+      railties (>= 6.0.0)
     temple (0.10.3)
     terser (1.2.2)
       execjs (>= 0.3.0, < 3)
@@ -872,6 +874,7 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   stackprof (~> 0.2.12)
   statesman (~> 10.0)
+  stimulus-rails
   terser
   turbolinks
   twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
