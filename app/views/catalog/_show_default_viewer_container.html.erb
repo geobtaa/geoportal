@@ -2,6 +2,8 @@
 <div class='row'>
   <div id='viewer-container' class="col-md-12">
 
+    <% return if document.viewer_protocol == 'map' %>
+    
     <span class="sr-only">Georeferenced: <%= document.sidecar_allmaps.georeferenced? %></span>
 
     <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
@@ -41,7 +43,6 @@
         <% if document.viewer_protocol == "b1g_image" %>
           <%= content_tag :div, id: 'map', class: "b1g_image", data: { map: 'item', protocol: "B1gImage", url: "#{remote_image_link(document.b1g_image)}", 'layer-id' => document.wxs_identifier, 'map-geom' => document.geometry.geojson, 'catalog-path'=> blacklight_path, available: document_available?, inspect: show_attribute_table?, basemap: geoblacklight_basemap, leaflet_options: leaflet_options } do %>
         <% end %>
-
         <% elsif document.viewer_protocol != "download" %>
           <%= viewer_container %>
         <% else %>

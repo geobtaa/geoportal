@@ -51,7 +51,7 @@
 //= require ./geoportal/viewers/index_map
 //= require geoblacklight/viewers/oembed
 //= require ./geoportal/viewers/wms
-// require ./geoportal/viewers/tms
+//= require ./geoportal/viewers/tms
 
 // Custom list of modules
 //= require geoblacklight/modules/bookmarks
