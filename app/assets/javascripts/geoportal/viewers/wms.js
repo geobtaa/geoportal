@@ -20,30 +20,6 @@ GeoBlacklight.Viewer.Wms = GeoBlacklight.Viewer.Map.extend({
     }
   },
 
-  addFullscreenControl: function() {
-    // fullscreen control
-    console.log('Control: Fullscreen');
-    this.map.addControl(new L.Control.Fullscreen({
-      position: 'topleft'
-    }));
-  },
-
-  addBasemapSwitcher: function() {
-    // basemaps control
-    console.log('Control: Base Layer');
-    var baseLayers = {
-      "OpenStreetMap": GeoBlacklight.Basemaps.openstreetmapStandard,
-      "World Eco (Carto)": GeoBlacklight.Basemaps.worldEco
-    };
-
-    L.control.layers(baseLayers, null, { position: 'topleft' }).addTo(this.map);
-
-    // Event listener for layer switcher
-    this.map.on('baselayerchange', function (e) {
-      Cookies.set('basemap', e.name)
-    });
-  },
-
   addPreviewLayer: function() {
     var _this = this;
     var wmsLayer = L.tileLayer.wms(this.data.url, {
