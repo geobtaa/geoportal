@@ -50,8 +50,11 @@
 //= require ./geoportal/viewers/iiif_manifest
 //= require ./geoportal/viewers/index_map
 //= require geoblacklight/viewers/oembed
-//= require ./geoportal/viewers/wms
+//= require geoblacklight/viewers/tilejson
 //= require ./geoportal/viewers/tms
+//= require ./geoportal/viewers/wms
+//= require geoblacklight/viewers/wmts
+//= require geoblacklight/viewers/xyz
 
 // Custom list of modules
 //= require geoblacklight/modules/bookmarks
