@@ -89,4 +89,5 @@
 
 // Required by GBL Admin
 //= require activestorage
+//= require geoblacklight_admin
 
