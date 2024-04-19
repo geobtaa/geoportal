@@ -14,6 +14,10 @@
 <%= render :partial => 'show_sidebar_static_map' if render_sidebar_map?(@document) %>
 <%= render :partial => 'show_tools' %>
 
+<% if georeferenceable? %>
+  <%= render :partial => "allmaps/sidebar/allmaps" %>
+<% end %>
+
 <div class="sidebar-buttons">
 <%= render :partial => "show_web_services" %>
 <%= render :partial => "show_downloads" %>

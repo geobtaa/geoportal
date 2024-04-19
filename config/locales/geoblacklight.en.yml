@@ -4,6 +4,9 @@ en:
     location: 'Location'
     citation:
       retrieved_from: 'Retrieved from %{document_url}'
+    clipboard:
+      citation: Citation copied to clipboard
+      web_service: Web service copied to clipboard
     download:
       download: 'Download'
       download_link: 'Original %{download_format}'
@@ -99,6 +102,9 @@ en:
         b1g_image:
           title: Static Image
           content: A downloadable image.
+        cog:
+          title: COG Layer
+          content: A Cloud Optimized GeoTIFF
         download:
           title: Static Image
           content: A downloadable image.
@@ -123,15 +129,28 @@ en:
         oembed:
           title: Embedded Content
           content: This content is embedded through a third-party viewer.
+        pmtiles:
+          title: PMTiles Layer
+          content: A PMTiles layer is a single-file archive format for tiled data.
         tiled_map_layer:
           title: ArcGIS Tiled Map Layer
           content: An ArcGIS Tiled Map Layer Service displays set of web-accessible tiles that reside on a server.
+        tilejson:
+          title: TileJSON
+          content: A JSON format used for describing tilesets.
         tms:
-          title: Tile Map Service
+          title: Tile Map Service (TMS)
           content: A Tile Map Service displays georeferenced map tiles as an image on a map.
         wms:
           title: Web Map Service (WMS)
           content: A Web Map Service displays a geospatial dataset as map images.
+        wmts:
+          title: Web Map Tile Service (WMTS)
+          content: A Web Map Tile Service displays maps over the web using cached image tiles.
+        xyz:
+          title: XYZ Tiles
+          content: Also known as slippy map tiles, is a method of expressing map tile mosaics, indexed by (x,y) offsets and zoom levels (z).
+
     aria-labels:
       arrow-circle-down: Arrow within a circle, pointing down (icon)
       baruch-cuny: Baruch College (logo)

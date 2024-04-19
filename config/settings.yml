@@ -169,11 +169,16 @@ WEBSERVICES_SHOWN:
   - 'wms'
   - 'tms'
   - 'wfs'
+  - 'xyz'
+  - 'wmts'
+  - 'tilejson'
   - 'iiif'
   - 'feature_layer'
   - 'tiled_map_layer'
   - 'dynamic_map_layer'
   - 'image_map_layer'
+  - 'cog'
+  - 'pmtiles'
 
 # Relationships to display
 RELATIONSHIPS_SHOWN:
@@ -318,6 +323,7 @@ LEAFLET:
 HELP_TEXT:
   viewer_protocol:
       - 'b1g_image'
+      - 'cog'
       - 'download'
       - 'dynamic_map_layer'
       - 'feature_layer'
@@ -325,10 +331,14 @@ HELP_TEXT:
       - 'iiif_manifest'
       - 'image_map_layer'
       - 'index_map'
-      - 'tiled_map_layer'
-      - 'wms'
-      - 'tms'
       - 'oembed'
+      - 'pmtiles'
+      - 'tiled_map_layer'
+      - 'tilejson'
+      - 'tms'
+      - 'wms'
+      - 'wmts'
+      - 'xyz'
 
 # Enable catalog#show sidebar static map for items with the following viewer protocols
 SIDEBAR_STATIC_MAP:

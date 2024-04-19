@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require "blacklight/allmaps"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -8,6 +9,9 @@ Bundler.require(*Rails.groups)
 
 module Geoblacklight
   class Application < Rails::Application
+
+    config.railties_order = [:main_app, Blacklight::Allmaps::Engine, :all]
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 

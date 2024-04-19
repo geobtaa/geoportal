@@ -26,6 +26,9 @@
 //= require bootstrap
 //= require blacklight/blacklight
 
+// Required by Blacklight::Allmaps
+//= require blacklight/allmaps/blacklight-allmaps
+
 // Geoportal
 // Required by GeoBlacklight
 //= require handlebars.runtime
@@ -47,8 +50,12 @@
 //= require ./geoportal/viewers/iiif_manifest
 //= require ./geoportal/viewers/index_map
 //= require geoblacklight/viewers/oembed
+
 //= require ./geoportal/viewers/wms
-// require ./geoportal/viewers/tms
+//= require ./geoportal/viewers/tilejson
+//= require ./geoportal/viewers/tms
+//= require ./geoportal/viewers/wmts
+//= require ./geoportal/viewers/xyz
 
 // Custom list of modules
 //= require geoblacklight/modules/bookmarks
@@ -82,8 +89,9 @@
 //= require oboe/oboe-browser.js
 //= require screenfull/screenfull.min.js
 //= require js-cookie/src/js.cookie.js
-
 //= require geoportal
 
 // Required by GBL Admin
 //= require activestorage
+//= require geoblacklight_admin
+

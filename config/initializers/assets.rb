@@ -19,3 +19,7 @@ Rails.application.config.assets.precompile += %w( favicon.ico )
 # GBL ADMIN
 Rails.application.config.assets.precompile += %w( geoblacklight_admin.js )
 Rails.application.config.assets.precompile += %w[application.js]
+
+# Blacklight Allmaps
+Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'images')
+Rails.application.config.assets.precompile += %w( blacklight/allmaps/allmaps-logo.svg )

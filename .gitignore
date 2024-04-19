@@ -32,13 +32,10 @@ public/uploads/*
 # Ignore storage
 storage/*
 
-vendor/*
 node_modules/*
 
 .DS_Store
 .sass-cache
-doc/
-doc/
 
 public/centroids.json
 public/*.csv
@@ -55,3 +52,10 @@ public/data.json
 yarn-debug.log*
 .yarn-integrity
 .byebug_history
+
+# Vite Ruby
+/public/vite*
+node_modules
+# Vite uses dotenv and suggests to ignore local-only env files. See
+# https://vitejs.dev/guide/env-and-mode.html#env-files
+*.local
