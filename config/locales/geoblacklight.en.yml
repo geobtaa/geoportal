@@ -129,6 +129,9 @@ en:
         oembed:
           title: Embedded Content
           content: This content is embedded through a third-party viewer.
+        pmtiles:
+          title: PMTiles Layer
+          content: A PMTiles layer is a single-file archive format for tiled data.
         tiled_map_layer:
           title: ArcGIS Tiled Map Layer
           content: An ArcGIS Tiled Map Layer Service displays set of web-accessible tiles that reside on a server.
@@ -136,7 +139,7 @@ en:
           title: TileJSON
           content: A JSON format used for describing tilesets.
         tms:
-          title: Tile Map Service
+          title: Tile Map Service (TMS)
           content: A Tile Map Service displays georeferenced map tiles as an image on a map.
         wms:
           title: Web Map Service (WMS)
