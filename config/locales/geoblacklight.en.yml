@@ -147,6 +147,10 @@ en:
         wmts:
           title: Web Map Tile Service (WMTS)
           content: A Web Map Tile Service displays maps over the web using cached image tiles.
+        xyz:
+          title: XYZ Tiles
+          content: Also known as slippy map tiles, is a method of expressing map tile mosaics, indexed by (x,y) offsets and zoom levels (z).
+
     aria-labels:
       arrow-circle-down: Arrow within a circle, pointing down (icon)
       baruch-cuny: Baruch College (logo)

@@ -338,6 +338,7 @@ HELP_TEXT:
       - 'tms'
       - 'wms'
       - 'wmts'
+      - 'xyz'
 
 # Enable catalog#show sidebar static map for items with the following viewer protocols
 SIDEBAR_STATIC_MAP:
