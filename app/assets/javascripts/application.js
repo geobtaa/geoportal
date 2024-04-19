@@ -53,7 +53,7 @@
 //= require geoblacklight/viewers/tilejson
 //= require ./geoportal/viewers/tms
 //= require ./geoportal/viewers/wms
-//= require geoblacklight/viewers/wmts
+//= require ./geoportal/viewers/wmts
 //= require geoblacklight/viewers/xyz
 
 // Custom list of modules

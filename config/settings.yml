@@ -323,6 +323,7 @@ LEAFLET:
 HELP_TEXT:
   viewer_protocol:
       - 'b1g_image'
+      - 'cog'
       - 'download'
       - 'dynamic_map_layer'
       - 'feature_layer'
@@ -330,12 +331,13 @@ HELP_TEXT:
       - 'iiif_manifest'
       - 'image_map_layer'
       - 'index_map'
-      - 'tiled_map_layer'
-      - 'wms'
-      - 'tms'
       - 'oembed'
       - 'pmtiles'
-      - 'cog'
+      - 'tiled_map_layer'
+      - 'tilejson'
+      - 'tms'
+      - 'wms'
+      - 'wmts'
 
 # Enable catalog#show sidebar static map for items with the following viewer protocols
 SIDEBAR_STATIC_MAP:
