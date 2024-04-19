@@ -8,6 +8,14 @@ GeoBlacklight.Basemaps.darkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.c
   noWrap: false
 });
 
+GeoBlacklight.Basemaps.esri_world_imagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+  attribution: '&copy; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community',
+  maxZoom: 18,
+  worldCopyJump: true,
+  detectRetina: true,
+  noWrap: false
+});
+
 GeoBlacklight.Basemaps.positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://carto.com/attributions">Carto</a>',
   subdomains: 'abcd',

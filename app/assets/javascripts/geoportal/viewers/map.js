@@ -116,7 +116,8 @@ GeoBlacklight.Viewer.Map = GeoBlacklight.Viewer.extend({
     console.log('Control: Base Layer');
     var baseLayers = {
       "OpenStreetMap": GeoBlacklight.Basemaps.openstreetmapStandard,
-      "World Eco (Carto)": GeoBlacklight.Basemaps.worldEco
+      "World Eco (Carto)": GeoBlacklight.Basemaps.worldEco,
+      "World Imagery (Esri)": GeoBlacklight.Basemaps.esri_world_imagery
     };
 
     L.control.layers(baseLayers, null, { position: 'topleft' }).addTo(this.map);
