@@ -2262,9 +2262,9 @@
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
 "@geoblacklight/admin@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@geoblacklight/admin/-/admin-0.4.0.tgz#885b18e2b3996b3e96b7f5d72156ae23b63edffd"
-  integrity sha512-wzq7xtnviQCC/TkjLJttpZQsVKQFyXNGqBWKmbQQ7yrjqlkyhlskmEWduvaOfTVfzseD9v/LPCMK4zHZjuKlvw==
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@geoblacklight/admin/-/admin-0.4.3.tgz#4c2113bcb23fc6a5657e76baf23f5d38793f49f5"
+  integrity sha512-KcN6PTSAVl2sWAXt80Wt9epRMBJ/2/BGsC1aziA6jpRoPId+lp9SNuxIlBQanVHYGumHGjyQh9Cf4/OCzLzcYg==
   dependencies:
     "@hotwired/stimulus" "^3.2.2"
     "@nathanvda/cocoon" "^1.2.14"

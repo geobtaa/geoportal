@@ -25,6 +25,7 @@ public/sitemap.xml*
 public/blog/*
 public/thumbnails/*
 public/uploads/*
+public/derivatives/*
 
 # Ignore public/uploads
 public/uploads/*

@@ -41,10 +41,10 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 73b175f1f28d70ec3fe6c3ff6f04fe192e6baa91
-  branch: feature/vite
+  revision: dfaa7e6398e5a079f88a2bf0ec4c8839daa93701
+  branch: feature/thumbnails
   specs:
-    geoblacklight_admin (0.4.0)
+    geoblacklight_admin (0.4.1)
       active_storage_validations (~> 1.0)
       amazing_print
       blacklight (~> 7.33)
