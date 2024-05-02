@@ -153,3 +153,6 @@ gem 'rexml'
 
 gem "stimulus-rails"
 gem "vite_rails", "~> 3.0"
+
+# Shrine
+gem "aws-sdk-s3", "~> 1.14"
