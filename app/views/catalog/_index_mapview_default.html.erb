@@ -11,17 +11,42 @@
   <div class="document-wrapper">
     <div class='col-xs-11'>
       <div class='media'>
-        <%- if document.sidecar.image.attached? %>
-          <%- if document.sidecar.image.variable? %>
-            <%= image_tag document.sidecar.image.variant(resize_to_fit: [200, nil]), {class: 'mr-3', alt: document.to_semantic_values[:title]} %>
+        
+        <table>
+          <%- if document.sidecar.image.attached? %>
+            <%- if document.sidecar.image.variable? %>
+            <tr>
+              <td>Active Storage</td>
+            </tr>
+            <tr>
+              <td><%= image_tag document.sidecar.image.variant(resize_to_fit: [200, nil]), {class: 'mr-3', alt: document.to_semantic_values[:title]} %></td>
+            </tr>
+            <%- else %>
+              <tr>
+                <td><%= image_tag document.sidecar.image, {class: 'mr-3'} %></td>
+              </tr>
+            <%- end %>
           <%- else %>
-            <%= image_tag document.sidecar.image, {class: 'mr-3'} %>
+            <tr>
+              <td>
+                <span class="icon square mr-3">
+                  <%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS]&.first, classes: 'svg_tooltip') %>
+                </span>
+              </td>
+            </tr>
           <%- end %>
-        <%- else %>
-          <span class="icon square mr-3">
-            <%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS]&.first, classes: 'svg_tooltip') %>
-          </span>
-        <%- end %>
+        </table>
+        <% if document&.model&.thumbnail %>
+          <table>
+            <tr>
+              <td style="text-align: center;">AWS S3</td>
+            </tr>
+            <tr>
+              <td><%= image_tag document.model.thumbnail.file_url(:thumb_standard_2X) %></td>
+            </tr>
+          </table>
+        <% end %>
+
         <div class='media-body'>
           <p><%= geoblacklight_present(:index_fields_display, document) %></p>
         </div>

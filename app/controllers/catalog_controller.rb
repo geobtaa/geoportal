@@ -1,12 +1,12 @@
 # -*- encoding : utf-8 -*-
 require 'blacklight/catalog'
-# require 'kithe/blacklight_tools/bulk_loading_search_service'
+require 'kithe/blacklight_tools/bulk_loading_search_service'
 
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
-  # self.search_service_class = Kithe::BlacklightTools::BulkLoadingSearchService
+  self.search_service_class = Kithe::BlacklightTools::BulkLoadingSearchService
 
   configure_blacklight do |config|
     # default advanced config values
