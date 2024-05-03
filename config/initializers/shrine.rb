@@ -1,3 +1,7 @@
+# Local Development uses the file system for storage
+# Production uses S3 for storage
+# See: /var/www/geoportal/shared/config/initalizers/shrine.rb
+
 require "shrine"
 require "shrine/storage/file_system"
 
