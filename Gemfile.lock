@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: dfaa7e6398e5a079f88a2bf0ec4c8839daa93701
+  revision: ae808ed66459228dae2b85e3b76b7b1eaeaaf96f
   branch: feature/thumbnails
   specs:
     geoblacklight_admin (0.4.1)
@@ -304,7 +304,7 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    down (5.4.1)
+    down (5.4.2)
       addressable (~> 2.8)
     dry-cli (1.0.0)
     dry-configurable (1.1.0)
@@ -392,7 +392,9 @@ GEM
       rgeo-geojson
       sprockets-rails (~> 3.0)
       vite_rails (~> 3.0)
-    geocoder (1.8.2)
+    geocoder (1.8.3)
+      base64 (>= 0.1.0)
+      csv (>= 3.0.0)
     git (1.19.1)
       addressable (~> 2.8)
       rchardet (~> 1.8)
@@ -417,7 +419,8 @@ GEM
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httparty (0.21.0)
+    httparty (0.22.0)
+      csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
@@ -430,7 +433,7 @@ GEM
     inline_svg (1.9.0)
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
-    jbuilder (2.11.5)
+    jbuilder (2.12.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jmespath (1.6.2)
@@ -524,7 +527,8 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     msgpack (1.7.2)
-    multi_xml (0.6.0)
+    multi_xml (0.7.1)
+      bigdecimal (~> 3.1)
     net-ftp (0.3.4)
       net-protocol
       time
@@ -632,7 +636,7 @@ GEM
       rdf (~> 3.3)
     redis (4.8.1)
     regexp_parser (2.9.0)
-    request_store (1.6.0)
+    request_store (1.7.0)
       rack (>= 1.4)
     responders (3.1.1)
       actionpack (>= 5.2)
@@ -698,7 +702,7 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
-    shrine (3.5.0)
+    shrine (3.6.0)
       content_disposition (~> 1.0)
       down (~> 5.1)
     shrine-url (2.4.1)
