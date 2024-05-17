@@ -55,6 +55,10 @@ class CatalogController < ApplicationController
 
     config.raw_endpoint.enabled = true
 
+    # Blacklight::Allmaps Viewer
+    config.default_solr_unique_key = "geomg_id_s"
+    config.default_georeferenced_field = "b1g_georeferenced_allmaps_b"
+
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
       :start => 0,
@@ -152,6 +156,7 @@ class CatalogController < ApplicationController
     config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
     config.add_facet_field Settings.FIELDS.B1G_MEDIATOR, label: 'Institutional Access', limit: 15
     config.add_facet_field Settings.FIELDS.GEOREFERENCED, label: 'Georeferenced'
+    config.add_facet_field Settings.FIELDS.B1G_GEOREFERENCED_ALLMAPS, label: 'Georeferenced via Allmaps Plugin'
 
     # GEOBLACKLIGHT APPLICATION FACETS
 

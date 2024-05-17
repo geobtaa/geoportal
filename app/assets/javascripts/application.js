@@ -27,7 +27,7 @@
 //= require blacklight/blacklight
 
 // Required by Blacklight::Allmaps
-//= require blacklight/allmaps/blacklight-allmaps
+//= require blacklight-allmaps/app/assets/javascripts/blacklight/allmaps/blacklight-allmaps.js
 
 // Geoportal
 // Required by GeoBlacklight
