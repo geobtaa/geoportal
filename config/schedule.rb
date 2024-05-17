@@ -56,11 +56,11 @@ end
 
 # Blacklight::Allmaps
 # Harvest Maps
-every :day, at: '3:30am', roles: [:app] do
+every :day, at: '3:00am', roles: [:app] do
   rake 'geoportal:allmaps:harvest'
 end
 
 # Populate the Georeferenced Facet
-every :day, at: '5:30am', roles: [:app] do
-  rake 'blacklight_allmaps:index:gbl_georeferenced_facet'
+every :day, at: '6:30am', roles: [:app] do
+  rake 'geoportal:allmaps:georeferenced_facet'
 end

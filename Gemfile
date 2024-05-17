@@ -139,7 +139,7 @@ gem 'sitemap_generator', '~> 6.0.2'
 gem 'appsignal'
 
 # Allmaps
-gem 'blacklight_allmaps'
+gem 'blacklight_allmaps', "~> 0.4.0"
 
 group :test do
   gem 'm', '~> 1.5.0'

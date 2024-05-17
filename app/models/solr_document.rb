@@ -116,4 +116,13 @@ class SolrDocument
 
     sidecar
   end
+
+  # Blacklight::Allmaps
+  def allmaps_georeferenced?
+    self.sidecar_allmaps.present? && self.sidecar_allmaps.annotated?
+  end
+
+  def allmaps_georeferenceable?
+    self.viewer_protocol == "iiif_manifest"
+  end
 end

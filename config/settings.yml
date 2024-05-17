@@ -98,6 +98,7 @@ FIELDS:
   :B1G_CODE: 'b1g_code_s'
   :B1G_DATE_CREATED: 'date_created_dtsi'
   :B1G_GEOMG_ID: 'geomg_id_s'
+  :B1G_GEOREFERENCED_ALLMAPS: 'b1g_georeferenced_allmaps_b'
   :B1G_IMAGE: 'b1g_image_ss'
   :B1G_LANGUAGE: 'b1g_language_sm'
   :B1G_MEDIATOR: 'b1g_dct_mediator_sm'
