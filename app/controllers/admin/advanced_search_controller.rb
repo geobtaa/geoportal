@@ -132,7 +132,7 @@ module Admin
       config.add_facet_field Settings.FIELDS.RESOURCE_CLASS, label: 'Resource Class', limit: 8
 
       # Contributor
-      config.add_facet_field Settings.FIELDS.PROVIDER, label: 'Provider', limit: 15
+      config.add_facet_field Settings.FIELDS.PROVIDER, label: 'Provider', limit: 1000
 
       # Accrual Method
       config.add_facet_field Settings.FIELDS.B1G_ACCRUAL_METHOD, :label => 'Accrual Method'
