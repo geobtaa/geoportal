@@ -19,7 +19,7 @@ class AdvancedSearchPageTest < ApplicationSystemTestCase
   end
 
   def test_provider_options
-    provider_options = page.all(:xpath, "//select[@id='f_schema_provider_s']//option")
+    provider_options = page.all(:xpath, "//select[@id='schema_provider_s']//option", visible: false)
     assert provider_options.size > 16
   end
 end
