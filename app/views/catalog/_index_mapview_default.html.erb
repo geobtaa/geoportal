@@ -42,7 +42,15 @@
               <td style="text-align: center;">AWS S3</td>
             </tr>
             <tr>
-              <td><%= image_tag document.model.thumbnail.file_url(:thumb_standard_2X) %></td>
+              <td>
+                <% if document&.model&.thumbnail&.file_url(:thumb_standard_2X).nil? %>
+                  <span class="icon square mr-3">
+                    <%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS]&.first, classes: 'svg_tooltip') %>
+                  </span>
+                <% else %>
+                  <%= image_tag document&.model&.thumbnail&.file_url(:thumb_standard_2X) %>
+                <% end %>
+              </td>
             </tr>
           </table>
         <% end %>

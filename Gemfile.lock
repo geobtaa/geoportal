@@ -41,8 +41,8 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: a2e7919b04d63b3ab45195f26b9dec62bfbfdc24
-  branch: develop
+  revision: dc3776c11e0e269e735c0633f340839472aaadc2
+  branch: guard-nil-derivative
   specs:
     geoblacklight_admin (0.4.1)
       active_storage_validations (~> 1.0)
