@@ -834,7 +834,7 @@ DEPENDENCIES
   axe-core-api
   blacklight (~> 7.33.0)
   blacklight_advanced_search!
-  blacklight_allmaps
+  blacklight_allmaps (~> 0.4.0)
   blacklight_range_limit (~> 7.0.0)
   blazer
   bootsnap (~> 1.9.3)

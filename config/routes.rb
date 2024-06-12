@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'about', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/about')
-  get 'help', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/help')
+  get 'about', :to => redirect('https://gin.btaa.org/')
+  get 'help', :to => redirect('https://gin.btaa.org/guides/')
   get 'robots.:format' => 'robots#robots'
   get '/centroids.json', :to => redirect('/centroids.json')
 

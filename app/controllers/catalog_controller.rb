@@ -55,6 +55,10 @@ class CatalogController < ApplicationController
 
     config.raw_endpoint.enabled = true
 
+    # Blacklight::Allmaps Viewer
+    config.default_solr_unique_key = "geomg_id_s"
+    config.default_georeferenced_field = "b1g_georeferenced_allmaps_b"
+
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
       :start => 0,
@@ -152,6 +156,7 @@ class CatalogController < ApplicationController
     config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
     config.add_facet_field Settings.FIELDS.B1G_MEDIATOR, label: 'Institutional Access', limit: 15
     config.add_facet_field Settings.FIELDS.GEOREFERENCED, label: 'Georeferenced'
+    config.add_facet_field Settings.FIELDS.B1G_GEOREFERENCED_ALLMAPS, label: 'Georeferenced via Allmaps Plugin'
 
     # GEOBLACKLIGHT APPLICATION FACETS
 
@@ -225,7 +230,7 @@ class CatalogController < ApplicationController
     config.add_show_field Settings.FIELDS.TEMPORAL_COVERAGE, label: 'Temporal Coverage', itemprop: 'temporal'
     config.add_show_field Settings.FIELDS.DATE_ISSUED, label: 'Date Issued', itemprop: 'issued'
     config.add_show_field Settings.FIELDS.SPATIAL_COVERAGE, label: 'Place', itemprop: 'spatial', link_to_facet: true, helper_method: :render_placenames_as_truncate_abstract
-    config.add_show_field Settings.FIELDS.RIGHTS, label: 'Rights', itemprop: 'rights'
+    config.add_show_field Settings.FIELDS.RIGHTS, label: 'Rights', itemprop: 'rights', helper_method: :render_value_as_truncate_abstract_new_lines
     config.add_show_field Settings.FIELDS.RIGHTS_HOLDER, label: 'Rights Holder', itemprop: 'rights_holder'
     config.add_show_field Settings.FIELDS.LICENSE, label: 'License', itemprop: 'license'
     config.add_show_field Settings.FIELDS.ACCESS_RIGHTS, label: 'Access Rights', itemprop: 'access_rights'

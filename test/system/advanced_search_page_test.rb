@@ -17,4 +17,9 @@ class AdvancedSearchPageTest < ApplicationSystemTestCase
 
     assert_equal page.all('select#f1 option').map(&:value), %w(keyword title placename publisher)
   end
+
+  def test_provider_options
+    provider_options = page.all(:xpath, "//select[@id='schema_provider_s']//option", visible: false)
+    assert provider_options.size > 16
+  end
 end
