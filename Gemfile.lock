@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: e588fafb9b1a1ba2478a9110f89f86d72dbf621b
+  revision: 2f110796b14e0b00a7a641169006e3cb39ef682c
   branch: feature/thumbnails_via_statesman
   specs:
     geoblacklight_admin (0.4.1)
