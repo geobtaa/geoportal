@@ -162,6 +162,7 @@ Rails.application.routes.draw do
 
     # Documents
     resources :documents do
+      get "admin"
       get "versions"
 
       # DocumentAccesses

@@ -41,8 +41,8 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: dc3776c11e0e269e735c0633f340839472aaadc2
-  branch: guard-nil-derivative
+  revision: 8074592f02f9cd2cc603b103c30e9576e1e6e6ed
+  branch: feature/thumbnails_via_statesman
   specs:
     geoblacklight_admin (0.4.1)
       active_storage_validations (~> 1.0)
@@ -172,7 +172,7 @@ GEM
       execjs (~> 2)
     awesome_print (1.9.2)
     aws-eventstream (1.3.0)
-    aws-partitions (1.943.0)
+    aws-partitions (1.944.0)
     aws-sdk-core (3.197.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.651.0)
@@ -181,7 +181,7 @@ GEM
     aws-sdk-kms (1.83.0)
       aws-sdk-core (~> 3, >= 3.197.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.152.1)
+    aws-sdk-s3 (1.152.2)
       aws-sdk-core (~> 3, >= 3.197.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.8)
@@ -548,7 +548,7 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.3)
-    nokogiri (1.16.5)
+    nokogiri (1.16.6)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     noticed (1.6.3)
@@ -676,7 +676,7 @@ GEM
       ffi (~> 1.12)
     rubyzip (2.3.2)
     safely_block (0.4.0)
-    sanitize (6.1.0)
+    sanitize (6.1.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     sass (3.7.4)
@@ -863,6 +863,7 @@ DEPENDENCIES
   git (>= 1.13)
   haml
   handlebars_assets (~> 0.23.0)
+  hashdiff
   image_processing (>= 1.2)
   inline_svg
   jbuilder (~> 2.5)

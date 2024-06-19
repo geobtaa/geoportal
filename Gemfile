@@ -82,10 +82,11 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '4.4'
 
 # GBL Admin
-gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "guard-nil-derivative"
+gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/thumbnails_via_statesman"
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
+gem "hashdiff"
 
 # GBL Admin dependencies _not_ automatically loading...
 gem 'active_storage_validations'
