@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 8074592f02f9cd2cc603b103c30e9576e1e6e6ed
+  revision: 8049400462d7d465972a59cfb12790423610b781
   branch: feature/thumbnails_via_statesman
   specs:
     geoblacklight_admin (0.4.1)
@@ -341,7 +341,7 @@ GEM
       dry-schema (>= 1.12, < 2)
       zeitwerk (~> 2.6)
     dumb_delegator (1.0.0)
-    erubi (1.12.0)
+    erubi (1.13.0)
     ethon (0.16.0)
       ffi (>= 1.15.0)
     execjs (2.9.1)
@@ -350,7 +350,7 @@ GEM
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
-    faraday (2.9.1)
+    faraday (2.9.2)
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
       net-http
@@ -520,7 +520,7 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.7)
     minitar (0.9)
-    minitest (5.23.1)
+    minitest (5.24.0)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     minitest-reporters (1.6.1)
@@ -538,7 +538,7 @@ GEM
       uri
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.4.12)
+    net-imap (0.4.13)
       date
       net-protocol
     net-pop (0.1.2)
@@ -577,7 +577,7 @@ GEM
       typhoeus (~> 0.7, >= 0.7.3)
     popper_js (1.16.1)
     process_executer (1.1.0)
-    public_suffix (5.0.5)
+    public_suffix (5.1.1)
     puma (5.6.8)
       nio4r (~> 2.0)
     qa (5.11.0)
@@ -819,7 +819,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.15)
+    zeitwerk (2.6.16)
 
 PLATFORMS
   ruby
