@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 577ba90900fb2cc49cd96752da5fcb45570f3332
+  revision: 7c2a641c007b9d8919126a3b2c971b4e21f775e6
   branch: develop
   specs:
     geoblacklight_admin (0.4.1)
@@ -748,7 +748,7 @@ GEM
       rails (>= 3.1)
     thor (1.3.1)
     thread_safe (0.3.6)
-    tilt (2.3.0)
+    tilt (2.4.0)
     time (0.3.0)
       date
     timeout (0.4.1)
