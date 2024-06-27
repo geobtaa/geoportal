@@ -106,6 +106,21 @@ Rails.application.routes.draw do
     # Root
     root to: "documents#index"
 
+    # Assets
+    # Note "assets" is Rails reserved word for routing, oops. So we use
+    # asset_files.
+    resources :assets, path: "asset_files" do
+      collection do
+        get "display_attach_form"
+        post "attach_files"
+
+        get "destroy_all"
+        post "destroy_all"
+      end
+
+      post :sort, on: :collection
+    end
+
     # Bulk Actions
     resources :bulk_actions do
       patch :run, on: :member
