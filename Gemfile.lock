@@ -41,8 +41,8 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 20fc8ac0414edc93be0fb0f851a62e544dc527cf
-  branch: feature/kithe-assets
+  revision: 577ba90900fb2cc49cd96752da5fcb45570f3332
+  branch: develop
   specs:
     geoblacklight_admin (0.4.1)
       active_storage_validations (~> 1.0)
