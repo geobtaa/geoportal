@@ -31,10 +31,12 @@ end
 #  rake 'geoportal:export_data'
 # end
 
+# No longer required - EWL 6/27/24
 # Clean Carrierwave tmp file directory
-every :day, at: '4:30 am', roles: [:app] do
-  runner "CarrierWave.clean_cached_files!"
-end
+#every :day, at: '4:30 am', roles: [:app] do
+#  runner "CarrierWave.clean_cached_files!"
+#end
+
 # Check image harvest state and email results
 every '0 3 * * 1', roles: [:app] do
   rake 'geoportal:sidecar_states'
@@ -54,13 +56,13 @@ end
 #   rake 'geoportal:uri_report'
 # end
 
+# Pause while harvesting thumbs to S3 - EWL 6/27/24
 # Blacklight::Allmaps
 # Harvest Maps
-every :day, at: '3:00am', roles: [:app] do
-  rake 'geoportal:allmaps:harvest'
-end
-
+# every :day, at: '3:00am', roles: [:app] do
+#  rake 'geoportal:allmaps:harvest'
+# end
 # Populate the Georeferenced Facet
-every :day, at: '6:30am', roles: [:app] do
-  rake 'geoportal:allmaps:georeferenced_facet'
-end
+# every :day, at: '6:30am', roles: [:app] do
+#  rake 'geoportal:allmaps:georeferenced_facet'
+# end
