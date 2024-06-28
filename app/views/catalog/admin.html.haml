@@ -58,7 +58,8 @@
         %td
           %span AWS S3
           %div.media
-            %span.mr-3= image_tag @document&.kithe_model&.thumbnail&.file_url(:thumb_standard_2X)
+            - if @document&.thumbnail&.file_derivatives[:thumb_standard_2X].exists?
+              %span.mr-3= image_tag @document&.kithe_model&.thumbnail&.file_url(:thumb_standard_2X)
 
 %h3 URIs
 %table.table.responsive
