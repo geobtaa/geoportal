@@ -251,6 +251,11 @@ Rails.application.routes.draw do
       end
     end
 
+    # Assets
+    get "/asset_files/ingest", to: "assets#display_attach_form", as: "assets_ingest"
+    post "/asset_files/ingest", to: "assets#attach_files"
+              
+    # DocumentAssets
     get "/documents/:id/ingest", to: "document_assets#display_attach_form", as: "asset_ingest"
     post "/documents/:id/ingest", to: "document_assets#attach_files"
     mount Kithe::AssetUploader.upload_endpoint(:cache) => "/direct_upload", :as => :direct_app_upload
