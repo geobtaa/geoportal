@@ -82,10 +82,11 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '4.4'
 
 # GBL Admin
-gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/vite"
+gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "develop"
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
+gem "hashdiff"
 
 # GBL Admin dependencies _not_ automatically loading...
 gem 'active_storage_validations'
@@ -153,3 +154,6 @@ gem 'rexml'
 
 gem "stimulus-rails"
 gem "vite_rails", "~> 3.0"
+
+# Shrine
+gem "aws-sdk-s3", "~> 1.14"

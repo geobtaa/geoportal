@@ -1,7 +1,8 @@
-:concurrency:  2
+:concurrency:  3
 :max_retries: 1
 
 :queues:
   - priority
   - devise
   - default
+  - low_priority

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_07_155110) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_19_183528) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -238,6 +238,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_07_155110) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "document_thumbnail_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.text "metadata", default: "{}"
+    t.integer "sort_key", null: false
+    t.uuid "kithe_model_id", null: false
+    t.boolean "most_recent", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kithe_model_id", "most_recent"], name: "thumbnail_transitions_parent_most_recent", unique: true, where: "most_recent"
+    t.index ["kithe_model_id", "sort_key"], name: "thumbnail_transitions_parent_sort", unique: true
   end
 
   create_table "document_transitions", force: :cascade do |t|

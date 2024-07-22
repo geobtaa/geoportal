@@ -53,6 +53,10 @@ class SolrDocument
     :contributor => Settings.FIELDS.PROVIDER
   )
 
+  def kithe_model
+    Kithe::Model.find_by_friendlier_id(self.id)
+  end
+
   def sidecar
     # Find or create, and set version
     sidecar = SolrDocumentSidecar.where(

@@ -40,6 +40,7 @@
     %tr
       - if @document.sidecar.image.attached?
         %td
+          %span ActionStorage
           %div.media
             %span.mr-3= image_tag @document.sidecar.image
       - else
@@ -52,6 +53,13 @@
       %td
         - if @document.sidecar.image_state.last_transition
           = @document.sidecar.image_state.last_transition.metadata
+    %tr
+      - if @document&.kithe_model&.thumbnail&.present?
+        %td
+          %span AWS S3
+          %div.media
+            - if @document&.thumbnail&.file_derivatives[:thumb_standard_2X].exists?
+              %span.mr-3= image_tag @document&.kithe_model&.thumbnail&.file_url(:thumb_standard_2X)
 
 %h3 URIs
 %table.table.responsive

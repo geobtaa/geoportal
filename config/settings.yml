@@ -348,3 +348,12 @@ SIDEBAR_STATIC_MAP:
   - 'iiif'
   - 'iiif_manifest'
   - 'map'
+
+#########
+# GBL ADMIN SETTINGS
+
+# Used to generate derivatives in app/uploaders/asset_uploader.rb
+# Hash of thumbnail sizes
+GBL_ADMIN_THUMBNAIL_WIDTHS:
+  mini: 50
+  standard: 200

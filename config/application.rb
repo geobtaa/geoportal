@@ -46,5 +46,8 @@ module Geoblacklight
 
     # Image Processing
     config.active_storage.variant_processor = :vips
+
+    # YAML
+    config.active_record.yaml_column_permitted_classes = %w[Symbol Time Date BigDecimal OpenStruct]
   end
 end
