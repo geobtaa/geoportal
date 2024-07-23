@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: f890e1e7aa9c8495d2a7f4bddeb8cca068d6e8e2
+  revision: 7b288fe0c45871c59bec020781d6f55cb2bbd4f9
   branch: develop
   specs:
     geoblacklight_admin (0.4.1)
@@ -531,6 +531,7 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     msgpack (1.7.2)
+    multi_json (1.15.0)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     net-ftp (0.3.7)
@@ -579,7 +580,7 @@ GEM
       typhoeus (~> 0.7, >= 0.7.3)
     popper_js (1.16.1)
     process_executer (1.1.0)
-    public_suffix (6.0.0)
+    public_suffix (6.0.1)
     puma (5.6.8)
       nio4r (~> 2.0)
     qa (5.11.0)
@@ -651,7 +652,8 @@ GEM
     rexml (3.3.2)
       strscan
     rgeo (3.0.1)
-    rgeo-geojson (2.1.1)
+    rgeo-geojson (2.2.0)
+      multi_json (~> 1.15)
       rgeo (>= 1.0.0)
     rsolr (2.6.0)
       builder (>= 2.1.2)
