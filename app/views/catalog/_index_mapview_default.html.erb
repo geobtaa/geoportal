@@ -11,12 +11,8 @@
   <div class="document-wrapper">
     <div class='col-xs-11'>
       <div class='media'>
-        <%- if document.sidecar.image.attached? %>
-          <%- if document.sidecar.image.variable? %>
-            <%= image_tag document.sidecar.image.variant(resize_to_fit: [200, nil]), {class: 'mr-3', alt: document.to_semantic_values[:title]} %>
-          <%- else %>
-            <%= image_tag document.sidecar.image, {class: 'mr-3'} %>
-          <%- end %>
+        <% if thumb_to_render?(document&.model) %>
+          <%= image_tag document&.model&.thumbnail&.file_url(:thumb_standard_2X) %>
         <%- else %>
           <span class="icon square mr-3">
             <%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS]&.first, classes: 'svg_tooltip') %>
