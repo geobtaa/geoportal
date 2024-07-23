@@ -56,13 +56,19 @@ end
 #   rake 'geoportal:uri_report'
 # end
 
-# Pause while harvesting thumbs to S3 - EWL 6/27/24
+# Geoblacklight::Admin
+# Delete Solr Orphans
+every :day, at: '7:00am', roles: [:app] do
+  rake 'geoblacklight_admin:solr:delete_orphans'
+end
+
 # Blacklight::Allmaps
 # Harvest Maps
-# every :day, at: '3:00am', roles: [:app] do
-#  rake 'geoportal:allmaps:harvest'
-# end
+every :saturday, at: '1:00am', roles: [:app] do
+  rake 'geoportal:allmaps:harvest'
+end
+
 # Populate the Georeferenced Facet
-# every :day, at: '6:30am', roles: [:app] do
-#  rake 'geoportal:allmaps:georeferenced_facet'
-# end
+every :day, at: '6:30am', roles: [:app] do
+  rake 'geoportal:allmaps:georeferenced_facet'
+end
