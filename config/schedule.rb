@@ -42,6 +42,11 @@ every '0 3 * * 1', roles: [:app] do
   rake 'geoportal:sidecar_states'
 end
 
+# Clear S3 Cache - removes cached files older than 7 days
+every :day, at: '8:00am', roles: [:app] do 
+  rake 'geoportal:s3:clear_cache'
+end
+
 # URI analysis - No longer required - EWL 10/11/23
 # every '0 1 1 * *', roles: [:prodcron] do
 #   rake 'geoportal:uri_purge'
