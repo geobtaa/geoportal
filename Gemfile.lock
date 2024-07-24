@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 94a214b036e5f5709a4fb981cb35f148769c2e8c
+  revision: 4cf6ae01b80404405a787472dfc0fc2f09fc9640
   branch: develop
   specs:
     geoblacklight_admin (0.4.1)
@@ -353,7 +353,7 @@ GEM
     faraday (2.10.0)
       faraday-net_http (>= 2.0, < 3.2)
       logger
-    faraday-net_http (3.1.0)
+    faraday-net_http (3.1.1)
       net-http
     faraday-net_http_persistent (2.1.0)
       faraday (~> 2.5)
