@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 7e9be3033ade7d0c2260d637f6c06d527d230c68
+  revision: 24c140e402d8af37e745b19ee6f628db0ad7e617
   branch: develop
   specs:
     geoblacklight_admin (0.4.1)
@@ -551,7 +551,7 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.3)
-    nokogiri (1.16.6)
+    nokogiri (1.16.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     noticed (1.6.3)
@@ -572,7 +572,7 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
-    pg (1.5.6)
+    pg (1.5.7)
     pointless_feedback (4.1.5)
       airrecord (~> 1.0)
       jquery-rails (>= 4.0)
@@ -682,7 +682,7 @@ GEM
       logger
     rubyzip (2.3.2)
     safely_block (0.4.0)
-    sanitize (6.1.1)
+    sanitize (6.1.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     sass (3.7.4)
