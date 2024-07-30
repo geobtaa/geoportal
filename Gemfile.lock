@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 24c140e402d8af37e745b19ee6f628db0ad7e617
+  revision: a08778ee1f59b81fcab2f0e47f691c0f22ca1337
   branch: develop
   specs:
     geoblacklight_admin (0.4.1)
@@ -458,7 +458,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    kithe (2.13.0)
+    kithe (2.14.0)
       attr_json (~> 2.0)
       fastimage (~> 2.0)
       fx (>= 0.6.0, < 1)
@@ -592,7 +592,7 @@ GEM
       nokogiri (~> 1.6)
       rails (>= 5.0, < 7.2)
       rdf
-    racc (1.8.0)
+    racc (1.8.1)
     rack (2.2.9)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
@@ -826,7 +826,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.16)
+    zeitwerk (2.6.17)
 
 PLATFORMS
   ruby
