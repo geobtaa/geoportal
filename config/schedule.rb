@@ -31,13 +31,20 @@ end
 #  rake 'geoportal:export_data'
 # end
 
+# No longer required - EWL 6/27/24
 # Clean Carrierwave tmp file directory
-every :day, at: '4:30 am', roles: [:app] do
-  runner "CarrierWave.clean_cached_files!"
-end
+#every :day, at: '4:30 am', roles: [:app] do
+#  runner "CarrierWave.clean_cached_files!"
+#end
+
 # Check image harvest state and email results
 every '0 3 * * 1', roles: [:app] do
   rake 'geoportal:sidecar_states'
+end
+
+# Clear S3 Cache - removes cached files older than 7 days
+every :day, at: '8:00am', roles: [:app] do 
+  rake 'geoportal:s3:clear_cache'
 end
 
 # URI analysis - No longer required - EWL 10/11/23
@@ -54,9 +61,15 @@ end
 #   rake 'geoportal:uri_report'
 # end
 
+# Geoblacklight::Admin
+# Delete Solr Orphans
+every :day, at: '7:00am', roles: [:app] do
+  rake 'geoblacklight_admin:solr:delete_orphans'
+end
+
 # Blacklight::Allmaps
 # Harvest Maps
-every :day, at: '3:00am', roles: [:app] do
+every :saturday, at: '1:00am', roles: [:app] do
   rake 'geoportal:allmaps:harvest'
 end
 

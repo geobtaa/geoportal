@@ -7,3 +7,4 @@ require 'solr_wrapper/rake_task'
 
 Rails.application.load_tasks
 require 'blacklight/allmaps/rake_task'
+require "geoblacklight_admin/rake_task"
