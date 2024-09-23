@@ -146,9 +146,11 @@ group :test do
   gem 'm', '~> 1.5.0'
   gem 'minitest'
   gem 'minitest-ci', '~> 3.4.0'
+  gem "minitest-rails", "~> 7.0"
   gem 'minitest-reporters'
   gem 'rails-controller-testing'
   gem 'simplecov', require: false
+  gem 'webmock', '~> 3.23'
 end
 
 gem 'net-ftp'
