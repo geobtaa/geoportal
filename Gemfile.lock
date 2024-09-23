@@ -297,6 +297,7 @@ GEM
       actionmailer (>= 5.0)
       devise (>= 4.6)
     diff-lcs (1.5.1)
+    docile (1.4.1)
     domain_name (0.6.20240107)
     dot-properties (0.1.4)
       bundler (>= 2.2.33)
@@ -728,6 +729,12 @@ GEM
     simple_form (5.3.1)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     sitemap_generator (6.0.2)
       builder (~> 3.0)
     slop (4.10.1)
@@ -899,6 +906,7 @@ DEPENDENCIES
   selenium-webdriver
   sidekiq (~> 6.4)
   sidekiq-failures (~> 1.0.0)
+  simplecov
   sitemap_generator (~> 6.0.2)
   solr_wrapper!
   spring
