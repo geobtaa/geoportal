@@ -20,10 +20,4 @@ class ApplicationController < ActionController::Base
   def after_message_create_path
     main_app.try(:root_path) || '/'
   end
-
-  protected
-
-  def not_found
-    raise ActionController::RoutingError.new('Not Found')
-  end
 end
