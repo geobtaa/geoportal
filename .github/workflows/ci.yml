@@ -95,4 +95,6 @@ jobs:
       if: always()
       with:
         name: coverage
-        path: coverage/
+        path: |
+          coverage/
+          tmp/screenshots/
