@@ -16,6 +16,11 @@ class ApplicationController < ActionController::Base
     blacklight_config.search_state_fields.append(Settings.GBL_PARAMS)
   end
 
+  # Pointless Feedback
+  def after_message_create_path
+    main_app.try(:root_path) || '/'
+  end
+
   protected
 
   def not_found
