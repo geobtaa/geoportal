@@ -3,36 +3,44 @@ $white: #FFFFFF; // 100%
 $gray: #CCCCCC; // 80%
 $black: #000000; // 0%
 $btaa-blue: #005E8E;
+$btaa-blue-dark: #003c5b;
 $radius: 4px;
 
+// Sass link color variables
+$link-color: $white;
+$hover-color: darken($link-color, 20%);
+$visited-color: lighten($link-color, 20%);
 
 section#footer-app {
   color:$white;
-  padding-top:1rem;
   padding-bottom:1rem;
   background-color: $btaa-blue;
+  border-top: 1rem solid $btaa-blue-dark;
+  border-bottom: 0.5rem solid $btaa-blue-dark;
+
+  // Link styling
   a {
-    color:$white;
+  color: $link-color;
+  text-decoration: none;
+  
+    &:hover{
+    color: $hover-color;
+      border-bottom: 1px solid $hover-color;
+    }
+  
+    &:visited{
+      color: $visited-color;
+      border-color: $visited-color;
+    }
   }
-  ul {
-    margin-bottom:0rem;
-  }
-  img {
-    width: 20px;
-    height: 20px;
-  }
-}
+  
+  #footer-title {
+    padding-top:1.5rem;
 
-footer {
-  background-color:$gray;
-  padding-top:2rem;
-  padding-bottom:2rem;
-
-  a {
-    color: $black;
-  }
-}
-
-#university-libraries {
-  border:4px solid $white;
+    a {
+      &:hover {
+        border-bottom: none;
+      }
+    }
+  } 
 }

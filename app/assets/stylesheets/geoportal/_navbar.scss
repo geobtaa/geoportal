@@ -5,6 +5,10 @@ $black: #000000; // 0%
 $btaa-blue: #005E8E;
 $radius: 4px;
 
+// Sass link color variables
+$link-color: $white;
+$hover-color: darken($link-color, 20%);
+$visited-color: lighten($link-color, 20%);
 
 div#cic-header-navbar {
   margin-bottom:0;
@@ -29,9 +33,21 @@ div#cic-header-navbar {
 div#application-header {
   background-color:$btaa-blue;
 
+  // Link styling
   a {
-    color:$white !important;
-  }
+    color: $link-color;
+    text-decoration: none;
+    
+      &:hover{
+      color: $hover-color;
+        border-bottom: 1px solid $hover-color;
+      }
+    
+      &:visited{
+        color: $visited-color;
+        border-color: $visited-color;
+      }
+    }
 
   .navbar-brand {
     margin-top: -1rem;
@@ -40,12 +56,21 @@ div#application-header {
     background:none;
     overflow:visible;
     text-indent:0;
-    border:none;
     height: 50px;
     margin-left:1rem;
-  }
-  .navbar-brand:hover {
-    color: $white !important;
+    border:none !important;
+    text-decoration: none !important;
+  
+    &:hover {
+      color: $white !important;
+      text-decoration: none !important;
+    }
+    
+    &:visited {
+      color: $visited-color !important;
+      text-decoration: none !important;
+      border: none !important;
+    }
   }
 
   span.icon-bar {
