@@ -12,6 +12,13 @@ end
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
+require "minitest/rails"
+require "minitest/reporters"
+
+require "webmock/minitest"
+WebMock.enable!
+WebMock.allow_net_connect!
+
 require 'selenium/webdriver'
 
 class ActiveSupport::TestCase

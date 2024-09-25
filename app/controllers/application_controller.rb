@@ -16,9 +16,8 @@ class ApplicationController < ActionController::Base
     blacklight_config.search_state_fields.append(Settings.GBL_PARAMS)
   end
 
-  protected
-
-  def not_found
-    raise ActionController::RoutingError.new('Not Found')
+  # Pointless Feedback
+  def after_message_create_path
+    main_app.try(:root_path) || '/'
   end
 end

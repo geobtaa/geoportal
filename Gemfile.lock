@@ -270,6 +270,9 @@ GEM
       dry-validation (~> 1.0, >= 1.0.0)
     connection_pool (2.4.1)
     content_disposition (1.0.0)
+    crack (1.0.0)
+      bigdecimal
+      rexml
     crass (1.0.6)
     csv (3.3.0)
     database_cleaner (2.0.2)
@@ -526,6 +529,9 @@ GEM
     minitest (5.25.1)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
+    minitest-rails (7.0.1)
+      minitest (~> 5.10)
+      railties (~> 7.0.0)
     minitest-reporters (1.7.1)
       ansi
       builder
@@ -617,6 +623,10 @@ GEM
       activesupport (= 7.0.8.4)
       bundler (>= 1.15.0)
       railties (= 7.0.8.4)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -815,6 +825,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webmock (3.23.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     webpacker (5.4.4)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
@@ -886,6 +900,7 @@ DEPENDENCIES
   mini_magick (~> 4.9.4)
   minitest
   minitest-ci (~> 3.4.0)
+  minitest-rails (~> 7.0)
   minitest-reporters
   net-ftp
   noticed
@@ -897,6 +912,7 @@ DEPENDENCIES
   rack-cors
   rack-mini-profiler (~> 2.3.1)
   rails (~> 7.0.0)
+  rails-controller-testing
   rexml
   rsolr (>= 1.0)
   rspec-rails (~> 3.5)
@@ -919,6 +935,7 @@ DEPENDENCIES
   twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
   vite_rails (~> 3.0)
   web-console
+  webmock (~> 3.23)
   webpacker (~> 5.x)
   whenever (~> 1.0.0)
 
