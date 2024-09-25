@@ -12,3 +12,15 @@ user_001:
   email: test@sample.com
   encrypted_password: <%= User.new.send(:password_digest, '123456') %>
   admin: true
+
+unapproved_user:
+  email: unapproved@example.com
+  encrypted_password: <%= BCrypt::Password.create('password') %>
+
+approved_user:
+  email: approved@example.com
+  encrypted_password: <%= BCrypt::Password.create('password') %>
+
+regular_user:
+  email: regular@example.com
+  encrypted_password: <%= BCrypt::Password.create('password') %>

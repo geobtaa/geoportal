@@ -3,59 +3,15 @@ require "addressable/uri"
 require "net/http"
 require "net/ftp"
 
-# Abstract base class for representing the results of checking one URI.
-class Result
-  attr_accessor :uri_string
-
-  # A new Result object instance.
-  #
-  # @param params [Hash] A hash of parameters.  Expects :uri_string.
-  def initialize(params)
-    @uri_string = params[:uri_string]
-  end
-end
-
-# A Good Result.  The URL is valid.
-class Good < Result
-end
-
-# A Redirect to another URL.
-class Redirect < Result
-  attr_reader :good
-  attr_reader :final_destination_uri_string
-
-  # A new LinkChecker::Redirect object.
-  #
-  # @param params [Hash] A hash of parameters.  Expects :final_destination_uri_string,
-  # which is the URL that the original :uri_string redirected to.
-  def initialize(params)
-    @final_destination_uri_string = params[:final_destination_uri_string]
-    @good = params[:good]
-    super(params)
-  end
-end
-
-# A Error result.  The URL is not valid for some reason.  Any reason, other than a 200
-# HTTP response.
-#
-# @param params [Hash] A hash of parameters.  Expects :error, which is a string
-# representing the error.
-class Error < Result
-  attr_reader :error
-  def initialize(params)
-    @error = params[:error]
-    super(params)
-  end
-end
-
 class UriService
   def initialize(solr_document_uri)
     @uri = solr_document_uri
-    @metadata = Hash.new
-    @metadata['solr_doc_id'] = @uri.document_id
-    @metadata['uri_key']     = @uri.uri_key
-    @metadata['uri_value']   = @uri.uri_value
-    @metadata['solr_version'] = @uri.version
+    @metadata = {
+      'solr_doc_id' => @uri.document_id,
+      'uri_key'     => @uri.uri_key,
+      'uri_value'   => @uri.uri_value,
+      'solr_version' => @uri.version
+    }
 
     @uri.state_machine.transition_to!(:processing, @metadata)
 
@@ -68,60 +24,74 @@ class UriService
     )
   end
 
-  # Captures the uri's validity in SolrDocumentUri
-  # @return [Boolean]
-  #
-  # @TODO: EWL
   def process
-    # Gentle hands.
     sleep(1)
 
     uri = normalize_uri(@uri.uri_value)
 
     if uri.scheme.start_with?('http')
-      result = check_uri(uri)
-
-      if result.instance_of?(Good)
-        @uri.state_machine.transition_to!(:succeeded, @metadata)
-      elsif result.instance_of?(Redirect)
-        @metadata["final_destination_uri_string"] = result.final_destination_uri_string
-        @uri.state_machine.transition_to!(:succeeded, @metadata)
-      else
-        @uri.state_machine.transition_to!(:failed, @metadata)
-      end
-
+      process_http_uri(uri)
     elsif uri.scheme.start_with?('ftp')
-
-      Net::FTP.open(uri.host) do |ftp|
-        ftp.passive = true
-        ftp.login 'anonymous', 'anonymous@google.com'
-
-        # Check for file extension
-        if File.extname(uri.path).size > 0
-          size = ftp.size(uri.path)
-          if size > 0
-            @uri.state_machine.transition_to!(:succeeded, @metadata)
-          end
-        elsif check_ftp_path(ftp, uri.path)
-          @uri.state_machine.transition_to!(:succeeded, @metadata)
-        else
-          @uri.state_machine.transition_to!(:failed, @metadata)
-        end
-      end
+      process_ftp_uri(uri)
+    else
+      @uri.state_machine.transition_to!(:failed, @metadata.merge('error' => 'Unsupported URI scheme'))
     end
-    log_output
 
-  rescue Exception => invalid
-    @metadata['exception'] = invalid.inspect
-    @uri.state_machine.transition_to!(:failed,@metadata)
+    log_output
+  rescue => e
+    @metadata['exception'] = e.inspect
+    @uri.state_machine.transition_to!(:failed, @metadata)
     log_output
   end
 
-  def log_output
-    @metadata["state"] = @uri.state_machine.current_state
-    @metadata.each do |key,value|
-      @logger.tagged(@uri.id, key.to_s) { @logger.info value }
+  private
+
+  def process_http_uri(uri)
+    result = check_uri(uri)
+
+    if result.instance_of?(Good) || result.instance_of?(Redirect)
+      @uri.state_machine.transition_to!(:succeeded, @metadata)
+    else
+      @uri.state_machine.transition_to!(:failed, @metadata)
     end
+  end
+
+  def process_ftp_uri(uri)
+    Net::FTP.open(uri.host) do |ftp|
+      ftp.passive = true
+      ftp.login 'anonymous', 'anonymous@google.com'
+  
+      path = uri.path.sub(/^\//, '') # Remove leading slash if present
+      if File.extname(path).size > 0
+        begin
+          size = ftp.size(path)
+          if size > 0
+            @uri.state_machine.transition_to!(:succeeded, @metadata)
+          else
+            @uri.state_machine.transition_to!(:failed, @metadata.merge('error' => 'File size is 0'))
+          end
+        rescue Net::FTPPermError
+          @uri.state_machine.transition_to!(:failed, @metadata.merge('error' => 'File not found'))
+        end
+      else
+        begin
+          if check_ftp_path(ftp, path)
+            @uri.state_machine.transition_to!(:succeeded, @metadata)
+          else
+            @uri.state_machine.transition_to!(:failed, @metadata.merge('error' => 'Directory not found'))
+          end
+        rescue Net::FTPPermError
+          @uri.state_machine.transition_to!(:failed, @metadata.merge('error' => 'Directory not found'))
+        end
+      end
+    end
+  rescue Net::FTPPermError, Net::FTPReplyError => e
+    @uri.state_machine.transition_to!(:failed, @metadata.merge('error' => e.message))
+  end
+  
+  def check_ftp_path(ftp, path)
+    ftp.chdir(path)
+    ftp.pwd == "/#{path}"
   end
 
   def check_uri(uri, redirected=false)
@@ -178,5 +148,57 @@ class UriService
 
   def normalize_uri(uri_string)
     URI.parse(Addressable::URI.parse(uri_string).normalize.to_s)
+  end
+
+  def log_output
+    @metadata["state"] = @uri.state_machine.current_state
+    @metadata.each do |key,value|
+      @logger.tagged(@uri.id, key.to_s) { @logger.info value }
+    end
+  end
+end
+
+# Abstract base class for representing the results of checking one URI.
+class Result
+  attr_accessor :uri_string
+
+  # A new Result object instance.
+  #
+  # @param params [Hash] A hash of parameters.  Expects :uri_string.
+  def initialize(params)
+    @uri_string = params[:uri_string]
+  end
+end
+
+# A Good Result.  The URL is valid.
+class Good < Result
+end
+
+# A Redirect to another URL.
+class Redirect < Result
+  attr_reader :good
+  attr_reader :final_destination_uri_string
+
+  # A new LinkChecker::Redirect object.
+  #
+  # @param params [Hash] A hash of parameters.  Expects :final_destination_uri_string,
+  # which is the URL that the original :uri_string redirected to.
+  def initialize(params)
+    @final_destination_uri_string = params[:final_destination_uri_string]
+    @good = params[:good]
+    super(params)
+  end
+end
+
+# A Error result.  The URL is not valid for some reason.  Any reason, other than a 200
+# HTTP response.
+#
+# @param params [Hash] A hash of parameters.  Expects :error, which is a string
+# representing the error.
+class Error < Result
+  attr_reader :error
+  def initialize(params)
+    @error = params[:error]
+    super(params)
   end
 end
