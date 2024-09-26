@@ -10,11 +10,18 @@ $link-color: $white;
 $hover-color: darken($link-color, 20%);
 $visited-color: lighten($link-color, 20%);
 
-div#cic-header-navbar {
+div#b1g-header-navbar {
   margin-bottom:0;
   background-color: darken($btaa-blue, 10%);
   padding-left:0.5rem;
   padding-right:0.5rem;
+
+  a#btaa-logo {
+    &:hover {
+      border-bottom: none !important;
+      text-decoration: none !important;
+    }
+  } 
 }
 
 #header-navbar {
