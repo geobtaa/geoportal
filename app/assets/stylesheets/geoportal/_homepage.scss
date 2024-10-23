@@ -22,8 +22,13 @@ main.homepage {
   padding-left:15px;
   padding-right:15px;
 
+  &.container-fluid {
+    margin-top:0rem;
+  }
+
   #home-content {
-    margin-top:5.5rem;
+    margin-top:0rem;
+
     h2 {
       margin-top:1rem;
     }
@@ -31,9 +36,8 @@ main.homepage {
 
   #wrapper-map {
     div#map-container {
-      position:fixed;
-      top:5.5rem;
       height: 100%;
+      width: 100%;
       padding:0px;
 
       div#map {

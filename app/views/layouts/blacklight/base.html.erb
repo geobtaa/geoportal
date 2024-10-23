@@ -55,6 +55,9 @@
     <% if homepage? %>
       <%= render :partial=>'shared/flash_msg', layout: 'shared/flash_messages' %>
       <%= render 'home' %>
+      <section id="footer-app" aria-label='Application Footer'>
+        <%= render :partial => 'shared/footer_app' %>
+      </section>
     <% else %>
       <main id="main-container" class="<%= container_classes %>">
         <%= content_for(:container_header) %>

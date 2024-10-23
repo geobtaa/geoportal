@@ -6,7 +6,8 @@ Blacklight.onLoad(function() {
 
     console.log('Map: Home')
 
-    geoblacklight.map.setZoom(2);
+    // geoblacklight.map.setZoom(3);
+    geoblacklight.map.setView(new L.LatLng(20.737, -64.990), 3);
     geoblacklight.map.addControl(L.control.geosearch({
       baseUrl: '/',
       dynamic: false,
