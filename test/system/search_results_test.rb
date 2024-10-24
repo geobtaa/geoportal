@@ -22,8 +22,8 @@ class SearchResultsPageTest < ApplicationSystemTestCase
       assert page.has_text?("About & Help")
       assert page.has_text?("Policies")
       assert page.has_text?("Sponsors")
-      assert page.has_text?("BTAA Member Libraries & Stories")
-      assert page.has_text?("Explore Member Libraries")
+      assert page.has_text?("BTAA Geoportal Collection Stories")
+      assert page.has_text?("Explore BTAA Member Libraries")
     end
   end
 
