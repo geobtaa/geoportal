@@ -1,4 +1,14 @@
+# Configure Rails Environment
 ENV['RAILS_ENV'] ||= 'test'
+
+# SimpleCov
+require "simplecov"
+SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
+
+SimpleCov.start "rails" do
+  add_filter ".internal_test_app/"
+end
+
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 

@@ -19,6 +19,7 @@
 /tmp
 jettywrapper.log
 *.log
+coverage
 
 # Sitemap is generated periodically
 public/sitemap.xml*
