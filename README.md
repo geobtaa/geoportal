@@ -20,6 +20,7 @@ This project is collectively managed by librarians and geospatial specialists at
 * University of Minnesota (host institution)
 * University of Nebraska-Lincoln
 * University of Wisconsin-­Madison
+* Northwestern University
 
 ### Technology and Hosting
 
@@ -30,4 +31,4 @@ Visit the [project wiki](https://github.com/BTAA-Geospatial-Data-Project/geoport
 
 #### Release Version
 
-B1G Geoportal Version v5.10.0 / GeoBlacklight v4.4.0 / GeoBlacklight Admin v0.4.1 (develop branch)
+B1G Geoportal Version v5.11.0 / GeoBlacklight v4.4.0 / GeoBlacklight Admin v0.4.1 (develop branch)
