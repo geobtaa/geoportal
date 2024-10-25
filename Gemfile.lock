@@ -30,7 +30,7 @@ GIT
 GIT
   remote: https://github.com/geoblacklight/geoblacklight_sidecar_images.git
   revision: ca23e5ef8eb4fa90d5c9cb955943deeb0dcba6f5
-  branch: develop
+  branch: feature/statesman-update
   specs:
     geoblacklight_sidecar_images (1.1.0)
       faraday (>= 2.0)
@@ -43,8 +43,8 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 4fee2c640fa5778d2b854fb1744e09b6adcd586b
-  branch: develop
+  revision: 7aa05e4a2fdfc8f0b7f4b04c69c3069e3c244ea4
+  branch: feature/decouple-references
   specs:
     geoblacklight_admin (0.5.1)
       active_storage_validations (~> 1.0)
@@ -75,7 +75,7 @@ GIT
       ruby-progressbar
       simple_form (~> 5.0)
       sprockets (~> 3.0)
-      statesman (~> 11.0)
+      statesman (~> 12.0)
       vite_rails (~> 3.0)
       vite_ruby (>= 3.5)
       zeitwerk (~> 2.6)
@@ -83,7 +83,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    Ascii85 (2.0.1)
+    Ascii85 (1.1.1)
     actioncable (7.0.8.6)
       actionpack (= 7.0.8.6)
       activesupport (= 7.0.8.6)
@@ -762,7 +762,7 @@ GEM
     sqlite3 (1.7.3)
       mini_portile2 (~> 2.8.0)
     stackprof (0.2.26)
-    statesman (11.0.0)
+    statesman (12.1.0)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     temple (0.10.3)
@@ -925,7 +925,7 @@ DEPENDENCIES
   spring
   sqlite3 (~> 1.4)
   stackprof (~> 0.2.12)
-  statesman (~> 11.0)
+  statesman (>= 12.0)
   stimulus-rails
   terser
   turbolinks
