@@ -5,6 +5,10 @@ $black: #000000; // 0%
 $btaa-blue: #005E8E;
 $radius: 4px;
 
+html {
+  background-color: $btaa-blue;
+}
+
 #survey-button {
   position: fixed;
   bottom:2rem;
@@ -22,8 +26,13 @@ main.homepage {
   padding-left:15px;
   padding-right:15px;
 
+  &.container-fluid {
+    margin-top:0rem;
+  }
+
   #home-content {
-    margin-top:5.5rem;
+    margin-top:0rem;
+
     h2 {
       margin-top:1rem;
     }
@@ -31,9 +40,8 @@ main.homepage {
 
   #wrapper-map {
     div#map-container {
-      position:fixed;
-      top:5.5rem;
       height: 100%;
+      width: 100%;
       padding:0px;
 
       div#map {

@@ -19,10 +19,11 @@ class SearchResultsPageTest < ApplicationSystemTestCase
       assert page.has_no_link?("History")
 
       # Good Links - Should Pass
-      assert page.has_link?("News & Updates")
-      assert page.has_link?("About Us")
-      assert page.has_link?("Contact Project Team")
-      assert page.has_link?("Big Ten Academic Alliance Homepage")
+      assert page.has_text?("About & Help")
+      assert page.has_text?("Policies")
+      assert page.has_text?("Sponsors")
+      assert page.has_text?("BTAA Geoportal Collection Stories")
+      assert page.has_text?("Explore BTAA Member Libraries")
     end
   end
 

@@ -6,13 +6,19 @@
   }
 }
 
-// a11y active pagination page link 
-.page-link {
-  text-decoration: underline;
-}
+.page-links a, a.page-link {
 
-.page-links a {
-  text-decoration: underline;
+  color: #005E8E;
+
+  &:hover {
+    color: #005E8E !important;
+    border-color: #dee2e6 !important;
+  }
+
+  &:visited {
+    color: #005E8E !important;
+    border-color: #dee2e6 !important;
+  }
 }
 
 .page-item.active .page-link {

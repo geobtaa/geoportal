@@ -1,16 +1,91 @@
 %div.container-fluid
   %div.row
-    %div.col-xs-12.col-lg-12
-      %h3 Big Ten Academic Alliance Geoportal
-      %ul.list-horizontal
+    %div#footer-title.col-xs-12.col-lg-12
+      = link_to "https://gin.btaa.org" do
+        = image_tag('gin-white.png', {alt: "Big Ten Academic Alliance Logo", height: '80px'})
+
+    %div.col-xs-12.col-lg-6
+
+      %h3.mt-3 About & Help
+      %ul.list-unstyled
         %li
-          = link_to "News &amp; Updates".html_safe, 'https://geobtaa.blogspot.com'
+          = link_to "About Us", "https://gin.btaa.org/about/about-us/"
         %li
-          = link_to "About Us", 'https://gin.btaa.org'
+          = link_to "Program Updates", "https://gin.btaa.org/updates"
         %li
-          %a{href:'https://gin.btaa.org/library/harmful-language/'} Harmful Language Statement
+          = link_to "Contact Us", "https://geo.btaa.org/feedback"
         %li
-          %a{href:'https://geo.btaa.org/feedback'} Contact Project Team
+          = link_to "Help Guides", "https://gin.btaa.org/guides/"
+        %li 
+          = link_to "Tutorials", "https://gin.btaa.org/tutorials"
+
+      %h3.mt-3 Policies
+      %ul.list-unstyled
         %li
-          %a{href:'http://www.btaa.org'} Big Ten Academic Alliance Homepage
+          = link_to "Harmful Language Statement", "https://gin.btaa.org/policies/harmful-language"
+        %li
+          = link_to "Privacy Statement", "https://btaa.org/privacy"
+        %li
+          = link_to "Collection Development", "https://gin.btaa.org/policies/collection-development"
+
+      %h3.mt-3 Sponsors
+      %ul.list-unstyled
+        %li
+          = link_to "Big Ten Academic Alliance", "https://btaa.org/"
+        %li
+          = link_to "BTAA Geospatial Information Network", "https://gin.btaa.org/"
+        %li
+          = link_to "University of Minnesota Libraries", "https://lib.umn.edu/"
+    
+    %div.col-xs-12.col-lg-6
+      %h3.mt-3 BTAA Geoportal Collection Stories
+      %ul.list-unstyled
+        %li
+          %strong
+            = link_to "Using Maps for an Art Exhibition at Ohio State", "https://geobtaa.blogspot.com/2024/10/using-maps-for-art-exhibition-at-ohio.html"
+          • October 16, 2024
+        %li
+          %strong
+            = link_to "Negro Motorist Green Book Locations in Detroit", "https://geobtaa.blogspot.com/2024/09/negro-motorist-green-book-locations-in.html"
+          • September 18, 2024
+        %li
+          %strong
+            = link_to "Archiving geospatial data at the University of Wisconsin-Madison", "https://geobtaa.blogspot.com/2024/07/archiving-geospatial-data-at-university.html"
+          • July 18, 2024
+
+      %p
+        = link_to "More Collection Stories", "https://geobtaa.blogspot.com/"
+      
+      %h4.mt-4 Explore BTAA Member Libraries
+      %ul.list-unstyled{style: "column-count: 2;"}
+        %li
+          = link_to "University of Chicago", "https://www.lib.uchicago.edu/"
+        %li
+          = link_to "University of Illinois", "https://www.library.illinois.edu/"
+        %li
+          = link_to "Indiana University", "https://libraries.indiana.edu/"
+        %li
+          = link_to "University of Iowa", "https://www.lib.uiowa.edu/"
+        %li
+          = link_to "University of Maryland", "https://www.lib.umd.edu/"
+        %li
+          = link_to "University of Michigan", "https://www.lib.umich.edu/"
+        %li
+          = link_to "Michigan State University", "https://lib.msu.edu/"
+        %li
+          = link_to "University of Minnesota", "https://www.lib.umn.edu/"
+        %li
+          = link_to "University of Nebraska-Lincoln", "https://libraries.unl.edu/"
+        %li
+          = link_to "Northwestern University", "https://www.library.northwestern.edu/"
+        %li
+          = link_to "The Ohio State University", "https://library.osu.edu/"
+        %li
+          = link_to "Pennsylvania State University", "https://libraries.psu.edu/"
+        %li
+          = link_to "Purdue University", "https://www.lib.purdue.edu/"
+        %li
+          = link_to "Rutgers University", "https://www.libraries.rutgers.edu/"
+        %li
+          = link_to "University of Wisconsin-Madison", "https://www.library.wisc.edu/"
 

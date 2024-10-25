@@ -5,9 +5,42 @@ $black: #000000; // 0%
 $btaa-blue: #005E8E;
 $radius: 4px;
 
-// link 
-a { text-decoration: underline; }
+// link color variables
+$link-color: $btaa-blue;
+$hover-color: darken($link-color, 20%);
+$visited-color: lighten($link-color, 15%);
+
+// link styling
+a {
+  color: $link-color;
+  text-decoration: none;
+  
+  &:hover{
+  color: $hover-color;
+  }
+
+  &:visited{
+    color: $visited-color;
+    border-color: $visited-color;
+  }
+}
 a.btn { text-decoration: none; }
+a.btn.btn-primary {
+  color: $white;
+  background-color: $btaa-blue;
+  border-color: $btaa-blue;
+
+
+  &:hover {
+    color: $white;
+    background-color: #003c5b;
+    border-color: #006fa8;
+  }
+
+  &:visited {
+    color: $white;
+  }
+}
 a.navbar-brand { text-decoration: none; }
 
 #geoportal-about {
