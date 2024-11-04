@@ -78,8 +78,42 @@ Rails.application.routes.draw do
     end
   end
 
-  ####################
-  # GBL‡ADMIN
+####################
+# GBL‡ADMIN
+
+# Bulk Actions
+resources :bulk_actions do
+  patch :run, on: :member
+  patch :revert, on: :member
+end
+
+# Users
+devise_for :users, skip: [:registrations]
+as :user do
+  get "/sign_in" => "devise/sessions#new" # custom path to login/sign_in
+  get "/sign_up" => "devise/registrations#new", :as => "new_user_registration" # custom path to sign_up/registration
+  get "users/edit" => "devise/registrations#edit", :as => "edit_user_registration"
+  put "users" => "devise/registrations#update", :as => "user_registration"
+end
+
+namespace :admin do
+  # Root
+  root to: "documents#index"
+
+  # Assets
+  # Note "assets" is Rails reserved word for routing, oops. So we use
+  # asset_files.
+  resources :assets, path: "asset_files" do
+    collection do
+      get "display_attach_form"
+      post "attach_files"
+
+      get "destroy_all"
+      post "destroy_all"
+    end
+
+    post :sort, on: :collection
+  end
 
   # Bulk Actions
   resources :bulk_actions do
@@ -87,150 +121,69 @@ Rails.application.routes.draw do
     patch :revert, on: :member
   end
 
-  # Users
-  devise_for :users, controllers: {invitations: "devise/invitations"}, skip: [:registrations]
-  as :user do
-    get "/sign_in" => "devise/sessions#new" # custom path to login/sign_in
-    get "/sign_up" => "devise/registrations#new", :as => "new_user_registration" # custom path to sign_up/registration
-    get "users/edit" => "devise/registrations#edit", :as => "edit_user_registration"
-    put "users" => "devise/registrations#update", :as => "user_registration"
+  # Imports
+  resources :imports do
+    resources :mappings
+    resources :import_documents, only: [:show]
+    patch :run, on: :member
   end
 
-  namespace :admin do
+  # Elements
+  resources :elements do
+    post :sort, on: :collection
+  end
 
-    authenticate :user, ->(user) { user.admin? } do
-      mount Sidekiq::Web => "/sidekiq"
-    end
-    
-    devise_for :users, controllers: {invitations: "devise/invitations"}, skip: [:registrations]
-    # Root
-    root to: "documents#index"
+  # Form Elements
+  resources :form_elements do
+    post :sort, on: :collection
+  end
+  resources :form_header, path: :form_elements, controller: :form_elements
+  resources :form_group, path: :form_elements, controller: :form_elements
+  resources :form_control, path: :form_elements, controller: :form_elements
+  resources :form_feature, path: :form_elements, controller: :form_elements
 
-    # Assets
-    # Note "assets" is Rails reserved word for routing, oops. So we use
-    # asset_files.
-    resources :assets, path: "asset_files" do
-      collection do
-        get "display_attach_form"
-        post "attach_files"
+  # Reference Types
+  resources :reference_types do
+    post :sort, on: :collection
+  end
 
-        get "destroy_all"
-        post "destroy_all"
-      end
+  # Notifications
+  resources :notifications do
+    put "batch", on: :collection
+  end
 
-      post :sort, on: :collection
-    end
+  # Users
+  get "users/index"
 
-    # Bulk Actions
-    resources :bulk_actions do
-      patch :run, on: :member
-      patch :revert, on: :member
-    end
+  # Bookmarks
+  resources :bookmarks
+  delete "/bookmarks", to: "bookmarks#destroy", as: :bookmarks_destroy_by_fkeys
 
-    # Imports
-    resources :imports do
-      resources :mappings
-      resources :import_documents, only: [:show]
-      patch :run, on: :member
-    end
+  # Search controller
+  get "/search" => "search#index"
+  
+  # AdvancedSearch controller
+  get '/advanced_search' => 'advanced_search#index', constraints: lambda { |req| req.format == :json }
+  get '/advanced_search/facets' => 'advanced_search#facets', constraints: lambda { |req| req.format == :json }
+  get '/advanced_search/facet/:id' => 'advanced_search#facet', constraints: lambda { |req| req.format == :json }, as: 'advanced_search_facet'
 
-    # Elements
-    resources :elements do
-      post :sort, on: :collection
-    end
+  # Ids controller
+  get '/api/ids' => 'ids#index', constraints: lambda { |req| req.format == :json }
+  get '/api' => 'api#index', constraints: lambda { |req| req.format == :json }
+  get '/api/fetch' => 'api#fetch', constraints: lambda { |req| req.format == :json }
+  get '/api/facet/:id' => 'api#facet', constraints: lambda { |req| req.format == :json }
 
-    # Form Elements
-    resources :form_elements do
-      post :sort, on: :collection
-    end
-    resources :form_header, path: :form_elements, controller: :form_elements
-    resources :form_group, path: :form_elements, controller: :form_elements
-    resources :form_control, path: :form_elements, controller: :form_elements
-    resources :form_feature, path: :form_elements, controller: :form_elements
+  # Documents
+  resources :documents do
+    get "admin"
+    get "versions"
 
-    # Notifications
-    resources :notifications do
-      put "batch", on: :collection
+    collection do
+      get "fetch"
     end
 
-    # Users
-    get "users/index"
-
-    # Bookmarks
-    resources :bookmarks
-    delete "/bookmarks", to: "bookmarks#destroy", as: :bookmarks_destroy_by_fkeys
-
-    # Search controller
-    get "/search" => "search#index"
-    
-    # AdvancedSearch controller
-    get '/advanced_search' => 'advanced_search#index', constraints: lambda { |req| req.format == :json }
-    get '/advanced_search/facets' => 'advanced_search#facets', constraints: lambda { |req| req.format == :json }
-    get '/advanced_search/facet/:id' => 'advanced_search#facet', constraints: lambda { |req| req.format == :json }, as: 'advanced_search_facet'
-
-    # Ids controller
-    get '/api/ids' => 'ids#index', constraints: lambda { |req| req.format == :json }
-    get '/api' => 'api#index', constraints: lambda { |req| req.format == :json }
-    get '/api/fetch' => 'api#fetch', constraints: lambda { |req| req.format == :json }
-    get '/api/facet/:id' => 'api#facet', constraints: lambda { |req| req.format == :json }
-    get '/api/tableau_export' => 'api#tableau_export'
-
-    # Documents
-    resources :documents do
-      get "admin"
-      get "versions"
-
-      # DocumentAccesses
-      resources :document_accesses, path: "access" do
-        collection do
-          get "import"
-          post "import"
-
-          get "destroy_all"
-          post "destroy_all"
-        end
-      end
-
-      # DocumentDownloads
-      resources :document_downloads, path: "downloads" do
-        collection do
-          get "import"
-          post "import"
-
-          get "destroy_all"
-          post "destroy_all"
-        end
-      end
-
-      # Document Assets
-      resources :document_assets, path: "assets" do
-        collection do
-          get "display_attach_form"
-          post "attach_files"
-
-          get "destroy_all"
-          post "destroy_all"
-        end
-      end
-
-      collection do
-        get "fetch"
-      end
-    end
-
-    # Document Accesses
+    # DocumentAccesses
     resources :document_accesses, path: "access" do
-      collection do
-        get "import"
-        post "import"
-
-        get "destroy_all"
-        post "destroy_all"
-      end
-    end
-
-    # Document Downloads
-    resources :document_downloads, path: "downloads" do
       collection do
         get "import"
         post "import"
@@ -251,28 +204,100 @@ Rails.application.routes.draw do
       end
     end
 
-    # Assets
-    get "/asset_files/ingest", to: "assets#display_attach_form", as: "assets_ingest"
-    post "/asset_files/ingest", to: "assets#attach_files"
-              
-    # DocumentAssets
-    get "/documents/:id/ingest", to: "document_assets#display_attach_form", as: "asset_ingest"
-    post "/documents/:id/ingest", to: "document_assets#attach_files"
-    mount Kithe::AssetUploader.upload_endpoint(:cache) => "/direct_upload", :as => :direct_app_upload
+    # DocumentDownloads
+    resources :document_downloads, path: "downloads" do
+      collection do
+        get "import"
+        post "import"
 
-    resources :collections, except: [:show]
-
-    # Note "assets" is Rails reserved word for routing, oops. So we use
-    # asset_files.
-    resources :assets, path: "asset_files", except: [:new, :create] do
-      member do
-        put "convert_to_child_work"
+        get "destroy_all"
+        post "destroy_all"
       end
     end
 
-    # @TODO
-    # mount Qa::Engine => "/authorities"
-    mount ActionCable.server => "/cable"
+    # Document References
+    resources :document_references, path: "references" do
+      collection do
+        get "display_attach_form"
+        post "attach_files"
+
+        get "import"
+        post "import"
+
+        get "destroy_all"
+        post "destroy_all"
+      end
+    end
+  end
+
+  # Document Accesses
+  resources :document_accesses, path: "access" do
+    collection do
+      get "import"
+      post "import"
+
+      get "destroy_all"
+      post "destroy_all"
+    end
+  end
+
+  # Document Downloads
+  resources :document_downloads, path: "downloads" do
+    collection do
+      get "import"
+      post "import"
+
+      get "destroy_all"
+      post "destroy_all"
+    end
+  end
+
+  # Document References
+  resources :document_references, path: "references" do
+    collection do
+      get "import"
+      post "import"
+
+      get "destroy_all"
+      post "destroy_all"
+    end
+  end
+
+  # Document Assets
+  resources :document_assets, path: "assets" do
+    collection do
+      get "display_attach_form"
+      post "attach_files"
+
+      get "destroy_all"
+      post "destroy_all"
+    end
+  end
+
+  # Assets
+  get "/asset_files/ingest", to: "assets#display_attach_form", as: "assets_ingest"
+  post "/asset_files/ingest", to: "assets#attach_files"
+  
+  # DocumentAssets
+  get "/documents/:id/ingest", to: "document_assets#display_attach_form", as: "asset_ingest"
+  post "/documents/:id/ingest", to: "document_assets#attach_files"
+  
+  # Asset Direct Upload
+  mount Kithe::AssetUploader.upload_endpoint(:cache) => "/direct_upload", :as => :direct_app_upload
+
+  resources :collections, except: [:show]
+
+  # Note "assets" is Rails reserved word for routing, oops. So we use
+  # asset_files.
+  resources :assets, path: "asset_files", except: [:new, :create] do
+    member do
+      put "convert_to_child_work"
+    end
+  end
+
+  # @TODO
+  # mount Qa::Engine => "/authorities"
+  mount ActionCable.server => "/cable"
 
     # @TODO
     authenticate :user, ->(user) { user } do
