@@ -100,7 +100,7 @@ gem 'noticed'
 gem 'paper_trail'
 
 # Image migration
-gem 'geoblacklight_sidecar_images', git: "https://github.com/geoblacklight/geoblacklight_sidecar_images.git", branch: "feature/statesman-update"
+gem 'geoblacklight_sidecar_images', git: "https://github.com/geoblacklight/geoblacklight_sidecar_images.git", branch: "develop"
 gem 'mini_magick', '~> 4.9.4'
 gem "image_processing", ">= 1.2"
 
