@@ -40,6 +40,7 @@
 //= require geoblacklight/viewers/viewer
 //= require ./geoportal/viewers/map
 //= require ./geoportal/viewers/b1g_image
+//= require ./geoportal/viewers/cog
 //= require ./geoportal/viewers/download
 //= require ./geoportal/viewers/esri
 //= require ./geoportal/viewers/esri/dynamic_map_layer
@@ -50,10 +51,10 @@
 //= require ./geoportal/viewers/iiif_manifest
 //= require ./geoportal/viewers/index_map
 //= require geoblacklight/viewers/oembed
-
-//= require ./geoportal/viewers/wms
+//= require ./geoportal/viewers/pmtiles
 //= require ./geoportal/viewers/tilejson
 //= require ./geoportal/viewers/tms
+//= require ./geoportal/viewers/wms
 //= require ./geoportal/viewers/wmts
 //= require ./geoportal/viewers/xyz
 
