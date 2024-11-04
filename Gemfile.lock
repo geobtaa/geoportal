@@ -27,17 +27,17 @@ GIT
 
 GIT
   remote: https://github.com/geoblacklight/geoblacklight_sidecar_images.git
-  revision: 089e2a4a677a5d522b9d88fef0ef46cfa69961a0
-  branch: feature/statesman-update
+  revision: ca23e5ef8eb4fa90d5c9cb955943deeb0dcba6f5
+  branch: develop
   specs:
-    geoblacklight_sidecar_images (1.0.0)
+    geoblacklight_sidecar_images (1.1.0)
       faraday (>= 2.0)
       geoblacklight (~> 4.0)
       image_processing (~> 1.6)
       mimemagic (~> 0.3)
       mini_magick (~> 4.9.4)
-      rails (>= 5.2, < 7.1)
-      statesman (~> 10.0.0)
+      rails (>= 5.2, < 8.0)
+      statesman (>= 3.4)
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
