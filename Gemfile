@@ -104,7 +104,7 @@ gem 'geoblacklight_sidecar_images', git: "https://github.com/geoblacklight/geobl
 gem 'mini_magick', '~> 4.9.4'
 gem "image_processing", ">= 1.2"
 
-gem 'statesman', '~> 10.0'
+gem 'statesman', '~> 11.0'
 gem 'sidekiq', '~> 6.4'
 gem 'sidekiq-failures', '~> 1.0.0'
 gem 'down', '~> 5.0'
