@@ -30,7 +30,7 @@ GIT
 GIT
   remote: https://github.com/geoblacklight/geoblacklight_sidecar_images.git
   revision: ca23e5ef8eb4fa90d5c9cb955943deeb0dcba6f5
-  branch: feature/statesman-update
+  branch: develop
   specs:
     geoblacklight_sidecar_images (1.1.0)
       faraday (>= 2.0)
@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 515ffad540dcd6487dc0b54afb0ccb46a1443557
+  revision: bff0b6a96f1495827954e03cefd082ecf90d95dd
   branch: feature/decouple-references
   specs:
     geoblacklight_admin (0.5.1)
