@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 7b6c387a5ed17c6ad2c5c14ee7d6edf66c831808
+  revision: 515ffad540dcd6487dc0b54afb0ccb46a1443557
   branch: feature/decouple-references
   specs:
     geoblacklight_admin (0.5.1)
@@ -83,7 +83,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    Ascii85 (1.1.1)
+    Ascii85 (2.0.1)
     actioncable (7.0.8.6)
       actionpack (= 7.0.8.6)
       activesupport (= 7.0.8.6)
