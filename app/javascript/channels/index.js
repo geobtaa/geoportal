@@ -1,5 +1,8 @@
-// Load all the channels within this directory and all subdirectories.
-// Channel files must be named *_channel.js.
+// Function to dynamically import all channel files
+async function importAllChannels() {
+  const modules = import.meta.glob('./*_channel.js');
+  const importPromises = Object.keys(modules).map(path => modules[path]());
+  await Promise.all(importPromises);
+}
 
-const channels = require.context('.', true, /_channel\.js$/)
-channels.keys().forEach(channels)
+importAllChannels();

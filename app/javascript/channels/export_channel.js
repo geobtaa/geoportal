@@ -3,16 +3,16 @@ import consumer from "./consumer"
 consumer.subscriptions.create({ channel: "ExportChannel" }, {
   connected() {
     // Called when the subscription is ready for use on the server
-    console.log('Export Channel Connected');
+    console.log("GBL Admin - ExportChannel connected");
   },
 
   disconnected() {
     // Called when the subscription has been terminated by the server
-    console.log('Export Channel Disconnected');
+    console.log("GBL Admin - ExportChannel disconnected");
   },
 
   received(data) {
-    console.log('Export Channel Received');
+    console.log('GBL Admin - ExportChannel received!');
     console.log(data);
 
     if (data['progress']) {

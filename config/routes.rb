@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => "/cable"
+  
   get 'about', :to => redirect('https://gin.btaa.org/')
   get 'help', :to => redirect('https://gin.btaa.org/guides/')
   get 'robots.:format' => 'robots#robots'
@@ -297,8 +299,6 @@ namespace :admin do
 
   # @TODO
   # mount Qa::Engine => "/authorities"
-  mount ActionCable.server => "/cable"
-
     # @TODO
     authenticate :user, ->(user) { user } do
       mount Blazer::Engine, at: "blazer"
