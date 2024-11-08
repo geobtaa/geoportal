@@ -1,6 +1,6 @@
 import consumer from "./consumer"
 
-consumer.subscriptions.create({ channel: "ExportChannel" }, {
+export default consumer.subscriptions.create({ channel: "ExportChannel" }, {
   connected() {
     // Called when the subscription is ready for use on the server
     console.log("GBL Admin - ExportChannel connected");
