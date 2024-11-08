@@ -22,9 +22,7 @@ console.log('Vite ⚡️ Rails')
 // ActiveStorage.start()
 //
 // // Import all channels.
-import '../channels/consumer'
-import '../channels/export_channel'
-import '../channels/index'
+import '../channels';
 
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
