@@ -1,0 +1,21 @@
+# Migration steps
+
+1. Set `GBL_ADMIN_REFERENCES_MIGRATED=false` in .env.production
+2. Deploy code to box
+3. Migrate references
+4. Audit references
+5. Set `GBL_ADMIN_REFERENCES_MIGRATED=true` in .env.production
+6. Restart puma and sidekiq via:
+
+```
+sudo systemctl restart puma
+sudo systemctl restart sidekiq
+```
+
+7. Reindex documents
+
+```
+RAILS_ENV=production bundle exec rake geoblacklight_admin:solr:reindex
+```
+
+8. PROFIT!
