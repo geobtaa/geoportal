@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :geonames
   get 'about', :to => redirect('https://gin.btaa.org/')
   get 'help', :to => redirect('https://gin.btaa.org/guides/')
   get 'robots.:format' => 'robots#robots'

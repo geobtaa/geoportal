@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @geoname %>
+
+<div>
+  <%= link_to "Edit this geoname", edit_geoname_path(@geoname) %> |
+  <%= link_to "Back to geonames", geonames_path %>
+
+  <%= button_to "Destroy this geoname", @geoname, method: :delete %>
+</div>

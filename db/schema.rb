@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_19_183528) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_10_202927) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -214,13 +214,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_19_183528) do
     t.string "name"
     t.string "request", null: false
     t.string "scope", null: false
-    t.string "field_name"
-    t.string "field_value"
+    t.string "field_name", null: false
+    t.string "field_value", null: false
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "action_type", default: "ChangePublicationState", null: false
-    t.string "action"
   end
 
   create_table "document_accesses", force: :cascade do |t|
@@ -238,6 +236,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_19_183528) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "document_references", force: :cascade do |t|
+    t.string "friendlier_id", null: false
+    t.bigint "reference_type_id", null: false
+    t.string "url"
+    t.string "label"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friendlier_id", "reference_type_id", "url"], name: "document_references_unique_index", unique: true
+    t.index ["reference_type_id"], name: "index_document_references_on_reference_type_id"
   end
 
   create_table "document_thumbnail_transitions", force: :cascade do |t|
@@ -301,81 +311,28 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_19_183528) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "good_job_batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "geonames", force: :cascade do |t|
+    t.bigint "geonameid"
+    t.string "name"
+    t.string "asciiname"
+    t.text "alternatenames"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.string "feature_class"
+    t.string "feature_code"
+    t.string "country_code"
+    t.string "cc2"
+    t.string "admin1_code"
+    t.string "admin2_code"
+    t.string "admin3_code"
+    t.string "admin4_code"
+    t.bigint "population"
+    t.integer "elevation"
+    t.integer "dem"
+    t.string "timezone"
+    t.date "modification_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "description"
-    t.jsonb "serialized_properties"
-    t.text "on_finish"
-    t.text "on_success"
-    t.text "on_discard"
-    t.text "callback_queue_name"
-    t.integer "callback_priority"
-    t.datetime "enqueued_at", precision: nil
-    t.datetime "discarded_at", precision: nil
-    t.datetime "finished_at", precision: nil
-  end
-
-  create_table "good_job_executions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.uuid "active_job_id", null: false
-    t.text "job_class"
-    t.text "queue_name"
-    t.jsonb "serialized_params"
-    t.datetime "scheduled_at", precision: nil
-    t.datetime "finished_at", precision: nil
-    t.text "error"
-    t.integer "error_event", limit: 2
-    t.index ["active_job_id", "created_at"], name: "index_good_job_executions_on_active_job_id_and_created_at"
-  end
-
-  create_table "good_job_processes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.jsonb "state"
-  end
-
-  create_table "good_job_settings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "key"
-    t.jsonb "value"
-    t.index ["key"], name: "index_good_job_settings_on_key", unique: true
-  end
-
-  create_table "good_jobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.text "queue_name"
-    t.integer "priority"
-    t.jsonb "serialized_params"
-    t.datetime "scheduled_at", precision: nil
-    t.datetime "performed_at", precision: nil
-    t.datetime "finished_at", precision: nil
-    t.text "error"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.uuid "active_job_id"
-    t.text "concurrency_key"
-    t.text "cron_key"
-    t.uuid "retried_good_job_id"
-    t.datetime "cron_at", precision: nil
-    t.uuid "batch_id"
-    t.uuid "batch_callback_id"
-    t.boolean "is_discrete"
-    t.integer "executions_count"
-    t.text "job_class"
-    t.integer "error_event", limit: 2
-    t.index ["active_job_id", "created_at"], name: "index_good_jobs_on_active_job_id_and_created_at"
-    t.index ["active_job_id"], name: "index_good_jobs_on_active_job_id"
-    t.index ["batch_callback_id"], name: "index_good_jobs_on_batch_callback_id", where: "(batch_callback_id IS NOT NULL)"
-    t.index ["batch_id"], name: "index_good_jobs_on_batch_id", where: "(batch_id IS NOT NULL)"
-    t.index ["concurrency_key"], name: "index_good_jobs_on_concurrency_key_when_unfinished", where: "(finished_at IS NULL)"
-    t.index ["cron_key", "created_at"], name: "index_good_jobs_on_cron_key_and_created_at"
-    t.index ["cron_key", "cron_at"], name: "index_good_jobs_on_cron_key_and_cron_at", unique: true
-    t.index ["finished_at"], name: "index_good_jobs_jobs_on_finished_at", where: "((retried_good_job_id IS NULL) AND (finished_at IS NOT NULL))"
-    t.index ["priority", "created_at"], name: "index_good_jobs_jobs_on_priority_created_at_when_unfinished", order: { priority: "DESC NULLS LAST" }, where: "(finished_at IS NULL)"
-    t.index ["queue_name", "scheduled_at"], name: "index_good_jobs_on_queue_name_and_scheduled_at", where: "(finished_at IS NULL)"
-    t.index ["scheduled_at"], name: "index_good_jobs_on_scheduled_at", where: "(finished_at IS NULL)"
   end
 
   create_table "image_upload_transitions", force: :cascade do |t|
@@ -513,6 +470,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_19_183528) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
+  create_table "reference_types", force: :cascade do |t|
+    t.string "name"
+    t.string "reference_type"
+    t.string "reference_uri"
+    t.boolean "label", default: false
+    t.text "note"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "searches", force: :cascade do |t|
     t.text "query_params"
     t.integer "user_id"
@@ -613,6 +581,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_19_183528) do
   add_foreign_key "bulk_action_document_transitions", "bulk_action_documents"
   add_foreign_key "bulk_action_documents", "bulk_actions"
   add_foreign_key "bulk_action_transitions", "bulk_actions"
+  add_foreign_key "document_references", "reference_types"
   add_foreign_key "image_upload_transitions", "solr_document_sidecars"
   add_foreign_key "import_document_transitions", "import_documents"
   add_foreign_key "import_documents", "imports"

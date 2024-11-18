@@ -1,0 +1,112 @@
+<%= form_with(model: geoname) do |form| %>
+  <% if geoname.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(geoname.errors.count, "error") %> prohibited this geoname from being saved:</h2>
+
+      <ul>
+        <% geoname.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :geonameid, style: "display: block" %>
+    <%= form.text_field :geonameid %>
+  </div>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :asciiname, style: "display: block" %>
+    <%= form.text_field :asciiname %>
+  </div>
+
+  <div>
+    <%= form.label :alternatenames, style: "display: block" %>
+    <%= form.text_area :alternatenames %>
+  </div>
+
+  <div>
+    <%= form.label :latitude, style: "display: block" %>
+    <%= form.text_field :latitude %>
+  </div>
+
+  <div>
+    <%= form.label :longitude, style: "display: block" %>
+    <%= form.text_field :longitude %>
+  </div>
+
+  <div>
+    <%= form.label :feature_class, style: "display: block" %>
+    <%= form.text_field :feature_class %>
+  </div>
+
+  <div>
+    <%= form.label :feature_code, style: "display: block" %>
+    <%= form.text_field :feature_code %>
+  </div>
+
+  <div>
+    <%= form.label :country_code, style: "display: block" %>
+    <%= form.text_field :country_code %>
+  </div>
+
+  <div>
+    <%= form.label :cc2, style: "display: block" %>
+    <%= form.text_field :cc2 %>
+  </div>
+
+  <div>
+    <%= form.label :admin1_code, style: "display: block" %>
+    <%= form.text_field :admin1_code %>
+  </div>
+
+  <div>
+    <%= form.label :admin2_code, style: "display: block" %>
+    <%= form.text_field :admin2_code %>
+  </div>
+
+  <div>
+    <%= form.label :admin3_code, style: "display: block" %>
+    <%= form.text_field :admin3_code %>
+  </div>
+
+  <div>
+    <%= form.label :admin4_code, style: "display: block" %>
+    <%= form.text_field :admin4_code %>
+  </div>
+
+  <div>
+    <%= form.label :population, style: "display: block" %>
+    <%= form.text_field :population %>
+  </div>
+
+  <div>
+    <%= form.label :elevation, style: "display: block" %>
+    <%= form.number_field :elevation %>
+  </div>
+
+  <div>
+    <%= form.label :dem, style: "display: block" %>
+    <%= form.number_field :dem %>
+  </div>
+
+  <div>
+    <%= form.label :timezone, style: "display: block" %>
+    <%= form.text_field :timezone %>
+  </div>
+
+  <div>
+    <%= form.label :modification_date, style: "display: block" %>
+    <%= form.date_field :modification_date %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

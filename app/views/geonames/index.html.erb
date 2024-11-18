@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Geonames</h1>
+
+<div id="geonames">
+  <% @geonames.each do |geoname| %>
+    <%= render geoname %>
+    <p>
+      <%= link_to "Show this geoname", geoname %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New geoname", new_geoname_path %>

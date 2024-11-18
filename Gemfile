@@ -158,3 +158,7 @@ gem "vite_rails", "~> 3.0"
 
 # Shrine
 gem "aws-sdk-s3", "~> 1.14"
+
+# Progress bar
+gem "activerecord-import"
+gem 'ruby-progressbar', '~> 1.13'
