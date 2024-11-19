@@ -124,8 +124,8 @@ response = solr.post 'tag', params: {
 # Parse the JSON response to extract geoname IDs
 geoname_ids = response['response']['docs'].map { |doc| doc['geonameid_i'] }
 
-# Fetch Geoname objects from the database using the extracted IDs
-geonames = Geoname.where(id: geoname_ids)
+# Fetch Geoname objects from the database using the extracted IDs, preserving order
+geonames = Geoname.where(geonameid: geoname_ids).order(Arel.sql("array_position(array[#{geoname_ids.join(',')}], geonameid)"))
 
 # Step 2: Use the geoname IDs to perform a geospatial query with sorting
 response = solr.get 'select', params: {
@@ -165,8 +165,8 @@ class GeonamesTagger
     # Parse the response to extract geoname IDs
     geoname_ids = response['response']['docs'].map { |doc| doc['geonameid_i'] }
 
-    # Fetch Geoname objects from the database using the extracted IDs
-    geonames = Geoname.where(geonameid: geoname_ids)
+    # Fetch Geoname objects from the database using the extracted IDs, preserving order
+    geonames = Geoname.where(geonameid: geoname_ids).order(Arel.sql("array_position(array[#{geoname_ids.join(',')}], geonameid)"))
   end
 
   # Method to perform a geospatial search using geoname IDs
@@ -185,8 +185,8 @@ class GeonamesTagger
     # Parse the response to extract geoname IDs
     geoname_ids = response['response']['docs'].map { |doc| doc['geonameid_i'] }
 
-    # Fetch Geoname objects from the database using the extracted IDs
-    geonames = Geoname.where(geonameid: geoname_ids)
+    # Fetch Geoname objects from the database using the extracted IDs, preserving order
+    geonames = Geoname.where(geonameid: geoname_ids).order(Arel.sql("array_position(array[#{geoname_ids.join(',')}], geonameid)"))
   end
 end
 
