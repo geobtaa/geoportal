@@ -63,3 +63,6 @@ node_modules
 *.local
 db/geonames/allCountries.txt
 db/geonames/allCountries.zip
+db/geonames/geonames_export.csv
+db/geonames/US.txt
+db/geonames/US.zip

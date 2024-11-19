@@ -46,3 +46,20 @@ ewlarson@beanburrito-5 solr % curl -X POST -H 'Content-type:application/json' ht
     "defaults":{"field":"name_tag"}
   }
 }'
+
+# Tagger example for Minneapolis
+ewlarson@beanburrito-5 geoportal % curl -X POST \
+  'http://localhost:8983/solr/geonames/tag?overlaps=NO_SUB&tagsLimit=5000&fl=geonameid,name,countrycode&wt=json&indent=on' \                            
+  -H 'Content-Type:text/plain' -d 'Minneapolis'
+
+# Lat/Long search example for Minneapolis
+curl -v -X POST \
+  'http://localhost:8983/solr/geonames/select?q=*:*&fq=%7B!bbox%20sfield=location_p%7D&pt=44.9135128,-93.2802394&d=1'
+
+# Lat/Long search example for Minneapolis sorted by distance descending
+curl -v -X POST \
+  'http://localhost:8983/solr/geonames/select?q=*:*&fq=%7B!bbox%20sfield=location_p%7D&pt=44.9135128,-93.2802394&d=1&sort=geodist(location_p,44.9135128,-93.2802394)%20desc'
+
+# Lat/Long search example for Minneapolis sorted by distance ascending and including distance
+curl -v -X POST \
+  'http://localhost:8983/solr/geonames/select?q=*:*&fq=%7B!bbox%20sfield=location_p%7D&pt=44.9135128,-93.2802394&d=1&sort=geodist(location_p,44.9135128,-93.2802394)%20asc&fl=*,score,geodist:geodist(location_p,44.9135128,-93.2802394)'

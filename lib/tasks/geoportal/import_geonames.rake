@@ -141,7 +141,7 @@ namespace :geoportal do
           COPY (
             SELECT 
               geonameid, 
-              name AS name_s, 
+              name, 
               asciiname AS asciiname_s, 
               alternatenames AS alternatenames_s, 
               latitude AS latitude_f, 
