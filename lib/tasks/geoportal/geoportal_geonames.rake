@@ -46,7 +46,7 @@ namespace :geoportal do
       puts "Download and extraction completed successfully."
     end
 
-    desc "Import allCountries.txt data into the Geonames table"
+    desc "Import US.txt data into the Geonames table"
     task import: :environment do
       file_path = Rails.root.join('db', 'geonames', 'US.txt')
 
@@ -112,24 +112,6 @@ namespace :geoportal do
       puts "Geonames import completed successfully."
     end
 
-    desc "Import Geoname entries into Solr"
-    task reindex_solr: :environment do
-      # Define the path to the CSV file
-      csv_file_path = Rails.root.join('db', 'geonames', 'geonames_export.csv')
-
-      # Define the Solr update URL
-      solr_url = "http://localhost:8983/solr/geonames/update?commit=true"
-
-      # Execute the curl command to update Solr
-      begin
-        puts "Updating Solr with data from #{csv_file_path}..."
-        system("curl '#{solr_url}' --data-binary @#{csv_file_path} -H 'Content-type:application/csv'")
-        puts "Geonames import to Solr completed successfully."
-      rescue StandardError => e
-        puts "Error updating Solr: #{e.message}"
-      end
-    end
-
     desc "Export Geoname table to a CSV file using PostgreSQL COPY"
     task export: :environment do
       file_path = Rails.root.join('db', 'geonames', 'geonames_export.csv')
@@ -140,7 +122,7 @@ namespace :geoportal do
         connection.execute <<-SQL
           COPY (
             SELECT 
-              geonameid, 
+              geonameid AS geonameid_i, 
               name, 
               asciiname AS asciiname_s, 
               alternatenames AS alternatenames_s, 
@@ -168,6 +150,24 @@ namespace :geoportal do
         puts "Geoname table exported to #{file_path} successfully using PostgreSQL COPY."
       rescue StandardError => e
         puts "Error exporting Geoname table: #{e.message}"
+      end
+    end
+
+    desc "Import Geoname entries into Solr"
+    task reindex_solr: :environment do
+      # Define the path to the CSV file
+      csv_file_path = Rails.root.join('db', 'geonames', 'geonames_export.csv')
+
+      # Define the Solr update URL
+      solr_url = "http://localhost:8983/solr/geonames/update?commit=true"
+
+      # Execute the curl command to update Solr
+      begin
+        puts "Updating Solr with data from #{csv_file_path}..."
+        system("curl '#{solr_url}' --data-binary @#{csv_file_path} -H 'Content-type:application/csv'")
+        puts "Geonames import to Solr completed successfully."
+      rescue StandardError => e
+        puts "Error updating Solr: #{e.message}"
       end
     end
   end
