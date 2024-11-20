@@ -251,3 +251,9 @@ distance = 1000
 geonames_tagger = GeonamesTagger.new('http://localhost:8983/solr/geonames')
 geonames_tagger.tag_and_search(text, latitude, longitude, distance)
 ```
+
+# TODO:
+
+* Who's on First downloader and DB adapter for WOF sqlite3 database
+https://whosonfirst.org/download/
+
