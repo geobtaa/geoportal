@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 9dc05962a1ce9949524c4a9a82fac6ccf5305222
+  revision: 3004c0b5e5534fda2a7654d0f817e870e9e1f685
   branch: feature/decouple-references
   specs:
     geoblacklight_admin (0.5.1)
