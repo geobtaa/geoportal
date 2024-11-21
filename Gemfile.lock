@@ -235,6 +235,8 @@ GEM
       popper_js (>= 1.16.1, < 2)
     builder (3.3.0)
     byebug (11.1.3)
+    bzip2-ffi (1.1.1)
+      ffi (~> 1.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -864,6 +866,7 @@ DEPENDENCIES
   bootsnap (~> 1.9.3)
   bootstrap (~> 4.0)
   byebug
+  bzip2-ffi
   capybara
   capybara-screenshot
   capybara-selenium

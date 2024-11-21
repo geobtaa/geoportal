@@ -162,3 +162,4 @@ gem "aws-sdk-s3", "~> 1.14"
 # Progress bar
 gem "activerecord-import"
 gem 'ruby-progressbar', '~> 1.13'
+gem 'bzip2-ffi'
