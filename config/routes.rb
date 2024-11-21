@@ -224,8 +224,8 @@ namespace :admin do
       end
     end
 
-    # Document References
-    resources :document_references, path: "references" do
+    # Document Distributions  
+    resources :document_distributions, path: "distributions" do
       collection do
         get "display_attach_form"
         post "attach_files"
@@ -261,8 +261,8 @@ namespace :admin do
     end
   end
 
-  # Document References
-  resources :document_references, path: "references" do
+  # Document Distributions
+  resources :document_distributions, path: "distributions" do
     collection do
       get "import"
       post "import"
