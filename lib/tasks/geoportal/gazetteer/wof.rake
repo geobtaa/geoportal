@@ -13,8 +13,8 @@ namespace :geoportal do
     namespace :wof do
       desc "Download Who's on First sqlite3 database"
       task download: :environment do
-        url = 'https://data.geocode.earth/wof/dist/bundles/whosonfirst-data-admin-us-latest.tar.bz2'
-        zip_path = Rails.root.join('db', 'gazetteer', 'wof', 'whosonfirst-data-admin-us-latest.tar.bz2')
+        url = 'https://data.geocode.earth/wof/dist/sqlite/whosonfirst-data-admin-us-latest.db.bz2'
+        file_path = Rails.root.join('db', 'gazetteer', 'wof', 'whosonfirst-data-admin-us-latest.db.bz2')
         extract_path = Rails.root.join('db', 'gazetteer', 'wof')
 
         # Ensure the directory exists
@@ -24,7 +24,7 @@ namespace :geoportal do
         begin
           puts "Downloading file from #{url}..."
           URI.open(url) do |remote_file|
-            File.open(zip_path, 'wb') do |file|
+            File.open(file_path, 'wb') do |file|
             file.write(remote_file.read)
             end
           end
@@ -36,15 +36,12 @@ namespace :geoportal do
           return
         end
 
-        # Extract the bz2 file
-        Bzip2::FFI::Reader.open(zip_path) do |input|
-          File.open(File.join(extract_path, 'whosonfirst-data-admin-us-latest.tar'), 'wb') do |output|
+        # Extract the bz2 file and write the decompressed content to a .db file
+        Bzip2::FFI::Reader.open(file_path) do |input|
+          File.open(File.join(extract_path, 'whosonfirst-data-admin-us-latest.db'), 'wb') do |output|
             IO.copy_stream(input, output)
           end
         end
-
-        # Optionally, extract the tar file if needed
-        system("tar -xvf #{File.join(extract_path, 'whosonfirst-data-admin-us-latest.tar')} -C #{extract_path}")
 
         puts "Download and extraction completed successfully."
       end

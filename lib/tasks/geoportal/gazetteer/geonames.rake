@@ -4,7 +4,8 @@ require 'open-uri'
 require 'rsolr'
 require 'zip'
 
-# Geoportal Gazetteer Geonames Tasks
+# Geoportal Gazetteer
+# Geonames Tasks
 # Order of execution: 
 # 1. download
 # 2. import
