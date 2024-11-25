@@ -74,7 +74,7 @@ namespace :geoportal do
               text = f.readline
               row = CSV.parse_line(text, col_sep: "\t", headers: false)
               geonames << {
-                geonameid: row[0],
+                geoname_id: row[0],
                 name: row[1],
                 asciiname: row[2],
                 alternatenames: row[3],
@@ -97,7 +97,7 @@ namespace :geoportal do
 
               # Import every 100000 records
               if geonames.size >= 100000
-                Geoname.import(geonames, validate: false)
+                Gazetteer::Geonames::Name.import(geonames, validate: false)
                 geonames.clear
               end
 
@@ -110,7 +110,7 @@ namespace :geoportal do
         end
 
         # Import any remaining records
-        Geoname.import(geonames, validate: false) unless geonames.empty?
+        Gazetteer::Geonames::Name.import(geonames, validate: false) unless geonames.empty?
 
         puts "Geonames import completed successfully."
       end
@@ -125,7 +125,7 @@ namespace :geoportal do
           connection.execute <<-SQL
             COPY (
               SELECT 
-                geonameid AS geonameid_i, 
+                geoname_id AS geonameid_i, 
                 name, 
                 asciiname AS asciiname_s, 
                 alternatenames AS alternatenames_s, 

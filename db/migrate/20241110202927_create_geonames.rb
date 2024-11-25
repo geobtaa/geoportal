@@ -24,6 +24,7 @@ class CreateGeonames < ActiveRecord::Migration[7.0]
       t.timestamps
     end
     
+    # @TODO: Add indexes after importing the data.
     # Indexes
     # add_index :geonames, :geonameid, unique: true
     # add_index :geonames, :name
