@@ -74,120 +74,132 @@ namespace :geoportal do
         end
 
         # Call the individual import tasks
-        Rake::Task['geoportal:gazetteer:wof:import_ancestors'].invoke
-        Rake::Task['geoportal:gazetteer:wof:import_concordances'].invoke
-        Rake::Task['geoportal:gazetteer:wof:import_geojson'].invoke
-        Rake::Task['geoportal:gazetteer:wof:import_names'].invoke
-        Rake::Task['geoportal:gazetteer:wof:import_spr'].invoke
+        Rake::Task['geoportal:gazetteer:wof:import_all'].invoke
         puts "CSV export and import completed successfully."
       end
 
-      desc "Import Ancestors CSV file into PostgreSQL"
-      task import_ancestors: :environment do
-        file_path = Rails.root.join('db', 'gazetteer', 'wof', 'csv', 'gazetteer_wof_ancestors.csv')
+      desc "Import CSV files into PostgreSQL"
+      task import_all: :environment do
+        import_tasks = {
+          ancestors: {
+            file: 'gazetteer_wof_ancestors.csv',
+            schema: [
+              { name: :wok_id, type: :bigint },
+              { name: :ancestor_id, type: :integer },
+              { name: :ancestor_placetype, type: :string },
+              { name: :lastmodified, type: :integer }
+            ],
+            model: Gazetteer::Wof::Ancestor
+          },
+          concordances: {
+            file: 'gazetteer_wof_concordances.csv',
+            schema: [
+              { name: :wok_id, type: :bigint },
+              { name: :other_id, type: :string },
+              { name: :other_source, type: :string },
+              { name: :lastmodified, type: :integer }
+            ],
+            model: Gazetteer::Wof::Concordance
+          },
+          geojson: {
+            file: 'gazetteer_wof_geojson.csv',
+            schema: [
+              { name: :wok_id, type: :bigint },
+              { name: :body, type: :text },
+              { name: :source, type: :string },
+              { name: :alt_label, type: :string },
+              { name: :is_alt, type: :boolean },
+              { name: :lastmodified, type: :integer }
+            ],
+            model: Gazetteer::Wof::Geojson
+          },
+          names: {
+            file: 'gazetteer_wof_names.csv',
+            schema: [
+              { name: :wok_id, type: :bigint },
+              { name: :placetype, type: :string },
+              { name: :country, type: :string },
+              { name: :language, type: :string },
+              { name: :extlang, type: :string },
+              { name: :script, type: :string },
+              { name: :region, type: :string },
+              { name: :variant, type: :string },
+              { name: :extension, type: :string },
+              { name: :privateuse, type: :string },
+              { name: :name, type: :string },
+              { name: :lastmodified, type: :integer }
+            ],
+            model: Gazetteer::Wof::Name
+          },
+          spr: {
+            file: 'gazetteer_wof_spr.csv',
+            schema: [
+              { name: :wok_id, type: :bigint },
+              { name: :parent_id, type: :integer },
+              { name: :name, type: :string },
+              { name: :placetype, type: :string },
+              { name: :country, type: :string },
+              { name: :repo, type: :string },
+              { name: :latitude, type: :decimal },
+              { name: :longitude, type: :decimal },
+              { name: :min_latitude, type: :decimal },
+              { name: :min_longitude, type: :decimal },
+              { name: :max_latitude, type: :decimal },
+              { name: :max_longitude, type: :decimal },
+              { name: :is_current, type: :integer },
+              { name: :is_deprecated, type: :integer },
+              { name: :is_ceased, type: :integer },
+              { name: :is_superseded, type: :integer },
+              { name: :is_superseding, type: :integer },
+              { name: :superseded_by, type: :integer },
+              { name: :supersedes, type: :integer },
+              { name: :lastmodified, type: :integer }
+            ],
+            model: Gazetteer::Wof::Spr
+          }
+        }
 
-        # Check if the file exists
-        unless File.exist?(file_path)
-          puts "File not found. Downloading..."
-          Rake::Task['geoportal:gazetteer:wof:download'].invoke
+        import_tasks.each do |task_name, details|
+          import_csv_to_postgresql(details[:file], details[:schema], details[:model])
         end
-
-        # Geonames Array
-        ancestors = []
-
-        # Count the total number of lines in the file
-        total_lines = `wc -l "#{file_path}"`.strip.split(' ')[0].to_i
-
-        # Initialize the progress bar
-        progress_bar = ProgressBar.create(total: total_lines, format: "%a %b\u{15E7}%i %p%% %t")
-
-        # Open the file
-        File.open(file_path, 'r') do |f|
-          until f.eof?
-            begin
-              text = f.readline
-              row = CSV.parse_line(text, headers: false)
-              
-              # Ancestor Table Schema
-              # t.bigint :wok_id
-              # t.integer :ancestor_id
-              # t.string :ancestor_placetype
-              # t.integer :lastmodified
-              ancestors << {
-                wok_id: row[0].to_i,
-                ancestor_id: row[1].to_i,
-                ancestor_placetype: row[2].to_s,
-                lastmodified: row[3].to_i,
-              }
-
-              # Import every 100000 records
-              if ancestors.size >= 100000
-                Gazetteer::Wof::Ancestor.import(ancestors, validate: false)
-                ancestors.clear
-              end
-              
-              # Increment the progress bar
-              progress_bar.increment
-            rescue StandardError => e
-              puts "Error processing line: #{e.message}"
-            end
-          end
-        end
-
-        # Import any remaining records
-        Gazetteer::Wof::Ancestor.import(ancestors, validate: false) unless ancestors.empty?
-
-        puts "Imported ancestors from #{file_path} into PostgreSQL"
       end
 
-      desc "Import Concordances CSV file into PostgreSQL"
-      task import_concordances: :environment do
-        file_path = Rails.root.join('db', 'gazetteer', 'wof', 'csv', 'gazetteer_wof_concordances.csv')
+      def import_csv_to_postgresql(file_name, schema, model)
+        file_path = Rails.root.join('db', 'gazetteer', 'wof', 'csv', file_name)
 
-        # Check if the file exists
         unless File.exist?(file_path)
           puts "File not found. Downloading..."
           Rake::Task['geoportal:gazetteer:wof:download'].invoke
         end
 
-        # Concordances Array
-        concordances = []
-
-        # Count the total number of lines in the file
+        records = []
         total_lines = `wc -l "#{file_path}"`.strip.split(' ')[0].to_i
-
-        # Initialize the progress bar
         progress_bar = ProgressBar.create(total: total_lines, format: "%a %b\u{15E7}%i %p%% %t")
 
-        # Open the file
         File.open(file_path, 'r') do |f|
           until f.eof?
             begin
               text = f.readline
               row = CSV.parse_line(text, headers: false)
+              record = schema.each_with_index.map do |field, index|
+                value = row[index]
+                # Check if the value is a string ending with ".0" and convert to integer
+                if value.is_a?(String) && value.end_with?('.0')
+                  value = value.to_f.to_i
+                end
+                value = value.to_i if field[:type] == :integer || field[:type] == :bigint
+                value = value.to_d if field[:type] == :decimal
+                value = value == 'true' if field[:type] == :boolean
+                [field[:name], value]
+              end.to_h
 
-              # Concordance Table Schema
-              # t.bigint :wok_id
-              # t.string :other_id
-              # t.string :other_source
-              # t.integer :lastmodified
-              concordances << {
-                wok_id: row[0].to_i,
-                other_id: begin
-                  id = row[1].to_s
-                  id.end_with?('.0') ? id.chomp('.0') : id
-                end,
-                other_source: row[2].to_s,
-                lastmodified: row[3].to_i,
-              }
+              records << record
 
-              # Import every 100000 records
-              if concordances.size >= 100000
-                Gazetteer::Wof::Concordance.import(concordances, validate: false)
-                concordances.clear
+              if records.size >= 100000
+                model.import(records, validate: false)
+                records.clear
               end
-              
-              # Increment the progress bar
+
               progress_bar.increment
             rescue StandardError => e
               puts "Error processing line: #{e.message}"
@@ -195,236 +207,8 @@ namespace :geoportal do
           end
         end
 
-        # Import any remaining records
-        Gazetteer::Wof::Concordance.import(concordances, validate: false) unless concordances.empty?
-
-        puts "Imported concordances from #{file_path} into PostgreSQL"
-      end
-
-      desc "Import GeoJSON CSV file into PostgreSQL"
-      task import_geojson: :environment do
-        file_path = Rails.root.join('db', 'gazetteer', 'wof', 'csv', 'gazetteer_wof_geojson.csv')
-
-        # Check if the file exists
-        unless File.exist?(file_path)
-          puts "File not found. Downloading..."
-          Rake::Task['geoportal:gazetteer:wof:download'].invoke
-        end
-
-        # GeoJSON Array
-        geojson_records = []
-
-        # Count the total number of lines in the file
-        total_lines = `wc -l "#{file_path}"`.strip.split(' ')[0].to_i
-
-        # Initialize the progress bar
-        progress_bar = ProgressBar.create(total: total_lines, format: "%a %b\u{15E7}%i %p%% %t")
-
-        # Open the file
-        File.open(file_path, 'r') do |f|
-          until f.eof?
-            begin
-              text = f.readline
-              row = CSV.parse_line(text, headers: false)
-
-              # GeoJSON Table Schema
-              # t.bigint :wok_id
-              # t.text :body
-              # t.string :source
-              # t.string :alt_label
-              # t.boolean :is_alt
-              # t.integer :lastmodified
-              geojson_records << {
-                wok_id: row[0].to_i,
-                body: row[1].to_s,
-                source: row[2].to_s,
-                alt_label: row[3].to_s,
-                is_alt: row[4] == 'true',
-                lastmodified: row[5].to_i,
-              }
-
-              # Import every 100000 records
-              if geojson_records.size >= 100000
-                Gazetteer::Wof::Geojson.import(geojson_records, validate: false)
-                geojson_records.clear
-              end
-              
-              # Increment the progress bar
-              progress_bar.increment
-            rescue StandardError => e
-              puts "Error processing line: #{e.message}"
-            end
-          end
-        end
-
-        # Import any remaining records
-        Gazetteer::Wof::Geojson.import(geojson_records, validate: false) unless geojson_records.empty?
-
-        puts "Imported geojson records from #{file_path} into PostgreSQL"
-      end
-
-      desc "Import Names CSV file into PostgreSQL"
-      task import_names: :environment do
-        file_path = Rails.root.join('db', 'gazetteer', 'wof', 'csv', 'gazetteer_wof_names.csv')
-
-        # Check if the file exists
-        unless File.exist?(file_path)
-          puts "File not found. Downloading..."
-          Rake::Task['geoportal:gazetteer:wof:download'].invoke
-        end
-
-        # Names Array
-        names_records = []
-
-        # Count the total number of lines in the file
-        total_lines = `wc -l "#{file_path}"`.strip.split(' ')[0].to_i
-
-        # Initialize the progress bar
-        progress_bar = ProgressBar.create(total: total_lines, format: "%a %b\u{15E7}%i %p%% %t")
-
-        # Open the file
-        File.open(file_path, 'r') do |f|
-          until f.eof?
-            begin
-              text = f.readline
-              row = CSV.parse_line(text, headers: false)
-
-              # Names Table Schema
-              # t.bigint :wok_id
-              # t.string :placetype
-              # t.string :country
-              # t.string :language
-              # t.string :extlang
-              # t.string :script
-              # t.string :region
-              # t.string :variant
-              # t.string :extension
-              # t.string :privateuse
-              # t.string :name
-              # t.integer :lastmodified
-              names_records << {
-                wok_id: row[0].to_i,
-                placetype: row[1].to_s,
-                country: row[2].to_s,
-                language: row[3].to_s,
-                extlang: row[4].to_s,
-                script: row[5].to_s,
-                region: row[6].to_s,
-                variant: row[7].to_s,
-                extension: row[8].to_s,
-                privateuse: row[9].to_s,
-                name: row[10].to_s,
-                lastmodified: row[11].to_i,
-              }
-
-              # Import every 100000 records
-              if names_records.size >= 100000
-                Gazetteer::Wof::Name.import(names_records, validate: false)
-                names_records.clear
-              end
-              
-              # Increment the progress bar
-              progress_bar.increment
-            rescue StandardError => e
-              puts "Error processing line: #{e.message}"
-            end
-          end
-        end
-
-        # Import any remaining records
-        Gazetteer::Wof::Name.import(names_records, validate: false) unless names_records.empty?
-
-        puts "Imported names records from #{file_path} into PostgreSQL"
-      end
-
-      desc "Import SPR CSV file into PostgreSQL"
-      task import_spr: :environment do
-        file_path = Rails.root.join('db', 'gazetteer', 'wof', 'csv', 'gazetteer_wof_spr.csv')
-
-        # Check if the file exists
-        unless File.exist?(file_path)
-          puts "File not found. Downloading..."
-          Rake::Task['geoportal:gazetteer:wof:download'].invoke
-        end
-
-        # SPR Records Array
-        spr_records = []
-
-        # Count the total number of lines in the file
-        total_lines = `wc -l "#{file_path}"`.strip.split(' ')[0].to_i
-
-        # Initialize the progress bar
-        progress_bar = ProgressBar.create(total: total_lines, format: "%a %b\u{15E7}%i %p%% %t")
-
-        # Open the file
-        File.open(file_path, 'r') do |f|
-          until f.eof?
-            begin
-              text = f.readline
-              row = CSV.parse_line(text, headers: false)
-
-              # SPR Table Schema
-              # t.bigint :wok_id
-              # t.integer :parent_id
-              # t.string :name
-              # t.string :placetype
-              # t.string :country
-              # t.string :repo
-              # t.decimal :latitude
-              # t.decimal :longitude
-              # t.decimal :min_latitude
-              # t.decimal :min_longitude
-              # t.decimal :max_latitude
-              # t.decimal :max_longitude
-              # t.integer :is_current
-              # t.integer :is_deprecated
-              # t.integer :is_ceased
-              # t.integer :is_superseded
-              # t.integer :is_superseding
-              # t.integer :superseded_by
-              # t.integer :supersedes
-              # t.integer :lastmodified
-              spr_records << {
-                wok_id: row[0].to_i,
-                parent_id: row[1].to_i,
-                name: row[2].to_s,
-                placetype: row[3].to_s,
-                country: row[4].to_s,
-                repo: row[5].to_s,
-                latitude: row[6].to_d,
-                longitude: row[7].to_d,
-                min_latitude: row[8].to_d,
-                min_longitude: row[9].to_d,
-                max_latitude: row[10].to_d,
-                max_longitude: row[11].to_d,
-                is_current: row[12].to_i,
-                is_deprecated: row[13].to_i,
-                is_ceased: row[14].to_i,
-                is_superseded: row[15].to_i,
-                is_superseding: row[16].to_i,
-                superseded_by: row[17].to_i,
-                supersedes: row[18].to_i,
-                lastmodified: row[19].to_i,
-              }
-
-              # Import every 100000 records
-              if spr_records.size >= 100000
-                Gazetteer::Wof::Spr.import(spr_records, validate: false)
-                spr_records.clear
-              end
-              
-              # Increment the progress bar
-              progress_bar.increment
-            rescue StandardError => e
-              puts "Error processing line: #{e.message}"
-            end
-          end
-        end
-
-        # Import any remaining records
-        Gazetteer::Wof::Spr.import(spr_records, validate: false) unless spr_records.empty?
-
-        puts "Imported SPR records from #{file_path} into PostgreSQL"
+        model.import(records, validate: false) unless records.empty?
+        puts "Imported records from #{file_path} into PostgreSQL"
       end
     end
   end

@@ -1,3 +1,5 @@
+# PointlessFeedback
+=begin
 PointlessFeedback.setup do |config|
   # ==> Feedback Configuration
   # Configure the topics for the user to choose from on the feedback form
@@ -13,3 +15,4 @@ PointlessFeedback.setup do |config|
   config.google_captcha_site_key   = ENV["GEOBLACKLIGHT_CAPTCHA_SITE_KEY"]
   config.google_captcha_secret_key = ENV["GEOBLACKLIGHT_CAPTCHA_SECRET_KEY"]
 end
+=end

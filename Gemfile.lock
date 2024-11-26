@@ -161,10 +161,6 @@ GEM
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
     afm (0.2.2)
-    airrecord (1.0.12)
-      faraday (>= 1.0, < 3.0)
-      faraday-net_http_persistent
-      net-http-persistent
     amazing_print (1.6.0)
     ansi (1.5.0)
     appsignal (4.1.2)
@@ -359,19 +355,22 @@ GEM
     factory_bot_rails (6.4.4)
       factory_bot (~> 6.5)
       railties (>= 5.0.0)
-    faraday (2.12.0)
-      faraday-net_http (>= 2.0, < 3.4)
+    faraday (2.12.1)
+      faraday-net_http (>= 2.0, < 3.5)
       json
       logger
     faraday-follow_redirects (0.3.0)
       faraday (>= 1, < 3)
-    faraday-net_http (3.3.0)
-      net-http
+    faraday-net_http (3.4.0)
+      net-http (>= 0.5.0)
     faraday-net_http_persistent (2.3.0)
       faraday (~> 2.5)
       net-http-persistent (>= 4.0.4, < 5)
     faraday-retry (2.2.1)
       faraday (~> 2.0)
+    faraday-typhoeus (1.1.0)
+      faraday (~> 2.0)
+      typhoeus (~> 1.4)
     fastimage (2.3.1)
     ffi (1.17.0)
     ffi-compiler (1.3.2)
@@ -456,7 +455,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json (2.8.1)
+    json (2.8.2)
     json-schema (5.0.1)
       addressable (~> 2.8)
     kaminari (1.2.2)
@@ -534,9 +533,9 @@ GEM
       rake
     mini_magick (4.9.5)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.7)
+    mini_portile2 (2.8.8)
     minitar (1.0.2)
-    minitest (5.25.1)
+    minitest (5.25.2)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     minitest-reporters (1.7.1)
@@ -552,11 +551,11 @@ GEM
     net-ftp (0.3.8)
       net-protocol
       time
-    net-http (0.4.1)
+    net-http (0.5.0)
       uri
     net-http-persistent (4.0.4)
       connection_pool (~> 2.2)
-    net-imap (0.5.0)
+    net-imap (0.5.1)
       date
       net-protocol
     net-pop (0.1.2)
@@ -572,6 +571,10 @@ GEM
     noticed (1.6.3)
       http (>= 4.0.0)
       rails (>= 5.2.0)
+    ollama-ai (1.3.0)
+      faraday (~> 2.10)
+      faraday-typhoeus (~> 1.1)
+      typhoeus (~> 1.4, >= 1.4.1)
     orm_adapter (0.5.0)
     ostruct (0.6.0)
     pagy (6.5.0)
@@ -588,11 +591,6 @@ GEM
       ruby-rc4
       ttfunk
     pg (1.5.9)
-    pointless_feedback (4.1.5)
-      airrecord (~> 1.0)
-      jquery-rails (>= 4.0)
-      rails (>= 4.0)
-      typhoeus (~> 0.7, >= 0.7.3)
     popper_js (1.16.1)
     process_executer (1.2.0)
     public_suffix (6.0.1)
@@ -801,12 +799,12 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    typhoeus (0.8.0)
-      ethon (>= 0.8.0)
+    typhoeus (1.4.1)
+      ethon (>= 0.9.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unf (0.2.0)
-    uri (0.13.1)
+    uri (1.0.2)
     view_component (2.83.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
@@ -906,9 +904,9 @@ DEPENDENCIES
   minitest-reporters
   net-ftp
   noticed
+  ollama-ai (~> 1.3.0)
   paper_trail
   pg
-  pointless_feedback
   popper_js
   puma (~> 5.6)
   rack-cors

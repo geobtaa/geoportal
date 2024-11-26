@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get '/centroids.json', :to => redirect('/centroids.json')
 
   # Feedback
-  mount PointlessFeedback::Engine, :at => '/feedback'
+  # @TODO: PointlessFeedback gem has old typhoeus gem dependency
+  # mount PointlessFeedback::Engine, :at => '/feedback'
 
   # Error Pages for exception handling - EWL
   match '/404' => 'errors#not_found', via: :all

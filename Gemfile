@@ -132,7 +132,7 @@ gem 'chronic'
 gem 'dotenv-rails'
 
 # Feedback
-gem 'pointless_feedback'
+# gem 'pointless_feedback'
 gem 'whenever', '~> 1.0.0', require: false
 gem 'sitemap_generator', '~> 6.0.2'
 
@@ -159,7 +159,8 @@ gem "vite_rails", "~> 3.0"
 # Shrine
 gem "aws-sdk-s3", "~> 1.14"
 
-# Progress bar
+# Gazetteer
 gem "activerecord-import"
 gem 'ruby-progressbar', '~> 1.13'
 gem 'bzip2-ffi'
+gem 'ollama-ai', '~> 1.3.0' 
