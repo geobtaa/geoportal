@@ -192,7 +192,7 @@ end
 
 # Example usage:
 # Initialize the GeonamesTagger
-geonames_tagger = GeonamesTagger.new('http://localhost:8983/solr/geonames')
+geonames_tagger = Gazetteer::Geonames::Tagger.new('http://localhost:8983/solr/geonames')
 
 # Tag the text to get geoname IDs
 geonames = geonames_tagger.tag_text('Minneapolis')

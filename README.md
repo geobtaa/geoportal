@@ -32,3 +32,10 @@ Visit the [project wiki](https://github.com/BTAA-Geospatial-Data-Project/geoport
 #### Release Version
 
 B1G Geoportal Version v5.11.0 / GeoBlacklight v4.4.0 / GeoBlacklight Admin v0.4.1 (develop branch)
+
+#### Data Acknowledgements
+
+Gazetteer data is provided by:
+
+* [GeoNames](https://www.geonames.org/) / [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/)
+* [Who's On First](https://whosonfirst.org/) / [Licenses](https://whosonfirst.org/docs/licenses/)

@@ -164,3 +164,5 @@ gem "activerecord-import"
 gem 'ruby-progressbar', '~> 1.13'
 gem 'bzip2-ffi'
 gem 'ollama-ai', '~> 1.3.0' 
+gem 'faraday', '~> 2.0'
+gem 'langchainrb', '~> 0.19.0'

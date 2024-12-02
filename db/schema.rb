@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_24_223351) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_26_200429) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -82,16 +82,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_24_223351) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-  end
-
-  create_table "ancestors", id: false, force: :cascade do |t|
-    t.bigint "id"
-    t.bigint "ancestor_id"
-    t.text "ancestor_placetype"
-    t.bigint "lastmodified"
-    t.index ["ancestor_id", "ancestor_placetype", "lastmodified"], name: "idx_17618719_ancestors_by_ancestor"
-    t.index ["id", "ancestor_placetype", "lastmodified"], name: "idx_17618719_ancestors_by_id"
-    t.index ["lastmodified"], name: "idx_17618719_ancestors_by_lastmod"
   end
 
   create_table "blacklight_allmaps_sidecars", force: :cascade do |t|
@@ -229,17 +219,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_24_223351) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "concordances", id: false, force: :cascade do |t|
-    t.bigint "id"
-    t.text "other_id"
-    t.text "other_source"
-    t.bigint "lastmodified"
-    t.index ["id", "lastmodified"], name: "idx_17618724_concordances_by_id"
-    t.index ["lastmodified"], name: "idx_17618724_concordances_by_lastmod"
-    t.index ["other_source", "other_id", "lastmodified"], name: "idx_17618724_concordances_by_other_lastmod"
-    t.index ["other_source", "other_id"], name: "idx_17618724_concordances_by_other_id"
   end
 
   create_table "document_accesses", force: :cascade do |t|
@@ -425,15 +404,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_24_223351) do
     t.integer "lastmodified"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "geojson", id: false, force: :cascade do |t|
-    t.bigint "id"
-    t.text "body"
-    t.text "source"
-    t.text "alt_label"
-    t.boolean "is_alt"
-    t.bigint "lastmodified"
   end
 
   create_table "image_upload_transitions", force: :cascade do |t|
@@ -636,29 +606,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_24_223351) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["document_type", "document_id"], name: "solr_document_uris_solr_document"
-  end
-
-  create_table "spr", id: false, force: :cascade do |t|
-    t.bigint "id"
-    t.bigint "parent_id"
-    t.text "name"
-    t.text "placetype"
-    t.text "country"
-    t.text "repo"
-    t.float "latitude"
-    t.float "longitude"
-    t.float "min_latitude"
-    t.float "min_longitude"
-    t.float "max_latitude"
-    t.float "max_longitude"
-    t.bigint "is_current"
-    t.bigint "is_deprecated"
-    t.bigint "is_ceased"
-    t.bigint "is_superseded"
-    t.bigint "is_superseding"
-    t.text "superseded_by"
-    t.text "supersedes"
-    t.bigint "lastmodified"
   end
 
   create_table "uri_transitions", force: :cascade do |t|
