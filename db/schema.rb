@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_10_161420) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_20_238823) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -229,16 +229,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_10_161420) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "document_downloads", force: :cascade do |t|
-    t.string "friendlier_id"
-    t.string "label"
-    t.string "value"
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "document_references", force: :cascade do |t|
+  create_table "document_distributions", force: :cascade do |t|
     t.string "friendlier_id", null: false
     t.bigint "reference_type_id", null: false
     t.string "url"
@@ -247,7 +238,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_10_161420) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friendlier_id", "reference_type_id", "url"], name: "document_references_unique_index", unique: true
-    t.index ["reference_type_id"], name: "index_document_references_on_reference_type_id"
+    t.index ["reference_type_id"], name: "index_document_distributions_on_reference_type_id"
+  end
+
+  create_table "document_downloads", force: :cascade do |t|
+    t.string "friendlier_id"
+    t.string "label"
+    t.string "value"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "document_thumbnail_transitions", force: :cascade do |t|
@@ -557,7 +557,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_10_161420) do
   add_foreign_key "bulk_action_document_transitions", "bulk_action_documents"
   add_foreign_key "bulk_action_documents", "bulk_actions"
   add_foreign_key "bulk_action_transitions", "bulk_actions"
-  add_foreign_key "document_references", "reference_types"
+  add_foreign_key "document_distributions", "reference_types"
   add_foreign_key "image_upload_transitions", "solr_document_sidecars"
   add_foreign_key "import_document_transitions", "import_documents"
   add_foreign_key "import_documents", "imports"
