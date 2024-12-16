@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 739c5205e6270790e4d53123134040a4d4bc9b80
+  revision: 4cd4c31f4484475692a358def20f0aa552b68780
   branch: feature/btaa-migration-fix
   specs:
     geoblacklight_admin (0.6.1)
