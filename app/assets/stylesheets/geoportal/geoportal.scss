@@ -22,3 +22,8 @@
 .pull-right {
   float: right;
 }
+
+// Fix input#q in search form
+input#q {
+  background-color: $white !important;
+}

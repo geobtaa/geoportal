@@ -22,7 +22,7 @@ console.log('Vite ⚡️ Rails')
 // ActiveStorage.start()
 //
 // // Import all channels.
-// const channels = import.meta.globEager('./**/*_channel.js')
+import '../channels';
 
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'

@@ -13,3 +13,4 @@ Mime::Type.register "application/json", :json
 
 Mime::Type.register "text/csv", :csv_document_downloads
 Mime::Type.register "text/csv", :csv_document_access_links
+Mime::Type.register "text/csv", :csv_document_distributions
