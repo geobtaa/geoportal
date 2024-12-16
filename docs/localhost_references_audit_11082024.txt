@@ -1,0 +1,229 @@
+--- Audit Start ---
+
+NO MATCH - Duplicate holc-scan.jpg URL
+Document: ed5705ef-7c1a-4497-b7af-fd971cee8e40
+CSV References Sorted: [["ed5705ef-7c1a-4497-b7af-fd971cee8e40", "documentation_external", "https://dsl.richmond.edu/panorama/redlining/#city=hudson-co.-nj", nil], ["ed5705ef-7c1a-4497-b7af-fd971cee8e40", "download", "https://s3.amazonaws.com/holc/tiles/NJ/HudsonCounty/1939/holc-scan.jpg", "GeoTIFF"], ["ed5705ef-7c1a-4497-b7af-fd971cee8e40", "download", "https://s3.amazonaws.com/holc/tiles/NJ/HudsonCounty/1939/holc-scan.jpg", "JPEG"]]
+Document References Sorted: [["ed5705ef-7c1a-4497-b7af-fd971cee8e40", "documentation_external", "https://dsl.richmond.edu/panorama/redlining/#city=hudson-co.-nj", nil], ["ed5705ef-7c1a-4497-b7af-fd971cee8e40", "download", "https://s3.amazonaws.com/holc/tiles/NJ/HudsonCounty/1939/holc-scan.jpg", "JPEG"]]
+Processed 1000 documents in this batch, total processed: 1000
+Processed 1000 documents in this batch, total processed: 2000
+Processed 1000 documents in this batch, total processed: 3000
+
+NO MATCH - Duplicate rectified.zip URL
+Document: 32027b5a-ea8a-42dd-875c-518cd3ab5811
+CSV References Sorted: [["32027b5a-ea8a-42dd-875c-518cd3ab5811", "documentation_external", "https://dsl.richmond.edu/panorama/redlining/#city=charleston-wv", nil], ["32027b5a-ea8a-42dd-875c-518cd3ab5811", "download", "https://s3.amazonaws.com/holc/tiles/WV/Charleston/1938/holc-scan.jpg", "JPG"], ["32027b5a-ea8a-42dd-875c-518cd3ab5811", "download", "https://s3.amazonaws.com/holc/tiles/WV/Charleston/1938/rectified.zip", "GeoTIFF"], ["32027b5a-ea8a-42dd-875c-518cd3ab5811", "download", "https://s3.amazonaws.com/holc/tiles/WV/Charleston/1938/rectified.zip", "GeoTIFF (inset)"]]
+Document References Sorted: [["32027b5a-ea8a-42dd-875c-518cd3ab5811", "documentation_external", "https://dsl.richmond.edu/panorama/redlining/#city=charleston-wv", nil], ["32027b5a-ea8a-42dd-875c-518cd3ab5811", "download", "https://s3.amazonaws.com/holc/tiles/WV/Charleston/1938/holc-scan.jpg", "JPG"], ["32027b5a-ea8a-42dd-875c-518cd3ab5811", "download", "https://s3.amazonaws.com/holc/tiles/WV/Charleston/1938/rectified.zip", "GeoTIFF"]]
+Processed 1000 documents in this batch, total processed: 4000
+
+NO MATCH
+Document: 8cd3d4ba-75b1-4cbe-b978-fa23f5fbdca7
+CSV References Sorted: [["8cd3d4ba-75b1-4cbe-b978-fa23f5fbdca7", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["8cd3d4ba-75b1-4cbe-b978-fa23f5fbdca7", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/bcddb6b0-5a7c-4337-b5b2-385c03696b14/dba7e29239b5d738ebc61556ced3bd3f.zip", "wicolu02.zip"], ["8cd3d4ba-75b1-4cbe-b978-fa23f5fbdca7", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/bcddb6b0-5a7c-4337-b5b2-385c03696b14/dba7e29239b5d738ebc61556ced3bd3f.zip", "Shapefile"], ["8cd3d4ba-75b1-4cbe-b978-fa23f5fbdca7", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/83f2dd82-d3be-4064-85e1-fe0b3171e1fc/ba285518fe6a561b627dbdda66ba4455.pmtiles", nil]]
+Document References Sorted: [["8cd3d4ba-75b1-4cbe-b978-fa23f5fbdca7", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["8cd3d4ba-75b1-4cbe-b978-fa23f5fbdca7", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/bcddb6b0-5a7c-4337-b5b2-385c03696b14/dba7e29239b5d738ebc61556ced3bd3f.zip", "wicolu02.zip"], ["8cd3d4ba-75b1-4cbe-b978-fa23f5fbdca7", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/83f2dd82-d3be-4064-85e1-fe0b3171e1fc/ba285518fe6a561b627dbdda66ba4455.pmtiles", nil]]
+Processed 1000 documents in this batch, total processed: 5000
+Processed 1000 documents in this batch, total processed: 6000
+Processed 1000 documents in this batch, total processed: 7000
+Processed 1000 documents in this batch, total processed: 8000
+Processed 1000 documents in this batch, total processed: 9000
+
+NO MATCH
+Document: 9e5aa5c8-071f-43ab-9121-19433ca85d6e
+CSV References Sorted: [["9e5aa5c8-071f-43ab-9121-19433ca85d6e", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["9e5aa5c8-071f-43ab-9121-19433ca85d6e", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/7c39c703-92d2-43f2-bd70-31ee228ff6ae/ac773faa312d4889104cf69d5f2a01e5.zip", "queelu02.zip"], ["9e5aa5c8-071f-43ab-9121-19433ca85d6e", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/7c39c703-92d2-43f2-bd70-31ee228ff6ae/ac773faa312d4889104cf69d5f2a01e5.zip", "Shapefile"], ["9e5aa5c8-071f-43ab-9121-19433ca85d6e", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/66eacb4b-9288-43dc-92aa-edee0c79cac0/2b2007b7b67d73828c76e80f17bb5a08.pmtiles", nil]]
+Document References Sorted: [["9e5aa5c8-071f-43ab-9121-19433ca85d6e", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["9e5aa5c8-071f-43ab-9121-19433ca85d6e", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/7c39c703-92d2-43f2-bd70-31ee228ff6ae/ac773faa312d4889104cf69d5f2a01e5.zip", "queelu02.zip"], ["9e5aa5c8-071f-43ab-9121-19433ca85d6e", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/66eacb4b-9288-43dc-92aa-edee0c79cac0/2b2007b7b67d73828c76e80f17bb5a08.pmtiles", nil]]
+Processed 1000 documents in this batch, total processed: 10000
+
+NO MATCH
+Document: btaa-0d1f5c0e-f93f-4889-be34-16104f9c6927
+CSV References Sorted: [["btaa-0d1f5c0e-f93f-4889-be34-16104f9c6927", "cog", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/ad2ac386-d3bf-4830-8044-9a1118805f09/7f3333d450a445df7fa068d3aee9537a.tif", nil], ["btaa-0d1f5c0e-f93f-4889-be34-16104f9c6927", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/35843439-cf4c-485d-8176-581d9cf12305/c62a6e98889841135d3b3b611833f0ed.zip", "Aquifer_Sensitivity_Near_Surface.zip"], ["btaa-0d1f5c0e-f93f-4889-be34-16104f9c6927", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/35843439-cf4c-485d-8176-581d9cf12305/c62a6e98889841135d3b3b611833f0ed.zip", "GeoTIFF"]]
+Document References Sorted: [["btaa-0d1f5c0e-f93f-4889-be34-16104f9c6927", "cog", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/ad2ac386-d3bf-4830-8044-9a1118805f09/7f3333d450a445df7fa068d3aee9537a.tif", nil], ["btaa-0d1f5c0e-f93f-4889-be34-16104f9c6927", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/35843439-cf4c-485d-8176-581d9cf12305/c62a6e98889841135d3b3b611833f0ed.zip", "Aquifer_Sensitivity_Near_Surface.zip"]]
+Processed 1000 documents in this batch, total processed: 11000
+
+NO MATCH
+Document: 0f9688d8-de7d-4d7c-8339-9c2ac314ee98
+CSV References Sorted: [["0f9688d8-de7d-4d7c-8339-9c2ac314ee98", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["0f9688d8-de7d-4d7c-8339-9c2ac314ee98", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/155cac25-9e6e-4042-905b-8ea59aa3fa64/2c58fb8d4806ef2b64312c64a9817032.zip", "prinlu02.zip"], ["0f9688d8-de7d-4d7c-8339-9c2ac314ee98", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/155cac25-9e6e-4042-905b-8ea59aa3fa64/2c58fb8d4806ef2b64312c64a9817032.zip", "Shapefile"], ["0f9688d8-de7d-4d7c-8339-9c2ac314ee98", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/ea6a508b-36fa-4f5a-9794-203f78379871/4b5e2ffea0cdebd9240693757ad6cf7f.pmtiles", nil]]
+Document References Sorted: [["0f9688d8-de7d-4d7c-8339-9c2ac314ee98", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["0f9688d8-de7d-4d7c-8339-9c2ac314ee98", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/155cac25-9e6e-4042-905b-8ea59aa3fa64/2c58fb8d4806ef2b64312c64a9817032.zip", "prinlu02.zip"], ["0f9688d8-de7d-4d7c-8339-9c2ac314ee98", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/ea6a508b-36fa-4f5a-9794-203f78379871/4b5e2ffea0cdebd9240693757ad6cf7f.pmtiles", nil]]
+Processed 1000 documents in this batch, total processed: 12000
+
+NO MATCH
+Document: 5fc8dc18-62e6-4316-ba99-1a61534ea088
+CSV References Sorted: [["5fc8dc18-62e6-4316-ba99-1a61534ea088", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["5fc8dc18-62e6-4316-ba99-1a61534ea088", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/2e1ba025-123b-4eaf-8a0c-ef3d5581ac16/a7b1ffe10d7fffd5616c5ba90a0b97cc.zip", "washlu02.zip"], ["5fc8dc18-62e6-4316-ba99-1a61534ea088", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/2e1ba025-123b-4eaf-8a0c-ef3d5581ac16/a7b1ffe10d7fffd5616c5ba90a0b97cc.zip", "Shapefile"], ["5fc8dc18-62e6-4316-ba99-1a61534ea088", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/ec0fdd6d-1646-44b3-88f9-223e341adfc4/5670f2caa5330fd6a1579d5b55350dda.pmtiles", nil]]
+Document References Sorted: [["5fc8dc18-62e6-4316-ba99-1a61534ea088", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["5fc8dc18-62e6-4316-ba99-1a61534ea088", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/2e1ba025-123b-4eaf-8a0c-ef3d5581ac16/a7b1ffe10d7fffd5616c5ba90a0b97cc.zip", "washlu02.zip"], ["5fc8dc18-62e6-4316-ba99-1a61534ea088", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/ec0fdd6d-1646-44b3-88f9-223e341adfc4/5670f2caa5330fd6a1579d5b55350dda.pmtiles", nil]]
+Processed 1000 documents in this batch, total processed: 13000
+Processed 1000 documents in this batch, total processed: 14000
+Processed 1000 documents in this batch, total processed: 15000
+Processed 1000 documents in this batch, total processed: 16000
+
+NO MATCH
+Document: e65d1fb2-5e3f-47b5-9341-d638931b508c
+CSV References Sorted: [["e65d1fb2-5e3f-47b5-9341-d638931b508c", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["e65d1fb2-5e3f-47b5-9341-d638931b508c", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/742a7bce-eeb2-43ec-9f34-aff92ff38137/6287bb36020c79d998db621e8a374d6a.zip", "talblu02.zip"], ["e65d1fb2-5e3f-47b5-9341-d638931b508c", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/742a7bce-eeb2-43ec-9f34-aff92ff38137/6287bb36020c79d998db621e8a374d6a.zip", "Shapefile"], ["e65d1fb2-5e3f-47b5-9341-d638931b508c", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/f9580be1-dd0c-4d2a-a81b-2d33fcf3308f/c37de751689c4351d44699d4158ea205.pmtiles", nil]]
+Document References Sorted: [["e65d1fb2-5e3f-47b5-9341-d638931b508c", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["e65d1fb2-5e3f-47b5-9341-d638931b508c", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/742a7bce-eeb2-43ec-9f34-aff92ff38137/6287bb36020c79d998db621e8a374d6a.zip", "talblu02.zip"], ["e65d1fb2-5e3f-47b5-9341-d638931b508c", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/f9580be1-dd0c-4d2a-a81b-2d33fcf3308f/c37de751689c4351d44699d4158ea205.pmtiles", nil]]
+Processed 1000 documents in this batch, total processed: 17000
+
+NO MATCH
+Document: 099bda09-d518-4a8e-8981-c0eb6e48495c
+CSV References Sorted: [["099bda09-d518-4a8e-8981-c0eb6e48495c", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["099bda09-d518-4a8e-8981-c0eb6e48495c", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/cea57932-72aa-4721-b94a-cec77d264b8f/8c32420230a07bbfab0bff0303c0bc99.zip", "howalu02.zip"], ["099bda09-d518-4a8e-8981-c0eb6e48495c", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/cea57932-72aa-4721-b94a-cec77d264b8f/8c32420230a07bbfab0bff0303c0bc99.zip", "Shapefile"], ["099bda09-d518-4a8e-8981-c0eb6e48495c", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/fec5b374-bed8-4397-9e7b-2533ea916031/2900232d9f00f80bf38fa7db455fdc7c.pmtiles", nil]]
+Document References Sorted: [["099bda09-d518-4a8e-8981-c0eb6e48495c", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["099bda09-d518-4a8e-8981-c0eb6e48495c", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/cea57932-72aa-4721-b94a-cec77d264b8f/8c32420230a07bbfab0bff0303c0bc99.zip", "howalu02.zip"], ["099bda09-d518-4a8e-8981-c0eb6e48495c", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/fec5b374-bed8-4397-9e7b-2533ea916031/2900232d9f00f80bf38fa7db455fdc7c.pmtiles", nil]]
+Processed 1000 documents in this batch, total processed: 18000
+
+NO MATCH
+Document: demo-01
+CSV References Sorted: [["demo-01", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/1386180e-8d9b-4adc-b00f-d4fe1ce1d36c/448c534106e7d70f12f72e357351290c.zip", "geodatabase.gdb.zip"], ["demo-01", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/8f6f9903-fa07-40b8-b6bb-85316081c020/32332dc98388b849f8cbacbe9d706818.zip", "shapefile.zip"], ["demo-01", "metadata_html", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/9110e3ff-e5ca-4fd0-91a4-97417c2cdce8/57cf879488900529fea70d7654ccd0b9.html", nil], ["demo-01", "metadata_iso", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/3dab566a-9d04-40bd-b1fb-083a6e8bede1/fe994aa784d30437a134eb80ecf6212d.xml", nil], ["demo-01", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/f78f027e-5ab2-4db4-a2a1-c34f9fe36626/495373519c7039d18be25db5bfa5e9a0.pmtiles", nil]]
+Document References Sorted: [["demo-01", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/1386180e-8d9b-4adc-b00f-d4fe1ce1d36c/448c534106e7d70f12f72e357351290c.zip", "geodatabase.gdb.zip"], ["demo-01", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/8f6f9903-fa07-40b8-b6bb-85316081c020/32332dc98388b849f8cbacbe9d706818.zip", "shapefile.zip"], ["demo-01", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/1386180e-8d9b-4adc-b00f-d4fe1ce1d36c/448c534106e7d70f12f72e357351290c.zip", "geodatabase.gdb.zip"], ["demo-01", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/8f6f9903-fa07-40b8-b6bb-85316081c020/32332dc98388b849f8cbacbe9d706818.zip", "shapefile.zip"], ["demo-01", "metadata_html", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/9110e3ff-e5ca-4fd0-91a4-97417c2cdce8/57cf879488900529fea70d7654ccd0b9.html", nil], ["demo-01", "metadata_iso", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/3dab566a-9d04-40bd-b1fb-083a6e8bede1/fe994aa784d30437a134eb80ecf6212d.xml", nil], ["demo-01", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/f78f027e-5ab2-4db4-a2a1-c34f9fe36626/495373519c7039d18be25db5bfa5e9a0.pmtiles", nil]]
+Processed 1000 documents in this batch, total processed: 19000
+Processed 1000 documents in this batch, total processed: 20000
+
+NO MATCH
+Document: e0d15cad-86d4-4509-9b4e-758c1100d38d
+CSV References Sorted: [["e0d15cad-86d4-4509-9b4e-758c1100d38d", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["e0d15cad-86d4-4509-9b4e-758c1100d38d", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/ece861d7-0128-4181-9cd8-9e675d5bff28/b1a24a50f4c4a7a54dce428a5e7de09f.zip", "somelu02.zip"], ["e0d15cad-86d4-4509-9b4e-758c1100d38d", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/ece861d7-0128-4181-9cd8-9e675d5bff28/b1a24a50f4c4a7a54dce428a5e7de09f.zip", "Shapefile"], ["e0d15cad-86d4-4509-9b4e-758c1100d38d", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/5e0b4359-2466-4c9a-8a67-e850373c92da/9016f58c38a31109f989a47094a75c35.pmtiles", nil]]
+Document References Sorted: [["e0d15cad-86d4-4509-9b4e-758c1100d38d", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["e0d15cad-86d4-4509-9b4e-758c1100d38d", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/ece861d7-0128-4181-9cd8-9e675d5bff28/b1a24a50f4c4a7a54dce428a5e7de09f.zip", "somelu02.zip"], ["e0d15cad-86d4-4509-9b4e-758c1100d38d", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/5e0b4359-2466-4c9a-8a67-e850373c92da/9016f58c38a31109f989a47094a75c35.pmtiles", nil]]
+Processed 1000 documents in this batch, total processed: 21000
+Processed 1000 documents in this batch, total processed: 22000
+Processed 1000 documents in this batch, total processed: 23000
+Processed 1000 documents in this batch, total processed: 24000
+Processed 1000 documents in this batch, total processed: 25000
+Processed 1000 documents in this batch, total processed: 26000
+
+NO MATCH
+Document: f245136b-0d60-4315-abb0-52d0fbee4c5c
+CSV References Sorted: [["f245136b-0d60-4315-abb0-52d0fbee4c5c", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["f245136b-0d60-4315-abb0-52d0fbee4c5c", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/fb544a75-16c4-4d84-88f3-7a3a26a330a4/14c781373ed8c16fa3ee69a6eed2c10b.zip", "charlu02.zip"], ["f245136b-0d60-4315-abb0-52d0fbee4c5c", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/fb544a75-16c4-4d84-88f3-7a3a26a330a4/14c781373ed8c16fa3ee69a6eed2c10b.zip", "Shapefile"], ["f245136b-0d60-4315-abb0-52d0fbee4c5c", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/d3c052e8-2021-4010-9f9b-28cd39ced401/7b9a5f03ec43669e51b1c38c9a40df4a.pmtiles", nil]]
+Document References Sorted: [["f245136b-0d60-4315-abb0-52d0fbee4c5c", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["f245136b-0d60-4315-abb0-52d0fbee4c5c", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/fb544a75-16c4-4d84-88f3-7a3a26a330a4/14c781373ed8c16fa3ee69a6eed2c10b.zip", "charlu02.zip"], ["f245136b-0d60-4315-abb0-52d0fbee4c5c", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/d3c052e8-2021-4010-9f9b-28cd39ced401/7b9a5f03ec43669e51b1c38c9a40df4a.pmtiles", nil]]
+Processed 1000 documents in this batch, total processed: 27000
+Processed 1000 documents in this batch, total processed: 28000
+Processed 1000 documents in this batch, total processed: 29000
+Processed 1000 documents in this batch, total processed: 30000
+Processed 1000 documents in this batch, total processed: 31000
+
+NO MATCH
+Document: aug-5-2024
+CSV References Sorted: [["aug-5-2024", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/cc88fc5e-9dc4-4f09-89cf-22335910716c/91b4c31ee446c420390a16571a3971ab.csv", nil], ["aug-5-2024", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/02c06377-071d-4019-b89b-ee5b937776cd/efd61e3342b3b14b389ba7ad08d5065e.zip", "Geodatabase"], ["aug-5-2024", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/e0984e99-e174-45ac-be0e-a17101197f8e/7dc9b32d545b515323d5ae068aee9026.zip", "Shapefile"], ["aug-5-2024", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/e0984e99-e174-45ac-be0e-a17101197f8e/7dc9b32d545b515323d5ae068aee9026.zip", "Mixed"], ["aug-5-2024", "metadata_fgdc", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/4cb38259-b1ac-4ab7-b075-dc1cd548ba7b/3cec5aeb7d6f68a0939204f2d3c3993c.xml", nil], ["aug-5-2024", "metadata_html", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/ba4716ea-c86d-4ea1-98b5-a7433daacdfb/dc523dc6e0a1d6533b8ce49fcee297e4.html", nil], ["aug-5-2024", "metadata_iso", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/b5c33f20-16a5-4bad-83e1-8cbc65aad67a/2fbc5ed3ad78410cbf7c1d39ac7470bb.xml", nil], ["aug-5-2024", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/af264c4c-862a-46dd-a3b4-88973a8fa754/c8858797b551c94a92ecbe8387d37b85.pmtiles", nil]]
+Document References Sorted: [["aug-5-2024", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/cc88fc5e-9dc4-4f09-89cf-22335910716c/91b4c31ee446c420390a16571a3971ab.csv", nil], ["aug-5-2024", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/02c06377-071d-4019-b89b-ee5b937776cd/efd61e3342b3b14b389ba7ad08d5065e.zip", "Geodatabase"], ["aug-5-2024", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/e0984e99-e174-45ac-be0e-a17101197f8e/7dc9b32d545b515323d5ae068aee9026.zip", "Shapefile"], ["aug-5-2024", "metadata_fgdc", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/4cb38259-b1ac-4ab7-b075-dc1cd548ba7b/3cec5aeb7d6f68a0939204f2d3c3993c.xml", nil], ["aug-5-2024", "metadata_html", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/ba4716ea-c86d-4ea1-98b5-a7433daacdfb/dc523dc6e0a1d6533b8ce49fcee297e4.html", nil], ["aug-5-2024", "metadata_iso", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/b5c33f20-16a5-4bad-83e1-8cbc65aad67a/2fbc5ed3ad78410cbf7c1d39ac7470bb.xml", nil], ["aug-5-2024", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/af264c4c-862a-46dd-a3b4-88973a8fa754/c8858797b551c94a92ecbe8387d37b85.pmtiles", nil]]
+Processed 1000 documents in this batch, total processed: 32000
+
+NO MATCH
+Document: btaa-3020c203-5325-4bec-92e3-4a16e267c14e
+CSV References Sorted: [["btaa-3020c203-5325-4bec-92e3-4a16e267c14e", "documentation_external", "http://maps.indiana.edu/previewMaps/Infrastructure/Railroads_Active_Abandoned_INDOT.html", nil], ["btaa-3020c203-5325-4bec-92e3-4a16e267c14e", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/0027dc65-5d68-4d1e-a996-efd7886a1f5c/360dbb031fbaa6f01db6e6046beb228b.zip", "Shapefile"]]
+Document References Sorted: [["btaa-3020c203-5325-4bec-92e3-4a16e267c14e", "documentation_external", "http://maps.indiana.edu/previewMaps/Infrastructure/Railroads_Active_Abandoned_INDOT.html", nil], ["btaa-3020c203-5325-4bec-92e3-4a16e267c14e", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/0027dc65-5d68-4d1e-a996-efd7886a1f5c/360dbb031fbaa6f01db6e6046beb228b.zip", "Shapefile"], ["btaa-3020c203-5325-4bec-92e3-4a16e267c14e", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/0027dc65-5d68-4d1e-a996-efd7886a1f5c/360dbb031fbaa6f01db6e6046beb228b.zip", "Shapefile"]]
+Processed 1000 documents in this batch, total processed: 33000
+Processed 1000 documents in this batch, total processed: 34000
+
+NO MATCH
+Document: 87d2a9e8-7c16-40a9-8fab-155a1c6b209d
+CSV References Sorted: [["87d2a9e8-7c16-40a9-8fab-155a1c6b209d", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["87d2a9e8-7c16-40a9-8fab-155a1c6b209d", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/bcec399e-2730-49de-99ce-863ea2153c66/5923ebeafb0f6cd35886c0055b8a9f09.zip", "calvlu02.zip"], ["87d2a9e8-7c16-40a9-8fab-155a1c6b209d", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/bcec399e-2730-49de-99ce-863ea2153c66/5923ebeafb0f6cd35886c0055b8a9f09.zip", "Shapefile"], ["87d2a9e8-7c16-40a9-8fab-155a1c6b209d", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/6bf2d6a1-3027-4a44-ab14-ce9aa6e24565/d0460a41554de8fe92e78393338423c7.pmtiles", nil]]
+Document References Sorted: [["87d2a9e8-7c16-40a9-8fab-155a1c6b209d", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["87d2a9e8-7c16-40a9-8fab-155a1c6b209d", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/bcec399e-2730-49de-99ce-863ea2153c66/5923ebeafb0f6cd35886c0055b8a9f09.zip", "calvlu02.zip"], ["87d2a9e8-7c16-40a9-8fab-155a1c6b209d", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/6bf2d6a1-3027-4a44-ab14-ce9aa6e24565/d0460a41554de8fe92e78393338423c7.pmtiles", nil]]
+Processed 1000 documents in this batch, total processed: 35000
+Processed 1000 documents in this batch, total processed: 36000
+Processed 1000 documents in this batch, total processed: 37000
+
+NO MATCH
+Document: df107945-d91f-40f0-8802-504544918d48
+CSV References Sorted: [["df107945-d91f-40f0-8802-504544918d48", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["df107945-d91f-40f0-8802-504544918d48", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/520d12e8-a4f3-426a-aa51-4c9f61f7448e/4360868ca1fa192b55fe04ce71d0882d.zip", "fredlu02.zip"], ["df107945-d91f-40f0-8802-504544918d48", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/520d12e8-a4f3-426a-aa51-4c9f61f7448e/4360868ca1fa192b55fe04ce71d0882d.zip", "Shapefile"], ["df107945-d91f-40f0-8802-504544918d48", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/a0543f18-79a1-49d3-ba9a-dda899ca9574/61d5276991895701d076ace7d6881e8d.pmtiles", nil]]
+Document References Sorted: [["df107945-d91f-40f0-8802-504544918d48", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["df107945-d91f-40f0-8802-504544918d48", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/520d12e8-a4f3-426a-aa51-4c9f61f7448e/4360868ca1fa192b55fe04ce71d0882d.zip", "fredlu02.zip"], ["df107945-d91f-40f0-8802-504544918d48", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/a0543f18-79a1-49d3-ba9a-dda899ca9574/61d5276991895701d076ace7d6881e8d.pmtiles", nil]]
+Processed 1000 documents in this batch, total processed: 38000
+
+NO MATCH
+Document: ca1590a9-6077-4e2c-a029-beefc614c9a2
+CSV References Sorted: [["ca1590a9-6077-4e2c-a029-beefc614c9a2", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["ca1590a9-6077-4e2c-a029-beefc614c9a2", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/db90a215-2255-41d2-9f75-ad12c3515257/600fda0a7b49192369ac0262fde3610d.zip", "harflu02.zip"], ["ca1590a9-6077-4e2c-a029-beefc614c9a2", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/db90a215-2255-41d2-9f75-ad12c3515257/600fda0a7b49192369ac0262fde3610d.zip", "Shapefile"], ["ca1590a9-6077-4e2c-a029-beefc614c9a2", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/12a76d2b-eb87-4f81-a135-f5cecf087304/b5d74dcbaa8216fb199a9e55f2e4d555.pmtiles", nil]]
+Document References Sorted: [["ca1590a9-6077-4e2c-a029-beefc614c9a2", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["ca1590a9-6077-4e2c-a029-beefc614c9a2", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/db90a215-2255-41d2-9f75-ad12c3515257/600fda0a7b49192369ac0262fde3610d.zip", "harflu02.zip"], ["ca1590a9-6077-4e2c-a029-beefc614c9a2", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/12a76d2b-eb87-4f81-a135-f5cecf087304/b5d74dcbaa8216fb199a9e55f2e4d555.pmtiles", nil]]
+Processed 1000 documents in this batch, total processed: 39000
+Processed 1000 documents in this batch, total processed: 40000
+Processed 1000 documents in this batch, total processed: 41000
+
+NO MATCH
+Document: a3b32ab0-3149-4f1d-b6e9-9c51dafe5613
+CSV References Sorted: [["a3b32ab0-3149-4f1d-b6e9-9c51dafe5613", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["a3b32ab0-3149-4f1d-b6e9-9c51dafe5613", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/eaa41daf-752a-4f4f-9c43-1742f3e8f2e5/ce0ece3a00dd056344c18f11010d086d.zip", "garrlu02.zip"], ["a3b32ab0-3149-4f1d-b6e9-9c51dafe5613", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/eaa41daf-752a-4f4f-9c43-1742f3e8f2e5/ce0ece3a00dd056344c18f11010d086d.zip", "Shapefile"], ["a3b32ab0-3149-4f1d-b6e9-9c51dafe5613", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/46ed8c47-6729-4d5c-99a2-c31e91207bbf/daa05ab70dbbadd384996454a1fa92a1.pmtiles", nil]]
+Document References Sorted: [["a3b32ab0-3149-4f1d-b6e9-9c51dafe5613", "documentation_download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/28f57e52-85c8-4797-b80d-658e6bb3e36e/2ace10f5adf37c667edfd39ff69a80f9.html", nil], ["a3b32ab0-3149-4f1d-b6e9-9c51dafe5613", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/eaa41daf-752a-4f4f-9c43-1742f3e8f2e5/ce0ece3a00dd056344c18f11010d086d.zip", "garrlu02.zip"], ["a3b32ab0-3149-4f1d-b6e9-9c51dafe5613", "pmtiles", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/46ed8c47-6729-4d5c-99a2-c31e91207bbf/daa05ab70dbbadd384996454a1fa92a1.pmtiles", nil]]
+
+NO MATCH
+Document: 1da88d05-7b51-48ae-b5d5-4711c052b3f2
+CSV References Sorted: [["1da88d05-7b51-48ae-b5d5-4711c052b3f2", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/f55e0cc3-3684-491c-99bc-702014c2b61b/293cd53d936793143105427e9a2b6781.zip", "Surficial_Unconsolidated_Thickness_DEM.zip"]]
+Document References Sorted: [["1da88d05-7b51-48ae-b5d5-4711c052b3f2", "download", "https://eric-geoportal-test.s3.amazonaws.com/store/asset/f55e0cc3-3684-491c-99bc-702014c2b61b/293cd53d936793143105427e9a2b6781.zip", "Surficial_Unconsolidated_Thickness_DEM.zip"], ["1da88d05-7b51-48ae-b5d5-4711c052b3f2", "download", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/f55e0cc3-3684-491c-99bc-702014c2b61b/293cd53d936793143105427e9a2b6781.zip", "Surficial_Unconsolidated_Thickness_DEM.zip"]]
+Processed 1000 documents in this batch, total processed: 42000
+Processed 1000 documents in this batch, total processed: 43000
+Processed 1000 documents in this batch, total processed: 44000
+Processed 1000 documents in this batch, total processed: 45000
+Processed 1000 documents in this batch, total processed: 46000
+Processed 1000 documents in this batch, total processed: 47000
+Processed 1000 documents in this batch, total processed: 48000
+Processed 1000 documents in this batch, total processed: 49000
+Processed 1000 documents in this batch, total processed: 50000
+Processed 1000 documents in this batch, total processed: 51000
+Processed 1000 documents in this batch, total processed: 52000
+Processed 1000 documents in this batch, total processed: 53000
+Processed 1000 documents in this batch, total processed: 54000
+Processed 1000 documents in this batch, total processed: 55000
+Processed 1000 documents in this batch, total processed: 56000
+Processed 1000 documents in this batch, total processed: 57000
+Processed 1000 documents in this batch, total processed: 58000
+Processed 1000 documents in this batch, total processed: 59000
+Processed 1000 documents in this batch, total processed: 60000
+Processed 1000 documents in this batch, total processed: 61000
+Processed 1000 documents in this batch, total processed: 62000
+Processed 1000 documents in this batch, total processed: 63000
+Processed 1000 documents in this batch, total processed: 64000
+Processed 1000 documents in this batch, total processed: 65000
+Processed 1000 documents in this batch, total processed: 66000
+Processed 1000 documents in this batch, total processed: 67000
+Processed 1000 documents in this batch, total processed: 68000
+Processed 1000 documents in this batch, total processed: 69000
+Processed 1000 documents in this batch, total processed: 70000
+Processed 1000 documents in this batch, total processed: 71000
+Processed 1000 documents in this batch, total processed: 72000
+Processed 1000 documents in this batch, total processed: 73000
+Processed 1000 documents in this batch, total processed: 74000
+Processed 1000 documents in this batch, total processed: 75000
+Processed 1000 documents in this batch, total processed: 76000
+Processed 1000 documents in this batch, total processed: 77000
+Processed 1000 documents in this batch, total processed: 78000
+Processed 1000 documents in this batch, total processed: 79000
+Processed 1000 documents in this batch, total processed: 80000
+Processed 1000 documents in this batch, total processed: 81000
+Processed 1000 documents in this batch, total processed: 82000
+Processed 1000 documents in this batch, total processed: 83000
+Processed 1000 documents in this batch, total processed: 84000
+Processed 1000 documents in this batch, total processed: 85000
+Processed 1000 documents in this batch, total processed: 86000
+Processed 1000 documents in this batch, total processed: 87000
+Processed 1000 documents in this batch, total processed: 88000
+Processed 1000 documents in this batch, total processed: 89000
+Processed 1000 documents in this batch, total processed: 90000
+Processed 1000 documents in this batch, total processed: 91000
+Processed 1000 documents in this batch, total processed: 92000
+
+Error auditing references for document: harvard-g7064-s2-1834-k3 - #<NoMethodError: undefined method `[]' for nil>
+Processed 1000 documents in this batch, total processed: 93000
+Processed 1000 documents in this batch, total processed: 94000
+Processed 1000 documents in this batch, total processed: 95000
+Processed 1000 documents in this batch, total processed: 96000
+
+NO MATCH - Duplicate holc-scan.jpg URL
+Document: 82a3b7a2-f1b8-4a64-9832-a227ddd1a66d
+CSV References Sorted: [["82a3b7a2-f1b8-4a64-9832-a227ddd1a66d", "documentation_external", "https://dsl.richmond.edu/panorama/redlining/#city=staten-island-ny", nil], ["82a3b7a2-f1b8-4a64-9832-a227ddd1a66d", "download", "https://s3.amazonaws.com/holc/tiles/NY/StatenIsland/1938/holc-scan.jpg", "GeoTIFF"], ["82a3b7a2-f1b8-4a64-9832-a227ddd1a66d", "download", "https://s3.amazonaws.com/holc/tiles/NY/StatenIsland/1938/holc-scan.jpg", "JPEG"]]
+Document References Sorted: [["82a3b7a2-f1b8-4a64-9832-a227ddd1a66d", "documentation_external", "https://dsl.richmond.edu/panorama/redlining/#city=staten-island-ny", nil], ["82a3b7a2-f1b8-4a64-9832-a227ddd1a66d", "download", "https://s3.amazonaws.com/holc/tiles/NY/StatenIsland/1938/holc-scan.jpg", "JPEG"]]
+Processed 1000 documents in this batch, total processed: 97000
+Processed 1000 documents in this batch, total processed: 98000
+Processed 1000 documents in this batch, total processed: 99000
+Processed 1000 documents in this batch, total processed: 100000
+Processed 1000 documents in this batch, total processed: 101000
+Processed 1000 documents in this batch, total processed: 102000
+Processed 1000 documents in this batch, total processed: 103000
+
+NO MATCH
+Document: test
+CSV References Sorted: [["test", "download", "https://example.com", "newLabel"], ["test", "download", "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_sos/bdry_votingdistricts/kmz_bdry_votingdistricts.zip", "KMZ"], ["test", "download", "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_sos/bdry_votingdistricts/kmz_bdry_votingdistricts.zip", "newLabel"], ["test", "download", "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_sos/bdry_votingdistricts/shp_bdry_votingdistricts.zip", "Shapefile"], ["test", "download", "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_sos/bdry_votingdistricts/shp_bdry_votingdistricts.zip", "anotherLabel"], ["test", "download", "https:/anotherExample.com", "anotherLabel"]]
+Document References Sorted: [["test", "download", "https://example.com", "newLabel"], ["test", "download", "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_sos/bdry_votingdistricts/kmz_bdry_votingdistricts.zip", "KMZ"], ["test", "download", "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_sos/bdry_votingdistricts/shp_bdry_votingdistricts.zip", "Shapefile"], ["test", "download", "https:/anotherExample.com", "anotherLabel"]]
+
+NO MATCH - Array of cog URLs?
+Document: btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166
+CSV References Sorted: [["btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166", "cog", ["https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/51011e42-c559-47dd-8e18-f6388ecdc083/f2d92d1dfb83d2361547c62c5321be52.tif", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/6b7500e0-acea-45c3-a8b2-47a8b2a5fb20/acc4aa6b5e9ff7f346a6a3f1b13cc2df.tif"], nil], ["btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166", "documentation_external", "http://maps.indiana.edu/layerGallery.html", nil], ["btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166", "download", "http://maps.indiana.edu/download/Environment/Land_Cover_Impervious_Surfaces_2006.zip", "GeoTIFF"]]
+Document References Sorted: [["btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166", "cog", "[\"https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/51011e42-c559-47dd-8e18-f6388ecdc083/f2d92d1dfb83d2361547c62c5321be52.tif\", \"https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/6b7500e0-acea-45c3-a8b2-47a8b2a5fb20/acc4aa6b5e9ff7f346a6a3f1b13cc2df.tif\"]", nil], ["btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166", "documentation_external", "http://maps.indiana.edu/layerGallery.html", nil], ["btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166", "download", "http://maps.indiana.edu/download/Environment/Land_Cover_Impervious_Surfaces_2006.zip", "GeoTIFF"]]
+Processed 1000 documents in this batch, total processed: 104000
+Processed 1000 documents in this batch, total processed: 105000
+Processed 1000 documents in this batch, total processed: 106000
+Processed 1000 documents in this batch, total processed: 107000
+Processed 1000 documents in this batch, total processed: 108000
+
+NO MATCH - Array of image URLs?
+Document: 59bd8ed8-088c-4932-97c9-544135dd9d64
+CSV References Sorted: [["59bd8ed8-088c-4932-97c9-544135dd9d64", "documentation_external", "https://michiganology.org/uncategorized/IO_59bd8ed8-088c-4932-97c9-544135dd9d64", nil], ["59bd8ed8-088c-4932-97c9-544135dd9d64", "image", ["https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/88b43100-06a1-47e0-8fe0-797b1768f4e0/952fffe1b6f9f9367fdec0cfca0b3c2b.png", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/29421b81-8152-4fff-972e-90f98ed57ee2/aa172e2dd422e038b09b0f081e82084e.png"], nil]]
+Document References Sorted: [["59bd8ed8-088c-4932-97c9-544135dd9d64", "documentation_external", "https://michiganology.org/uncategorized/IO_59bd8ed8-088c-4932-97c9-544135dd9d64", nil], ["59bd8ed8-088c-4932-97c9-544135dd9d64", "image", "[\"https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/88b43100-06a1-47e0-8fe0-797b1768f4e0/952fffe1b6f9f9367fdec0cfca0b3c2b.png\", \"https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/29421b81-8152-4fff-972e-90f98ed57ee2/aa172e2dd422e038b09b0f081e82084e.png\"]", nil]]
+Processed 1000 documents in this batch, total processed: 109000
+Processed 178 documents in this batch, total processed: 109178
+--- Audit End ---

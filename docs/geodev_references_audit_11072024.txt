@@ -1,0 +1,145 @@
+--- Audit Start ---
+
+NO MATCH — Duplicate holc-scan.jpg URL 
+Document: ed5705ef-7c1a-4497-b7af-fd971cee8e40
+CSV References Sorted: [["ed5705ef-7c1a-4497-b7af-fd971cee8e40", "documentation_external", "https://dsl.richmond.edu/panorama/redlining/#city=hudson-co.-nj", nil], ["ed5705ef-7c1a-4497-b7af-fd971cee8e40", "download", "https://s3.amazonaws.com/holc/tiles/NJ/HudsonCounty/1939/holc-scan.jpg", "GeoTIFF"], ["ed5705ef-7c1a-4497-b7af-fd971cee8e40", "download", "https://s3.amazonaws.com/holc/tiles/NJ/HudsonCounty/1939/holc-scan.jpg", "JPEG"]]
+Document References Sorted: [["ed5705ef-7c1a-4497-b7af-fd971cee8e40", "documentation_external", "https://dsl.richmond.edu/panorama/redlining/#city=hudson-co.-nj", nil], ["ed5705ef-7c1a-4497-b7af-fd971cee8e40", "download", "https://s3.amazonaws.com/holc/tiles/NJ/HudsonCounty/1939/holc-scan.jpg", "JPEG"]]
+Processed 1000 documents in this batch, total processed: 1000
+Processed 1000 documents in this batch, total processed: 2000
+Processed 1000 documents in this batch, total processed: 3000
+
+NO MATCH - Duplicate rectified.zip URL
+Document: 32027b5a-ea8a-42dd-875c-518cd3ab5811
+CSV References Sorted: [["32027b5a-ea8a-42dd-875c-518cd3ab5811", "documentation_external", "https://dsl.richmond.edu/panorama/redlining/#city=charleston-wv", nil], ["32027b5a-ea8a-42dd-875c-518cd3ab5811", "download", "https://s3.amazonaws.com/holc/tiles/WV/Charleston/1938/holc-scan.jpg", "JPG"], ["32027b5a-ea8a-42dd-875c-518cd3ab5811", "download", "https://s3.amazonaws.com/holc/tiles/WV/Charleston/1938/rectified.zip", "GeoTIFF"], ["32027b5a-ea8a-42dd-875c-518cd3ab5811", "download", "https://s3.amazonaws.com/holc/tiles/WV/Charleston/1938/rectified.zip", "GeoTIFF (inset)"]]
+Document References Sorted: [["32027b5a-ea8a-42dd-875c-518cd3ab5811", "documentation_external", "https://dsl.richmond.edu/panorama/redlining/#city=charleston-wv", nil], ["32027b5a-ea8a-42dd-875c-518cd3ab5811", "download", "https://s3.amazonaws.com/holc/tiles/WV/Charleston/1938/holc-scan.jpg", "JPG"], ["32027b5a-ea8a-42dd-875c-518cd3ab5811", "download", "https://s3.amazonaws.com/holc/tiles/WV/Charleston/1938/rectified.zip", "GeoTIFF"]]
+Processed 1000 documents in this batch, total processed: 4000
+Processed 1000 documents in this batch, total processed: 5000
+Processed 1000 documents in this batch, total processed: 6000
+Processed 1000 documents in this batch, total processed: 7000
+Processed 1000 documents in this batch, total processed: 8000
+Processed 1000 documents in this batch, total processed: 9000
+Processed 1000 documents in this batch, total processed: 10000
+Processed 1000 documents in this batch, total processed: 11000
+Processed 1000 documents in this batch, total processed: 12000
+Processed 1000 documents in this batch, total processed: 13000
+Processed 1000 documents in this batch, total processed: 14000
+Processed 1000 documents in this batch, total processed: 15000
+Processed 1000 documents in this batch, total processed: 16000
+Processed 1000 documents in this batch, total processed: 17000
+Processed 1000 documents in this batch, total processed: 18000
+Processed 1000 documents in this batch, total processed: 19000
+Processed 1000 documents in this batch, total processed: 20000
+Processed 1000 documents in this batch, total processed: 21000
+Processed 1000 documents in this batch, total processed: 22000
+Processed 1000 documents in this batch, total processed: 23000
+Processed 1000 documents in this batch, total processed: 24000
+Processed 1000 documents in this batch, total processed: 25000
+Processed 1000 documents in this batch, total processed: 26000
+Processed 1000 documents in this batch, total processed: 27000
+Processed 1000 documents in this batch, total processed: 28000
+Processed 1000 documents in this batch, total processed: 29000
+Processed 1000 documents in this batch, total processed: 30000
+Processed 1000 documents in this batch, total processed: 31000
+Processed 1000 documents in this batch, total processed: 32000
+Processed 1000 documents in this batch, total processed: 33000
+Processed 1000 documents in this batch, total processed: 34000
+Processed 1000 documents in this batch, total processed: 35000
+Processed 1000 documents in this batch, total processed: 36000
+Processed 1000 documents in this batch, total processed: 37000
+Processed 1000 documents in this batch, total processed: 38000
+Processed 1000 documents in this batch, total processed: 39000
+Processed 1000 documents in this batch, total processed: 40000
+Processed 1000 documents in this batch, total processed: 41000
+Processed 1000 documents in this batch, total processed: 42000
+Processed 1000 documents in this batch, total processed: 43000
+Processed 1000 documents in this batch, total processed: 44000
+Processed 1000 documents in this batch, total processed: 45000
+Processed 1000 documents in this batch, total processed: 46000
+Processed 1000 documents in this batch, total processed: 47000
+Processed 1000 documents in this batch, total processed: 48000
+Processed 1000 documents in this batch, total processed: 49000
+Processed 1000 documents in this batch, total processed: 50000
+Processed 1000 documents in this batch, total processed: 51000
+Processed 1000 documents in this batch, total processed: 52000
+Processed 1000 documents in this batch, total processed: 53000
+Processed 1000 documents in this batch, total processed: 54000
+Processed 1000 documents in this batch, total processed: 55000
+Processed 1000 documents in this batch, total processed: 56000
+Processed 1000 documents in this batch, total processed: 57000
+Processed 1000 documents in this batch, total processed: 58000
+Processed 1000 documents in this batch, total processed: 59000
+Processed 1000 documents in this batch, total processed: 60000
+Processed 1000 documents in this batch, total processed: 61000
+Processed 1000 documents in this batch, total processed: 62000
+Processed 1000 documents in this batch, total processed: 63000
+Processed 1000 documents in this batch, total processed: 64000
+Processed 1000 documents in this batch, total processed: 65000
+Processed 1000 documents in this batch, total processed: 66000
+Processed 1000 documents in this batch, total processed: 67000
+Processed 1000 documents in this batch, total processed: 68000
+Processed 1000 documents in this batch, total processed: 69000
+Processed 1000 documents in this batch, total processed: 70000
+Processed 1000 documents in this batch, total processed: 71000
+Processed 1000 documents in this batch, total processed: 72000
+Processed 1000 documents in this batch, total processed: 73000
+Processed 1000 documents in this batch, total processed: 74000
+Processed 1000 documents in this batch, total processed: 75000
+Processed 1000 documents in this batch, total processed: 76000
+Processed 1000 documents in this batch, total processed: 77000
+Processed 1000 documents in this batch, total processed: 78000
+Processed 1000 documents in this batch, total processed: 79000
+Processed 1000 documents in this batch, total processed: 80000
+Processed 1000 documents in this batch, total processed: 81000
+Processed 1000 documents in this batch, total processed: 82000
+Processed 1000 documents in this batch, total processed: 83000
+Processed 1000 documents in this batch, total processed: 84000
+Processed 1000 documents in this batch, total processed: 85000
+Processed 1000 documents in this batch, total processed: 86000
+Processed 1000 documents in this batch, total processed: 87000
+Processed 1000 documents in this batch, total processed: 88000
+Processed 1000 documents in this batch, total processed: 89000
+Processed 1000 documents in this batch, total processed: 90000
+Processed 1000 documents in this batch, total processed: 91000
+Processed 1000 documents in this batch, total processed: 92000
+
+# ERROR - harvard_download in dct_references_s (we don't support those)
+Error auditing references for document: harvard-g7064-s2-1834-k3 - #<NoMethodError: undefined method `[]' for nil>
+Processed 1000 documents in this batch, total processed: 93000
+Processed 1000 documents in this batch, total processed: 94000
+Processed 1000 documents in this batch, total processed: 95000
+Processed 1000 documents in this batch, total processed: 96000
+
+NO MATCH - Duplicate holc-scan.jpg URL
+Document: 82a3b7a2-f1b8-4a64-9832-a227ddd1a66d
+CSV References Sorted: [["82a3b7a2-f1b8-4a64-9832-a227ddd1a66d", "documentation_external", "https://dsl.richmond.edu/panorama/redlining/#city=staten-island-ny", nil], ["82a3b7a2-f1b8-4a64-9832-a227ddd1a66d", "download", "https://s3.amazonaws.com/holc/tiles/NY/StatenIsland/1938/holc-scan.jpg", "GeoTIFF"], ["82a3b7a2-f1b8-4a64-9832-a227ddd1a66d", "download", "https://s3.amazonaws.com/holc/tiles/NY/StatenIsland/1938/holc-scan.jpg", "JPEG"]]
+Document References Sorted: [["82a3b7a2-f1b8-4a64-9832-a227ddd1a66d", "documentation_external", "https://dsl.richmond.edu/panorama/redlining/#city=staten-island-ny", nil], ["82a3b7a2-f1b8-4a64-9832-a227ddd1a66d", "download", "https://s3.amazonaws.com/holc/tiles/NY/StatenIsland/1938/holc-scan.jpg", "JPEG"]]
+Processed 1000 documents in this batch, total processed: 97000
+Processed 1000 documents in this batch, total processed: 98000
+Processed 1000 documents in this batch, total processed: 99000
+Processed 1000 documents in this batch, total processed: 100000
+Processed 1000 documents in this batch, total processed: 101000
+Processed 1000 documents in this batch, total processed: 102000
+Processed 1000 documents in this batch, total processed: 103000
+
+NO MATCH - Duplicate shp_bdry_votingdistricts.zip URL
+Document: test
+CSV References Sorted: [["test", "download", "https://example.com", "newLabel"], ["test", "download", "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_sos/bdry_votingdistricts/kmz_bdry_votingdistricts.zip", "KMZ"], ["test", "download", "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_sos/bdry_votingdistricts/kmz_bdry_votingdistricts.zip", "newLabel"], ["test", "download", "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_sos/bdry_votingdistricts/shp_bdry_votingdistricts.zip", "Shapefile"], ["test", "download", "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_sos/bdry_votingdistricts/shp_bdry_votingdistricts.zip", "anotherLabel"], ["test", "download", "https:/anotherExample.com", "anotherLabel"]]
+Document References Sorted: [["test", "download", "https://example.com", "newLabel"], ["test", "download", "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_sos/bdry_votingdistricts/kmz_bdry_votingdistricts.zip", "KMZ"], ["test", "download", "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_sos/bdry_votingdistricts/shp_bdry_votingdistricts.zip", "Shapefile"], ["test", "download", "https:/anotherExample.com", "anotherLabel"]]
+
+NO MATCH - Bad COG (array of URLs)
+Document: btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166
+CSV References Sorted: [["btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166", "cog", ["https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/51011e42-c559-47dd-8e18-f6388ecdc083/f2d92d1dfb83d2361547c62c5321be52.tif", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/6b7500e0-acea-45c3-a8b2-47a8b2a5fb20/acc4aa6b5e9ff7f346a6a3f1b13cc2df.tif"], nil], ["btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166", "documentation_external", "http://maps.indiana.edu/layerGallery.html", nil], ["btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166", "download", "http://maps.indiana.edu/download/Environment/Land_Cover_Impervious_Surfaces_2006.zip", "GeoTIFF"]]
+Document References Sorted: [["btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166", "cog", "[\"https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/51011e42-c559-47dd-8e18-f6388ecdc083/f2d92d1dfb83d2361547c62c5321be52.tif\", \"https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/6b7500e0-acea-45c3-a8b2-47a8b2a5fb20/acc4aa6b5e9ff7f346a6a3f1b13cc2df.tif\"]", nil], ["btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166", "documentation_external", "http://maps.indiana.edu/layerGallery.html", nil], ["btaa-73cb3ca0-0024-4e7a-b9ba-3902d5c00166", "download", "http://maps.indiana.edu/download/Environment/Land_Cover_Impervious_Surfaces_2006.zip", "GeoTIFF"]]
+Processed 1000 documents in this batch, total processed: 104000
+Processed 1000 documents in this batch, total processed: 105000
+Processed 1000 documents in this batch, total processed: 106000
+Processed 1000 documents in this batch, total processed: 107000
+Processed 1000 documents in this batch, total processed: 108000
+
+NO MATCH - Bad image (array of URLs)
+Document: 59bd8ed8-088c-4932-97c9-544135dd9d64
+CSV References Sorted: [["59bd8ed8-088c-4932-97c9-544135dd9d64", "documentation_external", "https://michiganology.org/uncategorized/IO_59bd8ed8-088c-4932-97c9-544135dd9d64", nil], ["59bd8ed8-088c-4932-97c9-544135dd9d64", "image", ["https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/88b43100-06a1-47e0-8fe0-797b1768f4e0/952fffe1b6f9f9367fdec0cfca0b3c2b.png", "https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/29421b81-8152-4fff-972e-90f98ed57ee2/aa172e2dd422e038b09b0f081e82084e.png"], nil]]
+Document References Sorted: [["59bd8ed8-088c-4932-97c9-544135dd9d64", "documentation_external", "https://michiganology.org/uncategorized/IO_59bd8ed8-088c-4932-97c9-544135dd9d64", nil], ["59bd8ed8-088c-4932-97c9-544135dd9d64", "image", "[\"https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/88b43100-06a1-47e0-8fe0-797b1768f4e0/952fffe1b6f9f9367fdec0cfca0b3c2b.png\", \"https://geobtaa-assets-dev.s3.us-east-2.amazonaws.com/store/asset/29421b81-8152-4fff-972e-90f98ed57ee2/aa172e2dd422e038b09b0f081e82084e.png\"]", nil]]
+Processed 1000 documents in this batch, total processed: 109000
+Processed 178 documents in this batch, total processed: 109178
+--- Audit End ---

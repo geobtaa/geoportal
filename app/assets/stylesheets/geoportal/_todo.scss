@@ -24,7 +24,13 @@ a {
     border-color: $visited-color;
   }
 }
-a.btn { text-decoration: none; }
+a.btn { 
+  text-decoration: none; 
+  &:visited {
+    color: $white;
+    border-color: $white;
+  }
+}
 a.btn.btn-primary {
   color: $white;
   background-color: $btaa-blue;

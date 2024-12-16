@@ -226,4 +226,7 @@
 
   <!-- for GBLADMIN reporting -->
   <copyField source="date_created_dtsi" dest="date_created_drsim"/>
+
+  <!-- for database index auditing -->
+  <copyField source="geomg_id_s" dest="geomg_id_sdv"/>
 </schema>
