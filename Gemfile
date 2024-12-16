@@ -82,7 +82,7 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '4.4'
 
 # GBL Admin
-gem 'geoblacklight_admin', "~> 0.6.0"
+gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/btaa-migration-fix"
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
@@ -104,7 +104,7 @@ gem 'geoblacklight_sidecar_images', git: "https://github.com/geoblacklight/geobl
 gem 'mini_magick', '~> 4.9.4'
 gem "image_processing", ">= 1.2"
 
-gem 'statesman', '>= 12.0'
+gem 'statesman', '~> 12.0'
 gem 'sidekiq', '~> 6.4'
 gem 'sidekiq-failures', '~> 1.0.0'
 gem 'down', '~> 5.0'
