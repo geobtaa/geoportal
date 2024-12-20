@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 274cdb81247cecbee0ead1667551560f68d52239
+  revision: f7a2733d1a6d93023f5c882133a6aebbff5fa3ea
   branch: develop
   specs:
     geoblacklight_admin (0.6.1)
