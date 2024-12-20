@@ -43,10 +43,10 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: e2006c9923fae57a7beb7d066d6c6d763cedac75
-  branch: feature/background-distribution-imports
+  revision: 217077d2880aed7f6a9808cd5b04445f7c3f3fca
+  branch: feature/data-dictionaries
   specs:
-    geoblacklight_admin (0.6.3)
+    geoblacklight_admin (0.6.1)
       active_storage_validations (~> 1.0)
       amazing_print
       blacklight (~> 7.33)
