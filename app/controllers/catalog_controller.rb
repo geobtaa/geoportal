@@ -240,6 +240,11 @@ class CatalogController < ApplicationController
     config.add_show_field Settings.FIELDS.FILE_SIZE, label: 'File Size', itemprop: 'file_size'
     config.add_show_field Settings.FIELDS.B1G_LANGUAGE, label: 'Language', itemprop: 'language'
     config.add_show_field Settings.FIELDS.B1G_DATE_CREATED, label: 'Date Added', helper_method: :render_date_created
+    config.add_show_field Settings.FIELDS.B1G_DCT_CONFORMS_TO, label: 'Conforms To', itemprop: 'conforms_to'
+    config.add_show_field Settings.FIELDS.B1G_DCAT_SPATIAL_RESOLUTION_IN_METERS, label: 'Spatial Resolution in Meters', itemprop: 'dcat_spatial_resolution'
+    config.add_show_field Settings.FIELDS.B1G_GEODCAT_SPATIAL_RESOLUTION_AS_TEXT, label: 'Spatial Resolution as Text', itemprop: 'geodcat_spatial_resolution'
+    config.add_show_field Settings.FIELDS.B1G_DCT_PROVENANCE_STATEMENT, label: 'Provenance Statement', itemprop: 'provenance_statement'
+    config.add_show_field Settings.FIELDS.B1G_DCT_EXTENT, label: 'Extent in square kilometers', itemprop: 'extent'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
