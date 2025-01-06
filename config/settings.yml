@@ -90,7 +90,7 @@ FIELDS:
   :TITLE: 'dct_title_s'
   :VERSION: 'dct_isVersionOf_sm'
   :WXS_IDENTIFIER: 'gbl_wxsIdentifier_s'
-  # B1G Custom Fields Geoportal / GEOMG
+  # B1G Custom Fields Geoportal / GBL Admin
   :B1G_ACCESS: 'b1g_access_s'
   :B1G_DATE_ACCESSIONED: 'b1g_dateAccessioned_sm'
   :B1G_ACCRUAL_METHOD: 'b1g_dct_accrualMethod_s'
@@ -104,6 +104,11 @@ FIELDS:
   :B1G_MEDIATOR: 'b1g_dct_mediator_sm'
   :B1G_PUBLICATION_STATE: 'b1g_publication_state_s'
   :B1G_IMPORT_ID: 'b1g_geom_import_id_ssi'
+  :B1G_DCT_CONFORMS_TO: 'b1g_dct_conformsTo_sm'
+  :B1G_DCT_EXTENT: 'b1g_dct_extent_sm'
+  :B1G_DCAT_SPATIAL_RESOLUTION_IN_METERS: 'b1g_dcat_spatialResolutionInMeters_sm'
+  :B1G_GEODCAT_SPATIAL_RESOLUTION_AS_TEXT: 'b1g_geodcat_spatialResolutionAsText_sm'
+  :B1G_DCT_PROVENANCE_STATEMENT: 'b1g_dct_provenanceStatement_sm'
 
 GEOMONITOR_TOLERANCE: 0.8
 #GOOGLE_ANALYTICS_ID: 'UA-XXXXX-X'
