@@ -43,8 +43,8 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 4abd2e1f2e752aebc433cfd6d161bf0484fe5737
-  branch: feature/133-label-bug
+  revision: ff3983332bbcdb4a619176bd1fcb7a0d604bdaa1
+  branch: develop
   specs:
     geoblacklight_admin (0.6.2)
       active_storage_validations (~> 1.0)
