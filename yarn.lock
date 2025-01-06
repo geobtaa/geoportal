@@ -1647,9 +1647,9 @@
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
 "@geoblacklight/admin@^0.4.4":
-  version "0.4.12"
-  resolved "https://registry.yarnpkg.com/@geoblacklight/admin/-/admin-0.4.12.tgz#a6270411af86bebc5d833ac5c1743ef4f78c42bd"
-  integrity sha512-BlP9CiwuUig3N5TeayHX64chuScej70jKI+pcpu6J5nEypEgai3k/LUgyVabjnzmg831FYf8QJ97yk++d1xQ6A==
+  version "0.4.14"
+  resolved "https://registry.yarnpkg.com/@geoblacklight/admin/-/admin-0.4.14.tgz#94fe32b75c60c35a37868148a7432d1e9c32519c"
+  integrity sha512-yYy3okeGTU1vYL94PgQwh/3aqN3t65wZa1MjUFtiyAHbRAg5XC8tQz9h+Y28SymXq9S8r3qrEdGPMAdLG82yIQ==
   dependencies:
     "@hotwired/stimulus" "^3.2.2"
     "@nathanvda/cocoon" "^1.2.14"
@@ -1670,6 +1670,7 @@
     shave "^2.5.10"
     stimulus "^3.2.2"
     stimulus-scroll-to "^4.1.0"
+    tom-select "^2.3.1"
     turbolinks "^5.2.0"
     yargs-parser "^13.1.2"
 
@@ -2269,6 +2270,18 @@
     remark-parse "^11.0.0"
     remark-rehype "^11.1.0"
     unified "^11.0.4"
+
+"@orchidjs/sifter@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@orchidjs/sifter/-/sifter-1.1.0.tgz#b36154ad0cda4898305d1ac44f318b41048a0438"
+  integrity sha512-mYwHCfr736cIWWdhhSZvDbf90AKt2xyrJspKFC3qyIJG1LtrJeJunYEqCGG4Aq2ijENbc4WkOjszcvNaIAS/pQ==
+  dependencies:
+    "@orchidjs/unicode-variants" "^1.1.2"
+
+"@orchidjs/unicode-variants@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@orchidjs/unicode-variants/-/unicode-variants-1.1.2.tgz#1fd71791a67fdd1591ebe0dcaadd3964537a824e"
+  integrity sha512-5DobW1CHgnBROOEpFlEXytED5OosEWESFvg/VYmH0143oXcijYTprRYJTs+55HzGM4IqxiLFSuqEzu9mPNwVsA==
 
 "@petamoriken/float16@^3.4.7":
   version "3.8.7"
@@ -15350,6 +15363,14 @@ toidentifier@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.1.tgz#3be34321a88a820ed1bd80dfaa33e479fbb8dd35"
   integrity sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==
+
+tom-select@^2.3.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/tom-select/-/tom-select-2.4.1.tgz#6a0b6df8af3df7b09b22dd965eb75ce4d1c547bc"
+  integrity sha512-adI8H8+wk8RRzHYLQ3bXSk2Q+FAq/kzAATrcWlJ2fbIrEzb0VkwaXzKHTAlBwSJrhqbPJvhV/0eypFkED/nAug==
+  dependencies:
+    "@orchidjs/sifter" "^1.1.0"
+    "@orchidjs/unicode-variants" "^1.1.2"
 
 tough-cookie@^4.0.0:
   version "4.1.4"
