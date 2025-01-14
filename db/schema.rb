@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_20_238823) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_13_213655) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -237,6 +237,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_20_238823) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "import_distribution_id"
     t.index ["friendlier_id", "reference_type_id", "url"], name: "document_references_unique_index", unique: true
     t.index ["reference_type_id"], name: "index_document_distributions_on_reference_type_id"
   end
@@ -321,6 +322,57 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_20_238823) do
     t.datetime "updated_at", precision: nil, null: false
     t.index ["solr_document_sidecar_id", "sort_key"], name: "index_image_upload_transitions_parent_sort", unique: true
     t.index ["solr_document_sidecar_id"], name: "index_image_upload_transitions_on_solr_document_sidecar_id"
+  end
+
+  create_table "import_distribution_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.text "metadata", default: "{}"
+    t.integer "sort_key", null: false
+    t.integer "import_distribution_id", null: false
+    t.boolean "most_recent", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["import_distribution_id", "most_recent"], name: "index_import_distribution_transitions_parent_most_recent", unique: true, where: "most_recent"
+    t.index ["import_distribution_id", "sort_key"], name: "index_import_distribution_transitions_parent_sort", unique: true
+  end
+
+  create_table "import_distributions", force: :cascade do |t|
+    t.string "name"
+    t.string "source"
+    t.text "description"
+    t.string "filename"
+    t.integer "row_count"
+    t.text "headers", default: [], array: true
+    t.string "encoding"
+    t.string "content_type"
+    t.string "extension"
+    t.boolean "validity", default: false
+    t.text "validation_result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "import_document_distribution_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.text "metadata", default: "{}"
+    t.integer "sort_key", null: false
+    t.integer "import_document_distribution_id", null: false
+    t.boolean "most_recent", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["import_document_distribution_id", "most_recent"], name: "index_import_doc_distribution_transitions_parent_most_recent", unique: true, where: "most_recent"
+    t.index ["import_document_distribution_id", "sort_key"], name: "index_import_doc_distribution_transitions_parent_sort", unique: true
+  end
+
+  create_table "import_document_distributions", force: :cascade do |t|
+    t.string "friendlier_id"
+    t.string "reference_type"
+    t.text "distribution_url"
+    t.string "label"
+    t.bigint "import_distribution_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["import_distribution_id"], name: "index_import_distributions_on_import_distribution_id"
   end
 
   create_table "import_document_transitions", force: :cascade do |t|
