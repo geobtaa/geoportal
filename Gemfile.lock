@@ -43,10 +43,10 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 217077d2880aed7f6a9808cd5b04445f7c3f3fca
+  revision: 05f347314d344a0b9415d1599351d3a0cce393bd
   branch: feature/data-dictionaries
   specs:
-    geoblacklight_admin (0.6.1)
+    geoblacklight_admin (0.6.3)
       active_storage_validations (~> 1.0)
       amazing_print
       blacklight (~> 7.33)
@@ -177,20 +177,20 @@ GEM
       execjs (~> 2)
     awesome_print (1.9.2)
     aws-eventstream (1.3.0)
-    aws-partitions (1.1031.0)
-    aws-sdk-core (3.214.1)
+    aws-partitions (1.1038.0)
+    aws-sdk-core (3.216.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
       jmespath (~> 1, >= 1.6.1)
-    aws-sdk-kms (1.96.0)
-      aws-sdk-core (~> 3, >= 3.210.0)
+    aws-sdk-kms (1.97.0)
+      aws-sdk-core (~> 3, >= 3.216.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.177.0)
-      aws-sdk-core (~> 3, >= 3.210.0)
+    aws-sdk-s3 (1.178.0)
+      aws-sdk-core (~> 3, >= 3.216.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
-    aws-sigv4 (1.10.1)
+    aws-sigv4 (1.11.0)
       aws-eventstream (~> 1, >= 1.0.2)
     axe-core-api (4.10.2)
       dumb_delegator
@@ -762,7 +762,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.7.3)
       mini_portile2 (~> 2.8.0)
-    stackprof (0.2.26)
+    stackprof (0.2.27)
     statesman (12.1.0)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
@@ -871,6 +871,7 @@ DEPENDENCIES
   chosen-rails (~> 1.10)
   chronic
   coffee-rails (~> 4.2)
+  concurrent-ruby (= 1.3.4)
   database_cleaner
   devise (~> 4.0)
   devise-bootstrap-views (~> 1.0)
