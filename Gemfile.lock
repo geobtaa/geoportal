@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 05f347314d344a0b9415d1599351d3a0cce393bd
+  revision: 664bb7948112a131ca45cc0a4f9f62f9ebb9cbd3
   branch: feature/data-dictionaries
   specs:
     geoblacklight_admin (0.6.3)
