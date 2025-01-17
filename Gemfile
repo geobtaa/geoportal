@@ -83,7 +83,7 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '4.4'
 
 # GBL Admin
-gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/data-dictionaries"
+gem 'geoblacklight_admin', '~> 0.7.0'
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
