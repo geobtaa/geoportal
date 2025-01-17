@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.0.0'
+gem 'concurrent-ruby', '1.3.4'
 gem 'bootsnap', '~> 1.9.3', require: false
 gem 'listen', '~> 3.0'
 
@@ -82,7 +83,7 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '4.4'
 
 # GBL Admin
-gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/background-distribution-imports"
+gem 'geoblacklight_admin', '~> 0.7.0'
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"

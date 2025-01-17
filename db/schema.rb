@@ -229,6 +229,32 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_13_213655) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "document_data_dictionaries", force: :cascade do |t|
+    t.string "friendlier_id"
+    t.string "name"
+    t.text "description"
+    t.text "staff_notes"
+    t.string "tags", limit: 4096, default: "", null: false
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "document_data_dictionary_entries", force: :cascade do |t|
+    t.bigint "document_data_dictionary_id", null: false
+    t.string "friendlier_id"
+    t.string "field_name"
+    t.string "field_type"
+    t.string "values"
+    t.string "definition"
+    t.string "definition_source"
+    t.string "parent_field_name"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_data_dictionary_id"], name: "idx_data_dict_entries_doc_dict_id"
+  end
+
   create_table "document_distributions", force: :cascade do |t|
     t.string "friendlier_id", null: false
     t.bigint "reference_type_id", null: false
@@ -609,6 +635,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_13_213655) do
   add_foreign_key "bulk_action_document_transitions", "bulk_action_documents"
   add_foreign_key "bulk_action_documents", "bulk_actions"
   add_foreign_key "bulk_action_transitions", "bulk_actions"
+  add_foreign_key "document_data_dictionary_entries", "document_data_dictionaries"
   add_foreign_key "document_distributions", "reference_types"
   add_foreign_key "image_upload_transitions", "solr_document_sidecars"
   add_foreign_key "import_document_transitions", "import_documents"

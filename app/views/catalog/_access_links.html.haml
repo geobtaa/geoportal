@@ -4,6 +4,7 @@
 
 %div.access-links.list-group
   - b1g_access_links(@document).sort.each do |key,value|
-    %a.list-group-item.list-group-item-action{href:value}
-      = blacklight_icon(key.parameterize)
-      = key
+    - if key.present?
+      %a.list-group-item.list-group-item-action{href:value}
+        = blacklight_icon(key.parameterize)
+        = key

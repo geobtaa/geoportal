@@ -49,8 +49,11 @@ Rails.application.routes.draw do
   get 'feedback' => 'feedback_forms#new'
 
   concern :gbl_exportable, Geoblacklight::Routes::Exportable.new
+  concern :gbl_admin_data_dictionariesable, GeoblacklightAdmin::Routes::DataDictionariesable.new
+
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :gbl_exportable
+    concerns :gbl_admin_data_dictionariesable
   end
 
   concern :gbl_wms, Geoblacklight::Routes::Wms.new
@@ -219,6 +222,25 @@ namespace :admin do
       end
     end
 
+    # Data Dictionaries
+    resources :document_data_dictionaries, path: "data_dictionaries" do
+      collection do
+        get "import"
+        post "import"
+
+        get "destroy_all"
+        post "destroy_all"
+      end
+
+      resources :document_data_dictionary_entries, path: "entries" do
+        collection do
+          post "sort"
+          get "destroy_all"
+          post "destroy_all"
+        end
+      end
+    end
+
     # DocumentDownloads
     resources :document_downloads, path: "downloads" do
       collection do
@@ -296,7 +318,7 @@ namespace :admin do
   # DocumentAssets
   get "/documents/:id/ingest", to: "document_assets#display_attach_form", as: "asset_ingest"
   post "/documents/:id/ingest", to: "document_assets#attach_files"
-  
+
   # Asset Direct Upload
   mount Kithe::AssetUploader.upload_endpoint(:cache) => "/direct_upload", :as => :direct_app_upload
 
@@ -344,62 +366,4 @@ namespace :admin do
   get '/blog/2019/02/28/featured-item-map-of-the-nimrod-glacier.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2019/02/28-featured-item-map-of-the-nimrod-glacier?authuser=0')
   get '/blog/2019/03/19/contributor-spotlight-iowa.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2019/03/19-contributor-spotlight-iowa?authuser=0')
   get '/blog/2019/03/19/featured-collection-dc-open-data.html', :to => redirect('https://sites.google.com/umn.edu/btaa-gdp/news/2019/03/19-featured-collection-dc-open-data?authuser=0')
-
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
