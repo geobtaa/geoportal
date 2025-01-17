@@ -137,6 +137,12 @@ namespace :admin do
     patch :run, on: :member
   end
 
+  # Import Distributions
+  resources :import_distributions do
+    resources :import_document_distributions, only: [:show]
+    patch :run, on: :member
+  end
+
   # Elements
   resources :elements do
     post :sort, on: :collection
