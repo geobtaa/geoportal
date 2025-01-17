@@ -49,8 +49,11 @@ Rails.application.routes.draw do
   get 'feedback' => 'feedback_forms#new'
 
   concern :gbl_exportable, Geoblacklight::Routes::Exportable.new
+  concern :gbl_admin_data_dictionariesable, GeoblacklightAdmin::Routes::DataDictionariesable.new
+
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :gbl_exportable
+    concerns :gbl_admin_data_dictionariesable
   end
 
   concern :gbl_wms, Geoblacklight::Routes::Wms.new
@@ -219,6 +222,25 @@ namespace :admin do
       end
     end
 
+    # Data Dictionaries
+    resources :document_data_dictionaries, path: "data_dictionaries" do
+      collection do
+        get "import"
+        post "import"
+
+        get "destroy_all"
+        post "destroy_all"
+      end
+
+      resources :document_data_dictionary_entries, path: "entries" do
+        collection do
+          post "sort"
+          get "destroy_all"
+          post "destroy_all"
+        end
+      end
+    end
+
     # DocumentDownloads
     resources :document_downloads, path: "downloads" do
       collection do
@@ -296,7 +318,7 @@ namespace :admin do
   # DocumentAssets
   get "/documents/:id/ingest", to: "document_assets#display_attach_form", as: "asset_ingest"
   post "/documents/:id/ingest", to: "document_assets#attach_files"
-  
+
   # Asset Direct Upload
   mount Kithe::AssetUploader.upload_endpoint(:cache) => "/direct_upload", :as => :direct_app_upload
 
