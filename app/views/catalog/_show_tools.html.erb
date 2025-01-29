@@ -1,0 +1,17 @@
+<% if show_doc_actions? %>
+  <div class="card tools">
+    <div class="card-header">
+      <h2 class="mb-0 h6"><%= t('blacklight.tools.title') %></h2>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <%= render_show_doc_actions @document do |config, inner| %>
+          <li class="list-group-item <%= config.key %>">
+          <%= inner %>
+        </li>
+      <% end %>
+        <%= render 'show_web_services' %>
+      </ul>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<% document ||= @document %>
+
+<% if (Settings.WEBSERVICES_SHOWN & document.references.refs.map(&:type).map(&:to_s)).any? %>
+  <li class="list-group-item">
+    <%= link_to "Web Services",
+      web_services_solr_document_path(id: document.id),
+      id: "web-services-button",
+      data: {blacklight_modal: "trigger"} %>
+  </li>
+<% end %>
