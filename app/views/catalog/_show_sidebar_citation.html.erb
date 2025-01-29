@@ -1,0 +1,73 @@
+<div class="card">
+  <div class="card-header">
+    <h2 class="h6 mb-0">Cite as</h2>
+
+    <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+        <% case @document[Settings.FIELDS.RESOURCE_CLASS].present? && @document[Settings.FIELDS.RESOURCE_CLASS].join(",").downcase %>
+        <% when "collections" %>
+          <li class="list-group-item">
+            <p>
+            <% if @document[Settings.FIELDS.TITLE].present? %>
+              <i><%= @document[Settings.FIELDS.TITLE] %></i>.
+          <% end %>
+
+          <% if @document[Settings.FIELDS.PUBLISHER].present? %>
+              <%= @document[Settings.FIELDS.PUBLISHER].join(', ') %>.
+          <% end %>
+
+          <% if @document.references.url.present? %>
+              <%= @document.references.url.endpoint %>
+            <% end %>
+          </p>
+        </li>
+      <% else %>
+        <li class="list-group-item">
+          <p>
+          <% if @document[Settings.FIELDS.CREATOR].present? %>
+            <%= @document[Settings.FIELDS.CREATOR].join(', ') %>.
+          <% else %>
+             [Creator not found],
+          <% end %>
+
+          <% if @document[Settings.FIELDS.DATE_ISSUED].present? %>
+            (<%= citation_date(@document[Settings.FIELDS.DATE_ISSUED]) %>).
+          <% else %>
+            (n.d.).
+          <%- end %>
+
+          <% if @document[Settings.FIELDS.TITLE].present? %>
+            <i><%= @document[Settings.FIELDS.TITLE] %></i>.
+          <% end %>
+
+          <% case @document[Settings.FIELDS.RESOURCE_CLASS].first %>
+            <% when 'Datasets', 'Web Services' %>
+              <% if @document[Settings.FIELDS.PROVIDER].present? %>
+                <%= @document[Settings.FIELDS.PROVIDER] %>.
+              <% end %>
+
+            <% else %>
+              <% if @document[Settings.FIELDS.PUBLISHER].present? %>
+                <%= @document[Settings.FIELDS.PUBLISHER].join(', ') %>.
+              <% end %>
+          <% end %>
+
+          <% if @document.references.url.present? %>
+            <%= @document.references.url.endpoint %>
+          <% end %>
+          (<%= @document[Settings.FIELDS.RESOURCE_CLASS].first.downcase.singularize %>)
+        </p>
+      </li>
+
+      <li class="list-group-item">
+        <h5 class="h6 mb-0">Permalink</h5>
+        <%= url_for(:only_path => false).split("/citation")[0] %>
+      </li>
+    </ul>
+    <% end %>
+  </div>
+</div>

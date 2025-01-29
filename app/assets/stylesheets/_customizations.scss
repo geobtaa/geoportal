@@ -31,3 +31,99 @@ $cyan:    #17a2b8 !default;
 
 // Example: Bootstrap Link color
 $link-color:#005E8E;
+
+// Fonts
+$font-family-sans-serif: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$font-family-serif: "Lora", "Times New Roman", Times, serif;
+
+body {
+  font-family: $font-family-serif !important;
+  font-size: 1.1rem !important;
+  line-height: 1.75rem !important;
+  p {
+    max-width: 900px !important;
+  }
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6, button, .page-links, .page-link, a.btn {
+  font-family: $font-family-sans-serif !important;
+  font-weight: 600 !important;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+.card, .card-header {
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-top: 0 !important;
+  }
+}
+
+#header-navbar {
+  h1 {
+    margin-top: 0 !important;
+  }
+}
+
+#btaa-logo {
+  height: 80px;
+}
+
+.color-block {
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.bg-blue-dark {
+  background-color: #003C5B;
+  color: #fff;
+}
+
+.bg-blue-btaa {
+  background-color: #0088CE;
+  color: #fff;
+}
+
+.bg-btaa-black {
+  background-color: #000000;
+  color: #fff;
+}
+
+.bg-btaa-gray {
+  background-color: #939598;
+  color: #000;
+}
+
+.bg-btaa-white {
+  border: 1px solid #000;
+  background-color: #FFFFFF;
+  color: #000;
+}
+
+.document-metadata, .dl-invert {
+  border-top: 2px solid #003C5B;
+  max-width: 900px;
+  margin:1rem 0 !important;
+  
+  dt {
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-align: left !important;
+    line-height: 1.75rem;
+    border-bottom: 1px solid #dee2e6;
+    padding: 1rem 0.5rem;
+  }
+
+  dd {
+    margin-bottom: 0;
+    border-bottom: 1px solid #dee2e6;
+    padding: 1rem 0.5rem;
+    line-height: 1.75rem;
+  }
+}
+
+.list-group-item {
+  padding: 0.5rem 0.5rem !important;
+}

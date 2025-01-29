@@ -1,0 +1,27 @@
+<%# Renders the options of the downloads dropdown button %>
+<% document ||= @document %>
+
+<% if document.direct_download.present? %>
+  <% if document.direct_download[:download].is_a? Array %>
+    <% document.direct_download[:download].each do |download| %>
+      <li class="list-group-item"><%= download_link_file(download['label'], document.id, download['url']) %></li>
+    <% end %>
+  <% end %>
+  <% if document.direct_download[:download].is_a? String %>
+    <li class="list-group-item"><%= download_link_file(download_text(document.file_format), document.id, document.direct_download[:download]) %></li>
+  <% end %>
+<% end %>
+
+<% if document.hgl_download.present? %>
+  <li class="list-group-item"><%= download_link_hgl(download_text(document.download_types.first[0]), document) %></li>
+<% end %>
+
+<% if document.iiif_download.present? %>
+  <li class="list-group-item"><%= download_link_iiif %></li>
+<% end %>
+
+<% if document.download_types.present? %>
+  <% document.download_types.each do |type| %>
+    <li class="list-group-item"><%= download_link_generated(type.first, document) %></li>
+  <% end %>
+<% end %>

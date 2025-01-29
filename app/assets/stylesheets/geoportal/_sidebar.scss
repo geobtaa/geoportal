@@ -11,3 +11,8 @@
 #static-map {
   .sleep-note {display: none;}
 }
+
+.show-tools .list-group .list-group-item {
+  border: inherit;
+  padding: 0 0 0 20px;
+}

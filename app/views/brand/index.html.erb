@@ -1,0 +1,400 @@
+<style>
+  html {
+    border-top: 1rem solid #003C5B;
+  }
+
+  .truncate-abstract {
+    max-width: 900px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  button {
+    margin: 0.25rem 0.5rem;
+  }
+</style>
+
+<div class="row">
+  <div class="col">
+
+    <h2 id="logos" class="h1 mt-4">Logos</h2>
+    <p>This is the project logos section.</p>
+    <div class="row">
+      <div class="col">
+        <h3>BTAA Logo (Header)</h3>
+        <code>
+          <div class="color-block bg-blue-dark">
+            <img id="btaa-logo" alt="Big Ten Academic Alliance" src="/assets/btaa-logo-white-cacda8332424452988b3cd633ad97f512fa45105e38347eabf93965ff7a81389.png"></a>
+          </div>
+        </code>
+      </div>
+
+      <div class="col">
+        <h3>BTAA Gin Logo (Footer)</h3>
+        <code>
+          <section class="color-block" id="footer-app">
+            <a href="https://gin.btaa.org"><img alt="Big Ten Academic Alliance Logo" height="80px" src="/assets/gin-white-5c018d62c2bdb87a23e7fbc33d0d873020f4798bad198d9b94c53233a5055d0d.png"></a>
+          </section>
+        </code>
+      </div>
+    </div>
+
+    <h2 id="colors" class="h1 mt-5">Colors</h2>
+    <p>This is the colors section.</p>
+    <div class="row">
+      <div class="col">
+        <code>
+          <div class="color-block bg-blue-dark">
+            <h3>Dark Blue</h3>
+            <h4 class="h5 mt-0">HEX: #003C5B</h4>
+            <h4 class="h5 mt-0">RGB: rgb(0, 60, 91)</h4>
+          </div>
+        </code>
+      </div>
+
+      <div class="col">
+        <code>
+          <div class="color-block bg-blue-btaa">
+            <h3>BTAA Blue</h3>
+            <h4 class="h5 mt-0">HEX: #0088CE</h4>
+            <h4 class="h5 mt-0">RGB: rgb(0, 136, 206)</h4>
+          </div>
+        </code>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <code>
+          <div class="color-block bg-btaa-black mt-4">
+            <h3>BTAA Black</h3>
+            <h4 class="h5 mt-0">HEX: #000000</h4>
+            <h4 class="h5 mt-0">RGB: rgb(0, 0, 0)</h4>
+          </div>
+        </code>
+      </div>
+      <div class="col">
+        <code>
+          <div class="color-block bg-btaa-gray mt-4">
+            <h3>BTAA Gray</h3>
+            <h4 class="h5 mt-0">HEX: #939598</h4>
+            <h4 class="h5 mt-0">RGB: rgb(147, 149, 152)</h4>
+          </div>
+        </code>
+      </div>
+      <div class="col">
+        <code>
+          <div class="color-block bg-btaa-white mt-4">
+            <h3>BTAA White</h3>
+            <h4 class="h5 mt-0">HEX: #FFFFFF</h4>
+            <h4 class="h5 mt-0">RGB: rgb(255, 255, 255)</h4>
+          </div>
+        </code>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h3>Alerts</h3>
+        <h4>Secondary</h4>
+        <div class="gbl-display-note alert alert-secondary" role="alert">This is a generic note about the resource that may be useful to users of this data.</div>
+        
+        <h4>Danger</h4>
+        <div class="gbl-display-note alert alert-danger" role="alert">
+          <span class="blacklight-icons blacklight-icon-fire-solid">
+            <svg viewBox="0 0 448 512" aria-label="Fire Solid" role="img">
+              <title>Fire Solid</title>
+              <path fill="#6c757d" d="M159.3 5.4c7.8-7.3 19.9-7.2 27.7 .1c27.6 25.9 53.5 53.8 77.7 84c11-14.4 23.5-30.1 37-42.9c7.9-7.4 20.1-7.4 28 .1c34.6 33 63.9 76.6 84.5 118c20.3 40.8 33.8 82.5 33.8 111.9C448 404.2 348.2 512 224 512C98.4 512 0 404.1 0 276.5c0-38.4 17.8-85.3 45.4-131.7C73.3 97.7 112.7 48.6 159.3 5.4zM225.7 416c25.3 0 47.7-7 68.8-21c42.1-29.4 53.4-88.2 28.1-134.4c-4.5-9-16-9.6-22.5-2l-25.2 29.3c-6.6 7.6-18.5 7.4-24.7-.5c-16.5-21-46-58.5-62.8-79.8c-6.3-8-18.3-8.1-24.7-.1c-33.8 42.5-50.8 69.3-50.8 99.4C112 375.4 162.6 416 225.7 416z"></path>
+            </svg>
+          </span>
+          Danger: This document is highly flammable.
+        </div>
+
+        <h4>Info</h4>
+        <div class="gbl-display-note alert alert-info" role="alert">
+          <span class="blacklight-icons blacklight-icon-circle-info-solid">
+            <svg viewBox="0 0 512 512" aria-label="Circle Info Solid" role="img">
+              <title>Circle Info Solid</title>
+              <path fill="#6c757d" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"></path>
+            </svg>
+          </span>
+          Info: This dataset represents the buildings before they were destroyed by the Curse of Megaboz.
+        </div>
+
+        <h4>Success</h4>
+        <div class="gbl-display-note alert alert-success" role="alert">
+          <span class="blacklight-icons blacklight-icon-lightbulb-solid">
+            <svg viewBox="0 0 384 512" aria-label="Lightbulb Solid" role="img">
+              <title>Lightbulb Solid</title>
+              <path fill="#6c757d" d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0c19.8 27.1 39.7 54.4 49.2 86.2H272zM192 512c44.2 0 80-35.8 80-80V416H112v16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"></path>
+            </svg>
+          </span>
+          Tip: Be sure to look in the mailbox outside the white house.
+        </div>
+
+        <h4>Warning</h4>
+        <div class="gbl-display-note alert alert-warning" role="alert">
+          <span class="blacklight-icons blacklight-icon-triangle-exclamation-solid">
+            <svg viewBox="0 0 512 512" aria-label="Triangle Exclamation Solid" role="img">
+              <title>Triangle Exclamation Solid</title>
+              <path fill="#6c757d" d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path>
+            </svg>
+          </span>
+          Warning: This data is fictional.
+        </div>
+      </div>
+    </div>
+        
+    <h2 id="typography" class="h1 mt-5">Typography</h2>
+    <p>This is the typography section.</p>
+    <h3>Official BTAA Typeface</h3>
+    <p>The Big Ten logo consists of custom drawn type in a single weight. However, Benton Sans, which is available in a wide variety of weights, may be used in support of the logo. Benton Sans Bold or Black is to be used for all supporting headlines, while Benton Sans Regular and light is to be used for all supporting body text. Benton Sans may be purchased from Font Bureau. <a href="http://www.fontbureau.com/fonts/BentonSans/">http://www.fontbureau.com/fonts/BentonSans/</a></p>
+    <h3>BTAA Geoportal Typeface</h3>
+    <p>As Benton Sans is not free, we're using Google Fonts alternatives for the BTAA Geoportal. Headings are in <a href="https://fonts.google.com/specimen/Work+Sans">Work Sans</a>, and body text is in <a href="https://fonts.google.com/specimen/Lora">Lora</a>.</p>
+    <p>Why Work Sans? Work Sans is similar to Benton Sans: it has a relatively large x-height, straightforward geometry, and a clean, modern aesthetic reminiscent of American grotesque typefaces.
+Notable differences: Overall slightly less condensed than Benton Sans, and the uppercase shapes are somewhat more rounded.</p>
+    <p>The font stack is:</p>
+    <pre>
+      <code>
+        h1, h2, h3, h4, h5, h6,
+        .h1, .h2, .h3, .h4, .h5, .h6 {
+          font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          font-weight: 700;
+        }
+
+        body {
+          font-family: "Lora", "Times New Roman", Times, serif;
+          font-size: 1.2rem;
+          line-height: 1.5rem;
+        }
+      </code>
+    </pre>
+
+    <div class="row">
+      <div class="col">
+        <h3 class="h2 mt-5">Headings</h3>
+        <h1 class="h1">Heading 1</h1>
+        <h2 class="h2">Heading 2</h2>
+        <h3 class="h3">Heading 3</h3>
+        <h4 class="h4">Heading 4</h4>
+        <h5 class="h5">Heading 5</h5>
+        <h6 class="h6">Heading 6</h6>
+      </div>
+
+      <div class="col">
+        <h3 class="h2 mt-5">Headings (uppercase)</h3>
+        <h3 class="h3 uppercase">Heading 3</h3>
+        <h4 class="h4 uppercase">Heading 4</h4>
+        <h5 class="h5 uppercase">Heading 5</h5>
+        <h6 class="h6 uppercase">Heading 6</h6>
+      </div>
+    </div>
+
+    <h3 class="h2 mt-5">Body Text</h3>
+    <p>
+      Body text is in <a href="https://fonts.google.com/specimen/Lora">Lora</a>. For legibility, we're using a line height of 1.5 and constraining the max-width of paragraph text to 900px (~90 characters per line).
+    </p>
+    <p>
+      Example body text. No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
+    </p>
+    
+    <h2 id="iconography" class="h1 mt-5">Iconography</h2>
+    <p>This is the iconography section</p>
+    
+    <h2 id="components" class="h1 mt-5">Components</h2>
+    <p>This is the components section</p>
+    <ul>
+      <li>Buttons</li>
+      <li>Forms</li>
+      <li>Tables</li>
+      <li>Lists</li>
+    </ul>
+
+    <h3>Buttons</h3>
+    <p>This is the buttons section.</p>
+    <div class="row">
+      <div class="col">
+        <h4>Solid</h4>
+        <button class="btn btn-primary">Primary</button> &nbsp;
+        <button class="btn btn-secondary">Secondary</button> &nbsp;
+        <button class="btn btn-success">Success</button> &nbsp;
+        <button class="btn btn-danger">Danger</button> &nbsp;
+        <button class="btn btn-warning">Warning</button> &nbsp;
+        <button class="btn btn-info">Info</button> &nbsp;
+        <button class="btn btn-light">Light</button> &nbsp;
+        <button class="btn btn-dark">Dark</button> &nbsp;
+        <button class="btn btn-link">Link</button>
+      </div>
+
+      <div class="col">
+        <h4>Outline</h4>
+        <button class="btn btn-outline-primary">Outline Primary</button> &nbsp;
+        <button class="btn btn-outline-secondary">Outline Secondary</button> &nbsp;
+        <button class="btn btn-outline-success">Outline Success</button> &nbsp;
+        <button class="btn btn-outline-danger">Outline Danger</button> &nbsp;
+        <button class="btn btn-outline-warning">Outline Warning</button> &nbsp;
+        <button class="btn btn-outline-info">Outline Info</button> &nbsp;
+        <button class="btn btn-outline-light">Outline Light</button> &nbsp; 
+        <button class="btn btn-outline-dark">Outline Dark</button>
+      </div>
+
+      <div class="col">
+        <h4>Variants</h4>
+        <button class="btn btn-sm btn-primary">Small</button> &nbsp;
+        <button class="btn btn-lg btn-primary">Large</button> &nbsp;
+        <button class="btn btn-block btn-primary">Block</button> &nbsp;
+        <button class="btn btn-outline-primary btn-sm">Small Outline</button> &nbsp;
+        <button class="btn btn-outline-primary btn-lg">Large Outline</button> &nbsp;
+        <button class="btn btn-outline-primary btn-block">Block Outline</button>
+      </div>
+    </div>
+
+    <h3>Links</h3>
+    <p>This is the links section.</p>
+    <a href="#" class="btn btn-link">Link</a>
+    <a href="#" class="btn btn-link">Link</a>
+    <a href="#" class="btn btn-link">Link</a>
+    <a href="#" class="btn btn-link">Link</a>
+    <a href="#" class="btn btn-link">Link</a>
+
+    <h4>Pagination</h4>
+    <p>This is the pagination section.</p>
+
+    <div id="sortAndPerPage" class="sort-pagination d-md-flex justify-content-between" role="navigation" aria-label="Results navigation">
+    <section class="pagination">
+          <div class="page-links">
+        « Previous | 
+        <span class="page-entries">
+          <strong>1</strong> - <strong>10</strong> of <strong>3,709</strong>
+        </span> | 
+        <a rel="next" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;page=2&amp;q=&amp;search_field=all_fields">Next »</a>
+  
+      </div>
+  
+  </section>
+  
+    <div class="search-widgets">
+            <div id="sort-dropdown" class="btn-group sort-dropdown">
+    <button name="button" type="submit" class="btn btn-outline-secondary dropdown-toggle" aria-expanded="false" data-toggle="dropdown" data-bs-toggle="dropdown">Sort<span class="d-none d-sm-inline"> by Relevance</span><span class="caret"></span></button>
+  
+    <div class="dropdown-menu" role="menu">
+        <a class="dropdown-item active" role="menuitem" aria-current="page" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=score+desc%2C+dct_title_sort+asc">Relevance</a>
+        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=gbl_indexYear_im+desc%2C+dct_title_sort+asc">Year (Newest first)</a>
+        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=gbl_indexYear_im+asc%2C+dct_title_sort+asc">Year (Oldest first)</a>
+        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=dct_title_sort+asc">Title (A-Z)</a>
+        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=dct_title_sort+desc">Title (Z-A)</a>
+        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=date_created_dtsi+desc">Date added (Newest first)</a>
+        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=date_created_dtsi+asc">Date added (Oldest first)</a>
+    </div>
+  </div>
+  
+  
+  
+            <span class="sr-only visually-hidden">Number of results to display per page</span>
+    <div id="per_page-dropdown" class="btn-group per_page-dropdown">
+    <button name="button" type="submit" class="btn btn-outline-secondary dropdown-toggle" aria-expanded="false" data-toggle="dropdown" data-bs-toggle="dropdown">10<span class="sr-only visually-hidden"> per page</span><span class="d-none d-sm-inline"> per page</span><span class="caret"></span></button>
+  
+    <div class="dropdown-menu" role="menu">
+        <a class="dropdown-item active" role="menuitem" aria-current="page" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;per_page=10&amp;q=&amp;search_field=all_fields">10<span class="sr-only visually-hidden"> per page</span></a>
+        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;per_page=20&amp;q=&amp;search_field=all_fields">20<span class="sr-only visually-hidden"> per page</span></a>
+        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;per_page=50&amp;q=&amp;search_field=all_fields">50<span class="sr-only visually-hidden"> per page</span></a>
+    </div>
+  </div>
+  
+  
+          
+  
+  </div>
+  </div>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+
+    <h3>Forms</h3>
+    <p>This is the forms section</p>
+
+    <h3>Tables</h3>
+    <p>This is the tables section.</p>
+
+    <h4>Metadata Table</h4>
+    <dl class="document-metadata dl-invert row">
+      <dt class="blacklight-dct_title_s col-md-3">Title</dt>
+      <dd class="col-md-9 blacklight-dct_title_s">15th Century, Afghanistan and Pakistan</dd>
+
+      <dt class="blacklight-dct_description_sm col-md-3">Description</dt>
+      <dd class="col-md-9 blacklight-dct_description_sm">
+        <div class="truncate-abstract">
+          <span itemprop="description">Ptolemy, 2nd cent. Cosmographia. (Ulm : Lienhart Holle, 1482)</span>
+        </div>
+      </dd>
+
+      <dt class="blacklight-dct_creator_sm col-md-3">Creator</dt>
+      <dd class="col-md-9 blacklight-dct_creator_sm">
+        <span itemprop="creator">Ptolemy, active 2nd century</span>
+      </dd>
+
+      <dt class="blacklight-schema_provider_s col-md-3">Provider</dt>
+      <dd class="col-md-9 blacklight-schema_provider_s">
+        <a href="/?f%5Bschema_provider_s%5D%5B%5D=University+of+Minnesota+Libraries%2C+James+Ford+Bell+Library.">University of Minnesota Libraries, James Ford Bell Library.</a>
+      </dd>
+
+      <dt class="blacklight-gbl_resourceclass_sm col-md-3">Resource Class</dt>
+      <dd class="col-md-9 blacklight-gbl_resourceclass_sm">
+        <span itemprop="class"><a href="/?f%5Bgbl_resourceClass_sm%5D%5B%5D=Maps">Maps</a></span>
+      </dd>
+
+      <dt class="blacklight-dct_issued_s col-md-3">Date Issued</dt>
+      <dd class="col-md-9 blacklight-dct_issued_s">
+        <span itemprop="issued">1482</span>
+      </dd>
+
+      <dt class="blacklight-dct_spatial_sm col-md-3">Place</dt>
+      <dd class="col-md-9 blacklight-dct_spatial_sm">
+        <div class="truncate-abstract">
+          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Aria">Aria</a>, 
+          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Paropamisadae">Paropamisadae</a>, 
+          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Arachosia">Arachosia</a>, 
+          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Drangiana">Drangiana</a>, 
+          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Gedrosia">Gedrosia</a>, 
+          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Afghanistan">Afghanistan</a>, 
+          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Pakistan">Pakistan</a>, 
+          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Asia">Asia</a>
+        </div>
+      </dd>
+
+      <dt class="blacklight-dct_rights_sm col-md-3">Rights</dt>
+      <dd class="col-md-9 blacklight-dct_rights_sm">
+        <div class="truncate-abstract">
+          <span itemprop="rights">Use of this item may be governed by US and international copyright laws. You may be able to use this item, but copyright and other considerations may apply. For possible additional information or guidance on your use, please contact the contributing organization.</span>
+        </div>
+      </dd>
+
+      <dt class="blacklight-dct_accessrights_s col-md-3">Access Rights</dt>
+      <dd class="col-md-9 blacklight-dct_accessrights_s">
+        <span itemprop="access_rights">Public</span>
+      </dd>
+
+      <dt class="blacklight-dct_format_s col-md-3">Format</dt>
+      <dd class="col-md-9 blacklight-dct_format_s">
+        <span itemprop="format">JPEG</span>
+      </dd>
+
+      <dt class="blacklight-b1g_language_sm col-md-3">Language</dt>
+      <dd class="col-md-9 blacklight-b1g_language_sm">
+        <span itemprop="language">Latin</span>
+      </dd>
+
+      <dt class="blacklight-date_created_dtsi col-md-3">Date Added</dt>
+      <dd class="col-md-9 blacklight-date_created_dtsi">2024-03-22</dd>
+    </dl>
+
+    <h3>Lists</h3>
+    <p>This is the lists section</p>
+  </div>
+</div>
