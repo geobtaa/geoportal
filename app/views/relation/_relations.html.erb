@@ -4,6 +4,9 @@
       <%= relations_icon(entry, value.icon) unless value.icon.nil? %>
       <%= entry[Settings.FIELDS.TITLE] %>
     <% end %>
+    <%- doc = Document.find_by_friendlier_id(entry[Settings.FIELDS.ID]) %>
+    <%= doc.dct_description_sm.first %>
+
   </li>
 <% end %>
 <% unless (@relations.send(rel)['numFound'].to_i <= 3) %>

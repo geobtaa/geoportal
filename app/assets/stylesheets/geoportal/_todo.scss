@@ -188,7 +188,7 @@ div#search-bar {
 section#content {
   div#map {
     min-height: 440px;
-    height: 100% !important;
+    height: calc(100vh - 120px) !important;
     background-color:#b8e6fe;
   }
 }

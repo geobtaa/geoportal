@@ -11,6 +11,7 @@
   <%= render :partial => "show_gbl_admin" %>
 </div>
 
+<a class="btn btn-primary btn-block mb-4" href="#metadata">Full Details</a>
 <%= render :partial => 'show_sidebar_static_map' if render_sidebar_map?(@document) %>
 <%= render :partial => 'show_tools' %>
 
@@ -19,8 +20,8 @@
 <% end %>
 
 <div class="sidebar-buttons">
-<%= render :partial => "show_web_services" %>
-<%= render :partial => "show_downloads" %>
+  <%= render :partial => "show_downloads" %>
+  <%= render :partial => "show_sidebar_citation" %>
 </div>
 
 <% unless @document.more_like_this.empty? %>
