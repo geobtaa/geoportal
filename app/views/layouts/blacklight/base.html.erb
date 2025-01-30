@@ -76,6 +76,10 @@
         </div>
       </main>
 
+      <% if @document.present? && @document.more_like_this_panel.present? %>
+        <%= render partial: 'catalog/show_more_like_this' %>
+      <% end %>
+
       <section id="footer-app" aria-label='Application Footer'>
         <%= render :partial => 'shared/footer_app' %>
       </section>

@@ -339,6 +339,7 @@ class CatalogController < ApplicationController
     # Remove show tools
     config.show.partials.delete(:show_header)
     config.show.partials.delete(:show)
+    config.show.partials.delete(:more_like_this)
 
     config.show.display_type_field = 'format'
     config.show.partials << "show_header_default"
