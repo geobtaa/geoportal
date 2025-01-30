@@ -43,12 +43,29 @@ body {
   p {
     max-width: 900px !important;
   }
+
+  .alert {
+    font-size: 1rem !important;
+  }
+
+  .citation {
+    .card-body {
+      font-size: 0.9rem !important;
+      line-height: 1.25rem !important;
+    }
+  }
 }
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6, button, .page-links, .page-link, a.btn {
   font-family: $font-family-sans-serif !important;
   font-weight: 600 !important;
+}
+
+.page-links {
+  strong {
+    font-weight: 600 !important;
+  }
 }
 
 .uppercase {

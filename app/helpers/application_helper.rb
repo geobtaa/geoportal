@@ -155,4 +155,46 @@ module ApplicationHelper
       "default"
     end
   end
+
+  ##
+  # Creates a link to a faceted search
+  # @param [String] field
+  # @param [String] value
+  # @param [Hash] existing_params
+  # @return [String] link
+  def faceted_search_link(field, value, existing_params = {})
+    updated_params = existing_params.merge("f[#{field}][]" => value)
+    link_to value, "#{root_url}?#{updated_params.to_query}"
+  end
+
+  def year_to_facet_bucket(year)
+    case year.to_i
+    when 2020..Time.now.year
+      '2020-present'
+    when 2015..2019
+      '2015-2019'
+    when 2010..2014
+      '2010-2014'
+    when 2005..2009
+      '2005-2009'
+    when 2000..2004
+      '2000-2004'
+    when 1950..1999
+      '1950-1999'
+    when 1900..1949
+      '1900-1949'
+    when 1850..1899
+      '1850-1899'
+    when 1800..1849
+      '1800-1849'
+    when 1700..1799
+      '1700s'
+    when 1600..1699
+      '1600s'
+    when 1500..1599
+      '1500s'
+    else
+      '1400s-earlier'
+    end
+  end
 end
