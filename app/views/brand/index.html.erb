@@ -13,13 +13,21 @@
   button {
     margin: 0.25rem 0.5rem;
   }
+
+  section#footer-app {
+    border: none;
+
+    a, a:hover {
+      text-decoration: none !important;
+      border: none !important;
+    }
+  }
 </style>
 
 <div class="row">
   <div class="col">
-
     <h2 id="logos" class="h1 mt-4">Logos</h2>
-    <p>This is the project logos section.</p>
+    <p>The BTAA Geoportal has two logos: the BTAA logo (for the header) and the BTAA Gin logo (for the footer). These logos are used in accordance with the BTAA identity guidelines.</p>
     <div class="row">
       <div class="col">
         <h3>BTAA Logo (Header)</h3>
@@ -40,8 +48,8 @@
       </div>
     </div>
 
-    <h2 id="colors" class="h1 mt-5">Colors</h2>
-    <p>This is the colors section.</p>
+    <h2 id="colors" class="h1 mt-4">Colors</h2>
+    <p>The BTAA Geoportal uses the BTAA color palette.</p>
     <div class="row">
       <div class="col">
         <code>
@@ -92,9 +100,92 @@
         </code>
       </div>
     </div>
+  </div>
+
+  <div class="col">
+    <h2 id="typography" class="h1 mt-4">Typography</h2>
+    <p>The BTAA Geoportal uses a freely available approximation of the BTAA typeface.</p>
+    <h3>Official BTAA Typeface: Benton Sans</h3>
+    <p>Benton Sans is the official BTAA typeface. Benton Sans Bold or Black is to be used for all supporting headlines, while Benton Sans Regular and light is to be used for all supporting body text. Benton Sans may be purchased from Font Bureau. <a href="http://www.fontbureau.com/fonts/BentonSans/">http://www.fontbureau.com/fonts/BentonSans/</a>.</p>
+    <h3>BTAA Geoportal Typeface: Work Sans and Lora</h3>
+    <p>As Benton Sans is not free, we're using Google Fonts alternatives for the BTAA Geoportal. Headings are in <a href="https://fonts.google.com/specimen/Work+Sans">Work Sans</a>, and body text is in <a href="https://fonts.google.com/specimen/Lora">Lora</a>.</p>
+    <p>Why Work Sans? Work Sans is similar to Benton Sans: it has a relatively large x-height, straightforward geometry, and a clean, modern aesthetic reminiscent of American grotesque typefaces.
+Notable differences: Overall slightly less condensed than Benton Sans, and the uppercase shapes are somewhat more rounded.</p>
+    <p>The font stack is:</p>
+    <pre>
+      <code>
+        h1, h2, h3, h4, h5, h6,
+        .h1, .h2, .h3, .h4, .h5, .h6 {
+          font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          font-weight: 700;
+        }
+
+        body {
+          font-family: "Lora", "Times New Roman", Times, serif;
+          font-size: 1.2rem;
+          line-height: 1.5rem;
+        }
+      </code>
+    </pre>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="h2 mt-4">Headings</h3>
+        <h1 class="h1">Heading 1</h1>
+        <h2 class="h2">Heading 2</h2>
+        <h3 class="h3">Heading 3</h3>
+        <h4 class="h4">Heading 4</h4>
+        <h5 class="h5">Heading 5</h5>
+        <h6 class="h6">Heading 6</h6>
+      </div>
+
+      <div class="col-md-6">
+        <h3 class="h2 mt-4">Subheadings (uppercase)</h3>
+        <h2 class="h2 uppercase">Heading 2</h2>
+        <h3 class="h3 uppercase">Heading 3</h3>
+        <h4 class="h4 uppercase">Heading 4</h4>
+        <h5 class="h5 uppercase">Heading 5</h5>
+        <h6 class="h6 uppercase">Heading 6</h6>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col">
-        <h3>Alerts</h3>
+        <h3 class="h2 mt-4">Body Text</h3>
+        <p>
+          Body text is in <a href="https://fonts.google.com/specimen/Lora">Lora</a>. For legibility, we're using a line height of 1.5 and constraining the max-width of paragraph text to 900px (~90 characters per line).
+        </p>
+        <p>
+          Example body text. No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h2 id="iconography" class="h1 mt-4">Iconography</h2>
+        <p>This is the iconography section</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h2 id="components" class="h1 mt-4">Components</h2>
+        <p>This is the components section</p>
+        <ul>
+          <li>Alerts</li>
+          <li>Buttons</li>
+          <li>Forms</li>
+          <li>Lists</li>
+          <li>Pagination</li>
+          <li>Tables</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h3 id="alerts" class="mt-4">Alerts</h3>
         <h4>Secondary</h4>
         <div class="gbl-display-note alert alert-secondary" role="alert">This is a generic note about the resource that may be useful to users of this data.</div>
         
@@ -143,77 +234,17 @@
         </div>
       </div>
     </div>
-        
-    <h2 id="typography" class="h1 mt-5">Typography</h2>
-    <p>This is the typography section.</p>
-    <h3>Official BTAA Typeface</h3>
-    <p>The Big Ten logo consists of custom drawn type in a single weight. However, Benton Sans, which is available in a wide variety of weights, may be used in support of the logo. Benton Sans Bold or Black is to be used for all supporting headlines, while Benton Sans Regular and light is to be used for all supporting body text. Benton Sans may be purchased from Font Bureau. <a href="http://www.fontbureau.com/fonts/BentonSans/">http://www.fontbureau.com/fonts/BentonSans/</a></p>
-    <h3>BTAA Geoportal Typeface</h3>
-    <p>As Benton Sans is not free, we're using Google Fonts alternatives for the BTAA Geoportal. Headings are in <a href="https://fonts.google.com/specimen/Work+Sans">Work Sans</a>, and body text is in <a href="https://fonts.google.com/specimen/Lora">Lora</a>.</p>
-    <p>Why Work Sans? Work Sans is similar to Benton Sans: it has a relatively large x-height, straightforward geometry, and a clean, modern aesthetic reminiscent of American grotesque typefaces.
-Notable differences: Overall slightly less condensed than Benton Sans, and the uppercase shapes are somewhat more rounded.</p>
-    <p>The font stack is:</p>
-    <pre>
-      <code>
-        h1, h2, h3, h4, h5, h6,
-        .h1, .h2, .h3, .h4, .h5, .h6 {
-          font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-          font-weight: 700;
-        }
-
-        body {
-          font-family: "Lora", "Times New Roman", Times, serif;
-          font-size: 1.2rem;
-          line-height: 1.5rem;
-        }
-      </code>
-    </pre>
 
     <div class="row">
       <div class="col">
-        <h3 class="h2 mt-5">Headings</h3>
-        <h1 class="h1">Heading 1</h1>
-        <h2 class="h2">Heading 2</h2>
-        <h3 class="h3">Heading 3</h3>
-        <h4 class="h4">Heading 4</h4>
-        <h5 class="h5">Heading 5</h5>
-        <h6 class="h6">Heading 6</h6>
-      </div>
-
-      <div class="col">
-        <h3 class="h2 mt-5">Headings (uppercase)</h3>
-        <h3 class="h3 uppercase">Heading 3</h3>
-        <h4 class="h4 uppercase">Heading 4</h4>
-        <h5 class="h5 uppercase">Heading 5</h5>
-        <h6 class="h6 uppercase">Heading 6</h6>
+        <h3 id="buttons" class="mt-4">Buttons</h3>
+        <p>This is the buttons section.</p>
       </div>
     </div>
 
-    <h3 class="h2 mt-5">Body Text</h3>
-    <p>
-      Body text is in <a href="https://fonts.google.com/specimen/Lora">Lora</a>. For legibility, we're using a line height of 1.5 and constraining the max-width of paragraph text to 900px (~90 characters per line).
-    </p>
-    <p>
-      Example body text. No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
-    </p>
-    
-    <h2 id="iconography" class="h1 mt-5">Iconography</h2>
-    <p>This is the iconography section</p>
-    
-    <h2 id="components" class="h1 mt-5">Components</h2>
-    <p>This is the components section</p>
-    <ul>
-      <li>Buttons</li>
-      <li>Forms</li>
-      <li>Tables</li>
-      <li>Lists</li>
-    </ul>
-
-    <h3>Buttons</h3>
-    <p>This is the buttons section.</p>
     <div class="row">
-      <div class="col">
-        <h4>Solid</h4>
+      <div class="col-md-4">
+        <h4 class="mt-4">Solid</h4>
         <button class="btn btn-primary">Primary</button> &nbsp;
         <button class="btn btn-secondary">Secondary</button> &nbsp;
         <button class="btn btn-success">Success</button> &nbsp;
@@ -225,8 +256,8 @@ Notable differences: Overall slightly less condensed than Benton Sans, and the u
         <button class="btn btn-link">Link</button>
       </div>
 
-      <div class="col">
-        <h4>Outline</h4>
+      <div class="col-md-4">
+        <h4 class="mt-4">Outline</h4>
         <button class="btn btn-outline-primary">Outline Primary</button> &nbsp;
         <button class="btn btn-outline-secondary">Outline Secondary</button> &nbsp;
         <button class="btn btn-outline-success">Outline Success</button> &nbsp;
@@ -237,8 +268,8 @@ Notable differences: Overall slightly less condensed than Benton Sans, and the u
         <button class="btn btn-outline-dark">Outline Dark</button>
       </div>
 
-      <div class="col">
-        <h4>Variants</h4>
+      <div class="col-md-4">
+        <h4 class="mt-4">Variants</h4>
         <button class="btn btn-sm btn-primary">Small</button> &nbsp;
         <button class="btn btn-lg btn-primary">Large</button> &nbsp;
         <button class="btn btn-block btn-primary">Block</button> &nbsp;
@@ -248,63 +279,164 @@ Notable differences: Overall slightly less condensed than Benton Sans, and the u
       </div>
     </div>
 
-    <h3>Links</h3>
-    <p>This is the links section.</p>
-    <a href="#" class="btn btn-link">Link</a>
-    <a href="#" class="btn btn-link">Link</a>
-    <a href="#" class="btn btn-link">Link</a>
-    <a href="#" class="btn btn-link">Link</a>
-    <a href="#" class="btn btn-link">Link</a>
+    <div class="row">
+      <div class="col">
+        <h3 id="forms" class="mt-4">Forms</h3>
+        <p>This is the forms section</p>
 
-    <h4>Pagination</h4>
-    <p>This is the pagination section.</p>
-
-    <div id="sortAndPerPage" class="sort-pagination d-md-flex justify-content-between" role="navigation" aria-label="Results navigation">
-    <section class="pagination">
-          <div class="page-links">
-        « Previous | 
-        <span class="page-entries">
-          <strong>1</strong> - <strong>10</strong> of <strong>3,709</strong>
-        </span> | 
-        <a rel="next" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;page=2&amp;q=&amp;search_field=all_fields">Next »</a>
-  
+        <h4 class="h6 uppercase mt-4" id="search-form">Search Form</h4>
+        <%= render partial: 'brand/search_form' %>
       </div>
-  
-  </section>
-  
-    <div class="search-widgets">
-            <div id="sort-dropdown" class="btn-group sort-dropdown">
-    <button name="button" type="submit" class="btn btn-outline-secondary dropdown-toggle" aria-expanded="false" data-toggle="dropdown" data-bs-toggle="dropdown">Sort<span class="d-none d-sm-inline"> by Relevance</span><span class="caret"></span></button>
-  
-    <div class="dropdown-menu" role="menu">
-        <a class="dropdown-item active" role="menuitem" aria-current="page" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=score+desc%2C+dct_title_sort+asc">Relevance</a>
-        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=gbl_indexYear_im+desc%2C+dct_title_sort+asc">Year (Newest first)</a>
-        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=gbl_indexYear_im+asc%2C+dct_title_sort+asc">Year (Oldest first)</a>
-        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=dct_title_sort+asc">Title (A-Z)</a>
-        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=dct_title_sort+desc">Title (Z-A)</a>
-        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=date_created_dtsi+desc">Date added (Newest first)</a>
-        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=date_created_dtsi+asc">Date added (Oldest first)</a>
     </div>
-  </div>
-  
-  
-  
-            <span class="sr-only visually-hidden">Number of results to display per page</span>
-    <div id="per_page-dropdown" class="btn-group per_page-dropdown">
-    <button name="button" type="submit" class="btn btn-outline-secondary dropdown-toggle" aria-expanded="false" data-toggle="dropdown" data-bs-toggle="dropdown">10<span class="sr-only visually-hidden"> per page</span><span class="d-none d-sm-inline"> per page</span><span class="caret"></span></button>
-  
-    <div class="dropdown-menu" role="menu">
-        <a class="dropdown-item active" role="menuitem" aria-current="page" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;per_page=10&amp;q=&amp;search_field=all_fields">10<span class="sr-only visually-hidden"> per page</span></a>
-        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;per_page=20&amp;q=&amp;search_field=all_fields">20<span class="sr-only visually-hidden"> per page</span></a>
-        <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;per_page=50&amp;q=&amp;search_field=all_fields">50<span class="sr-only visually-hidden"> per page</span></a>
+
+    <div class="row">
+      <div class="col">
+        <h3 id="links" class="mt-4">Links</h3>
+        <p>This is the links section.</p>
+        <a href="#" class="btn btn-link">Link</a>
+        <a href="#" class="btn btn-link">Link</a>
+        <a href="#" class="btn btn-link">Link</a>
+        <a href="#" class="btn btn-link">Link</a>
+        <a href="#" class="btn btn-link">Link</a>
+      </div>
     </div>
-  </div>
-  
-  
+
+    <div class="row">
+      <div class="col">
+        <h3 id="lists" class="mt-4">Lists</h3>
+        <p>This is the lists section</p>
+
+        <h4 class="h6 uppercase mt-4" id="contextbreadcrumb">Context Breadcrumb</h4>
+        <p id="contextbreadcrumb">
+            <a href="http://localhost:3000/?f%5Bgbl_resourceClass_sm%5D%5B%5D=Datasets">Datasets</a>
+            &gt;
+            <a href="http://localhost:3000/?f%5Bdct_spatial_sm%5D%5B%5D=Israel&amp;f%5Bgbl_resourceClass_sm%5D%5B%5D=Datasets">Israel</a>
+            &gt;
+            <a href="http://localhost:3000/?f%5Bdct_spatial_sm%5D%5B%5D=Israel&amp;f%5Bgbl_resourceClass_sm%5D%5B%5D=Datasets&amp;f%5Btime_period%5D%5B%5D=2020-present">2020-present</a>
+        </p>
+
+        <h4 class="h6 uppercase mt-4" id="contextbreadcrumb">Facet Card</h4>
+        <div class="col-xs-12 col-sm-6">
+          <div class="card facet-limit blacklight-dct_spatial_sm">
+            <h3 class="card-header p-0 facet-field-heading" id="facet-dct_spatial_sm-header">
+              <button type="button" class="btn w-100 d-block btn-block p-2 text-start text-left collapse-toggle" data-toggle="collapse" data-bs-toggle="collapse" data-target="#facet-dct_spatial_sm" data-bs-target="#facet-dct_spatial_sm" aria-expanded="true">
+                Place
+              </button>
+            </h3>
+            <div id="facet-dct_spatial_sm" aria-labelledby="facet-dct_spatial_sm-header" class="panel-collapse facet-content collapse show">
+              <div class="card-body">
+                <ul class="facet-values list-unstyled">
+                  <li>
+                    <span class="facet-label">
+                      <a class="facet-select" rel="nofollow" href="/?f%5Bdct_spatial_sm%5D%5B%5D=Wisconsin">Wisconsin</a>
+                    </span>
+                    <span class="facet-count" style="width: 7ch;">12,950</span>
+                  </li>
+                  <li>
+                    <span class="facet-label">
+                      <a class="facet-select" rel="nofollow" href="/?f%5Bdct_spatial_sm%5D%5B%5D=Indiana">Indiana</a>
+                    </span>
+                    <span class="facet-count">11,914</span>
+                  </li>
+                  <li>
+                    <span class="facet-label">
+                      <a class="facet-select" rel="nofollow" href="/?f%5Bdct_spatial_sm%5D%5B%5D=Pennsylvania">Pennsylvania</a>
+                    </span>
+                    <span class="facet-count">7,316</span>
+                  </li>
+                  <li>
+                    <span class="facet-label">
+                      <a class="facet-select" rel="nofollow" href="/?f%5Bdct_spatial_sm%5D%5B%5D=Minnesota">Minnesota</a>
+                    </span>
+                    <span class="facet-count">7,060</span>
+                  </li>
+                  <li>
+                    <span class="facet-label">
+                      <a class="facet-select" rel="nofollow" href="/?f%5Bdct_spatial_sm%5D%5B%5D=New+Jersey">New Jersey</a>
+                    </span>
+                    <span class="facet-count">6,734</span>
+                  </li>
+                  <li>
+                    <span class="facet-label">
+                      <a class="facet-select" rel="nofollow" href="/?f%5Bdct_spatial_sm%5D%5B%5D=Europe">Europe</a>
+                    </span>
+                    <span class="facet-count">5,589</span>
+                  </li>
+                  <li>
+                    <span class="facet-label">
+                      <a class="facet-select" rel="nofollow" href="/?f%5Bdct_spatial_sm%5D%5B%5D=Iowa">Iowa</a>
+                    </span>
+                    <span class="facet-count">4,569</span>
+                  </li>
+                  <li>
+                    <span class="facet-label">
+                      <a class="facet-select" rel="nofollow" href="/?f%5Bdct_spatial_sm%5D%5B%5D=United+States">United States</a>
+                    </span>
+                    <span class="facet-count">4,328</span>
+                  </li>
+                </ul>
+                <div class="more_facets">
+                  <a data-blacklight-modal="trigger" href="/catalog/facet/dct_spatial_sm">more <span class="sr-only visually-hidden">Place</span> »</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h3 id="maps" class="mt-4">Maps</h3>
+        <p>This is the maps section</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h4 id="pagination" class="mt-4">Pagination</h4>
+        <p>This is the pagination section.</p>
+
+        <div id="sortAndPerPage" class="sort-pagination d-md-flex justify-content-between" role="navigation" aria-label="Results navigation">
+          <section class="pagination">
+            <div class="page-links">
+              « Previous | 
+              <span class="page-entries">
+                <strong>1</strong> - <strong>10</strong> of <strong>3,709</strong>
+              </span> | 
+              <a rel="next" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;page=2&amp;q=&amp;search_field=all_fields">Next »</a>
+            </div>
+          </section>
           
-  
-  </div>
-  </div>
+          <div class="search-widgets">
+            <div id="sort-dropdown" class="btn-group sort-dropdown">
+              <button name="button" type="submit" class="btn btn-outline-secondary dropdown-toggle" aria-expanded="false" data-toggle="dropdown" data-bs-toggle="dropdown">Sort<span class="d-none d-sm-inline"> by Relevance</span><span class="caret"></span></button>
+              
+              <div class="dropdown-menu" role="menu">
+                <a class="dropdown-item active" role="menuitem" aria-current="page" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=score+desc%2C+dct_title_sort+asc">Relevance</a>
+                <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=gbl_indexYear_im+desc%2C+dct_title_sort+asc">Year (Newest first)</a>
+                <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=gbl_indexYear_im+asc%2C+dct_title_sort+asc">Year (Oldest first)</a>
+                <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=dct_title_sort+asc">Title (A-Z)</a>
+                <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=dct_title_sort+desc">Title (Z-A)</a>
+                <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=date_created_dtsi+desc">Date added (Newest first)</a>
+                <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;q=&amp;search_field=all_fields&amp;sort=date_created_dtsi+asc">Date added (Oldest first)</a>
+              </div>
+            </div>
+            
+            <span class="sr-only visually-hidden">Number of results to display per page</span>
+            <div id="per_page-dropdown" class="btn-group per_page-dropdown">
+              <button name="button" type="submit" class="btn btn-outline-secondary dropdown-toggle" aria-expanded="false" data-toggle="dropdown" data-bs-toggle="dropdown">10<span class="sr-only visually-hidden"> per page</span><span class="d-none d-sm-inline"> per page</span><span class="caret"></span></button>
+              
+              <div class="dropdown-menu" role="menu">
+                <a class="dropdown-item active" role="menuitem" aria-current="page" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;per_page=10&amp;q=&amp;search_field=all_fields">10<span class="sr-only visually-hidden"> per page</span></a>
+                <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;per_page=20&amp;q=&amp;search_field=all_fields">20<span class="sr-only visually-hidden"> per page</span></a>
+                <a class="dropdown-item " role="menuitem" href="/?bbox=-83.342972+42.130821+-82.854767+42.573815&amp;per_page=50&amp;q=&amp;search_field=all_fields">50<span class="sr-only visually-hidden"> per page</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <nav aria-label="Page navigation example">
       <ul class="pagination">
@@ -316,85 +448,87 @@ Notable differences: Overall slightly less condensed than Benton Sans, and the u
       </ul>
     </nav>
 
-    <h3>Forms</h3>
-    <p>This is the forms section</p>
+    <div class="row">
+      <div class="col">
+        <h3 id="tables" class="mt-4">Tables</h3>
+        <p>This is the tables section.</p>
+      </div>
+    </div>
 
-    <h3>Tables</h3>
-    <p>This is the tables section.</p>
+    <div class="row">
+      <div class="col">
+        <h4 id="metadata-table" class="mt-4">Metadata Table</h4>
+        <dl class="document-metadata dl-invert row">
+          <dt class="blacklight-dct_title_s col-md-3">Title</dt>
+          <dd class="col-md-9 blacklight-dct_title_s">15th Century, Afghanistan and Pakistan</dd>
 
-    <h4>Metadata Table</h4>
-    <dl class="document-metadata dl-invert row">
-      <dt class="blacklight-dct_title_s col-md-3">Title</dt>
-      <dd class="col-md-9 blacklight-dct_title_s">15th Century, Afghanistan and Pakistan</dd>
+          <dt class="blacklight-dct_description_sm col-md-3">Description</dt>
+          <dd class="col-md-9 blacklight-dct_description_sm">
+            <div class="truncate-abstract">
+              <span itemprop="description">Ptolemy, 2nd cent. Cosmographia. (Ulm : Lienhart Holle, 1482)</span>
+            </div>
+          </dd>
 
-      <dt class="blacklight-dct_description_sm col-md-3">Description</dt>
-      <dd class="col-md-9 blacklight-dct_description_sm">
-        <div class="truncate-abstract">
-          <span itemprop="description">Ptolemy, 2nd cent. Cosmographia. (Ulm : Lienhart Holle, 1482)</span>
-        </div>
-      </dd>
+          <dt class="blacklight-dct_creator_sm col-md-3">Creator</dt>
+          <dd class="col-md-9 blacklight-dct_creator_sm">
+            <span itemprop="creator">Ptolemy, active 2nd century</span>
+          </dd>
 
-      <dt class="blacklight-dct_creator_sm col-md-3">Creator</dt>
-      <dd class="col-md-9 blacklight-dct_creator_sm">
-        <span itemprop="creator">Ptolemy, active 2nd century</span>
-      </dd>
+          <dt class="blacklight-schema_provider_s col-md-3">Provider</dt>
+          <dd class="col-md-9 blacklight-schema_provider_s">
+            <a href="/?f%5Bschema_provider_s%5D%5B%5D=University+of+Minnesota+Libraries%2C+James+Ford+Bell+Library.">University of Minnesota Libraries, James Ford Bell Library.</a>
+          </dd>
 
-      <dt class="blacklight-schema_provider_s col-md-3">Provider</dt>
-      <dd class="col-md-9 blacklight-schema_provider_s">
-        <a href="/?f%5Bschema_provider_s%5D%5B%5D=University+of+Minnesota+Libraries%2C+James+Ford+Bell+Library.">University of Minnesota Libraries, James Ford Bell Library.</a>
-      </dd>
+          <dt class="blacklight-gbl_resourceclass_sm col-md-3">Resource Class</dt>
+          <dd class="col-md-9 blacklight-gbl_resourceclass_sm">
+            <span itemprop="class"><a href="/?f%5Bgbl_resourceClass_sm%5D%5B%5D=Maps">Maps</a></span>
+          </dd>
 
-      <dt class="blacklight-gbl_resourceclass_sm col-md-3">Resource Class</dt>
-      <dd class="col-md-9 blacklight-gbl_resourceclass_sm">
-        <span itemprop="class"><a href="/?f%5Bgbl_resourceClass_sm%5D%5B%5D=Maps">Maps</a></span>
-      </dd>
+          <dt class="blacklight-dct_issued_s col-md-3">Date Issued</dt>
+          <dd class="col-md-9 blacklight-dct_issued_s">
+            <span itemprop="issued">1482</span>
+          </dd>
 
-      <dt class="blacklight-dct_issued_s col-md-3">Date Issued</dt>
-      <dd class="col-md-9 blacklight-dct_issued_s">
-        <span itemprop="issued">1482</span>
-      </dd>
+          <dt class="blacklight-dct_spatial_sm col-md-3">Place</dt>
+          <dd class="col-md-9 blacklight-dct_spatial_sm">
+            <div class="truncate-abstract">
+              <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Aria">Aria</a>, 
+              <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Paropamisadae">Paropamisadae</a>, 
+              <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Arachosia">Arachosia</a>, 
+              <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Drangiana">Drangiana</a>, 
+              <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Gedrosia">Gedrosia</a>, 
+              <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Afghanistan">Afghanistan</a>, 
+              <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Pakistan">Pakistan</a>, 
+              <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Asia">Asia</a>
+            </div>
+          </dd>
 
-      <dt class="blacklight-dct_spatial_sm col-md-3">Place</dt>
-      <dd class="col-md-9 blacklight-dct_spatial_sm">
-        <div class="truncate-abstract">
-          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Aria">Aria</a>, 
-          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Paropamisadae">Paropamisadae</a>, 
-          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Arachosia">Arachosia</a>, 
-          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Drangiana">Drangiana</a>, 
-          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Gedrosia">Gedrosia</a>, 
-          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Afghanistan">Afghanistan</a>, 
-          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Pakistan">Pakistan</a>, 
-          <a href="/?f%5Bdct_spatial_sm%5D%5B%5D=Asia">Asia</a>
-        </div>
-      </dd>
+          <dt class="blacklight-dct_rights_sm col-md-3">Rights</dt>
+          <dd class="col-md-9 blacklight-dct_rights_sm">
+            <div class="truncate-abstract">
+              <span itemprop="rights">Use of this item may be governed by US and international copyright laws. You may be able to use this item, but copyright and other considerations may apply. For possible additional information or guidance on your use, please contact the contributing organization.</span>
+            </div>
+          </dd>
 
-      <dt class="blacklight-dct_rights_sm col-md-3">Rights</dt>
-      <dd class="col-md-9 blacklight-dct_rights_sm">
-        <div class="truncate-abstract">
-          <span itemprop="rights">Use of this item may be governed by US and international copyright laws. You may be able to use this item, but copyright and other considerations may apply. For possible additional information or guidance on your use, please contact the contributing organization.</span>
-        </div>
-      </dd>
+          <dt class="blacklight-dct_accessrights_s col-md-3">Access Rights</dt>
+          <dd class="col-md-9 blacklight-dct_accessrights_s">
+            <span itemprop="access_rights">Public</span>
+          </dd>
 
-      <dt class="blacklight-dct_accessrights_s col-md-3">Access Rights</dt>
-      <dd class="col-md-9 blacklight-dct_accessrights_s">
-        <span itemprop="access_rights">Public</span>
-      </dd>
+          <dt class="blacklight-dct_format_s col-md-3">Format</dt>
+          <dd class="col-md-9 blacklight-dct_format_s">
+            <span itemprop="format">JPEG</span>
+          </dd>
 
-      <dt class="blacklight-dct_format_s col-md-3">Format</dt>
-      <dd class="col-md-9 blacklight-dct_format_s">
-        <span itemprop="format">JPEG</span>
-      </dd>
+          <dt class="blacklight-b1g_language_sm col-md-3">Language</dt>
+          <dd class="col-md-9 blacklight-b1g_language_sm">
+            <span itemprop="language">Latin</span>
+          </dd>
 
-      <dt class="blacklight-b1g_language_sm col-md-3">Language</dt>
-      <dd class="col-md-9 blacklight-b1g_language_sm">
-        <span itemprop="language">Latin</span>
-      </dd>
-
-      <dt class="blacklight-date_created_dtsi col-md-3">Date Added</dt>
-      <dd class="col-md-9 blacklight-date_created_dtsi">2024-03-22</dd>
-    </dl>
-
-    <h3>Lists</h3>
-    <p>This is the lists section</p>
+          <dt class="blacklight-date_created_dtsi col-md-3">Date Added</dt>
+          <dd class="col-md-9 blacklight-date_created_dtsi">2024-03-22</dd>
+        </dl>
+      </div>
+    </div>
   </div>
 </div>
