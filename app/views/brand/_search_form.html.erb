@@ -1,0 +1,38 @@
+<section id="home-search" aria-label="search">
+  <div id="search-bar">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12">
+          <form class="search-query-form" role="search" aria-label="Search" action="https://geo.btaa.org/" accept-charset="UTF-8" method="get">
+            <div class="input-group">
+              <input type="hidden" name="search_field" id="search_field" value="all_fields" autocomplete="off">
+              <label for="q" class="sr-only visually-hidden">search for</label>
+              <span class="twitter-typeahead" style="position: relative; display: inline-block;">
+                <input type="text" value="" class="search-q q form-control rounded-left tt-hint" autocomplete="off" data-autocomplete-enabled="true" data-autocomplete-path="/catalog/suggest" readonly="" spellcheck="false" tabindex="-1" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box padding-box rgb(255, 255, 255);" dir="ltr">
+                <input type="text" name="q" id="q" value="" placeholder="Search..." class="search-q q form-control rounded-left tt-input" autocomplete="off" data-autocomplete-enabled="true" data-autocomplete-path="/catalog/suggest" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;">
+                <pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, &quot;Liberation Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+                <div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
+                  <div class="tt-dataset tt-dataset-terms"></div>
+                </div>
+              </span>
+              <span class="input-group-append">
+                <button type="submit" class="btn btn-primary search-btn" id="search">
+                  <span class="submit-search-text">Search</span>
+                  <span class="blacklight-icons blacklight-icon-search" aria-hidden="true">
+                    <!--?xml version="1.0"?-->
+                    <svg width="24" height="24" viewBox="0 0 24 24" aria-label="Search" role="img">
+                      <title>Search</title>
+                      <path fill="none" d="M0 0h24v24H0V0z"></path>
+                      <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                    </svg>
+                  </span>
+                </button>
+                <a class="advanced_search btn btn-link" style="color:#FFFFFF;" href="/advanced?q=&amp;search_field=all_fields">Advanced</a>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
