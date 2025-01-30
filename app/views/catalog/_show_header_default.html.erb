@@ -1,11 +1,5 @@
+<%= render 'catalog/show_breadcrumb' %>
+
 <h2>
   <span itemprop="name"><%= document_presenter(document).heading %></span>
-  <%= render partial: 'header_icons', locals: { document: document } %>
 </h2>
-<h3 class="h4">
-  <%= @document[Settings.FIELDS.CREATOR]&.join(', ') %>
-  <% if @document[Settings.FIELDS.TEMPORAL_COVERAGE].present? %>
-    &middot;
-    <%= @document[Settings.FIELDS.TEMPORAL_COVERAGE]&.join(', ') %>
-  <% end %>
-</h3>
