@@ -20,8 +20,8 @@
           faceted_search_link(Settings.FIELDS.SPATIAL_COVERAGE, value, search_params)
         end.join(', ').html_safe %>
   <% end %>
-  &gt;
   <% if @document[Settings.FIELDS.INDEX_YEAR].present? %>
+    &gt;
     <%= @document[Settings.FIELDS.INDEX_YEAR].map do |value|
           bucket_label = year_to_facet_bucket(value)
           search_params = search_params.merge("f[time_period][]" => bucket_label)
