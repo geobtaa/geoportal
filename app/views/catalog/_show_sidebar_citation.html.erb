@@ -1,6 +1,6 @@
-<div class="card">
+<div class="card citation mt-4">
   <div class="card-header">
-    <h2 class="h6 mb-0">Cite as</h2>
+    <h2 class="h6 mb-0">Citation</h2>
 
     <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
       <span aria-hidden="true">&times;</span>
@@ -64,10 +64,39 @@
       </li>
 
       <li class="list-group-item">
-        <h5 class="h6 mb-0">Permalink</h5>
-        <%= url_for(:only_path => false).split("/citation")[0] %>
+        <h5 class="h6">Permalink <span id="copy-message" style="opacity: 0; transition: opacity 0.5s;"></span></h5>
+        <div class="input-group permalink-container">
+          <input type="text" class="form-control" id="permalink-text" value="<%= url_for(:only_path => false).split("/citation")[0] %>" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-primary copy-button" type="button" onclick="copyPermalink()">Copy</button>
+          </div>
+        </div>
       </li>
     </ul>
     <% end %>
   </div>
 </div>
+
+<script>
+  function copyPermalink() {
+    const permalinkText = document.getElementById('permalink-text');
+    permalinkText.select();
+    navigator.clipboard.writeText(permalinkText.value).then(() => {
+      const messageElement = document.getElementById('copy-message');
+      messageElement.textContent = '· copied to clipboard!';
+      messageElement.style.opacity = 1;
+      messageElement.style.color = 'green';
+      setTimeout(() => {
+        messageElement.style.opacity = 0;
+      }, 3000);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
+  }
+</script>
+<style>
+  .permalink-container {
+    display: flex;
+    align-items: center;
+  }
+</style>
