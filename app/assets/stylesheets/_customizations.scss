@@ -125,6 +125,7 @@ h1, h2, h3, h4, h5, h6,
   margin:1rem 0 !important;
   
   dt {
+    font-family: $font-family-sans-serif;
     font-weight: bold;
     font-size: 1.25rem;
     text-align: left !important;
@@ -177,8 +178,12 @@ h1, h2, h3, h4, h5, h6,
   h3 {
     color: #fff;
   }
-  background: linear-gradient(to top, #003c5b, #004c6b);
-  padding: 0.5rem 1rem 1rem 1rem;
+  background-image: asset_url('footer/elevation_map_mpls_blueish.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+
+  padding: 0.5rem 1rem 2rem 1rem;
 
   .equal-height-card {
     border-radius: 0px;
@@ -273,4 +278,8 @@ h1, h2, h3, h4, h5, h6,
   .card-body {
     padding: 1.25rem 0.5rem 1.25rem 1.25rem;
   }
+}
+
+.card-body {
+  padding: 0.5rem 1rem !important;
 }

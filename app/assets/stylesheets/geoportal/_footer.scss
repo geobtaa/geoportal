@@ -17,10 +17,7 @@ section#footer-app {
   background-color: $btaa-blue;
   border-top: 1rem solid $btaa-blue-dark;
   border-bottom: 0.5rem solid $btaa-blue-dark;
-  background-image: asset_url('footer/elevation_map_mpls_blueish.png');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
+  background: linear-gradient(to top, #003c5b, #004c6b);
 
   // Link styling
   a {
