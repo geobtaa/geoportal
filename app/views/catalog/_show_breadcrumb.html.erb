@@ -15,7 +15,7 @@
   <% end %>
   <% if @document[Settings.FIELDS.SPATIAL_COVERAGE].present? %>
     &gt;
-    <%= @document[Settings.FIELDS.SPATIAL_COVERAGE].map do |value|
+    <%= @document[Settings.FIELDS.SPATIAL_COVERAGE][0..0].map do |value|
           search_params = search_params.merge("f[#{Settings.FIELDS.SPATIAL_COVERAGE}][]" => value)
           faceted_search_link(Settings.FIELDS.SPATIAL_COVERAGE, value, search_params)
         end.join(', ').html_safe %>
