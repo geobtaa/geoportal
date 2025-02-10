@@ -4716,12 +4716,12 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-blacklight-allmaps@^0.3.1:
+blacklight-allmaps@^0.3.1, "blacklight-allmaps@https://github.com/geobtaa/blacklight-allmaps.git#main":
   version "0.3.1"
-  resolved "https://registry.yarnpkg.com/blacklight-allmaps/-/blacklight-allmaps-0.3.1.tgz#14f0a7965ef203c07fcb713f42a5c7ccb2914cd0"
-  integrity sha512-R+bJ+xgmhREHd4dinwJIZrh/4bfg9x8HbCxgjZQpRQHoJQIsDvSj17h1AwBr2OqFDP0lXOXOnOUd7NYhoiLtlg==
+  resolved "https://github.com/geobtaa/blacklight-allmaps.git#2e78c1ceb1edc3d9f3a0290b56567bebe324dda4"
   dependencies:
     "@allmaps/leaflet" "^1.0.0-beta.33"
+    blacklight-allmaps "^0.3.1"
     leaflet "^1.9.4"
     leaflet-fullscreen "^1.0.2"
 

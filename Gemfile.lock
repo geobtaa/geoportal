@@ -41,6 +41,15 @@ GIT
       rails (>= 5.2, < 8.0)
       statesman (>= 3.4)
 
+GIT
+  remote: https://github.com/geobtaa/blacklight-allmaps.git
+  revision: 2e78c1ceb1edc3d9f3a0290b56567bebe324dda4
+  branch: main
+  specs:
+    blacklight_allmaps (0.4.0)
+      blacklight (>= 7.25.2, < 9)
+      httparty (~> 0.20)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -176,9 +185,6 @@ GEM
       ostruct (>= 0.3.2)
       rails (>= 5.1, < 7.1)
       view_component (~> 2.66)
-    blacklight_allmaps (0.4.0)
-      blacklight (>= 7.25.2, < 9)
-      httparty (~> 0.20)
     blacklight_range_limit (7.0.1)
       blacklight
       jquery-rails
@@ -433,7 +439,7 @@ GEM
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.14.6)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     image_processing (1.13.0)
@@ -560,7 +566,7 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.1)
+    nokogiri (1.18.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     noticed (1.6.3)
@@ -853,7 +859,7 @@ DEPENDENCIES
   axe-core-api
   blacklight (~> 7.33.0)
   blacklight_advanced_search!
-  blacklight_allmaps (~> 0.4.0)
+  blacklight_allmaps!
   blacklight_range_limit (~> 7.0.0)
   blazer
   bootsnap (~> 1.9.3)
