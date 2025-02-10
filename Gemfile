@@ -80,7 +80,7 @@ gem 'chosen-rails', '~> 1.10' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '~>4.0'
+gem 'geoblacklight', '~> 4.0'
 
 # GBL Admin
 gem 'geoblacklight_admin', '~> 0.7.0'

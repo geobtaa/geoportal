@@ -183,7 +183,7 @@ GEM
     benchmark (0.4.0)
     bigdecimal (3.1.9)
     bindex (0.8.1)
-    blacklight (7.40.0)
+    blacklight (7.38.0)
       deprecation
       globalid
       hashdiff
@@ -191,9 +191,8 @@ GEM
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
-      rails (>= 6.1, < 7.3)
-      view_component (>= 2.74, < 4)
-      zeitwerk
+      rails (>= 5.1, < 7.3)
+      view_component (>= 2.66, < 4)
     blacklight_range_limit (7.0.1)
       blacklight
       jquery-rails
