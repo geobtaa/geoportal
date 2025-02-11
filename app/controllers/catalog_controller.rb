@@ -1,5 +1,4 @@
 # -*- encoding : utf-8 -*-
-# require 'blacklight/catalog'
 require 'kithe/blacklight_tools/bulk_loading_search_service'
 
 class CatalogController < ApplicationController
@@ -343,7 +342,7 @@ class CatalogController < ApplicationController
     config.show.partials.delete(:show)
 
     config.show.display_type_field = 'format'
-    config.show.partials << " show_header"
+    config.show.partials << "show_header_default"
     config.show.partials << "show_default_display_note"
     config.show.partials << "show_default_viewer_container"
     config.show.partials << "show_default_viewer_information"
