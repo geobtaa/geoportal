@@ -27,9 +27,6 @@ Rails.application.configure do
   # Compress JavaScript.
   config.assets.js_compressor = :terser
 
-  # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
-  # config.public_file_server.enabled = false
-
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
