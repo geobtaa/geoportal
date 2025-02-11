@@ -63,3 +63,5 @@ node_modules
 *.local
 db/gazetteer/*
 vendor/cache/*
+
+/config/master.key
