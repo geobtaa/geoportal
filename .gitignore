@@ -65,3 +65,4 @@ db/gazetteer/*
 vendor/cache/*
 
 /config/master.key
+vendor/cache/*
