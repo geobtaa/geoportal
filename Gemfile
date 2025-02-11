@@ -59,7 +59,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 7.0'
   gem 'spring'
 end
 
