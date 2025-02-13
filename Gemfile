@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.0'
+gem 'rails', '~> 7.0'
 gem 'concurrent-ruby', '1.3.4'
 gem 'bootsnap', '~> 1.9.3', require: false
 gem 'listen', '~> 3.0'
@@ -69,7 +69,7 @@ group :development do
   gem 'letter_opener'
 end
 
-gem 'blacklight', '~> 7.33.0'
+gem 'blacklight', '~> 7.0'
 
 # BL Advanced Search / Pinned to EWL bug-fix
 # See: https://github.com/projectblacklight/blacklight_advanced_search/issues/127
@@ -80,7 +80,7 @@ gem 'chosen-rails', '~> 1.10' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '4.4'
+gem 'geoblacklight', '~>4.0'
 
 # GBL Admin
 gem 'geoblacklight_admin', '~> 0.7.0'
