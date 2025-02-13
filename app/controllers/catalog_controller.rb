@@ -157,8 +157,8 @@ class CatalogController < ApplicationController
 
     config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
     config.add_facet_field Settings.FIELDS.B1G_MEDIATOR, label: 'Institutional Access', limit: 15
-    config.add_facet_field Settings.FIELDS.GEOREFERENCED, label: 'Georeferenced'
-    config.add_facet_field Settings.FIELDS.B1G_GEOREFERENCED_ALLMAPS, label: 'Georeferenced via Allmaps Plugin'
+    config.add_facet_field Settings.FIELDS.GEOREFERENCED, label: 'Downloadable GeoTIFF'
+    config.add_facet_field Settings.FIELDS.B1G_GEOREFERENCED_ALLMAPS, label: 'Map Overlay'
 
     # GEOBLACKLIGHT APPLICATION FACETS
 

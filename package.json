@@ -49,7 +49,7 @@
     "@rails/ujs": "^7.0.7-2",
     "@rails/webpacker": "^5.4.4",
     "babel-loader": "^8.0.6",
-    "blacklight-allmaps": "^0.3.1",
+    "blacklight-allmaps": "https://github.com/geobtaa/blacklight-allmaps.git#main",
     "bloodhound-js": "^1.2.3",
     "bootstrap": "^4.5.0",
     "bootstrap-datepicker": "^1.10.0",
