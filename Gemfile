@@ -59,7 +59,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 7.0'
   gem 'spring'
 end
 
@@ -80,10 +80,11 @@ gem 'chosen-rails', '~> 1.10' #  jquery multiselect plugin for advanced search
 gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
-gem 'geoblacklight', '~>4.0'
+gem 'geoblacklight', '~> 4.0'
 
 # GBL Admin
-gem 'geoblacklight_admin', '~> 0.7.0'
+gem 'geoblacklight_admin', '~> 0.7.1'
+# gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "develop"
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
