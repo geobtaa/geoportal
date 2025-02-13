@@ -27,8 +27,8 @@ a {
 a.btn { 
   text-decoration: none; 
   &:visited {
-    color: $white;
-    border-color: $white;
+    color: inherit;
+    border-color: inherit;
   }
 }
 a.btn.btn-primary {
