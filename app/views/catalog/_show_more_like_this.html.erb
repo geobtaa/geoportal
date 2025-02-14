@@ -35,7 +35,13 @@
                   </div>
                   <div class="col-8 d-flex flex-column">
                     <div class="card-body flex-grow-1 d-flex flex-column">
-                      <p class="card-text small mb-1"><%= document[Settings.FIELDS.PUBLISHER]&.join(', ') %></p>
+                      <p class="card-text small mb-1">
+                        <% if document[Settings.FIELDS.PUBLISHER].present? %>
+                          <%= document[Settings.FIELDS.PUBLISHER]&.join(', ') %>
+                        <% else %>
+                          <%= document[Settings.FIELDS.PROVIDER] %>
+                        <% end %>
+                      </p>
                       <p class="card-text">
                         <span class="badge badge-warning"><%= document[Settings.FIELDS.INDEX_YEAR]&.join(', ') %></span>
                       </p>
