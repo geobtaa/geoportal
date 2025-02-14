@@ -1,28 +1,30 @@
-<div class="item-pagination">
-  <%= render :partial => "show_item_pagination" %>
-</div>
-
-<div class="gbl-admin">
-  <%= render :partial => "show_gbl_admin" %>
-</div>
-
-<%= render :partial => "show_sidebar_citation" %>
-<%= render :partial => 'show_sidebar_static_map' if render_sidebar_map?(@document) %>
-<%= render :partial => 'show_tools' %>
-
-<% if georeferenceable? %>
-  <%= render :partial => "allmaps/sidebar/allmaps" %>
-<% end %>
-
-<div class="sidebar-buttons">
-  <%= render :partial => "show_downloads" %>
-</div>
-
-<% unless @document.more_like_this.empty? %>
-  <div class="card">
-    <div class="card-header">More Like This</div>
-    <div class="card-body">
-      <%= render :collection => @document.more_like_this, :partial => 'show_more_like_this', :as => :document %>
-    </div>
+<div id="sidebar-content" class="sticky-top">
+  <div class="item-pagination">
+    <%= render :partial => "show_item_pagination" %>
   </div>
-<% end %>
+
+  <div class="gbl-admin">
+    <%= render :partial => "show_gbl_admin" %>
+  </div>
+
+  <%= render :partial => "show_sidebar_citation" %>
+  <%= render :partial => 'show_sidebar_static_map' if render_sidebar_map?(@document) %>
+  <%= render :partial => 'show_tools' %>
+
+  <% if georeferenceable? %>
+    <%= render :partial => "allmaps/sidebar/allmaps" %>
+  <% end %>
+
+  <div class="sidebar-buttons">
+    <%= render :partial => "show_downloads" %>
+  </div>
+
+  <% unless @document.more_like_this.empty? %>
+    <div class="card">
+      <div class="card-header">More Like This</div>
+      <div class="card-body">
+        <%= render :collection => @document.more_like_this, :partial => 'show_more_like_this', :as => :document %>
+      </div>
+    </div>
+  <% end %>
+</div>
