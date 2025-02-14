@@ -9,7 +9,7 @@ en:
       web_service: Web service copied to clipboard
     download:
       download: 'Download'
-      download_link: 'Original %{download_format}'
+      download_link: '%{download_format}'
       success: 'Your file %{title} is ready for download'
       hgl_success: 'You should receive an email when your download is ready.'
       hgl_request: 'Request Layer'
