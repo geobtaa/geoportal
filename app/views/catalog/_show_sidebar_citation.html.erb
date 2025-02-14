@@ -41,7 +41,7 @@
 
         <li class="list-group-item mt-2">
           <h5 class="h6">
-            Permalink
+            Link
             <button style="position: relative; top: -0.5rem;" class="btn-sm btn-primary copy-button pull-right" type="button" onclick="copyPermalink()">Copy</button>
           </h5>
           <div class="input-group permalink-container mt-2">
@@ -80,7 +80,7 @@
     permalinkText.select();
     navigator.clipboard.writeText(permalinkText.value).then(() => {
       const messageElement = document.getElementById('permalink-message');
-      messageElement.textContent = 'Permalink copied to clipboard!';
+      messageElement.textContent = 'Link copied to clipboard!';
       messageElement.style.opacity = 1;
       messageElement.style.color = 'green';
       setTimeout(() => {
