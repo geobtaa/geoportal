@@ -7,7 +7,13 @@
     <%= render :partial => "show_gbl_admin" %>
   </div>
 
+  <div class="sidebar-buttons">
+    <%= render :partial => "show_downloads" %>
+  </div>
+
   <%= render :partial => "show_sidebar_citation" %>
+
+
   <%= render :partial => 'show_sidebar_static_map' if render_sidebar_map?(@document) %>
   <%= render :partial => 'show_tools' %>
 
@@ -16,7 +22,6 @@
   <% end %>
 
   <div class="sidebar-buttons">
-    <%= render :partial => "show_downloads" %>
   </div>
 
   <% unless @document.more_like_this.empty? %>
