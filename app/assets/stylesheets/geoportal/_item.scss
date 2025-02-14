@@ -3,7 +3,18 @@
   height: 600px;
 }
 
+h3#metadata {
+  border-top: 1px solid #dee2e6;
+  padding-top: 1.5rem;
+}
 #metadata-facets-content {
   padding: 2rem;
   background-color: #f8f9fa;
+}
+.permalink-container {
+  input {
+    background-color:#f8f9fa !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
 }
