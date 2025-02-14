@@ -42,8 +42,8 @@ class ShowPageTest < ApplicationSystemTestCase
 
     # Downloads
     assert page.has_content?("Downloads")
-    assert page.has_link?("Original Tiff")
-    assert page.has_link?("Original JPG")
+    assert page.has_link?("Tiff")
+    assert page.has_link?("JPG")
 
     # Provenance
     assert page.has_content?("Minnesota")
@@ -68,7 +68,7 @@ class ShowPageTest < ApplicationSystemTestCase
     # Download
     assert page.has_content?("Download")
     click_on("Download")
-    assert page.has_link?("Original Shapefile")
+    assert page.has_link?("Shapefile")
 
     # Export
     assert page.has_link?("Open in ArcGIS")
@@ -93,7 +93,7 @@ class ShowPageTest < ApplicationSystemTestCase
     # Download
     assert page.has_content?("Download")
     click_on("Download")
-    assert page.has_link?("Original Shapefile")
+    assert page.has_link?("Shapefile")
 
     # Provenance
     assert page.has_link?("Minnesota")
@@ -158,7 +158,7 @@ class ShowPageTest < ApplicationSystemTestCase
     # Download
     assert page.has_content?("Download")
     click_on("Download")
-    assert page.has_link?("Original GeoTIFF")
+    assert page.has_link?("GeoTIFF")
 
     # Data Relations
     # assert page.has_content?("Related Items")
