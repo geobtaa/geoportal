@@ -18,7 +18,7 @@
               <div class="card h-100 equal-height-card">
                 <div class="card-header">
                   <h5 class="card-title">
-                    <%= link_to_document document %>
+                    <%= link_to document[Settings.FIELDS.TITLE].truncate(90), solr_document_path(document[Settings.FIELDS.ID]) %>
                   </h5>
                 </div>
                 <div class="row no-gutters h-100">
