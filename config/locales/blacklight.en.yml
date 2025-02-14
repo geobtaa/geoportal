@@ -5,3 +5,7 @@ en:
       title: 'Links'
     search:
       start_over: 'Clear search'
+  views:
+    pagination:
+      previous: '← Prev'
+      next: 'Next →'

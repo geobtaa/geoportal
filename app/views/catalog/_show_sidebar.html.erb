@@ -1,11 +1,6 @@
-<% if current_search_session %>
-  <div id="appliedParams" class="clearfix constraints-container">
-    <%= link_to t('blacklight.search.start_over'), start_over_path, class: 'catalog_startOverLink btn btn-primary flex-fill me-1' %>
-    <%= link_back_to_catalog class: 'btn btn-outline-secondary flex-fill me-1' %>
-  </div>
-<% end %>
-
-<%= render(Blacklight::SearchContextComponent.new(search_context: @search_context, search_session: search_session)) if search_session['document_id'] == @document.id %>
+<div class="item-pagination">
+  <%= render :partial => "show_item_pagination" %>
+</div>
 
 <div class="gbl-admin">
   <%= render :partial => "show_gbl_admin" %>
