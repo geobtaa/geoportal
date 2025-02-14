@@ -11,11 +11,10 @@
     <%= render :partial => "show_downloads" %>
   </div>
 
-  <%= render :partial => "show_sidebar_citation" %>
-
-
   <%= render :partial => 'show_sidebar_static_map' if render_sidebar_map?(@document) %>
   <%= render :partial => 'show_tools' %>
+
+  <%= render :partial => "show_sidebar_citation" %>
 
   <% if georeferenceable? %>
     <%= render :partial => "allmaps/sidebar/allmaps" %>
