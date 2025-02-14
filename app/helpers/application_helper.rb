@@ -232,4 +232,18 @@ module ApplicationHelper
     # Customized to just return the link_url
     link_url
   end
+
+  def card_background_style(document)
+    if thumb_to_render?(document&.kithe_model)
+      "background-image: url('#{document&.kithe_model&.thumbnail&.file_url(:thumb_standard_2X)}');" \
+      "background-size: cover;" \
+      "background-position: center;" \
+      "min-height: 200px;"
+    else
+      "background-image: url('#{geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS]&.first, classes: 'svg_tooltip')}');" \
+      "background-size: cover;" \
+      "background-position: center;" \
+      "min-height: 201px;"
+    end
+  end
 end
