@@ -340,6 +340,7 @@ class CatalogController < ApplicationController
     config.show.partials.delete(:show_header)
     config.show.partials.delete(:show)
     config.show.partials.delete(:more_like_this)
+    config.show.partials.delete(:document_metadata)
 
     config.show.display_type_field = 'format'
     config.show.partials << "show_header_default"
@@ -347,6 +348,7 @@ class CatalogController < ApplicationController
     config.show.partials << "show_default_viewer_container"
     config.show.partials << "show_default_viewer_information"
     config.show.partials << "show_default_attribute_table"
+    config.show.partials << "show_document_full_details"
     config.show.partials << :show
 
 

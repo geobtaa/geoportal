@@ -1,0 +1,135 @@
+<h3 id="metadata">Full Details</h3>
+<div class="row">
+  <div class="col-md-8">
+    <dl class="document-metadata dl-invert row">
+      <% if @document[Settings.FIELDS.TITLE].present? %>
+        <dt class="col-md-3">Title</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.TITLE] %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.DESCRIPTION].present? %>
+        <dt class="col-md-3">Description</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.DESCRIPTION].join(', ') %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.CREATOR].present? %>
+        <dt class="col-md-3">Creator</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.CREATOR].join(', ') %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.PUBLISHER].present? %>
+        <dt class="col-md-3">Publisher</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.PUBLISHER].join(', ') %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.SUBJECT].present? %>
+        <dt class="col-md-3">Subject</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.SUBJECT].join(', ') %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.TEMPORAL_COVERAGE].present? %>
+        <dt class="col-md-3">Temporal Coverage</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.TEMPORAL_COVERAGE].join(', ') %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.DATE_ISSUED].present? %>
+        <dt class="col-md-3">Date Issued</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.DATE_ISSUED] %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.RIGHTS].present? %>
+        <dt class="col-md-3">Rights</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.RIGHTS].join(', ') %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.RIGHTS_HOLDER].present? %>
+        <dt class="col-md-3">Rights Holder</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.RIGHTS_HOLDER].join(', ') %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.LICENSE].present? %>
+        <dt class="col-md-3">License</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.LICENSE] %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.ACCESS_RIGHTS].present? %>
+        <dt class="col-md-3">Access Rights</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.ACCESS_RIGHTS] %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.FORMAT].present? %>
+        <dt class="col-md-3">Format</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.FORMAT] %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.FILE_SIZE].present? %>
+        <dt class="col-md-3">File Size</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.FILE_SIZE] %></dd>
+      <% end %>
+        <% if @document[Settings.FIELDS.B1G_LANGUAGE].present? %>
+          <dt class="col-md-3">Language</dt>
+          <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_LANGUAGE].join(', ') %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.B1G_DATE_CREATED].present? %>
+        <dt class="col-md-3">Date Added</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DATE_CREATED].to_time.strftime('%B %d, %Y') %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.B1G_DCT_CONFORMS_TO].present? %>
+        <dt class="col-md-3">Conforms To</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCT_CONFORMS_TO] %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.B1G_DCAT_SPATIAL_RESOLUTION_IN_METERS].present? %>
+        <dt class="col-md-3">Spatial Resolution in Meters</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCAT_SPATIAL_RESOLUTION_IN_METERS] %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.B1G_GEODCAT_SPATIAL_RESOLUTION_AS_TEXT].present? %>
+        <dt class="col-md-3">Spatial Resolution as Text</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_GEODCAT_SPATIAL_RESOLUTION_AS_TEXT] %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.B1G_DCT_PROVENANCE_STATEMENT].present? %>
+        <dt class="col-md-3">Provenance Statement</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCT_PROVENANCE_STATEMENT] %></dd>
+      <% end %>
+      <% if @document[Settings.FIELDS.B1G_DCT_EXTENT].present? %>
+        <dt class="col-md-3">Extent in square kilometers</dt>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCT_EXTENT] %></dd>
+      <% end %>
+    </dl>
+  </div>
+  <div id="metadata-facets"class="col-md-4">
+    <% if @document[Settings.FIELDS.RESOURCE_CLASS].present? %>
+      <h4 class="h5">Resource Class</h4>
+      <ul class="list-unstyled">
+        <li>
+          <%= faceted_search_link(Settings.FIELDS.RESOURCE_CLASS, @document[Settings.FIELDS.RESOURCE_CLASS].first) %>
+        </li>
+      </ul>
+    <% end %>
+    <% if @document[Settings.FIELDS.RESOURCE_TYPE].present? %>
+      <h4 class="h5">Resource Type</h4>
+      <ul class="list-unstyled">
+        <% @document[Settings.FIELDS.RESOURCE_TYPE].each do |resource_type| %>
+          <li>
+            <%= faceted_search_link(Settings.FIELDS.RESOURCE_TYPE, resource_type) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <% if @document[Settings.FIELDS.THEME].present? %>
+      <h4 class="h5">Theme</h4>
+      <ul class="list-unstyled">
+        <% @document[Settings.FIELDS.THEME].each do |theme| %>
+          <li>
+            <%= faceted_search_link(Settings.FIELDS.THEME, theme) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <% if @document[Settings.FIELDS.SPATIAL_COVERAGE].present? %>
+      <h4 class="h5">Place</h4>
+      <ul class="list-unstyled">
+        <% @document[Settings.FIELDS.SPATIAL_COVERAGE].each do |place| %>
+          <li>
+            <%= faceted_search_link(Settings.FIELDS.SPATIAL_COVERAGE, place) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <% if @document[Settings.FIELDS.PROVIDER].present? %>
+      <h4 class="h5">Provider</h4>
+      <ul class="list-unstyled">
+        <li>
+          <%= faceted_search_link(Settings.FIELDS.PROVIDER, @document[Settings.FIELDS.PROVIDER]) %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</div>
