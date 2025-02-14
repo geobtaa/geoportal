@@ -7,7 +7,7 @@ Blacklight.onLoad(function () {
             url: relation_url,
             type: 'GET',
             success: function (data) {
-                $('#metadata-facets').append($(data).hide().fadeIn(200));
+                $('#metadata-facets-content').append($(data).hide().fadeIn(200));
             }
         })
     });
