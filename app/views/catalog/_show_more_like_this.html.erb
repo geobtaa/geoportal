@@ -12,32 +12,34 @@
   <div class="row">
     <% @document.more_like_this_panel.each_slice(5).with_index do |documents, page_index| %>
       <div class="col-12 <%= 'd-none' unless page_index == 0 %>" data-page="<%= page_index %>">
-        <div class="d-flex justify-content-between">
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5">
           <% documents.each do |document| %>
-            <div class="card h-100 equal-height-card" style="width: 18rem;">
-              <div class="card-header">
-                <h5 class="card-title">
-                  <%= link_to_document document %>
-                </h5>
-              </div>
-              <div class="row no-gutters h-100">
-                <div class="col-md-4">
-                  <div class="media">
-                    <% if thumb_to_render?(document&.kithe_model) %>
-                      <%= image_tag document&.kithe_model&.thumbnail&.file_url(:thumb_standard_2X) %>
-                    <%- else %>
-                      <span class="icon square mr-3">
-                        <%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS]&.first, classes: 'svg_tooltip') %>
-                      </span>
-                    <%- end %>
-                  </div>
+            <div class="col mb-3">
+              <div class="card h-100 equal-height-card">
+                <div class="card-header">
+                  <h5 class="card-title">
+                    <%= link_to_document document %>
+                  </h5>
                 </div>
-                <div class="col-md-8 d-flex flex-column">
-                  <div class="card-body flex-grow-1 d-flex flex-column">
-                    <p class="card-text small mb-1"><%= document[Settings.FIELDS.PUBLISHER]&.join(', ') %></p>
-                    <p class="card-text">
-                      <span class="badge badge-warning"><%= document[Settings.FIELDS.INDEX_YEAR]&.join(', ') %></span>
-                    </p>
+                <div class="row no-gutters h-100">
+                  <div class="col-4">
+                    <div class="media">
+                      <% if thumb_to_render?(document&.kithe_model) %>
+                        <%= image_tag document&.kithe_model&.thumbnail&.file_url(:thumb_standard_2X) %>
+                      <%- else %>
+                        <span class="icon square mr-3">
+                          <%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS]&.first, classes: 'svg_tooltip') %>
+                        </span>
+                      <%- end %>
+                    </div>
+                  </div>
+                  <div class="col-8 d-flex flex-column">
+                    <div class="card-body flex-grow-1 d-flex flex-column">
+                      <p class="card-text small mb-1"><%= document[Settings.FIELDS.PUBLISHER]&.join(', ') %></p>
+                      <p class="card-text">
+                        <span class="badge badge-warning"><%= document[Settings.FIELDS.INDEX_YEAR]&.join(', ') %></span>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

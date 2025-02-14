@@ -1,6 +1,8 @@
 <div class="card citation mt-4">
   <div class="card-header">
-    <h2 class="h6 mb-0">Citation</h2>
+    <h2 class="h6 mb-0">
+      Cite and Reference
+    </h2>
 
     <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
       <span aria-hidden="true">&times;</span>
@@ -27,63 +29,58 @@
         </li>
       <% else %>
         <li class="list-group-item">
-          <p>
-          <% if @document[Settings.FIELDS.CREATOR].present? %>
-            <%= @document[Settings.FIELDS.CREATOR].join(', ') %>.
-          <% else %>
-             [Creator not found],
-          <% end %>
-
-          <% if @document[Settings.FIELDS.DATE_ISSUED].present? %>
-            (<%= citation_date(@document[Settings.FIELDS.DATE_ISSUED]) %>).
-          <% else %>
-            (n.d.).
-          <%- end %>
-
-          <% if @document[Settings.FIELDS.TITLE].present? %>
-            <i><%= @document[Settings.FIELDS.TITLE] %></i>.
-          <% end %>
-
-          <% case @document[Settings.FIELDS.RESOURCE_CLASS].first %>
-            <% when 'Datasets', 'Web Services' %>
-              <% if @document[Settings.FIELDS.PROVIDER].present? %>
-                <%= @document[Settings.FIELDS.PROVIDER] %>.
-              <% end %>
-
-            <% else %>
-              <% if @document[Settings.FIELDS.PUBLISHER].present? %>
-                <%= @document[Settings.FIELDS.PUBLISHER].join(', ') %>.
-              <% end %>
-          <% end %>
-
-          <% if @document.references.url.present? %>
-            <%= @document.references.url.endpoint %>
-          <% end %>
-          (<%= @document[Settings.FIELDS.RESOURCE_CLASS].first.downcase.singularize %>)
-        </p>
-      </li>
-
-      <li class="list-group-item mt-2">
-        <h5 class="h6">Permalink <span id="copy-message" style="opacity: 0; transition: opacity 0.5s;"></span></h5>
-        <div class="input-group permalink-container">
-          <input type="text" class="form-control" id="permalink-text" value="<%= url_for(:only_path => false).split("/citation")[0] %>" readonly>
-          <div class="input-group-append">
-            <button class="btn btn-primary copy-button" type="button" onclick="copyPermalink()">Copy</button>
+          <h5 class="h6">
+            Citation
+            <button style="position: relative; top: -0.5rem;" class="btn-sm btn-primary copy-button pull-right" type="button" onclick="copyText('citation-text', 'citation-message', 'citation')">Copy</button>
+          </h5>
+          <div class="well bg-light p-3 mt-2" id="citation-text" style="height: auto;">
+            <%= @document[Settings.FIELDS.CREATOR]&.join(', ') || '[Creator not found]' %> (<%= citation_date(@document[Settings.FIELDS.DATE_ISSUED]) %>). <i><%= @document[Settings.FIELDS.TITLE] %></i>. <%= @document[Settings.FIELDS.PUBLISHER]&.join(', ') %>. <%= @document.references.url.endpoint %> (<%= @document[Settings.FIELDS.RESOURCE_CLASS].first.downcase.singularize %>)
           </div>
-        </div>
-      </li>
+          <div id="citation-message" style="opacity: 0; transition: opacity 0.5s;"></div>
+        </li>
+
+        <li class="list-group-item mt-2">
+          <h5 class="h6">
+            Permalink
+            <button style="position: relative; top: -0.5rem;" class="btn-sm btn-primary copy-button pull-right" type="button" onclick="copyPermalink()">Copy</button>
+          </h5>
+          <div class="input-group permalink-container mt-2">
+            <input type="text" class="form-control" id="permalink-text" value="<%= url_for(:only_path => false).split("/citation")[0] %>" readonly>
+          </div>
+          <div id="permalink-message" style="opacity: 0; transition: opacity 0.5s;"></div>
+        </li>
+      <% end %>
     </ul>
-    <% end %>
   </div>
 </div>
 
 <script>
+  function copyText(elementId, messageId, itemType) {
+    const textElement = document.getElementById(elementId);
+    const range = document.createRange();
+    range.selectNodeContents(textElement);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    navigator.clipboard.writeText(textElement.textContent).then(() => {
+      const messageElement = document.getElementById(messageId);
+      messageElement.textContent = `${itemType.charAt(0).toUpperCase() + itemType.slice(1)} copied to clipboard!`;
+      messageElement.style.opacity = 1;
+      messageElement.style.color = 'green';
+      setTimeout(() => {
+        messageElement.style.opacity = 0;
+      }, 3000);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
+  }
+
   function copyPermalink() {
     const permalinkText = document.getElementById('permalink-text');
     permalinkText.select();
     navigator.clipboard.writeText(permalinkText.value).then(() => {
-      const messageElement = document.getElementById('copy-message');
-      messageElement.textContent = '· copied to clipboard!';
+      const messageElement = document.getElementById('permalink-message');
+      messageElement.textContent = 'Permalink copied to clipboard!';
       messageElement.style.opacity = 1;
       messageElement.style.color = 'green';
       setTimeout(() => {
