@@ -84,6 +84,7 @@
       <% end %>
     </dl>
   </div>
+  
   <div id="metadata-facets" class="col-md-4">
     <div id="metadata-facets-content">
       <% if @document[Settings.FIELDS.RESOURCE_CLASS].present? %>
@@ -116,13 +117,23 @@
     <% end %>
     <% if @document[Settings.FIELDS.SPATIAL_COVERAGE].present? %>
       <h4 class="h5">Place</h4>
-      <ul class="list-unstyled">
-        <% @document[Settings.FIELDS.SPATIAL_COVERAGE].each do |place| %>
-          <li>
-            <%= faceted_search_link(Settings.FIELDS.SPATIAL_COVERAGE, place) %>
-          </li>
-        <% end %>
-      </ul>
+      <% if @document[Settings.FIELDS.SPATIAL_COVERAGE].size > 5 %>
+        <ul class="list-inline">
+          <% @document[Settings.FIELDS.SPATIAL_COVERAGE].each do |place| %>
+            <li class="list-inline-item">
+              <%= faceted_search_link(Settings.FIELDS.SPATIAL_COVERAGE, place) %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <ul class="list-unstyled">
+          <% @document[Settings.FIELDS.SPATIAL_COVERAGE].each do |place| %>
+            <li>
+              <%= faceted_search_link(Settings.FIELDS.SPATIAL_COVERAGE, place) %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
     <% end %>
     <% if @document[Settings.FIELDS.PROVIDER].present? %>
       <h4 class="h5">Provider</h4>
