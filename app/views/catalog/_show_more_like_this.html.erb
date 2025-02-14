@@ -15,40 +15,26 @@
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5">
           <% documents.each do |document| %>
             <div class="col mb-3">
-              <div class="card h-100 equal-height-card">
+              <%= link_to solr_document_path(document[Settings.FIELDS.ID]), class: 'card h-100 equal-height-card', style: 'width: 18rem; overflow: hidden; border-radius: 0.25rem;' do %>
                 <div class="card-header">
                   <h5 class="card-title">
-                    <%= link_to document[Settings.FIELDS.TITLE].truncate(90), solr_document_path(document[Settings.FIELDS.ID]) %>
+                    <%= document[Settings.FIELDS.TITLE].truncate(90) %>
                   </h5>
                 </div>
-                <div class="row no-gutters h-100">
-                  <div class="col-4">
-                    <div class="media">
-                      <% if thumb_to_render?(document&.kithe_model) %>
-                        <%= image_tag document&.kithe_model&.thumbnail&.file_url(:thumb_standard_2X) %>
-                      <%- else %>
-                        <span class="icon square mr-3">
-                          <%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS]&.first, classes: 'svg_tooltip') %>
-                        </span>
-                      <%- end %>
-                    </div>
-                  </div>
-                  <div class="col-8 d-flex flex-column">
-                    <div class="card-body flex-grow-1 d-flex flex-column">
-                      <p class="card-text small mb-1">
-                        <% if document[Settings.FIELDS.PUBLISHER].present? %>
-                          <%= document[Settings.FIELDS.PUBLISHER]&.join(', ') %>
-                        <% else %>
-                          <%= document[Settings.FIELDS.PROVIDER] %>
-                        <% end %>
-                      </p>
-                      <p class="card-text">
-                        <span class="badge badge-warning"><%= document[Settings.FIELDS.INDEX_YEAR]&.join(', ') %></span>
-                      </p>
-                    </div>
-                  </div>
+                <div class="card-body d-flex flex-column justify-content-end"
+                     style="<% if thumb_to_render?(document&.kithe_model) %>
+                              background-image: url('<%= document&.kithe_model&.thumbnail&.file_url(:thumb_standard_2X) %>');
+                            <% else %>
+                              background-image: url('<%= geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS]&.first, classes: 'svg_tooltip') %>');
+                            <% end %>
+                            background-size: cover;
+                            background-position: center;
+                            min-height: 200px;">
+                  <p class="card-text">
+                    <span class="badge badge-warning"><%= document[Settings.FIELDS.INDEX_YEAR]&.join(', ') %></span>
+                  </p>
                 </div>
-              </div>
+              <% end %>
             </div>
           <% end %>
         </div>
