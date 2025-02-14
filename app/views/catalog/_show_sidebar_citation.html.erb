@@ -34,7 +34,7 @@
             <button style="position: relative; top: -0.5rem;" class="btn-sm btn-primary copy-button pull-right" type="button" onclick="copyText('citation-text', 'citation-message', 'citation')">Copy</button>
           </h5>
           <div class="well bg-light p-3 mt-2" id="citation-text" style="height: auto;">
-            <%= @document[Settings.FIELDS.CREATOR]&.join(', ') || '[Creator not found]' %> (<%= citation_date(@document[Settings.FIELDS.DATE_ISSUED]) %>). <i><%= @document[Settings.FIELDS.TITLE] %></i>. <%= @document[Settings.FIELDS.PUBLISHER]&.join(', ') %>. <%= @document.references.url.endpoint %> (<%= @document[Settings.FIELDS.RESOURCE_CLASS].first.downcase.singularize %>)
+            <%= @document[Settings.FIELDS.CREATOR]&.join(', ') || '[Creator not found]' %> (<%= citation_date(@document[Settings.FIELDS.DATE_ISSUED]) %>). <i><%= @document[Settings.FIELDS.TITLE] %></i>. <%= @document[Settings.FIELDS.PUBLISHER]&.join(', ') %>. <%= @document&.references&.url&.endpoint %> (<%= @document[Settings.FIELDS.RESOURCE_CLASS].first.downcase.singularize %>)
           </div>
           <div id="citation-message" style="opacity: 0; transition: opacity 0.5s;"></div>
         </li>
