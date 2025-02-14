@@ -161,7 +161,6 @@ namespace :geoportal do
             cleaned_doc = doc.except!(*keys_for_deletion)
 
             # 4. Add georeferenced value
-            cleaned_doc["gbl_georeferenced_b"] = true
             cleaned_doc["b1g_georeferenced_allmaps_b"] = true
 
             # 5. Re-index the georeferenced documents
