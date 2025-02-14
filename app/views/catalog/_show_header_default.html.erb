@@ -10,6 +10,8 @@
       <%= @document[Settings.FIELDS.PUBLISHER].join(', ') %>
     <% elsif @document[Settings.FIELDS.CREATOR].present? %>
       <%= @document[Settings.FIELDS.CREATOR]&.join(', ') %>
+    <% elsif @document[Settings.FIELDS.PROVIDER].present? %>
+      <%= @document[Settings.FIELDS.PROVIDER] %>
     <% end %>
     <% if @document[Settings.FIELDS.INDEX_YEAR].present? %>
       &middot;
