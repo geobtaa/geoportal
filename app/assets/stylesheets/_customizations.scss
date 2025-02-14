@@ -236,7 +236,7 @@ h1, h2, h3, h4, h5, h6,
 
   .card {
     transition: transform 0.2s ease;
-    border: 4px solid rgba(0, 94, 142, 0.125);
+    border: 0.25rem solid #003c5b;
     
     &:hover {
       transform: translateY(-2px);
