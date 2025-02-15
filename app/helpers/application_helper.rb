@@ -240,10 +240,15 @@ module ApplicationHelper
       "background-position: center;" \
       "min-height: 200px;"
     else
-      "background-image: url('#{geoblacklight_icon(document[Settings.FIELDS.RESOURCE_CLASS]&.first, classes: 'svg_tooltip')}');" \
-      "background-size: cover;" \
+      svg_file_path = "/assets/blacklight/#{document[Settings.FIELDS.RESOURCE_CLASS]&.first&.downcase&.tr(' ', '_')}.svg"
+      "background-image: url('#{svg_file_path}');" \
+      "background-size: 50% auto;" \
+      "background-repeat: no-repeat;" \
       "background-position: center;" \
-      "min-height: 201px;"
+      "min-height: 200px;" \
+      "width: 100%;" \
+      "display: block !important;" \
+      "overflow: hidden;"
     end
   end
 end
