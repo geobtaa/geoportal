@@ -74,6 +74,10 @@
 
         <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
 
+        <% if @document.present? %>
+          <%= render 'catalog/show_breadcrumb' %>
+        <% end %>
+
         <div class="row">
           <%= content_for?(:content) ? yield(:content) : yield %>
         </div>
