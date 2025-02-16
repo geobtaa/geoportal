@@ -64,23 +64,23 @@
       <% end %>
       <% if @document[Settings.FIELDS.B1G_DCT_CONFORMS_TO].present? %>
         <dt class="col-md-3">Conforms To</dt>
-        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCT_CONFORMS_TO] %></dd>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCT_CONFORMS_TO].join(', ') %></dd>
       <% end %>
       <% if @document[Settings.FIELDS.B1G_DCAT_SPATIAL_RESOLUTION_IN_METERS].present? %>
         <dt class="col-md-3">Spatial Resolution in Meters</dt>
-        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCAT_SPATIAL_RESOLUTION_IN_METERS] %></dd>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCAT_SPATIAL_RESOLUTION_IN_METERS].join(', ') %></dd>
       <% end %>
       <% if @document[Settings.FIELDS.B1G_GEODCAT_SPATIAL_RESOLUTION_AS_TEXT].present? %>
         <dt class="col-md-3">Spatial Resolution as Text</dt>
-        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_GEODCAT_SPATIAL_RESOLUTION_AS_TEXT] %></dd>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_GEODCAT_SPATIAL_RESOLUTION_AS_TEXT].join(', ') %></dd>
       <% end %>
       <% if @document[Settings.FIELDS.B1G_DCT_PROVENANCE_STATEMENT].present? %>
         <dt class="col-md-3">Provenance Statement</dt>
-        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCT_PROVENANCE_STATEMENT] %></dd>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCT_PROVENANCE_STATEMENT].join(', ') %></dd>
       <% end %>
       <% if @document[Settings.FIELDS.B1G_DCT_EXTENT].present? %>
         <dt class="col-md-3">Extent in square kilometers</dt>
-        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCT_EXTENT] %></dd>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCT_EXTENT].join(', ') %></dd>
       <% end %>
     </dl>
   </div>
