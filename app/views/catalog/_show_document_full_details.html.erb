@@ -40,7 +40,7 @@
       <% end %>
       <% if @document[Settings.FIELDS.LICENSE].present? %>
         <dt class="col-md-3">License</dt>
-        <dd class="col-md-9"><%= @document[Settings.FIELDS.LICENSE] %></dd>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.LICENSE].join(', ') %></dd>
       <% end %>
       <% if @document[Settings.FIELDS.ACCESS_RIGHTS].present? %>
         <dt class="col-md-3">Access Rights</dt>
