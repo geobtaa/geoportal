@@ -15,7 +15,7 @@
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5">
           <% documents.each do |document| %>
             <div class="col mb-3">
-              <%= link_to solr_document_path(document[Settings.FIELDS.ID]), class: 'card h-100 equal-height-card', style: 'width: 18rem; overflow: hidden; border-radius: 0.25rem;' do %>
+              <%= link_to solr_document_path(document[Settings.FIELDS.ID]), class: 'card h-100 equal-height-card', style: 'overflow: hidden; border-radius: 0.25rem;' do %>
                 <div class="card-header">
                   <h5 class="card-title">
                     <%= document[Settings.FIELDS.TITLE].truncate(90) %>
