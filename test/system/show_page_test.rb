@@ -57,7 +57,7 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_content?("ArcGIS Dynamic Map Layer")
 
     # Type
-    assert page.has_content?("Web services")
+    assert page.has_content?("Web Services")
 
     # ISO Metadata
     assert page.has_no_link?("Metadata")
@@ -281,7 +281,8 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_text?("Cite")
 
     # Available from link should include slug
-    assert page.has_content?("b06d96e4-c917-4afc-a3df-adbbc9a2273c")
+    assert find_field("permalink-text").value.include?("b06d96e4-c917-4afc-a3df-adbbc9a2273c")
+
   end
 
   def test_no_citation_tool_for_collections
