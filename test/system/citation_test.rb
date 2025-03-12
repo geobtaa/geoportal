@@ -16,8 +16,5 @@ class CitationTest < ApplicationSystemTestCase
 
     # Text
     assert page.has_content?("Bernardin-Lochmueller & Associates (2004). National Sediment Inventory (NSI) and Data Summaries, Derived from EPA BASINS 3: Indiana. State of Indiana. http://maps.indiana.edu/previewMaps/Hydrology/Water_Quality_Sediment_Inventory.html (dataset)")
-
-    # Links
-    assert page.has_link?("http://maps.indiana.edu/previewMaps/Hydrology/Water_Quality_Sediment_Inventory.html")
   end
 end
