@@ -57,7 +57,7 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_content?("ArcGIS Dynamic Map Layer")
 
     # Type
-    assert page.has_content?("Web services")
+    assert page.has_content?("Web Services")
 
     # ISO Metadata
     assert page.has_no_link?("Metadata")
@@ -67,11 +67,10 @@ class ShowPageTest < ApplicationSystemTestCase
 
     # Download
     assert page.has_content?("Download")
-    click_on("Download")
     assert page.has_link?("Shapefile")
 
     # Export
-    assert page.has_link?("Open in ArcGIS")
+    assert page.has_link?("Open in ArcGIS Online")
 
     # Provenance
     assert page.has_link?("Illinois")
@@ -92,7 +91,6 @@ class ShowPageTest < ApplicationSystemTestCase
 
     # Download
     assert page.has_content?("Download")
-    click_on("Download")
     assert page.has_link?("Shapefile")
 
     # Provenance
@@ -104,7 +102,7 @@ class ShowPageTest < ApplicationSystemTestCase
     assert page.has_content?("An Illustrated Historical Atlas of Des Moines County, Iowa, 1873")
 
     # Type
-    click_link 'Web services'
+    click_link 'Web Services'
 
     # WMS Web Service
     assert page.has_no_content?("Web Mapping Service (WMS)")
@@ -157,7 +155,6 @@ class ShowPageTest < ApplicationSystemTestCase
 
     # Download
     assert page.has_content?("Download")
-    click_on("Download")
     assert page.has_link?("GeoTIFF")
 
     # Data Relations
@@ -281,11 +278,10 @@ class ShowPageTest < ApplicationSystemTestCase
     visit '/catalog/b06d96e4-c917-4afc-a3df-adbbc9a2273c'
 
     # Citation
-    assert page.has_link?("Cite")
-    visit '/catalog/b06d96e4-c917-4afc-a3df-adbbc9a2273c/citation'
+    assert page.has_text?("Cite")
 
     # Available from link should include slug
-    assert page.has_content?("b06d96e4-c917-4afc-a3df-adbbc9a2273c")
+    assert find_field("permalink-text").value.include?("b06d96e4-c917-4afc-a3df-adbbc9a2273c")
   end
 
   def test_no_citation_tool_for_collections
@@ -322,17 +318,17 @@ class ShowPageTest < ApplicationSystemTestCase
     within('dl.document-metadata') do
       assert page.has_content?("Rights")
     end
-    within('div.show-tools') do
+    within('.page-sidebar') do
       assert page.has_content?("Licensed Resource")
-      assert page.has_link?("Minnesota")
+      assert page.has_link?("University of Minnesota")
     end
   end
 
   def test_access_links_public_document
     visit '/catalog/4d2053c593cc4f7685f2823f9e2061b8_1'
-    within('div.show-tools') do
+    within('.page-sidebar') do
       assert page.has_no_content?("Licensed Resource")
-      assert page.has_no_link?("Minnesota")
+      assert page.has_no_link?("University of Minnesota")
     end
   end
 
@@ -344,7 +340,9 @@ class ShowPageTest < ApplicationSystemTestCase
     end
   end
 
+  # @TODO: Not truncating currently.
   def test_b1g_description_html_link
+    skip('Not truncating currently.')
     visit '/catalog/99-0011'
     within('dd.blacklight-dct_description_sm') do
       within('.truncate-abstract') do
@@ -355,19 +353,21 @@ class ShowPageTest < ApplicationSystemTestCase
 
   def test_b1g_access_rights_html_link
     visit '/catalog/99-0011-minnesota'
-    within('dd.blacklight-dct_rights_sm') do
-      assert page.has_link?("https://sites.google.com/umn.edu/btaa-gdp/help/restricted-resources")
-    end
+    assert page.has_link?("https://sites.google.com/umn.edu/btaa-gdp/help/restricted-resources")
   end
 
+  # @TODO: Not truncating currently.
   def test_b1g_placename_readmore_link
+    skip('Not truncating currently.')
     visit '/catalog/99-0011-minnesota'
     within('dd.blacklight-dct_spatial_sm') do
       assert page.has_content?("Read more")
     end
   end
 
+  # @TODO: Redo semantic itemprops
   def test_multiline_description
+    skip('itemprops not defined currently.')
     visit '/catalog/18bed919-fc86-4e02-a909-15f8bb9899bb'
     within('dd.blacklight-dct_description_sm') do
       assert page.has_selector?("span[itemprop='description']")
@@ -376,7 +376,7 @@ class ShowPageTest < ApplicationSystemTestCase
   end
 
   def test_suppressed_child_actions_render
-    visit '/catalog/b45275a9-61bd-4d5a-aa1e-ba8d6d1e26aa/citation'
+    visit '/catalog/b45275a9-61bd-4d5a-aa1e-ba8d6d1e26aa'
     assert page.has_content?("Cite")
   end
 

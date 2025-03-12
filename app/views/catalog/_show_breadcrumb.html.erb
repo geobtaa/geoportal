@@ -1,0 +1,41 @@
+<div class="row" id="collection-context">
+  <div class="col-lg-8">
+    <p id="contextbreadcrumb" class="mb-2">
+      <% search_params = {} %>
+      <% if @document[Settings.FIELDS.RESOURCE_CLASS].present? %> 
+        <%= @document[Settings.FIELDS.RESOURCE_CLASS].map do |value|
+              search_params = search_params.merge("f[#{Settings.FIELDS.RESOURCE_CLASS}][]" => value)
+              faceted_search_link(Settings.FIELDS.RESOURCE_CLASS, value, search_params)
+            end.join(', ').html_safe %>
+      <% end %>
+      <% if @document[Settings.FIELDS.RESOURCE_TYPE].present? %>
+        &gt;  
+        <%= @document[Settings.FIELDS.RESOURCE_TYPE].map do |value|
+              search_params = search_params.merge("f[#{Settings.FIELDS.RESOURCE_TYPE}][]" => value)
+              faceted_search_link(Settings.FIELDS.RESOURCE_TYPE, value, search_params)
+            end.join(', ').html_safe %>
+      <% end %>
+      <% if @document[Settings.FIELDS.SPATIAL_COVERAGE].present? %>
+        &gt;
+        <%= @document[Settings.FIELDS.SPATIAL_COVERAGE][0..0].map do |value|
+              search_params = search_params.merge("f[#{Settings.FIELDS.SPATIAL_COVERAGE}][]" => value)
+              faceted_search_link(Settings.FIELDS.SPATIAL_COVERAGE, value, search_params)
+            end.join(', ').html_safe %>
+      <% end %>
+      <% if @document[Settings.FIELDS.INDEX_YEAR].present? %>
+        &gt;
+        <%= @document[Settings.FIELDS.INDEX_YEAR].map do |value|
+              bucket_label = year_to_facet_bucket(value)
+              search_params = search_params.merge("f[time_period][]" => bucket_label)
+              faceted_search_link("time_period", bucket_label, search_params)
+            end.join(', ').html_safe %>
+      <% end %>
+    </p>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="item-pagination">
+      <%= render :partial => "show_item_pagination" %>
+    </div>
+  </div>
+</div>

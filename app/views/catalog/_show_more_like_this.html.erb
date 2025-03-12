@@ -1,0 +1,70 @@
+<div id="more-like-this" class="more-like-this container-fluid">
+
+  <div class="pagination-controls mt-3 pull-right">
+    <button class="btn btn-primary" id="prevPage" disabled>Previous</button>
+    <button class="btn btn-primary" id="nextPage">Next</button>
+  </div>     
+
+  <h3 class="h4 mt-4 mb-3">
+    View more items like this one...
+  </h3>
+  
+  <div class="row">
+    <% @document.more_like_this_panel.each_slice(5).with_index do |documents, page_index| %>
+      <div class="col-12 <%= 'd-none' unless page_index == 0 %>" data-page="<%= page_index %>">
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5">
+          <% documents.each do |document| %>
+            <div class="col mb-3">
+              <%= link_to solr_document_path(document[Settings.FIELDS.ID]), class: 'card h-100 equal-height-card', style: 'overflow: hidden; border-radius: 0.25rem;' do %>
+                <div class="card-header">
+                  <h5 class="card-title">
+                    <%= document[Settings.FIELDS.TITLE].truncate(90) %>
+                  </h5>
+                </div>
+                <div class="card-body d-flex flex-column justify-content-end"
+                     style="<%= card_background_style(document) %>">
+                  <p class="card-text">
+                    <span class="badge badge-warning"><%= document[Settings.FIELDS.INDEX_YEAR]&.join(', ') %></span>
+                  </p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let currentPage = 0;
+    const pages = document.querySelectorAll('[data-page]');
+    const prevButton = document.getElementById('prevPage');
+    const nextButton = document.getElementById('nextPage');
+
+    function updatePagination() {
+      pages.forEach((page, index) => {
+        page.classList.toggle('d-none', index !== currentPage);
+      });
+      prevButton.disabled = currentPage === 0;
+      nextButton.disabled = currentPage === pages.length - 1;
+    }
+
+    prevButton.addEventListener('click', function() {
+      if (currentPage > 0) {
+        currentPage--;
+        updatePagination();
+      }
+    });
+
+    nextButton.addEventListener('click', function() {
+      if (currentPage < pages.length - 1) {
+        currentPage++;
+        updatePagination();
+      }
+    });
+
+    updatePagination();
+  });
+</script>

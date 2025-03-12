@@ -1,0 +1,99 @@
+<div class="card citation mb-4 mt-4">
+  <div class="card-header">
+    <h2 class="h6 mb-0">
+      Cite and Reference
+    </h2>
+
+    <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+        <% case @document[Settings.FIELDS.RESOURCE_CLASS].present? && @document[Settings.FIELDS.RESOURCE_CLASS].join(",").downcase %>
+        <% when "collections" %>
+          <li class="list-group-item">
+            <p>
+            <% if @document[Settings.FIELDS.TITLE].present? %>
+              <i><%= @document[Settings.FIELDS.TITLE] %></i>.
+          <% end %>
+
+          <% if @document[Settings.FIELDS.PUBLISHER].present? %>
+              <%= @document[Settings.FIELDS.PUBLISHER].join(', ') %>.
+          <% end %>
+
+          <% if @document.references.url.present? %>
+              <%= @document.references.url.endpoint %>
+            <% end %>
+          </p>
+        </li>
+      <% else %>
+        <li class="list-group-item">
+          <h5 class="h6">
+            Citation
+            <button style="position: relative; top: -0.5rem;" class="btn-sm btn-primary copy-button pull-right" type="button" onclick="copyText('citation-text', 'citation-message', 'citation')">Copy</button>
+          </h5>
+          <div class="well bg-light p-3 mt-2" id="citation-text" style="height: auto;">
+            <%= @document[Settings.FIELDS.CREATOR]&.join(', ') || '[Creator not found]' %> (<%= citation_date(@document[Settings.FIELDS.DATE_ISSUED]) %>). <i><%= @document[Settings.FIELDS.TITLE] %></i>. <%= @document[Settings.FIELDS.PUBLISHER]&.join(', ') %>. <%= @document&.references&.url&.endpoint %> (<%= @document[Settings.FIELDS.RESOURCE_CLASS].first.downcase.singularize %>)
+          </div>
+          <div id="citation-message" style="opacity: 0; transition: opacity 0.5s;"></div>
+        </li>
+
+        <li class="list-group-item mt-2">
+          <h5 class="h6">
+            BTAA Geoportal Link
+            <button style="position: relative; top: -0.5rem;" class="btn-sm btn-primary copy-button pull-right" type="button" onclick="copyPermalink()">Copy</button>
+          </h5>
+          <div class="input-group permalink-container mt-2">
+            <input type="text" class="form-control" id="permalink-text" value="<%= url_for(:only_path => false).split("/citation")[0] %>" readonly>
+          </div>
+          <div id="permalink-message" style="opacity: 0; transition: opacity 0.5s;"></div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function copyText(elementId, messageId, itemType) {
+    const textElement = document.getElementById(elementId);
+    const range = document.createRange();
+    range.selectNodeContents(textElement);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    navigator.clipboard.writeText(textElement.textContent).then(() => {
+      const messageElement = document.getElementById(messageId);
+      messageElement.textContent = `${itemType.charAt(0).toUpperCase() + itemType.slice(1)} copied to clipboard!`;
+      messageElement.style.opacity = 1;
+      messageElement.style.color = 'green';
+      setTimeout(() => {
+        messageElement.style.opacity = 0;
+      }, 3000);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
+  }
+
+  function copyPermalink() {
+    const permalinkText = document.getElementById('permalink-text');
+    permalinkText.select();
+    navigator.clipboard.writeText(permalinkText.value).then(() => {
+      const messageElement = document.getElementById('permalink-message');
+      messageElement.textContent = 'Link copied to clipboard!';
+      messageElement.style.opacity = 1;
+      messageElement.style.color = 'green';
+      setTimeout(() => {
+        messageElement.style.opacity = 0;
+      }, 3000);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
+  }
+</script>
+<style>
+  .permalink-container {
+    display: flex;
+    align-items: center;
+  }
+</style>
