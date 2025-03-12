@@ -318,7 +318,7 @@ class ShowPageTest < ApplicationSystemTestCase
     within('dl.document-metadata') do
       assert page.has_content?("Rights")
     end
-    within('div.page-sidebar') do
+    within('.page-sidebar') do
       assert page.has_content?("Licensed Resource")
       assert page.has_link?("University of Minnesota")
     end
@@ -326,7 +326,7 @@ class ShowPageTest < ApplicationSystemTestCase
 
   def test_access_links_public_document
     visit '/catalog/4d2053c593cc4f7685f2823f9e2061b8_1'
-    within('div.page-sidebar') do
+    within('.page-sidebar') do
       assert page.has_no_content?("Licensed Resource")
       assert page.has_no_link?("University of Minnesota")
     end
@@ -376,7 +376,7 @@ class ShowPageTest < ApplicationSystemTestCase
   end
 
   def test_suppressed_child_actions_render
-    visit '/catalog/b45275a9-61bd-4d5a-aa1e-ba8d6d1e26aa/citation'
+    visit '/catalog/b45275a9-61bd-4d5a-aa1e-ba8d6d1e26aa'
     assert page.has_content?("Cite")
   end
 

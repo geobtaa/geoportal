@@ -9,7 +9,7 @@ class CitationTest < ApplicationSystemTestCase
   end
 
   def test_citation_tool
-    visit '/catalog/b06d96e4-c917-4afc-a3df-adbbc9a2273c/citation'
+    visit '/catalog/b06d96e4-c917-4afc-a3df-adbbc9a2273c'
 
     # Available from link should include slug
     assert page.has_content?("b06d96e4-c917-4afc-a3df-adbbc9a2273c")
