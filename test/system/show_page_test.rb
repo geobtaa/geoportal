@@ -282,7 +282,6 @@ class ShowPageTest < ApplicationSystemTestCase
 
     # Available from link should include slug
     assert find_field("permalink-text").value.include?("b06d96e4-c917-4afc-a3df-adbbc9a2273c")
-
   end
 
   def test_no_citation_tool_for_collections
