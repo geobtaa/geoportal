@@ -239,12 +239,17 @@ module ApplicationHelper
       "background-size: cover;" \
       "background-position: center;" \
       "min-height: 200px;"
-    else
-      svg_file_path = "/assets/blacklight/#{document[Settings.FIELDS.RESOURCE_CLASS]&.first&.downcase&.tr(' ', '_')}.svg"
+    elsif document[Settings.FIELDS.RESOURCE_CLASS]&.present?
+      svg_file_path = asset_path("blacklight/#{document[Settings.FIELDS.RESOURCE_CLASS]&.first&.downcase&.tr(' ', '_')}.svg")
       "background-image: url('#{svg_file_path}');" \
       "background-size: 50% auto;" \
       "background-repeat: no-repeat;" \
       "background-position: center;" \
+      "min-height: 200px;" \
+      "width: 100%;" \
+      "display: block !important;" \
+      "overflow: hidden;"
+    else
       "min-height: 200px;" \
       "width: 100%;" \
       "display: block !important;" \
