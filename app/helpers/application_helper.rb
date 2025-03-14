@@ -240,7 +240,7 @@ module ApplicationHelper
       "background-position: center;" \
       "min-height: 200px;"
     else
-      svg_file_path = "/assets/blacklight/#{document[Settings.FIELDS.RESOURCE_CLASS]&.first&.downcase&.tr(' ', '_')}.svg"
+      svg_file_path = asset_path("blacklight/#{document[Settings.FIELDS.RESOURCE_CLASS]&.first&.downcase&.tr(' ', '_')}.svg")
       "background-image: url('#{svg_file_path}');" \
       "background-size: 50% auto;" \
       "background-repeat: no-repeat;" \
