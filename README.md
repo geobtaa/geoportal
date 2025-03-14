@@ -6,15 +6,15 @@ This geoportal connects users to digital geospatial resources, including GIS dat
 
 This project is collectively managed by librarians and geospatial specialists at 17 research institutions from across the Big Ten Academic Alliance including:
 
-* Indiana University Bloomington
+* Indiana University
 * Michigan State University
 * Northwestern University
-* Ohio State University
 * Pennsylvania State University
 * Purdue University
-* Rutgers University-New Brunswick
+* Rutgers University
+* The Ohio State University
 * University of Chicago
-* University of Illinois at Urbana­-Champaign
+* University of Illinois
 * University of Iowa
 * University of Maryland
 * University of Michigan
@@ -33,4 +33,4 @@ Visit the [project wiki](https://github.com/BTAA-Geospatial-Data-Project/geoport
 
 #### Release Version
 
-B1G Geoportal Version v5.14.0 / GeoBlacklight v4.4.2 / GeoBlacklight Admin v0.7.1
+B1G Geoportal Version v5.15.0 / GeoBlacklight v4.4.2 / GeoBlacklight Admin v0.8.0

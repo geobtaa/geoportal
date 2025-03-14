@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   #  get '/api/facet/:id' => 'api#facet', constraints: lambda { |req| req.format == :json }
   # end
 
+  get '/brand', to: 'brand#index'
+
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
     concerns :searchable
   end

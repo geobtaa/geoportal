@@ -129,4 +129,19 @@ class SolrDocument
   def allmaps_georeferenceable?
     self.viewer_protocol == "iiif_manifest"
   end
+
+  # More like this
+  def more_like_this_panel
+    solr = RSolr.connect(url: Blacklight.connection_config[:url])
+    solr_mlt_response = solr.get 'mlt', params: { 
+      q: "id:#{self.id.gsub('\\', '\\\\').gsub(':', '\\:')}",
+      fq: "b1g_publication_state_s:published",
+      'mlt.fl': 'text', 
+      rows: 10
+    }
+
+    solr_mlt_response['response']['docs'].map do |doc|
+      SolrDocument.new(doc)
+    end
+  end
 end

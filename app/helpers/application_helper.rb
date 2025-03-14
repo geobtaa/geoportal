@@ -29,9 +29,11 @@ module ApplicationHelper
   def citation_date(date_string)
     date_value = ""
 
-    if date_string.size == 4
+    if date_string.blank?
+      date_value = 'n.d.'
+    elsif date_string&.size == 4
       date_value = date_string
-    elsif date_string.match?(/[-|:|\/]/)
+    elsif date_string&.match?(/[-|:|\/]/)
       begin
         date_value = Chronic.parse(date_string).to_date.strftime('%Y')
       rescue
@@ -153,6 +155,105 @@ module ApplicationHelper
       end
     else
       "default"
+    end
+  end
+
+  ##
+  # Creates a link to a faceted search
+  # @param [String] field
+  # @param [String] value
+  # @param [Hash] existing_params
+  # @return [String] link
+  def faceted_search_link(field, value, existing_params = {})
+    updated_params = existing_params.merge("f[#{field}][]" => value)
+    link_to value, "#{root_url}?#{updated_params.to_query}"
+  end
+
+  def year_to_facet_bucket(year)
+    case year.to_i
+    when 2020..Time.now.year
+      '2020-present'
+    when 2015..2019
+      '2015-2019'
+    when 2010..2014
+      '2010-2014'
+    when 2005..2009
+      '2005-2009'
+    when 2000..2004
+      '2000-2004'
+    when 1950..1999
+      '1950-1999'
+    when 1900..1949
+      '1900-1949'
+    when 1850..1899
+      '1850-1899'
+    when 1800..1849
+      '1800-1849'
+    when 1700..1799
+      '1700s'
+    when 1600..1699
+      '1600s'
+    when 1500..1599
+      '1500s'
+    else
+      '1400s-earlier'
+    end
+  end
+
+  # Create a link back to the index screen, keeping the user's facet, query and paging choices intact by using session.
+  # @example
+  #   link_back_to_catalog(label: 'Back to Search')
+  #   link_back_to_catalog(label: 'Back to Search', route_set: my_engine)
+  def btaa_link_back_to_catalog(opts = { label: nil })
+    scope = opts.delete(:route_set) || self
+    query_params = search_state.reset(current_search_session.try(:query_params)).to_hash
+
+    if search_session['counter']
+      per_page = (search_session['per_page'] || blacklight_config.default_per_page).to_i
+      counter = search_session['counter'].to_i
+
+      query_params[:per_page] = per_page unless search_session['per_page'].to_i == blacklight_config.default_per_page
+      query_params[:page] = ((counter - 1) / per_page) + 1
+    end
+
+    link_url = if query_params.empty?
+                 search_action_path(only_path: true)
+               else
+                 scope.url_for(query_params)
+               end
+    label = opts.delete(:label)
+
+    if link_url =~ /bookmarks/
+      label ||= t('blacklight.back_to_bookmarks')
+    end
+
+    label ||= t('blacklight.back_to_search')
+
+    # Customized to just return the link_url
+    link_url
+  end
+
+  def card_background_style(document)
+    if thumb_to_render?(document&.kithe_model)
+      "background-image: url('#{document&.kithe_model&.thumbnail&.file_url(:thumb_standard_2X)}');" \
+      "background-size: cover;" \
+      "background-position: center;" \
+      "min-height: 200px;"
+    elsif document[Settings.FIELDS.RESOURCE_CLASS]&.present?
+      svg_file_path = asset_path("blacklight/#{document[Settings.FIELDS.RESOURCE_CLASS]&.first&.downcase&.tr(' ', '_')}.svg")
+      "background-image: url('#{svg_file_path}');" \
+      "background-size: 50% auto;" \
+      "background-repeat: no-repeat;" \
+      "background-position: center;" \
+      "min-height: 200px;" \
+      "width: 100%;" \
+      "display: block !important;" \
+      "overflow: hidden;"
+    else
+      "min-height: 200px;" \
+      "width: 100%;" \
+      "display: block !important;" \
+      "overflow: hidden;"
     end
   end
 end

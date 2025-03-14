@@ -1,0 +1,8 @@
+<%- Settings.RELATIONSHIPS_SHOWN.each do |rel, value| %>
+  <% unless @relations.send(rel)['numFound'].to_i.zero? %>
+      <h4 class="h5"><%= t("#{value.label}") %></h4>
+      <ul class="list-unstyled">
+        <%= render partial: 'relations', locals: { rel: rel, value: value } %>
+      </ul>
+  <% end %>
+<% end %>

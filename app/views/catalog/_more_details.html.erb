@@ -1,3 +1,0 @@
-<% if !@document.references.nil? && !@document.references.url.nil? %>
-  <%= link_to t('geoblacklight.metadata.more_details'), @document.references.url.endpoint, {:itemprop => "url", :class => "btn btn-primary btn-block"} %>
-<% end %>

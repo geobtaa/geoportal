@@ -1,5 +1,20 @@
-<h2>
+<h2 class="h1">
   <span itemprop="name"><%= document_presenter(document).heading %></span>
-  <%= render partial: 'header_icons', locals: { document: document } %>
-  <a class="btn btn-outline-secondary btn-sm" href="#metadata">Full Details</a>
 </h2>
+
+<h3 class="h4">
+  <i>
+    <% if @document[Settings.FIELDS.PUBLISHER].present? %>
+      <%= @document[Settings.FIELDS.PUBLISHER].join(', ') %>
+    <% elsif @document[Settings.FIELDS.CREATOR].present? %>
+      <%= @document[Settings.FIELDS.CREATOR]&.join(', ') %>
+    <% elsif @document[Settings.FIELDS.PROVIDER].present? %>
+      <%= @document[Settings.FIELDS.PROVIDER] %>
+    <% end %>
+    <% if @document[Settings.FIELDS.INDEX_YEAR].present? %>
+      &middot;
+      <%= @document[Settings.FIELDS.INDEX_YEAR].join(', ') %>
+    <% end %>
+  </i>
+  <a class="btn btn-sm btn-outline-primary mb-1 pull-right" href="#metadata">Full Details</a>
+</h3>

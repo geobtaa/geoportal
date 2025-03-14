@@ -31,3 +31,283 @@ $cyan:    #17a2b8 !default;
 
 // Example: Bootstrap Link color
 $link-color:#005E8E;
+
+// Fonts
+$font-family-sans-serif: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$font-family-serif: "Lora", "Times New Roman", Times, serif;
+
+body {
+  font-family: $font-family-serif !important;
+  font-size: 1.1rem !important;
+  line-height: 1.75rem !important;
+  p {
+    max-width: 900px !important;
+  }
+
+  .alert {
+    font-size: 1rem !important;
+  }
+
+  .citation {
+    .card-body {
+      font-size: 0.9rem !important;
+      line-height: 1.25rem !important;
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6, button, .page-links, .page-link, a.btn {
+  font-family: $font-family-sans-serif !important;
+  font-weight: 600 !important;
+}
+
+.page-links {
+  strong {
+    font-weight: 600 !important;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+.card, .card-header {
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-top: 0 !important;
+  }
+}
+
+#header-navbar {
+  h1 {
+    margin-top: 0 !important;
+  }
+}
+
+#btaa-logo {
+  height: 80px;
+}
+
+.color-block {
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.bg-blue-dark {
+  background-color: #003C5B;
+  color: #fff;
+}
+
+.bg-blue-btaa {
+  background-color: #0088CE;
+  color: #fff;
+}
+
+.bg-btaa-black {
+  background-color: #000000;
+  color: #fff;
+}
+
+.bg-btaa-gray {
+  background-color: #939598;
+  color: #000;
+}
+
+.bg-btaa-white {
+  border: 1px solid #000;
+  background-color: #FFFFFF;
+  color: #000;
+}
+
+.document-metadata, .dl-invert {
+  margin:1rem 0 !important;
+  
+  dt {
+    font-family: $font-family-sans-serif;
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-align: left !important;
+    line-height: 1.75rem;
+    border-bottom: 1px solid #dee2e6;
+    padding: 1rem 0.5rem;
+  }
+
+  dd {
+    margin-bottom: 0;
+    border-bottom: 1px solid #dee2e6;
+    padding: 1rem 0.5rem;
+    line-height: 1.75rem;
+  }
+}
+
+.list-group-item {
+  padding: 0.5rem 0.5rem !important;
+}
+
+#metadata {
+  margin-top: 1rem !important;
+}
+
+.downloads {
+  a {
+    margin-left: 0.1rem;
+    padding-left: 1.5rem;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='14' width='14' viewBox='0 0 512 512'%3E%3C!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--%3E%3Cpath fill='%236c757d' d='M256 464a208 208 0 1 1 0-416 208 208 0 1 1 0 416zM256 0a256 256 0 1 0 0 512A256 256 0 1 0 256 0zM376.9 294.6c4.5-4.2 7.1-10.1 7.1-16.3c0-12.3-10-22.3-22.3-22.3L304 256l0-96c0-17.7-14.3-32-32-32l-32 0c-17.7 0-32 14.3-32 32l0 96-57.7 0C138 256 128 266 128 278.3c0 6.2 2.6 12.1 7.1 16.3l107.1 99.9c3.8 3.5 8.7 5.5 13.8 5.5s10.1-2 13.8-5.5l107.1-99.9z'/%3E%3C/svg%3E");
+  }
+}
+
+#more-details-link {
+  margin-left: 0.1rem;
+  padding-left: 1.5rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='14' width='14' viewBox='0 0 512 512'%3E%3C!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--%3E%3Cpath fill='%23939598' d='M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z'/%3E%3C/svg%3E");
+}
+
+#web-services-button {
+  margin-left: 0.1rem;
+  padding-left: 1.5rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='14' width='14' viewBox='0 0 512 512'%3E%3C!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--%3E%3Cpath fill='%23939598' d='M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zm-312 8l0 64c0 13.3 10.7 24 24 24s24-10.7 24-24l0-64c0-13.3-10.7-24-24-24s-24 10.7-24 24zm80-96l0 160c0 13.3 10.7 24 24 24s24-10.7 24-24l0-160c0-13.3-10.7-24-24-24s-24 10.7-24 24zm80 64l0 96c0 13.3 10.7 24 24 24s24-10.7 24-24l0-96c0-13.3-10.7-24-24-24s-24 10.7-24 24z'/%3E%3C/svg%3E");
+}
+
+.blacklight-icon-esri-globe {
+  margin-left: 0.1rem;
+  padding-left: 1.5rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='14' width='14' viewBox='0 0 512 512'%3E%3C!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--%3E%3Cpath fill='%23939598' d='M352 256c0 22.2-1.2 43.6-3.3 64l-185.3 0c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64l185.3 0c2.2 20.4 3.3 41.8 3.3 64zm28.8-64l123.1 0c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64l-123.1 0c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32l-116.7 0c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0l-176.6 0c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0L18.6 160C48.6 85.9 112.2 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192l123.1 0c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64L8.1 320C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6l176.6 0c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352l116.7 0zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6l116.7 0z'/%3E%3C/svg%3E");
+}
+
+#more-like-this {
+  h3 {
+    color: #fff;
+  }
+  border-top: 1rem solid #003c5b;
+  background-image: asset_url('footer/elevation_map_mpls_blueish.png');
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+  background-position: center;
+
+  padding: 0.5rem 1rem 2rem 1rem;
+
+  .equal-height-card {
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 18rem !important;
+
+    .card-text {
+      line-height: 1.25rem;
+    }
+    .card-text > .badge {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.5rem;
+      font-size: 1rem;
+      font-family: $font-family-sans-serif;
+    }
+  }
+
+  .equal-height-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .equal-height-card .card-header {
+    border-radius: 4px 4px 0 0;
+    padding: 1rem;
+  }
+}
+
+.more-like-this {
+  .row {
+    // Enable horizontal scrolling
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    
+    // Hide scrollbar for Chrome/Safari/Opera
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 3px;
+    }
+  }
+
+  .card {
+    transition: transform 0.2s ease;
+    border: 0.25rem solid #003c5b;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    }
+  }
+
+  .card-header {
+    background-color: rgba(0, 94, 142, 0.125);
+    border-bottom: 1px solid rgba(0, 94, 142, 0.125);
+  }
+
+  .card-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      
+      &:hover {
+        color: #0088CE; // BTAA Blue
+      }
+    }
+  }
+
+  .card-img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .media {
+    padding-top: 1rem;
+    padding-left: 0.25rem;
+  }
+
+  .card-body {
+    padding: 1.25rem 0.5rem 1.25rem 1.25rem;
+  }
+}
+
+.card-body {
+  padding: 0.5rem 1rem !important;
+}
+
+.card {
+  border-radius: 0 !important;
+}
+
+#collection-context {
+  background-color: aliceblue;
+  padding-top: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+#home-search {
+  margin-bottom: 1rem;
+}
+
+#appliedParams {
+  margin-top:1rem;
+}
+
