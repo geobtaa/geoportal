@@ -146,9 +146,11 @@
     <% if @document[Settings.FIELDS.B1G_LOCAL_COLLECTION_LABEL].present? %>
       <h4 class="h5">Local Collection</h4>
       <ul class="list-unstyled">
-        <li>
-          <%= faceted_search_link(Settings.FIELDS.B1G_LOCAL_COLLECTION_LABEL, @document[Settings.FIELDS.B1G_LOCAL_COLLECTION_LABEL]) %>
-        </li>
+        <% @document[Settings.FIELDS.B1G_LOCAL_COLLECTION_LABEL].each do |label| %>
+          <li>
+            <%= faceted_search_link(Settings.FIELDS.B1G_LOCAL_COLLECTION_LABEL, label) %>
+          </li>
+        <% end %>
       </ul>
       <% end %>
     </div>
