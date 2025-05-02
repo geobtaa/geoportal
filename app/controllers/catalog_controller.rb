@@ -153,7 +153,7 @@ class CatalogController < ApplicationController
     config.add_facet_field Settings.FIELDS.B1G_LANGUAGE, label: 'Language', limit: 15
     config.add_facet_field Settings.FIELDS.CREATOR, :label => 'Creator', :limit => 8
     config.add_facet_field Settings.FIELDS.PROVIDER, label: 'Provider', limit: 15
-
+    config.add_facet_field Settings.FIELDS.B1G_LOCAL_COLLECTION_LABEL, label: 'Local Collection', limit: 15
     config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
     config.add_facet_field Settings.FIELDS.B1G_MEDIATOR, label: 'Institutional Access', limit: 15
     config.add_facet_field Settings.FIELDS.GEOREFERENCED, label: 'Downloadable GeoTIFF'
@@ -224,6 +224,7 @@ class CatalogController < ApplicationController
     config.add_show_field Settings.FIELDS.CREATOR, label: 'Creator', itemprop: 'creator'
     config.add_show_field Settings.FIELDS.PUBLISHER, label: 'Publisher', itemprop: 'publisher'
     config.add_show_field Settings.FIELDS.PROVIDER, label: 'Provider', link_to_facet: true
+    config.add_show_field Settings.FIELDS.B1G_LOCAL_COLLECTION_LABEL, label: 'Local Collection', link_to_facet: true
 	  config.add_show_field Settings.FIELDS.RESOURCE_CLASS, label: 'Resource Class', itemprop: 'class', link_to_facet: true
     config.add_show_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', itemprop: 'type', link_to_facet: true
     config.add_show_field Settings.FIELDS.SUBJECT, label: 'Subject', itemprop: 'keywords'

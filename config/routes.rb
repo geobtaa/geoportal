@@ -202,8 +202,8 @@ namespace :admin do
       get "fetch"
     end
 
-    # DocumentAccesses
-    resources :document_accesses, path: "access" do
+    # DocumentLicensedAccesses
+    resources :document_licensed_accesses, path: "licensed_access" do
       collection do
         get "import"
         post "import"
@@ -269,8 +269,8 @@ namespace :admin do
     end
   end
 
-  # Document Accesses
-  resources :document_accesses, path: "access" do
+  # Document Licensed Accesses
+  resources :document_licensed_accesses, path: "licensed_access" do
     collection do
       get "import"
       post "import"
