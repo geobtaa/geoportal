@@ -109,6 +109,7 @@ FIELDS:
   :B1G_DCAT_SPATIAL_RESOLUTION_IN_METERS: 'b1g_dcat_spatialResolutionInMeters_sm'
   :B1G_GEODCAT_SPATIAL_RESOLUTION_AS_TEXT: 'b1g_geodcat_spatialResolutionAsText_sm'
   :B1G_DCT_PROVENANCE_STATEMENT: 'b1g_dct_provenanceStatement_sm'
+  :B1G_LOCAL_COLLECTION_LABEL: 'b1g_localCollectionLabel_sm'
 
 GEOMONITOR_TOLERANCE: 0.8
 #GOOGLE_ANALYTICS_ID: 'UA-XXXXX-X'

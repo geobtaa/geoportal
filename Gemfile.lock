@@ -50,6 +50,45 @@ GIT
       blacklight (>= 7.25.2, < 9)
       httparty (~> 0.20)
 
+GIT
+  remote: https://github.com/geobtaa/geoblacklight_admin.git
+  revision: 82fb5690efe240f54c45a934678ec446ba3012c1
+  branch: develop
+  specs:
+    geoblacklight_admin (0.8.0)
+      active_storage_validations (~> 1.0)
+      amazing_print
+      blacklight (~> 7.0)
+      blacklight_advanced_search
+      blacklight_range_limit
+      bootstrap (~> 4.0)
+      chosen-rails (~> 1.10)
+      cocoon (~> 1.2)
+      config (~> 4.0)
+      devise (~> 4.7)
+      devise-bootstrap-views (~> 1.0)
+      dotenv-rails (~> 2.8)
+      geoblacklight (~> 4.0)
+      haml (~> 5.2)
+      httparty (~> 0.21)
+      inline_svg (~> 1.9)
+      jquery-rails (~> 4.4)
+      kithe (~> 2.0)
+      mutex_m (~> 0.2.0)
+      noticed (~> 1.6)
+      pagy (~> 9.0)
+      paper_trail (~> 15.0)
+      pg (~> 1.4)
+      qa (~> 5.0)
+      rails (~> 7.0)
+      ruby-progressbar
+      simple_form (~> 5.0)
+      sprockets (~> 3.0)
+      statesman (~> 12.0)
+      vite_rails (~> 3.0)
+      vite_ruby (>= 3.5)
+      zeitwerk (~> 2.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -382,39 +421,6 @@ GEM
       rgeo-geojson
       sprockets-rails (~> 3.0)
       vite_rails (~> 3.0)
-    geoblacklight_admin (0.8.0)
-      active_storage_validations (~> 1.0)
-      amazing_print
-      blacklight (~> 7.0)
-      blacklight_advanced_search
-      blacklight_range_limit
-      bootstrap (~> 4.0)
-      chosen-rails (~> 1.10)
-      cocoon (~> 1.2)
-      config (~> 4.0)
-      devise (~> 4.7)
-      devise-bootstrap-views (~> 1.0)
-      dotenv-rails (~> 2.8)
-      geoblacklight (~> 4.0)
-      haml (~> 5.2)
-      httparty (~> 0.21)
-      inline_svg (~> 1.9)
-      jquery-rails (~> 4.4)
-      kithe (~> 2.0)
-      mutex_m (~> 0.2.0)
-      noticed (~> 1.6)
-      pagy (~> 9.0)
-      paper_trail (~> 15.0)
-      pg (~> 1.4)
-      qa (~> 5.0)
-      rails (~> 7.0)
-      ruby-progressbar
-      simple_form (~> 5.0)
-      sprockets (~> 3.0)
-      statesman (~> 12.0)
-      vite_rails (~> 3.0)
-      vite_ruby (>= 3.5)
-      zeitwerk (~> 2.6)
     geocoder (1.8.5)
       base64 (>= 0.1.0)
       csv (>= 3.0.0)
@@ -923,7 +929,7 @@ DEPENDENCIES
   foreman
   geoblacklight (~> 4.0)
   geoblacklight-icons!
-  geoblacklight_admin (~> 0.8.0)
+  geoblacklight_admin!
   geoblacklight_sidecar_images!
   git (>= 1.13)
   haml
