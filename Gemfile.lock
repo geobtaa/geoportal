@@ -625,7 +625,7 @@ GEM
       date
       stringio
     public_suffix (6.0.1)
-    puma (5.6.9)
+    puma (6.6.0)
       nio4r (~> 2.0)
     qa (5.14.0)
       activerecord-import
@@ -954,7 +954,7 @@ DEPENDENCIES
   pg
   pointless_feedback
   popper_js
-  puma (~> 5.6)
+  puma (~> 6.4)
   rack-cors
   rack-mini-profiler (~> 2.3.1)
   rails (~> 7.0)
