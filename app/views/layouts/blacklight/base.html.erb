@@ -36,6 +36,8 @@
     <% end %>
 
     <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application', media: 'all' %>
+    
     <% if openlayers_container? %>
       <%= vite_javascript_tag 'ol' %>
     <% end %>

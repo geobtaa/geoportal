@@ -385,8 +385,15 @@ module Admin
 
     # Tableau Export
     def tableau_export
+      authenticate_user!
+      
+      unless current_user
+        flash[:error] = "You must be logged in to export data"
+        redirect_to new_user_session_path and return
+      end
+
       ExportTableauJob.perform_later(current_user)
-      head :no_content
+      render :tableau_export
     end
   end
 end
