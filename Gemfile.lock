@@ -52,7 +52,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 2266bdc50205a3cb0a63f13fb9327f8c412fd312
+  revision: c07c9a50ba8b100ccd97b366d672d9ba279f3b17
   branch: feature/import-doc-states
   specs:
     geoblacklight_admin (0.8.0)
@@ -154,7 +154,7 @@ GEM
       activemodel (= 7.2.2.1)
       activesupport (= 7.2.2.1)
       timeout (>= 0.4.0)
-    activerecord-import (2.1.0)
+    activerecord-import (2.2.0)
       activerecord (>= 4.2)
     activestorage (7.2.2.1)
       actionpack (= 7.2.2.1)
@@ -181,14 +181,14 @@ GEM
       faraday (>= 1.0, < 3.0)
       faraday-net_http_persistent
       net-http-persistent
-    amazing_print (1.7.2)
+    amazing_print (1.8.1)
     ansi (1.5.0)
     appsignal (4.4.0)
       logger
       rack
     attr_json (2.5.0)
       activerecord (>= 6.0.0, < 8.1)
-    autoprefixer-rails (10.4.19.0)
+    autoprefixer-rails (10.4.21.0)
       execjs (~> 2)
     awesome_print (1.9.2)
     aws-eventstream (1.3.1)
@@ -216,13 +216,13 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    base64 (0.2.0)
+    base64 (0.3.0)
     bcp47_spec (0.2.1)
     bcrypt (3.1.20)
-    benchmark (0.4.0)
-    bigdecimal (3.1.9)
+    benchmark (0.4.1)
+    bigdecimal (3.2.2)
     bindex (0.8.1)
-    blacklight (7.40.0)
+    blacklight (7.41.0)
       deprecation
       globalid
       hashdiff
@@ -230,7 +230,7 @@ GEM
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
-      rails (>= 6.1, < 7.3)
+      rails (>= 6.1, < 8.1)
       view_component (>= 2.74, < 4)
       zeitwerk
     blacklight_range_limit (7.0.1)
@@ -289,10 +289,10 @@ GEM
     config (4.2.1)
       deep_merge (~> 1.2, >= 1.2.1)
       dry-validation (~> 1.0, >= 1.0.0)
-    connection_pool (2.5.0)
+    connection_pool (2.5.3)
     content_disposition (1.0.0)
     crass (1.0.6)
-    csv (3.3.2)
+    csv (3.3.5)
     database_cleaner (2.1.0)
       database_cleaner-active_record (>= 2, < 3)
     database_cleaner-active_record (2.2.0)
@@ -328,7 +328,7 @@ GEM
       railties (>= 3.2)
     down (5.4.2)
       addressable (~> 2.8)
-    drb (2.2.1)
+    drb (2.2.3)
     dry-cli (1.2.0)
     dry-configurable (1.3.0)
       dry-core (~> 1.1)
@@ -352,7 +352,7 @@ GEM
       dry-logic (~> 1.5)
       dry-types (~> 1.8)
       zeitwerk (~> 2.6)
-    dry-types (1.8.2)
+    dry-types (1.8.3)
       bigdecimal (~> 3.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0)
@@ -366,6 +366,7 @@ GEM
       dry-schema (~> 1.14)
       zeitwerk (~> 2.6)
     dumb_delegator (1.1.0)
+    erb (5.0.1)
     erubi (1.13.1)
     ethon (0.16.0)
       ffi (>= 1.15.0)
@@ -375,7 +376,7 @@ GEM
     factory_bot_rails (6.4.4)
       factory_bot (~> 6.5)
       railties (>= 5.0.0)
-    faraday (2.12.2)
+    faraday (2.13.1)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -386,10 +387,10 @@ GEM
     faraday-net_http_persistent (2.3.0)
       faraday (~> 2.5)
       net-http-persistent (>= 4.0.4, < 5)
-    faraday-retry (2.2.1)
+    faraday-retry (2.3.1)
       faraday (~> 2.0)
     fastimage (2.4.0)
-    ffi (1.17.1)
+    ffi (1.17.2)
     ffi-compiler (1.3.2)
       ffi (>= 1.15.5)
       rake
@@ -408,7 +409,7 @@ GEM
       rsolr
       sanitize
       thor
-    geoblacklight (4.4.2)
+    geoblacklight (4.4.3)
       blacklight (~> 7.0)
       coderay
       config
@@ -417,14 +418,14 @@ GEM
       geo_combine (~> 0.9)
       handlebars_assets
       mime-types
-      rails (>= 6.1, < 7.3)
+      rails (>= 7, < 7.3)
       rgeo-geojson
       sprockets-rails (~> 3.0)
       vite_rails (~> 3.0)
     geocoder (1.8.5)
       base64 (>= 0.1.0)
       csv (>= 3.0.0)
-    git (3.0.0)
+    git (3.1.0)
       activesupport (>= 5.0)
       addressable (~> 2.8)
       process_executer (~> 1.3)
@@ -438,19 +439,18 @@ GEM
       execjs (~> 2.0)
       sprockets (>= 2.0.0)
       tilt (>= 1.2)
-    hashdiff (1.1.2)
+    hashdiff (1.2.0)
     hashery (2.1.2)
     hashie (5.0.0)
-    http (5.2.0)
+    http (5.3.1)
       addressable (~> 2.8)
-      base64 (~> 0.1)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
       llhttp-ffi (~> 0.5.0)
     http-cookie (1.0.8)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httparty (0.22.0)
+    httparty (0.23.1)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -466,7 +466,7 @@ GEM
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
     io-console (0.8.0)
-    irb (1.15.1)
+    irb (1.15.2)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
@@ -478,7 +478,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json (2.10.2)
+    json (2.12.2)
     json-schema (5.1.1)
       addressable (~> 2.8)
       bigdecimal (~> 3.1)
@@ -494,7 +494,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    kithe (2.16.0)
+    kithe (2.17.0)
       attr_json (~> 2.0)
       fastimage (~> 2.0)
       fx (>= 0.6.0, < 1)
@@ -527,8 +527,8 @@ GEM
     llhttp-ffi (0.5.1)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    logger (1.6.6)
-    loofah (2.24.0)
+    logger (1.7.0)
+    loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     m (1.5.1)
@@ -548,16 +548,16 @@ GEM
     matrix (0.4.2)
     memory_profiler (0.9.14)
     method_source (1.1.0)
-    mime-types (3.6.0)
+    mime-types (3.7.0)
       logger
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2025.0304)
+      mime-types-data (~> 3.2025, >= 3.2025.0507)
+    mime-types-data (3.2025.0603)
     mimemagic (0.4.3)
       nokogiri (~> 1)
       rake
     mini_magick (4.9.5)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.8)
+    mini_portile2 (2.8.9)
     minitar (1.0.2)
     minitest (5.25.5)
     minitest-ci (3.4.0)
@@ -569,7 +569,7 @@ GEM
       ruby-progressbar
     msgpack (1.8.0)
     multi_json (1.15.0)
-    multi_xml (0.7.1)
+    multi_xml (0.7.2)
       bigdecimal (~> 3.1)
     mutex_m (0.2.0)
     net-ftp (0.3.8)
@@ -577,9 +577,9 @@ GEM
       time
     net-http (0.6.0)
       uri
-    net-http-persistent (4.0.5)
-      connection_pool (~> 2.2)
-    net-imap (0.5.6)
+    net-http-persistent (4.0.6)
+      connection_pool (~> 2.2, >= 2.2.4)
+    net-imap (0.5.8)
       date
       net-protocol
     net-pop (0.1.2)
@@ -589,7 +589,7 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.4)
+    nokogiri (1.18.8)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     noticed (1.6.3)
@@ -621,13 +621,13 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     process_executer (1.3.0)
-    psych (5.2.3)
+    psych (5.2.6)
       date
       stringio
-    public_suffix (6.0.1)
+    public_suffix (6.0.2)
     puma (5.6.9)
       nio4r (~> 2.0)
-    qa (5.14.0)
+    qa (5.15.0)
       activerecord-import
       deprecation
       faraday (< 3.0, != 2.0.0)
@@ -637,7 +637,7 @@ GEM
       rails (>= 5.0, < 8.1)
       rdf
     racc (1.8.1)
-    rack (2.2.13)
+    rack (2.2.17)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-mini-profiler (2.3.4)
@@ -665,7 +665,7 @@ GEM
       activesupport (= 7.2.2.1)
       bundler (>= 1.15.0)
       railties (= 7.2.2.1)
-    rails-dom-testing (2.2.0)
+    rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
@@ -680,7 +680,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
-    rake (13.2.1)
+    rake (13.3.0)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
@@ -691,11 +691,12 @@ GEM
       link_header (~> 0.0, >= 0.0.8)
     rdf-vocab (3.3.2)
       rdf (~> 3.3)
-    rdoc (6.12.0)
+    rdoc (6.14.0)
+      erb
       psych (>= 4.0.0)
     redis (4.8.1)
     regexp_parser (2.10.0)
-    reline (0.6.0)
+    reline (0.6.1)
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
@@ -806,7 +807,7 @@ GEM
     statesman (12.1.0)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
-    stringio (3.1.5)
+    stringio (3.1.7)
     temple (0.10.3)
     terser (1.2.5)
       execjs (>= 0.3.0, < 3)
@@ -849,9 +850,9 @@ GEM
       concurrent-ruby (~> 1.0)
     uri (1.0.3)
     useragent (0.16.11)
-    view_component (3.21.0)
+    view_component (3.23.2)
       activesupport (>= 5.2.0, < 8.1)
-      concurrent-ruby (~> 1.0)
+      concurrent-ruby (~> 1)
       method_source (~> 1.0)
     virtus (2.0.0)
       axiom-types (~> 0.1)
@@ -860,7 +861,7 @@ GEM
     vite_rails (3.0.19)
       railties (>= 5.1, < 9)
       vite_ruby (~> 3.0, >= 3.2.2)
-    vite_ruby (3.9.1)
+    vite_ruby (3.9.2)
       dry-cli (>= 0.7, < 2)
       logger (~> 1.6)
       mutex_m
@@ -880,7 +881,7 @@ GEM
       semantic_range (>= 2.3.0)
     webrick (1.9.1)
     websocket (1.2.11)
-    websocket-driver (0.7.7)
+    websocket-driver (0.8.0)
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -889,7 +890,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.7.2)
+    zeitwerk (2.7.3)
 
 PLATFORMS
   ruby
