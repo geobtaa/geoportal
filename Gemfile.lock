@@ -52,7 +52,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 2266bdc50205a3cb0a63f13fb9327f8c412fd312
+  revision: c07c9a50ba8b100ccd97b366d672d9ba279f3b17
   branch: feature/import-doc-states
   specs:
     geoblacklight_admin (0.8.0)
