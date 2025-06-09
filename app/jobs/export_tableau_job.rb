@@ -18,22 +18,11 @@ class ExportTableauJob < ApplicationJob
     # Send progress
     file_content = ExportTableauService.call
 
-    # Calculate total steps (assuming each row is a step)
-    total_steps = file_content.size
-    current_step = 0
-
     # Write into tempfile
     @tempfile = Tempfile.new(["export-#{Time.zone.today}", ".csv"]).tap do |file|
       CSV.open(file, "wb") do |csv|
         file_content.each do |row|
           csv << row
-          current_step += 1
-          
-          # Send progress update every 10 rows
-          if current_step % 10 == 0
-            progress = ((current_step.to_f / total_steps) * 100).round
-            ActionCable.server.broadcast("export_channel", { progress: progress })
-          end
         end
       end
     end
