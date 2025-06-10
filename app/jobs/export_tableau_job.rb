@@ -38,6 +38,12 @@ class ExportTableauJob < ApplicationJob
     notification.record.file.attach(io: @tempfile, filename: "geomg-export-#{Time.zone.today}.csv",
       content_type: "text/csv")
 
+    # Send final progress with download URL
+    ActionCable.server.broadcast("export_channel", { 
+      progress: 100,
+      download_url: Rails.application.routes.url_helpers.rails_blob_path(notification.record.file, only_path: true)
+    })
+
     # Update UI
     ActionCable.server.broadcast("export_channel", {
       data: "Notification ready!",

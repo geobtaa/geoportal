@@ -1,0 +1,40 @@
+<%# Tableau Export Processing Page %>
+<div class="container mt-5" data-export-processing data-notifications-path="<%= admin_notifications_path %>">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body text-center">
+          <h2 class="card-title mb-4">Exporting Data for Tableau</h2>
+          
+          <div class="progress mb-4" style="height: 25px;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                 role="progressbar" 
+                 style="width: 0%" 
+                 aria-valuenow="0" 
+                 aria-valuemin="0" 
+                 aria-valuemax="100"
+                 data-export-progress>0%</div>
+          </div>
+          
+          <p class="lead mb-4">
+            We're preparing your Tableau export file. This may take a few minutes depending on the size of the dataset.
+          </p>
+          
+          <div class="alert alert-info">
+            <p class="mb-0">
+              <i class="fas fa-info-circle me-2"></i>
+              You'll receive a notification when your file is ready for download.
+            </p>
+          </div>
+          
+          <div class="mt-4">
+            <a href="<%= admin_documents_path %>" class="btn btn-secondary">
+              <i class="fas fa-arrow-left me-2"></i>
+              Return to Documents
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

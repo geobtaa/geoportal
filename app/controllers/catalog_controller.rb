@@ -135,7 +135,8 @@ class CatalogController < ApplicationController
     }
 
     config.add_facet_field 'time_period', label: 'Time Period', query: {
-      '2020-present' => { label: '2020-present', fq: "#{Settings.FIELDS.INDEX_YEAR}:[2020 TO #{Time.now.year}]"},
+      '2025-present' => { label: '2025-present', fq: "#{Settings.FIELDS.INDEX_YEAR}:[2025 TO #{Time.now.year}]"},
+      '2020-2024' => { label: '2020-2024', fq: "#{Settings.FIELDS.INDEX_YEAR}:[2020 TO 2024]"},
       '2015-2019' => { label: '2015-2019', fq: "#{Settings.FIELDS.INDEX_YEAR}:[2015 TO 2019]"},
       '2010-2014' => { label: '2010-2014', fq: "#{Settings.FIELDS.INDEX_YEAR}:[2010 TO 2014]" },
       '2005-2009' => { label: '2005-2009', fq: "#{Settings.FIELDS.INDEX_YEAR}:[2005 TO 2009]" },

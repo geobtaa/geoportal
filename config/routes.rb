@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   get 'robots.:format' => 'robots#robots'
   get '/centroids.json', :to => redirect('/centroids.json')
 
+  # Tableau
+  namespace :admin do
+    get '/api/tableau_export', to: 'api#tableau_export'
+  end
+
   # Feedback
   mount PointlessFeedback::Engine, :at => '/feedback'
 
@@ -104,7 +109,6 @@ as :user do
 end
 
 namespace :admin do
-
   authenticate :user, ->(user) { user.admin? } do
     mount Sidekiq::Web => "/sidekiq"
   end

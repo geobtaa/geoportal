@@ -9,7 +9,7 @@ gem 'listen', '~> 3.0'
 
 gem 'rack-cors', :require => 'rack/cors'
 
-gem "puma", "~> 5.6"
+gem "puma", "~> 6.0"
 # Run puma with systemd integration
 gem 'sd_notify', '>= 0.1.0'
 
