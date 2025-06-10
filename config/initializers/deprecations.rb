@@ -1,1 +1,1 @@
-Deprecation.default_deprecation_behavior = :silence
+Deprecation.default_deprecation_behavior = :silence if Rails.env.production?
