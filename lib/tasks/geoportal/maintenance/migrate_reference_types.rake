@@ -12,9 +12,11 @@ namespace :geoportal do
         begin
           if ENV['TRIAL_RUN'] && ENV['TRIAL_RUN'] == 'false'
             begin
+              puts "Updating #{distribution.id}"
               distribution.update!(reference_type_id: 7)
             rescue ActiveRecord::RecordNotUnique, ActiveRecord::RecordInvalid
               # If we get a duplicate key error or validation error, delete the record with reference_type_id 10
+              puts "Deleting #{distribution.id}"
               distribution.destroy
             end
           else
