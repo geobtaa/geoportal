@@ -84,7 +84,7 @@ gem 'geoblacklight', '~> 4.0'
 
 # GBL Admin
 # gem 'geoblacklight_admin', '~> 0.8.0'
-gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/remove-migration-env-var"
+gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "develop"
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"

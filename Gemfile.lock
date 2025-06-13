@@ -52,8 +52,8 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 1df5d17df1d9751e380d38a9bac9a60dd92bbc9a
-  branch: feature/remove-migration-env-var
+  revision: fd9ae92175715714eadae3ce042ec9b8cd1e2d9f
+  branch: develop
   specs:
     geoblacklight_admin (0.8.0)
       active_storage_validations (~> 1.0)
