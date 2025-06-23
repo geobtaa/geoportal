@@ -37,7 +37,7 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.4",
     "@blueprintjs/core": "^3.26.0",
-    "@geoblacklight/admin": "^0.4.4",
+    "@geoblacklight/admin": "^0.4.16",
     "@geoblacklight/frontend": "^4.4",
     "@hotwired/stimulus": "^3.2.2",
     "@kurkle/color": "^0.3.2",

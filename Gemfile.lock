@@ -52,7 +52,7 @@ GIT
 
 GIT
   remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: fd9ae92175715714eadae3ce042ec9b8cd1e2d9f
+  revision: 9e631ab584312b735f4ae15561ada5e43f77a253
   branch: develop
   specs:
     geoblacklight_admin (0.8.0)
@@ -382,12 +382,12 @@ GEM
       logger
     faraday-follow_redirects (0.3.0)
       faraday (>= 1, < 3)
-    faraday-net_http (3.4.0)
+    faraday-net_http (3.4.1)
       net-http (>= 0.5.0)
-    faraday-net_http_persistent (2.3.0)
+    faraday-net_http_persistent (2.3.1)
       faraday (~> 2.5)
       net-http-persistent (>= 4.0.4, < 5)
-    faraday-retry (2.3.1)
+    faraday-retry (2.3.2)
       faraday (~> 2.0)
     fastimage (2.4.0)
     ffi (1.17.2)
@@ -551,7 +551,7 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2025.0603)
+    mime-types-data (3.2025.0617)
     mimemagic (0.4.3)
       nokogiri (~> 1)
       rake
@@ -579,7 +579,7 @@ GEM
       uri
     net-http-persistent (4.0.6)
       connection_pool (~> 2.2, >= 2.2.4)
-    net-imap (0.5.8)
+    net-imap (0.5.9)
       date
       net-protocol
     net-pop (0.1.2)
@@ -596,7 +596,7 @@ GEM
       http (>= 4.0.0)
       rails (>= 5.2.0)
     orm_adapter (0.5.0)
-    ostruct (0.6.1)
+    ostruct (0.6.2)
     pagy (9.3.4)
     paper_trail (15.2.0)
       activerecord (>= 6.1)
@@ -691,7 +691,7 @@ GEM
       link_header (~> 0.0, >= 0.0.8)
     rdf-vocab (3.3.2)
       rdf (~> 3.3)
-    rdoc (6.14.0)
+    rdoc (6.14.1)
       erb
       psych (>= 4.0.0)
     redis (4.8.1)
