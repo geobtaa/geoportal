@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_11_193843) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_02_193843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -221,14 +221,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_11_193843) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "document_accesses", force: :cascade do |t|
-    t.string "friendlier_id", null: false
-    t.string "institution_code", null: false
-    t.text "access_url", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "document_data_dictionaries", force: :cascade do |t|
     t.string "friendlier_id"
     t.string "name"
@@ -273,6 +265,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_11_193843) do
     t.string "label"
     t.string "value"
     t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "document_licensed_accesses", force: :cascade do |t|
+    t.string "friendlier_id", null: false
+    t.string "institution_code", null: false
+    t.text "access_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
