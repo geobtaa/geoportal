@@ -16,18 +16,21 @@ Rails.application.config.to_prepare do
   # How long will a challenge success exempt a session from further challenges?
   # BotChallengePage::BotChallengePageController.bot_challenge_config.session_passed_good_for = 36.hours
 
-  # Exempt some requests from bot challenge protection
-  # BotChallengePage::BotChallengePageController.bot_challenge_config.allow_exempt = ->(controller) {
-  #   # controller.params
-  #   # controller.request
-  #   # controller.session
+  WORMLY_UA_REGEX    = /WormlyBot/i
+  APPSIGNAL_UA_REGEX = /AppSignalBot/i
 
-  #   # Here's a way to identify browser `fetch` API requests; note
-  #   # it can be faked by an "attacker"
-  #   controller.request.headers["sec-fetch-dest"] == "empty"
-  # }
+  BotChallengePage::BotChallengePageController.bot_challenge_config.allow_exempt = lambda do |controller, _config|
+    # Ajax/facet exemption
+    ajax_search =
+      controller.params[:action].in?(%w[facet range_limit]) &&
+      controller.request.headers["sec-fetch-dest"] == "empty" &&
+      controller.is_a?(CatalogController)
 
-  # More configuration is available
+    # Monitoring bots, detected solely by UA
+    ua = controller.request.user_agent.to_s
+    wormly_bot    = ua.match?(WORMLY_UA_REGEX)
+    appsignal_bot = ua.match?(APPSIGNAL_UA_REGEX)
 
-
+    ajax_search || wormly_bot || appsignal_bot
+  end
 end
