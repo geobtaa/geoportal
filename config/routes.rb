@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # Cloudflare turnstile bot challenges via bot_challenge_page gem
+  post "/challenge", to: "bot_challenge_page/bot_challenge_page#verify_challenge", as: :bot_detect_challenge
+  get "/challenge", to: "bot_challenge_page/bot_challenge_page#challenge"
+
   mount ActionCable.server => "/cable"
   
   get 'about', :to => redirect('https://gin.btaa.org/')
