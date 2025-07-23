@@ -160,3 +160,6 @@ gem "vite_rails", "~> 3.0"
 
 # Shrine
 gem "aws-sdk-s3", "~> 1.14"
+
+# Turnstile
+gem "bot_challenge_page", "~> 0.4.0"
