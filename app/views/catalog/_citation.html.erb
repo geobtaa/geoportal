@@ -6,8 +6,7 @@
   </button>
 </div>
 <div class="modal-body">
-  <% @documents ||= @document %>
-  <% Array(@documents).each do |document| %>
+  <% @document.each do |document| %>
     <% case document[Settings.FIELDS.RESOURCE_CLASS].present? && document[Settings.FIELDS.RESOURCE_CLASS].join(",").downcase %>
     <% when "collections" %>
       <p>
