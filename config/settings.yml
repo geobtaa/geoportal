@@ -110,6 +110,12 @@ FIELDS:
   :B1G_GEODCAT_SPATIAL_RESOLUTION_AS_TEXT: 'b1g_geodcat_spatialResolutionAsText_sm'
   :B1G_DCT_PROVENANCE_STATEMENT: 'b1g_dct_provenanceStatement_sm'
   :B1G_LOCAL_COLLECTION_LABEL: 'b1g_localCollectionLabel_sm'
+  :B1G_SOURCE_PLATFORM: 'b1g_prov_softwareAgent_sm'
+  :B1G_DCAT_ENDPOINT_DESCRIPTION: 'b1g_dcat_endpointDescription_s'
+  :B1G_ADMS_SUPPORTED_SCHEMA: 'b1g_adms_supportedSchema_sm'
+  :B1G_PROV_WAS_GENERATED_BY: 'b1g_prov_wasGeneratedBy_sm'
+  :B1G_ACCRUAL_PERIODICITY: 'b1g_dct_accrualPeriodicity_s'
+  :B1G_STATUS: 'b1g_status_s'
 
 GEOMONITOR_TOLERANCE: 0.8
 #GOOGLE_ANALYTICS_ID: 'UA-XXXXX-X'

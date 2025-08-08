@@ -1,0 +1,245 @@
+en:
+# Customizing model and attribute names that show up in forms:
+
+  activerecord:
+    attributes:
+      document:
+        schema_provider_s:
+          one: "Provider"
+          other: "Providers"
+        dct_issued_s:
+          one: "Date Issued"
+          other: "Date Issued"
+        dcat_bbox:
+          one: "Bounding Box"
+          other: "Bounding Box"
+        locn_geometry:
+          one: "Geometry"
+          other: "Geometry"
+        dct_format_s:
+          one: "Format"
+          other: "Format"
+        b1g_image_ss:
+          one: "B1G Image URL"
+          other: "B1G Image URL"
+        geomg_id_s:
+          one: "ID"
+          other: "ID"
+        b1g_code_s:
+          one: "Code"
+          other: "Code"
+        b1g_dct_accrualMethod_s:
+          one: "Accrual Method"
+          other: "Accrual Method"
+        b1g_dct_accrualPeriodicity_s:
+          one: "Accrual Periodicity"
+          other: "Accrual Periodicity"
+        b1g_dateRetired_s:
+          one: "Date Retired"
+          other: "Date Retired"
+        b1g_status_s:
+          one: "Status"
+          other: "Status"
+        b1g_publication_state_s:
+          one: Publication State
+          other: Publication State
+        gbl_suppressed_b:
+          one: Suppressed
+          other: Suppressed
+        dct_title_s:
+          one: "Title"
+          other: "Title"
+        dct_alternative_sm:
+          one: "Alternative Title"
+          other: "Alternative Title"
+        dct_description_sm:
+          one: "Description"
+          other: "Description"
+        dct_language_sm:
+          one: "Language"
+          other: "Languages"
+        dct_creator_sm:
+          one: "Creator"
+          other: "Creator"
+        b1g_creatorID_sm:
+          one: "Creator ID"
+          other: "Creator ID"
+        dct_publisher_sm:
+          one: "Publisher"
+          other: "Publisher"
+        gbl_resourceClass_sm:
+          one: "Resource Class"
+          other: "Resource Class"
+        gbl_resourceType_sm:
+          one: "Resource Type"
+          other: "Resource Type"
+        dct_subject_sm:
+          one: "Subject"
+          other: "Subject"
+        dcat_theme_sm:
+          one: "Theme"
+          other: "Theme"
+        dcat_keyword_sm:
+          one: "Keyword"
+          other: "Keyword"
+        dct_temporal_sm:
+          one: "Temporal Coverage"
+          other: "Temporal Coverage"
+        gbl_dateRange_drsim:
+          one: "Date Range"
+          other: "Date Range"
+        dct_spatial_sm:
+          one: "Spatial Coverage"
+          other: "Spatial Coverage"
+        b1g_geonames_sm:
+          one: "GeoNames"
+          other: "GeoNames"
+        dct_relation_sm:
+          one: "Relation"
+          other: "Relation"
+        pcdm_memberOf_sm:
+          one: "Member Of"
+          other: "Member Of"
+        dct_references_s:
+          one: "Reference"
+          other: "Reference"
+        dct_isPartOf_sm:
+          one: "Is Part Of"
+          other: "Is Part Of"
+        dct_source_sm:
+          one: "Source"
+          other: "Source"
+        dct_isVersionOf_sm:
+          one: "Version"
+          other: "Version"
+        dct_replaces_sm:
+          one: "Replaces"
+          other: "Replaces"
+        dct_isReplacedBy_sm:
+          one: "Is Replaced By"
+          other: "Is Replaced By"
+        gbl_fileSize_s:
+          one: "File Size"
+        gbl_wxsIdentifier_s:
+          one: "WxS Identifier"
+        gbl_georeferenced_b:
+          one: "Georeferenced"
+        dct_accessRights_s:
+          one: "Access Rights"
+          other: "Access Rights"
+        suppressed_b:
+          one: "Suppressed"
+          other: "Suppressed"
+        b1g_child_record_b:
+          one: "Child Record"
+          other: "Child Record"
+        dct_identifier_sm:
+          one: "Identifier"
+          other: "Identifier"
+        dct_rights_sm:
+          one: "Rights"
+          other: "Rights"
+        dct_rightsHolder_sm:
+          one: "Rights Holder"
+          other: "Rights Holder"
+        dct_license_sm:
+          one: "License"
+          other: "License"
+        b1g_dateAccessioned_sm:
+          one: "Date Accessioned"
+          other: "Date Accessioned"
+        b1g_dct_mediator_sm:
+          one: "Mediator"
+          other: "Mediator"
+        b1g_access_s:
+          one: "Access"
+          other: "Access"
+        gbl_displayNote_sm:
+          one: "Display Note"
+          other: "Display Note"
+        b1g_prov_softwareAgent_sm:
+          one: "Source Platform"
+          other: "Source Platform"
+        b1g_adms_supportedSchema_sm:
+          one: "Supported Metadata Schema"
+          other: "Supported Metadata Schema"
+        b1g_dct_provenanceStatement_sm:
+          one: "Provenance Statement"
+          other: "Provenance Statement"
+        b1g_geodcat_spatialResolutionAsText_sm:
+          one: "Spatial Resolution as Text"
+          other: "Spatial Resolution as Text"
+        b1g_dcat_spatialResolutionInMeters_sm:
+          one: "Spatial Resolution in Meters"
+          other: "Spatial Resolution in Meters"
+        b1g_dct_extent_sm:
+          one: "Extent"
+          other: "Extent"
+        b1g_dct_conformsTo_sm:
+          one: "Conforms to"
+          other: "Conforms to"
+        b1g_localCollectionLabel_sm:
+          one: "Local Collection"
+          other: "Local Collection"
+        b1g_prov_wasGeneratedBy_sm:
+          one: "Was Generated By"
+          other: "Was Generated By"
+        b1g_adminTags_sm:
+          one: "Admin Tags"
+          other: "Admin Tags"
+        b1g_dcat_inSeries_sm:
+          one: "In Series"
+          other: "In Series"
+
+  activemodel:
+    models:
+      document/dct_references_s: "References"
+    enum_values:
+      document/reference:
+        category:
+          wcs: Web Coverage Service (WCS)
+          wms: Web Mapping Service (WMS)
+          wfs: Web Feature Service (WFS)
+          iiif_image: IIIF Image API
+          iiif_manifest: IIIF Manifest
+          download: Direct download file
+          image: Image file
+          thumbnail: Thumbnail file
+          documentation_download: Data dictionary / documentation download
+          documentation_external: Full layer description
+          metadata_iso: Metadata in ISO 19139
+          metadata_fgdc: Metadata in FGDC
+          metadata_mods: Metadata in MODS
+          metadata_html: Metadata in HTML
+          arcgis_feature_layer: ArcGIS FeatureLayer
+          arcgis_tiled_map_layer: ArcGIS TiledMapLayer
+          arcgis_dynamic_map_layer: ArcGIS DynamicMapLayer
+          arcgis_image_map_layer: ArcGIS ImageMapLayer
+          harvard_download: Harvard Download
+          open_index_map: OpenIndexMap
+          oembed: oEmbed
+          cog: Cloud Optimized GeoTIFF (COG)
+          pmtiles: PMTiles
+          xyz_tiles: XYZ Tiles (XYZ)
+          wmts: Web Map Tile Service (WMTS)
+          tile_json: TileJSON
+          tile_map_service: Tile Map Service (TMS)
+    asset_enum_values:
+      document/reference:
+        category:
+          cog: Cloud Optimized GeoTIFF (COG)
+          documentation_download: Data Dictionary / documentation
+          download: Download
+          metadata_iso: Metadata in ISO 19139
+          metadata_fgdc: Metadata in FGDC
+          metadata_html: Metadata in HTML
+          metadata_iso: Metadata in ISO 19139
+          metadata_mods: Metadata in MODS
+          open_index_map: OpenIndexMap
+          pmtiles: PMTiles
+          image: Image file
+
+  simple_form:
+    hints:
+      document:
+        dct_references_s: "URIs and Values"

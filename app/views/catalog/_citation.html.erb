@@ -6,7 +6,8 @@
   </button>
 </div>
 <div class="modal-body">
-  <% @documents.each do |document| %>
+  <% @documents ||= SolrDocument.find(params[:id]) %>
+  <% Array(@documents).each do |document| %>
     <% case document[Settings.FIELDS.RESOURCE_CLASS].present? && document[Settings.FIELDS.RESOURCE_CLASS].join(",").downcase %>
     <% when "collections" %>
       <p>
