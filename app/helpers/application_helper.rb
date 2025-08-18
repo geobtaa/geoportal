@@ -171,8 +171,10 @@ module ApplicationHelper
 
   def year_to_facet_bucket(year)
     case year.to_i
-    when 2020..Time.now.year
-      '2020-present'
+    when 2025..Time.now.year
+      '2025-present'
+    when 2020..2024
+      '2020-2024'
     when 2015..2019
       '2015-2019'
     when 2010..2014
