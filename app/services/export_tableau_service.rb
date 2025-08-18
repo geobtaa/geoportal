@@ -22,10 +22,11 @@ class ExportTableauService
       "B1G Image",
       "ID",
       "Download",
+      "Documentation External",
       "Language"
     ]
 
-    Document.in_batches do |slice|
+    Document.includes(:document_distributions).in_batches do |slice|
       # Broadcast progress percentage
       count += slice_count
       progress = ((count.to_f / total) * 100).round
@@ -41,7 +42,8 @@ class ExportTableauService
             row.dct_spatial_sm&.join("|"),
             row.b1g_image_ss,
             row.geomg_id_s,
-            row.dct_references_s.find { |ref| ref.category == "download" }&.value,
+            row.document_distributions.find { |dd| dd.reference_type_id == 8 }&.url,
+            row.document_distributions.find { |dd| dd.reference_type_id == 7 }&.url,
             row.dct_language_sm&.join("|")
           ]
       end
