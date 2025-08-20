@@ -43,7 +43,8 @@ class ExportTableauService
       
       slice.each do |row|
 
-        next unless row.publication_state == "published"
+        # Exporting everything for now
+        # next unless row.publication_state == "published"
 
         # Primary resources row
         primary_csv << [
