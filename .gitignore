@@ -27,6 +27,7 @@ public/blog/*
 public/thumbnails/*
 public/uploads/*
 public/derivatives/*
+public/exports/*
 
 # Ignore public/uploads
 public/uploads/*

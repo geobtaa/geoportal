@@ -113,7 +113,7 @@ FIELDS:
   :B1G_SOURCE_PLATFORM: 'b1g_prov_softwareAgent_sm'
   :B1G_DCAT_ENDPOINT_DESCRIPTION: 'b1g_dcat_endpointDescription_s'
   :B1G_ADMS_SUPPORTED_SCHEMA: 'b1g_adms_supportedSchema_sm'
-  :B1G_PROV_WAS_GENERATED_BY: 'b1g_prov_wasGeneratedBy_sm'
+  :B1G_PROV_HARVEST_WORKFLOW: 'b1g_prov_wasGeneratedBy_sm'
   :B1G_ACCRUAL_PERIODICITY: 'b1g_dct_accrualPeriodicity_s'
   :B1G_STATUS: 'b1g_status_s'
 
