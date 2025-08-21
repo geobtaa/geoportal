@@ -47,6 +47,7 @@
 //= require ./geoportal/viewers/esri/feature_layer
 //= require ./geoportal/viewers/esri/image_map_layer
 //= require ./geoportal/viewers/esri/tiled_map_layer
+//= require ./geoportal/viewers/geojson
 //= require geoblacklight/viewers/iiif
 //= require ./geoportal/viewers/iiif_manifest
 //= require ./geoportal/viewers/index_map
