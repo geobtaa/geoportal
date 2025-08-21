@@ -340,6 +340,7 @@ HELP_TEXT:
       - 'download'
       - 'dynamic_map_layer'
       - 'feature_layer'
+      - 'geojson'
       - 'iiif'
       - 'iiif_manifest'
       - 'image_map_layer'

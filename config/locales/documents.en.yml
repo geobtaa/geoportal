@@ -203,6 +203,7 @@ en:
           iiif_image: IIIF Image API
           iiif_manifest: IIIF Manifest
           download: Direct download file
+          geo_json: GeoJSON
           image: Image file
           thumbnail: Thumbnail file
           documentation_download: Data dictionary / documentation download
@@ -230,6 +231,7 @@ en:
           cog: Cloud Optimized GeoTIFF (COG)
           documentation_download: Data Dictionary / documentation
           download: Download
+          geo_json: GeoJSON
           metadata_iso: Metadata in ISO 19139
           metadata_fgdc: Metadata in FGDC
           metadata_html: Metadata in HTML
