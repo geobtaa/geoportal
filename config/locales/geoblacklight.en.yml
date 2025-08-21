@@ -114,6 +114,9 @@ en:
         feature_layer:
           title: ArcGIS Feature Layer
           content: An ArcGIS Feature Layer Service displays vector data (points, lines, and polygons) as individual or collected features.
+        geojson:
+          title: GeoJSON
+          content: GeoJSON is a format for encoding geographic data structures using JSON.
         iiif:
           title: IIIF Service
           content: The International Image Interoperability Framework (IIIF) web service API displays an image from a server. This image can be panned and zoomed.

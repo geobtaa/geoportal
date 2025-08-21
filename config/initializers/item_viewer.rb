@@ -69,6 +69,10 @@ module Geoblacklight
       @references.feature_layer
     end
 
+    def geojson
+      @references.geojson
+    end
+
     def image_map_layer
       @references.image_map_layer
     end
@@ -118,6 +122,7 @@ module Geoblacklight
         cog,
         pmtiles,
         oembed,
+        geojson,
         index_map,
         tilejson,
         xyz,
