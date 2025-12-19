@@ -163,7 +163,7 @@ en:
         b1g_adms_supportedSchema_sm:
           one: "Supported Metadata Schema"
           other: "Supported Metadata Schema"
-        b1g_dct_provenanceStatement_sm:
+        b1g_dct_provenance_sm:
           one: "Provenance Statement"
           other: "Provenance Statement"
         b1g_geodcat_spatialResolutionAsText_sm:
