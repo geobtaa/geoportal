@@ -34,12 +34,6 @@ en:
         b1g_dct_accrualPeriodicity_s:
           one: "Accrual Periodicity"
           other: "Accrual Periodicity"
-        b1g_dateRetired_s:
-          one: "Date Retired"
-          other: "Date Retired"
-        b1g_status_s:
-          one: "Status"
-          other: "Status"
         b1g_publication_state_s:
           one: Publication State
           other: Publication State
@@ -145,27 +139,39 @@ en:
         dct_license_sm:
           one: "License"
           other: "License"
-        b1g_dateAccessioned_sm:
-          one: "Date Accessioned"
-          other: "Date Accessioned"
         b1g_dct_mediator_sm:
           one: "Mediator"
           other: "Mediator"
         b1g_access_s:
           one: "Access"
           other: "Access"
-        gbl_displayNote_sm:
-          one: "Display Note"
-          other: "Display Note"
-        b1g_prov_softwareAgent_sm:
-          one: "Source Platform"
-          other: "Source Platform"
-        b1g_adms_supportedSchema_sm:
-          one: "Supported Metadata Schema"
-          other: "Supported Metadata Schema"
         b1g_dct_provenance_sm:
           one: "Provenance Statement"
           other: "Provenance Statement"
+        b1g_adminNote_sm:
+          one: "Admin Note"
+          other: "Admin Notes"
+        b1g_websitePlatform_s:
+          one: "Website Platform"
+          other: "Website Platform"
+        b1g_harvestWorkflow_s:
+          one: "Harvest Workflow"
+          other: "Harvest Workflow"
+        b1g_isHarvested_b:
+          one: "Is Harvested"
+          other: "Is Harvested"
+        b1g_lastHarvested_dt:
+          one: "Last Harvested"
+          other: "Last Harvested"
+        b1g_dateAccesioned_dt:
+          one: "Date Accessioned"
+          other: "Date Accessioned"
+        b1g_dateRetired_dt:
+          one: "Date Retired"
+          other: "Date Retired"
+        gbl_displayNote_sm:
+          one: "Display Note"
+          other: "Display Note"
         b1g_geodcat_spatialResolutionAsText_sm:
           one: "Spatial Resolution as Text"
           other: "Spatial Resolution as Text"
@@ -181,9 +187,6 @@ en:
         b1g_localCollectionLabel_sm:
           one: "Local Collection"
           other: "Local Collection"
-        b1g_prov_wasGeneratedBy_sm:
-          one: "Harvest Workflow"
-          other: "Harvest Workflow"
         b1g_adminTags_sm:
           one: "Admin Tags"
           other: "Admin Tags"

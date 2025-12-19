@@ -141,7 +141,7 @@ module Admin
       config.add_facet_field Settings.FIELDS.B1G_DCAT_ENDPOINT_DESCRIPTION, label: 'Endpoint Description', show: false
 
       # Harvest Workflow
-      config.add_facet_field Settings.FIELDS.B1G_PROV_HARVEST_WORKFLOW, label: 'Harvest Workflow', show: false
+      config.add_facet_field Settings.FIELDS.B1G_HARVEST_WORKFLOW, label: 'Harvest Workflow', show: false
 
       # Date Accessioned
       config.add_facet_field Settings.FIELDS.B1G_DATE_ACCESSIONED, :label => 'Date Accessioned', :limit => 8, collapse: false

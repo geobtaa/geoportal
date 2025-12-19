@@ -25,7 +25,6 @@
   "b1g_access_s": "{}",
   "geomg_id_s": "the-related-record",
   "schema_provider_s": "GeoBlacklight Community",
-  "b1g_status_s": "Active",
   "b1g_publication_state_s": "published",
   "dct_accessRights_s": "Public",
   "gbl_suppressed_b": false,
