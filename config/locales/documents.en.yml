@@ -176,8 +176,8 @@ en:
           one: "Extent"
           other: "Extent"
         b1g_dct_conformsTo_sm:
-          one: "Conforms to"
-          other: "Conforms to"
+          one: "Coordinate Reference System"
+          other: "Coordinate Reference System"
         b1g_localCollectionLabel_sm:
           one: "Local Collection"
           other: "Local Collection"
