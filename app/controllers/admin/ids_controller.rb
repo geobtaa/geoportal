@@ -135,29 +135,34 @@ module Admin
       # Resource Type
       config.add_facet_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', limit: 1000
 
+      # Remove - Metdata Changes
       # Source Platform
-      config.add_facet_field Settings.FIELDS.B1G_SOURCE_PLATFORM, :label => 'Source Platform', show: false
+      # config.add_facet_field Settings.FIELDS.B1G_SOURCE_PLATFORM, :label => 'Source Platform', show: false
 
       # Endpoint Description
       config.add_facet_field Settings.FIELDS.B1G_DCAT_ENDPOINT_DESCRIPTION, label: 'Endpoint Description', show: false
 
+      # Remove - Metdata Changes
       # Supported Metadata Schema
-      config.add_facet_field Settings.FIELDS.B1G_ADMS_SUPPORTED_SCHEMA, label: 'Supported Metadata Schema', show: false
+      # config.add_facet_field Settings.FIELDS.B1G_ADMS_SUPPORTED_SCHEMA, label: 'Supported Metadata Schema', show: false
 
       # Accrual Method
       config.add_facet_field Settings.FIELDS.B1G_ACCRUAL_METHOD, :label => 'Accrual Method', show: false
 
+      # Remove - Metdata Changes
       # Harvest Workflow
-      config.add_facet_field Settings.FIELDS.B1G_PROV_HARVEST_WORKFLOW, label: 'Harvest Workflow', show: false
+      # config.add_facet_field Settings.FIELDS.B1G_PROV_HARVEST_WORKFLOW, label: 'Harvest Workflow', show: false
 
       # Accrual Periodicity
       config.add_facet_field Settings.FIELDS.B1G_ACCRUAL_PERIODICITY, label: 'Accrual Periodicity', show: false
 
+      # Remove - Metdata Changes
       # Date Accessioned
-      config.add_facet_field Settings.FIELDS.B1G_DATE_ACCESSIONED, :label => 'Date Accessioned', :limit => 8, collapse: false
+      # config.add_facet_field Settings.FIELDS.B1G_DATE_ACCESSIONED, :label => 'Date Accessioned', :limit => 8, collapse: false
 
+      # Remove - Metdata Changes
       # Status
-      config.add_facet_field Settings.FIELDS.B1G_STATUS, label: 'Status', show: false
+      # config.add_facet_field Settings.FIELDS.B1G_STATUS, label: 'Status', show: false
 
       # Public/Restricted
       config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, show: false
