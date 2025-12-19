@@ -94,7 +94,7 @@ FIELDS:
   :B1G_ACCESS: 'b1g_access_s'
   :B1G_DATE_ACCESSIONED: 'b1g_dateAccessioned_sm'
   :B1G_ACCRUAL_METHOD: 'b1g_dct_accrualMethod_s'
-  :B1G_CHILD_RECORD: 'b1g_child_record_b'
+  :B1G_CHILD_RECORD: 'b1g_deprioritized_b'
   :B1G_CODE: 'b1g_code_s'
   :B1G_DATE_CREATED: 'date_created_dtsi'
   :B1G_GEOMG_ID: 'geomg_id_s'

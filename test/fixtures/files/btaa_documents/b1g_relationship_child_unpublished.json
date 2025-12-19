@@ -59,7 +59,7 @@
   "b1g_publication_state_s": "unpublished",
   "dct_accessRights_s": "Public",
   "gbl_suppressed_b": true,
-  "b1g_child_record_b": true,
+  "b1g_deprioritized_b": true,
   "gbl_mdModified_dt": "2021-12-09T21:50:25Z",
   "date_created_dtsi": "2021-12-09T19:01:31Z",
   "date_modified_dtsi": "2021-12-09T21:50:25Z",

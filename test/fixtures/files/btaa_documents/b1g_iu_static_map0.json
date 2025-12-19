@@ -1,6 +1,6 @@
 {
   "b1g_status_s": "Active",
-  "b1g_child_record_b": true,
+  "b1g_deprioritized_b": true,
   "b1g_code_s": "01d-03",
   "b1g_image_ss": "http://purl.dlib.indiana.edu/iudl/images/VAC9619/screen/VAC9619-001727",
   "dc_type_sm": [

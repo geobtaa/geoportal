@@ -202,7 +202,7 @@
       "type": "string",
       "format": "date"
     },
-    "b1g_child_record_b": { "type": "boolean" },
+    "b1g_deprioritized_b": { "type": "boolean" },
     "b1g_status_s": { "type": "string" },
     "b1g_dct_mediator_sm": {
       "type": "array",

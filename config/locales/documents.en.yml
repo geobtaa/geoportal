@@ -130,7 +130,7 @@ en:
         suppressed_b:
           one: "Suppressed"
           other: "Suppressed"
-        b1g_child_record_b:
+        b1g_deprioritized_b:
           one: "Child Record"
           other: "Child Record"
         dct_identifier_sm:

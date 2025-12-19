@@ -7,7 +7,7 @@
   "b1g_status_s": "Active",
   "dct_accrualMethod_s": "Manual",
   "b1g_dateAccessioned_s": "2020-06-09",
-  "b1g_child_record_b": true,
+  "b1g_deprioritized_b": true,
   "dct_title_s": "Access Across America Auto Data: Baltimore-Towson, MD, 2018",
   "dct_alternative_sm": [
     "Baltimore-Towson, MD"
