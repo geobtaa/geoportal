@@ -122,9 +122,11 @@ module Admin
       # Resource Type
       config.add_facet_field Settings.FIELDS.RESOURCE_TYPE, label: 'Resource Type', show: false
 
-      # Remove - Metdata Changes
-      # Harvest Workflow
-      # config.add_facet_field Settings.FIELDS.B1G_PROV_HARVEST_WORKFLOW, label: 'Harvest Workflow', show: false
+      # Is Harvested
+      config.add_facet_field Settings.FIELDS.B1G_IS_HARVESTED, label: 'Is Harvested', show: false
+
+      # Last Harvested
+      config.add_facet_field Settings.FIELDS.B1G_LAST_HARVESTED, label: 'Last Harvested', show: false
 
       # Accrual Method
       config.add_facet_field Settings.FIELDS.B1G_ACCRUAL_METHOD, :label => 'Accrual Method', show: false
@@ -132,20 +134,20 @@ module Admin
       # Accrual Periodicity
       config.add_facet_field Settings.FIELDS.B1G_ACCRUAL_PERIODICITY, label: 'Accrual Periodicity', show: false
 
-      # Remove - Metdata Changes
-      # Source Platform
-      # config.add_facet_field Settings.FIELDS.B1G_SOURCE_PLATFORM, :label => 'Source Platform', show: false
+      # Website Platform
+      config.add_facet_field Settings.FIELDS.B1G_WEBSITE_PLATFORM, label: 'Website Platform', show: false
 
       # Endpoint Description
       config.add_facet_field Settings.FIELDS.B1G_DCAT_ENDPOINT_DESCRIPTION, label: 'Endpoint Description', show: false
 
-      # Remove - Metdata Changes
-      # Supported Metadata Schema
-      # config.add_facet_field Settings.FIELDS.B1G_ADMS_SUPPORTED_SCHEMA, label: 'Supported Metadata Schema', show: false
+      # Harvest Workflow
+      config.add_facet_field Settings.FIELDS.B1G_PROV_HARVEST_WORKFLOW, label: 'Harvest Workflow', show: false
 
-      # Remove - Metdata Changes
       # Date Accessioned
-      # config.add_facet_field Settings.FIELDS.B1G_DATE_ACCESSIONED, :label => 'Date Accessioned', :limit => 8, collapse: false
+      config.add_facet_field Settings.FIELDS.B1G_DATE_ACCESSIONED, :label => 'Date Accessioned', :limit => 8, collapse: false
+
+      # Date Retired
+      config.add_facet_field Settings.FIELDS.B1G_DATE_RETIRED, :label => 'Date Retired', :limit => 8, collapse: false
 
       # Date Created
       config.add_facet_field 'time_period', label: 'Date Created', query: {
@@ -157,15 +159,11 @@ module Admin
         'this_year' => { label: 'This year', fq: "date_created_drsim:[#{(Date.today.end_of_day - 1.year).to_time.strftime('%Y-%m-%dT%H:%M:%S')} TO  #{(Date.today.end_of_day).to_time.strftime('%Y-%m-%dT%H:%M:%S')}]"}
       }
 
-      # Remove - Metdata Changes
-      # Status
-      # config.add_facet_field Settings.FIELDS.B1G_STATUS, label: 'Status', show: false
+      # Public/Restricted
+      config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
 
       # Import ID
       config.add_facet_field Settings.FIELDS.B1G_IMPORT_ID, label: "Import ID", show: false
-
-      # Public/Restricted
-      config.add_facet_field Settings.FIELDS.ACCESS_RIGHTS, :label => 'Public/Restricted'
 
       # ADVANCED SEARCH
       #

@@ -92,7 +92,8 @@ FIELDS:
   :WXS_IDENTIFIER: 'gbl_wxsIdentifier_s'
   # B1G Custom Fields Geoportal / GBL Admin
   :B1G_ACCESS: 'b1g_access_s'
-  :B1G_DATE_ACCESSIONED: 'b1g_dateAccessioned_sm'
+  :B1G_DATE_ACCESSIONED: 'b1g_dateAccesioned_dt'
+  :B1G_DATE_RETIRED: 'b1g_dateRetired_dt'
   :B1G_ACCRUAL_METHOD: 'b1g_dct_accrualMethod_s'
   :B1G_CHILD_RECORD: 'b1g_deprioritized_b'
   :B1G_CODE: 'b1g_code_s'
@@ -116,6 +117,10 @@ FIELDS:
   :B1G_PROV_HARVEST_WORKFLOW: 'b1g_prov_wasGeneratedBy_sm'
   :B1G_ACCRUAL_PERIODICITY: 'b1g_dct_accrualPeriodicity_s'
   :B1G_STATUS: 'b1g_status_s'
+  :B1G_WEBSITE_PLATFORM: 'b1g_websitePlatform_s'
+  :B1G_IS_HARVESTED: 'b1g_isHarvested_b'
+  :B1G_LAST_HARVESTED: 'b1g_lastHarvested_dt'
+  :B1G_HARVEST_WORKFLOW: 'b1g_harvestWorkflow_s'
 
 GEOMONITOR_TOLERANCE: 0.8
 #GOOGLE_ANALYTICS_ID: 'UA-XXXXX-X'
