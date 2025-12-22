@@ -40,7 +40,7 @@
 <% if @documents.facets.present? %>
   <% @documents.facets.each do |facet| %>
     <% if facet['type'] == 'facet' %>
-      <%- next if ['b1g_geom_import_id_ssi', 'b1g_code_s', 'dct_isPartOf_sm', 'schema_provider_s', 'pcdm_memberOf_sm', 'dct_subject_sm', 'dcat_theme_sm', 'dct_format_s', 'gbl_suppressed_b', 'b1g_child_record_b', 'gbl_georeferenced_b'].include?(facet['id']) %>
+      <%- next if ['b1g_geom_import_id_ssi', 'b1g_code_s', 'dct_isPartOf_sm', 'schema_provider_s', 'pcdm_memberOf_sm', 'dct_subject_sm', 'dcat_theme_sm', 'dct_format_s', 'gbl_suppressed_b', 'b1g_deprioritized_b', 'gbl_georeferenced_b'].include?(facet['id']) %>
       <h3 class="h5"><%= facet['attributes']['label'] %></h3>
       <ul class="list-unstyled">
         <%- facet['attributes']['items'].each do |item| %>

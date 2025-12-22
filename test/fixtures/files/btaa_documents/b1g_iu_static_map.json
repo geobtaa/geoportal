@@ -1,13 +1,12 @@
 {
-  "b1g_status_s": "Active",
-  "b1g_child_record_b": true,
+  "b1g_deprioritized_b": true,
   "b1g_code_s": "01d-03",
   "b1g_image_ss": "http://purl.dlib.indiana.edu/iudl/images/VAC9619/screen/VAC9619-001727",
   "dc_type_sm": [
     "Image"
   ],
   "b1g_dateAccessioned_s": "2020-03-13",
-  "dct_title_s": "\u041e-34-106-C \u0421\u0430\u0431\u0438\u043b\u0435",
+  "dct_title_s": "О-34-106-C Сабиле",
   "dct_description_sm": [
     "Modern area represented: Sabile, Talsi municipality, Latvia; Scale =1:50,000"
   ],
@@ -18,7 +17,7 @@
     "Russian"
   ],
   "dct_publisher_sm": [
-    "\u0413\u0435\u043d\u0435\u0440\u0430\u043b\u044c\u043d\u044b\u0439 \u0448\u0442\u0430\u0431 \u0420\u041a\u041a\u0410"
+    "Генеральный штаб РККА"
   ],
   "schema_provider_s": "Indiana",
   "gbl_resourceClass_sm": [

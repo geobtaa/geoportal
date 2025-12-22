@@ -1,6 +1,5 @@
 {
-  "b1g_status_s": "Active",
-  "b1g_child_record_b": true,
+  "b1g_deprioritized_b": true,
   "dct_accrualMethod_s": "Spreadsheet export",
   "b1g_code_s": "01d-03",
   "b1g_image_ss": "http://purl.dlib.indiana.edu/iudl/images/VAC9619/screen/VAC9619-001735",
@@ -8,9 +7,9 @@
     "Image"
   ],
   "b1g_dateAccessioned_s": "2020-03-13",
-  "dct_title_s": "\u041e-34-126-B/127-\u0410 \u041b\u0438\u044d\u043f\u0430\u0439\u044f (Liep\u0101ja, Latvia)",
+  "dct_title_s": "О-34-126-B/127-А Лиэпайя (Liepāja, Latvia)",
   "dct_description_sm": [
-    "Modern area represented: Liep\u0101ja, Latvia; Scale =1:50,000"
+    "Modern area represented: Liepāja, Latvia; Scale =1:50,000"
   ],
   "dct_language_sm": [
     "rus"
@@ -19,7 +18,7 @@
     "Russian"
   ],
   "dct_publisher_sm": [
-    "\u0413\u0435\u043d\u0435\u0440\u0430\u043b\u044c\u043d\u044b\u0439 \u0448\u0442\u0430\u0431 \u0420\u041a\u041a\u0410"
+    "Генеральный штаб РККА"
   ],
   "schema_provider_s": "Indiana",
   "gbl_resourceClass_sm": [
@@ -46,7 +45,7 @@
     "[1905 TO 1907]"
   ],
   "dct_spatial_sm": [
-    "Liep\u0101ja, Latvia",
+    "Liepāja, Latvia",
     "Latvia"
   ],
   "locn_geometry": "ENVELOPE(21.25,20.959,56.667,56.5)",

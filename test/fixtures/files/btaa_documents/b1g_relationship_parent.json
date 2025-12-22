@@ -41,15 +41,11 @@
   "geomg_id_s": "27001-road-centerlines",
   "schema_provider_s": "Aitkin County, Minnesota",
   "b1g_code_s": "27001",
-  "b1g_status_s": "Active",
   "b1g_dct_accrualMethod_s": "MGMG",
-  "b1g_dateAccessioned_sm": [
-    "2021-12-06"
-  ],
   "b1g_publication_state_s": "published",
   "dct_accessRights_s": "Public",
   "gbl_suppressed_b": false,
-  "b1g_child_record_b": false,
+  "b1g_deprioritized_b": false,
   "gbl_mdModified_dt": "2021-12-09T19:58:15Z",
   "date_created_dtsi": "2021-12-09T18:53:22Z",
   "date_modified_dtsi": "2021-12-09T19:58:15Z",

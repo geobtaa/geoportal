@@ -1,5 +1,4 @@
 {
-  "b1g_status_s": "Active",
   "dct_accrualMethod_s": "ArcGIS Hub",
   "b1g_code_s": "11a-01",
   "dc_type_sm": [
@@ -16,7 +15,7 @@
   ],
   "b1g_language_sm": [
     "English"
-  ],  
+  ],
   "dct_creator_sm": [
     "Ohio Geographically Referenced Information Program"
   ],
