@@ -1,6 +1,5 @@
 {
-  "b1g_status_s": "Active",
-  "b1g_child_record_b": false,
+  "b1g_deprioritized_b": false,
   "dct_accrualMethod_s": "ArcGIS Hub",
   "b1g_code_s": "05b-27139",
   "dc_type_sm": [

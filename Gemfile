@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0'
+gem 'rails', '7.2.2.2'
 gem 'concurrent-ruby', '1.3.4'
 gem 'bootsnap', '~> 1.9.3', require: false
 gem 'listen', '~> 3.0'
@@ -83,8 +83,8 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'geoblacklight', '~> 4.0'
 
 # GBL Admin
-gem 'geoblacklight_admin', '~> 0.10.0'
-# gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/background-distribution-deletes"
+#gem 'geoblacklight_admin', '~> 0.10.0'
+gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/metadata-updates"
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
@@ -146,7 +146,7 @@ gem 'blacklight_allmaps', git: "https://github.com/geobtaa/blacklight-allmaps.gi
 
 group :test do
   gem 'm', '~> 1.5.0'
-  gem 'minitest'
+  gem 'minitest', '~> 5.0'
   gem 'minitest-ci', '~> 3.4.0'
   gem 'minitest-reporters'
   gem 'simplecov', require: false

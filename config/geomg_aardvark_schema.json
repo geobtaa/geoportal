@@ -191,19 +191,7 @@
     },
     "b1g_dct_accrualMethod_s": { "type": "string" },
     "b1g_dct_accrualPeriodicity_s": { "type": "string" },
-    "b1g_dateAccessioned_sm": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "format": "date"
-      }
-    },
-    "b1g_dateRetired_s": {
-      "type": "string",
-      "format": "date"
-    },
-    "b1g_child_record_b": { "type": "boolean" },
-    "b1g_status_s": { "type": "string" },
+    "b1g_deprioritized_b": { "type": "boolean" },
     "b1g_dct_mediator_sm": {
       "type": "array",
       "items": {
@@ -211,7 +199,34 @@
       }
     },
     "b1g_access_s": { "type": "string" },
-    "b1g_code_s": { "type": "string" }
+    "b1g_code_s": { "type": "string" },
+    "b1g_dct_provenance_sm": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "b1g_adminNote_sm": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "b1g_websitePlatform_s": { "type": "string" },
+    "b1g_harvestWorkflow_s": { "type": "string" },
+    "b1g_isHarvested_b": { "type": "boolean" },
+    "b1g_lastHarvested_dt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "b1g_dateAccesioned_dt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "b1g_dateRetired_dt": {
+      "type": "string",
+      "format": "date-time"
+    }
   },
   "required": ["dct_title_s", "gbl_resourceClass_sm", "dct_accessRights_s", "geomg_id_s"]
 }

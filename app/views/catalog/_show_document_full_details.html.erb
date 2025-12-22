@@ -74,9 +74,9 @@
         <dt class="col-md-3">Spatial Resolution as Text</dt>
         <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_GEODCAT_SPATIAL_RESOLUTION_AS_TEXT].join(', ') %></dd>
       <% end %>
-      <% if @document[Settings.FIELDS.B1G_DCT_PROVENANCE_STATEMENT].present? %>
+      <% if @document[Settings.FIELDS.B1G_DCT_PROVENANCE].present? %>
         <dt class="col-md-3">Provenance Statement</dt>
-        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCT_PROVENANCE_STATEMENT].join(', ') %></dd>
+        <dd class="col-md-9"><%= @document[Settings.FIELDS.B1G_DCT_PROVENANCE].join(', ') %></dd>
       <% end %>
       <% if @document[Settings.FIELDS.B1G_DCT_EXTENT].present? %>
         <dt class="col-md-3">Extent in square kilometers</dt>

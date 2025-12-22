@@ -4,10 +4,9 @@
     "Service"
   ],
   "b1g_code_s": "13a-01",
-  "b1g_status_s": "Active",
   "dct_accrualMethod_s": "ArcGIS Hub",
   "b1g_dateAccessioned_s": "2020-07-27",
-  "b1g_child_record_b": "FALSE",
+  "b1g_deprioritized_b": "FALSE",
   "dct_title_s": "Deer River Antlerless Units: Nebraska",
   "dct_alternative_sm": [
     "Deer River Antlerless Units"

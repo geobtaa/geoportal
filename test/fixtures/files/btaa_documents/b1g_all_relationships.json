@@ -46,11 +46,10 @@
   "dct_source_sm": [
     "the-related-record"
   ],
-  "b1g_status_s": "Active",
   "b1g_publication_state_s": "published",
   "dct_accessRights_s": "Public",
   "gbl_suppressed_b": false,
-  "b1g_child_record_b": false,
+  "b1g_deprioritized_b": false,
   "gbl_mdModified_dt": "2021-10-08T15:11:38Z",
   "date_created_dtsi": "2021-08-25T15:23:07Z",
   "date_modified_dtsi": "2021-10-08T15:11:38Z"

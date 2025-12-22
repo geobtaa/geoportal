@@ -60,11 +60,7 @@
   "geomg_id_s": "18bed919-fc86-4e02-a909-15f8bb9899bb",
   "schema_provider_s": "University of Michigan",
   "b1g_code_s": "07d-01",
-  "b1g_status_s": "Active",
   "b1g_dct_accrualMethod_s": "MARC",
-  "b1g_dateAccessioned_sm": [
-    "2021-04-16"
-  ],
   "b1g_publication_state_s": "published",
   "dct_accessRights_s": "Public",
   "gbl_mdModified_dt": "2021-05-08T17:18:30Z",
