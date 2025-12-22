@@ -146,7 +146,7 @@ gem 'blacklight_allmaps', git: "https://github.com/geobtaa/blacklight-allmaps.gi
 
 group :test do
   gem 'm', '~> 1.5.0'
-  gem 'minitest'
+  gem 'minitest', '~> 5.0'
   gem 'minitest-ci', '~> 3.4.0'
   gem 'minitest-reporters'
   gem 'simplecov', require: false
