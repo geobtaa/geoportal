@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host:     <%= ENV['POSTGRES_HOST'] || '127.0.0.1' %>
+  port:     <%= ENV['POSTGRES_PORT'] || '5555' %>
+  username: <%= ENV['POSTGRES_USER'] || 'postgres' %>
+  password: <%= ENV['POSTGRES_PASSWORD'] || 'postgres' %>
+  pool: 5
+
+test:
+  database: <%= ENV['POSTGRES_DB'] || 'geoblacklight_test' %>
+  <<: *default
+
+
+development:
+  database: <%= ENV['POSTGRES_DB'] || 'geoblacklight_development' %>
+  <<: *default
+
+
+production:
+  database: <%= ENV['POSTGRES_DB'] || 'geoblacklight_production' %>
+  <<: *default

@@ -1,0 +1,7 @@
+<%# 1. Toggle bookmark icon %>
+<%# 2. Swap link class %>
+
+var result = $("#<%= @document.friendlier_id %>");
+result.removeClass('bookmarked');
+result.find('span.create_bookmark').removeClass('hidden');
+result.find('span.destroy_bookmark').addClass('hidden');

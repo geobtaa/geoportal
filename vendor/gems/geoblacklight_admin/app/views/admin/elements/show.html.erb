@@ -1,0 +1,121 @@
+<%- @page_title = "GBL♦Admin - Element - #{@element.label}" %>
+
+<h1>Element</h1>
+
+<div class="row">
+  <div class="col-9">
+    <h2>
+      <%= @element.label %>
+      <%= link_to '~ Edit Element', edit_admin_element_path, { class: 'btn btn-primary float-right' } %>
+    </h2>
+
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th class="header" style="width:300px;">Attribute</th>
+          <th class="header">Value</th>
+        </tr>
+      </thead>
+      <tr>
+        <th>Label</th>
+        <td><%= @element.label %></td>
+      </tr>
+      <tr>
+        <th>Solr field</th>
+        <td><%= @element.solr_field %></td>
+      </tr>
+      <tr>
+        <th>Field definition</th>
+        <td><%= @element.field_definition.present? ? link_to( @element.field_definition, @element.field_definition) : '' %></td>
+      </tr>
+      <tr>
+        <th>Field type</th>
+        <td><%= @element.field_type %></td>
+      </tr>
+      <tr>
+        <th>Required</th>
+        <td><%= @element.required %></td>
+      </tr>
+      <tr>
+        <th>Repeatable</th>
+        <td><%= @element.repeatable %></td>
+      </tr>
+      <tr>
+        <th>Formable</th>
+        <td><%= @element.formable %></td>
+      </tr>
+      <tr>
+        <th>Placeholder text</th>
+        <td><%= @element.placeholder_text %></td>
+      </tr>
+      <tr>
+        <th>Data entry hint</th>
+        <td><%= @element.data_entry_hint %></td>
+      </tr>
+      <tr>
+        <th>Test fixture example</th>
+        <td><%= @element.test_fixture_example %></td>
+      </tr>
+      <tr>
+        <th>Controlled vocabulary</th>
+        <td><%= @element.controlled_vocabulary %></td>
+      </tr>
+      <tr>
+        <th>JS Behavior</th>
+        <td><%= @element.js_behaviors %></td>
+      </tr>
+      <tr>
+        <th>HTML attributes</th>
+        <td><%= @element.html_attributes %></td>
+      </tr>
+      <tr>
+        <th>Display only on persisted?</th>
+        <td><%= @element.display_only_on_persisted %></td>
+      </tr>
+      <tr>
+        <th>Importable?</th>
+        <td><%= @element.importable %></td>
+      </tr>
+      <tr>
+        <th>Import deliminated?</th>
+        <td><%= @element.import_deliminated %></td>
+      </tr>
+      <tr>
+        <th>Import transformation method</th>
+        <td><%= @element.import_transformation_method %></td>
+      </tr>
+      <tr>
+        <th>Exportable?</th>
+        <td><%= @element.exportable %></td>
+      </tr>
+      <tr>
+        <th>Export transformation method</th>
+        <td><%= @element.export_transformation_method %></td>
+      </tr>
+      <tr>
+        <th>Indexable?</th>
+        <td><%= @element.indexable %></td>
+      </tr>
+      <tr>
+        <th>Index transformation method</th>
+        <td><%= @element.index_transformation_method %></td>
+      </tr>
+      <tr>
+        <th>Validation method</th>
+        <td><%= @element.validation_method %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="col-3">
+    <h3><%= link_to "Elements", admin_elements_path %></h3>
+    <%- @elements = Element.all %>
+    <ul>
+      <%- @elements.each do |elm| %>
+        <li><%= link_to_unless_current(elm.label, admin_element_url(elm)) %></li>
+      <%- end %>
+    </ul>
+  </div>
+</div>
+<%= link_to 'Edit', edit_admin_element_path(@element) %> |
+<%= link_to 'Back', admin_elements_path %>

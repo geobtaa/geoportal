@@ -1,0 +1,52 @@
+<%- @page_title = "GBL♦Admin - Form Elements" %>
+
+<div class="row mb-2">
+  <div class="col">
+    <h1 style="width:100%;">
+      Form Elements
+      <%= link_to '+ New Form Element', new_admin_form_element_path, { class: 'btn btn-primary float-right' } %>
+    </h1>
+
+    <p class="alert alert-warning"><strong>Notice</strong> - This table defines the headings and fields on the <%= link_to 'Document', new_admin_document_path %> form. To add a new field to your metadata schema, define an <%= link_to 'Element', admin_elements_path %>.</p>
+
+    <table class="table table-striped table-bordered sortable">
+      <thead class="thead-dark">
+        <tr>
+          <th class="header">Type</th>
+          <th class="header">Label</th>
+          <th class="header">Element</th>
+          <th class="header">Reorder</th>
+          <th class="header" colspan="2">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @form_elements.order(:position => :asc).each do |form_element| %>
+          <tr data-id="<%=form_element.id%>">
+            <td><%= form_element.type %></td>
+            <td><%= form_element.label %></td>
+            <td>
+              <%- if form_element.element_solr_field.present? %>
+                <%= Element.find_by(solr_field: form_element.element_solr_field)&.label %>
+              <%- end %>
+            </td>
+            <td class="handle" style="text-align:center">&varr;</td>
+            <td><%= link_to 'Edit', edit_admin_form_element_path(form_element) %></td>
+            <td><%= link_to 'Destroy', admin_form_element_path(form_element), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to '+ New Form Element', new_admin_form_element_path, { class: 'btn btn-primary' } %>
+  </div>
+</div>
+
+<script>
+  GBLADMIN.SortElements(
+    $("tbody"),
+    "<%= sort_admin_form_elements_path %>"
+  );
+</script>

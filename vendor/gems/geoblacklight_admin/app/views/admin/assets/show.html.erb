@@ -1,0 +1,100 @@
+<%- @page_title = "GBL♦Admin - Asset - #{@asset.title}" %>
+
+<%= link_to 'Back to Assets', admin_assets_path, {class: "mb-2"} %>
+
+<h1 class="mt-1">Asset</h1>
+
+<div class="row">
+  <div class="col-12">
+    <h2>
+      <% if @asset.parent.present? %>
+        <%= link_to @asset.parent.title, admin_document_path(@asset.parent.friendlier_id) %>
+        &middot; <%= @asset.title %>
+      <% else %>
+        <%= @asset.title %>
+      <% end %>
+      <%= link_to '- Delete Asset', admin_asset_path, { class: 'btn btn-danger float-right ml-2', method: :delete, data: { confirm: 'Are you sure?' } } %>
+      <%= link_to '~ Edit Asset', edit_admin_asset_path(@asset.id), { class: 'btn btn-primary float-right'} %>
+    </h2>
+
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th class="header" style="width:300px;">Attribute</th>
+          <th class="header">Value</th>
+        </tr>
+      </thead>
+      <tr>
+        <th>Title</th>
+        <td><%= @asset.title %></td>
+      </tr>
+      <tr>
+        <th>Asset Link</th>
+        <td><%= link_to "Asset Link", @asset.file.url %></td>
+      </tr>
+      <% if asset_thumb_to_render?(@asset) %>
+        <tr>
+          <th>Thumbnail</th>
+          <td><%= image_tag(@asset.file_url(:thumb_standard_2X)) %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <th>Type</th>
+        <td><%= @asset.type %></td>
+      </tr>
+      <tr>
+        <th>Position</th>
+        <td><%= @asset.position %></td>
+      </tr>
+      <tr>
+        <th>JSON Attributes</th>
+        <td><%= ap(JSON.parse(@asset.json_attributes.to_json)).html_safe %></td>
+      </tr>
+      <% if @asset.parent.present? %>
+        <tr>
+          <th>Parent Title</th>
+          <td><%= @asset.parent.title %></td>
+        </tr>
+        <tr>
+          <th>Parent ID</th>
+          <td><%= @asset.parent_id %></td>
+        </tr>
+        <tr>
+          <th>Parent Link</th>
+          <td><%= link_to(@asset.parent.friendlier_id, admin_document_path(@asset.parent)) %></td>
+        </tr>
+      <% else %>
+        <tr>
+          <th>Parent ID</th>
+          <td>FALSE</td>
+        </tr>
+      <% end %>
+      <tr>
+        <th>Friendlier ID</th>
+        <td><%= @asset.friendlier_id %></td>
+      </tr>
+      <tr>
+        <th>File Data</th>
+        <td><%= ap(JSON.parse(@asset.file_data.to_json)).html_safe %></td>
+      </tr>
+      <% if @asset.respond_to?(:thumbnail) && @asset.file_derivatives(:thumb_standard_2X)&.exists? %>
+        <tr>
+          <th>Derivatives</th>
+          <td>
+            <% @asset.file_derivatives.each do |derivative| %>
+              <%= image_tag(@asset.file_url(derivative.first)) %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <th>Created At</th>
+        <td><%= @asset.created_at %></td>
+      </tr>
+      <tr>
+        <th>Updated At</th>
+        <td><%= @asset.updated_at %></td>
+      </tr>
+    </table>
+  </div>
+</div>

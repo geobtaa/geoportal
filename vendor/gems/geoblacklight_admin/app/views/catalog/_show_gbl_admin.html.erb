@@ -1,0 +1,3 @@
+<%- if current_user && current_user.admin? %>
+  <%= link_to "GBL♦Admin | Edit Record", edit_admin_document_path(@document), { class: "btn btn-gbl-admin btn-warning btn-block" } %>
+<%- end %>

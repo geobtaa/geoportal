@@ -1,0 +1,45 @@
+
+<%= simple_form_for([:admin, @element]) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <div class="grouping">
+      <h3 id="definition">Definition</h3>
+      <%= f.input :label %>
+      <%= f.input :solr_field %>
+      <%= f.input :field_definition %>
+      <%= f.input :field_type, as: :select, collection: Element::FIELD_TYPES.map { |ft| [ft, ft] }, input_html: { class: "form-control" } %>
+      <%= f.input :required %>
+      <%= f.input :repeatable %>
+      <%= f.input :validation_method %>
+    <div>
+
+    <div class="grouping">
+      <h3 id="form-settings">Form Settings</h3>
+      <%= f.input :formable %>
+      <%= f.input :placeholder_text %>
+      <%= f.input :data_entry_hint %>
+      <%= f.input :test_fixture_example %>
+      <%= f.input :controlled_vocabulary %>
+      <%= f.input :js_behaviors %>
+      <%= f.input :html_attributes, as: :text, input_html: { 'rows' => 5 } %>
+      <%= f.input :display_only_on_persisted %>
+    </div>
+
+    <div class="grouping">
+      <h3 id="propagation">Propagation</h3>
+      <%= f.input :importable %>
+      <%= f.input :import_deliminated %>
+      <%= f.input :import_transformation_method %>
+      <%= f.input :exportable %>
+      <%= f.input :export_transformation_method %>
+      <%= f.input :indexable %>
+      <%= f.input :index_transformation_method %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

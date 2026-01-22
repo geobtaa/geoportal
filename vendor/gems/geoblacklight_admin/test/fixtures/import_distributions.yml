@@ -1,0 +1,33 @@
+one:
+  name: MyString
+  filename: myfile.csv
+  source: MySource
+  description: MyDescription
+  row_count: 100
+  headers:
+  - friendlier_id	
+  - reference_type
+  - distribution_url
+  - label
+  encoding: UTF-8
+  content_type: text/csv
+  extension: csv
+  validity: true
+  validation_result: MyResult
+
+two:
+  name: AnotherString
+  filename: anotherfile.csv
+  source: AnotherSource
+  description: AnotherDescription
+  row_count: 200
+  headers:
+    - friendlier_id	
+    - reference_type
+    - distribution_url
+    - label
+  encoding: UTF-8
+  content_type: text/csv
+  extension: csv
+  validity: true
+  validation_result: AnotherResult

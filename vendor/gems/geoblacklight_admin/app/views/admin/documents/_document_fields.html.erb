@@ -1,0 +1,24 @@
+<%- form_elements = FormElement.all.order(position: :asc) %>
+
+<%- form_elements.each do |form_element| %>
+
+  <% if form_element.kind_of? FormHeader %>
+    <%= render partial: 'form_header', locals: { form_element: form_element } %>
+  <% end %>
+
+  <% if form_element.kind_of? FormGroup %>
+    <%= render partial: 'form_group', locals: { form_element: form_element } %>
+  <% end %>
+
+  <% if form_element.kind_of? FormFeature %>
+    <%= render partial: "admin/documents/features/#{form_element.label.parameterize(separator: "_")}", locals: { form_element: form_element } %>
+  <% end %>
+
+  <% if form_element.kind_of? FormControl %>
+    <%- element = Element.find_by(solr_field: form_element.element_solr_field) %>
+    <%- next if element.display_only_on_persisted? && !@document.persisted? %>
+
+    <%= render partial: 'form_control', locals: { form_element: form_element, f: f, element: element } %>
+  <% end %>
+
+<%- end %>

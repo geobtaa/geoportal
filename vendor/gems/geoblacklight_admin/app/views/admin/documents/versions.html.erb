@@ -1,0 +1,110 @@
+<div class="row flex-xl-nowrap">
+  <main class="col-md-12">
+    <h1 style="width:100%;">
+      Document &middot; Versions
+    </h1>
+    <% if params[:document_id] %>
+      <h2 class='h3'>
+        <%= link_to(@document.title, admin_document_path(@document)) %>
+        &middot;
+        <%= @document.versions.count %> versions
+      </h2>
+    <% end %>
+    <table class='table table-responsive'>
+      <thead>
+        <th>Version</th>
+        <th>Change</th>
+        <th>Time Ago</th>
+      </thead>
+      <tbody>
+        <%- @document.versions.reverse.each_with_index do |version, index| %>
+          <tr>
+            <td>
+              <%= @document.versions.count - index %>
+            </td>
+            <td>
+              <table>
+                <thead>
+                  <th>Operator</th>
+                  <th>Field</th>
+                  <th>Change</th>
+                </thead>
+                <tbody>
+                <%- # Current Document %>
+                <%- if index == 0 %>
+                  <%- current = @document.json_attributes %>
+                  <%- previous = version&.previous&.reify&.json_attributes %>
+                  <%- diff = ::Hashdiff.diff(previous,current) %>
+                  <%- changeset = version.changeset.except(:json_attributes).collect{ |change| ["+", change[0], change[1][1]] }.flatten %>
+                  <%- diff << changeset %>
+                  <%- diff.each do |d| %>
+                    <%- next if d[0] == '~' %>
+                    <tr class="<%= diff_class(d[0]) %>">
+                      <td><%= d[0] %></td>
+                      <td><%= d[1] %></td>
+                      <td>
+                        <%= d[2] %> <%= d[3] %>
+                      </td>
+                    </tr>
+                  <%- end %>
+                <%- # Previous Document with another previous one %>
+                <%- elsif version.previous && version.previous.reify %>
+                  <%- current = version.reify&.json_attributes %>
+                  <%- previous = version.previous.reify&.json_attributes %>
+                  <%- diff = ::Hashdiff.diff(previous,current) %>
+                  <%- changeset = version.changeset.except(:json_attributes).collect{ |change| ["+", change[0], change[1][1]] }.flatten %>
+                  <%- diff << changeset %>
+                  <%- diff.each do |d| %>
+                    <%- next if d[0] == '~' %>
+                    <tr class="<%= diff_class(d[0]) %>">
+                      <td><%= d[0] %></td>
+                      <td><%= d[1] %></td>
+                      <td>
+                        <%- if d[2].kind_of?(Document::Reference) %>
+                          <%= d[2].category %>
+                          &mdash;
+                          <%= d[2].value %>
+                        <%- else %>
+                          <%= d[2] %>
+                        <%- end %>
+                        <%= d[3] %>
+                      </td>
+                    </tr>
+                  <%- end %>
+                <%- # Very first Document %>
+                <% else %>
+                  <%- current = version.changeset %>
+                  <%- previous = {} %>
+                  <%- diff = ::Hashdiff.diff(previous,current) %>
+                  <%- changeset = version.changeset.except(:json_attributes, :updated_at).collect{ |change| ["+", change[0], change[1][1]] }.flatten %>
+
+                  <%- diff.each do |d| %>
+                    <%- next if d[0] == '~' %>
+                    <%- next if d[2] == [""] %>
+                    <%- next if d[2].nil? %>
+
+                    <tr class="<%= diff_class(d[0]) %>">
+                      <td><%= d[0] %></td>
+                      <td><%= d[1] %></td>
+                      <td>
+                        <%- if d[2].kind_of?(Document::Reference) %>
+                          <%= d[2].category %>
+                          &mdash;
+                          <%= d[2].value %>
+                        <%- else %>
+                          <%= d[2] %>
+                        <%- end %>
+                      </td>
+                    </tr>
+                  <%- end %>
+                <%- end %>
+                </tbody>
+              </table>
+            </td>
+            <td><%= time_ago_in_words(version.created_at) %>
+          </tr>
+        <%- end %>
+      </tbody>
+    </table>
+  </main>
+</div>

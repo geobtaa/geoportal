@@ -1,0 +1,16 @@
+<%- 
+  schema_warning = false
+  if File.exist?(Rails.root.join("tmp/schema_timestamp.txt").to_s)
+    current_timestamp = File.read(Rails.root.join("tmp/schema_timestamp.txt").to_s)
+    if current_timestamp != GEOMG_SCHEMA_TIMESTAMP
+      schema_warning = true
+    end
+  end
+%>
+
+<%- if schema_warning %>
+  <div class="alert alert-danger" role="alert">
+    <strong>Warning:</strong> The project's metadata schema has changed. You need to restart the application server.
+  </div>
+<%- end %>
+

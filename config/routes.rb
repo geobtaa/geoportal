@@ -329,8 +329,8 @@ namespace :admin do
   get "/documents/:id/ingest", to: "document_assets#display_attach_form", as: "asset_ingest"
   post "/documents/:id/ingest", to: "document_assets#attach_files"
 
-  # Asset Direct Upload
-  mount Kithe::AssetUploader.upload_endpoint(:cache) => "/direct_upload", :as => :direct_app_upload
+  # Asset Presign Endpoint (for direct-to-S3 uploads)
+  mount AssetUploader.presign_endpoint(:cache) => "/presign", :as => :presign_app_upload
 
   resources :collections, except: [:show]
 

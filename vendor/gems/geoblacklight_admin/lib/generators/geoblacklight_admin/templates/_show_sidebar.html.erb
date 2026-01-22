@@ -1,0 +1,19 @@
+<div class="gbl-admin">
+  <%= render :partial => "show_gbl_admin" %>
+</div>
+
+<%= render :partial => 'show_tools', locals: { document: @document } %>
+
+<div class="sidebar-buttons">
+<%= render :partial => "show_web_services" %>
+<%= render :partial => "show_downloads" %>
+</div>
+
+<% unless @document.more_like_this.empty? %>
+  <div class="card">
+    <div class="card-header">More Like This</div>
+    <div class="card-body">
+      <%= render :collection => @document.more_like_this, :partial => 'show_more_like_this', :as => :document %>
+    </div>
+  </div>
+<% end %>

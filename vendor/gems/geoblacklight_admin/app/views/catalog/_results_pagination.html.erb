@@ -1,0 +1,9 @@
+<% if show_pagination? and @response.total_pages > 1 %>
+  <div class="row record-padding">
+    <div class="col-md-12">
+      <section class="pagination">
+        <%= pagy_bootstrap_nav(@pagy).html_safe if @pagy.pages > 1 %>
+      </section>
+    </div>
+  </div>
+<% end %>

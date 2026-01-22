@@ -1,0 +1,27 @@
+<p>
+  <strong>Source header:</strong>
+  <%= @mapping.source_header %>
+</p>
+
+<p>
+  <strong>Destination field:</strong>
+  <%= @mapping.destination_field %>
+</p>
+
+<p>
+  <strong>Delimited:</strong>
+  <%= @mapping.delimited %>
+</p>
+
+<p>
+  <strong>Transformation method:</strong>
+  <%= @mapping.transformation_method %>
+</p>
+
+<p>
+  <strong>Import:</strong>
+  <%= @mapping.import_id %>
+</p>
+
+<%= link_to 'Edit', edit_admin_import_mapping_path(@import, @mapping) %> |
+<%= link_to 'Back', admin_import_mappings_path(@import) %>

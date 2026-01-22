@@ -1,0 +1,21 @@
+<%- if @document.persisted? %>
+  <h3 id="document-distributions"><%= link_to "Distributions", admin_document_document_distributions_url(@document) %></h3>
+  <table class="table table-striped table-bordered sortable">
+  <thead class="thead-dark">
+    <tr>
+      <th class="header">Type</th>
+      <th class="header">Value</th>
+      <th class="header">Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @document.document_distributions.each do |document_distribution| %>
+      <tr>
+        <td><%= document_distribution.reference_type.name %></td>
+        <td><%= document_distribution.url %></td>
+        <td><%= document_distribution.label %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

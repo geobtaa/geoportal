@@ -1,0 +1,29 @@
+name,reference_type,reference_uri,label,note,position
+arcgis_dynamic_map_layer,ArcGIS DynamicMapLayer,urn:x-esri:serviceType:ArcGIS#DynamicMapLayer,FALSE,-,1
+arcgis_feature_layer,ArcGIS FeatureLayer,urn:x-esri:serviceType:ArcGIS#FeatureLayer,FALSE,-,2
+arcgis_image_map_layer,ArcGIS ImageMapLayer,urn:x-esri:serviceType:ArcGIS#ImageMapLayer,FALSE,-,3
+arcgis_tiled_map_layer,ArcGIS TiledMapLayer,urn:x-esri:serviceType:ArcGIS#TiledMapLayer,FALSE,-,4
+cog,Cloud Optimized GeoTIFF (COG),https://github.com/cogeotiff/cog-spec,FALSE,-,5
+documentation_download,Data Dictionary / documentation,http://lccn.loc.gov/sh85035852,FALSE,Functions as a link to download documentation (not a viewer),6
+documentation_external,Documentation (External),http://schema.org/url,FALSE,-,7
+download,Download,http://schema.org/downloadUrl,TRUE,Link to download file (for multiple files see the multiple downloads guidelines),8
+geo_json,GeoJSON,http://geojson.org/geojson-spec.html,FALSE,-,9
+full_layer_description,Full layer description,http://schema.org/url,FALSE,To view further descriptive information about the layer or a link to its landing page,10
+iiif_image,International Image Interoperability Framework (IIIF) Image API,http://iiif.io/api/image,FALSE,Load the image viewer using Leaflet-IIIF,11
+iiif_manifest,International Image Interoperability Framework (IIIF) Presentation API Manifest,http://iiif.io/api/presentation#manifest,FALSE,View the IIIF manifest - uses the Clover viewer by default https://samvera-labs.github.io/clover-iiif/docs,12
+image,Image file,http://schema.org/image,TRUE,-,13
+metadata_fgdc,Metadata in FGDC,http://www.opengis.net/cat/csw/csdgm,FALSE,Provides an HTML view of an XML file in the FGDC standard,14
+metadata_html,Metadata in HTML,http://www.w3.org/1999/xhtml,FALSE,View structured metadata in any standard expressed as HTML,15
+metadata_iso,Metadata in ISO 19139,http://www.isotc211.org/schemas/2005/gmd/,FALSE,Provides an HTML view of an XML file in the ISO 19139 standard,16
+metadata_mods,Metadata in MODS,http://www.loc.gov/mods/v3,FALSE,Provides a raw XML view of metadata in the MODS format,17
+oembed,oEmbed,https://oembed.com,FALSE,-,18
+open_index_map,OpenIndexMap,https://openindexmaps.org,FALSE,Provides an interactive preview of a GeoJSON file formatted as an OpenIndexMap,19
+pmtiles,PMTiles,https://github.com/protomaps/PMTiles,FALSE,-,20
+thumbnail,Thumbnail file,http://schema.org/thumbnailUrl,TRUE,-,21
+tile_map_service,Tile Mapping Service (TMS),https://wiki.osgeo.org/wiki/Tile_Map_Service_Specification,FALSE,-,22
+tile_json,TileJSON,https://github.com/mapbox/tilejson-spec,FALSE,-,23
+wcs,Web Coverage Service (WCS),http://www.opengis.net/def/serviceType/ogc/wcs,FALSE,-,24
+wfs,Web Feature Service (WFS),http://www.opengis.net/def/serviceType/ogc/wfs,FALSE,"Provides a to download generated vector datasets (GeoJSON, shapefile)",25
+wms,Web Mapping Service (WMS),http://www.opengis.net/def/serviceType/ogc/wms,FALSE,Provides a service to visually preview a layer and inspect its features,26
+wmts,WMTS,http://www.opengis.net/def/serviceType/ogc/wmts,FALSE,-,27
+xyz_tiles,XYZ tiles,https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames,FALSE,Link to an XYZ tile server,28

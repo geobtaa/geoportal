@@ -1,0 +1,7 @@
+// Toast
+$("#toast-wrapper").html('<%= j render partial: "admin/shared/toast", locals: { toast: @toast } %>');
+$('.toast').toast('show');
+
+// Notifications badge
+var notifications_badge = $("#notification-count");
+notifications_badge.replaceWith("<%= notifications_badge.html_safe %>");

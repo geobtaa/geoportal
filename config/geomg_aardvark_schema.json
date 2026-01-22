@@ -219,7 +219,7 @@
       "type": "string",
       "format": "date-time"
     },
-    "b1g_dateAccesioned_dt": {
+    "b1g_dateAccessioned_dt": {
       "type": "string",
       "format": "date-time"
     },

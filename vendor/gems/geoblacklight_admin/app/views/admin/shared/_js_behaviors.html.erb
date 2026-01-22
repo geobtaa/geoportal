@@ -1,0 +1,282 @@
+<script>
+  $(function () {
+    if ($('[data-toggle="tooltip"]').length > 0) {
+      //$('[data-toggle="tooltip"]').tooltip();
+    }
+  });
+
+  // Date Range picker
+  $('#date-range').on('change', function(event){
+    GBLADMIN.DateRangeSelect();
+
+    if ($('#compare').length > 0) {
+      GBLADMIN.CompareRangeSelect();
+    }
+  });
+
+  // Compare Range checkbox toggle
+  $("input#compare").on('change', function(event){
+    GBLADMIN.DisplayCompareDateRange();
+    GBLADMIN.CompareRangeSelect();
+    GBLADMIN.ToggleCompare();
+  });
+
+  // Compare Range picker
+  $('#compare-options').on('change', function(event){
+    GBLADMIN.CompareRangeSelect();
+  });
+
+  // Bootstrap DateRangePicker
+  $('input[name="daterange"]').daterangepicker({
+    autoUpdateInput: false,
+    locale: { cancelLabel: 'Clear' }
+    });
+
+  $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
+      $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+
+  });
+
+  $('input[name="daterange"]').on('cancel.daterangepicker', function(ev, picker) {
+      $(this).val('');
+  });
+
+  
+  GBLADMIN.DisableIfPersisted();
+</script>
+
+<script type="module">
+  import {Uppy, Dashboard} from "https://releases.transloadit.com/uppy/v3.6.1/uppy.min.mjs"
+
+  if (document.getElementsByClassName('uppy-dashboard-container').length > 0) {
+
+    var closest = function(el, fn) {
+      return el && (fn(el) ? el : closest(el.parentNode, fn));
+    }
+    
+    var container = document.getElementsByClassName('uppy-dashboard-container')[0];
+    var containerForm = closest(container, function(el) { return el.tagName.toLowerCase() == "form" });
+    var cachedFileTableEl = containerForm.querySelector("*[data-toggle='cached-files-table']");
+    var browseEverythingButton = containerForm.querySelector('*[data-toggle="kithe-browse-everything"]');
+    var submitButton = containerForm.querySelector("*[data-toggle='kithe-upload-submit']");
+    
+    // Get presign endpoint from data attribute (set by kithe_upload_data_config)
+    // Rails converts hash keys to kebab-case: data-presign-endpoint
+    var presignEndpoint = container.dataset.presignEndpoint || container.getAttribute('data-presign-endpoint') || '/admin/presign';
+    var usePresign = true; // Always use presigned uploads for direct-to-S3
+
+    var uppy = new Uppy()
+      .use(Dashboard, {
+        inline: true,
+        target: '.uppy-dashboard-container'
+      });
+    
+    // Always use presigned URLs for direct-to-S3 uploads
+    // Handle all uploads manually via the 'upload' event - no XHRUpload plugin needed
+    // The 'upload' event fires when user clicks "Upload" button
+    uppy.on('upload', async (data) => {
+        console.log('Upload event fired, processing files via presigned URLs');
+        const files = Object.values(uppy.getFiles()).filter(f => !f.error && !f.progress?.uploadStarted);
+        
+        if (files.length === 0) {
+          return; // No files to process
+        }
+        
+        // Mark files as being handled for presigned uploads
+        files.forEach(file => {
+          file.meta = file.meta || {};
+          file.meta.uploader = 'presigned-s3';
+          file.progress = file.progress || {};
+          file.progress.uploadStarted = true;
+        });
+        
+        console.log(`Marked ${files.length} files for presigned upload`);
+        
+        // Process each file with presigned upload
+        for (const file of files) {
+          try {
+            uppy.emit('upload-started', file);
+            
+            // Step 1: Request presigned URL from Rails
+            console.log('Requesting presigned URL for:', file.name);
+            const presignUrl = `${presignEndpoint}?filename=${encodeURIComponent(file.name)}&type=${encodeURIComponent(file.type || 'application/octet-stream')}&size=${file.size}`;
+            const presignResponse = await fetch(presignUrl);
+            console.log('Presigned URL response:', presignResponse.status);
+            if (!presignResponse.ok) {
+              const errorText = await presignResponse.text().catch(() => presignResponse.statusText);
+              throw new Error(`Failed to get presigned URL (${presignResponse.status}): ${errorText}`);
+            }
+            const presignData = await presignResponse.json();
+            
+            // Validate presign response
+            if (!presignData.url) {
+              throw new Error('Presigned URL response missing required "url" field');
+            }
+            if (!presignData.fields && !presignData.key) {
+              throw new Error('Presigned URL response missing required "fields" or "key" field');
+            }
+            
+            // Step 2: Upload directly to S3 using presigned URL
+            const formData = new FormData();
+            
+            // Add all fields from presigned response
+            if (presignData.fields) {
+              Object.keys(presignData.fields).forEach(key => {
+                formData.append(key, presignData.fields[key]);
+              });
+            }
+            
+            // Add the file - for S3 presigned POST, the field name should be 'file'
+            // file.data is the actual File/Blob object
+            formData.append('file', file.data);
+            
+            // Step 3: Upload to S3 with progress tracking
+            const xhr = new XMLHttpRequest();
+            
+            // Track upload progress
+            xhr.upload.addEventListener('progress', (e) => {
+              if (e.lengthComputable) {
+                uppy.emit('upload-progress', file, {
+                  bytesUploaded: e.loaded,
+                  bytesTotal: e.total,
+                  percentage: Math.round((e.loaded / e.total) * 100)
+                });
+              }
+            });
+            
+            // Wait for upload to complete
+            await new Promise((resolve, reject) => {
+              xhr.addEventListener('load', () => {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                  // Get file info from S3 response headers
+                  const etag = xhr.getResponseHeader('ETag')?.replace(/"/g, '') || '';
+                  // Extract key from presignData
+                  const fileKey = presignData.fields?.key || presignData.key || '';
+                  // Remove the 'cache/' prefix if present
+                  const fileId = fileKey.replace(/^cache\//, '');
+                  
+                  // Construct shrineHash in the format Shrine/Kithe expects
+                  const shrineHash = {
+                    id: fileId,
+                    storage: 'cache',
+                    metadata: {
+                      filename: file.name,
+                      size: file.size,
+                      mime_type: file.type || 'application/octet-stream'
+                    }
+                  };
+                  
+                  if (etag) {
+                    shrineHash.metadata.etag = etag;
+                  }
+                  
+                  // Emit success event with the shrineHash as response body
+                  uppy.emit('upload-success', file, {
+                    body: shrineHash
+                  });
+                  resolve();
+                } else {
+                  const errorText = xhr.responseText || xhr.statusText;
+                  reject(new Error(`S3 upload failed (${xhr.status}): ${errorText}`));
+                }
+              });
+              
+              xhr.addEventListener('error', () => {
+                reject(new Error('S3 upload failed: Network error'));
+              });
+              
+              xhr.addEventListener('abort', () => {
+                reject(new Error('S3 upload aborted'));
+              });
+              
+              xhr.open(presignData.method || 'POST', presignData.url);
+              xhr.send(formData);
+            });
+          } catch (error) {
+            console.error('Direct-to-S3 upload error:', error);
+            uppy.emit('upload-error', file, error);
+          }
+        }
+      });
+    
+    // Note: We don't use XHRUpload plugin - all uploads are handled via presigned URLs
+    // in the 'upload' event handler above, which uploads directly to S3
+
+    // Turns a number of bytes into human readable eg "12GB"
+    // https://stackoverflow.com/a/38897674
+    var fileSizeSI = function(size) {
+      var e = (Math.log(size) / Math.log(1e3)) | 0;
+      return +(size / Math.pow(1e3, e)).toFixed(1) + ' ' + ('kMGTPEZY'[e - 1] || '') + 'B';
+    }
+
+    // Returns the <input type="hidden"> representing a direct-uploaded
+    // file, to be sent to controller for attachment. Value will be a JSON
+    // serialization of the hash describing the uploaded-to-cache file,
+    // to be sent to the controller.
+    var makeHiddenFieldForCachedFile = function(shrineHash) {
+      var hidden = document.createElement("input");
+      hidden.setAttribute("type", "hidden");
+      hidden.setAttribute("name", "cached_files[]");
+      hidden.setAttribute("value", JSON.stringify(shrineHash));
+
+      return hidden;
+    }
+
+    // create a DOM element for a table row that will be the list of succesfully
+    // direct uploaded files, including hidden inputs to be submitted with form,
+    // and a remove button to remove it from list.
+    //
+    // With just browser API, yeah, it's a bit ugly code.
+    var makeCachedFileRow = function(shrineHash) {
+      var row = document.createElement("tr");
+
+      var firstCell = row.appendChild(document.createElement("td"));
+      firstCell.appendChild(makeHiddenFieldForCachedFile(shrineHash));
+      firstCell.appendChild(document.createTextNode(shrineHash.metadata.filename));
+
+      if (shrineHash.metadata.size) {
+        var size = fileSizeSI(shrineHash.metadata.size);
+      } else {
+        var size = "";
+      }
+
+      row.appendChild(document.createElement("td")).innerText = size;
+
+      // Storage type control, put in params keyed by file ID
+      // Removed - we are always using public storage for now
+
+      // References control, put in params keyed by file ID
+      row.appendChild(document.createElement("td")).innerHTML =
+        "<select name='dct_references_for[" + shrineHash.id + "]' class='form-control dct-references-s'>" +
+          "<%= assets_dct_references_options %>" +
+        "</select>";
+
+      row.appendChild(document.createElement("td")).innerHTML =
+        "<button type='button' data-cached-file-remove='true' class='btn btn-link' aria-label='Remove' title='Remove'>" +
+          "<i class='fa fa-times-circle' style='font-size: 180%' aria-hidden='true'></i>" +
+        "</button>";
+
+      return row;
+    }
+
+    // Upload Success
+    // When a file is fully direct uploaded by uppy, we remove it from uppy dashboard,
+    // and instead list it in our list of files to be attached on form submit.
+    uppy.on("upload-success", function(file, response) {
+      // Handle both presigned (direct response.body) and server-uploaded (response.body.body) formats
+      var shrineHash = response.body?.body || response.body;
+
+      // add the file to our list that will be submitted with form
+      cachedFileTableEl.appendChild(makeCachedFileRow(shrineHash));
+
+      // And remove from uppy dashboard, we're treating that just as the in-progress
+      // list. This means we won't get a `complete` callback though. :(
+      uppy.removeFile(file.id);
+    });
+
+    // Upload Complete
+    uppy.on('complete', (result) => {
+      console.log('Upload complete! We’ve uploaded these files:', result.successful)
+    })
+  }
+</script>

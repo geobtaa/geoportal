@@ -1,0 +1,29 @@
+<div class="make-me-sticky mt-4 ml-4">
+  <nav class="nav flex-column ml-4 mt-6">
+    <% if @document.persisted? %>
+      <strong class="mb-4"><%= link_to "GBL♦Admin | View in GeoBlacklight", solr_document_url(@document), { class: 'btn btn-warning' } %></strong>
+
+      <% if @document&.members&.first&.file&.exists? %>
+        <%= link_to admin_document_document_assets_url(@document) do %>
+          <strong class="mt-2">Thumbnail</strong><br>
+          <%= image_tag(@document.members.first.file_url(:thumb_standard_2X), { class: "p-2", width: 150 }) %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%- form_elements = FormElement.all.order(position: :asc) %>
+    <%- form_elements.each do |form_element| %>
+      <% if form_element.kind_of? FormHeader %>
+        <strong class="mt-2"><a data-controller="scroll-to" class="mt-4" href="#<%= form_element.label.parameterize(separator: '-') %>"><%= form_element.label %></a></strong>
+      <% end %>
+      <% if form_element.kind_of? FormGroup %>
+        <a data-controller="scroll-to" class="ml-2" href="#<%= form_element.label.parameterize(separator: '-') %>"><%= form_element.label %></a>
+      <% end %>
+    <% end %>
+
+    <% if @document.persisted? %>
+      <%= link_to "Institutional Access Links", admin_document_document_accesses_url(@document), class: "ml-2" %>
+      <%= link_to "Additional Assets", admin_document_document_assets_url(@document), class: "ml-2" %>
+    <% end %>
+  </nav>
+</div>

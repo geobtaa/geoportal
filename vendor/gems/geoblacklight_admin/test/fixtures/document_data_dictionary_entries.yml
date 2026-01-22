@@ -1,0 +1,13 @@
+one:
+  document_data_dictionary: one
+  field_name: "field_one"
+  field_type: "string"
+  definition: "First test field"
+  position: 1
+
+two:
+  document_data_dictionary: one
+  field_name: "field_two"
+  field_type: "string"
+  definition: "Second test field"
+  position: 2 

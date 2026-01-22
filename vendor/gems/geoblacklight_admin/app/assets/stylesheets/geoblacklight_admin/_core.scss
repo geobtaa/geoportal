@@ -1,0 +1,79 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ */
+ 
+// Settings
+@import "settings/variables";
+
+// Vendors
+@import "bootstrap";
+
+// Modules
+@import "modules/autocomplete";
+@import "modules/blazer";
+@import "modules/chosen";
+@import "modules/code";
+@import "modules/datepicker";
+@import "modules/elements";
+@import "modules/forms";
+@import "modules/icons";
+@import "modules/images";
+@import "modules/nav";
+@import "modules/pagy";
+@import "modules/results";
+@import "modules/tables";
+@import "modules/toasts";
+@import "modules/visibility";
+
+nav.navbar.bg-light {
+  border-bottom: 1px solid #CCC;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.1);
+  margin-bottom:2rem;
+}
+
+footer.gbl-admin {
+  border-top: 1rem solid #0088ce;
+  margin-top: 4rem;
+  background:rgba(0, 0, 0, 0.8) image-url('aerial_photo.jpg') repeat;
+  box-shadow: inset 0 0 0 50vw rgba(0, 0, 0, 0.8);
+}
+
+main#gbl-admin {
+  min-height: 75vh;
+  margin-top: 0rem;
+}
+
+main.container-fluid {
+  margin-top: 5rem;
+}
+
+.navbar-brand.gbl-admin {
+  background: none;
+}
+
+kbd {
+  background-color:aliceblue;
+}
+
+a.btn.btn-gbl-admin {
+  color: black;
+  border-color: #ffc107;
+  margin: 1rem 0;
+
+  &:visited {
+    color: black;
+    background-color: #ffc107;
+  }
+}
+
+div.dropdown-menu.show {
+  z-index: 2000;
+}

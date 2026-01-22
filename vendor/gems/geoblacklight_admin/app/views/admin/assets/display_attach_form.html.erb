@@ -1,0 +1,39 @@
+<div class="scihist-attach-files">
+
+  <h1>Add Files</h1>
+  <h2>To: General Application Asset Pool</h2>
+  <p>Once the files have been uploaded and are ready for attachment, you can proceed to Attach.</p>
+
+  <%= form_with(url: admin_asset_files_ingest_path, method: :post, local: true) do |form| %>
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+          <h2>1. Upload Files</h2>
+          
+          <%= content_tag "div", class: "uppy-dashboard-container", data: Admin::UploadUtil.kithe_upload_data_config do %>
+          <% end %>
+        </div>
+
+        <div class="col-sm-6">
+          <h2>2. Attach Files</h2>
+          <div class="d-flex justify-content-between">
+            <%= form.submit "Attach", class: "btn btn-primary btn-lg", data: { toggle: "kithe-upload-submit" } %>
+            <%= link_to  "Cancel", admin_assets_url,
+                  class: "btn btn-outline-secondary btn-lg",
+                  data: { confirm: "Cancel attach files?" }
+            %>
+          </div>
+          <table class="table table-sm mt-3 attach-files-table" data-toggle="cached-files-table">
+            <tr>
+              <th class="attach-files-table-filename">Filename</th>
+              <th class="attach-files-table-size">Size</th>
+              <th class="attach-files-table-references">References</th>
+              <th class="attach-files-table-remove"></th>
+            </tr>
+          </table>
+        </div>
+    </div>
+
+  <% end %>
+</div>

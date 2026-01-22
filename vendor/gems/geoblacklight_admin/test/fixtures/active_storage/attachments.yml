@@ -1,0 +1,15 @@
+one:
+  name: 'csv_file'
+  record_type: 'Import'
+  record_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+  blob_id: <%= ActiveRecord::FixtureSet.identify(:csv) %>
+
+import_btaa:
+  name: 'csv_file'
+  record: one (Import)
+  blob: import_btaa_blob
+
+import_distribution:
+  name: 'csv_file'
+  record: one (ImportDistribution)
+  blob: import_distribution_blob
