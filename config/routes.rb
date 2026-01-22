@@ -333,7 +333,8 @@ namespace :admin do
   mount Kithe::AssetUploader.upload_endpoint(:cache) => "/direct_upload", :as => :direct_app_upload
   
   # Asset Presign Endpoint (for direct-to-S3 uploads)
-  mount Kithe::AssetUploader.presign_endpoint(:cache) => "/presign", :as => :presign_app_upload
+  # Use AssetUploader (app's uploader class) which has presign_endpoint available
+  mount AssetUploader.presign_endpoint(:cache) => "/presign", :as => :presign_app_upload
 
   resources :collections, except: [:show]
 
