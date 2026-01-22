@@ -200,18 +200,21 @@
       fieldName: 'file'
     });
     
-    // Completely disable XHRUpload by overriding its upload method to do nothing
+    // Completely disable XHRUpload by overriding its upload method to return a resolved promise
     // All files are handled via presigned URLs in the 'upload' event handler
+    // We return a promise so Uppy's StatusBar doesn't error when calling .catch()
     if (xhrUploadPlugin) {
       const originalUpload = xhrUploadPlugin.upload;
       xhrUploadPlugin.upload = function(files, callback) {
         // Don't process any files - we handle all uploads via presigned URLs
         console.log('XHRUpload disabled - using presigned direct-to-S3 uploads');
-        // Immediately call callback with success to prevent Uppy from waiting
+        // Return a resolved promise so Uppy's StatusBar can handle it properly
+        const promise = Promise.resolve({ status: 200 });
+        // Call callback if provided (for backwards compatibility)
         if (callback) {
-          setTimeout(() => callback(null, { status: 200 }), 0);
+          promise.then(result => callback(null, result)).catch(err => callback(err));
         }
-        return;
+        return promise;
       };
     }
 
