@@ -62,26 +62,46 @@
     
     // Get presign endpoint from data attribute (set by kithe_upload_data_config)
     // Rails converts hash keys to kebab-case: data-presign-endpoint
-    var presignEndpoint = container.dataset.presignEndpoint || container.getAttribute('data-presign-endpoint') || '';
-    var usePresign = presignEndpoint && presignEndpoint !== '';
+    var presignEndpoint = container.dataset.presignEndpoint || container.getAttribute('data-presign-endpoint') || '/admin/presign';
+    var usePresign = true; // Always use presigned uploads for direct-to-S3
 
     var uppy = new Uppy()
       .use(Dashboard, {
         inline: true,
         target: '.uppy-dashboard-container'
-      })
+      });
     
-    // Use presigned URLs for direct-to-S3 uploads if available, otherwise fall back to server upload
-    if (usePresign) {
-      // Custom uploader for direct-to-S3 via presigned URLs
-      uppy.use({
-        id: 'AwsS3Custom',
-        async upload(file, onProgress) {
+    // Always use presigned URLs for direct-to-S3 uploads
+    // Intercept the upload process before XHRUpload runs
+    // Use 'upload' event which fires when upload starts, before XHRUpload processes files
+    uppy.on('upload', async () => {
+        const files = Object.values(uppy.getFiles()).filter(f => !f.error && !f.progress?.uploadStarted);
+        
+        // Mark files as being handled by our custom uploader to prevent XHRUpload from processing them
+        files.forEach(file => {
+          file.meta.uploader = 'presigned-s3';
+        });
+        
+        for (const file of files) {
           try {
+            uppy.emit('upload-started', file);
+            
             // Step 1: Request presigned URL from Rails
             const presignUrl = `${presignEndpoint}?filename=${encodeURIComponent(file.name)}&type=${encodeURIComponent(file.type || 'application/octet-stream')}&size=${file.size}`;
             const presignResponse = await fetch(presignUrl);
+            if (!presignResponse.ok) {
+              const errorText = await presignResponse.text().catch(() => presignResponse.statusText);
+              throw new Error(`Failed to get presigned URL (${presignResponse.status}): ${errorText}`);
+            }
             const presignData = await presignResponse.json();
+            
+            // Validate presign response
+            if (!presignData.url) {
+              throw new Error('Presigned URL response missing required "url" field');
+            }
+            if (!presignData.fields && !presignData.key) {
+              throw new Error('Presigned URL response missing required "fields" or "key" field');
+            }
             
             // Step 2: Upload directly to S3 using presigned URL
             const formData = new FormData();
@@ -93,56 +113,84 @@
               });
             }
             
-            // Add the file
+            // Add the file - file.data is the actual File/Blob object
             formData.append('file', file.data);
             
-            // Step 3: Upload to S3
-            const uploadResponse = await fetch(presignData.url, {
-              method: presignData.method || 'POST',
-              body: formData
+            // Step 3: Upload to S3 with progress tracking
+            const xhr = new XMLHttpRequest();
+            
+            // Track upload progress
+            xhr.upload.addEventListener('progress', (e) => {
+              if (e.lengthComputable) {
+                uppy.emit('upload-progress', file, {
+                  bytesUploaded: e.loaded,
+                  bytesTotal: e.total,
+                  percentage: Math.round((e.loaded / e.total) * 100)
+                });
+              }
             });
             
-            if (!uploadResponse.ok) {
-              throw new Error(`S3 upload failed: ${uploadResponse.statusText}`);
-            }
-            
-            // Step 4: Get file info from S3 response headers
-            const etag = uploadResponse.headers.get('ETag')?.replace(/"/g, '') || '';
-            // Extract key from presignData - Shrine typically returns it in fields.key
-            const fileKey = presignData.fields?.key || presignData.key || '';
-            // Remove the 'cache/' prefix if present to get just the ID
-            const fileId = fileKey.replace(/^cache\//, '');
-            
-            // Construct shrineHash in the format Shrine/Kithe expects (same as upload_endpoint)
-            // This format matches what the old XHRUpload endpoint would return
-            const shrineHash = {
-              id: fileId,
-              storage: 'cache',
-              metadata: {
-                filename: file.name,
-                size: file.size,
-                mime_type: file.type || 'application/octet-stream'
-              }
-            };
-            
-            // Add ETag if available
-            if (etag) {
-              shrineHash.metadata.etag = etag;
-            }
-            
-            return { body: shrineHash };
+            // Wait for upload to complete
+            await new Promise((resolve, reject) => {
+              xhr.addEventListener('load', () => {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                  // Get file info from S3 response headers
+                  const etag = xhr.getResponseHeader('ETag')?.replace(/"/g, '') || '';
+                  // Extract key from presignData
+                  const fileKey = presignData.fields?.key || presignData.key || '';
+                  // Remove the 'cache/' prefix if present
+                  const fileId = fileKey.replace(/^cache\//, '');
+                  
+                  // Construct shrineHash in the format Shrine/Kithe expects
+                  const shrineHash = {
+                    id: fileId,
+                    storage: 'cache',
+                    metadata: {
+                      filename: file.name,
+                      size: file.size,
+                      mime_type: file.type || 'application/octet-stream'
+                    }
+                  };
+                  
+                  if (etag) {
+                    shrineHash.metadata.etag = etag;
+                  }
+                  
+                  // Emit success event with the shrineHash as response body
+                  uppy.emit('upload-success', file, {
+                    body: shrineHash
+                  });
+                  resolve();
+                } else {
+                  const errorText = xhr.responseText || xhr.statusText;
+                  reject(new Error(`S3 upload failed (${xhr.status}): ${errorText}`));
+                }
+              });
+              
+              xhr.addEventListener('error', () => {
+                reject(new Error('S3 upload failed: Network error'));
+              });
+              
+              xhr.addEventListener('abort', () => {
+                reject(new Error('S3 upload aborted'));
+              });
+              
+              xhr.open(presignData.method || 'POST', presignData.url);
+              xhr.send(formData);
+            });
           } catch (error) {
-            throw new Error(`Upload failed: ${error.message}`);
+            console.error('Direct-to-S3 upload error:', error);
+            uppy.emit('upload-error', file, error);
           }
         }
       });
-    } else {
-      // Fallback to server-mediated upload
-      uppy.use(XHRUpload, { 
-        endpoint: '/admin/direct_upload',
-        fieldName: 'file'
-      });
-    }
+    
+    // Add XHRUpload plugin (required by Uppy) but we handle uploads manually via presigned URLs
+    // The 'upload' event listener above intercepts and handles all uploads before XHRUpload processes them
+    uppy.use(XHRUpload, { 
+      endpoint: '/admin/direct_upload',
+      fieldName: 'file'
+    });
 
     // Turns a number of bytes into human readable eg "12GB"
     // https://stackoverflow.com/a/38897674
@@ -205,7 +253,8 @@
     // When a file is fully direct uploaded by uppy, we remove it from uppy dashboard,
     // and instead list it in our list of files to be attached on form submit.
     uppy.on("upload-success", function(file, response) {
-      var shrineHash = response.body;
+      // Handle both presigned (direct response.body) and server-uploaded (response.body.body) formats
+      var shrineHash = response.body?.body || response.body;
 
       // add the file to our list that will be submitted with form
       cachedFileTableEl.appendChild(makeCachedFileRow(shrineHash));

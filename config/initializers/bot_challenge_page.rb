@@ -1,6 +1,17 @@
 Rails.application.config.to_prepare do
 
-  BotChallengePage::BotChallengePageController.bot_challenge_config.enabled = ENV['TURNSTILE_ENABLED']
+  # Disable bot challenge in development unless explicitly enabled
+  # Set TURNSTILE_ENABLED=true in your environment to enable it in development
+  turnstile_enabled = if Rails.env.development?
+    # In development, only enable if explicitly set to true/1/yes/etc.
+    # This handles "false" strings in .env files
+    enabled = ENV['TURNSTILE_ENABLED']
+    enabled.present? && !%w[false 0 no off].include?(enabled.downcase)
+  else
+    ENV['TURNSTILE_ENABLED'].present?
+  end
+  
+  BotChallengePage::BotChallengePageController.bot_challenge_config.enabled = turnstile_enabled
 
   # Get from CloudFlare Turnstile: https://www.cloudflare.com/application-services/products/turnstile/
   # Some testing keys are also available: https://developers.cloudflare.com/turnstile/troubleshooting/testing/

@@ -84,7 +84,8 @@ gem 'geoblacklight', '~> 4.0'
 
 # GBL Admin
 #gem 'geoblacklight_admin', '~> 0.10.0'
-gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/metadata-updates"
+# Using local path instead of git dependency - see vendor/gems/geoblacklight_admin
+gem 'geoblacklight_admin', path: "vendor/gems/geoblacklight_admin"
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"
