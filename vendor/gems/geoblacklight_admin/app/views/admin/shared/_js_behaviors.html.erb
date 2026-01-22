@@ -46,7 +46,7 @@
 </script>
 
 <script type="module">
-  import {Uppy, Dashboard, XHRUpload} from "https://releases.transloadit.com/uppy/v3.6.1/uppy.min.mjs"
+  import {Uppy, Dashboard} from "https://releases.transloadit.com/uppy/v3.6.1/uppy.min.mjs"
 
   if (document.getElementsByClassName('uppy-dashboard-container').length > 0) {
 
@@ -72,9 +72,8 @@
       });
     
     // Always use presigned URLs for direct-to-S3 uploads
-    // Intercept the upload process and handle it completely, preventing XHRUpload from running
-    // The 'upload' event fires when user clicks "Upload" button, before XHRUpload processes files
-    // We MUST mark files synchronously before any async operations to prevent XHRUpload from starting
+    // Handle all uploads manually via the 'upload' event - no XHRUpload plugin needed
+    // The 'upload' event fires when user clicks "Upload" button
     uppy.on('upload', async (data) => {
         console.log('Upload event fired, processing files via presigned URLs');
         const files = Object.values(uppy.getFiles()).filter(f => !f.error && !f.progress?.uploadStarted);
@@ -83,15 +82,12 @@
           return; // No files to process
         }
         
-        // CRITICAL: Mark files as being handled SYNCHRONOUSLY before any async operations
-        // This must happen immediately so XHRUpload's upload method sees them as handled
+        // Mark files as being handled for presigned uploads
         files.forEach(file => {
           file.meta = file.meta || {};
           file.meta.uploader = 'presigned-s3';
           file.progress = file.progress || {};
           file.progress.uploadStarted = true;
-          // Also mark with a flag that XHRUpload can check
-          file.meta.skipXHRUpload = true;
         });
         
         console.log(`Marked ${files.length} files for presigned upload`);
@@ -203,49 +199,8 @@
         }
       });
     
-    // Add XHRUpload plugin (required by Uppy) but prevent it from actually uploading
-    // We handle all uploads via presigned URLs in the 'upload' event handler above
-    const xhrUploadPlugin = uppy.use(XHRUpload, {
-      endpoint: '/admin/direct_upload',
-      fieldName: 'file'
-    });
-    
-    // Override XHRUpload's upload method to skip processing
-    // We handle ALL uploads via presigned URLs in the 'upload' event handler above
-    // The 'upload' event fires first and handles files, then XHRUpload is called
-    // We need to return a resolved promise so Uppy doesn't hang, but we don't actually upload
-    if (xhrUploadPlugin && xhrUploadPlugin.upload) {
-      const originalUpload = xhrUploadPlugin.upload.bind(xhrUploadPlugin);
-      xhrUploadPlugin.upload = function(files, callback) {
-        console.log('XHRUpload.upload called - skipping (using presigned direct-to-S3)');
-        console.log('Files passed to XHRUpload:', files);
-        
-        // Check if files are being handled by presigned upload
-        // The 'upload' event handler should have already marked them
-        const allFiles = uppy.getFiles();
-        const handledByPresign = allFiles.some(file => 
-          file.meta?.uploader === 'presigned-s3' || 
-          file.meta?.skipXHRUpload || 
-          file.progress?.uploadStarted
-        );
-        
-        if (handledByPresign) {
-          // Files are being handled via presigned URLs - don't process with XHRUpload
-          console.log('XHRUpload skipped - files handled via presigned direct-to-S3 uploads');
-          // Return a resolved promise immediately so Uppy doesn't hang
-          // Our presigned upload handler will emit upload-success events
-          const promise = Promise.resolve({ status: 200, body: {} });
-          if (callback) {
-            promise.then(result => callback(null, result)).catch(err => callback(err));
-          }
-          return promise;
-        }
-        
-        // Fallback: if files aren't marked for presigned upload, use XHRUpload (shouldn't happen)
-        console.log('XHRUpload fallback - files not marked for presigned upload, using XHRUpload');
-        return originalUpload(files, callback);
-      };
-    }
+    // Note: We don't use XHRUpload plugin - all uploads are handled via presigned URLs
+    // in the 'upload' event handler above, which uploads directly to S3
 
     // Turns a number of bytes into human readable eg "12GB"
     // https://stackoverflow.com/a/38897674

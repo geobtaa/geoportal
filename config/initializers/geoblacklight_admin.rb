@@ -29,7 +29,6 @@ module Admin
     def self.kithe_upload_data_config(toggle_value: "kithe-upload")
       {
         toggle: toggle_value,
-        upload_endpoint: Rails.application.routes.url_helpers.admin_direct_app_upload_path,
         presign_endpoint: Rails.application.routes.url_helpers.admin_presign_app_upload_path
       }
     end
