@@ -1,0 +1,78 @@
+<%- @page_title = "GBL♦Admin - Document - Licensed Access" %>
+
+<div class="row mb-2">
+  <div class="col">
+    <h1 style="width:100%;">
+      Document &middot; Licensed Access
+
+      <% if params[:document_id] %>
+        <%= link_to '+ Import CSV', import_admin_document_document_licensed_accesses_path(@document), { class: 'btn btn-primary float-right' } %>
+
+        <%= link_to '+ New Licensed Access', new_admin_document_document_licensed_access_path(@document), { class: 'btn btn-primary float-right mr-2' } %>
+      <% else %>
+        <%= link_to '- Delete CSV', destroy_all_admin_document_licensed_accesses_path, { class: 'btn btn-danger float-right' } %>
+        <%= link_to '+ Import CSV', import_admin_document_licensed_accesses_path, { class: 'btn btn-primary float-right mr-4' } %>
+      <% end %>
+    </h1>
+    <% if params[:document_id] %>
+      <h2 class='h3'>
+        <%= link_to(@document.title, admin_document_path(@document)) %>
+        &middot;
+        <%= @document_licensed_accesses.count %> urls
+      </h2>
+    <% else %>
+      <h2 class='h3'>Licensed Access</h2>
+    <% end %>
+
+    <% if @pagy %>
+    <h6>
+      <span class='float-left mt-3'>
+        <%== pagy_info(@pagy) %>
+      </span>
+      <span class='float-right'>
+        <%== pagy_bootstrap_nav(@pagy) %>
+      </span>
+    </h6>
+    <% end %>
+
+
+    <table class="table table-striped table-bordered sortable">
+      <thead class="thead-dark">
+        <tr>
+          <th class="header">id</th>
+          <th class="header">friendlier_id</th>
+          <th class="header">institution_code</th>
+          <th class="header">institution_name</th>
+          <th class="header" style="max-width:200px;">access_url</th>
+          <th class="header" colspan="2">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @document_licensed_accesses.each do |document_licensed_access| %>
+          <tr>  
+            <td><%= document_licensed_access.id %></td>
+            <td><%= link_to document_licensed_access.friendlier_id, admin_document_path(document_licensed_access.document) %></td>
+            <td><%= document_licensed_access.institution_code %></td>
+            <td><%= b1g_institution_codes[document_licensed_access.institution_code] %></td>
+            <td><%= link_to(document_licensed_access.access_url, document_licensed_access.access_url) %></td>
+            <td><%= link_to 'Edit', edit_admin_document_document_licensed_access_path(document_licensed_access.document, document_licensed_access) %></td>
+            <td><%= link_to 'Destroy', admin_document_document_licensed_access_path(document_licensed_access.document, document_licensed_access), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+      <% if @pagy %>
+      <h6>
+        <span class='float-left mt-3'>
+          <%== pagy_info(@pagy) %>
+        </span>
+        <span class='float-right'>
+          <%== pagy_bootstrap_nav(@pagy) %>
+        </span>
+      </h6>
+      <% end %>
+    </div>
+  </div>
+</div>

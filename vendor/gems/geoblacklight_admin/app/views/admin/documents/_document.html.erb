@@ -1,0 +1,48 @@
+<% bookmarked = current_user.document_is_bookmarked?(document) ? 'bookmarked' : '' %>
+
+<% if document.respond_to?('friendlier_id') %>
+  <%= content_tag :li, id: document.friendlier_id, class: bookmarked do %>
+    <div class="row">
+      <div class="col-1">
+        <% # This should happen elsewhere %>
+        <% @document = Document.find_by(friendlier_id: document.friendlier_id) %>
+        <% if thumb_to_render?(@document) %>
+          <%= link_to edit_admin_document_path(document.friendlier_id) do %>
+            <%= image_tag(thumbnail_to_render(@document), class: "thumbnail") %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="result col">
+        <%= check_box_tag nil, nil, false, data: { id: document.friendlier_id, action: 'click->results#checkChecked'}%>
+
+        <%= render 'admin/documents/document_bookmark', document: document %>
+
+        <%= "#{@documents.meta['pages']['offset_value'] + index + 1}." if @documents %>
+
+        <%= link_to document.title, edit_admin_document_path(document.friendlier_id) %>
+        &middot; <%= publication_state_badge(document) %>
+
+        <% if document.send("schema_provider_s") %>
+          &middot; <%= document.send("schema_provider_s") %>
+        <% end %>
+        <% if document.send("dct_temporal_sm") %>
+          &middot; <%= document.send("dct_temporal_sm").join("-") %>
+        <% end %>
+        <% if document.send("dct_description_sm").present? %>
+          <p class="js-truncate"><%= document.send("dct_description_sm").join %></p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <li>
+    <div class="row">
+      <div class="thumbnail col-1">
+        &nbsp;
+      </div>
+      <div class="result col">
+        <p><strong>Missing from database: </strong><%= document.inspect %></p>
+      </div>
+    </div>
+  </li>
+<% end %>

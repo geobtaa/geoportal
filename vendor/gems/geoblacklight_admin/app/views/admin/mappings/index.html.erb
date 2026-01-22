@@ -1,0 +1,37 @@
+<h1><%= @import.name %> &middot; Field Mappings</h1>
+
+<table class="table">
+  <tbody>
+    <%- if @import.mappings.size > 1 %>
+      <%- @import.mappings.each do |mapping| %>
+        <%= simple_form_for [@import, mapping], :url => admin_import_mapping_path(@import, mapping) do |f| %>
+          <tr>
+            <td><%= f.input :source_header, :input_html => {:readonly => true} %></td>
+            <td><%= f.input :destination_field, collection: attribute_collection %></td>
+            <td><%= f.input :delimited %></td>
+            <td><%= f.association :import, as: :hidden %></td>
+            <td><%= f.button :submit, "Update", {class: 'btn btn-primary'} %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <%- else %>
+      <%= simple_form_for(@import, :url => admin_import_path(@import), :action => 'put') do |form| %>
+        <%- @import.headers.each do |header| %>
+          <tr>
+            <%= form.simple_fields_for :mappings do |f| %>
+              <td><%= f.input :source_header, :input_html => {:value => header, :readonly => true} %></td>
+              <td><%= f.input :destination_field, collection: attribute_collection, selected: mapping_suggestion(@import, header) %></td>
+              <td><%= f.input :delimited, :input_html => { checked: delimiter_suggestion(@import, header) } %></td>
+              <td><%= f.association :import, as: :hidden %></td>
+          <% end %>
+          </tr>
+        <% end %>
+        <tr>
+          <td><%= form.button :submit, "Create Mapping", {class: 'btn btn-primary'} %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

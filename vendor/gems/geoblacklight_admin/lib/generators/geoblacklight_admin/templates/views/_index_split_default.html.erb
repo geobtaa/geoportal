@@ -1,0 +1,27 @@
+<% # header bar for doc items in index view -%>
+<%= content_tag :div, class: 'documentHeader row mb-4', data: { layer_id: document.id, geom: document.geometry.geojson } do %>
+  <div class='col-md-12'>
+    <div class='row'>
+      <div class='thumbnail'>
+        <div class='status-icons mb-2'>
+          <%= render partial: 'header_icons', locals: { document: document } %>
+        </div>
+        <% if document&.model&.thumbnail %>
+          <%= image_tag document.model.thumbnail.file_url(:thumb_mini) %>
+        <% end %>
+      </div>
+      <div class='col'>
+        <h3 class="h6 index_title text-span">
+          <% counter = document_counter_with_offset(document_counter) %>
+          <span class="document-counter">
+            <%= t('blacklight.search.documents.counter', :counter => counter) if counter %>
+          </span>
+          <%= link_to_document document, counter: counter, itemprop: "name" %>
+        </h3>
+        <small>
+          <%= geoblacklight_present(:index_fields_display, document) %>
+        </small>
+      </div>
+    </div>
+  </div>
+<% end %>

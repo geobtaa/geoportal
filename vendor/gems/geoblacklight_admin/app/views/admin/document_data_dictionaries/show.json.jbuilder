@@ -1,0 +1,1 @@
+json.partial! "document_data_dictionaries/document_data_dictionary", document_data_dictionary: @document_data_dictionary

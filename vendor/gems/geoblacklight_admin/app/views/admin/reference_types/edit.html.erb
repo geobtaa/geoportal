@@ -1,0 +1,12 @@
+<% content_for :title, "Editing reference type" %>
+
+<h1>Editing Reference Type</h1>
+
+<%= render "form", admin_reference_type: @reference_type %>
+
+<br>
+
+<div>
+  <%= link_to "Show this reference type", admin_reference_type_path(@reference_type) %> |
+  <%= link_to "Back to reference types", admin_reference_types_path %>
+</div>

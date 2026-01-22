@@ -1,0 +1,60 @@
+<span id="result-selected-options" class="hidden" data-scope="pageset" data-controller="results" data-resultset="<%= admin_documents_path( params.to_unsafe_h.merge({rows: '1000'})) %>" data-pageset="/fetch?">
+
+  <%= form_with(model: BulkAction.new, html: { id: 'result-action-form', data: { type: "html", action: "submit->results#setPubState" }, style: 'display:inline'}, url: admin_bulk_actions_path) do |form| -%>
+    <%= form.hidden_field :request, value: "#{request.protocol}#{request.host}:#{request.port}" %>
+    <%= form.hidden_field :scope, value: "-" %>
+    <%= form.hidden_field :field_name, value: "" %>
+    <%= form.hidden_field :field_value, value: "" %>
+  <% end %>
+
+  <span class="dropdown">
+    <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= inline_svg_tag "cloud-download-alt-solid.svg", class: 'icon baseline' %>
+      Export
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" data-action="click->results#exportCSV" href="javascript:void(0);">
+        CSV - Primary
+      </a>
+      <a class="dropdown-item" data-action="click->results#exportCsvDocumentDistributions" href="javascript:void(0);">
+        CSV - Distributions
+      </a>
+      <a class="dropdown-item" data-action="click->results#exportCsvDocumentLicensedAccessLinks" href="javascript:void(0);">
+        CSV - Licensed Access
+      </a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" data-action="click->results#exportJsonFile" href="javascript:void(0);">JSON - Single File</a>
+      <a class="dropdown-item" data-action="click->results#exportJsonAardvark" href="javascript:void(0);">JSON - Tree Directory</a>
+      <a class="dropdown-item" data-action="click->results#exportJsonBtaaAardvark" href="javascript:void(0);">JSON - BTAA Aardvark</a>
+      <a class="dropdown-item" data-action="click->results#exportJsonGBLv1" href="javascript:void(0);">JSON - GBL v1.0</a>
+    </div>
+  </span>
+
+  <span class="dropdown">
+    <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= inline_svg_tag "file-import-solid.svg", class: 'icon baseline' %>
+      Bulk Actions
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <h6 class="dropdown-header">Publication State</h6>
+        <a class="dropdown-item" data-action="click->results#setPubFieldNameValue" href="javascript:void(0);">Publish</a>
+        <a class="dropdown-item" data-action="click->results#setPubFieldNameValue" href="javascript:void(0);">Unpublish</a>
+        <a class="dropdown-item" data-action="click->results#setPubFieldNameValue" href="javascript:void(0);">Set as Draft</a>
+        <div class="dropdown-divider"></div>
+        <h6 class="dropdown-header">Thumbnail Images</h6>
+        <a class="dropdown-item" data-action="click->results#harvestThumbnails" href="javascript:void(0);">Harvest Thumbnails</a>
+        <a class="dropdown-item" data-action="click->results#deleteThumbnails" href="javascript:void(0);">Delete Thumbnails</a>
+    </div>
+  </span>
+
+  <span>
+    <a class="btn btn-sm btn-outline-primary" data-action="click->results#bulkActionDelete" href="javascript:void(0);">
+      <%= inline_svg_tag "trash-alt-solid.svg", class: 'icon baseline' %>
+      Delete
+    </a>
+  </span>
+
+  <!--<span>
+    <a class="btn btn-sm btn-outline-primary" data-action="click->results#bulkAction" href="javascript:void(0);">Bulk Action</a>
+  </span>-->
+</span>

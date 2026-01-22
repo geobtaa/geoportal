@@ -1,0 +1,39 @@
+<%- @page_title = "GBL♦Admin - Document - Distribution - #{document_distribution.url}" %>
+
+<h1>Distribution</h1>
+
+<div class="row">
+  <div class="col-9">
+    <h2>
+      <%= document_distribution.url %>
+      <span class="float-right">
+        <%= link_to '~ Edit Distribution', edit_admin_document_document_distribution_path(@document, document_distribution), { class: 'btn btn-primary' } %>
+        <%= button_to "Destroy this distribution", admin_document_document_distribution_path(@document, document_distribution), method: :delete, class: "btn btn-danger" %>
+      </span>
+    </h2>
+
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th class="header" style="width:300px;">Attribute</th>
+          <th class="header">Value</th>
+        </tr>
+      </thead>
+      <tr>
+        <th>Reference Type</th>
+        <td><%= document_distribution.reference_type.reference_type %></td>
+      </tr>
+      <tr>
+        <th>Reference URL</th>
+        <td><%= document_distribution.url %></td>
+      </tr>
+      <tr>
+        <th>Label</th>
+        <td><%= document_distribution.label %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_admin_document_document_distribution_path(@document, document_distribution) %> |
+<%= link_to 'Back', admin_document_document_distributions_path(@document) %>

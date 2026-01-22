@@ -1,0 +1,12 @@
+<% content_for :title, "Editing document distribution" %>
+
+<h1>Editing document distribution</h1>
+
+<%= render "form", document_distribution: @document_distribution %>
+
+<br>
+
+<div>
+  <%= link_to "Show this document distribution", admin_document_document_distribution_path(@document, @document_distribution) %> |
+  <%= link_to "Back to document distributions", admin_document_document_distributions_path(@document) %>
+</div>

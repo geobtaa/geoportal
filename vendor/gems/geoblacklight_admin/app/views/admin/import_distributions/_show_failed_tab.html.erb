@@ -1,0 +1,36 @@
+<h6>
+  <span class='float-left mt-3'>
+    <%== pagy_info(@pagy_failed) %>
+  </span>
+  <span class='float-right'>
+    <%== pagy_bootstrap_nav(@pagy_failed) %>
+  </span>
+</h6>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>State</th>
+      <th>Title</th>
+      <th>Identifier</th>
+      <th>Reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @import_failed_distributions.each_with_index do |distribution, index| %>
+      <tr>
+        <td>
+          <span class="badge badge-danger">
+            <%= distribution.state_machine.current_state %>
+          </span>
+        </td>
+        <td><%= distribution.friendlier_id %></td>
+        <td>
+          <%= link_to admin_import_distribution_path(@import_distribution, distribution) do %>
+            <%= distribution.state_machine&.last_transition&.metadata %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

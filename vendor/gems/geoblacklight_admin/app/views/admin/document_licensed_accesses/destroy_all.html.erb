@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="width:100%; border-bottom:dotted;" class="mb-4">
+  Document &middot; Destroy Document Licensed Access
+  <% if params[:document_id] %>
+    <%= link_to '+ New Licensed Access', new_admin_document_document_licensed_access_path(@document), { class: 'btn btn-primary float-right' } %>
+  <% end %>
+</h1>
+
+<div class="row">
+  <div class="col-6">
+    <% if params[:document_id] %>
+      <h2 class='h3'><%= @document.title %></h2>
+    <% else %>
+      <h2 class='h3'>Destroy Multiple Document Licensed Access</h2>
+    <% end %>
+
+    <p class="alert alert-danger" role="alert">
+      <strong>Warning:</strong> All matching Document Licensed Access will be destroyed. There is <strong>NO UNDO</strong> here.
+    </p>
+    <h3 class='h4'>Upload a CSV File</h3>
+
+    <%= simple_form_for DocumentLicensedAccess.new, url: destroy_all_admin_document_licensed_accesses_path, method: :post, multipart: true do |f| %>
+      <div class="form-group">
+        <div class="form-inputs">
+          <%= f.simple_fields_for :assets do |asset_fields| %>
+            <%= asset_fields.input :file, as: :file, input_html: {} %>
+          <%- end %>
+        </div>
+
+        <div class="form-actions">
+          <%= submit_tag "- Destroy All", {class: 'btn btn-danger'} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-6">
+    <h4>Example CSV File</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>friendlier_id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>a35bf4a4-e3ef-483e-98c4-7ea1b04b0f0d</td>
+        </tr>
+        <tr>
+          <td>207</td>
+          <td>a35bf4a4-e3ef-483e-98c4-7ea1b04b0f0d</td>
+        </tr>
+        <tr>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>CSV File Column Definitions</h5>
+    <dl>
+      <dt>id</dt>
+      <dd>The database table row identifier</dd>
+      <dt>friendlier_id</dt>
+      <dd>The associated GBL ADMIN document's friendlier id</dd>
+    </dl>
+  </div>
+</div>

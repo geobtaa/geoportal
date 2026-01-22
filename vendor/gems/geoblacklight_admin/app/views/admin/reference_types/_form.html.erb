@@ -1,0 +1,25 @@
+<%= simple_form_for([:admin, @reference_type.becomes(ReferenceType)], html: { class: 'form-horizontal' }) do |form| %>
+  <% if @reference_type.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@reference_type.errors.count, "error") %> prohibited this reference type from being saved:</h2>
+
+      <ul>
+        <% @reference_type.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.input :name, label: 'Name', input_html: { class: 'form-control' } %>
+    <%= form.input :reference_type, label: 'Reference Type', input_html: { class: 'form-control' } %>
+    <%= form.input :reference_uri, label: 'Reference URI', input_html: { class: 'form-control' } %>
+    <%= form.input :label, as: :boolean, label: 'Label', wrapper_html: { class: 'form-check' }, input_html: { class: 'form-check-input' } %>
+    <%= form.input :note, as: :text, label: 'Note', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

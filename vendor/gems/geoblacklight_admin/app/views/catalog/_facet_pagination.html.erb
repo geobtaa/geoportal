@@ -1,0 +1,6 @@
+<div class="prev_next_links btn-group pagy">
+  <%== pagy_prev_a(@pagy, text: "« Previous", anchor_string: 'class="btn btn-link" data-blacklight-modal="preserve" rel="prev"') %>
+  <%== pagy_next_a(@pagy, text: "Next »", anchor_string: 'class="btn btn-link" data-blacklight-modal="preserve" rel="next"') %>
+</div>
+
+<%= local_facet_sort_buttons(@display_facet.name) %>

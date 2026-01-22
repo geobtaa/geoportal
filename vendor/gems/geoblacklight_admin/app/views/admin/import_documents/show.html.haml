@@ -1,0 +1,20 @@
+%p
+  = link_to('Return to Import', admin_import_path(@import_document.import_id))
+
+%h1 ImportDocument
+%p Raw CSV mapped to GEOMG ImportDocument
+
+%hr
+
+%h3=@import_document.title
+%p
+  %span
+    = @import_document.state_machine.current_state
+
+- if @import_document.state_machine.current_state == 'failed'
+  %p
+    %span
+      = @import_document.state_machine.last_transition.metadata
+
+%div.import-document
+  != ap(@import_document.json_attributes, { html: true })

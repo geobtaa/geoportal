@@ -1,0 +1,461 @@
+Title:
+  source_header: Title
+  destination_field: dct_title_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Alternative Title:
+  source_header: Alternative Title
+  destination_field: dct_alternative_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Description:
+  source_header: Description
+  destination_field: dct_description_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Language:
+  source_header: Language
+  destination_field: dct_language_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Creator:
+  source_header: Creator
+  destination_field: dct_creator_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Creator ID:
+  source_header: Creator ID
+  destination_field: b1g_creatorID_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Publisher:
+  source_header: Publisher
+  destination_field: dct_publisher_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Provider:
+  source_header: Provider
+  destination_field: schema_provider_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Resource Class:
+  source_header: Resource Class
+  destination_field: gbl_resourceClass_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Resource Type:
+  source_header: Resource Type
+  destination_field: gbl_resourceType_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Subject:
+  source_header: Subject
+  destination_field: dct_subject_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Theme:
+  source_header: Theme
+  destination_field: dcat_theme_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Keyword:
+  source_header: Keyword
+  destination_field: dcat_keyword_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Temporal Coverage:
+  source_header: Temporal Coverage
+  destination_field: dct_temporal_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Date Issued:
+  source_header: Date Issued
+  destination_field: dct_issued_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Date Range:
+  source_header: Date Range
+  destination_field: gbl_dateRange_drsim
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Spatial Coverage:
+  source_header: Spatial Coverage
+  destination_field: dct_spatial_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Bounding Box:
+  source_header: Bounding Box
+  destination_field: dcat_bbox
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Geometry:
+  source_header: Geometry
+  destination_field: locn_geometry
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+GeoNames:
+  source_header: GeoNames
+  destination_field: b1g_geonames_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Relation:
+  source_header: Relation
+  destination_field: dct_relation_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Member Of:
+  source_header: Member Of
+  destination_field: pcdm_memberOf_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Is Part Of:
+  source_header: Is Part Of
+  destination_field: dct_isPartOf_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Source:
+  source_header: Source
+  destination_field: dct_source_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Version:
+  source_header: Version
+  destination_field: dct_isVersionOf_sm
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Replaces:
+  source_header: Replaces
+  destination_field: dct_replaces_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Is Replaced By:
+  source_header: Is Replaced By
+  destination_field: dct_isReplacedBy_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Format:
+  source_header: Format
+  destination_field: dct_format_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+File Size:
+  source_header: File Size
+  destination_field: gbl_fileSize_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+WxS Identifier:
+  source_header: WxS Identifier
+  destination_field: gbl_wxsIdentifier_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Georeferenced:
+  source_header: Georeferenced
+  destination_field: gbl_georeferenced_b
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Documentation:
+  source_header: Documentation
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Download:
+  source_header: Download
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+FeatureServer:
+  source_header: FeatureServer
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+FGDC:
+  source_header: FGDC
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Harvard Download:
+  source_header: Harvard Download
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+HTML:
+  source_header: HTML
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+IIIF:
+  source_header: IIIF
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+ImageServer:
+  source_header: ImageServer
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Information:
+  source_header: Information
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+ISO19139:
+  source_header: ISO19139
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Manifest:
+  source_header: Manifest
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+MapServer:
+  source_header: MapServer
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+MODS:
+  source_header: MODS
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+oEmbed:
+  source_header: oEmbed
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Index Map:
+  source_header: Index Map
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+TileServer:
+  source_header: TileServer
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+WCS:
+  source_header: WCS
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+WFS:
+  source_header: WFS
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+WMS:
+  source_header: WMS
+  destination_field: dct_references_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Image:
+  source_header: Image
+  destination_field: b1g_image_ss
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+ID:
+  source_header: ID
+  destination_field: geomg_id_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Identifier:
+  source_header: Identifier
+  destination_field: dct_identifier_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Code:
+  source_header: Code
+  destination_field: b1g_code_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Rights:
+  source_header: Rights
+  destination_field: dct_rights_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Rights Holder:
+  source_header: Rights Holder
+  destination_field: dct_rightsHolder_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+License:
+  source_header: License
+  destination_field: dct_license_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Access Rights:
+  source_header: Access Rights
+  destination_field: dct_accessRights_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Accrual Method:
+  source_header: Accrual Method
+  destination_field: b1g_dct_accrualMethod_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Accrual Periodicity:
+  source_header: Accrual Periodicity
+  destination_field: b1g_dct_accrualPeriodicity_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Publication State:
+  source_header: Publication State
+  destination_field: b1g_publication_state_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Suppressed:
+  source_header: Suppressed
+  destination_field: gbl_suppressed_b
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Mediator:
+  source_header: Mediator
+  destination_field: b1g_dct_mediator_sm
+  delimited: true
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Access:
+  source_header: Access
+  destination_field: b1g_access_s
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Created At:
+  source_header: Created At
+  destination_field: date_created_dtsi
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+
+Updated At:
+  source_header: Updated At
+  destination_field: date_modified_dtsi
+  delimited: false
+  transformation_method: null
+  import_id: <%= ActiveRecord::FixtureSet.identify(:one) %>

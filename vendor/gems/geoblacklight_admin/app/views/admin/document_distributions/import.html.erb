@@ -1,0 +1,83 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="width:100%; border-bottom:dotted;" class="mb-4">
+  Document &middot; Distributions
+  <% if params[:document_id] %>
+    <%= link_to '+ New Distribution', new_admin_document_document_distribution_path(@document), { class: 'btn btn-primary float-right' } %>
+  <% end %>
+</h1>
+
+<div class="row">
+  <div class="col-4">
+    <% if params[:document_id] %>
+      <h2 class='h3'><%= @document.title %></h2>
+    <% else %>
+      <h2 class='h3'>Import for Multiple Documents</h2>
+    <% end %>
+
+    <p class="alert alert-info" role="alert">
+      <strong>Note:</strong> New Distributions will be created. Existing Distributions will be updated per the CSV file.
+    </p>
+
+    <h3 class="h4">Upload a CSV File</h3>
+    <%= simple_form_for DocumentDistribution.new, 
+        url: @document || params[:document_id] ? import_admin_document_document_distributions_path(@document) : import_admin_document_distributions_path, 
+        method: :post, 
+        multipart: true do |f| %>
+      <div class="form-inputs">
+        <%= f.simple_fields_for :distributions do |distribution_fields| %>
+          <%= distribution_fields.input :file, as: :file, input_html: {} %>
+        <%- end %>
+      </div>
+
+      <div class="form-actions">
+        <%= submit_tag "+ Import CSV", {class: 'btn btn-primary'} %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-8">
+    <h4>Example CSV File</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>friendlier_id</th>
+          <th>reference_type</th>
+          <th>distribution_url</th>
+          <th>label</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>00add5b8-a7b1-42d4-b4de-ca99716a5096</td>
+          <td>download</td>
+          <td>https://s3.amazonaws.com/holc/tiles/WI/Madison/1937/rectified.zip</td>
+          <td>GeoTIFF</td>
+        </tr>
+        <tr>
+          <td>00add5b8-a7b1-42d4-b4de-ca99716a5096</td>
+          <td>download</td>
+          <td>https://s3.amazonaws.com/holc/tiles/WI/Madison/1937/holc-scan.jpg</td>
+          <td>JPEG</td>
+        </tr>
+        <tr>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>CSV File Column Definitions</h5>
+    <dl>
+      <dt>friendlier_id</dt>
+      <dd>The associated document's friendlier id</dd>
+      <dt>reference_type</dt>
+      <dd>The name of the reference type</dd>
+      <dt>distribution_url</dt>
+      <dd>The URL for the distribution</dd>
+      <dt>label</dt>
+      <dd>The label for the distribution, if the reference type is labeled</dd>
+    </dl>
+  </div>
+</div>

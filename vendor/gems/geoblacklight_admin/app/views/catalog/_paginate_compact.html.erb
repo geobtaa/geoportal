@@ -1,0 +1,9 @@
+<% if @pagy.pages > 1 %>
+  <section class="pagination">
+    <div class="page-links">
+      <%== pagy_prev_a(@pagy, text: "« Previous") %>
+      <%= "&nbsp; | &nbsp;<strong>#{number_with_delimiter(@pagy.from)} - #{number_with_delimiter(@pagy.to)}</strong>&nbsp; of &nbsp;<strong>#{number_with_delimiter(@pagy.count)}</strong>&nbsp;| &nbsp;".html_safe %>
+      <%== pagy_next_a(@pagy, text: "Next »") %>
+    </div>
+  </section>
+<% end %>

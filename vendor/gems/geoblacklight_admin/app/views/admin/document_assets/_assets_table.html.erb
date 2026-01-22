@@ -1,0 +1,53 @@
+<div class="table-responsive">
+  <table class="table table-striped table-bordered sortable">
+    <thead class="thead-dark">
+      <tr>
+        <th>Thumbnail</th>
+        <th>Preview</th>
+        <th>Title</th>
+        <th>Label</th>
+        <th>File Size</th>
+        <th>MimeType</th>
+        <th>Reference URI Type</th>
+        <th colspan="2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% document_assets.each do |document_asset| %>
+        <tr>
+        <td>
+          <%= form_with model: document_asset, url: admin_document_document_asset_path(document_asset.parent, document_asset), method: :put, remote: true, class: 'thumbnail-form' do |f| %>
+            <%= f.check_box :thumbnail, class: 'thumbnail-toggle', onchange: "this.form.submit()" %>
+              <%= f.submit 'Save', class: 'btn btn-sm btn-primary d-none' %>
+            <% end %>
+          </td>
+          <td>
+            <% if document_asset.respond_to?(:thumbnail) %>
+              <% unless document_asset.file_url(:thumb_standard).nil? %>
+                <%= image_tag(document_asset.file_url(:thumb_standard), { height: 100 }) %>
+              <% end %>
+            <% end %>
+          </td>
+          <td><%= link_to(document_asset.title, document_asset.file.url) %></td>
+          <td><%= document_asset.label %></td>
+          <td>
+            <%= number_to_human_size(document_asset.file_data["metadata"]["size"]) %>
+          </td>
+          <td>
+            <%= document_asset.file_data["metadata"]["mime_type"] %>
+            <span class="sr-only"><%= document_asset.inspect %></span>
+          </td>
+          <td>
+            <%= document_asset.dct_references_uri_key %>
+          </td>
+          <td>
+            <%= link_to 'Edit', edit_admin_document_document_asset_path(document_asset.parent, document_asset) %>
+          </td>
+          <td>
+            <%= link_to 'Destroy', admin_document_document_asset_path(document_asset.parent, document_asset), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

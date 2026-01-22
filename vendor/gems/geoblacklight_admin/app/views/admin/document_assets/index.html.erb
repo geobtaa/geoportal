@@ -1,0 +1,49 @@
+<%- @page_title = "GBL♦Admin - Document - Assets" %>
+
+<div class="row mb-2">
+  <div class="col">
+    <h1 style="width:100%;">
+      Document &middot; Assets
+
+      <% if params[:document_id] %>
+        <%= link_to '+ Upload Assets', display_attach_form_admin_document_document_assets_url(@document), { class: 'btn btn-primary float-right mr-2' } %>
+      <% end %>
+    </h1>
+    <% if params[:document_id] %>
+      <h2 class='h3'>
+        <%= link_to(@document.title, admin_document_path(@document)) %>
+        &middot;
+        <%= @document_assets.count %> assets 
+        &middot;
+        <%= number_to_human_size(@document.gbl_fileSize_s) %>
+      </h2>
+    <% else %>
+      <h2 class='h3'>Assets</h2>
+    <% end %>
+
+    <% if @pagy %>
+    <h6>
+      <span class='float-left mt-3'>
+        <%== pagy_info(@pagy, 'assets'.pluralize(@pagy.count)) %>
+      </span>
+      <span class='float-right'>
+        <%== pagy_bootstrap_nav(@pagy) %>
+      </span>
+    </h6>
+    <% end %>
+
+    <%= render partial: 'assets_table', locals: { document_assets: @document_assets } %>
+
+      <% if @pagy %>
+      <h6>
+        <span class='float-left mt-3'>
+          <%== pagy_info(@pagy, 'imports'.pluralize(@pagy.count)) %>
+        </span>
+        <span class='float-right'>
+          <%== pagy_bootstrap_nav(@pagy) %>
+        </span>
+      </h6>
+      <% end %>
+    </div>
+  </div>
+</div>

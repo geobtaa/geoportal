@@ -1,0 +1,42 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">
+    <strong>G&middot;E&middot;O&middot;M&middot;G</strong>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <%= form_tag('/documents', { method: :get, class: "form-inline my-2 my-lg-0" }) do %>
+
+    <div class="input-group">
+      <input name="q" class="form-control" type="search" placeholder="Search documents" aria-label="Search" value="<%= params[:q] ? params[:q] : ''%>">
+      <%- if params[:f].present? %>
+        <%= params_as_hidden_fields(
+            params
+            .to_hash
+            .with_indifferent_access
+            .except(:q, :controller, :action, :commit)
+          ) %>
+      <% end %>
+
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <%= link_to "Advanced", '/search', { class: 'dropdown-item' } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <li class="nav-item">
+          <%= link_to "Blazer &middot; Business Intelligence Tools".html_safe, '/blazer', {class: 'nav-link'} if current_user %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

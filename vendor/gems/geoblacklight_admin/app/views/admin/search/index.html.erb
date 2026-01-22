@@ -1,0 +1,38 @@
+<%- @page_title= "GBL♦Admin - Search" %>
+
+<h1 style="width:100%; margin-bottom:2rem;">
+  Advanced Search
+</h1>
+
+<div class="row">
+  <div id="search-form" class="col-8">
+    <%= form_tag(admin_documents_path, { method: :get, class: "my-2 my-lg-0" }) do %>
+      <input name="q" autofocus class="form-control mr-sm-8" type="search" placeholder="Search documents" aria-label="Search" value="<%= params[:q] ? params[:q] : ''%>">
+
+      <div id="facet-limits" class="col-md-12 mt-4">
+        <h3>Limit Results By</h3>
+        <% if @facet_options.present? %>
+          <% @facet_options.each do |facet| %>
+            <div class="row">
+              <% if facet['type'] == 'facet' %>
+                <%= label_tag("f[#{facet['id']}]", { class: 'col-sm-4 control-label' }) do %>
+                  <%= facet['attributes']['label'] %>
+                <% end %>
+                <%- options = facet['attributes']['items'].collect{ |item| item['attributes']['label'] } %>
+
+                <div class="col-sm-8">
+                  <%= select_tag "f[#{facet['id']}]", options_for_select(options), multiple: true, class: 'chosen-select', style: 'width:240px;' %>
+                </div>
+
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="mt-4">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<%= kithe_form_for([:admin, document], :html=> { novalidate: true, class: 'edit-document edit', id: dom_id(document), data: { persisted: document.persisted? }}) do |f| %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="admin-header sticky-top d-flex justify-content-between p-2 mb-4 mt-1 bg-light border">
+
+        <div class="mr-2">
+          <h1 class="h5">
+            <% if @document.persisted? %>
+              <div class="row">
+                <% if thumb_to_render?(@document) %>
+                  <div class="thumbnail col-2">
+                    <%= image_tag thumbnail_to_render(@document), class: "thumbnail" %>
+                  </div>
+                <% end %>
+                <div class="col">
+                  <span id="<%=@document.friendlier_id %>">
+                  <%= render 'document_bookmark', document: @document %>
+                  <%= truncate(@document.title, length: 80) %>
+                  <%= publication_state_badge(@document) %>
+                  <p class='mb-0'>
+                    <small>Last updated <%= time_ago_in_words(@document.updated_at) %> ago. 
+                    <%= link_to 'Versions', admin_document_versions_path(@document) %> | 
+                    <%= link_to 'Admin View', admin_document_admin_path(@document) %>
+                    </small>
+                  </p>
+                </div>
+              </div>
+            <% else %>
+              New document
+            <% end %>
+          </h1>
+        </div>
+
+        <div class="form-actions">
+          <%= link_to 'Cancel', admin_documents_url, class: "btn btn-outline-primary" %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+        </div>
+      </div>
+
+      <% if @document.errors.any? %>
+        <div class="kithe-form-errors-top alert alert-danger mb-4" role="alert"">
+          <h2 class="h4" class="alert-heading"><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved</h2>
+          <ol class="mb-0">
+            <% @document.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ol>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <div id="form-fields" class="col-md-8">
+          <%= render "document_fields", f: f %>
+        </div>
+        <div id="form-navigation" class="col-md-4">
+          <%= render "form_nav" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

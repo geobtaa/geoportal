@@ -1,0 +1,150 @@
+asset_1:
+  id: 73245320-b305-405e-b4f2-ba3a2726cc23
+  title: Asset Title
+  type: Asset
+  position: 1
+  json_attributes:
+    thumbnail: false
+    dct_references_uri_key: image
+    derivative_storage_type: public
+  created_at: '2024-09-08T14:43:43.031Z'
+  updated_at: '2024-09-08T14:43:45.721Z'
+  parent_id: d3d872a3-fd4c-404f-a8fd-657f16db50cf
+  friendlier_id: cpk0fqmo9
+  file_data:
+    id: asset/73245320-b305-405e-b4f2-ba3a2726cc23/fdafe052348f6599d47c54a26676bb86.png
+    storage: store
+    metadata:
+      md5: ee4280283a635a3b2aac4a03c35b9f7f
+      sha1: 9bc146712e97f929f9c009f4f153b0d2fe340b7b
+      size: 41918
+      width: 626
+      height: 796
+      sha512: '01826837e10696303f72a39df5075c331b58d27317685810217287634fabe64300b7e35b04f0b91245ab07d6dd647ce098737bd0dfdf34aa8eefb2ca6234bf29'
+      filename: Screenshot 2024-09-05 at 8.33.15 PM.png
+      mime_type: image/png
+    derivatives:
+      thumb_mini:
+        id: 73245320-b305-405e-b4f2-ba3a2726cc23/thumb_mini/d5792d51cb5dc0f78d48e32776ba35f3.png
+        storage: kithe_derivatives
+        metadata:
+          size: 3124
+          width: 50
+          height: 64
+          filename: cpk0fqmo8_thumb_mini.png
+          mime_type: image/png
+      download_full:
+        id: 73245320-b305-405e-b4f2-ba3a2726cc23/download_full/6f547240ccd0be96634c25d27ebb7eac.png
+        storage: kithe_derivatives
+        metadata:
+          size: 52665
+          width: 626
+          height: 796
+          filename: cpk0fqmo8_download_full.png
+          mime_type: image/png
+      thumb_mini_2X:
+        id: 73245320-b305-405e-b4f2-ba3a2726cc23/thumb_mini_2X/4ac0a3fb661af65c13e5818c7f3e0733.png
+        storage: kithe_derivatives
+        metadata:
+          size: 7260
+          width: 100
+          height: 127
+          filename: cpk0fqmo8_thumb_mini_2X.png
+          mime_type: image/png
+      thumb_standard:
+        id: 73245320-b305-405e-b4f2-ba3a2726cc23/thumb_standard/a8e04f83a71cffc94c046875bc68dbfe.png
+        storage: kithe_derivatives
+        metadata:
+          size: 17258
+          width: 200
+          height: 254
+          filename: cpk0fqmo8_thumb_standard.png
+          mime_type: image/png
+      thumb_standard_2X:
+        id: 73245320-b305-405e-b4f2-ba3a2726cc23/thumb_standard_2X/8d89fbe50c528123da334fc6b69ba80e.png
+        storage: kithe_derivatives
+        metadata:
+          size: 41985
+          width: 400
+          height: 509
+          filename: cpk0fqmo8_thumb_standard_2X.png
+          mime_type: image/png
+  kithe_model_type: asset
+  import_id: 
+  publication_state: draft
+
+asset_2:
+  id: 73245320-b305-405e-b4f2-ba3a2726cc24
+  title: Asset Title Two
+  type: Asset
+  position: 2
+  json_attributes:
+    thumbnail: false
+    dct_references_uri_key: image
+    derivative_storage_type: public
+    label: Asset Label
+  created_at: '2024-09-08T14:43:43.031Z'
+  updated_at: '2024-09-08T14:43:45.721Z'
+  parent_id: d3d872a3-fd4c-404f-a8fd-657f16db50cf
+  friendlier_id: cpk0fqmo8
+  file_data:
+    id: asset/73245320-b305-405e-b4f2-ba3a2726cc23/fdafe052348f6599d47c54a26676bb86.png
+    storage: store
+    metadata:
+      md5: ee4280283a635a3b2aac4a03c35b9f7f
+      sha1: 9bc146712e97f929f9c009f4f153b0d2fe340b7b
+      size: 41918
+      width: 626
+      height: 796
+      sha512: '01826837e10696303f72a39df5075c331b58d27317685810217287634fabe64300b7e35b04f0b91245ab07d6dd647ce098737bd0dfdf34aa8eefb2ca6234bf29'
+      filename: Screenshot 2024-09-05 at 8.33.15 PM.png
+      mime_type: image/png
+    derivatives:
+      thumb_mini:
+        id: 73245320-b305-405e-b4f2-ba3a2726cc23/thumb_mini/d5792d51cb5dc0f78d48e32776ba35f3.png
+        storage: kithe_derivatives
+        metadata:
+          size: 3124
+          width: 50
+          height: 64
+          filename: cpk0fqmo8_thumb_mini.png
+          mime_type: image/png
+      download_full:
+        id: 73245320-b305-405e-b4f2-ba3a2726cc23/download_full/6f547240ccd0be96634c25d27ebb7eac.png
+        storage: kithe_derivatives
+        metadata:
+          size: 52665
+          width: 626
+          height: 796
+          filename: cpk0fqmo8_download_full.png
+          mime_type: image/png
+      thumb_mini_2X:
+        id: 73245320-b305-405e-b4f2-ba3a2726cc23/thumb_mini_2X/4ac0a3fb661af65c13e5818c7f3e0733.png
+        storage: kithe_derivatives
+        metadata:
+          size: 7260
+          width: 100
+          height: 127
+          filename: cpk0fqmo8_thumb_mini_2X.png
+          mime_type: image/png
+      thumb_standard:
+        id: 73245320-b305-405e-b4f2-ba3a2726cc23/thumb_standard/a8e04f83a71cffc94c046875bc68dbfe.png
+        storage: kithe_derivatives
+        metadata:
+          size: 17258
+          width: 200
+          height: 254
+          filename: cpk0fqmo8_thumb_standard.png
+          mime_type: image/png
+      thumb_standard_2X:
+        id: 73245320-b305-405e-b4f2-ba3a2726cc23/thumb_standard_2X/8d89fbe50c528123da334fc6b69ba80e.png
+        storage: kithe_derivatives
+        metadata:
+          size: 41985
+          width: 400
+          height: 509
+          filename: cpk0fqmo8_thumb_standard_2X.png
+          mime_type: image/png
+  kithe_model_type: asset
+  import_id: 
+  publication_state: draft

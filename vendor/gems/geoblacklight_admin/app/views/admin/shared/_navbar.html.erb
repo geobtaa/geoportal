@@ -1,0 +1,94 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light pt-2 pb-2">
+  <a class="navbar-brand gbl-admin" href="<%=admin_documents_url%>">
+    <strong>GBL♦Admin</strong>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <%= form_tag(admin_documents_path, { method: :get, class: "form-inline my-2 my-lg-0" }) do %>
+
+    <div class="input-group">
+      <input name="q" class="form-control" type="search" placeholder="Search documents" aria-label="Search" value="<%= params[:q] ? params[:q] : ''%>">
+      <%- if params[:f].present? %>
+        <%= params_as_hidden_fields(
+            params
+            .to_hash
+            .with_indifferent_access
+            .except(:q, :controller, :action, :commit)
+          ) %>
+      <% end %>
+
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+          </svg>
+          <span class="sr-only">Search</span>
+        </button>
+      </div>
+    </div>
+    <%= link_to "Advanced", admin_search_path, { class: 'btn my-2 my-sm-0' } %>
+  <% end %>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to admin_notifications_url, { class: 'nav-link' } do %>
+            <%= "Notifications #{notifications_badge}".html_safe %>
+          <% end %>
+        </li>
+      <% end %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Admin Tools
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <h6 class="dropdown-header">Data Management</h6>
+          <%= link_to "Import Primary", new_admin_import_path, {class: 'dropdown-item'} %>
+          <%= link_to "Import Distributions", new_admin_import_distribution_path, {class: 'dropdown-item'} %>
+          <%= link_to "Import Licensed Accesses", import_admin_document_licensed_accesses_path, {class: 'dropdown-item'} %>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">View Results</h6>
+          <%= link_to "Primary Imports", admin_imports_path, {class: 'dropdown-item'} %>
+          <%= link_to "Distribution Imports", admin_import_distributions_path, {class: 'dropdown-item'} %>
+          <%= link_to "Distributions", admin_document_distributions_path, {class: 'dropdown-item'} %>
+          <%= link_to "Licensed Accesses", admin_document_licensed_accesses_path, {class: 'dropdown-item'} %>
+          <%= link_to "Assets", admin_assets_path, {class: 'dropdown-item'} %>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Business Intelligence</h6>
+          <%= link_to "Blazer", '/admin/blazer', {class: 'dropdown-item', data: { turbolinks: false }} %>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Schema Management</h6>
+          <%= link_to "Elements", admin_elements_path, {class: 'dropdown-item', data: { turbolinks: false }} %>
+          <%= link_to "Form Elements", admin_form_elements_path, {class: 'dropdown-item', data: { turbolinks: false }} %>
+          <%= link_to "Reference Types", admin_reference_types_path, {class: 'dropdown-item', data: { turbolinks: false }} %>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">User Management</h6>
+          <%= link_to "Users", admin_users_index_path, {class: 'dropdown-item'} %>
+        </div>
+      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.email %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownUser">
+            <%= link_to "Bookmarks #{bookmarks_badge}".html_safe, admin_bookmarks_path, {class: 'dropdown-item'} %>
+            <%= link_to("Edit User Account", edit_user_registration_path, {class: 'dropdown-item'}) %>
+            <%= link_to "Sign Out", destroy_user_session_path, { :method => :delete, class: 'dropdown-item'} %>
+          </div>
+        </li>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to('Sign in', new_user_session_path, {class: 'nav-link'}) %>
+        </li>
+      <% end %>
+      <li class="nav-item">
+        <%= link_to root_url, { class: 'nav-link' } do %>
+          GeoBlacklight Home
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bookmarks (<%= current_user.bookmarks.where(document_type: 'Kithe::Model').size %>)</h1>
+
+<%- if @pagy %>
+
+  <p>
+    <%= render "admin/documents/result_toggle" %>
+    <%= render "admin/documents/result_selected_options" %>
+    <span class='float-right'>
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </span>
+  </p>
+
+  <hr/>
+
+  <%= render "admin/documents/result_selection_options" %>
+
+  <ol id='results' class='list-unstyled' data-controller='results'>
+    <% @bookmarks.each_with_index do |bookmark, index| %>
+      <%= render 'admin/documents/document', document: Kithe::Model.find(bookmark.document_id), index: index %>
+    <% end %>
+  </ol>
+<%- else %>
+  <p>No bookmarks found.</p>
+<%- end %>
