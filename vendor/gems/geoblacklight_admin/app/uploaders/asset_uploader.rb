@@ -1,5 +1,6 @@
 class AssetUploader < Kithe::AssetUploader
   plugin :kithe_checksum_signatures
+  plugin :presign_endpoint
 
   THUMB_WIDTHS = Settings.GBL_ADMIN_THUMBNAIL_WIDTHS
 
