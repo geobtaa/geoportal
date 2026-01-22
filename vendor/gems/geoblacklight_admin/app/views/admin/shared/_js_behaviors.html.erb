@@ -72,16 +72,22 @@
       });
     
     // Always use presigned URLs for direct-to-S3 uploads
-    // Intercept the upload process before XHRUpload runs
-    // Use 'upload' event which fires when upload starts, before XHRUpload processes files
-    uppy.on('upload', async () => {
+    // Intercept the upload process and handle it completely, preventing XHRUpload from running
+    uppy.on('upload', async (data) => {
         const files = Object.values(uppy.getFiles()).filter(f => !f.error && !f.progress?.uploadStarted);
         
-        // Mark files as being handled by our custom uploader to prevent XHRUpload from processing them
+        if (files.length === 0) {
+          return; // No files to process
+        }
+        
+        // Mark files as being handled to prevent XHRUpload from processing them
         files.forEach(file => {
           file.meta.uploader = 'presigned-s3';
+          file.progress = file.progress || {};
+          file.progress.uploadStarted = true;
         });
         
+        // Process each file with presigned upload
         for (const file of files) {
           try {
             uppy.emit('upload-started', file);
@@ -113,7 +119,8 @@
               });
             }
             
-            // Add the file - file.data is the actual File/Blob object
+            // Add the file - for S3 presigned POST, the field name should be 'file'
+            // file.data is the actual File/Blob object
             formData.append('file', file.data);
             
             // Step 3: Upload to S3 with progress tracking
@@ -185,12 +192,28 @@
         }
       });
     
-    // Add XHRUpload plugin (required by Uppy) but we handle uploads manually via presigned URLs
-    // The 'upload' event listener above intercepts and handles all uploads before XHRUpload processes them
-    uppy.use(XHRUpload, { 
+    // Add XHRUpload plugin (required by Uppy) but we don't use it since we handle uploads via presigned URLs
+    // We add it because Uppy requires an uploader plugin, but we prevent it from running by
+    // marking all files as uploadStarted in the 'upload' event handler above
+    const xhrUploadPlugin = uppy.use(XHRUpload, {
       endpoint: '/admin/direct_upload',
       fieldName: 'file'
     });
+    
+    // Completely disable XHRUpload by overriding its upload method to do nothing
+    // All files are handled via presigned URLs in the 'upload' event handler
+    if (xhrUploadPlugin) {
+      const originalUpload = xhrUploadPlugin.upload;
+      xhrUploadPlugin.upload = function(files, callback) {
+        // Don't process any files - we handle all uploads via presigned URLs
+        console.log('XHRUpload disabled - using presigned direct-to-S3 uploads');
+        // Immediately call callback with success to prevent Uppy from waiting
+        if (callback) {
+          setTimeout(() => callback(null, { status: 200 }), 0);
+        }
+        return;
+      };
+    }
 
     // Turns a number of bytes into human readable eg "12GB"
     // https://stackoverflow.com/a/38897674
