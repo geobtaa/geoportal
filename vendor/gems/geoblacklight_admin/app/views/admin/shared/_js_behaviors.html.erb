@@ -73,15 +73,18 @@
     
     // Always use presigned URLs for direct-to-S3 uploads
     // Intercept the upload process and handle it completely, preventing XHRUpload from running
+    // The 'upload' event fires when user clicks "Upload" button, before XHRUpload processes files
     uppy.on('upload', async (data) => {
+        console.log('Upload event fired, processing files via presigned URLs');
         const files = Object.values(uppy.getFiles()).filter(f => !f.error && !f.progress?.uploadStarted);
         
         if (files.length === 0) {
           return; // No files to process
         }
         
-        // Mark files as being handled to prevent XHRUpload from processing them
+        // Mark files as being handled immediately to prevent XHRUpload from processing them
         files.forEach(file => {
+          file.meta = file.meta || {};
           file.meta.uploader = 'presigned-s3';
           file.progress = file.progress || {};
           file.progress.uploadStarted = true;
@@ -93,8 +96,10 @@
             uppy.emit('upload-started', file);
             
             // Step 1: Request presigned URL from Rails
+            console.log('Requesting presigned URL for:', file.name);
             const presignUrl = `${presignEndpoint}?filename=${encodeURIComponent(file.name)}&type=${encodeURIComponent(file.type || 'application/octet-stream')}&size=${file.size}`;
             const presignResponse = await fetch(presignUrl);
+            console.log('Presigned URL response:', presignResponse.status);
             if (!presignResponse.ok) {
               const errorText = await presignResponse.text().catch(() => presignResponse.statusText);
               throw new Error(`Failed to get presigned URL (${presignResponse.status}): ${errorText}`);
@@ -192,29 +197,39 @@
         }
       });
     
-    // Add XHRUpload plugin (required by Uppy) but we don't use it since we handle uploads via presigned URLs
-    // We add it because Uppy requires an uploader plugin, but we prevent it from running by
-    // marking all files as uploadStarted in the 'upload' event handler above
+    // Add XHRUpload plugin (required by Uppy) but prevent it from actually uploading
+    // We handle all uploads via presigned URLs in the 'upload' event handler above
     const xhrUploadPlugin = uppy.use(XHRUpload, {
       endpoint: '/admin/direct_upload',
       fieldName: 'file'
     });
     
-    // Completely disable XHRUpload by overriding its upload method to return a resolved promise
-    // All files are handled via presigned URLs in the 'upload' event handler
-    // We return a promise so Uppy's StatusBar doesn't error when calling .catch()
-    if (xhrUploadPlugin) {
-      const originalUpload = xhrUploadPlugin.upload;
+    // Override XHRUpload's upload method to check if files are being handled by presigned upload
+    // The 'upload' event fires first and marks files as handled, then XHRUpload checks this
+    if (xhrUploadPlugin && xhrUploadPlugin.upload) {
+      const originalUpload = xhrUploadPlugin.upload.bind(xhrUploadPlugin);
       xhrUploadPlugin.upload = function(files, callback) {
-        // Don't process any files - we handle all uploads via presigned URLs
-        console.log('XHRUpload disabled - using presigned direct-to-S3 uploads');
-        // Return a resolved promise so Uppy's StatusBar can handle it properly
-        const promise = Promise.resolve({ status: 200 });
-        // Call callback if provided (for backwards compatibility)
-        if (callback) {
-          promise.then(result => callback(null, result)).catch(err => callback(err));
+        console.log('XHRUpload.upload called with files:', files?.length);
+        
+        // Check if any files are being handled by presigned upload
+        // The 'upload' event handler should have already marked them
+        const handledByPresign = Array.isArray(files) && files.some(file => 
+          file.meta?.uploader === 'presigned-s3' || file.progress?.uploadStarted
+        );
+        
+        if (handledByPresign) {
+          // Files are being handled via presigned URLs - don't process with XHRUpload
+          console.log('XHRUpload skipped - files handled via presigned direct-to-S3 uploads');
+          // Return a promise that never resolves, so Uppy waits for our upload event handler
+          // We'll emit upload-success from the presigned upload handler
+          return new Promise(() => {
+            // Never resolve - let the presigned upload handler emit upload-success
+          });
         }
-        return promise;
+        
+        // Fallback: if files aren't marked for presigned upload, use XHRUpload (shouldn't happen)
+        console.log('XHRUpload fallback - files not marked for presigned upload, using XHRUpload');
+        return originalUpload(files, callback);
       };
     }
 
