@@ -74,6 +74,7 @@
     // Always use presigned URLs for direct-to-S3 uploads
     // Intercept the upload process and handle it completely, preventing XHRUpload from running
     // The 'upload' event fires when user clicks "Upload" button, before XHRUpload processes files
+    // We MUST mark files synchronously before any async operations to prevent XHRUpload from starting
     uppy.on('upload', async (data) => {
         console.log('Upload event fired, processing files via presigned URLs');
         const files = Object.values(uppy.getFiles()).filter(f => !f.error && !f.progress?.uploadStarted);
@@ -82,13 +83,18 @@
           return; // No files to process
         }
         
-        // Mark files as being handled immediately to prevent XHRUpload from processing them
+        // CRITICAL: Mark files as being handled SYNCHRONOUSLY before any async operations
+        // This must happen immediately so XHRUpload's upload method sees them as handled
         files.forEach(file => {
           file.meta = file.meta || {};
           file.meta.uploader = 'presigned-s3';
           file.progress = file.progress || {};
           file.progress.uploadStarted = true;
+          // Also mark with a flag that XHRUpload can check
+          file.meta.skipXHRUpload = true;
         });
+        
+        console.log(`Marked ${files.length} files for presigned upload`);
         
         // Process each file with presigned upload
         for (const file of files) {
@@ -204,32 +210,23 @@
       fieldName: 'file'
     });
     
-    // Override XHRUpload's upload method to check if files are being handled by presigned upload
-    // The 'upload' event fires first and marks files as handled, then XHRUpload checks this
+    // Override XHRUpload's upload method to ALWAYS skip processing
+    // We handle ALL uploads via presigned URLs in the 'upload' event handler above
+    // Since we always use presigned uploads, XHRUpload should never actually upload
     if (xhrUploadPlugin && xhrUploadPlugin.upload) {
       const originalUpload = xhrUploadPlugin.upload.bind(xhrUploadPlugin);
       xhrUploadPlugin.upload = function(files, callback) {
-        console.log('XHRUpload.upload called with files:', files?.length);
+        console.log('XHRUpload.upload called - BLOCKING all uploads (using presigned direct-to-S3)');
+        console.log('Files passed to XHRUpload:', files?.map(f => ({ id: f.id, name: f.name, meta: f.meta })));
         
-        // Check if any files are being handled by presigned upload
-        // The 'upload' event handler should have already marked them
-        const handledByPresign = Array.isArray(files) && files.some(file => 
-          file.meta?.uploader === 'presigned-s3' || file.progress?.uploadStarted
-        );
-        
-        if (handledByPresign) {
-          // Files are being handled via presigned URLs - don't process with XHRUpload
-          console.log('XHRUpload skipped - files handled via presigned direct-to-S3 uploads');
-          // Return a promise that never resolves, so Uppy waits for our upload event handler
-          // We'll emit upload-success from the presigned upload handler
-          return new Promise(() => {
-            // Never resolve - let the presigned upload handler emit upload-success
-          });
-        }
-        
-        // Fallback: if files aren't marked for presigned upload, use XHRUpload (shouldn't happen)
-        console.log('XHRUpload fallback - files not marked for presigned upload, using XHRUpload');
-        return originalUpload(files, callback);
+        // ALWAYS block XHRUpload - we handle all uploads via presigned URLs
+        // Return a promise that never resolves, so Uppy waits for our upload event handler
+        // We'll emit upload-success from the presigned upload handler
+        // This prevents XHRUpload from actually uploading to /admin/direct_upload
+        return new Promise(() => {
+          // Never resolve - let the presigned upload handler emit upload-success
+          console.log('XHRUpload promise created but will never resolve - waiting for presigned upload');
+        });
       };
     }
 
