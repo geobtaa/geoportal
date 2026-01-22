@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-6">
+    <%= simple_form_for([:admin, @form_element.becomes(FormElement)]) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-inputs">
+        <%= f.input :choose_type do %>
+          <%= f.select :type, [["Control", "FormControl"], ["Header", "FormHeader"], ["Group", "FormGroup"], ["Feature", "FormFeature"]], {}, { class: "form-control", autofocus: true } %>
+        <% end %>
+
+        <%= f.input :element do %>
+          <%= f.select :element_solr_field, Element.all.order(:position => :asc).map{ |e| [e.label, e.solr_field] }, { include_blank: true }, { class: "form-control" } %>
+        <% end %>
+
+        <%= f.input :label %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-6">
+    <h3>Field Definitions</h3>
+    <dl>
+      <dt>Choose type</dd>
+      <dd>
+        <dl class="ml-3">
+          <dt>Control</dt>
+          <dd>A field on the Document data entry form.</dd>
+          <dt>Header</dt>
+          <dd>A top-level heading on the Document data entry form.</dd>
+          <dt>Group</dt>
+          <dd>A group heading on the Document data entry form.</dd>
+          <dt>Feature</dt>
+          <dd>References a related data-collection feature.</dd>
+        </dl>
+      </dd>
+      <dt>Element</dt>
+      <dd>If adding a Control, choose the associated Element.</dd>
+      <dt>Label</dt>
+      <dd>If adding a Header or Group or Feature, set a text value.</dd>
+    </dl>
+  </div>
+</div>

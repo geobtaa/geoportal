@@ -1,0 +1,17 @@
+<%= simple_form_for([:admin, @document, @document_data_dictionary]) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :friendlier_id, input_html: { value: @document.friendlier_id, readonly: true } %>
+    <%= f.input :name, input_html: { class: 'form-control', autofocus: true } %>
+    <%= f.input :description, input_html: { class: 'form-control' } %>
+    <%= f.input :staff_notes, input_html: { class: 'form-control' } %>
+    <%= f.input :tags, input_html: { class: "form-control mb-2", placeholder: "Comma-separated tags (Optional)", data: { controller: "taginput" } } %>
+    <%= f.file_field :csv_file, direct_upload: true %>
+  </div>
+
+  <div class="form-group mt-3">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

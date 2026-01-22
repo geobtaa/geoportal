@@ -163,7 +163,7 @@ en:
         b1g_lastHarvested_dt:
           one: "Last Harvested"
           other: "Last Harvested"
-        b1g_dateAccesioned_dt:
+        b1g_dateAccessioned_dt:
           one: "Date Accessioned"
           other: "Date Accessioned"
         b1g_dateRetired_dt:

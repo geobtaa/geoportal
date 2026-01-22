@@ -1,0 +1,9 @@
+<%- @page_title = "GBL♦Admin - New Distribution Import" %>
+
+<h1>New Distribution Import</h1>
+
+<%= simple_form_for(@import_distribution.becomes(ImportDistribution), url: admin_import_distributions_path) do |f| %>
+  <%= render 'form', import_distribution: @import_distribution, f: f %>
+<% end %>
+
+<%= link_to 'Back', admin_import_distributions_path %>

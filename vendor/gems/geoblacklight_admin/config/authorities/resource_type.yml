@@ -1,0 +1,82 @@
+# This is a configuration file for the `qa` (questioning authorities) gem, to create a local
+# authority. It looks for the configuration file at this exact location.
+#
+# WARNING: Do not edit this data without changing existing metadata; additions are fine.
+terms:
+  - Aerial photographs
+  - Aerial views
+  - Aeronautical charts
+  - Armillary spheres
+  - Astronautical charts
+  - Astronomical models
+  - Atlases
+  - Bathymetric maps
+  - Block diagrams
+  - Bottle-charts
+  - Cadastral maps
+  - Cartographic materials
+  - Cartographic materials for people with visual disabilities
+  - Celestial charts
+  - Celestial globes
+  - Census data
+  - Children's atlases
+  - Children's maps
+  - Comparative maps
+  - Composite atlases
+  - Digital elevation models
+  - Digital maps
+  - Early maps
+  - Ephemerides
+  - Ethnographic maps
+  - Fire insurance maps
+  - Flow maps
+  - Gazetteers
+  - Geological cross-sections
+  - Geological maps
+  - Globes
+  - Gores (Maps)
+  - Gravity anomaly maps
+  - Index maps
+  - LiDAR
+  - Line data
+  - Linguistic atlases
+  - Loran charts
+  - Manuscript maps
+  - Mappae mundi
+  - Mental maps
+  - Mesh data
+  - Meteorological charts
+  - Military maps
+  - Mine maps
+  - Miniature maps
+  - Multi-spectral data
+  - Nautical charts
+  - Outline maps
+  - Photogrammetric maps
+  - Photomaps
+  - Physical maps
+  - Pictorial maps
+  - Plotting charts
+  - Point cloud data
+  - Point data
+  - Polygon data
+  - Portolan charts
+  - Quadrangle maps
+  - Raster data
+  - Relief models
+  - Remote-sensing maps
+  - Road maps
+  - Satellite imagery
+  - Statistical maps
+  - Stick charts
+  - Strip maps
+  - Table data
+  - Thematic maps
+  - Topographic maps
+  - Tourist maps
+  - Upside-down maps
+  - Wall maps
+  - World atlases
+  - World maps
+  - Worm's-eye views
+  - Zoning maps

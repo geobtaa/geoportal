@@ -1,0 +1,8 @@
+<%- @page_title = "GBL♦Admin - New Document Licensed Access" %>
+
+<h1>New Document Licensed Access</h1>
+<h2 class='h3'><%= @document.title %></h2>
+
+<%= render 'form', document_licensed_access: @document_licensed_access %>
+
+<%= link_to 'Back', admin_document_document_licensed_accesses_path(@document) %>

@@ -50,10 +50,8 @@ GIT
       blacklight (>= 7.25.2, < 9)
       httparty (~> 0.20)
 
-GIT
-  remote: https://github.com/geobtaa/geoblacklight_admin.git
-  revision: 641fc84f7240eb02c6139835727b80730ca7cc16
-  branch: feature/metadata-updates
+PATH
+  remote: vendor/gems/geoblacklight_admin
   specs:
     geoblacklight_admin (0.10.1)
       active_storage_validations (~> 1.0)

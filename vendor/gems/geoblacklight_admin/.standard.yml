@@ -1,0 +1,5 @@
+format: progress
+ignore:
+  - 'db/seeds.rb'
+  - 'db/migrate/**'
+  - 'app/models/document/bbox_validator.rb'

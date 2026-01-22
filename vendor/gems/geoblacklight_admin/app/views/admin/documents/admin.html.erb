@@ -1,0 +1,210 @@
+<div class="row flex-xl-nowrap">
+  <main class="col-md-12 mb-4">
+    <h1 style="width:100%;">
+      Document &middot; Admin View
+    </h1>
+
+    <h3>
+      <%= link_to(@document.title, admin_document_path(@document)) %>
+    </h3>
+
+    <table class="table table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th>Provenance</th>
+          <th>Updated At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @document.schema_provider_s %></td>
+          <td>
+            <table>
+              <tr>
+                <th>Solr</th>
+                <td><%= DateTime.parse(@document.raw_solr_document["timestamp"]).strftime('%D %r') %></td>
+              </tr>
+              <tr>
+                <th>Database</th>
+                <td><%= @document.updated_at.strftime('%D %r') %></td>  
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr/>
+
+    <div id="accordion">
+      <div class="card">
+        <div class="card-header" id="database-object">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#database-object-content" aria-controls="database-object-content">
+            <h3 class="mb-0">Database Object</h3>
+          </button>
+        </div>
+        <div id="database-object-content" class="collapse" aria-labelledby="database-object-content" data-parent="#database-object">
+          <div class="card-body">
+            <%= ap(JSON.parse(@document.to_json)).html_safe %>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="solr-document">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#solr-document-content" aria-controls="solr-document-content">
+            <h3 class="mb-0">Solr Document</h3>
+          </button>
+        </div>
+        <div id="solr-document-content" class="collapse" aria-labelledby="solr-document-content" data-parent="#solr-document">
+          <div class="card-body">
+            <%= ap(JSON.parse(@document.raw_solr_document.to_json)).html_safe %>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="item-viewer">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#item-viewer-content" aria-controls="item-viewer-content">
+            <h3 class="mb-0">Item Viewer</h3>
+          </button>
+        </div>
+        <div id="item-viewer-content" class="collapse" aria-labelledby="item-viewer-content" data-parent="#item-viewer">
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Protocol</th>
+                  <th>Endpoint</th>
+                </tr>
+              <tbody>
+                <tr>
+                  <td><%= @document.viewer_protocol %></td>
+                  <td><%= link_to(@document.viewer_endpoint, @document.viewer_endpoint) %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="thumbnail">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#thumbnail-content" aria-controls="thumbnail-content">
+            <h3 class="mb-0">Thumbnail</h3>
+          </button>
+        </div>
+        <div id="thumbnail-content" class="collapse" aria-labelledby="thumbnail-content" data-parent="#thumbnail">
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Display</th>
+                  <th>Attached</th>
+                  <th>State</th>
+                  <th>Last Transition</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <% if @document&.thumbnail&.present? %>
+                    <td>
+                      <span>AWS S3</span>
+                      <div class="media">
+                        <span class="mr-3">
+                          <% unless @document&.thumbnail&.file_url(:thumb_mini).nil? %>
+                            <%= image_tag @document&.thumbnail&.file_url(:thumb_mini) %>
+                          <% end %>
+                        </span>
+                      </div>
+                    </td>
+                  <% else %>
+                    <td><span>None</span></td>
+                  <% end %>
+                  <td><%= @document.thumbnail.present? %></td>
+                  <td><%= @document&.thumbnail_state_machine&.current_state %></td>
+                  <td><%= ap(@document&.thumbnail_state_machine&.last_transition).html_safe %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="distributions">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#distributions-content" aria-controls="distributions-content">
+            <h3 class="mb-0">Distributions</h3>
+          </button>
+        </div>
+        <div id="distributions-content" class="collapse" aria-labelledby="distributions-content" data-parent="#distributions">
+          <div class="card-body">
+            <table class="table responsive">
+              <thead>
+                <tr>
+                  <th>Key</th>
+                  <th>Values</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @document.distributions.each do |entry| %>
+                  <tr>
+                    <td><%= entry[0] %></td>
+                    <td>
+                      <% if entry[1].is_a?(Array) %>
+                        <ul>
+                          <% entry[1].each do |value| %>
+                            <li><%= value %></li>
+                          <% end %>
+                        </ul>
+                        <% else %>
+                          <% if entry[1].is_a?(Hash) %>
+                            <ul>
+                              <% entry[1].each do |key, value| %>
+                                <li><%= key %>: <%= value %></li>
+                              <% end %>
+                            </ul>
+                          <% else %>
+                            <p><%= link_to(entry[1], entry[1]) %></p>
+                          <% end %>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="access-links">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#access-links-content" aria-controls="access-links-content">
+            <h3 class="mb-0">Access Links</h3>
+          </button>
+        </div>
+        <div id="access-links-content" class="collapse" aria-labelledby="access-links-content" data-parent="#access-links">
+          <div class="card-body">
+            <table class="table responsive">
+              <thead>
+                <tr>
+                  <th>University</th>
+                  <th>Access Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @document.document_licensed_accesses.each do |da| %>
+                  <tr>
+                    <td><%= da.institution_code %></td>
+                    <td><a href="<%= da.access_url %>"><%= da.access_url %></a></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>

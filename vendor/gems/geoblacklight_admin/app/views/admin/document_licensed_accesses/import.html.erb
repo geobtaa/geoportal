@@ -1,0 +1,77 @@
+<%- @page_title = "GBL♦Admin - New Licensed Access Import" %>
+
+<p id="notice"><%= notice %></p>
+
+<h1 style="width:100%; border-bottom:dotted;" class="mb-4">
+  New Licensed Access Import
+
+  <% if params[:document_id] %>
+    <%= link_to '+ New Licensed Access', new_admin_document_document_licensed_access_path(@document), { class: 'btn btn-primary float-right' } %>
+  <% end %>
+</h1>
+
+<div class="row">
+  <div class="col-6">
+    <% if params[:document_id] %>
+      <h2 class='h3'><%= @document.title %></h2>
+    <% else %>
+      <h2 class='h3'>Import for Multiple Items</h2>
+    <% end %>
+
+    <p class="alert alert-info" role="alert">
+      <strong>Note:</strong> New Licensed Access URLs will be created. Existing Licensed Access URLs will be updated per the CSV file.
+    </p>
+
+    <h3 class='h4'>Upload a CSV File</h3>
+    <%= simple_form_for DocumentLicensedAccess.new, url: import_admin_document_licensed_accesses_path, method: :post, multipart: true do |f| %>
+      <div class="form-inputs">
+        <%= f.simple_fields_for :assets do |asset_fields| %>
+          <%= asset_fields.input :file, as: :file, input_html: {} %>
+        <%- end %>
+      </div>
+
+      <div class="form-actions">
+        <%= submit_tag "+ Create Licensed Access Import", {class: 'btn btn-primary'} %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-6">
+    <h4>Example CSV File</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>friendlier_id</th>
+          <th>institution_code</th>
+          <th>access_url</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>999-0010</td>
+          <td>12</td>
+          <td>http://pi.lib.uchicago.edu/1001/cat/bib/11538549</td>
+        </tr>
+        <tr>
+          <td>999-0010-alabama</td>
+          <td>12</td>
+          <td>http://pi.lib.uchicago.edu/1001/cat/bib/11538549</td>
+        </tr>
+        <tr>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>CSV File Column Definitions</h5>
+    <dl>
+      <dt>friendlier_id</dt>
+      <dd>The associated GBL ADMIN document's friendlier id</dd>
+      <dt>institution_code</dt>
+      <dd>The <a target="_blank" href="https://github.com/geobtaa/geomg/blob/be1b6ac6628bd8f537ab10ecb88e5f4804540e2b/app/helpers/application_helper.rb#L28-L44">code</a> for the institution</dd>
+      <dt>access_url</dt>
+      <dd>The URL for the Licensed Access link</dd>
+    </dl>
+  </div>
+</div>

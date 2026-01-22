@@ -1,0 +1,24 @@
+.icon {
+  display: inline;
+  align-self: center;
+}
+
+svg.icon {
+  fill: currentColor;
+  height: 1em;
+  width: 1em;
+}
+
+svg.icon.baseline  {
+  top: -0.125em;
+  position: relative;
+}
+
+// Sidebar Action Icons
+#dataDictionariesLink {
+  margin-left:0rem;
+  padding-left: 1.5rem;
+  background-position: left center;
+  background-repeat:no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' width='14' height='14' viewBox='0 0 512 512' aria-label='Table' role='img'%3E%3Ctitle%3ETable%3C/title%3E%3Cpath fill='%236c757d' d='M464 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM48 80h416v64H48V80zm0 128h128v64H48v-64zm0 128h128v64H48v-64zm192 64v-64h128v64H240zm128-128H240v-64h128v64zm64 128v-64h128v64H432zm0-128h128v64H432v-64z'%3E%3C/path%3E%3C/svg%3E");
+}

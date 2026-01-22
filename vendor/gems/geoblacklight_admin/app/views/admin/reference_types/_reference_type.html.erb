@@ -1,0 +1,52 @@
+<%- @page_title = "GBL♦Admin - Reference Type - #{reference_type.label}" %>
+
+<h1>Reference Type</h1>
+
+<div class="row">
+  <div class="col-9">
+    <h2>
+      <%= reference_type.reference_type %>
+      <span class="float-right">
+        <%= link_to '~ Edit Reference Type', edit_admin_reference_type_path(reference_type), { class: 'btn btn-primary' } %>
+        <%= button_to "Destroy this reference type", admin_reference_type_path(reference_type), method: :delete, class: "btn btn-danger" %>
+      </span>
+    </h2>
+
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th class="header" style="width:300px;">Attribute</th>
+          <th class="header">Value</th>
+        </tr>
+      </thead>
+      <tr>
+        <th>Reference Type</th>
+        <td><%= reference_type.reference_type %></td>
+      </tr>
+      <tr>
+        <th>Reference URI</th>
+        <td><%= reference_type.reference_uri %></td>
+      </tr>
+      <tr>
+        <th>Label</th>
+        <td><%= reference_type.label %></td>
+      </tr>
+      <tr>
+        <th>Note</th>
+        <td><%= reference_type.note %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="col-3">
+    <h3><%= link_to "Reference Types", admin_reference_types_path %></h3>
+    <%- @reference_types = ReferenceType.all %>
+    <ul>
+      <%- @reference_types.each do |ref_type| %>
+        <li><%= link_to_unless_current(ref_type.reference_type, admin_reference_type_url(ref_type)) %></li>
+      <%- end %>
+    </ul>
+  </div>
+</div>
+<%= link_to 'Edit', edit_admin_reference_type_path(reference_type) %> |
+<%= link_to 'Back', admin_reference_types_path %>

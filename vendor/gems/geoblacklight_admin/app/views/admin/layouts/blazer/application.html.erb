@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= blazer_title ? blazer_title : "GEOMG - Blazer" %></title>
+
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <%= stylesheet_link_tag "blazer/application" %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag "blazer/application" %>
+    <script>
+      <%= blazer_js_var "rootPath", root_path %>
+    </script>
+    <%= csrf_meta_tags %>
+  </head>
+  <body style="padding:0; !important">
+    <%= render "shared/navbar_blazer" %>
+    <div class="container-fluid" style="margin-top:6rem;">
+      <%= render "shared/schema_timestamp" %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @form_element.type %>
+</p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @form_element.label %>
+</p>
+
+<p>
+  <strong>Element:</strong>
+  <%= @form_element.element_solr_field %>
+</p>
+
+<%= link_to 'Edit', edit_admin_form_element_path(@form_element) %> |
+<%= link_to 'Back', admin_form_elements_path %>

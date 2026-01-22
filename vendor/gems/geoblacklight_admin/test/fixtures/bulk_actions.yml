@@ -1,0 +1,7 @@
+one:
+  name: null
+  request: "https://localhost:3000"
+  scope: "%2Fdocuments%2Ffetch%3Fids%255B%255D%3D0dd569b5-cb64-4a9e-8ae1-e95a3382ec42%26ids%255B%255D%3Ddc6cafc7-403f-4358-92ab-b509739aa9b6"
+  field_name: "Publication State"
+  field_value: "unpublished"
+  notes: 

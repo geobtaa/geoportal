@@ -1,0 +1,19 @@
+ag_1:
+  friendlier_id: 35c8a641589c4e13b7aa11e37f3f00a1_0
+  reference_type_id: 8
+  url: https://open-iowa.opendata.arcgis.com/datasets/35c8a641589c4e13b7aa11e37f3f00a1_0
+  label: 
+  position: 1
+
+ag_2:
+  friendlier_id: 35c8a641589c4e13b7aa11e37f3f00a1_0
+  reference_type_id: 8
+  url: https://open-iowa.opendata.arcgis.com/datasets/35c8a641589c4e13b7aa11e37f3f00a1_0.zip
+  label:
+  position: 2
+ag_3:
+  friendlier_id: 35c8a641589c4e13b7aa11e37f3f00a1_0
+  reference_type_id: 3
+  url: https://services2.arcgis.com/KhKjlwEBlPJd6v51/arcgis/rest/services/AgDistricts/FeatureServer/0
+  label: Agricultural Districts
+  position: 3

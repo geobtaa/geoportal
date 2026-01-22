@@ -1,0 +1,27 @@
+<% if @import.errors.any? %>
+  <div class="alert alert-danger mb-4" role="alert">
+    <h2 class="h4" class="alert-heading"><%= pluralize(@import.errors.count, "error") %> prohibited this import from being saved</h2>
+    <ol class="mb-0">
+      <% @import.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ol>
+  </div>
+<% end %>
+
+<div class="form-inputs">
+  <%= f.input :name, {autofocus: true} %>
+  <%= f.input :source %>
+  <%= f.input :description %>
+  <%= f.file_field :csv_file, direct_upload: true %>
+  <%= f.input :type, collection:[
+      ['BTAA CSV', 'ImportBtaa'],
+      ['Solr BTAA Aardvark CSV', 'ImportBtaaAardvark'],
+      ['Solr GBLv1 CSV', 'ImportGblv1']
+    ]
+  %>
+</div>
+
+<div class="form-actions">
+  <%= f.button :submit, "+ Create Primary Import", {class: 'btn btn-primary'} %>
+</div>

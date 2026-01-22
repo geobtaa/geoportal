@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <h3 class="modal-title">Data Dictionary</h3>
+  <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body metadata-body">
+  <%= render partial: 'show_gbl_admin_data_dictionaries', locals: { document: @documents.first } %>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default hide-without-js" data-dismiss="modal">Close</button>
+</div>

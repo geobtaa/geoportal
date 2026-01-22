@@ -1,0 +1,8 @@
+<h1>Editing Import Distribution</h1>
+
+<%= simple_form_for(@import_distribution, :url => admin_import_distribution_path) do |f| %>
+  <%= render 'form', import_distribution: @import_distribution, f: f %>
+<% end %>
+
+<%= link_to 'Show', admin_import_distribution_path(@import_distribution) %> |
+<%= link_to 'Back', admin_import_distributions_path %>

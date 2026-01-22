@@ -1,0 +1,21 @@
+<!-- @TODO: result helpers -->
+<% if @documents.meta.present? && @documents.meta['pages'].present? %>
+  <% result_start = @documents.meta['pages']['offset_value'] + 1 %>
+  <% result_end = @documents.results.size + result_start - 1 %>
+
+  <span class='float-right'>
+    Results: <%= result_start %> - <%= result_end %> of <%= @documents.meta['pages']['total_count'] %>
+    <span class="dropdown">
+      <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort by
+      </button>
+      <span class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% @documents.sorts.each do |sort| %>
+          <%= sort_link(sort) %>
+        <% end %>
+      </span>
+    </span>
+    <%= previous_link(@documents.links) %>
+    <%= next_link(@documents.links) %>
+  </span>
+<% end %>

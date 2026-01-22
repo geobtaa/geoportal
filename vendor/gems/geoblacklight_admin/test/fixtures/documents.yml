@@ -1,0 +1,31 @@
+ag:
+  id: d3d872a3-fd4c-404f-a8fd-657f16db50cf
+  title: 'Agricultural Districts: Iowa'
+  type: Document
+  position:
+  json_attributes:
+    {"dcat_bbox": "-96.6391,40.3754,-90.1401,43.5012", "locn_geometry": "POLYGON((-80 25, -65 18, -64 33, -80 25))", "b1g_code_s": "03a-04", "dct_title_s": "Agricultural Districts: Iowa", "dct_format_s": "Shapefile", "dct_accessRights_s": "Public", "gbl_resourceClass_sm": ["Datasets"], "b1g_image_ss": null, "dct_issued_s": "2015-09-03", "geomg_id_s": "35c8a641589c4e13b7aa11e37f3f00a1_0", "gbl_suppressed_b": false, "dct_creator_sm": ["Legislative Services Agency"], "dct_subject_sm": ["Boundaries"], "dcat_keyword_sm": ["iowa", "judicial", "districts", "boundaries"], "dct_language_sm": ["eng"], "dct_spatial_sm": ["Iowa"], "dcat_centroid": "41.9383,-93.3896", "b1g_geonames_sm": [], "dct_identifier_sm": ["35c8a641589c4e13b7aa11e37f3f00a1_0"], "dct_publisher_sm": ["State of Iowa"], "pcdm_memberOf_sm": ["03a-04"], "dct_isPartOf_sm": ["03a-04"], "dcat_theme_sm": ["Theme"], "dct_temporal_sm": ["2015"], "dct_description_sm": ["Iowa Agricultural Districts"], "schema_provider_s": "Iowa", "gbl_resourceType_sm": "Vector", "gbl_georeferenced_b": false, "dct_rights_sm": [""], "b1g_dct_accrualMethod_s": "ArcGIS Hub", "gbl_dateRange_drsim": ["2015-2015"], "gbl_mdVersion_s": "Aardvark", "dct_alternative_sm": ["Ag Districts"], "b1g_dct_accrualPeriodicity_s": null}
+  parent_id:
+  friendlier_id: 35c8a641589c4e13b7aa11e37f3f00a1_0
+  file_data:
+  representative_id:
+  leaf_representative_id:
+  kithe_model_type: 1
+  import_id: 1
+  publication_state: published
+
+ls:
+  id: e7b58bab-b5e3-408a-b9e0-d2fe0a69b59e
+  title: "Albertson's map of the cities at the head of Lake Superior"
+  type: Document
+  position:
+  json_attributes:
+    {"dcat_bbox": "-92.3011,46.6489,-91.92,46.8806", "b1g_code_s": "05d-01", "geomg_id_s": "p16022coll205:446", "dct_title_s": "Albertson's map of the cities at the head of Lake Superior", "b1g_access_s": null, "b1g_image_ss": "https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/p16022coll205/id/446", "dct_format_s": "JPEG", "dct_issued_s": "1891", "dcat_centroid": "46.76475,-92.11055", "dcat_theme_sm": [], "dct_rights_sm": ["Use of this item may be governed by US and international copyright laws. You may be able to use this item, but copyright and other considerations may apply. For possible additional information or guidance on your use, please contact the contributing organization."], "dct_source_sm": [], "locn_geometry": "POLYGON((-92.3011 46.8806, -91.92 46.8806, -91.92 46.6489, -92.3011 46.6489, -92.3011 46.8806))", "dct_creator_sm": ["Roe, Frederick B., 1845-1905"], "dct_license_sm": [], "dct_spatial_sm": [], "dct_subject_sm": [], "gbl_fileSize_s": null, "b1g_geonames_sm": [], "b1g_language_sm": [], "dcat_keyword_sm": ["", "2022-creator-sprint"], "dct_isPartOf_sm": ["05d-01", "p16022coll205"], "dct_language_sm": ["eng"], "dct_relation_sm": [], "dct_replaces_sm": [], "dct_temporal_sm": ["1891"], "gbl_mdVersion_s": "Aardvark", "b1g_creatorID_sm": ["null"], "dct_publisher_sm": ["Albertson & Chamberlain (Duluth,  Minn)"], "dct_references_s": [{"value": "https://umedia.lib.umn.edu/item/p16022coll205:446", "category": "documentation_external"}, {"value": "https://cdm16022.contentdm.oclc.org/iiif/info/p16022coll205/446/manifest.json", "category": "iiif_manifest"}], "gbl_indexYear_im": [], "gbl_suppressed_b": null, "pcdm_memberOf_sm": ["64bd8c4c-8e60-4956-b43d-bdc3f93db488"], "date_created_dtsi": "2021-05-29T12:53:29.000Z", "dct_identifier_sm": ["UMN_ALMA:9928668470001701"], "schema_provider_s": "University of Minnesota", "date_modified_dtsi": "2023-02-07T18:34:16.000Z", "dct_accessRights_s": "Public", "dct_alternative_sm": [], "dct_description_sm": ["Shows Duluth, Minn. & Superior, Wis.", "Soundings in feet.; Hand colored.", "105 x 92 centimeters", "Scale [1:31,680] . 2 inches to one mile", "City Maps"], "dct_isVersionOf_sm": [], "gbl_displayNote_sm": [], "b1g_dct_mediator_sm": [], "dct_isReplacedBy_sm": [], "dct_rightsHolder_sm": [], "gbl_dateRange_drsim": ["1891-1891"], "gbl_georeferenced_b": null, "gbl_resourceType_sm": [], "gbl_wxsIdentifier_s": null, "gbl_resourceClass_sm": ["Maps"], "b1g_dct_accrualMethod_s": "JSON API", "b1g_publication_state_s": "published", "b1g_dct_accrualPeriodicity_s": null}
+  parent_id:
+  friendlier_id: p16022coll205:446
+  file_data:
+  representative_id:
+  leaf_representative_id:
+  kithe_model_type: 1
+  import_id: 1
+  publication_state: published

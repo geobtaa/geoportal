@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @document_distribution %>
+
+<div>
+  <%= link_to "Edit this document distribution", edit_admin_document_document_distribution_path(@document, @document_distribution) %> |
+  <%= link_to "Back to document distributions", admin_document_document_distributions_path(@document) %>
+
+  <%= button_to "Destroy this document distribution", admin_document_document_distribution_path(@document, @document_distribution), method: :delete %>
+</div>

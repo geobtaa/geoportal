@@ -1,0 +1,52 @@
+<%- @page_title= "GBL♦Admin - Documents" %>
+
+<h1 style="width:100%; margin-bottom:2rem;">
+  Documents
+  <%= link_to '+ New Document', new_admin_document_path, {class: 'btn btn-primary float-right'} %>
+</h1>
+
+<div id="facets" class="row">
+  <div class="col-4">
+    <%= render "result_facets" %>
+  </div>
+
+  <div id="resultset" class="col-8">
+
+    <%= render "result_toggle" %>
+    <%= render "result_selected_options" %>
+    <%= render "result_pagination" %>
+    <%= render "result_selection_options" %>
+
+    <% if @documents.results.present? &&  @documents.results.kind_of?(Array) %>
+      <ol id='results' class='list-unstyled mt-4' data-controller='results'>
+        <% @documents.results.each_with_index do |document, index| %>
+          <% doc = Document.find_by(friendlier_id: document['id']) %>
+          <% if doc.present? %>
+            <%= render "document", document: doc, index: index %>
+          <% else %>
+            <li>
+              <div class="row">
+                <div class="thumbnail col-1">
+                  &nbsp;
+                </div>
+                <div class="result col">
+                  <p><%= "#{index + 1}." %> Database is missing document <%= document['id'] %></p>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      </ol>
+
+
+      <hr/>
+
+      <p>
+        <span class='float-right'>
+          <%= previous_link(@documents.links) %>
+          <%= next_link(@documents.links) %>
+        </span>
+      </p>
+    <% end %>
+  </div>
+</div>
