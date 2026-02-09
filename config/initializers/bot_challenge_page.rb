@@ -36,6 +36,7 @@ Rails.application.config.to_prepare do
     Googlebot|          # Google Search, Images, Video, News
     Googlebot-Image|
     Googlebot-Video|
+    Google-InspectionTool|  # Google Search Console URL Inspection Live Test
     Bingbot|            # Microsoft Bing
     Slurp|              # Yahoo
     DuckDuckBot|        # DuckDuckGo
