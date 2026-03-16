@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   get 'robots.:format' => 'robots#robots'
   get '/centroids.json', :to => redirect('/centroids.json')
 
+  namespace :api do
+    get "/kithe_bridge", to: "kithe_bridge#index"
+  end
+
   # Tableau
   namespace :admin do
     get '/api/tableau_export', to: 'api#tableau_export'
