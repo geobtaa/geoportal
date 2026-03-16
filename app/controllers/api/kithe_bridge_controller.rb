@@ -26,14 +26,7 @@ class Api::KitheBridgeController < ApplicationController
   private
 
   def serialize_row(r)
-    {
-      id: r.id,
-      dct_title_s: r.dct_title_s,
-      date_created_dtsi: r.date_created_dtsi,
-      date_modified_dtsi: r.date_modified_dtsi,
-      geomg_id_s: r.geomg_id_s
-      # Add more fields here as needed for FastAPI
-    }
+    r.attributes
   end
 
   def require_bridge_token
