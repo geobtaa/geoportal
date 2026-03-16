@@ -17,7 +17,19 @@ SELECT
   ARRAY(SELECT jsonb_array_elements_text(json_attributes->'dcat_keyword_sm')) AS "dcat_keyword_sm",
   ARRAY(SELECT jsonb_array_elements_text(json_attributes->'dct_temporal_sm')) AS "dct_temporal_sm",
   json_attributes->>'dct_issued_s' AS "dct_issued_s",
-  ARRAY(SELECT (jsonb_array_elements_text(json_attributes->'gbl_indexYear_im'))::integer) AS "gbl_indexYear_im",
+  ARRAY(
+    SELECT (
+      jsonb_array_elements_text(
+        CASE
+          WHEN jsonb_typeof(json_attributes->'gbl_indexYear_im') = 'array'
+            THEN json_attributes->'gbl_indexYear_im'
+          WHEN jsonb_typeof(json_attributes->'gbl_indexYear_im') = 'string'
+            THEN jsonb_build_array(json_attributes->'gbl_indexYear_im')
+          ELSE '[]'::jsonb
+        END
+      )
+    )::integer
+  ) AS "gbl_indexYear_im",
   ARRAY(SELECT jsonb_array_elements_text(json_attributes->'gbl_dateRange_drsim')) AS "gbl_dateRange_drsim",
   ARRAY(SELECT jsonb_array_elements_text(json_attributes->'dct_spatial_sm')) AS "dct_spatial_sm",
   json_attributes->>'locn_geometry' AS "locn_geometry",
