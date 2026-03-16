@@ -19,6 +19,7 @@ gem 'webpacker', '~> 5.x'
 gem 'sqlite3', '~> 1.4'
 #gem 'mysql2', '~> 0.5.0'
 gem 'pg'
+gem 'scenic', '~> 1.9.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Terser as compressor for JavaScript assets
