@@ -1,13 +1,13 @@
 # GeoPortal robots.txt
 
-<%- if File.exist? "#{Rails.root}/public/sitemap.xml.gz" -%>
-Sitemap: <%= "#{root_url}sitemap.xml.gz" %>
-<%- end -%>
-
-<%- if Socket.gethostname =~ /geo(mg)?dev\./i  -%>
+<%- # Development instance: never allow any crawler. Use DISALLOW_ALL_ROBOTS on geodev when Host is not reliable (e.g. behind a proxy). -%>
+<%- if ENV['DISALLOW_ALL_ROBOTS'].present? || request.host == 'geodev.btaa.org' || (Socket.gethostname =~ /geo(mg)?dev\./i) -%>
 User-agent: *
 Disallow: /
 <%- else -%>
+<%- if File.exist? "#{Rails.root}/public/sitemap.xml.gz" -%>
+Sitemap: <%= "#{root_url}sitemap.xml.gz" %>
+<%- end -%>
 User-agent: *
 Crawl-delay: 5
 Disallow: /?q=

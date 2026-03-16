@@ -30,7 +30,28 @@ Rails.application.config.to_prepare do
   WORMLY_UA_REGEX    = /WormlyBot/i
   APPSIGNAL_UA_REGEX = /AppSignalBot/i
 
+  # Search engine and friendly crawlers that should see real content for indexing.
+  # See: https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers
+  CRAWLER_UA_REGEX = %r{
+    Googlebot|          # Google Search, Images, Video, News
+    Googlebot-Image|
+    Googlebot-Video|
+    Google-InspectionTool|  # Google Search Console URL Inspection Live Test
+    Bingbot|            # Microsoft Bing
+    Slurp|              # Yahoo
+    DuckDuckBot|        # DuckDuckGo
+    Baiduspider|        # Baidu
+    YandexBot|          # Yandex
+    facebookexternalhit| # Facebook sharing
+    Twitterbot|         # Twitter cards
+    LinkedInBot|        # LinkedIn
+    Applebot            # Apple Search / Siri
+  }ix
+
   BotChallengePage::BotChallengePageController.bot_challenge_config.allow_exempt = lambda do |controller, _config|
+    # robots.txt must be reachable by any crawler without challenge (standard practice)
+    robots_txt = controller.controller_name == "robots" && controller.params[:action] == "robots"
+
     # Ajax/facet exemption
     ajax_search =
       controller.params[:action].in?(%w[facet range_limit]) &&
@@ -41,7 +62,9 @@ Rails.application.config.to_prepare do
     ua = controller.request.user_agent.to_s
     wormly_bot    = ua.match?(WORMLY_UA_REGEX)
     appsignal_bot = ua.match?(APPSIGNAL_UA_REGEX)
+    # Allow search engines and friendly crawlers so they can index content
+    friendly_crawler = ua.match?(CRAWLER_UA_REGEX)
 
-    ajax_search || wormly_bot || appsignal_bot
+    ajax_search || wormly_bot || appsignal_bot || friendly_crawler || robots_txt
   end
 end
