@@ -105,10 +105,31 @@ SELECT
   NULLIF(NULLIF(json_attributes->>'b1g_lastHarvested_dt', ''), 'null')::timestamp AS "b1g_lastHarvested_dt",
   ARRAY(
     SELECT jsonb_array_elements_text(
-      COALESCE(
-        json_attributes->'b1g_dct_provenance_sm',
-        json_attributes->'b1g_dct_provenanceStatement_sm'
-      )
+      CASE
+        WHEN jsonb_typeof(
+          COALESCE(
+            json_attributes->'b1g_dct_provenance_sm',
+            json_attributes->'b1g_dct_provenanceStatement_sm'
+          )
+        ) = 'array'
+        THEN COALESCE(
+          json_attributes->'b1g_dct_provenance_sm',
+          json_attributes->'b1g_dct_provenanceStatement_sm'
+        )
+        WHEN jsonb_typeof(
+          COALESCE(
+            json_attributes->'b1g_dct_provenance_sm',
+            json_attributes->'b1g_dct_provenanceStatement_sm'
+          )
+        ) = 'string'
+        THEN jsonb_build_array(
+          COALESCE(
+            json_attributes->'b1g_dct_provenance_sm',
+            json_attributes->'b1g_dct_provenanceStatement_sm'
+          )
+        )
+        ELSE '[]'::jsonb
+      END
     )
   ) AS "b1g_dct_provenance_sm",
   COALESCE(
