@@ -16,17 +16,53 @@ class Api::KitheBridgeController < ApplicationController
 
     next_cursor = rows.last&.id
 
+    data =
+      if params[:v1] == "raw"
+        rows.map(&:attributes)
+      else
+        rows.map { |row| BridgeExportSerializer.new(row).as_json }
+      end
+
     render json: {
-      data: rows.map { |r| serialize_row(r) },
+      data: data,
       next_cursor: next_cursor,
       has_more: next_cursor.present?
     }
   end
 
+  def show
+    record = KitheToResourcesBridge.find_by(id: params[:id])
+
+    unless record
+      head :not_found
+      return
+    end
+
+    if params[:v1] == "raw"
+      render json: record.attributes
+    else
+      render json: BridgeExportSerializer.new(record).as_json
+    end
+  end
+
   private
 
-  def serialize_row(r)
-    r.attributes
+  def v1_assets
+    cursor = params[:cursor]
+    limit  = [[params[:limit].to_i, 1].max, MAX_LIMIT].min rescue DEFAULT_LIMIT
+
+    scope = Asset.order(id: :asc)
+    scope = scope.where("id > ?", cursor) if cursor.present?
+    scope = scope.includes(:parent)
+
+    rows = scope.limit(limit).to_a
+    next_cursor = rows.last&.id
+
+    render json: {
+      data: rows.map { |asset| AssetExportSerializer.new(asset).as_json },
+      next_cursor: next_cursor,
+      has_more: next_cursor.present?
+    }
   end
 
   def require_bridge_token

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     get "/kithe_bridge", to: "kithe_bridge#index"
+    get "/kithe_bridge/:id", to: "kithe_bridge#show"
   end
 
   # Tableau
