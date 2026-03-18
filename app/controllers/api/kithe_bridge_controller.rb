@@ -12,6 +12,17 @@ class Api::KitheBridgeController < ApplicationController
 
     scope = KitheToResourcesBridge.order(id: :asc)
     scope = scope.where("id > ?", cursor) if cursor.present?
+
+    if params[:changed_since].present?
+      begin
+        changed_since = Time.iso8601(params[:changed_since].to_s).utc
+        scope = scope.where("kithe_updated_at >= ?", changed_since)
+      rescue ArgumentError
+        head :bad_request
+        return
+      end
+    end
+
     rows  = scope.limit(limit).to_a
 
     next_cursor = rows.last&.id

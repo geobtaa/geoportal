@@ -48,12 +48,17 @@ class DocumentExportSerializer
       .where(document_data_dictionary_id: document.document_data_dictionaries.select(:id))
       .order(:position)
       .map do |entry|
+        # Table schema uses `values` (not `field_value`)
         entry.attributes.slice(
           "id",
           "document_data_dictionary_id",
           "friendlier_id",
           "field_name",
-          "field_value",
+          "field_type",
+          "values",
+          "definition",
+          "definition_source",
+          "parent_field_name",
           "position",
           "created_at",
           "updated_at"
@@ -82,14 +87,17 @@ class DocumentExportSerializer
       DocumentDownload
         .where(friendlier_id: document.friendlier_id)
         .map do |download|
-          download.attributes.slice(
-            "id",
-            "friendlier_id",
-            "url",
-            "label",
-            "created_at",
-            "updated_at"
-          )
+          {
+            "id" => download.id,
+            "friendlier_id" => download.friendlier_id,
+            "label" => download.label,
+            "value" => download.value,
+            # Backwards-friendly alias for downstream expectations.
+            "url" => download.value,
+            "position" => download.position,
+            "created_at" => download.created_at,
+            "updated_at" => download.updated_at
+          }
         end
     else
       []
