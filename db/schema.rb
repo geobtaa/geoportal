@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_03_18_091000) do
+ActiveRecord::Schema[7.2].define(version: 2026_04_09_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -961,7 +961,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_03_18_091000) do
       COALESCE(NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dcat_spatialResolutionInMeters_s'::text), ''::text), 'null'::text), NULLIF(NULLIF(((kithe_models.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text) ->> 0), ''::text), 'null'::text)) AS "b1g_dcat_spatialResolutionInMeters_s",
       (kithe_models.json_attributes ->> 'b1g_websitePlatform_s'::text) AS "b1g_websitePlatform_s"
      FROM kithe_models
-    WHERE (((kithe_models.type)::text = 'Document'::text) AND ((kithe_models.publication_state)::text = 'published'::text));
+    WHERE ((kithe_models.type)::text = 'Document'::text);
   SQL
   add_index "kithe_to_resources_bridge", ["id"], name: "kithe_to_resources_bridge_id_uidx", unique: true
 
