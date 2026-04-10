@@ -52,8 +52,26 @@ curl "http://localhost:4000/api/kithe_bridge?changed_since=${T0}&limit=50" \
 
 Confirm the response `data[]` includes your `DOC_ID`.
 
+## Step F: Verify deletions are emitted on the next refresh
+
+1. Delete a target document in the admin UI or with `document.destroy`.
+2. Refresh the materialized view:
+
+```bash
+bundle exec rake geoportal:refresh_kithe_to_resources_bridge
+```
+
+3. Re-run the incremental crawl:
+
+```bash
+curl "http://localhost:4000/api/kithe_bridge?changed_since=${T0}&limit=50" \
+  -H "X-Bridge-Token: <KITHE_BRIDGE_TOKEN>"
+```
+
+Confirm the deleted document appears once with `"deleted": true` and a `deleted_at` timestamp.
+
 ## Notes / gotchas
 
 - If you use cursor pagination, the `cursor` is based on the bridge `id` ordering (friendlier_id strings in this view).
 - You must refresh the materialized view for the changes to appear in the API.
-
+- Full bridge dumps continue to exclude deleted rows unless the caller passes `include_deleted=true`.

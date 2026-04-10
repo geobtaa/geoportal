@@ -9,9 +9,11 @@ class Api::KitheBridgeController < ApplicationController
   def index
     cursor = params[:cursor]
     limit  = [[params[:limit].to_i, 1].max, MAX_LIMIT].min rescue DEFAULT_LIMIT
+    include_deleted = ActiveModel::Type::Boolean.new.cast(params[:include_deleted])
 
     scope = KitheToResourcesBridge.order(id: :asc)
     scope = scope.where("id > ?", cursor) if cursor.present?
+    scope = scope.where(deleted: false) unless include_deleted || params[:changed_since].present?
 
     if params[:changed_since].present?
       begin
@@ -42,7 +44,12 @@ class Api::KitheBridgeController < ApplicationController
   end
 
   def show
-    record = KitheToResourcesBridge.find_by(id: params[:id])
+    include_deleted = ActiveModel::Type::Boolean.new.cast(params[:include_deleted])
+
+    scope = KitheToResourcesBridge.all
+    scope = scope.where(deleted: false) unless include_deleted
+
+    record = scope.find_by(id: params[:id])
 
     unless record
       head :not_found
@@ -83,4 +90,3 @@ class Api::KitheBridgeController < ApplicationController
     head :unauthorized if expected.blank? || !ActiveSupport::SecurityUtils.secure_compare(expected, provided)
   end
 end
-

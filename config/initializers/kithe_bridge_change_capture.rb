@@ -8,7 +8,8 @@
 # Some related tables (data dictionaries + entries, downloads) don't update
 # the parent Document record themselves. We hook into their callbacks so that
 # changes are reflected in the parent and therefore captured when the MV is
-# refreshed.
+# refreshed. We also record hard-deleted Documents into a tombstone table so
+# incremental bridge syncs can see deletions after the next MV refresh.
 module KitheBridgeChangeCapture
   module_function
 
@@ -27,6 +28,41 @@ module KitheBridgeChangeCapture
       json_attributes: json,
       updated_at: now
     )
+  end
+
+  def capture_document_deletion!(document)
+    return if document.nil? || document.friendlier_id.blank?
+    return unless defined?(KitheBridgeDeletion)
+
+    now = Time.current.utc
+    json = document.json_attributes.is_a?(Hash) ? document.json_attributes : {}
+
+    KitheBridgeDeletion.upsert(
+      {
+        friendlier_id: document.friendlier_id,
+        kithe_model_id: document.id,
+        title: document.title,
+        import_id: document.import_id,
+        publication_state: document.publication_state,
+        geomg_id_s: json["geomg_id_s"],
+        deleted_at: now,
+        created_at: now,
+        updated_at: now
+      },
+      unique_by: :index_kithe_bridge_deletions_on_friendlier_id
+    )
+  end
+end
+
+if defined?(Document)
+  Document.class_eval do
+    after_commit :kithe_bridge_capture_document_deletion, on: :destroy
+
+    private
+
+    def kithe_bridge_capture_document_deletion
+      KitheBridgeChangeCapture.capture_document_deletion!(self)
+    end
   end
 end
 
@@ -55,4 +91,3 @@ if defined?(DocumentDataDictionaryEntry)
     end
   end
 end
-

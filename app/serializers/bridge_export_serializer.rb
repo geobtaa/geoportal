@@ -7,6 +7,8 @@ class BridgeExportSerializer
     # Start with all columns from the materialized view row
     result = bridge_row.attributes.dup
 
+    return attach_empty_collections(result) if deleted_bridge_row?
+
     friendlier_id = bridge_row.id
     document = Document.find_by(friendlier_id: friendlier_id)
 
@@ -42,5 +44,25 @@ class BridgeExportSerializer
   private
 
   attr_reader :bridge_row
-end
 
+  def deleted_bridge_row?
+    value =
+      if bridge_row.respond_to?(:deleted)
+        bridge_row.deleted
+      else
+        bridge_row.attributes["deleted"] || bridge_row.attributes[:deleted]
+      end
+
+    ActiveModel::Type::Boolean.new.cast(value)
+  end
+
+  def attach_empty_collections(result)
+    result["document_data_dictionaries"] = []
+    result["document_data_dictionary_entries"] = []
+    result["document_distributions"] = []
+    result["document_downloads"] = []
+    result["document_licensed_accesses"] = []
+    result["assets"] = []
+    result
+  end
+end
