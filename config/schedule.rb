@@ -16,6 +16,10 @@ end
 every :day, at: '12:30am', roles: [:app] do
   rake 'sitemap:refresh'
 end
+# Refresh the kithe_to_resources_bridge materialized view
+every :day, at: '1:00am', roles: [:app] do
+  rake 'geoportal:refresh_kithe_to_resources_bridge'
+end
 # Cleans up anonymous user accounts created by search sessions
 every :day, at: '1:30am', roles: [:app] do
   rake 'devise_guests:delete_old_guest_users[2]'
