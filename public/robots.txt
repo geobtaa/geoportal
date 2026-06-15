@@ -1,0 +1,4 @@
+# GeoPortal robots.txt
+
+User-agent: *
+Disallow: /
