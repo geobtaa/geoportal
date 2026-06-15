@@ -1,0 +1,10 @@
+csv:
+  key: '12345678'
+  filename: 'btaa_formatted_records.csv'
+  content_type: 'text/csv'
+  byte_size: 88435
+  checksum: "dWCq/sL1i8EB4AE2Oeg09w=="
+  service_name: 'local'
+
+import_btaa_blob: <%= ActiveStorage::FixtureSet.blob filename: "btaa_sample_records.csv", service_name: "test" %>
+import_distribution_blob: <%= ActiveStorage::FixtureSet.blob filename: "btaa_sample_document_distributions.csv", service_name: "test" %>

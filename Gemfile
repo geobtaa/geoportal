@@ -19,6 +19,7 @@ gem 'webpacker', '~> 5.x'
 gem 'sqlite3', '~> 1.4'
 #gem 'mysql2', '~> 0.5.0'
 gem 'pg'
+gem 'scenic', '~> 1.9.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Terser as compressor for JavaScript assets
@@ -84,7 +85,8 @@ gem 'geoblacklight', '~> 4.0'
 
 # GBL Admin
 #gem 'geoblacklight_admin', '~> 0.10.0'
-gem 'geoblacklight_admin', git: "https://github.com/geobtaa/geoblacklight_admin.git", branch: "feature/metadata-updates"
+# Using local path instead of git dependency - see vendor/gems/geoblacklight_admin
+gem 'geoblacklight_admin', path: "vendor/gems/geoblacklight_admin"
 gem 'git', ">= 1.13"
 gem "rubyzip", ">= 1.3.0"
 gem "awesome_print"

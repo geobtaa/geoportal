@@ -1,0 +1,16 @@
+<%= simple_form_for [:admin, @document, @document_licensed_access] do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :friendlier_id, input_html: { value: @document.friendlier_id, readonly: true } %>
+
+    <%= f.input :institution_code, collection: b1g_institution_codes,  label_method: ->(obj){ "#{obj[0]} - #{obj[1]}" }, value_method: :first, include_blank: true, input_html: { autofocus: true } %>
+
+    <%= f.input :access_url, label: 'Licensed Access URL' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, @document_licensed_access.new_record? ? 'Create Licensed Access' : 'Update Licensed Access', class: 'btn btn-primary' %>
+  </div>
+<% end %>

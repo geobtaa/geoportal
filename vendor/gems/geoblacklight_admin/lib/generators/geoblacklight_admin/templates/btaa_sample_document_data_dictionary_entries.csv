@@ -1,0 +1,9 @@
+friendlier_id,field_name,field_type,values,definition,definition_source,parent_field_name
+35c8a641589c4e13b7aa11e37f3f00a1_0,AREA,Real,6,Area of polygon,Software generated,
+35c8a641589c4e13b7aa11e37f3f00a1_0,PERIMETER,Real,6,Perimeter of polygon,Software generated,
+35c8a641589c4e13b7aa11e37f3f00a1_0,NAME_U,String,10,County names in upper case letters,USGS 7.5-minute quadrangles,
+35c8a641589c4e13b7aa11e37f3f00a1_0,NAME_L,String,10,County names in upper and lower case letters,IGS standard,
+35c8a641589c4e13b7aa11e37f3f00a1_0,NCAPC,Integer,2,Numeric county alphabetic prefix code,Indiana Bureau of Motor Vehicles,
+35c8a641589c4e13b7aa11e37f3f00a1_0,Subtable A,String,A,Definition,Definition source,PERIMETER
+35c8a641589c4e13b7aa11e37f3f00a1_0,Subtable B,String,B,Definition,Definition Source,PERIMETER
+35c8a641589c4e13b7aa11e37f3f00a1_0,Subtable C,String,C,Definition,Definition Source,PERIMETER

@@ -1,0 +1,45 @@
+<% if document&.kithe_model&.document_data_dictionaries.present? %>
+  <% document.kithe_model.document_data_dictionaries.each do |dictionary| %>
+    <h3><%= dictionary.name %></h3>
+    <p><%= dictionary.description %></p>
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th class="header">Field Name</th>
+          <th class="header">Field Type</th>
+          <th class="header">Value(s)</th>
+          <th class="header">Definition</th>
+          <th class="header">Definition Source</th>
+        </tr>
+      </thead>
+      <% dictionary.document_data_dictionary_entries.order(:position).each do |entry| %>
+        <% next if entry.parent_field_name.present? %>
+        <tr>
+          <td><%= entry.field_name %></td>
+          <td><%= entry.field_type %></td>
+          <td><%= entry.values %></td>
+          <td><%= entry.definition %></td>
+          <td><%= entry.definition_source %></td>
+        </tr>
+        <% if dictionary.document_data_dictionary_entries.where(parent_field_name: entry.field_name).present? %>
+          <% sub_entries = dictionary.document_data_dictionary_entries.where(parent_field_name: entry.field_name) %>
+          <tr>
+            <td colspan="5">
+              <table>
+                <% sub_entries.each do |sub_entry| %>
+                  <tr>
+                    <td><%= sub_entry.field_name %></td>
+                    <td><%= sub_entry.field_type %></td>
+                    <td><%= sub_entry.values %></td>
+                    <td><%= sub_entry.definition %></td>
+                    <td><%= sub_entry.definition_source %></td>
+                  </tr>
+                <% end %>
+              </table>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  <% end %>
+<% end %>

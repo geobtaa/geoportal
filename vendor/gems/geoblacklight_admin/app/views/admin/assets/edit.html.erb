@@ -1,0 +1,9 @@
+<h1>Editing Asset</h1>
+<p class="alert alert-warning">Only reason for this form is to add a missing parent_id to an asset.</p>
+
+<%= simple_form_for(@asset, :url => admin_asset_path) do |f| %>
+  <%= render 'form', asset: @asset, f: f %>
+<% end %>
+
+<%= link_to 'Show', admin_asset_path(@asset) %> |
+<%= link_to 'Back', admin_assets_path %>

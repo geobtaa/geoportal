@@ -1,0 +1,63 @@
+{
+  "name": "@geoblacklight/admin",
+  "type": "module",
+  "version": "0.4.16",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "GeoBlacklight Admin / A Rails engine for managing GeoBlacklight metadata",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "watch": "vite build --watch"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/frontend.js",
+  "module": "./dist/frontend.umd.cjs",
+  "exports": {
+    ".": {
+      "import": "./dist/frontend.js",
+      "require": "./dist/frontend.umd.cjs"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geobtaa/geoblacklight_admin.git"
+  },
+  "dependencies": {
+    "@babel/helper-simple-access": "^7.25.9",
+    "@hotwired/stimulus": "^3.2.2",
+    "@nathanvda/cocoon": "^1.2.14",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "bootstrap": "^4.5.0",
+    "bootstrap-datepicker": "^1.9.0",
+    "chosen-jquery": "^0.1.1",
+    "devbridge-autocomplete": "^1.4.10",
+    "highcharts": "^9.3.2",
+    "i18n": "^0.15.1",
+    "inputmask": "^5.0.3",
+    "moment": "^2.29.4",
+    "node-forge": "^1.0.0",
+    "popper.js": "^1.16.1",
+    "serialize-javascript": "^3.1.0",
+    "shave": "^2.5.10",
+    "stimulus": "^3.2.2",
+    "stimulus-scroll-to": "^4.1.0",
+    "turbolinks": "^5.2.0",
+    "yargs-parser": "^13.1.2"
+  },
+  "devDependencies": {
+    "vite": "^5.1.4",
+    "vite-plugin-rails": "^0.5.0",
+    "vite-plugin-ruby": "^5.0.0"
+  }
+}

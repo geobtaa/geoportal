@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @page_title || 'GBL♦Admin' %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+
+    <!-- Vite -->
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application', media: 'all' %>
+    
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="https://releases.transloadit.com/uppy/v3.6.1/uppy.min.css">
+  </head>
+
+  <body data-locale="en">
+    <header>
+      <%= render "admin/shared/navbar" %>
+    </header>
+    <main id="gbl-admin" class="container-fluid">
+      <%= render "admin/shared/schema_timestamp" %>
+      <%= render "admin/shared/flash_messages" %>
+      <div id="toast-wrapper" aria-live="polite" aria-atomic="true"></div>
+      <%= yield %>
+    </main>
+    <%= render "admin/shared/footer" %>
+    <%= render "admin/shared/js_behaviors" %>
+  </body>
+</html>

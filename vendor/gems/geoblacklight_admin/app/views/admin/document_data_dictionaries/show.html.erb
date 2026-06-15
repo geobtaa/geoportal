@@ -1,0 +1,78 @@
+<%- @page_title = "GBL♦Admin - Document - Data Dictionaries" %>
+
+<div class="row mb-2">
+  <div class="col">
+    <%= link_to "Back to document data dictionaries", admin_document_document_data_dictionaries_path(@document) %>
+
+    <h1 style="width:100%;">
+      <%= @document.title %> &middot; Data Dictionaries &middot; <%= @document_data_dictionary.name %>
+
+      <%= link_to '+ New Entry', new_admin_document_document_data_dictionary_document_data_dictionary_entry_path(@document, @document_data_dictionary), { class: 'btn btn-primary float-right' } %>
+    </h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h6>
+      <span class='float-left mt-3'>
+      <%== pagy_info(@pagy) %>
+      </span>
+      <span class='float-right'>
+        <%== pagy_bootstrap_nav(@pagy) %>
+      </span>
+    </h6>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered sortable">
+        <thead class="thead-dark">
+          <tr>
+            <th class="header">field_name</th>
+            <th class="header">field_type</th>
+            <th class="header">values</th>
+            <th class="header">definition</th>
+            <th class="header">definition_source</th>
+            <th class="header">parent_field_name</th>
+            <th class="header">Reorder</th>
+            <th class="header" colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @document_data_dictionary.document_data_dictionary_entries.each do |entry| %>
+          <tr data-id="<%=entry.id%>">
+            <td><%= entry.field_name %></td>
+            <td><%= entry.field_type %></td>
+            <td><%= entry.values %></td>
+            <td><%= entry.definition %></td>
+            <td><%= entry.definition_source %></td>
+            <td><%= entry.parent_field_name %></td>
+            <td class="handle" style="text-align:center">&varr;</td>
+            <td>
+              <%= link_to 'Edit', edit_admin_document_document_data_dictionary_document_data_dictionary_entry_path(@document, @document_data_dictionary, entry.id) %>
+            </td>
+            <td>
+              <%= link_to 'Destroy', admin_document_document_data_dictionary_document_data_dictionary_entry_path(@document, @document_data_dictionary, entry.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <h6>
+      <span class='float-left mt-3'>
+        <%== pagy_info(@pagy) %>
+      </span>
+      <span class='float-right'>
+        <%== pagy_bootstrap_nav(@pagy) %>
+      </span>
+    </h6>
+  </div>
+</div>
+
+<script>
+  GBLADMIN.SortElements(
+    $("tbody"),
+    "<%= sort_admin_document_document_data_dictionary_document_data_dictionary_entries_path(@document, @document_data_dictionary) %>"
+  );
+</script>

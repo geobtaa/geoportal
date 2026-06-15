@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_02_193843) do
+ActiveRecord::Schema[7.2].define(version: 2026_04_10_111000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -452,6 +452,21 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_02_193843) do
     t.string "type"
   end
 
+  create_table "kithe_bridge_deletions", force: :cascade do |t|
+    t.string "friendlier_id", null: false
+    t.uuid "kithe_model_id", null: false
+    t.string "title"
+    t.bigint "import_id"
+    t.string "publication_state"
+    t.string "geomg_id_s"
+    t.datetime "deleted_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_kithe_bridge_deletions_on_deleted_at"
+    t.index ["friendlier_id"], name: "index_kithe_bridge_deletions_on_friendlier_id", unique: true
+    t.index ["kithe_model_id"], name: "index_kithe_bridge_deletions_on_kithe_model_id"
+  end
+
   create_table "kithe_derivatives", force: :cascade do |t|
     t.string "key", null: false
     t.jsonb "file_data"
@@ -650,4 +665,592 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_02_193843) do
   add_foreign_key "mappings", "imports"
   add_foreign_key "sidecar_image_transitions", "solr_document_sidecars"
   add_foreign_key "uri_transitions", "solr_document_uris"
+
+  create_view "kithe_to_resources_bridge", materialized: true, sql_definition: <<-SQL
+      WITH live_documents AS (
+           SELECT COALESCE(kithe_models.friendlier_id, (kithe_models.id)::character varying) AS id,
+              kithe_models.title AS dct_title_s,
+              kithe_models.publication_state,
+              (kithe_models.import_id)::character varying AS import_id,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_alternative_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_alternative_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_alternative_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_alternative_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_alternative_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_alternative_sm,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_description_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_description_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_description_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_description_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_description_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_description_sm,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_language_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_language_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_language_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_language_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_language_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_language_sm,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'gbl_displayNote_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'gbl_displayNote_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'gbl_displayNote_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'gbl_displayNote_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'gbl_displayNote_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "gbl_displayNote_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_creator_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_creator_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_creator_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_creator_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_creator_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_creator_sm,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_publisher_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_publisher_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_publisher_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_publisher_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_publisher_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_publisher_sm,
+              (kithe_models.json_attributes ->> 'schema_provider_s'::text) AS schema_provider_s,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'gbl_resourceClass_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'gbl_resourceClass_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'gbl_resourceClass_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'gbl_resourceClass_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'gbl_resourceClass_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "gbl_resourceClass_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'gbl_resourceType_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'gbl_resourceType_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'gbl_resourceType_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'gbl_resourceType_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'gbl_resourceType_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "gbl_resourceType_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_subject_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_subject_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_subject_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_subject_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_subject_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_subject_sm,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dcat_theme_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dcat_theme_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dcat_theme_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dcat_theme_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dcat_theme_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dcat_theme_sm,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dcat_keyword_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dcat_keyword_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dcat_keyword_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dcat_keyword_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dcat_keyword_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dcat_keyword_sm,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_temporal_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_temporal_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_temporal_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_temporal_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_temporal_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_temporal_sm,
+              (kithe_models.json_attributes ->> 'dct_issued_s'::text) AS dct_issued_s,
+              ARRAY( SELECT (jsonb_array_elements_text(
+                          CASE
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'gbl_indexYear_im'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'gbl_indexYear_im'::text)
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'gbl_indexYear_im'::text)) = 'string'::text) THEN jsonb_build_array((kithe_models.json_attributes -> 'gbl_indexYear_im'::text))
+                              ELSE '[]'::jsonb
+                          END))::integer AS jsonb_array_elements_text) AS "gbl_indexYear_im",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'gbl_dateRange_drsim'::text) IS NULL) OR ((kithe_models.json_attributes -> 'gbl_dateRange_drsim'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'gbl_dateRange_drsim'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'gbl_dateRange_drsim'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'gbl_dateRange_drsim'::text))
+                          END) AS jsonb_array_elements_text) AS "gbl_dateRange_drsim",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_spatial_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_spatial_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_spatial_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_spatial_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_spatial_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_spatial_sm,
+              (kithe_models.json_attributes ->> 'locn_geometry'::text) AS locn_geometry,
+              (kithe_models.json_attributes ->> 'dcat_bbox'::text) AS dcat_bbox,
+              (kithe_models.json_attributes ->> 'dcat_centroid'::text) AS dcat_centroid,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_relation_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_relation_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_relation_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_relation_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_relation_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_relation_sm,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'pcdm_memberOf_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'pcdm_memberOf_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'pcdm_memberOf_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'pcdm_memberOf_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'pcdm_memberOf_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "pcdm_memberOf_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_isPartOf_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_isPartOf_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_isPartOf_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_isPartOf_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_isPartOf_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "dct_isPartOf_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_source_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_source_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_source_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_source_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_source_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_source_sm,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_isVersionOf_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_isVersionOf_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_isVersionOf_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_isVersionOf_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_isVersionOf_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "dct_isVersionOf_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_replaces_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_replaces_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_replaces_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_replaces_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_replaces_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_replaces_sm,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_isReplacedBy_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_isReplacedBy_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_isReplacedBy_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_isReplacedBy_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_isReplacedBy_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "dct_isReplacedBy_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_rights_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_rights_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_rights_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_rights_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_rights_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_rights_sm,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_rightsHolder_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_rightsHolder_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_rightsHolder_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_rightsHolder_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_rightsHolder_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "dct_rightsHolder_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_license_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_license_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_license_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_license_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_license_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_license_sm,
+              (kithe_models.json_attributes ->> 'dct_accessRights_s'::text) AS "dct_accessRights_s",
+              (kithe_models.json_attributes ->> 'dct_format_s'::text) AS dct_format_s,
+              (kithe_models.json_attributes ->> 'gbl_fileSize_s'::text) AS "gbl_fileSize_s",
+              (kithe_models.json_attributes ->> 'gbl_wxsIdentifier_s'::text) AS "gbl_wxsIdentifier_s",
+              (kithe_models.json_attributes ->> 'dct_references_s'::text) AS dct_references_s,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'dct_identifier_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_identifier_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_identifier_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_identifier_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_identifier_sm'::text))
+                          END) AS jsonb_array_elements_text) AS dct_identifier_sm,
+              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'gbl_mdModified_dt'::text), ''::text), 'null'::text))::timestamp without time zone AS "gbl_mdModified_dt",
+              (kithe_models.json_attributes ->> 'gbl_mdVersion_s'::text) AS "gbl_mdVersion_s",
+              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'gbl_suppressed_b'::text), ''::text), 'null'::text))::boolean AS gbl_suppressed_b,
+              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'gbl_georeferenced_b'::text), ''::text), 'null'::text))::boolean AS gbl_georeferenced_b,
+              (kithe_models.json_attributes ->> 'b1g_code_s'::text) AS b1g_code_s,
+              (kithe_models.json_attributes ->> 'b1g_status_s'::text) AS b1g_status_s,
+              (kithe_models.json_attributes ->> 'b1g_dct_accrualMethod_s'::text) AS "b1g_dct_accrualMethod_s",
+              (kithe_models.json_attributes ->> 'b1g_dct_accrualPeriodicity_s'::text) AS "b1g_dct_accrualPeriodicity_s",
+              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dateAccessioned_s'::text), ''::text), 'null'::text))::date AS "b1g_dateAccessioned_s",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_dateAccessioned_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_dateAccessioned_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_dateAccessioned_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_dateAccessioned_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_dateAccessioned_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "b1g_dateAccessioned_sm",
+              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dateRetired_s'::text), ''::text), 'null'::text))::date AS "b1g_dateRetired_s",
+              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_child_record_b'::text), ''::text), 'null'::text))::boolean AS b1g_child_record_b,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_dct_mediator_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_dct_mediator_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_dct_mediator_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_dct_mediator_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_dct_mediator_sm'::text))
+                          END) AS jsonb_array_elements_text) AS b1g_dct_mediator_sm,
+                  CASE
+                      WHEN (((kithe_models.json_attributes -> 'b1g_access_s'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_access_s'::text) = 'null'::jsonb)) THEN NULL::jsonb
+                      WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_access_s'::text)) = 'string'::text) THEN
+                      CASE
+                          WHEN (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_access_s'::text), ''::text), 'null'::text) IS NULL) THEN NULL::jsonb
+                          ELSE to_jsonb((kithe_models.json_attributes ->> 'b1g_access_s'::text))
+                      END
+                      ELSE (kithe_models.json_attributes -> 'b1g_access_s'::text)
+                  END AS b1g_access_s,
+              (kithe_models.json_attributes ->> 'b1g_image_ss'::text) AS b1g_image_ss,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_geonames_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_geonames_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_geonames_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_geonames_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_geonames_sm'::text))
+                          END) AS jsonb_array_elements_text) AS b1g_geonames_sm,
+              (kithe_models.json_attributes ->> 'b1g_publication_state_s'::text) AS b1g_publication_state_s,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_language_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_language_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_language_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_language_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_language_sm'::text))
+                          END) AS jsonb_array_elements_text) AS b1g_language_sm,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_creatorID_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_creatorID_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_creatorID_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_creatorID_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_creatorID_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "b1g_creatorID_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_dct_conformsTo_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_dct_conformsTo_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_dct_conformsTo_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_dct_conformsTo_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_dct_conformsTo_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "b1g_dct_conformsTo_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "b1g_dcat_spatialResolutionInMeters_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "b1g_geodcat_spatialResolutionAsText_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "b1g_dct_provenanceStatement_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_adminTags_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_adminTags_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_adminTags_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_adminTags_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_adminTags_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "b1g_adminTags_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_adms_supportedSchema_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_adms_supportedSchema_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_adms_supportedSchema_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_adms_supportedSchema_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_adms_supportedSchema_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "b1g_adms_supportedSchema_sm",
+              (kithe_models.json_attributes ->> 'b1g_dcat_endpointDescription_s'::text) AS "b1g_dcat_endpointDescription_s",
+              (kithe_models.json_attributes ->> 'b1g_dcat_endpointURL_s'::text) AS "b1g_dcat_endpointURL_s",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_dcat_inSeries_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_dcat_inSeries_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_dcat_inSeries_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_dcat_inSeries_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_dcat_inSeries_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "b1g_dcat_inSeries_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_localCollectionLabel_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_localCollectionLabel_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_localCollectionLabel_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_localCollectionLabel_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_localCollectionLabel_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "b1g_localCollectionLabel_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_prov_softwareAgent_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_prov_softwareAgent_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_prov_softwareAgent_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_prov_softwareAgent_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_prov_softwareAgent_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "b1g_prov_softwareAgent_sm",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "b1g_prov_wasGeneratedBy_sm",
+              COALESCE((NULLIF(NULLIF((kithe_models.json_attributes ->> 'date_created_dtsi'::text), ''::text), 'null'::text))::timestamp without time zone, kithe_models.created_at) AS date_created_dtsi,
+              COALESCE((NULLIF(NULLIF((kithe_models.json_attributes ->> 'date_modified_dtsi'::text), ''::text), 'null'::text))::timestamp without time zone, kithe_models.updated_at) AS date_modified_dtsi,
+              kithe_models.updated_at AS kithe_updated_at,
+              (kithe_models.json_attributes ->> 'geomg_id_s'::text) AS geomg_id_s,
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (((kithe_models.json_attributes -> 'b1g_adminNote_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_adminNote_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_adminNote_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_adminNote_sm'::text)
+                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_adminNote_sm'::text))
+                          END) AS jsonb_array_elements_text) AS "b1g_adminNote_sm",
+              COALESCE((NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dateAccessioned_dt'::text), ''::text), 'null'::text))::timestamp without time zone, ((NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dateAccessioned_s'::text), ''::text), 'null'::text))::date)::timestamp without time zone) AS "b1g_dateAccessioned_dt",
+              COALESCE((NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dateRetired_dt'::text), ''::text), 'null'::text))::timestamp without time zone, ((NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dateRetired_s'::text), ''::text), 'null'::text))::date)::timestamp without time zone) AS "b1g_dateRetired_dt",
+              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_deprioritized_b'::text), ''::text), 'null'::text))::boolean AS b1g_deprioritized_b,
+              (kithe_models.json_attributes ->> 'b1g_harvestWorkflow_s'::text) AS "b1g_harvestWorkflow_s",
+              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_isHarvested_b'::text), ''::text), 'null'::text))::boolean AS "b1g_isHarvested_b",
+              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_lastHarvested_dt'::text), ''::text), 'null'::text))::timestamp without time zone AS "b1g_lastHarvested_dt",
+              ARRAY( SELECT jsonb_array_elements_text(
+                          CASE
+                              WHEN (jsonb_typeof(COALESCE((kithe_models.json_attributes -> 'b1g_dct_provenance_sm'::text), (kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text))) = 'array'::text) THEN COALESCE((kithe_models.json_attributes -> 'b1g_dct_provenance_sm'::text), (kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text))
+                              WHEN (jsonb_typeof(COALESCE((kithe_models.json_attributes -> 'b1g_dct_provenance_sm'::text), (kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text))) = 'string'::text) THEN jsonb_build_array(COALESCE((kithe_models.json_attributes -> 'b1g_dct_provenance_sm'::text), (kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text)))
+                              ELSE '[]'::jsonb
+                          END) AS jsonb_array_elements_text) AS b1g_dct_provenance_sm,
+              COALESCE(NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dcat_spatialResolutionInMeters_s'::text), ''::text), 'null'::text), NULLIF(NULLIF(((kithe_models.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text) ->> 0), ''::text), 'null'::text)) AS "b1g_dcat_spatialResolutionInMeters_s",
+              (kithe_models.json_attributes ->> 'b1g_websitePlatform_s'::text) AS "b1g_websitePlatform_s",
+              false AS deleted,
+              NULL::timestamp without time zone AS deleted_at
+             FROM kithe_models
+            WHERE ((kithe_models.type)::text = 'Document'::text)
+          ), deleted_documents AS (
+           SELECT tombstones.friendlier_id AS id,
+              tombstones.title AS dct_title_s,
+              tombstones.publication_state,
+              (tombstones.import_id)::character varying AS import_id,
+              ARRAY[]::text[] AS dct_alternative_sm,
+              ARRAY[]::text[] AS dct_description_sm,
+              ARRAY[]::text[] AS dct_language_sm,
+              ARRAY[]::text[] AS "gbl_displayNote_sm",
+              ARRAY[]::text[] AS dct_creator_sm,
+              ARRAY[]::text[] AS dct_publisher_sm,
+              NULL::text AS schema_provider_s,
+              ARRAY[]::text[] AS "gbl_resourceClass_sm",
+              ARRAY[]::text[] AS "gbl_resourceType_sm",
+              ARRAY[]::text[] AS dct_subject_sm,
+              ARRAY[]::text[] AS dcat_theme_sm,
+              ARRAY[]::text[] AS dcat_keyword_sm,
+              ARRAY[]::text[] AS dct_temporal_sm,
+              NULL::text AS dct_issued_s,
+              ARRAY[]::integer[] AS "gbl_indexYear_im",
+              ARRAY[]::text[] AS "gbl_dateRange_drsim",
+              ARRAY[]::text[] AS dct_spatial_sm,
+              NULL::text AS locn_geometry,
+              NULL::text AS dcat_bbox,
+              NULL::text AS dcat_centroid,
+              ARRAY[]::text[] AS dct_relation_sm,
+              ARRAY[]::text[] AS "pcdm_memberOf_sm",
+              ARRAY[]::text[] AS "dct_isPartOf_sm",
+              ARRAY[]::text[] AS dct_source_sm,
+              ARRAY[]::text[] AS "dct_isVersionOf_sm",
+              ARRAY[]::text[] AS dct_replaces_sm,
+              ARRAY[]::text[] AS "dct_isReplacedBy_sm",
+              ARRAY[]::text[] AS dct_rights_sm,
+              ARRAY[]::text[] AS "dct_rightsHolder_sm",
+              ARRAY[]::text[] AS dct_license_sm,
+              NULL::text AS "dct_accessRights_s",
+              NULL::text AS dct_format_s,
+              NULL::text AS "gbl_fileSize_s",
+              NULL::text AS "gbl_wxsIdentifier_s",
+              NULL::text AS dct_references_s,
+              ARRAY[]::text[] AS dct_identifier_sm,
+              NULL::timestamp without time zone AS "gbl_mdModified_dt",
+              NULL::text AS "gbl_mdVersion_s",
+              NULL::boolean AS gbl_suppressed_b,
+              NULL::boolean AS gbl_georeferenced_b,
+              NULL::text AS b1g_code_s,
+              NULL::text AS b1g_status_s,
+              NULL::text AS "b1g_dct_accrualMethod_s",
+              NULL::text AS "b1g_dct_accrualPeriodicity_s",
+              NULL::date AS "b1g_dateAccessioned_s",
+              ARRAY[]::text[] AS "b1g_dateAccessioned_sm",
+              NULL::date AS "b1g_dateRetired_s",
+              NULL::boolean AS b1g_child_record_b,
+              ARRAY[]::text[] AS b1g_dct_mediator_sm,
+              NULL::jsonb AS b1g_access_s,
+              NULL::text AS b1g_image_ss,
+              ARRAY[]::text[] AS b1g_geonames_sm,
+              tombstones.publication_state AS b1g_publication_state_s,
+              ARRAY[]::text[] AS b1g_language_sm,
+              ARRAY[]::text[] AS "b1g_creatorID_sm",
+              ARRAY[]::text[] AS "b1g_dct_conformsTo_sm",
+              ARRAY[]::text[] AS "b1g_dcat_spatialResolutionInMeters_sm",
+              ARRAY[]::text[] AS "b1g_geodcat_spatialResolutionAsText_sm",
+              ARRAY[]::text[] AS "b1g_dct_provenanceStatement_sm",
+              ARRAY[]::text[] AS "b1g_adminTags_sm",
+              ARRAY[]::text[] AS "b1g_adms_supportedSchema_sm",
+              NULL::text AS "b1g_dcat_endpointDescription_s",
+              NULL::text AS "b1g_dcat_endpointURL_s",
+              ARRAY[]::text[] AS "b1g_dcat_inSeries_sm",
+              ARRAY[]::text[] AS "b1g_localCollectionLabel_sm",
+              ARRAY[]::text[] AS "b1g_prov_softwareAgent_sm",
+              ARRAY[]::text[] AS "b1g_prov_wasGeneratedBy_sm",
+              NULL::timestamp without time zone AS date_created_dtsi,
+              tombstones.deleted_at AS date_modified_dtsi,
+              tombstones.deleted_at AS kithe_updated_at,
+              tombstones.geomg_id_s,
+              ARRAY[]::text[] AS "b1g_adminNote_sm",
+              NULL::timestamp without time zone AS "b1g_dateAccessioned_dt",
+              NULL::timestamp without time zone AS "b1g_dateRetired_dt",
+              NULL::boolean AS b1g_deprioritized_b,
+              NULL::text AS "b1g_harvestWorkflow_s",
+              NULL::boolean AS "b1g_isHarvested_b",
+              NULL::timestamp without time zone AS "b1g_lastHarvested_dt",
+              ARRAY[]::text[] AS b1g_dct_provenance_sm,
+              NULL::text AS "b1g_dcat_spatialResolutionInMeters_s",
+              NULL::text AS "b1g_websitePlatform_s",
+              true AS deleted,
+              tombstones.deleted_at
+             FROM kithe_bridge_deletions tombstones
+            WHERE (NOT (EXISTS ( SELECT 1
+                     FROM kithe_models
+                    WHERE (((kithe_models.type)::text = 'Document'::text) AND ((COALESCE(kithe_models.friendlier_id, (kithe_models.id)::character varying))::text = (tombstones.friendlier_id)::text)))))
+          )
+   SELECT live_documents.id,
+      live_documents.dct_title_s,
+      live_documents.publication_state,
+      live_documents.import_id,
+      live_documents.dct_alternative_sm,
+      live_documents.dct_description_sm,
+      live_documents.dct_language_sm,
+      live_documents."gbl_displayNote_sm",
+      live_documents.dct_creator_sm,
+      live_documents.dct_publisher_sm,
+      live_documents.schema_provider_s,
+      live_documents."gbl_resourceClass_sm",
+      live_documents."gbl_resourceType_sm",
+      live_documents.dct_subject_sm,
+      live_documents.dcat_theme_sm,
+      live_documents.dcat_keyword_sm,
+      live_documents.dct_temporal_sm,
+      live_documents.dct_issued_s,
+      live_documents."gbl_indexYear_im",
+      live_documents."gbl_dateRange_drsim",
+      live_documents.dct_spatial_sm,
+      live_documents.locn_geometry,
+      live_documents.dcat_bbox,
+      live_documents.dcat_centroid,
+      live_documents.dct_relation_sm,
+      live_documents."pcdm_memberOf_sm",
+      live_documents."dct_isPartOf_sm",
+      live_documents.dct_source_sm,
+      live_documents."dct_isVersionOf_sm",
+      live_documents.dct_replaces_sm,
+      live_documents."dct_isReplacedBy_sm",
+      live_documents.dct_rights_sm,
+      live_documents."dct_rightsHolder_sm",
+      live_documents.dct_license_sm,
+      live_documents."dct_accessRights_s",
+      live_documents.dct_format_s,
+      live_documents."gbl_fileSize_s",
+      live_documents."gbl_wxsIdentifier_s",
+      live_documents.dct_references_s,
+      live_documents.dct_identifier_sm,
+      live_documents."gbl_mdModified_dt",
+      live_documents."gbl_mdVersion_s",
+      live_documents.gbl_suppressed_b,
+      live_documents.gbl_georeferenced_b,
+      live_documents.b1g_code_s,
+      live_documents.b1g_status_s,
+      live_documents."b1g_dct_accrualMethod_s",
+      live_documents."b1g_dct_accrualPeriodicity_s",
+      live_documents."b1g_dateAccessioned_s",
+      live_documents."b1g_dateAccessioned_sm",
+      live_documents."b1g_dateRetired_s",
+      live_documents.b1g_child_record_b,
+      live_documents.b1g_dct_mediator_sm,
+      live_documents.b1g_access_s,
+      live_documents.b1g_image_ss,
+      live_documents.b1g_geonames_sm,
+      live_documents.b1g_publication_state_s,
+      live_documents.b1g_language_sm,
+      live_documents."b1g_creatorID_sm",
+      live_documents."b1g_dct_conformsTo_sm",
+      live_documents."b1g_dcat_spatialResolutionInMeters_sm",
+      live_documents."b1g_geodcat_spatialResolutionAsText_sm",
+      live_documents."b1g_dct_provenanceStatement_sm",
+      live_documents."b1g_adminTags_sm",
+      live_documents."b1g_adms_supportedSchema_sm",
+      live_documents."b1g_dcat_endpointDescription_s",
+      live_documents."b1g_dcat_endpointURL_s",
+      live_documents."b1g_dcat_inSeries_sm",
+      live_documents."b1g_localCollectionLabel_sm",
+      live_documents."b1g_prov_softwareAgent_sm",
+      live_documents."b1g_prov_wasGeneratedBy_sm",
+      live_documents.date_created_dtsi,
+      live_documents.date_modified_dtsi,
+      live_documents.kithe_updated_at,
+      live_documents.geomg_id_s,
+      live_documents."b1g_adminNote_sm",
+      live_documents."b1g_dateAccessioned_dt",
+      live_documents."b1g_dateRetired_dt",
+      live_documents.b1g_deprioritized_b,
+      live_documents."b1g_harvestWorkflow_s",
+      live_documents."b1g_isHarvested_b",
+      live_documents."b1g_lastHarvested_dt",
+      live_documents.b1g_dct_provenance_sm,
+      live_documents."b1g_dcat_spatialResolutionInMeters_s",
+      live_documents."b1g_websitePlatform_s",
+      live_documents.deleted,
+      live_documents.deleted_at
+     FROM live_documents
+  UNION ALL
+   SELECT deleted_documents.id,
+      deleted_documents.dct_title_s,
+      deleted_documents.publication_state,
+      deleted_documents.import_id,
+      deleted_documents.dct_alternative_sm,
+      deleted_documents.dct_description_sm,
+      deleted_documents.dct_language_sm,
+      deleted_documents."gbl_displayNote_sm",
+      deleted_documents.dct_creator_sm,
+      deleted_documents.dct_publisher_sm,
+      deleted_documents.schema_provider_s,
+      deleted_documents."gbl_resourceClass_sm",
+      deleted_documents."gbl_resourceType_sm",
+      deleted_documents.dct_subject_sm,
+      deleted_documents.dcat_theme_sm,
+      deleted_documents.dcat_keyword_sm,
+      deleted_documents.dct_temporal_sm,
+      deleted_documents.dct_issued_s,
+      deleted_documents."gbl_indexYear_im",
+      deleted_documents."gbl_dateRange_drsim",
+      deleted_documents.dct_spatial_sm,
+      deleted_documents.locn_geometry,
+      deleted_documents.dcat_bbox,
+      deleted_documents.dcat_centroid,
+      deleted_documents.dct_relation_sm,
+      deleted_documents."pcdm_memberOf_sm",
+      deleted_documents."dct_isPartOf_sm",
+      deleted_documents.dct_source_sm,
+      deleted_documents."dct_isVersionOf_sm",
+      deleted_documents.dct_replaces_sm,
+      deleted_documents."dct_isReplacedBy_sm",
+      deleted_documents.dct_rights_sm,
+      deleted_documents."dct_rightsHolder_sm",
+      deleted_documents.dct_license_sm,
+      deleted_documents."dct_accessRights_s",
+      deleted_documents.dct_format_s,
+      deleted_documents."gbl_fileSize_s",
+      deleted_documents."gbl_wxsIdentifier_s",
+      deleted_documents.dct_references_s,
+      deleted_documents.dct_identifier_sm,
+      deleted_documents."gbl_mdModified_dt",
+      deleted_documents."gbl_mdVersion_s",
+      deleted_documents.gbl_suppressed_b,
+      deleted_documents.gbl_georeferenced_b,
+      deleted_documents.b1g_code_s,
+      deleted_documents.b1g_status_s,
+      deleted_documents."b1g_dct_accrualMethod_s",
+      deleted_documents."b1g_dct_accrualPeriodicity_s",
+      deleted_documents."b1g_dateAccessioned_s",
+      deleted_documents."b1g_dateAccessioned_sm",
+      deleted_documents."b1g_dateRetired_s",
+      deleted_documents.b1g_child_record_b,
+      deleted_documents.b1g_dct_mediator_sm,
+      deleted_documents.b1g_access_s,
+      deleted_documents.b1g_image_ss,
+      deleted_documents.b1g_geonames_sm,
+      deleted_documents.b1g_publication_state_s,
+      deleted_documents.b1g_language_sm,
+      deleted_documents."b1g_creatorID_sm",
+      deleted_documents."b1g_dct_conformsTo_sm",
+      deleted_documents."b1g_dcat_spatialResolutionInMeters_sm",
+      deleted_documents."b1g_geodcat_spatialResolutionAsText_sm",
+      deleted_documents."b1g_dct_provenanceStatement_sm",
+      deleted_documents."b1g_adminTags_sm",
+      deleted_documents."b1g_adms_supportedSchema_sm",
+      deleted_documents."b1g_dcat_endpointDescription_s",
+      deleted_documents."b1g_dcat_endpointURL_s",
+      deleted_documents."b1g_dcat_inSeries_sm",
+      deleted_documents."b1g_localCollectionLabel_sm",
+      deleted_documents."b1g_prov_softwareAgent_sm",
+      deleted_documents."b1g_prov_wasGeneratedBy_sm",
+      deleted_documents.date_created_dtsi,
+      deleted_documents.date_modified_dtsi,
+      deleted_documents.kithe_updated_at,
+      deleted_documents.geomg_id_s,
+      deleted_documents."b1g_adminNote_sm",
+      deleted_documents."b1g_dateAccessioned_dt",
+      deleted_documents."b1g_dateRetired_dt",
+      deleted_documents.b1g_deprioritized_b,
+      deleted_documents."b1g_harvestWorkflow_s",
+      deleted_documents."b1g_isHarvested_b",
+      deleted_documents."b1g_lastHarvested_dt",
+      deleted_documents.b1g_dct_provenance_sm,
+      deleted_documents."b1g_dcat_spatialResolutionInMeters_s",
+      deleted_documents."b1g_websitePlatform_s",
+      deleted_documents.deleted,
+      deleted_documents.deleted_at
+     FROM deleted_documents;
+  SQL
+  add_index "kithe_to_resources_bridge", ["id"], name: "kithe_to_resources_bridge_id_uidx", unique: true
+
 end

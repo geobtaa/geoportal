@@ -21,6 +21,16 @@ if ENV["SHRINE_S3_STORAGE"].present?
   }
   
   Shrine.plugin :upload_endpoint
+  # Presign endpoint enables direct-to-S3 uploads using presigned URLs
+  # IMPORTANT: For direct-to-S3 uploads to work, you must configure CORS on your S3 bucket:
+  # 1. Go to AWS S3 Console → Your bucket → Permissions → CORS
+  # 2. Add CORS policy with:
+  #    - AllowedOrigins: Your application domain(s) (e.g., ["https://geo.btaa.org"])
+  #    - AllowedMethods: ["POST", "PUT", "HEAD"]
+  #    - AllowedHeaders: ["Content-Type", "Content-Length", "x-amz-*"]
+  #    - ExposedHeaders: ["ETag"]
+  #    - MaxAgeSeconds: 300
+  Shrine.plugin :presign_endpoint
   Shrine.plugin :cached_attachment_data # for retaining the cached file across form redisplays
   Shrine.plugin :restore_cached_data # re-extract metadata when attaching a cached file
 else

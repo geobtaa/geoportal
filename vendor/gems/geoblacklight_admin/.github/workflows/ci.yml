@@ -1,0 +1,81 @@
+name: CI
+
+on: [push]
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.3.5
+    - name: Install dependencies
+      run: bundle install
+    - name: Run linter
+      run: bundle exec standardrb
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby_version: ['3.3']
+        rails_version: [7.1.4]
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_HOST: 127.0.0.1
+          POSTGRES_PORT: 5432
+          POSTGRES_DB: geoblacklight_admin_development
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        # Set health checks to wait until postgres has started
+        options:
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    
+    name: Test ${{ matrix.rails_version }}, ruby ${{ matrix.ruby_version }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby_version }}
+        bundler-cache: true
+        cache-version: 2
+
+    - name: Node - v20
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.11.0'
+
+    - name: Yarn - Setup
+      run: exec "yarnpkg"
+
+    - name: Install dependencies
+      run: bundle install
+
+    - name: Run Tests
+      run: |
+        bundle exec rake ci
+      env:
+        RAILS_ENV: test
+        ENGINE_CART_RAILS_OPTIONS: '--skip-git --skip-listen --skip-spring --skip-keeps --skip-coffee'
+        SOLR_URL: http://solr:SolrRocks@localhost:8983/solr/blacklight-core
+
+    - name: Artifacts - Upload coverage
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: Coverage & Screenshots
+        path: |
+          coverage/
+          tmp/screenshots/

@@ -1,0 +1,20 @@
+<%- @page_title= "GBL♦Admin - Users" %>
+
+
+<h1 style="width:100%; margin-bottom:2rem;">
+  Users
+</h1>
+
+<table class="table table-striped table-bordered sortable">
+  <thead class="thead-dark">
+    <tr>
+      <th class="header">Email</th>
+    <tr>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %><br/></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,10 @@
+<div id="result-selection-options" class="shadow-none p-3 mb-3 bg-light rounded hidden" data-controller="results">
+  <span id="select-pageset">
+    All results on this page are selected.
+    <a data-action="click->results#selectResultSet" href="javascript:void(0);">Select all results that match this search</a>
+  </span>
+  <span id="select-resultset" class="hidden">
+    All results in this search are selected.
+    <a href="javascript:void(0);" data-action="click->results#selectNone">Clear selection</a>
+  </span>
+</div>

@@ -1,0 +1,15 @@
+ag_trans:
+  to_state: published
+  metadata: {}
+  sort_key: 10
+  kithe_model_id: d3d872a3-fd4c-404f-a8fd-657f16db50cf
+  most_recent: TRUE
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2020-08-03 19:25:53.006901000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2020-08-03 19:25:53.006901000 Z
+    zone: *2
+    time: *3

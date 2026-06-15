@@ -1,0 +1,86 @@
+<% # Input Options hash %>
+<%- options = Hash.new %>
+<%- options[:hint] = element.data_entry_hint if element.data_entry_hint.present? %>
+<%- options[:as] = "boolean" if element.field_type == "boolean" %>
+<%- options[:as] = "date" if element.field_type == "date" %>
+<%- options[:as] = "datetime" if element.field_type == "datetime" %>
+<%- options[:include_blank] = true if element.field_type.in?(["date", "datetime"]) %>
+<%- options[:required] = "true" if element.required? %>
+<%- options[:input_html] = { data: { js: element.js_behaviors }} if element.js_behaviors.present? %>
+<%- options[:label] = element.label %>
+<%- html_attributes = Hash.new %>
+<%- html_attributes[:placeholder] = element.placeholder_text if element.placeholder_text.present? %>
+<%- element.html_attributes.each{ |key,value| html_attributes[key] = value } if element.html_attributes.present? %>
+<%- options[:html_attributes] = html_attributes %>
+
+<% # @TODO: Check the local application file system for a named partial, %>
+<% # if we find one there render it, if not render via the logic below... %>
+
+<% # Title is a special case - saved in the database outside of JSON Attributes %>
+<% if element.solr_field == "dct_title_s" %>
+  <%= f.input :title, hint: "Theme: city, state, temporal coverage" %>
+
+<% # Created At and Updated At are a special case - saved in the database outside of JSON Attributes %>
+<% elsif element.solr_field == "date_created_dtsi" %>
+  <% if @document.persisted? %>
+    <%= f.input :created_at, as: 'string', label: "Created At", input_html: { disabled: true } %>
+  <% end %>
+<% elsif element.solr_field == "date_modified_dtsi" %>
+  <% if @document.persisted? %>
+    <%= f.input :updated_at, as: 'string', label: "Last Updated", input_html: { disabled: true } %>
+  <% end %>
+
+<% # Publication State is a special case  - saved in the database outside of JSON Attributes %>
+<% elsif element.solr_field == "b1g_publication_state_s" %>
+  <% if @document.persisted? %>
+    <%= f.input :publication_state, label: 'Publication State', required: true, collection: Document::ControlledLists::PUBLICATION_STATE %>
+  <% else %>
+    <%= f.hidden_field :publication_state %>
+  <% end %>
+
+<% elsif element.repeatable? %>
+  <% # Text Fields %>
+  <% if element.field_type == 'text' %>
+    <%= f.repeatable_attr_input(element.solr_field.to_sym, build: :at_least_one, html_attributes: options[:html_attributes], simple_form_input_args: { label: element.label }) do |input_name, value| %>
+       <div class="form-group">
+         <%= f.input_field element.solr_field.to_sym, name: input_name, value: value, as: :text, class: "form-control", rows: 4 %>
+       </div>
+     <% end %>
+
+  <% # Date/Datetime Fields %>
+  <% elsif element.field_type.in?(["date", "datetime"]) %>
+    <%= f.repeatable_attr_input element.solr_field.to_sym, build: :at_least_one, html_attributes: options[:html_attributes], simple_form_input_args: options %>
+
+  <% # Autocomplete - Language  %>
+  <% elsif element.solr_field == 'dct_language_sm' %>
+    <%= f.repeatable_attr_input element.solr_field.to_sym, build: :at_least_one, html_attributes: { "data-scihist-qa-autocomplete" => qa_search_vocab_path("local", "languages")}, simple_form_input_args: { label: element.label } %>
+
+  <% # Autocomplete - Resource Type  %>
+  <% elsif element.solr_field == 'gbl_resourceType_sm' %>
+    <%= f.repeatable_attr_input element.solr_field.to_sym, build: :at_least_one, html_attributes: { "data-scihist-qa-autocomplete" => qa_search_vocab_path("local", "resource_type")}, simple_form_input_args: { label: element.label } %>
+
+  <% # Local Controlled Vocabularies %>
+  <% elsif element.controlled_vocabulary.present? %>
+    <%= f.repeatable_attr_input element.solr_field.to_sym, build: :at_least_one, html_attributes: options[:html_attributes], simple_form_input_args: { label: element.label } do |input_name, value| %>
+      <%= f.input_field element.solr_field.to_sym, selected: value, include_blank: true, id: nil,
+          collection: "Document::ControlledLists::#{element.constantized_label}".constantize,
+          name: input_name,
+          class: "form-control input-primitive" %>
+    <% end %>
+
+  <% # Simple Repeatable Elements %>
+  <% else %>
+    <%= f.repeatable_attr_input element.solr_field.to_sym, build: :at_least_one, html_attributes: options[:html_attributes], simple_form_input_args: { label: element.label } %>
+  <% end %>
+
+<% else %>
+  <% # Local %>
+  <% if element.controlled_vocabulary? && element.js_behaviors != 'autocomplete' %>
+    <%= f.input element.solr_field.to_sym, collection: "Document::ControlledLists::#{element.constantized_label}".constantize %>
+  <% elsif element.controlled_vocabulary? && element.js_behaviors == 'autocomplete' %>
+    <%= f.input element.solr_field.to_sym, :input_html => { :data => { "scihist-qa-autocomplete" => qa_search_vocab_path("local", element.controlled_vocabulary)}}, label: element.label %>
+  <% else %>
+    <% # Simple String Fields %>
+    <%= f.input element.solr_field.to_sym, options %>
+  <% end %>
+<% end %>

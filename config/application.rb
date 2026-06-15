@@ -2,6 +2,7 @@ require_relative "boot"
 
 require "rails/all"
 require "blacklight/allmaps"
+require_relative "../lib/geoportal/app_url"
 
 
 require "blacklight/allmaps/engine"

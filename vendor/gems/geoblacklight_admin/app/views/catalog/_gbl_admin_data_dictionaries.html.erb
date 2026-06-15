@@ -1,0 +1,3 @@
+<% if document.kithe_model.document_data_dictionaries.present? %>
+  <%= link_to "Data Dictionary", data_dictionaries_solr_document_path(document.id), id: "dataDictionariesLink", class: "nav-link", data: { blacklight_modal: "trigger", turbo: false } %>
+<% end %>

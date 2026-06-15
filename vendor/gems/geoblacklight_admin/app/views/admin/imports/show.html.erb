@@ -1,0 +1,155 @@
+<%= link_to 'Edit Import', edit_admin_import_path(@import) %> |
+<%= link_to 'Back', admin_imports_path %>
+
+<div class="row">
+  <div class="col-md-6">
+    <h1>Import</h1>
+    <p>
+      <strong>Name:</strong>
+      <%= @import.name %>
+    </p>
+
+    <p>
+      <strong>Filename:</strong>
+      <a href="<%= rails_blob_path(@import.csv_file, disposition: "attachment")%>">
+        <%= @import.filename %>
+      </a> (<%= @import.content_type %>)
+    </p>
+
+    <p>
+      <strong>State:</strong>
+      <%= @import.state_machine.current_state %>
+    </p>
+
+    <p>
+      <strong>Source:</strong>
+      <%= @import.source %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= @import.description %>
+    </p>
+  </div>
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-header text-center">
+        <h3 class="h5">CSV Row Count</h3>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-center">
+          <%= @import.row_count %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-header text-center">
+        <h3 class="h5">Imported Documents</h3>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <% if @import.state_machine.current_state == 'mapped' %>
+            <%= form_tag run_admin_import_path(@import), method: :patch do -%>
+              <%= hidden_field_tag :run, true -%>
+              <%= submit_tag '+ Run Import', class: 'btn btn-primary btn-block' -%>
+            <%- end -%>
+          <% end %>
+          <% if @import.state_machine.current_state == 'imported' %>
+            <table class="table table-sm table-bordered import-documents">
+              <thead>
+                <tr>
+                  <th>Publication State</th>
+                  <th>Document Count</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td><%= link_to_gbl_import('Published', @import, 'published') %></td>
+                <td><%= @import.documents.where(publication_state: 'published').size %></td>
+              </tr>
+              <tr>
+                <td><%= link_to_gbl_import('Unpublished', @import, 'unpublished') %></td>
+                <td><%= @import.documents.where(publication_state: 'unpublished').size %></td>
+              </tr>
+              <tr>
+                <td><%= link_to_gbl_import('Draft', @import, 'draft') %></td>
+                <td><%= @import.documents.where(publication_state: 'draft').size %></td>
+              </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th><%= link_to_gbl_import('Total', @import) %></th>
+                  <td><%= @import.documents.size %></td>
+              </tr>
+              </tfoot>
+            </table>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav nav-tabs" id="import-tabs" role="tablist">
+    <a class="nav-item nav-link <%=@import.state_machine.current_state == 'mapped' ? 'active' : '' %>" id="data-mapping-tab" data-toggle="tab" href="#data-mapping" role="tab" aria-controls="data-mapping" aria-selected="true">Data Mapping</a>
+    <a class="nav-item nav-link <%= @import.state_machine.current_state == 'imported' ? 'active' : '' %>" id="import-results-tab" data-toggle="tab" href="#import-results" role="tab" aria-controls="import-results"
+      aria-selected="false">Import Results</a>
+  </div>
+</nav>
+
+<div class="tab-content" id="import-content">
+  <div class="tab-pane fade <%=@import.state_machine.current_state == 'mapped' ? 'show active' : '' %>" id="data-mapping" role="tabpanel" aria-labelledby="data-mapping-tab">
+    <h3 class="sr-only">Data Mapping</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>CSV Header</th>
+          <th>Solr Field Destination</th>
+          <th>Delimited?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%- @import.mappings.each do |mapping| %>
+          <tr>
+            <td><%= mapping.source_header %></td>
+            <td><%= mapping.destination_field %></td>
+            <td><%= mapping.delimited %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tab-pane fade <%= @import.state_machine.current_state == 'imported' ? 'show active' : '' %>" id="import-results" role="tabpanel" aria-labelledby="import-results-tab">
+    <h3 class="sr-only">Import Results</h3>
+
+    <br/>
+
+    <nav>
+      <div class="nav nav-tabs" id="import-state-tabs" role="tablist">
+        <a class="nav-item nav-link active" id="import-success-tab" data-toggle="tab" href="#import-state-success" role="tab" aria-controls="import-state-success" aria-selected="true">Success <span class="badge badge-success"><%= @pagy_success.count %></span></a>
+        <a class="nav-item nav-link" id="import-queued-tab" data-toggle="tab" href="#import-state-queued" role="tab" aria-controls="import-state-queued" aria-selected="false">Queued <span class="badge badge-warning"><%= @pagy_queued.count %></span></a>
+        <a class="nav-item nav-link" id="import-failed-tab" data-toggle="tab" href="#import-state-failed" role="tab" aria-controls="import-state-failed" aria-selected="false">Failed <span class="badge badge-danger"><%= @pagy_failed.count %></span> </a>
+      </div>
+    </nav>
+
+    <div class="tab-content" id="import-states">
+
+      <div class="tab-pane fade show active" id="import-state-success" role="tabpanel" aria-labelledby="import-state-success-tab">
+        <%= render partial: 'show_success_tab' %>
+      </div>
+
+      <div class="tab-pane fade show" id="import-state-queued" role="tabpanel" aria-labelledby="import-state-queued-tab">
+        <%= render partial: 'show_queued_tab' %>
+      </div>  
+
+      <div class="tab-pane fade" id="import-state-failed" role="tabpanel" aria-labelledby="import-state-failed-tab">
+        <%= render partial: 'show_failed_tab' %>
+      </div>
+    </div>
+  </div>
+</div>

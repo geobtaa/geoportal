@@ -1,0 +1,35 @@
+<div class="make-me-sticky mt-4 ml-4">
+  <nav class="nav flex-column ml-4 mt-6">
+    <% if @document.persisted? %>
+      <strong class="mb-4"><%= link_to "GBL♦Admin | View in GeoBlacklight", solr_document_url(@document), { class: 'btn btn-gbl-admin btn-warning' } %></strong>
+    <% end %>
+
+    <%- form_elements = FormElement.all.order(position: :asc) %>
+    <%- form_elements.each do |form_element| %>
+      <% if form_element.kind_of? FormHeader %>
+        <strong class="mt-2"><a data-controller="scroll-to" class="mt-4" href="#<%= form_element.label.parameterize(separator: '-') %>"><%= form_element.label %></a></strong>
+      <% end %>
+      <% if form_element.kind_of? FormGroup %>
+        <a data-controller="scroll-to" class="ml-2" href="#<%= form_element.label.parameterize(separator: '-') %>"><%= form_element.label %></a>
+      <% end %>
+    <% end %>
+
+    <%- if @document.persisted? %>
+      <%= link_to admin_document_document_licensed_accesses_url(@document), class: "ml-2" do %>
+        Licensed Access
+        <span class="badge badge-light"><%= @document.document_licensed_accesses.count %></span>
+      <% end %>
+      <%= link_to admin_document_document_assets_url(@document), class: "ml-2" do %>
+        Additional Assets 
+        <span class="badge badge-light"><%= @document.document_assets.count %></span>
+      <% end %>
+      <%= link_to admin_document_document_data_dictionaries_url(@document), class: "ml-2" do %>
+        Data Dictionaries 
+        <span class="badge badge-light"><%= @document.document_data_dictionaries.count %></span>
+      <% end %>
+      <%= link_to admin_document_document_distributions_url(@document), class: "ml-2" do %>
+        Distributions
+      <% end %>
+    <% end %>
+  </nav>
+</div>

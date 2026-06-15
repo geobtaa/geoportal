@@ -1,0 +1,17 @@
+friendlier_id,reference_type,distribution_url,label
+82784459-acde-42ed-b615-d8300577110e,documentation_external,https://gisdata.mn.gov/dataset/82784459-acde-42ed-b615-d8300577110e,
+82784459-acde-42ed-b615-d8300577110e,download,https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_dnr/water_lake_superior_basin/fgdb_water_lake_superior_basin.zip,Geodatabase
+82784459-acde-42ed-b615-d8300577110e,download,https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_dnr/water_lake_superior_basin/gpkg_water_lake_superior_basin.zip,GeoPackage
+82784459-acde-42ed-b615-d8300577110e,download,https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_dnr/water_lake_superior_basin/shp_water_lake_superior_basin.zip,Shapefile
+82784459-acde-42ed-b615-d8300577110e,full_layer_description,https://gisdata.mn.gov/dataset/82784459-acde-42ed-b615-d8300577110e,Landing Page
+82784459-acde-42ed-b615-d8300577110e,image,https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_dnr/water_lake_superior_basin/metadata/preview.jpg,Static Preview - Sample Image
+82784459-acde-42ed-b615-d8300577110e,metadata_html,https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_dnr/water_lake_superior_basin/metadata/metadata.html,Full Metadata Record
+p16022coll230:1933,documentation_external,https://umedia.lib.umn.edu/item/p16022coll230:1933,
+p16022coll230:1933,iiif_image,https://cdm16022.contentdm.oclc.org/digital/iiif/p16022coll230/1933/info.json,
+p16022coll230:1933,iiif_manifest,https://cdm16022.contentdm.oclc.org/iiif/info/p16022coll230/1933/manifest.json,
+p16022coll230:321,documentation_external,https://umedia.lib.umn.edu/item/p16022coll230:321,
+p16022coll230:321,iiif_image,https://cdm16022.contentdm.oclc.org/digital/iiif/p16022coll230/321/info.json,
+p16022coll230:321,iiif_manifest,https://cdm16022.contentdm.oclc.org/iiif/info/p16022coll230/321/manifest.json,
+p16022coll230:4115,documentation_external,https://umedia.lib.umn.edu/item/p16022coll230:4115,
+p16022coll230:4115,iiif_image,https://cdm16022.contentdm.oclc.org/digital/iiif/p16022coll230/4115/info.json,
+p16022coll230:4115,iiif_manifest,https://cdm16022.contentdm.oclc.org/iiif/info/p16022coll230/4115/manifest.json,

@@ -102,7 +102,7 @@ FIELDS:
   :B1G_DCT_CONFORMS_TO: 'b1g_dct_conformsTo_sm'
   :B1G_DCT_EXTENT: 'b1g_dct_extent_sm'
   :B1G_DCT_PROVENANCE: 'b1g_dct_provenance_sm'
-  :B1G_DATE_ACCESSIONED: 'b1g_dateAccesioned_dt'
+  :B1G_DATE_ACCESSIONED: 'b1g_dateAccessioned_dt'
   :B1G_DATE_CREATED: 'date_created_dtsi'
   :B1G_DATE_RETIRED: 'b1g_dateRetired_dt'
   :B1G_GEODCAT_SPATIAL_RESOLUTION_AS_TEXT: 'b1g_geodcat_spatialResolutionAsText_sm'
@@ -123,7 +123,7 @@ GEOMONITOR_TOLERANCE: 0.8
 #GOOGLE_ANALYTICS_ID: 'UA-XXXXX-X'
 #GOOGLE_SITE_VERIFICATION: 'I1DQ46tUnPOrYpnhDUsy5tOL22oywWb2LyUTwT8M-HU'
 HOSTNAME: 'HOST'
-HOST_URL: 'http://geo.btaa.org'
+HOST_URL: "<%= ENV.fetch('GEOPORTAL_APP_URL', 'https://geomg.lib.umn.edu') %>"
 INSTITUTION: 'University of Minnesota'
 
 INSTITUTION_LOCAL_NAME: 'Minnesota'

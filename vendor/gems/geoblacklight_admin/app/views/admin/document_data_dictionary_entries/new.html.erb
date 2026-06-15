@@ -1,0 +1,16 @@
+<div class="row mb-2">
+  <div class="col">
+    <%= link_to "Back to document data dictionaries", admin_document_document_data_dictionaries_path(@document) %>
+
+    <h1 style="width:100%;">
+      <%= @document.title %> &middot; New Data Dictionary Entry
+    </h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-5">
+    <%= render "form", document_data_dictionary_entry: @document_data_dictionary_entry %>
+
+    <%= link_to "Back to document data dictionary entries", admin_document_document_data_dictionary_document_data_dictionary_entries_path(@document, @document_data_dictionary) %>
+  </div>

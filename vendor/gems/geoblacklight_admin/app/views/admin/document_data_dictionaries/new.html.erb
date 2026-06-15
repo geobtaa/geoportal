@@ -1,0 +1,78 @@
+<div class="row mb-2">
+  <div class="col">
+    <%= link_to "Back to document data dictionaries", admin_document_document_data_dictionaries_path(@document) %>
+
+    <h1 style="width:100%;">
+      <%= @document.title %> &middot; New Data Dictionary
+    </h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-5">
+    <%= render "form", document_data_dictionary: @document_data_dictionary %>
+  </div>
+
+  <div class="col-6">
+    <h4>Example Data Dictionary CSV File</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>friendlier_id*</th>
+          <th>field_name*</th>
+          <th>field_type</th>
+          <th>values</th>
+          <th>definition</th>
+          <th>definition_source</th>
+          <th>parent_field_name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>999-0010a</td>
+          <td>Institution</td>
+          <td>string</td>
+          <td>University of Minnesota</td>
+          <td>The name of the institution</td>
+          <td>https://www.umn.edu</td>
+          <td>999-0010UMN</td>
+        </tr>
+        <tr>
+          <td>999-0010a</td>
+          <td>Institution</td>
+          <td>string</td>
+          <td>University of Minnesota Duluth</td>
+          <td>The name of the institution</td>
+          <td>https://www.d.umn.edu</td>
+          <td>999-0010UMN</td>
+        </tr>
+        <tr>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>CSV File Column Definitions</h5>
+    <dl>
+      <dt>friendlier_id</dt>
+      <dd>The associated document's friendlier id</dd>
+      <dt>field_name</dt>
+      <dd>The name of the field</dd>
+      <dt>field_type</dt>
+      <dd>The type of the field</dd>
+      <dt>values</dt>
+      <dd>The values of the field</dd>
+      <dt>definition</dt>
+      <dd>The definition of the field</dd>
+      <dt>definition_source</dt>
+      <dd>The source of the definition</dd>
+      <dt>parent_field_name</dt>
+      <dd>The parent field's name</dd>
+    </dl>
+  </div>
+</div>

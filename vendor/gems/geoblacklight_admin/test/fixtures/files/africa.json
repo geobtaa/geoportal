@@ -1,0 +1,52 @@
+{
+  "geoblacklight_version": "1.0",
+  "layer_geom_type_s": "Image",
+  "layer_modified_dt": "2019-12-19T15:44:45Z",
+  "solr_geom": "ENVELOPE(-18.6,52.3,37.17,-35.3)",
+  "dct_references_s": [
+    {
+      "value": "https://lib.msu.edu/branches/map/AfJPEGs/494a-b_ae55e6v2_l/",
+      "category": "documentation_external"
+    },
+    {
+      "value": "https://archive.lib.msu.edu/maps/MSU-Scanned/Africa/494a-b_ae55e6v2_l.jpg",
+      "category": "download"
+    }
+  ],
+  "dc_rights_s": "Public",
+  "b1g_centroid_ss": "0.9350000000000023,16.849999999999998",
+  "dc_description_s": "In Entsiklopedicheskii Slovar, pod redaktsiei professora I. F. Andreevskago. Tom I-XLIA ... Izdateli: F. A. Brokgauz (Leiptsig) I. A. Efron. St. Peterburg. 1890-1904.",
+  "dct_provenance_s": "Michigan State",
+  "dc_language_sm": [
+    "English"
+  ],
+  "dc_format_s": "JPEG",
+  "suppressed_b": false,
+  "b1g_code_s": "06d-01",
+  "layer_slug_s": "06e7f566-852a-4914-929d-1bef38132eba",
+  "b1g_genre_sm": [
+    "Maps"
+  ],
+  "dct_temporal_sm": [
+    "1890-1904"
+  ],
+  "b1g_keyword_sm": [
+    "Michigan State University Map Library"
+  ],
+  "dc_identifier_s": "06e7f566-852a-4914-929d-1bef38132eba",
+  "dct_isPartOf_sm": [
+    "06d-01"
+  ],
+  "solr_year_i": 1890,
+  "dct_spatial_sm": [
+    "Africa"
+  ],
+  "b1g_image_ss": "https://btaagdp.org/maps/files/original/9d1dcfad589f83b7b3b3997586fb8210.jpg",
+  "dc_type_sm": [
+    "Image"
+  ],
+  "dc_title_s": "Физическая Карта Африки [Physical Map of Africa]",
+  "b1g_date_range_drsim": [
+    "1890-1890"
+  ],
+}

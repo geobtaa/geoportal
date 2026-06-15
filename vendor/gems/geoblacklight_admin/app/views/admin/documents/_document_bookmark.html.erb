@@ -1,0 +1,17 @@
+<% bookmarked = current_user.document_is_bookmarked?(document) ? 'bookmarked' : '' %>
+
+<span class="destroy_bookmark <%= 'hidden' unless current_user.document_is_bookmarked?(document) %>">
+  <%= link_to admin_bookmarks_destroy_by_fkeys_path(document: document, user: current_user.id), method: :delete, remote:true do %>
+    <%= content_tag :span, { data: { toggle: 'tooltip', friendlier_id: document.friendlier_id }, title: 'Bookmarked' } do %>
+      <%= inline_svg_tag "bookmark-solid.svg", class: 'icon baseline bookmark-icon' %>
+    <% end %>
+  <% end %>
+</span>
+
+<span class="create_bookmark <%= 'hidden' if current_user.document_is_bookmarked?(document) %>">
+  <%= link_to admin_bookmarks_path(document: document, user: current_user.id), method: :post, id: 'random_id', remote: true do %>
+    <%= content_tag :span, { data: { toggle: 'tooltip', friendlier_id: document.friendlier_id }, title: 'Not bookmarked' } do %>
+      <%= inline_svg_tag "bookmark-regular.svg", class: 'icon baseline bookmark-icon' %>
+    <% end %>
+  <% end %>
+</span>

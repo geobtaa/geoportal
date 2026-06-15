@@ -1,0 +1,7 @@
+.pagy {
+  a:not(.gap) {
+    &:not([href]) { /* disabled links */
+      margin-top: 0.4rem;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+# This is a configuration file for the `qa` (questioning authorities) gem, to create a local
+# authority. It looks for the configuration file at this exact location.
+#
+# WARNING: Do not edit this data without changing existing metadata; additions are fine.
+terms:
+  - ArcGRID
+  - DEM
+  - Feature Class
+  - Files
+  - GeoDatabase
+  - GeoJSON
+  - GeoPackage
+  - GeoTIFF
+  - Imagery
+  - JPEG
+  - JPEG2000
+  - Mixed
+  - MrSID
+  - PDF
+  - PNG
+  - Raster Dataset
+  - Shapefile
+  - Tabular Data
+  - TIFF
+  - Web Application

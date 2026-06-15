@@ -7,7 +7,7 @@ response = solrinst.get('select', params: {q: 'b1g_publication_state_s:published
 slugs = response['response']['docs'].map { |doc| doc['id'] }.sort
 
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = 'https://geo.btaa.org'
+SitemapGenerator::Sitemap.default_host = Geoportal::AppUrl.app_url
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
   #

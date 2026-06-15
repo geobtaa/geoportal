@@ -1,0 +1,12 @@
+<% content_for :title, "Editing document data dictionary" %>
+
+<h1>Editing document data dictionary</h1>
+
+<%= render "form", document_data_dictionary: @document_data_dictionary %>
+
+<br>
+
+<div>
+  <%= link_to "Show this document data dictionary", admin_document_document_data_dictionary_path(@document, @document_data_dictionary) %> |
+  <%= link_to "Back to document data dictionaries", admin_document_document_data_dictionaries_path(@document) %>
+</div>
