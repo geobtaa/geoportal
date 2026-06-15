@@ -16,7 +16,7 @@ class GeoportalAppUrlTest < ActiveSupport::TestCase
     end
   end
 
-  test "defaults to the EC2 hostname" do
+  test "defaults to the legacy hostname" do
     assert_equal Geoportal::DEFAULT_APP_URL, Geoportal::AppUrl.app_url
   end
 

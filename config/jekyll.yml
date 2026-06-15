@@ -20,7 +20,7 @@ email: your-email@domain.com
 description: > # this means to ignore newlines until "baseurl:"
   News and updates from the development team of the BTAA Geoportal
 baseurl: "/blog" # the subpath of your site, e.g. /blog
-url: "http://geo.btaa.org" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://geomg.lib.umn.edu" # the base hostname & protocol for your site, e.g. http://example.com
 
 
 # Build settings
