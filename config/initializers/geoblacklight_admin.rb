@@ -18,10 +18,13 @@ unless File.exist?(Rails.root.join("tmp/schema_timestamp.txt").to_s)
 end
 GEOMG_SCHEMA_TIMESTAMP = File.read(Rails.root.join("tmp/schema_timestamp.txt").to_s)
 
-BLACKLIGHT_URL = ENV["BLACKLIGHT_URL"]
-BLACKLIGHT_JSON_API = ENV["BLACKLIGHT_JSON_API"]
-BLACKLIGHT_JSON_API_IDS = ENV["BLACKLIGHT_JSON_API_IDS"]
-BLACKLIGHT_JSON_API_FACETS = ENV["BLACKLIGHT_JSON_API_FACETS"]
+BLACKLIGHT_URL = Geoportal::AppUrl.app_url
+BLACKLIGHT_JSON_API = Geoportal::AppUrl.path_from_url(ENV["BLACKLIGHT_JSON_API"], default_path: "/admin/api.json")
+BLACKLIGHT_JSON_API_IDS = Geoportal::AppUrl.path_from_url(ENV["BLACKLIGHT_JSON_API_IDS"], default_path: "/admin/api/ids.json")
+BLACKLIGHT_JSON_API_FACETS = Geoportal::AppUrl.path_from_url(
+  ENV["BLACKLIGHT_JSON_API_FACETS"],
+  default_path: "/admin/advanced_search/facets.json"
+)
 
 # Former Controller > Concern
 module Admin

@@ -3,7 +3,8 @@ namespace :geoportal do
   task :b1g_download_data do
     require 'down'
     begin
-      Down.download("https://geo.btaa.org/data.json", destination: "#{Rails.root}/tmp/b1g_data.json")
+      data_url = ENV.fetch("GEOPORTAL_DATA_URL", Geoportal::AppUrl.url("/data.json"))
+      Down.download(data_url, destination: "#{Rails.root}/tmp/b1g_data.json")
 
       puts "Success - B1G Geoportal data downloaded to tmp/b1g_data.json"
     rescue
