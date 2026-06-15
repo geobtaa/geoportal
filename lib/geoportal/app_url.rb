@@ -3,7 +3,7 @@
 require "uri"
 
 module Geoportal
-  DEFAULT_APP_URL = "https://ec2-3-143-166-108.us-east-2.compute.amazonaws.com"
+  DEFAULT_APP_URL = "https://geomg.lib.umn.edu"
 
   module AppUrl
     module_function

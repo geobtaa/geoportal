@@ -123,7 +123,7 @@ GEOMONITOR_TOLERANCE: 0.8
 #GOOGLE_ANALYTICS_ID: 'UA-XXXXX-X'
 #GOOGLE_SITE_VERIFICATION: 'I1DQ46tUnPOrYpnhDUsy5tOL22oywWb2LyUTwT8M-HU'
 HOSTNAME: 'HOST'
-HOST_URL: "<%= ENV.fetch('GEOPORTAL_APP_URL', 'https://ec2-3-143-166-108.us-east-2.compute.amazonaws.com') %>"
+HOST_URL: "<%= ENV.fetch('GEOPORTAL_APP_URL', 'https://geomg.lib.umn.edu') %>"
 INSTITUTION: 'University of Minnesota'
 
 INSTITUTION_LOCAL_NAME: 'Minnesota'
