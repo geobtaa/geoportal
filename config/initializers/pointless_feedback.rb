@@ -8,7 +8,7 @@ PointlessFeedback.setup do |config|
   # Variables needed for emailing feedback
   config.email_feedback            = true
   config.send_from_submitter       = false
-  config.from_email                = 'no-reply@geo.btaa.org'
+  config.from_email                = ENV.fetch('GEOPORTAL_FEEDBACK_FROM_EMAIL', 'no-reply@btaa.org')
   config.to_emails                 = ['btaa-gdp@umn.edu','geoportal@btaa.org']
   config.google_captcha_site_key   = ENV["GEOBLACKLIGHT_CAPTCHA_SITE_KEY"]
   config.google_captcha_secret_key = ENV["GEOBLACKLIGHT_CAPTCHA_SECRET_KEY"]
