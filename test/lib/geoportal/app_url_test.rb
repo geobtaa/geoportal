@@ -16,7 +16,8 @@ class GeoportalAppUrlTest < ActiveSupport::TestCase
     end
   end
 
-  test "defaults to the legacy hostname" do
+  test "defaults to the production GEOMG hostname" do
+    assert_equal "https://geomg.lib.umn.edu", Geoportal::DEFAULT_APP_URL
     assert_equal Geoportal::DEFAULT_APP_URL, Geoportal::AppUrl.app_url
   end
 
