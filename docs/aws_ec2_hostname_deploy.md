@@ -105,7 +105,15 @@ GEOPORTAL_APP_URL='<%= fetch(:geoblacklight_url) %>'
 GEOPORTAL_DEFAULT_URL_HOST='ec2-3-143-166-108.us-east-2.compute.amazonaws.com'
 ```
 
-The existing `BLACKLIGHT_URL` and `BLACKLIGHT_JSON_*` values should also be regenerated from the updated `geoblacklight_url`; those values are used by GeoBlacklight Admin internals.
+`BLACKLIGHT_JSON_API`, `BLACKLIGHT_JSON_API_FACETS`, and `BLACKLIGHT_JSON_API_IDS` should be relative paths, because GeoBlacklight Admin prefixes them with the current request host:
+
+```erb
+BLACKLIGHT_JSON_API='/admin/api.json'
+BLACKLIGHT_JSON_API_FACETS='/admin/advanced_search/facets.json'
+BLACKLIGHT_JSON_API_IDS='/admin/api/ids.json'
+```
+
+The application now normalizes old absolute values to paths at boot, but keeping the deploy template path-based avoids the admin landing page constructing invalid URLs after sign-in.
 
 Normal deploys only check that `shared/.env.production` exists. They do not regenerate it. After changing the deploy repo, either rerun:
 

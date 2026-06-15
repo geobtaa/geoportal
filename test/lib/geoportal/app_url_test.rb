@@ -42,4 +42,25 @@ class GeoportalAppUrlTest < ActiveSupport::TestCase
       Geoportal::AppUrl.default_url_options
     )
   end
+
+  test "normalizes absolute urls to paths" do
+    assert_equal(
+      "/admin/api.json",
+      Geoportal::AppUrl.path_from_url("https://geo.btaa.org/admin/api.json", default_path: "/fallback.json")
+    )
+  end
+
+  test "normalizes relative paths" do
+    assert_equal(
+      "/admin/api/ids.json",
+      Geoportal::AppUrl.path_from_url("admin/api/ids.json", default_path: "/fallback.json")
+    )
+  end
+
+  test "uses default path for missing values" do
+    assert_equal(
+      "/admin/advanced_search/facets.json",
+      Geoportal::AppUrl.path_from_url(nil, default_path: "/admin/advanced_search/facets.json")
+    )
+  end
 end

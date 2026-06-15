@@ -21,6 +21,20 @@ module Geoportal
       "#{app_url}#{normalized_path}"
     end
 
+    def path_from_url(value, default_path:)
+      normalized_value = value.to_s.strip
+      normalized_value = default_path if normalized_value.empty?
+
+      uri = URI.parse(normalized_value)
+      path = uri.absolute? ? uri.path : normalized_value
+      path = default_path if path.empty?
+      path = "/#{path}" unless path.start_with?("/")
+      path = "#{path}?#{uri.query}" if uri.absolute? && !uri.query.to_s.empty?
+      path
+    rescue URI::InvalidURIError
+      default_path
+    end
+
     def default_url_options
       uri = URI.parse(app_url)
       options = {host: uri.host, protocol: "#{uri.scheme}://"}
