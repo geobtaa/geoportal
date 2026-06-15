@@ -1,0 +1,2 @@
+class KitheBridgeDeletion < ApplicationRecord
+end
