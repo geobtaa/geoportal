@@ -20,6 +20,19 @@
 # If the "elements" table exists, additional fields are indexed based on
 # the Element model's configuration.
 class DocumentIndexer < Kithe::Indexer
+  def source_record_id_proc
+    @source_record_id_proc ||= lambda do |source_record|
+      next unless source_record
+
+      [
+        "Document.friendlier_id=#{source_record.try(:friendlier_id).presence || "(blank)"}",
+        "Document.id=#{source_record.try(:id).presence || "(blank)"}",
+        "geomg_id_s=#{source_record.respond_to?(:geomg_id_s) ? source_record.geomg_id_s.presence || "(blank)" : "(unavailable)"}",
+        "publication_state=#{source_record.try(:publication_state).presence || "(blank)"}"
+      ].join(" ")
+    end
+  end
+
   # Formats date/datetime values for Solr date fields (ISO8601 with time component)
   # Handles Date, DateTime, Time, String values, and arrays that look like Time#to_a results
   def self.format_date_for_solr(value, field_name = nil)
