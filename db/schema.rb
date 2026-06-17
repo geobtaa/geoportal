@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_04_10_111000) do
+ActiveRecord::Schema[7.2].define(version: 2026_06_17_183000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -667,319 +667,359 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_10_111000) do
   add_foreign_key "uri_transitions", "solr_document_uris"
 
   create_view "kithe_to_resources_bridge", materialized: true, sql_definition: <<-SQL
-      WITH live_documents AS (
-           SELECT COALESCE(kithe_models.friendlier_id, (kithe_models.id)::character varying) AS id,
-              kithe_models.title AS dct_title_s,
+      WITH live_document_ids AS (
+           SELECT kithe_models.id,
+              kithe_models.title,
+              kithe_models.type,
+              kithe_models."position",
+              kithe_models.json_attributes,
+              kithe_models.created_at,
+              kithe_models.updated_at,
+              kithe_models.parent_id,
+              kithe_models.friendlier_id,
+              kithe_models.file_data,
+              kithe_models.representative_id,
+              kithe_models.leaf_representative_id,
+              kithe_models.kithe_model_type,
+              kithe_models.import_id,
               kithe_models.publication_state,
-              (kithe_models.import_id)::character varying AS import_id,
+              COALESCE(kithe_models.friendlier_id, (kithe_models.id)::character varying) AS bridge_id
+             FROM kithe_models
+            WHERE ((kithe_models.type)::text = 'Document'::text)
+          ), relationship_values AS (
+           SELECT live_document_ids.bridge_id AS subject_id,
+              relation_fields.field_name,
+              btrim(related_ids.related_id) AS object_id
+             FROM ((live_document_ids
+               CROSS JOIN LATERAL ( VALUES ('dct_relation_sm'::text,(live_document_ids.json_attributes -> 'dct_relation_sm'::text)), ('pcdm_memberOf_sm'::text,(live_document_ids.json_attributes -> 'pcdm_memberOf_sm'::text)), ('dct_isPartOf_sm'::text,(live_document_ids.json_attributes -> 'dct_isPartOf_sm'::text)), ('dct_source_sm'::text,(live_document_ids.json_attributes -> 'dct_source_sm'::text)), ('dct_isVersionOf_sm'::text,(live_document_ids.json_attributes -> 'dct_isVersionOf_sm'::text)), ('dct_replaces_sm'::text,(live_document_ids.json_attributes -> 'dct_replaces_sm'::text)), ('dct_isReplacedBy_sm'::text,(live_document_ids.json_attributes -> 'dct_isReplacedBy_sm'::text))) relation_fields(field_name, raw_value))
+               CROSS JOIN LATERAL jsonb_array_elements_text(
+                  CASE
+                      WHEN ((relation_fields.raw_value IS NULL) OR (relation_fields.raw_value = 'null'::jsonb)) THEN '[]'::jsonb
+                      WHEN (jsonb_typeof(relation_fields.raw_value) = 'array'::text) THEN relation_fields.raw_value
+                      ELSE jsonb_build_array(relation_fields.raw_value)
+                  END) related_ids(related_id))
+            WHERE (btrim(related_ids.related_id) <> ''::text)
+          ), relationship_exports AS (
+           SELECT relationship_values.subject_id AS document_id,
+              relationship_values.field_name,
+              relationship_values.object_id AS related_id
+             FROM relationship_values
+          UNION
+           SELECT relationship_values.object_id AS document_id,
+              'dct_relation_sm'::text AS field_name,
+              relationship_values.subject_id AS related_id
+             FROM relationship_values
+            WHERE (relationship_values.field_name = 'dct_relation_sm'::text)
+          UNION
+           SELECT relationship_values.object_id AS document_id,
+              'dct_isReplacedBy_sm'::text AS field_name,
+              relationship_values.subject_id AS related_id
+             FROM relationship_values
+            WHERE (relationship_values.field_name = 'dct_replaces_sm'::text)
+          UNION
+           SELECT relationship_values.object_id AS document_id,
+              'dct_replaces_sm'::text AS field_name,
+              relationship_values.subject_id AS related_id
+             FROM relationship_values
+            WHERE (relationship_values.field_name = 'dct_isReplacedBy_sm'::text)
+          ), live_documents AS (
+           SELECT live_document_ids.bridge_id AS id,
+              live_document_ids.title AS dct_title_s,
+              live_document_ids.publication_state,
+              (live_document_ids.import_id)::character varying AS import_id,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_alternative_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_alternative_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_alternative_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_alternative_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_alternative_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dct_alternative_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dct_alternative_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dct_alternative_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dct_alternative_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dct_alternative_sm'::text))
                           END) AS jsonb_array_elements_text) AS dct_alternative_sm,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_description_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_description_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_description_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_description_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_description_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dct_description_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dct_description_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dct_description_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dct_description_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dct_description_sm'::text))
                           END) AS jsonb_array_elements_text) AS dct_description_sm,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_language_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_language_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_language_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_language_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_language_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dct_language_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dct_language_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dct_language_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dct_language_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dct_language_sm'::text))
                           END) AS jsonb_array_elements_text) AS dct_language_sm,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'gbl_displayNote_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'gbl_displayNote_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'gbl_displayNote_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'gbl_displayNote_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'gbl_displayNote_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'gbl_displayNote_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'gbl_displayNote_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'gbl_displayNote_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'gbl_displayNote_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'gbl_displayNote_sm'::text))
                           END) AS jsonb_array_elements_text) AS "gbl_displayNote_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_creator_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_creator_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_creator_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_creator_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_creator_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dct_creator_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dct_creator_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dct_creator_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dct_creator_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dct_creator_sm'::text))
                           END) AS jsonb_array_elements_text) AS dct_creator_sm,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_publisher_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_publisher_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_publisher_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_publisher_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_publisher_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dct_publisher_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dct_publisher_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dct_publisher_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dct_publisher_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dct_publisher_sm'::text))
                           END) AS jsonb_array_elements_text) AS dct_publisher_sm,
-              (kithe_models.json_attributes ->> 'schema_provider_s'::text) AS schema_provider_s,
+              (live_document_ids.json_attributes ->> 'schema_provider_s'::text) AS schema_provider_s,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'gbl_resourceClass_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'gbl_resourceClass_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'gbl_resourceClass_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'gbl_resourceClass_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'gbl_resourceClass_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'gbl_resourceClass_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'gbl_resourceClass_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'gbl_resourceClass_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'gbl_resourceClass_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'gbl_resourceClass_sm'::text))
                           END) AS jsonb_array_elements_text) AS "gbl_resourceClass_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'gbl_resourceType_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'gbl_resourceType_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'gbl_resourceType_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'gbl_resourceType_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'gbl_resourceType_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'gbl_resourceType_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'gbl_resourceType_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'gbl_resourceType_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'gbl_resourceType_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'gbl_resourceType_sm'::text))
                           END) AS jsonb_array_elements_text) AS "gbl_resourceType_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_subject_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_subject_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_subject_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_subject_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_subject_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dct_subject_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dct_subject_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dct_subject_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dct_subject_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dct_subject_sm'::text))
                           END) AS jsonb_array_elements_text) AS dct_subject_sm,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dcat_theme_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dcat_theme_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dcat_theme_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dcat_theme_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dcat_theme_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dcat_theme_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dcat_theme_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dcat_theme_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dcat_theme_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dcat_theme_sm'::text))
                           END) AS jsonb_array_elements_text) AS dcat_theme_sm,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dcat_keyword_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dcat_keyword_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dcat_keyword_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dcat_keyword_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dcat_keyword_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dcat_keyword_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dcat_keyword_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dcat_keyword_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dcat_keyword_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dcat_keyword_sm'::text))
                           END) AS jsonb_array_elements_text) AS dcat_keyword_sm,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_temporal_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_temporal_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_temporal_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_temporal_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_temporal_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dct_temporal_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dct_temporal_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dct_temporal_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dct_temporal_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dct_temporal_sm'::text))
                           END) AS jsonb_array_elements_text) AS dct_temporal_sm,
-              (kithe_models.json_attributes ->> 'dct_issued_s'::text) AS dct_issued_s,
+              (live_document_ids.json_attributes ->> 'dct_issued_s'::text) AS dct_issued_s,
               ARRAY( SELECT (jsonb_array_elements_text(
                           CASE
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'gbl_indexYear_im'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'gbl_indexYear_im'::text)
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'gbl_indexYear_im'::text)) = 'string'::text) THEN jsonb_build_array((kithe_models.json_attributes -> 'gbl_indexYear_im'::text))
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'gbl_indexYear_im'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'gbl_indexYear_im'::text)
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'gbl_indexYear_im'::text)) = 'string'::text) THEN jsonb_build_array((live_document_ids.json_attributes -> 'gbl_indexYear_im'::text))
                               ELSE '[]'::jsonb
                           END))::integer AS jsonb_array_elements_text) AS "gbl_indexYear_im",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'gbl_dateRange_drsim'::text) IS NULL) OR ((kithe_models.json_attributes -> 'gbl_dateRange_drsim'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'gbl_dateRange_drsim'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'gbl_dateRange_drsim'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'gbl_dateRange_drsim'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'gbl_dateRange_drsim'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'gbl_dateRange_drsim'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'gbl_dateRange_drsim'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'gbl_dateRange_drsim'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'gbl_dateRange_drsim'::text))
                           END) AS jsonb_array_elements_text) AS "gbl_dateRange_drsim",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_spatial_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_spatial_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_spatial_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_spatial_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_spatial_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dct_spatial_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dct_spatial_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dct_spatial_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dct_spatial_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dct_spatial_sm'::text))
                           END) AS jsonb_array_elements_text) AS dct_spatial_sm,
-              (kithe_models.json_attributes ->> 'locn_geometry'::text) AS locn_geometry,
-              (kithe_models.json_attributes ->> 'dcat_bbox'::text) AS dcat_bbox,
-              (kithe_models.json_attributes ->> 'dcat_centroid'::text) AS dcat_centroid,
+              (live_document_ids.json_attributes ->> 'locn_geometry'::text) AS locn_geometry,
+              (live_document_ids.json_attributes ->> 'dcat_bbox'::text) AS dcat_bbox,
+              (live_document_ids.json_attributes ->> 'dcat_centroid'::text) AS dcat_centroid,
+              ARRAY( SELECT DISTINCT relationship_exports.related_id
+                     FROM relationship_exports
+                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'dct_relation_sm'::text))
+                    ORDER BY relationship_exports.related_id) AS dct_relation_sm,
+              ARRAY( SELECT DISTINCT relationship_exports.related_id
+                     FROM relationship_exports
+                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'pcdm_memberOf_sm'::text))
+                    ORDER BY relationship_exports.related_id) AS "pcdm_memberOf_sm",
+              ARRAY( SELECT DISTINCT relationship_exports.related_id
+                     FROM relationship_exports
+                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'dct_isPartOf_sm'::text))
+                    ORDER BY relationship_exports.related_id) AS "dct_isPartOf_sm",
+              ARRAY( SELECT DISTINCT relationship_exports.related_id
+                     FROM relationship_exports
+                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'dct_source_sm'::text))
+                    ORDER BY relationship_exports.related_id) AS dct_source_sm,
+              ARRAY( SELECT DISTINCT relationship_exports.related_id
+                     FROM relationship_exports
+                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'dct_isVersionOf_sm'::text))
+                    ORDER BY relationship_exports.related_id) AS "dct_isVersionOf_sm",
+              ARRAY( SELECT DISTINCT relationship_exports.related_id
+                     FROM relationship_exports
+                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'dct_replaces_sm'::text))
+                    ORDER BY relationship_exports.related_id) AS dct_replaces_sm,
+              ARRAY( SELECT DISTINCT relationship_exports.related_id
+                     FROM relationship_exports
+                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'dct_isReplacedBy_sm'::text))
+                    ORDER BY relationship_exports.related_id) AS "dct_isReplacedBy_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_relation_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_relation_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_relation_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_relation_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_relation_sm'::text))
-                          END) AS jsonb_array_elements_text) AS dct_relation_sm,
-              ARRAY( SELECT jsonb_array_elements_text(
-                          CASE
-                              WHEN (((kithe_models.json_attributes -> 'pcdm_memberOf_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'pcdm_memberOf_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'pcdm_memberOf_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'pcdm_memberOf_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'pcdm_memberOf_sm'::text))
-                          END) AS jsonb_array_elements_text) AS "pcdm_memberOf_sm",
-              ARRAY( SELECT jsonb_array_elements_text(
-                          CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_isPartOf_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_isPartOf_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_isPartOf_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_isPartOf_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_isPartOf_sm'::text))
-                          END) AS jsonb_array_elements_text) AS "dct_isPartOf_sm",
-              ARRAY( SELECT jsonb_array_elements_text(
-                          CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_source_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_source_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_source_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_source_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_source_sm'::text))
-                          END) AS jsonb_array_elements_text) AS dct_source_sm,
-              ARRAY( SELECT jsonb_array_elements_text(
-                          CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_isVersionOf_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_isVersionOf_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_isVersionOf_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_isVersionOf_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_isVersionOf_sm'::text))
-                          END) AS jsonb_array_elements_text) AS "dct_isVersionOf_sm",
-              ARRAY( SELECT jsonb_array_elements_text(
-                          CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_replaces_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_replaces_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_replaces_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_replaces_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_replaces_sm'::text))
-                          END) AS jsonb_array_elements_text) AS dct_replaces_sm,
-              ARRAY( SELECT jsonb_array_elements_text(
-                          CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_isReplacedBy_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_isReplacedBy_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_isReplacedBy_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_isReplacedBy_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_isReplacedBy_sm'::text))
-                          END) AS jsonb_array_elements_text) AS "dct_isReplacedBy_sm",
-              ARRAY( SELECT jsonb_array_elements_text(
-                          CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_rights_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_rights_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_rights_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_rights_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_rights_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dct_rights_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dct_rights_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dct_rights_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dct_rights_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dct_rights_sm'::text))
                           END) AS jsonb_array_elements_text) AS dct_rights_sm,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_rightsHolder_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_rightsHolder_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_rightsHolder_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_rightsHolder_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_rightsHolder_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dct_rightsHolder_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dct_rightsHolder_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dct_rightsHolder_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dct_rightsHolder_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dct_rightsHolder_sm'::text))
                           END) AS jsonb_array_elements_text) AS "dct_rightsHolder_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_license_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_license_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_license_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_license_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_license_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dct_license_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dct_license_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dct_license_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dct_license_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dct_license_sm'::text))
                           END) AS jsonb_array_elements_text) AS dct_license_sm,
-              (kithe_models.json_attributes ->> 'dct_accessRights_s'::text) AS "dct_accessRights_s",
-              (kithe_models.json_attributes ->> 'dct_format_s'::text) AS dct_format_s,
-              (kithe_models.json_attributes ->> 'gbl_fileSize_s'::text) AS "gbl_fileSize_s",
-              (kithe_models.json_attributes ->> 'gbl_wxsIdentifier_s'::text) AS "gbl_wxsIdentifier_s",
-              (kithe_models.json_attributes ->> 'dct_references_s'::text) AS dct_references_s,
+              (live_document_ids.json_attributes ->> 'dct_accessRights_s'::text) AS "dct_accessRights_s",
+              (live_document_ids.json_attributes ->> 'dct_format_s'::text) AS dct_format_s,
+              (live_document_ids.json_attributes ->> 'gbl_fileSize_s'::text) AS "gbl_fileSize_s",
+              (live_document_ids.json_attributes ->> 'gbl_wxsIdentifier_s'::text) AS "gbl_wxsIdentifier_s",
+              (live_document_ids.json_attributes ->> 'dct_references_s'::text) AS dct_references_s,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'dct_identifier_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'dct_identifier_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'dct_identifier_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'dct_identifier_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'dct_identifier_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'dct_identifier_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dct_identifier_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'dct_identifier_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'dct_identifier_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'dct_identifier_sm'::text))
                           END) AS jsonb_array_elements_text) AS dct_identifier_sm,
-              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'gbl_mdModified_dt'::text), ''::text), 'null'::text))::timestamp without time zone AS "gbl_mdModified_dt",
-              (kithe_models.json_attributes ->> 'gbl_mdVersion_s'::text) AS "gbl_mdVersion_s",
-              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'gbl_suppressed_b'::text), ''::text), 'null'::text))::boolean AS gbl_suppressed_b,
-              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'gbl_georeferenced_b'::text), ''::text), 'null'::text))::boolean AS gbl_georeferenced_b,
-              (kithe_models.json_attributes ->> 'b1g_code_s'::text) AS b1g_code_s,
-              (kithe_models.json_attributes ->> 'b1g_status_s'::text) AS b1g_status_s,
-              (kithe_models.json_attributes ->> 'b1g_dct_accrualMethod_s'::text) AS "b1g_dct_accrualMethod_s",
-              (kithe_models.json_attributes ->> 'b1g_dct_accrualPeriodicity_s'::text) AS "b1g_dct_accrualPeriodicity_s",
-              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dateAccessioned_s'::text), ''::text), 'null'::text))::date AS "b1g_dateAccessioned_s",
+              (NULLIF(NULLIF((live_document_ids.json_attributes ->> 'gbl_mdModified_dt'::text), ''::text), 'null'::text))::timestamp without time zone AS "gbl_mdModified_dt",
+              (live_document_ids.json_attributes ->> 'gbl_mdVersion_s'::text) AS "gbl_mdVersion_s",
+              (NULLIF(NULLIF((live_document_ids.json_attributes ->> 'gbl_suppressed_b'::text), ''::text), 'null'::text))::boolean AS gbl_suppressed_b,
+              (NULLIF(NULLIF((live_document_ids.json_attributes ->> 'gbl_georeferenced_b'::text), ''::text), 'null'::text))::boolean AS gbl_georeferenced_b,
+              (live_document_ids.json_attributes ->> 'b1g_code_s'::text) AS b1g_code_s,
+              (live_document_ids.json_attributes ->> 'b1g_status_s'::text) AS b1g_status_s,
+              (live_document_ids.json_attributes ->> 'b1g_dct_accrualMethod_s'::text) AS "b1g_dct_accrualMethod_s",
+              (live_document_ids.json_attributes ->> 'b1g_dct_accrualPeriodicity_s'::text) AS "b1g_dct_accrualPeriodicity_s",
+              (NULLIF(NULLIF((live_document_ids.json_attributes ->> 'b1g_dateAccessioned_s'::text), ''::text), 'null'::text))::date AS "b1g_dateAccessioned_s",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_dateAccessioned_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_dateAccessioned_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_dateAccessioned_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_dateAccessioned_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_dateAccessioned_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_dateAccessioned_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_dateAccessioned_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_dateAccessioned_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_dateAccessioned_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_dateAccessioned_sm'::text))
                           END) AS jsonb_array_elements_text) AS "b1g_dateAccessioned_sm",
-              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dateRetired_s'::text), ''::text), 'null'::text))::date AS "b1g_dateRetired_s",
-              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_child_record_b'::text), ''::text), 'null'::text))::boolean AS b1g_child_record_b,
+              (NULLIF(NULLIF((live_document_ids.json_attributes ->> 'b1g_dateRetired_s'::text), ''::text), 'null'::text))::date AS "b1g_dateRetired_s",
+              (NULLIF(NULLIF((live_document_ids.json_attributes ->> 'b1g_child_record_b'::text), ''::text), 'null'::text))::boolean AS b1g_child_record_b,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_dct_mediator_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_dct_mediator_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_dct_mediator_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_dct_mediator_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_dct_mediator_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_dct_mediator_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_dct_mediator_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_dct_mediator_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_dct_mediator_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_dct_mediator_sm'::text))
                           END) AS jsonb_array_elements_text) AS b1g_dct_mediator_sm,
                   CASE
-                      WHEN (((kithe_models.json_attributes -> 'b1g_access_s'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_access_s'::text) = 'null'::jsonb)) THEN NULL::jsonb
-                      WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_access_s'::text)) = 'string'::text) THEN
+                      WHEN (((live_document_ids.json_attributes -> 'b1g_access_s'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_access_s'::text) = 'null'::jsonb)) THEN NULL::jsonb
+                      WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_access_s'::text)) = 'string'::text) THEN
                       CASE
-                          WHEN (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_access_s'::text), ''::text), 'null'::text) IS NULL) THEN NULL::jsonb
-                          ELSE to_jsonb((kithe_models.json_attributes ->> 'b1g_access_s'::text))
+                          WHEN (NULLIF(NULLIF((live_document_ids.json_attributes ->> 'b1g_access_s'::text), ''::text), 'null'::text) IS NULL) THEN NULL::jsonb
+                          ELSE to_jsonb((live_document_ids.json_attributes ->> 'b1g_access_s'::text))
                       END
-                      ELSE (kithe_models.json_attributes -> 'b1g_access_s'::text)
+                      ELSE (live_document_ids.json_attributes -> 'b1g_access_s'::text)
                   END AS b1g_access_s,
-              (kithe_models.json_attributes ->> 'b1g_image_ss'::text) AS b1g_image_ss,
+              (live_document_ids.json_attributes ->> 'b1g_image_ss'::text) AS b1g_image_ss,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_geonames_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_geonames_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_geonames_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_geonames_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_geonames_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_geonames_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_geonames_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_geonames_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_geonames_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_geonames_sm'::text))
                           END) AS jsonb_array_elements_text) AS b1g_geonames_sm,
-              (kithe_models.json_attributes ->> 'b1g_publication_state_s'::text) AS b1g_publication_state_s,
+              (live_document_ids.json_attributes ->> 'b1g_publication_state_s'::text) AS b1g_publication_state_s,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_language_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_language_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_language_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_language_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_language_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_language_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_language_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_language_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_language_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_language_sm'::text))
                           END) AS jsonb_array_elements_text) AS b1g_language_sm,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_creatorID_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_creatorID_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_creatorID_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_creatorID_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_creatorID_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_creatorID_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_creatorID_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_creatorID_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_creatorID_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_creatorID_sm'::text))
                           END) AS jsonb_array_elements_text) AS "b1g_creatorID_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_dct_conformsTo_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_dct_conformsTo_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_dct_conformsTo_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_dct_conformsTo_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_dct_conformsTo_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_dct_conformsTo_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_dct_conformsTo_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_dct_conformsTo_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_dct_conformsTo_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_dct_conformsTo_sm'::text))
                           END) AS jsonb_array_elements_text) AS "b1g_dct_conformsTo_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text))
                           END) AS jsonb_array_elements_text) AS "b1g_dcat_spatialResolutionInMeters_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_geodcat_spatialResolutionAsText_sm'::text))
                           END) AS jsonb_array_elements_text) AS "b1g_geodcat_spatialResolutionAsText_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text))
                           END) AS jsonb_array_elements_text) AS "b1g_dct_provenanceStatement_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_adminTags_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_adminTags_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_adminTags_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_adminTags_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_adminTags_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_adminTags_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_adminTags_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_adminTags_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_adminTags_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_adminTags_sm'::text))
                           END) AS jsonb_array_elements_text) AS "b1g_adminTags_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_adms_supportedSchema_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_adms_supportedSchema_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_adms_supportedSchema_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_adms_supportedSchema_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_adms_supportedSchema_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_adms_supportedSchema_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_adms_supportedSchema_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_adms_supportedSchema_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_adms_supportedSchema_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_adms_supportedSchema_sm'::text))
                           END) AS jsonb_array_elements_text) AS "b1g_adms_supportedSchema_sm",
-              (kithe_models.json_attributes ->> 'b1g_dcat_endpointDescription_s'::text) AS "b1g_dcat_endpointDescription_s",
-              (kithe_models.json_attributes ->> 'b1g_dcat_endpointURL_s'::text) AS "b1g_dcat_endpointURL_s",
+              (live_document_ids.json_attributes ->> 'b1g_dcat_endpointDescription_s'::text) AS "b1g_dcat_endpointDescription_s",
+              (live_document_ids.json_attributes ->> 'b1g_dcat_endpointURL_s'::text) AS "b1g_dcat_endpointURL_s",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_dcat_inSeries_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_dcat_inSeries_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_dcat_inSeries_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_dcat_inSeries_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_dcat_inSeries_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_dcat_inSeries_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_dcat_inSeries_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_dcat_inSeries_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_dcat_inSeries_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_dcat_inSeries_sm'::text))
                           END) AS jsonb_array_elements_text) AS "b1g_dcat_inSeries_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_localCollectionLabel_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_localCollectionLabel_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_localCollectionLabel_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_localCollectionLabel_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_localCollectionLabel_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_localCollectionLabel_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_localCollectionLabel_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_localCollectionLabel_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_localCollectionLabel_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_localCollectionLabel_sm'::text))
                           END) AS jsonb_array_elements_text) AS "b1g_localCollectionLabel_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_prov_softwareAgent_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_prov_softwareAgent_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_prov_softwareAgent_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_prov_softwareAgent_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_prov_softwareAgent_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_prov_softwareAgent_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_prov_softwareAgent_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_prov_softwareAgent_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_prov_softwareAgent_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_prov_softwareAgent_sm'::text))
                           END) AS jsonb_array_elements_text) AS "b1g_prov_softwareAgent_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_prov_wasGeneratedBy_sm'::text))
                           END) AS jsonb_array_elements_text) AS "b1g_prov_wasGeneratedBy_sm",
-              COALESCE((NULLIF(NULLIF((kithe_models.json_attributes ->> 'date_created_dtsi'::text), ''::text), 'null'::text))::timestamp without time zone, kithe_models.created_at) AS date_created_dtsi,
-              COALESCE((NULLIF(NULLIF((kithe_models.json_attributes ->> 'date_modified_dtsi'::text), ''::text), 'null'::text))::timestamp without time zone, kithe_models.updated_at) AS date_modified_dtsi,
-              kithe_models.updated_at AS kithe_updated_at,
-              (kithe_models.json_attributes ->> 'geomg_id_s'::text) AS geomg_id_s,
+              COALESCE((NULLIF(NULLIF((live_document_ids.json_attributes ->> 'date_created_dtsi'::text), ''::text), 'null'::text))::timestamp without time zone, live_document_ids.created_at) AS date_created_dtsi,
+              COALESCE((NULLIF(NULLIF((live_document_ids.json_attributes ->> 'date_modified_dtsi'::text), ''::text), 'null'::text))::timestamp without time zone, live_document_ids.updated_at) AS date_modified_dtsi,
+              live_document_ids.updated_at AS kithe_updated_at,
+              (live_document_ids.json_attributes ->> 'geomg_id_s'::text) AS geomg_id_s,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (((kithe_models.json_attributes -> 'b1g_adminNote_sm'::text) IS NULL) OR ((kithe_models.json_attributes -> 'b1g_adminNote_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
-                              WHEN (jsonb_typeof((kithe_models.json_attributes -> 'b1g_adminNote_sm'::text)) = 'array'::text) THEN (kithe_models.json_attributes -> 'b1g_adminNote_sm'::text)
-                              ELSE jsonb_build_array((kithe_models.json_attributes -> 'b1g_adminNote_sm'::text))
+                              WHEN (((live_document_ids.json_attributes -> 'b1g_adminNote_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'b1g_adminNote_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
+                              WHEN (jsonb_typeof((live_document_ids.json_attributes -> 'b1g_adminNote_sm'::text)) = 'array'::text) THEN (live_document_ids.json_attributes -> 'b1g_adminNote_sm'::text)
+                              ELSE jsonb_build_array((live_document_ids.json_attributes -> 'b1g_adminNote_sm'::text))
                           END) AS jsonb_array_elements_text) AS "b1g_adminNote_sm",
-              COALESCE((NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dateAccessioned_dt'::text), ''::text), 'null'::text))::timestamp without time zone, ((NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dateAccessioned_s'::text), ''::text), 'null'::text))::date)::timestamp without time zone) AS "b1g_dateAccessioned_dt",
-              COALESCE((NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dateRetired_dt'::text), ''::text), 'null'::text))::timestamp without time zone, ((NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dateRetired_s'::text), ''::text), 'null'::text))::date)::timestamp without time zone) AS "b1g_dateRetired_dt",
-              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_deprioritized_b'::text), ''::text), 'null'::text))::boolean AS b1g_deprioritized_b,
-              (kithe_models.json_attributes ->> 'b1g_harvestWorkflow_s'::text) AS "b1g_harvestWorkflow_s",
-              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_isHarvested_b'::text), ''::text), 'null'::text))::boolean AS "b1g_isHarvested_b",
-              (NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_lastHarvested_dt'::text), ''::text), 'null'::text))::timestamp without time zone AS "b1g_lastHarvested_dt",
+              COALESCE((NULLIF(NULLIF((live_document_ids.json_attributes ->> 'b1g_dateAccessioned_dt'::text), ''::text), 'null'::text))::timestamp without time zone, ((NULLIF(NULLIF((live_document_ids.json_attributes ->> 'b1g_dateAccessioned_s'::text), ''::text), 'null'::text))::date)::timestamp without time zone) AS "b1g_dateAccessioned_dt",
+              COALESCE((NULLIF(NULLIF((live_document_ids.json_attributes ->> 'b1g_dateRetired_dt'::text), ''::text), 'null'::text))::timestamp without time zone, ((NULLIF(NULLIF((live_document_ids.json_attributes ->> 'b1g_dateRetired_s'::text), ''::text), 'null'::text))::date)::timestamp without time zone) AS "b1g_dateRetired_dt",
+              (NULLIF(NULLIF((live_document_ids.json_attributes ->> 'b1g_deprioritized_b'::text), ''::text), 'null'::text))::boolean AS b1g_deprioritized_b,
+              (live_document_ids.json_attributes ->> 'b1g_harvestWorkflow_s'::text) AS "b1g_harvestWorkflow_s",
+              (NULLIF(NULLIF((live_document_ids.json_attributes ->> 'b1g_isHarvested_b'::text), ''::text), 'null'::text))::boolean AS "b1g_isHarvested_b",
+              (NULLIF(NULLIF((live_document_ids.json_attributes ->> 'b1g_lastHarvested_dt'::text), ''::text), 'null'::text))::timestamp without time zone AS "b1g_lastHarvested_dt",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
-                              WHEN (jsonb_typeof(COALESCE((kithe_models.json_attributes -> 'b1g_dct_provenance_sm'::text), (kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text))) = 'array'::text) THEN COALESCE((kithe_models.json_attributes -> 'b1g_dct_provenance_sm'::text), (kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text))
-                              WHEN (jsonb_typeof(COALESCE((kithe_models.json_attributes -> 'b1g_dct_provenance_sm'::text), (kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text))) = 'string'::text) THEN jsonb_build_array(COALESCE((kithe_models.json_attributes -> 'b1g_dct_provenance_sm'::text), (kithe_models.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text)))
+                              WHEN (jsonb_typeof(COALESCE((live_document_ids.json_attributes -> 'b1g_dct_provenance_sm'::text), (live_document_ids.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text))) = 'array'::text) THEN COALESCE((live_document_ids.json_attributes -> 'b1g_dct_provenance_sm'::text), (live_document_ids.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text))
+                              WHEN (jsonb_typeof(COALESCE((live_document_ids.json_attributes -> 'b1g_dct_provenance_sm'::text), (live_document_ids.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text))) = 'string'::text) THEN jsonb_build_array(COALESCE((live_document_ids.json_attributes -> 'b1g_dct_provenance_sm'::text), (live_document_ids.json_attributes -> 'b1g_dct_provenanceStatement_sm'::text)))
                               ELSE '[]'::jsonb
                           END) AS jsonb_array_elements_text) AS b1g_dct_provenance_sm,
-              COALESCE(NULLIF(NULLIF((kithe_models.json_attributes ->> 'b1g_dcat_spatialResolutionInMeters_s'::text), ''::text), 'null'::text), NULLIF(NULLIF(((kithe_models.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text) ->> 0), ''::text), 'null'::text)) AS "b1g_dcat_spatialResolutionInMeters_s",
-              (kithe_models.json_attributes ->> 'b1g_websitePlatform_s'::text) AS "b1g_websitePlatform_s",
+              COALESCE(NULLIF(NULLIF((live_document_ids.json_attributes ->> 'b1g_dcat_spatialResolutionInMeters_s'::text), ''::text), 'null'::text), NULLIF(NULLIF(((live_document_ids.json_attributes -> 'b1g_dcat_spatialResolutionInMeters_sm'::text) ->> 0), ''::text), 'null'::text)) AS "b1g_dcat_spatialResolutionInMeters_s",
+              (live_document_ids.json_attributes ->> 'b1g_websitePlatform_s'::text) AS "b1g_websitePlatform_s",
               false AS deleted,
               NULL::timestamp without time zone AS deleted_at
-             FROM kithe_models
-            WHERE ((kithe_models.type)::text = 'Document'::text)
+             FROM live_document_ids
           ), deleted_documents AS (
            SELECT tombstones.friendlier_id AS id,
               tombstones.title AS dct_title_s,
