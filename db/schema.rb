@@ -704,24 +704,35 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_17_183000) do
               relationship_values.field_name,
               relationship_values.object_id AS related_id
              FROM relationship_values
-          UNION
+          UNION ALL
            SELECT relationship_values.object_id AS document_id,
               'dct_relation_sm'::text AS field_name,
               relationship_values.subject_id AS related_id
              FROM relationship_values
             WHERE (relationship_values.field_name = 'dct_relation_sm'::text)
-          UNION
+          UNION ALL
            SELECT relationship_values.object_id AS document_id,
               'dct_isReplacedBy_sm'::text AS field_name,
               relationship_values.subject_id AS related_id
              FROM relationship_values
             WHERE (relationship_values.field_name = 'dct_replaces_sm'::text)
-          UNION
+          UNION ALL
            SELECT relationship_values.object_id AS document_id,
               'dct_replaces_sm'::text AS field_name,
               relationship_values.subject_id AS related_id
              FROM relationship_values
             WHERE (relationship_values.field_name = 'dct_isReplacedBy_sm'::text)
+          ), relationship_arrays AS (
+           SELECT relationship_exports.document_id,
+              COALESCE(array_agg(DISTINCT relationship_exports.related_id ORDER BY relationship_exports.related_id) FILTER (WHERE (relationship_exports.field_name = 'dct_relation_sm'::text)), ARRAY[]::text[]) AS dct_relation_sm,
+              COALESCE(array_agg(DISTINCT relationship_exports.related_id ORDER BY relationship_exports.related_id) FILTER (WHERE (relationship_exports.field_name = 'pcdm_memberOf_sm'::text)), ARRAY[]::text[]) AS "pcdm_memberOf_sm",
+              COALESCE(array_agg(DISTINCT relationship_exports.related_id ORDER BY relationship_exports.related_id) FILTER (WHERE (relationship_exports.field_name = 'dct_isPartOf_sm'::text)), ARRAY[]::text[]) AS "dct_isPartOf_sm",
+              COALESCE(array_agg(DISTINCT relationship_exports.related_id ORDER BY relationship_exports.related_id) FILTER (WHERE (relationship_exports.field_name = 'dct_source_sm'::text)), ARRAY[]::text[]) AS dct_source_sm,
+              COALESCE(array_agg(DISTINCT relationship_exports.related_id ORDER BY relationship_exports.related_id) FILTER (WHERE (relationship_exports.field_name = 'dct_isVersionOf_sm'::text)), ARRAY[]::text[]) AS "dct_isVersionOf_sm",
+              COALESCE(array_agg(DISTINCT relationship_exports.related_id ORDER BY relationship_exports.related_id) FILTER (WHERE (relationship_exports.field_name = 'dct_replaces_sm'::text)), ARRAY[]::text[]) AS dct_replaces_sm,
+              COALESCE(array_agg(DISTINCT relationship_exports.related_id ORDER BY relationship_exports.related_id) FILTER (WHERE (relationship_exports.field_name = 'dct_isReplacedBy_sm'::text)), ARRAY[]::text[]) AS "dct_isReplacedBy_sm"
+             FROM relationship_exports
+            GROUP BY relationship_exports.document_id
           ), live_documents AS (
            SELECT live_document_ids.bridge_id AS id,
               live_document_ids.title AS dct_title_s,
@@ -822,34 +833,13 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_17_183000) do
               (live_document_ids.json_attributes ->> 'locn_geometry'::text) AS locn_geometry,
               (live_document_ids.json_attributes ->> 'dcat_bbox'::text) AS dcat_bbox,
               (live_document_ids.json_attributes ->> 'dcat_centroid'::text) AS dcat_centroid,
-              ARRAY( SELECT DISTINCT relationship_exports.related_id
-                     FROM relationship_exports
-                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'dct_relation_sm'::text))
-                    ORDER BY relationship_exports.related_id) AS dct_relation_sm,
-              ARRAY( SELECT DISTINCT relationship_exports.related_id
-                     FROM relationship_exports
-                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'pcdm_memberOf_sm'::text))
-                    ORDER BY relationship_exports.related_id) AS "pcdm_memberOf_sm",
-              ARRAY( SELECT DISTINCT relationship_exports.related_id
-                     FROM relationship_exports
-                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'dct_isPartOf_sm'::text))
-                    ORDER BY relationship_exports.related_id) AS "dct_isPartOf_sm",
-              ARRAY( SELECT DISTINCT relationship_exports.related_id
-                     FROM relationship_exports
-                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'dct_source_sm'::text))
-                    ORDER BY relationship_exports.related_id) AS dct_source_sm,
-              ARRAY( SELECT DISTINCT relationship_exports.related_id
-                     FROM relationship_exports
-                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'dct_isVersionOf_sm'::text))
-                    ORDER BY relationship_exports.related_id) AS "dct_isVersionOf_sm",
-              ARRAY( SELECT DISTINCT relationship_exports.related_id
-                     FROM relationship_exports
-                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'dct_replaces_sm'::text))
-                    ORDER BY relationship_exports.related_id) AS dct_replaces_sm,
-              ARRAY( SELECT DISTINCT relationship_exports.related_id
-                     FROM relationship_exports
-                    WHERE (((relationship_exports.document_id)::text = (live_document_ids.bridge_id)::text) AND (relationship_exports.field_name = 'dct_isReplacedBy_sm'::text))
-                    ORDER BY relationship_exports.related_id) AS "dct_isReplacedBy_sm",
+              COALESCE(relationship_arrays.dct_relation_sm, ARRAY[]::text[]) AS dct_relation_sm,
+              COALESCE(relationship_arrays."pcdm_memberOf_sm", ARRAY[]::text[]) AS "pcdm_memberOf_sm",
+              COALESCE(relationship_arrays."dct_isPartOf_sm", ARRAY[]::text[]) AS "dct_isPartOf_sm",
+              COALESCE(relationship_arrays.dct_source_sm, ARRAY[]::text[]) AS dct_source_sm,
+              COALESCE(relationship_arrays."dct_isVersionOf_sm", ARRAY[]::text[]) AS "dct_isVersionOf_sm",
+              COALESCE(relationship_arrays.dct_replaces_sm, ARRAY[]::text[]) AS dct_replaces_sm,
+              COALESCE(relationship_arrays."dct_isReplacedBy_sm", ARRAY[]::text[]) AS "dct_isReplacedBy_sm",
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
                               WHEN (((live_document_ids.json_attributes -> 'dct_rights_sm'::text) IS NULL) OR ((live_document_ids.json_attributes -> 'dct_rights_sm'::text) = 'null'::jsonb)) THEN '[]'::jsonb
@@ -1019,7 +1009,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_17_183000) do
               (live_document_ids.json_attributes ->> 'b1g_websitePlatform_s'::text) AS "b1g_websitePlatform_s",
               false AS deleted,
               NULL::timestamp without time zone AS deleted_at
-             FROM live_document_ids
+             FROM (live_document_ids
+               LEFT JOIN relationship_arrays ON (((relationship_arrays.document_id)::text = (live_document_ids.bridge_id)::text)))
           ), deleted_documents AS (
            SELECT tombstones.friendlier_id AS id,
               tombstones.title AS dct_title_s,
