@@ -10,65 +10,68 @@ class Document
   # BboxValidator
   class BboxValidator < ActiveModel::Validator
     def validate(record)
-      # Assume true for empty values
-      valid_geom = true
+      bbox = record.send(GeoblacklightAdmin::Schema.instance.solr_fields[:bounding_box])
 
-      # Sane for W,S,E,N?
-      unless record.send(GeoblacklightAdmin::Schema.instance.solr_fields[:bounding_box]).nil?
-        proper_bounding_box(record,
-          valid_geom)
+      # Assume true for empty values
+      return true if bbox.blank?
+
+      proper_bounding_box(record, bbox)
+    end
+
+    def proper_bounding_box(record, bbox)
+      valid_geom = true
+      field = GeoblacklightAdmin::Schema.instance.solr_fields[:bounding_box]
+
+      # "W,S,E,N" to [W,S,E,N]
+      geom = bbox.split(",").map(&:strip)
+
+      if geom.empty?
+        valid_geom = true
+      elsif geom.size != 4
+        valid_geom = false
+        record.errors.add(field, "invalid W,S,E,N syntax")
+      elsif geom.any? { |val| val.count(".") >= 2 }
+        valid_geom = false
+        record.errors.add(field,
+          "invalid ENVELOPE(W,E,N,S) syntax - found multiple periods in a coordinate value.")
+      else
+        w, s, e, n = geom.map { |val| parse_coordinate(val) }
+
+        if [w, s, e, n].any?(&:nil?)
+          valid_geom = false
+          record.errors.add(field, "invalid W,S,E,N syntax")
+        elsif w < -180.0 || w > 180.0
+          valid_geom = false
+          record.errors.add(field, "invalid minX present")
+        elsif s < -90.0 || s > 90.0
+          valid_geom = false
+          record.errors.add(field, "invalid minY present")
+        elsif e < -180.0 || e > 180.0
+          valid_geom = false
+          record.errors.add(field, "invalid maxX present")
+        elsif n < -90.0 || n > 90.0
+          valid_geom = false
+          record.errors.add(field, "invalid maxY present")
+        elsif e <= w
+          valid_geom = false
+          record.errors.add(field, "maxX must be greater than minX")
+        # Solr - maxY must be >= minY
+        elsif s >= n
+          valid_geom = false
+          record.errors.add(field, "maxY must be >= minY")
+        end
       end
 
       valid_geom
     end
 
-    def proper_bounding_box(record, valid_geom)
-      # Min/Max
-      min_max = [-180.0, -90.0, 180.0, 90.0]
+    private
 
-      # "W,S,E,N" to [W,S,E,N]
-      unless record.send(GeoblacklightAdmin::Schema.instance.solr_fields[:bounding_box]).split(",").nil?
-        geom = record.send(GeoblacklightAdmin::Schema.instance.solr_fields[:bounding_box]).split(",")
-
-        if geom.empty?
-          valid_geom = true
-        elsif geom.size != 4
-          valid_geom = false
-          record.errors.add(GeoblacklightAdmin::Schema.instance.solr_fields[:bounding_box], "invalid W,S,E,N syntax")
-        # W
-        elsif geom[0].to_f < min_max[0]
-          valid_geom = false
-          record.errors.add(GeoblacklightAdmin::Schema.instance.solr_fields[:bounding_box], "invalid minX present")
-        # S
-        elsif geom[1].to_f < min_max[1]
-          valid_geom = false
-          record.errors.add(GeoblacklightAdmin::Schema.instance.solr_fields[:bounding_box], "invalid minY present")
-        # E
-        elsif geom[2].to_f > min_max[2]
-          valid_geom = false
-          record.errors.add(GeoblacklightAdmin::Schema.instance.solr_fields[:bounding_box], "invalid maX present")
-        # N
-        elsif geom[3].to_f > min_max[3]
-          valid_geom = false
-          record.errors.add(GeoblacklightAdmin::Schema.instance.solr_fields[:bounding_box], "invalid maxY present")
-        # Solr - maxY must be >= minY
-        elsif geom[1].to_f >= geom[3].to_f
-          valid_geom = false
-          record.errors.add(GeoblacklightAdmin::Schema.instance.solr_fields[:bounding_box], "maxY must be >= minY")
-        end
-
-        # Reject ENVELOPE(-118.00.0000,-88.00.0000,51.00.0000,42.00.0000
-        # - Double period float-ish things?
-        geom.each do |val|
-          next unless val.count(".") >= 2
-
-          valid_geom = false
-          record.errors.add(GeoblacklightAdmin::Schema.instance.solr_fields[:bounding_box],
-            "invalid ENVELOPE(W,E,N,S) syntax - found multiple periods in a coordinate value.")
-        end
-      end
-
-      valid_geom
+    def parse_coordinate(value)
+      coordinate = Float(value)
+      coordinate if coordinate.finite?
+    rescue ArgumentError, TypeError
+      nil
     end
   end
 end
