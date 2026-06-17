@@ -83,4 +83,15 @@ class DocumentIndexerTest < ActiveSupport::TestCase
     assert_equal output_hash[GeoblacklightAdmin::Schema.instance.solr_fields[:suppressed_record]], [false]
     assert_equal output_hash[GeoblacklightAdmin::Schema.instance.solr_fields[:child_record]], [false]
   end
+
+  test "includes rails document identifiers in traject record inspection" do
+    context = DocumentIndexer.new.process_record(@document)
+    record_inspect = context.record_inspect
+
+    assert_includes record_inspect, "source_id:Document.friendlier_id=#{@document.friendlier_id}"
+    assert_includes record_inspect, "Document.id=#{@document.id}"
+    assert_includes record_inspect, "geomg_id_s=#{@document.geomg_id_s}"
+    assert_includes record_inspect, "publication_state=#{@document.publication_state}"
+    assert_includes record_inspect, "output_id:#{@document.friendlier_id}"
+  end
 end

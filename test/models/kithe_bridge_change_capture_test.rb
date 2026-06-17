@@ -70,7 +70,23 @@ class KitheBridgeChangeCaptureTest < ActiveSupport::TestCase
     refute called
   end
 
+  test "attaches bridge callbacks after model constants load" do
+    2.times { KitheBridgeChangeCapture.attach_callbacks! }
+
+    assert_equal 1, callback_count(Document._commit_callbacks, :kithe_bridge_capture_document_deletion)
+
+    assert_equal 1, callback_count(DocumentDataDictionary._save_callbacks, :kithe_bridge_touch_parent_document)
+    assert_equal 1, callback_count(DocumentDataDictionary._destroy_callbacks, :kithe_bridge_touch_parent_document)
+
+    assert_equal 1, callback_count(DocumentDataDictionaryEntry._save_callbacks, :kithe_bridge_touch_parent_document)
+    assert_equal 1, callback_count(DocumentDataDictionaryEntry._destroy_callbacks, :kithe_bridge_touch_parent_document)
+  end
+
   private
+
+  def callback_count(callbacks, filter)
+    callbacks.count { |callback| callback.filter == filter }
+  end
 
   def with_class_method_stub(klass, method_name, replacement)
     singleton = class << klass; self; end
