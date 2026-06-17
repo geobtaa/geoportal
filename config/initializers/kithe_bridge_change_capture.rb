@@ -13,6 +13,16 @@
 module KitheBridgeChangeCapture
   module_function
 
+  def attach_callbacks!
+    attach_document_deletion_callback!("Document".safe_constantize)
+    attach_parent_touch_callback!("DocumentDataDictionary".safe_constantize) do
+      document
+    end
+    attach_parent_touch_callback!("DocumentDataDictionaryEntry".safe_constantize) do
+      document_data_dictionary&.document
+    end
+  end
+
   def touch_parent_document!(document)
     return if document.nil?
 
@@ -52,42 +62,44 @@ module KitheBridgeChangeCapture
       unique_by: :index_kithe_bridge_deletions_on_friendlier_id
     )
   end
-end
 
-if defined?(Document)
-  Document.class_eval do
-    after_commit :kithe_bridge_capture_document_deletion, on: :destroy
+  def attach_document_deletion_callback!(klass)
+    return if klass.nil?
 
-    private
+    klass.class_eval do
+      unless _commit_callbacks.any? { |callback| callback.filter == :kithe_bridge_capture_document_deletion }
+        after_commit :kithe_bridge_capture_document_deletion, on: :destroy
+      end
 
-    def kithe_bridge_capture_document_deletion
-      KitheBridgeChangeCapture.capture_document_deletion!(self)
+      private
+
+      def kithe_bridge_capture_document_deletion
+        KitheBridgeChangeCapture.capture_document_deletion!(self)
+      end
+    end
+  end
+
+  def attach_parent_touch_callback!(klass, &document_resolver)
+    return if klass.nil?
+
+    klass.class_eval do
+      unless _save_callbacks.any? { |callback| callback.filter == :kithe_bridge_touch_parent_document }
+        after_save :kithe_bridge_touch_parent_document
+      end
+
+      unless _destroy_callbacks.any? { |callback| callback.filter == :kithe_bridge_touch_parent_document }
+        after_destroy :kithe_bridge_touch_parent_document
+      end
+
+      define_method(:kithe_bridge_touch_parent_document) do
+        KitheBridgeChangeCapture.touch_parent_document!(instance_exec(&document_resolver))
+      end
+
+      private :kithe_bridge_touch_parent_document
     end
   end
 end
 
-if defined?(DocumentDataDictionary)
-  DocumentDataDictionary.class_eval do
-    after_save :kithe_bridge_touch_parent_document
-    after_destroy :kithe_bridge_touch_parent_document
-
-    private
-
-    def kithe_bridge_touch_parent_document
-      KitheBridgeChangeCapture.touch_parent_document!(document)
-    end
-  end
-end
-
-if defined?(DocumentDataDictionaryEntry)
-  DocumentDataDictionaryEntry.class_eval do
-    after_save :kithe_bridge_touch_parent_document
-    after_destroy :kithe_bridge_touch_parent_document
-
-    private
-
-    def kithe_bridge_touch_parent_document
-      KitheBridgeChangeCapture.touch_parent_document!(document_data_dictionary&.document)
-    end
-  end
+Rails.application.config.to_prepare do
+  KitheBridgeChangeCapture.attach_callbacks!
 end
