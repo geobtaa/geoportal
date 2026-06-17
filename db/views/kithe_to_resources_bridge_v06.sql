@@ -36,18 +36,59 @@ relationship_values AS (
 relationship_exports AS (
   SELECT subject_id AS document_id, field_name, object_id AS related_id
   FROM relationship_values
-  UNION
+  UNION ALL
   SELECT object_id AS document_id, 'dct_relation_sm' AS field_name, subject_id AS related_id
   FROM relationship_values
   WHERE field_name = 'dct_relation_sm'
-  UNION
+  UNION ALL
   SELECT object_id AS document_id, 'dct_isReplacedBy_sm' AS field_name, subject_id AS related_id
   FROM relationship_values
   WHERE field_name = 'dct_replaces_sm'
-  UNION
+  UNION ALL
   SELECT object_id AS document_id, 'dct_replaces_sm' AS field_name, subject_id AS related_id
   FROM relationship_values
   WHERE field_name = 'dct_isReplacedBy_sm'
+),
+relationship_arrays AS (
+  SELECT
+    document_id,
+    COALESCE(
+      array_agg(DISTINCT related_id ORDER BY related_id)
+        FILTER (WHERE field_name = 'dct_relation_sm'),
+      ARRAY[]::text[]
+    ) AS dct_relation_sm,
+    COALESCE(
+      array_agg(DISTINCT related_id ORDER BY related_id)
+        FILTER (WHERE field_name = 'pcdm_memberOf_sm'),
+      ARRAY[]::text[]
+    ) AS "pcdm_memberOf_sm",
+    COALESCE(
+      array_agg(DISTINCT related_id ORDER BY related_id)
+        FILTER (WHERE field_name = 'dct_isPartOf_sm'),
+      ARRAY[]::text[]
+    ) AS "dct_isPartOf_sm",
+    COALESCE(
+      array_agg(DISTINCT related_id ORDER BY related_id)
+        FILTER (WHERE field_name = 'dct_source_sm'),
+      ARRAY[]::text[]
+    ) AS dct_source_sm,
+    COALESCE(
+      array_agg(DISTINCT related_id ORDER BY related_id)
+        FILTER (WHERE field_name = 'dct_isVersionOf_sm'),
+      ARRAY[]::text[]
+    ) AS "dct_isVersionOf_sm",
+    COALESCE(
+      array_agg(DISTINCT related_id ORDER BY related_id)
+        FILTER (WHERE field_name = 'dct_replaces_sm'),
+      ARRAY[]::text[]
+    ) AS dct_replaces_sm,
+    COALESCE(
+      array_agg(DISTINCT related_id ORDER BY related_id)
+        FILTER (WHERE field_name = 'dct_isReplacedBy_sm'),
+      ARRAY[]::text[]
+    ) AS "dct_isReplacedBy_sm"
+  FROM relationship_exports
+  GROUP BY document_id
 ),
 live_documents AS (
   SELECT
@@ -87,13 +128,13 @@ live_documents AS (
     json_attributes->>'locn_geometry' AS "locn_geometry",
     json_attributes->>'dcat_bbox' AS "dcat_bbox",
     json_attributes->>'dcat_centroid' AS "dcat_centroid",
-    ARRAY(SELECT DISTINCT related_id FROM relationship_exports WHERE document_id = bridge_id AND field_name = 'dct_relation_sm' ORDER BY related_id) AS "dct_relation_sm",
-    ARRAY(SELECT DISTINCT related_id FROM relationship_exports WHERE document_id = bridge_id AND field_name = 'pcdm_memberOf_sm' ORDER BY related_id) AS "pcdm_memberOf_sm",
-    ARRAY(SELECT DISTINCT related_id FROM relationship_exports WHERE document_id = bridge_id AND field_name = 'dct_isPartOf_sm' ORDER BY related_id) AS "dct_isPartOf_sm",
-    ARRAY(SELECT DISTINCT related_id FROM relationship_exports WHERE document_id = bridge_id AND field_name = 'dct_source_sm' ORDER BY related_id) AS "dct_source_sm",
-    ARRAY(SELECT DISTINCT related_id FROM relationship_exports WHERE document_id = bridge_id AND field_name = 'dct_isVersionOf_sm' ORDER BY related_id) AS "dct_isVersionOf_sm",
-    ARRAY(SELECT DISTINCT related_id FROM relationship_exports WHERE document_id = bridge_id AND field_name = 'dct_replaces_sm' ORDER BY related_id) AS "dct_replaces_sm",
-    ARRAY(SELECT DISTINCT related_id FROM relationship_exports WHERE document_id = bridge_id AND field_name = 'dct_isReplacedBy_sm' ORDER BY related_id) AS "dct_isReplacedBy_sm",
+    COALESCE(relationship_arrays.dct_relation_sm, ARRAY[]::text[]) AS "dct_relation_sm",
+    COALESCE(relationship_arrays."pcdm_memberOf_sm", ARRAY[]::text[]) AS "pcdm_memberOf_sm",
+    COALESCE(relationship_arrays."dct_isPartOf_sm", ARRAY[]::text[]) AS "dct_isPartOf_sm",
+    COALESCE(relationship_arrays.dct_source_sm, ARRAY[]::text[]) AS "dct_source_sm",
+    COALESCE(relationship_arrays."dct_isVersionOf_sm", ARRAY[]::text[]) AS "dct_isVersionOf_sm",
+    COALESCE(relationship_arrays.dct_replaces_sm, ARRAY[]::text[]) AS "dct_replaces_sm",
+    COALESCE(relationship_arrays."dct_isReplacedBy_sm", ARRAY[]::text[]) AS "dct_isReplacedBy_sm",
     ARRAY(SELECT jsonb_array_elements_text(CASE WHEN json_attributes->'dct_rights_sm' IS NULL OR json_attributes->'dct_rights_sm' = 'null'::jsonb THEN '[]'::jsonb WHEN jsonb_typeof(json_attributes->'dct_rights_sm') = 'array' THEN json_attributes->'dct_rights_sm' ELSE jsonb_build_array(json_attributes->'dct_rights_sm') END)) AS "dct_rights_sm",
     ARRAY(SELECT jsonb_array_elements_text(CASE WHEN json_attributes->'dct_rightsHolder_sm' IS NULL OR json_attributes->'dct_rightsHolder_sm' = 'null'::jsonb THEN '[]'::jsonb WHEN jsonb_typeof(json_attributes->'dct_rightsHolder_sm') = 'array' THEN json_attributes->'dct_rightsHolder_sm' ELSE jsonb_build_array(json_attributes->'dct_rightsHolder_sm') END)) AS "dct_rightsHolder_sm",
     ARRAY(SELECT jsonb_array_elements_text(CASE WHEN json_attributes->'dct_license_sm' IS NULL OR json_attributes->'dct_license_sm' = 'null'::jsonb THEN '[]'::jsonb WHEN jsonb_typeof(json_attributes->'dct_license_sm') = 'array' THEN json_attributes->'dct_license_sm' ELSE jsonb_build_array(json_attributes->'dct_license_sm') END)) AS "dct_license_sm",
@@ -205,6 +246,8 @@ live_documents AS (
     FALSE AS "deleted",
     NULL::timestamp AS "deleted_at"
   FROM live_document_ids
+  LEFT JOIN relationship_arrays
+    ON relationship_arrays.document_id = live_document_ids.bridge_id
 ),
 deleted_documents AS (
   SELECT
