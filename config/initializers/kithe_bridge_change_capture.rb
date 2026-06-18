@@ -5,7 +5,7 @@
 # The bridge view uses the parent Document's `date_modified_dtsi` (stored in
 # Document.json_attributes) as a "last updated" marker.
 #
-# Some related tables (data dictionaries + entries, downloads) don't update
+# Some related tables (data dictionaries + entries, downloads, assets) don't update
 # the parent Document record themselves. We hook into their callbacks so that
 # changes are reflected in the parent and therefore captured when the MV is
 # refreshed. We also record hard-deleted Documents into a tombstone table so
@@ -20,6 +20,9 @@ module KitheBridgeChangeCapture
     end
     attach_parent_touch_callback!("DocumentDataDictionaryEntry".safe_constantize) do
       document_data_dictionary&.document
+    end
+    attach_parent_touch_callback!("Asset".safe_constantize) do
+      parent
     end
   end
 
