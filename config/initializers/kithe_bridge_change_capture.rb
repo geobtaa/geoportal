@@ -2,14 +2,14 @@
 
 # Change-capture for the `kithe_to_resources_bridge` materialized view.
 #
-# The bridge view uses the parent Document's `date_modified_dtsi` (stored in
-# Document.json_attributes) as a "last updated" marker.
+# The bridge view uses a persisted resource-level watermark so nested changes
+# remain eligible for incremental syncs after the materialized view refreshes.
 #
-# Some related tables (data dictionaries + entries, downloads, assets) don't update
-# the parent Document record themselves. We hook into their callbacks so that
-# changes are reflected in the parent and therefore captured when the MV is
-# refreshed. We also record hard-deleted Documents into a tombstone table so
-# incremental bridge syncs can see deletions after the next MV refresh.
+# Related tables do not all update the parent Document record themselves. We hook
+# into every collection serialized by DocumentExportSerializer and advance the
+# parent watermark from the same transaction as each create, update, or deletion.
+# We also record hard-deleted Documents into a tombstone table so incremental
+# bridge syncs can see deletions after the next MV refresh.
 module KitheBridgeChangeCapture
   module_function
 
@@ -20,6 +20,15 @@ module KitheBridgeChangeCapture
     end
     attach_parent_touch_callback!("DocumentDataDictionaryEntry".safe_constantize) do
       document_data_dictionary&.document
+    end
+    attach_parent_touch_callback!("DocumentDistribution".safe_constantize) do
+      document
+    end
+    attach_parent_touch_callback!("DocumentDownload".safe_constantize) do
+      document
+    end
+    attach_parent_touch_callback!("DocumentLicensedAccess".safe_constantize) do
+      document
     end
     attach_parent_touch_callback!("Asset".safe_constantize) do
       parent
@@ -39,7 +48,8 @@ module KitheBridgeChangeCapture
 
     document.update_columns(
       json_attributes: json,
-      updated_at: now
+      updated_at: now,
+      bridge_updated_at: now
     )
   end
 

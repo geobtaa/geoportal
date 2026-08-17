@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_06_18_120000) do
+ActiveRecord::Schema[7.2].define(version: 2026_08_17_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -499,6 +499,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_18_120000) do
     t.integer "kithe_model_type", null: false
     t.bigint "import_id"
     t.string "publication_state", default: "draft"
+    t.datetime "bridge_updated_at"
     t.index ["friendlier_id"], name: "index_kithe_models_on_friendlier_id", unique: true
     t.index ["import_id"], name: "index_kithe_models_on_import_id"
     t.index ["leaf_representative_id"], name: "index_kithe_models_on_leaf_representative_id"
@@ -683,6 +684,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_18_120000) do
               kithe_models.kithe_model_type,
               kithe_models.import_id,
               kithe_models.publication_state,
+              kithe_models.bridge_updated_at,
               COALESCE(kithe_models.friendlier_id, (kithe_models.id)::character varying) AS bridge_id
              FROM kithe_models
             WHERE ((kithe_models.type)::text = 'Document'::text)
@@ -985,7 +987,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_18_120000) do
                           END) AS jsonb_array_elements_text) AS "b1g_prov_wasGeneratedBy_sm",
               COALESCE((NULLIF(NULLIF((live_document_ids.json_attributes ->> 'date_created_dtsi'::text), ''::text), 'null'::text))::timestamp without time zone, live_document_ids.created_at) AS date_created_dtsi,
               COALESCE((NULLIF(NULLIF((live_document_ids.json_attributes ->> 'date_modified_dtsi'::text), ''::text), 'null'::text))::timestamp without time zone, live_document_ids.updated_at) AS date_modified_dtsi,
-              live_document_ids.updated_at AS kithe_updated_at,
+              GREATEST(live_document_ids.updated_at, live_document_ids.bridge_updated_at) AS kithe_updated_at,
               (live_document_ids.json_attributes ->> 'geomg_id_s'::text) AS geomg_id_s,
               ARRAY( SELECT jsonb_array_elements_text(
                           CASE
