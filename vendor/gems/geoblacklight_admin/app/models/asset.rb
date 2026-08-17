@@ -31,6 +31,7 @@ class Asset < Kithe::Asset
 
   # After Promotion Callbacks
   after_promotion :set_parent_dct_references_uri
+  after_save :sync_parent_thumbnail_state
 
   def set_parent_dct_references_uri
     GeoblacklightAdmin::SetParentDctReferencesUriJob.perform_later(self) if parent_id.present?
@@ -41,6 +42,24 @@ class Asset < Kithe::Asset
 
   def remove_parent_dct_references_uri
     GeoblacklightAdmin::RemoveParentDctReferencesUriJob.perform_later(self) if parent_id.present?
+  end
+
+  def sync_parent_thumbnail_state
+    return unless thumbnail?
+    return if file_data.blank?
+    return unless parent.present?
+
+    state_machine = parent.thumbnail_state_machine
+    return unless state_machine.current_state.to_s == "placeheld"
+
+    state_machine.transition_to!(
+      :succeeded,
+      {
+        "solr_doc_id" => parent.friendlier_id,
+        "asset_id" => id,
+        "source" => "asset_thumbnail_sync"
+      }
+    )
   end
 
   # After Commit Callbacks

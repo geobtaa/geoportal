@@ -80,6 +80,18 @@ class KitheBridgeChangeCaptureTest < ActiveSupport::TestCase
 
     assert_equal 1, callback_count(DocumentDataDictionaryEntry._save_callbacks, :kithe_bridge_touch_parent_document)
     assert_equal 1, callback_count(DocumentDataDictionaryEntry._destroy_callbacks, :kithe_bridge_touch_parent_document)
+
+    assert_equal 1, callback_count(DocumentDistribution._save_callbacks, :kithe_bridge_touch_parent_document)
+    assert_equal 1, callback_count(DocumentDistribution._destroy_callbacks, :kithe_bridge_touch_parent_document)
+
+    assert_equal 1, callback_count(DocumentDownload._save_callbacks, :kithe_bridge_touch_parent_document)
+    assert_equal 1, callback_count(DocumentDownload._destroy_callbacks, :kithe_bridge_touch_parent_document)
+
+    assert_equal 1, callback_count(DocumentLicensedAccess._save_callbacks, :kithe_bridge_touch_parent_document)
+    assert_equal 1, callback_count(DocumentLicensedAccess._destroy_callbacks, :kithe_bridge_touch_parent_document)
+
+    assert_equal 1, callback_count(Asset._save_callbacks, :kithe_bridge_touch_parent_document)
+    assert_equal 1, callback_count(Asset._destroy_callbacks, :kithe_bridge_touch_parent_document)
   end
 
   private

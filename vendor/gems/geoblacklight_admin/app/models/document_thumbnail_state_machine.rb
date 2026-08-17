@@ -16,7 +16,7 @@ class DocumentThumbnailStateMachine
   transition from: :initialized, to: %i[queued processing]
   transition from: :queued, to: %i[queued processing]
   transition from: :processing, to: %i[queued processing placeheld succeeded failed]
-  transition from: :placeheld, to: %i[queued processing failed]
+  transition from: :placeheld, to: %i[queued processing succeeded failed]
   transition from: :failed, to: %i[queued processing]
   transition from: :succeeded, to: %i[queued processing]
 end

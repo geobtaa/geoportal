@@ -194,7 +194,7 @@ live_documents AS (
       NULLIF(NULLIF(json_attributes->>'date_modified_dtsi', ''), 'null')::timestamp,
       updated_at
     ) AS "date_modified_dtsi",
-    updated_at AS "kithe_updated_at",
+    GREATEST(updated_at, bridge_updated_at) AS "kithe_updated_at",
     json_attributes->>'geomg_id_s' AS "geomg_id_s",
     ARRAY(SELECT jsonb_array_elements_text(CASE WHEN json_attributes->'b1g_adminNote_sm' IS NULL OR json_attributes->'b1g_adminNote_sm' = 'null'::jsonb THEN '[]'::jsonb WHEN jsonb_typeof(json_attributes->'b1g_adminNote_sm') = 'array' THEN json_attributes->'b1g_adminNote_sm' ELSE jsonb_build_array(json_attributes->'b1g_adminNote_sm') END)) AS "b1g_adminNote_sm",
     COALESCE(

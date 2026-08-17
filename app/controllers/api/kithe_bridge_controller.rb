@@ -25,7 +25,9 @@ class Api::KitheBridgeController < ApplicationController
       end
     end
 
-    rows  = scope.limit(limit).to_a
+    rows = scope.limit(limit + 1).to_a
+    has_more = rows.length > limit
+    rows = rows.first(limit)
 
     next_cursor = rows.last&.id
 
@@ -39,7 +41,7 @@ class Api::KitheBridgeController < ApplicationController
     render json: {
       data: data,
       next_cursor: next_cursor,
-      has_more: next_cursor.present?
+      has_more: has_more
     }
   end
 
